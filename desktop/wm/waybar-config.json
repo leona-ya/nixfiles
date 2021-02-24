@@ -1,0 +1,68 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "tray"
+  ],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "temperature",
+    "cpu",
+    "memory",
+    "battery",
+    "clock"
+  ],
+  "cpu": {
+    "format": " {usage}%"
+  },
+  "memory": {
+    "format": " {percentage}%",
+    "states": {
+      "warning": 15,
+      "critical": 75
+    }
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "states": {
+      "critical": 10,
+      "warning": 25
+    }
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": [
+      "",
+      ""
+    ],
+    "format-muted": " muted"
+  },
+  "clock": {
+    "format": "{:%a %Y-%m-%d %H:%M:%S}",
+    "interval": 1
+  },
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": " connected",
+    "format-disconnected": "no network",
+    //An empty format will hide the module.
+    "tooltip-format": "IPv4: {ipaddr}/{cidr}\nFrequency: {frequency}MHz\nStrength:{signaldBm}dBm",
+    "max-length": 50,
+    "interval": 5
+  },
+  "temperature": {
+    "critical-threshold": 70,
+    "format": " {temperatureC}°C",
+    "interval": 1
+  }
+}

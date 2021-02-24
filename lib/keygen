@@ -1,0 +1,11 @@
+%echo Generating ed25519 primary and cv25519 subkey
+Key-Type: eddsa
+Key-Curve: Ed25519
+Key-Usage: sign
+Name-Real: NAME
+Subkey-Type: ecdh
+Subkey-Curve: Curve25519
+Expire-Date: 0
+%no-protection
+%commit
+%echo done
