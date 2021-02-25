@@ -60,6 +60,7 @@
     inkscape
     pandoc
     ansible_2_9
+    z-lua
   ];
 
   services.udev.packages = [ pkgs.yubikey-personalization ];
@@ -93,6 +94,9 @@
       sshKeys = [ "430411806903447FF65FCBCBB1ADA545CD2CBACD" ];
     };
     programs.password-store.enable = true;
+    programs.zsh.initExtra = ''
+      eval "$(${pkgs.z-lua}/bin/z --init zsh)"
+    '';
   };
   environment.variables.SSH_AUTH_SOCK = "/run/user/1000/gnupg/S.gpg-agent.ssh";
 }

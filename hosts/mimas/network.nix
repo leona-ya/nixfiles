@@ -15,4 +15,10 @@
     "wpa_supplicant.conf".source-path = "${../../secrets/mimas/wpa_supplicant.conf.gpg}";
   };
   environment.etc."wpa_supplicant.conf".source = config.em0lar.secrets."wpa_supplicant.conf".path;
+  systemd.network.networks."40-enp0s31f6".dhcpV4Config = {
+    RouteMetric = 512;
+  };
+  systemd.network.networks."40-enp0s31f6".dhcpV6Config = {
+    RouteMetric = 512;
+  };
 }

@@ -63,6 +63,7 @@
   "temperature": {
     "critical-threshold": 70,
     "format": " {temperatureC}°C",
-    "interval": 1
+    "interval": 1,
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input"
   }
 }

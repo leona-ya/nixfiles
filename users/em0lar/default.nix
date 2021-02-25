@@ -33,6 +33,7 @@
         "vim" = "nvim";
         "ip" = "ip -c";
         "watch" = "watch -c";
+        "xtssh" = "TERM=xterm-256color ssh";
       };
       oh-my-zsh = {
         enable = true;
@@ -71,6 +72,8 @@
 
     programs.ssh = {
       enable = true;
+      controlMaster = "auto";
+      controlPersist = "10m";
       matchBlocks = let
         em0lar = {
           port = 61337;

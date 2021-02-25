@@ -18,8 +18,22 @@
   em0lar.secrets = {
     "backups_ssh_key".source-path = "${../../secrets/mimas/backup_ssh_key.gpg}";
     "backups_passphrase".source-path = "${../../secrets/mimas/backup_passphrase.gpg}";
+    "alt_rsa_ssh_key" = {
+      source-path = "${../../secrets/mimas/alt_rsa_ssh_key.gpg}";
+      owner = "em0lar";
+    };
   };
 
+  home-manager.users.em0lar = {
+    home.file.alt_rsa_ssh_key = {
+      source = config.em0lar.secrets."alt_rsa_ssh_key".path;
+      target = ".ssh/alt_rsa";
+    };
+
+    programs.ssh.extraConfig = ''
+      IdentityFile ~/.ssh/alt_rsa
+    '';
+  };
   em0lar.backups = {
     enable = true;
     paths = [
