@@ -49,6 +49,7 @@
       "/var/spool"
       "/var/log"
       "/home/em0lar/.local/share/containers"
+      "/home/em0lar/.syncthing"
       "/var/lib/containers"
       "node_modules"
       ".venv"

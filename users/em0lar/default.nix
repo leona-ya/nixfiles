@@ -72,8 +72,6 @@
 
     programs.ssh = {
       enable = true;
-      controlMaster = "auto";
-      controlPersist = "10m";
       matchBlocks = let
         em0lar = {
           port = 61337;
