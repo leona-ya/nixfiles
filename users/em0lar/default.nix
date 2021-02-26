@@ -37,7 +37,11 @@
       };
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "sudo" ];
+        plugins = [
+          "git"
+          "sudo"
+          "virtualenvwrapper"
+        ];
         theme = lib.mkDefault "fishy";
       };
     };

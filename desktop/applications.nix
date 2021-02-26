@@ -34,7 +34,7 @@
     jetbrains.idea-ultimate
     jetbrains.datagrip
     python3
-    pass
+    pass-wayland
     rofi-pass
     gimp
     thunderbird

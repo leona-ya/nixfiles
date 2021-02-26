@@ -52,5 +52,6 @@
     mtr
     bat
     jq
+    python38Packages.virtualenvwrapper
   ];
 }
