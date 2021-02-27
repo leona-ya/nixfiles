@@ -49,7 +49,7 @@
       "/var/spool"
       "/var/log"
       "/home/em0lar/.local/share/containers"
-      "/home/em0lar/.syncthing"
+      "/home/em0lar/sync/nas"
       "/var/lib/containers"
       "node_modules"
       ".venv"

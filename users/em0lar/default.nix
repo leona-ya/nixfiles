@@ -82,6 +82,7 @@
         };
       in {
         "*.em0lar.dev" = em0lar;
+        "helene.int.sig.de.labcode.de".port = 1880;
       };
     };
   };
