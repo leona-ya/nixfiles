@@ -14,6 +14,13 @@
 
   outputs = inputs@{ self, nixpkgs, home-manager, flake-registry, deploy-rs, ... }:
     let
+      overlays = {
+        packages = (final: prev: import ./packages final prev);
+      };
+      legacyPackages."x86_64-linux" = (import nixpkgs {
+        system = "x86_64-linux";
+      }).extend self.overlays.packages;
+
       mkDeployNodes = deploy: builtins.mapAttrs (_: config: {
         hostname = config.config.networking.hostName + "." + config.config.networking.domain;
         sshOpts = [ "-p" "61337" "-o" "StrictHostKeyChecking=no"];
@@ -44,8 +51,12 @@
           documentation.info.enable = false;
         }
         home-manager.nixosModules.home-manager
+        {
+          nixpkgs.overlays = [ self.overlays.packages ];
+        }
       ];
     in {
+    inherit overlays;
     nixosConfigurations = {
       aido = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -53,10 +64,22 @@
           ./hosts/aido/configuration.nix
         ];
       };
+      foros = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = defaultModules ++ [
+          ./hosts/foros/configuration.nix
+        ];
+      };
       haku = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = defaultModules ++ [
           ./hosts/haku/configuration.nix
+        ];
+      };
+      ladon = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = defaultModules ++ [
+          ./hosts/ladon/configuration.nix
         ];
       };
       mimas = nixpkgs.lib.nixosSystem {
