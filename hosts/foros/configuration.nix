@@ -3,6 +3,7 @@
 {
   imports = [
       "${modulesPath}/virtualisation/lxc-container.nix"
+      ./wireguard.nix
       ../../common
   ];
 

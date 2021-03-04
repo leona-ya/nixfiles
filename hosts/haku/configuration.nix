@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./wireguard.nix
       ../../common
     ];
 
@@ -12,6 +13,8 @@
 
   networking.hostName = "haku";
   networking.domain = "pbb.wob.de.em0lar.dev";
+  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
+  boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;
 
   networking.useDHCP = false;
   networking.interfaces.enp1s0.useDHCP = true;

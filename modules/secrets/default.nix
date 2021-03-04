@@ -13,7 +13,7 @@ let
       path = mkOption {
         type = types.str;
         readOnly = true;
-        default = "/run/secrets/${removeSuffix ".gpg" (baseNameOf moduleAttrs.config.source-path)}";
+        default = "/secrets/${removeSuffix ".gpg" (baseNameOf moduleAttrs.config.source-path)}";
       };
       mode = mkOption {
         type = types.str;
@@ -69,9 +69,10 @@ in {
       files = unique (map (flip removeAttrs ["_module"]) (attrValues enabledFiles));
       script = ''
         echo setting up secrets...
-        mkdir -p /run/secrets
-        chown root:root /run/secrets
-        chmod 0755 /run/secrets
+        mkdir -p /secrets
+        mount -t tmpfs -o size=50m tmpfs /secrets
+        chown root:root /secrets
+        chmod 0755 /secrets
         ${concatMapStringsSep "\n" (file: ''
           ${mkDeploySecret file} || echo "failed to deploy ${file.source-path} to ${file.path}"
         '') files}

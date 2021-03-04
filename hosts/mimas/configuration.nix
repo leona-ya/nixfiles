@@ -55,6 +55,7 @@
       ".venv"
       ".cache"
       "/tmp"
+      "/secrets"
     ];
     repo = "backup@helene.int.sig.de.labcode.de:/mnt/backup/repos/unsynced/mimas.int.sig.de.em0lar.dev";
     encryptionPassCommand = "cat ${config.em0lar.secrets.backups_passphrase.path}";
