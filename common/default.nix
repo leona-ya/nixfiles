@@ -4,6 +4,7 @@
   imports = [
     ../users/em0lar
     ../users/root
+    ./nginx.nix
   ];
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;

@@ -5,6 +5,7 @@
       "${modulesPath}/virtualisation/lxc-container.nix"
       ./wireguard.nix
       ../../common
+      ../../services/web
   ];
 
   networking.hostName = "foros";
