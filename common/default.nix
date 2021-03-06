@@ -38,6 +38,10 @@
   networking.useNetworkd = true;
   em0lar.nftables.enable = true;
   networking.useDHCP = false;
+  services.resolved.extraConfig = ''
+    FallbackDNS=
+    Cache=no-negative
+  '';
 
   environment.systemPackages = with pkgs; [
     bind.dnsutils # for dig

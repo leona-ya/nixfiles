@@ -14,5 +14,5 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-rsync -r /home/em0lar/dev/nixfiles aido.int.sig.de.em0lar.dev:/tmp
-ssh -A aido.int.sig.de.em0lar.dev "cd /tmp/nixfiles && nix run github:serokell/deploy-rs .#${HOST} && cd /tmp && rm -rf /tmp/nixfiles"
+rsync -r /home/em0lar/dev/nixfiles aido.lan.int.sig.de.em0lar.dev:/tmp
+ssh -A aido.lan.int.sig.de.em0lar.dev "cd /tmp/nixfiles && nix run github:serokell/deploy-rs .#${HOST} && cd /tmp && rm -rf /tmp/nixfiles"

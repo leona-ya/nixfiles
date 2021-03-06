@@ -16,7 +16,7 @@
     "git.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://hyperion.int.sig.de.labcode.de:40000";
+      locations."/".proxyPass = "http://hyperion.lan.int.sig.de.em0lar.dev:40000";
     };
     "auth.em0lar.de" = {
       enableACME = true;
@@ -32,7 +32,7 @@
     "auth.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://phoebe.int.sig.de.labcode.de:8080";
+      locations."/".proxyPass = "http://phoebe.lan.int.sig.de.em0lar.dev:8080";
     };
     "md.em0lar.dev" = {
       enableACME = true;
@@ -48,12 +48,12 @@
     "md.em0lar.de" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://hyperion.int.sig.de.labcode.de:40001";
+      locations."/".proxyPass = "http://hyperion.lan.int.sig.de.em0lar.dev:40001";
     };
     "matrix.labcode.de" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://hyperion.int.sig.de.labcode.de:8008";
+      locations."/".proxyPass = "http://hyperion.lan.int.sig.de.em0lar.dev:8008";
     };
   };
 }

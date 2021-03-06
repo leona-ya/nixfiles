@@ -21,15 +21,6 @@
         system = "x86_64-linux";
       }).extend self.overlays.packages;
 
-      mkDeployNodes = deploy: builtins.mapAttrs (_: config: {
-        hostname = config.config.networking.hostName + "." + config.config.networking.domain;
-        sshOpts = [ "-p" "61337" "-o" "StrictHostKeyChecking=no"];
-        profiles.system = {
-          user = "root";
-          sshUser = "em0lar";
-          path = deploy.lib.x86_64-linux.activate.nixos config;
-        };
-      });
       defaultModules = [
         {
           nix.nixPath = [
@@ -55,40 +46,66 @@
           nixpkgs.overlays = [ self.overlays.packages ];
         }
       ];
+
+      hosts = {
+        aido = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/aido/configuration.nix
+            ];
+          };
+        };
+        foros = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/foros/configuration.nix
+            ];
+          };
+          deploy.hostname = "foros.lan.int.sig.de.em0lar.dev";
+        };
+        haku = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/haku/configuration.nix
+            ];
+          };
+        };
+        ladon = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/ladon/configuration.nix
+            ];
+          };
+          deploy.hostname = "ladon.lan.int.sig.de.em0lar.dev";
+        };
+        mimas = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/mimas/configuration.nix
+            ];
+          };
+          deploy.hostname = "mimas.lan.int.sig.de.em0lar.dev";
+        };
+      };
     in {
-    inherit overlays;
-    nixosConfigurations = {
-      aido = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = defaultModules ++ [
-          ./hosts/aido/configuration.nix
-        ];
-      };
-      foros = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = defaultModules ++ [
-          ./hosts/foros/configuration.nix
-        ];
-      };
-      haku = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = defaultModules ++ [
-          ./hosts/haku/configuration.nix
-        ];
-      };
-      ladon = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = defaultModules ++ [
-          ./hosts/ladon/configuration.nix
-        ];
-      };
-      mimas = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = defaultModules ++ [
-          ./hosts/mimas/configuration.nix
-        ];
-      };
-    };
-    deploy.nodes = mkDeployNodes deploy-rs self.nixosConfigurations;
+      inherit overlays;
+      nixosConfigurations = (nixpkgs.lib.mapAttrs (name: config: (nixpkgs.lib.nixosSystem rec {
+        system = config.nixosSystem.system;
+        modules = config.nixosSystem.modules;
+      })) hosts);
+      deploy.nodes = (nixpkgs.lib.mapAttrs (name: config: {
+        hostname = if (config ? deploy.hostname) then config.deploy.hostname else (self.nixosConfigurations."${name}".config.networking.hostName + "." + self.nixosConfigurations."${name}".config.networking.domain);
+        profiles.system = {
+          user = "root";
+          sshUser = "em0lar";
+          sshOpts = [ "-p" "61337" "-o" "StrictHostKeyChecking=no"];
+          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."${name}";
+        };
+      }) hosts);
   };
 }

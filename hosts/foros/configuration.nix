@@ -10,8 +10,13 @@
 
   networking.hostName = "foros";
   networking.domain = "int.sig.de.em0lar.dev";
-  networking.useDHCP = false;
-  networking.interfaces.eth0.useDHCP = true;
+  services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
+  systemd.network.networks."10-eth0" = {
+    DHCP = "yes";
+    matchConfig = {
+      Name = "eth0";
+    };
+  };
   networking.useHostResolvConf = false;
   em0lar.nftables.checkIPTables = false;
 }

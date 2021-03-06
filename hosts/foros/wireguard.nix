@@ -39,19 +39,17 @@
       { routeConfig.Destination = "::/0"; }
     ];
   };
-  systemd.network.networks."40-eth0".routes = [
+  systemd.network.networks."10-eth0".routes = [
     {
       routeConfig = {
         Destination = "195.39.247.188/32";
         Gateway = "_dhcp4";
-        #Protocol = "dhcp";
       };
     }
     {
       routeConfig = {
         Destination = "2a0f:4ac0:0:1::d25/128";
         Gateway = "_ipv6ra";
-        #Protocol = "ra";
       };
     }
   ];
