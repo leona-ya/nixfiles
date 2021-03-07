@@ -7,6 +7,7 @@ for i in $(cat lib/hosts)
 do
     hostname=$(ssh $i "hostname")
     echo $hostname
+    mkdir secrets/$hostname
     ssh $i "sudo rm -rf /root/.gnupg"
     cat lib/keygen | sed "s/NAME/${hostname}/" | ssh -o RequestTTY=yes $i "nix-shell -p gnupg --run 'sudo gpg --generate-key --pinentry-mode loopback --batch /dev/stdin'"
     cp secrets/.gpg-id secrets/$hostname/.gpg-id

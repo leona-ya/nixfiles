@@ -3,7 +3,6 @@
 {
   boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   em0lar.secrets."wireguard_haku_privatekey" = {
-    source-path = "${../../secrets/foros/wireguard_haku_privatekey.gpg}";
     owner = "systemd-network";
     group-name = "systemd-network";
   };
@@ -31,8 +30,8 @@
     name = "wg-haku";
     linkConfig = { RequiredForOnline = "yes"; };
     address = [
-      "195.39.247.144/32"
-      "2a0f:4ac0:1e0:100::1/64"
+      "195.39.247.145/32"
+      "2a0f:4ac0:1e0:101::1/64"
     ];
     routes = [
       { routeConfig.Destination = "0.0.0.0/0"; }

@@ -70,7 +70,7 @@ in {
       script = ''
         echo setting up secrets...
         mkdir -p /secrets
-        mount -t tmpfs -o size=50m tmpfs /secrets
+        mountpoint -q /secrets || mount -t tmpfs -o size=50m tmpfs /secrets
         chown root:root /secrets
         chmod 0755 /secrets
         ${concatMapStringsSep "\n" (file: ''

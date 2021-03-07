@@ -38,9 +38,6 @@
       add_header X-Frame-Options "SAMEORIGIN";
       add_header X-Xss-Protection "1; mode=block";
 
-      # This might create errors
-      proxy_cookie_path / "/; secure; HttpOnly; SameSite=strict";
-
       access_log off;
     '';
   };

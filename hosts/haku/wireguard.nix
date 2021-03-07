@@ -13,8 +13,8 @@
   em0lar.nftables.extraForward = ''
     ct state invalid drop
     ct state established,related accept
-    iifname wg0 oifname enp1s0 ct state new accept
-    iifname enp1s0 oifname wg0 ct state new accept
+    iifname wg0 ct state new accept
+    oifname wg0 ct state new accept
   '';
   systemd.network.netdevs."30-wg0" = {
     netdevConfig = {
@@ -26,15 +26,26 @@
       ListenPort = 51440;
       PrivateKeyFile = config.em0lar.secrets."wireguard_wg0_privatekey".path;
     };
-    wireguardPeers = [{ # foros
-      wireguardPeerConfig = {
-        AllowedIPs = [
-          "195.39.247.144/32"
-          "2a0f:4ac0:1e0:100::/64"
-        ];
-        PublicKey = "CnswutrDvUJdDIsopjkvjO/SiOrKdx3ob0jvDf0LLFI=";
-      };
-    }];
+    wireguardPeers = [
+      { # foros
+        wireguardPeerConfig = {
+          AllowedIPs = [
+            "195.39.247.144/32"
+            "2a0f:4ac0:1e0:100::/64"
+          ];
+          PublicKey = "CnswutrDvUJdDIsopjkvjO/SiOrKdx3ob0jvDf0LLFI=";
+        };
+      }
+      { # beryl
+        wireguardPeerConfig = {
+          AllowedIPs = [
+            "195.39.247.145/32"
+            "2a0f:4ac0:1e0:101::/64"
+          ];
+          PublicKey = "DBfzjdPqk5Ee8OYsqNy2LoM7kvbh8ppmK836jlGz43s=";
+        };
+      }
+    ];
   };
   systemd.network.networks."30-wg0" = {
     name = "wg0";

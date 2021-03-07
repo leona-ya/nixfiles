@@ -55,6 +55,16 @@
               ./hosts/aido/configuration.nix
             ];
           };
+          deploy.hostname = "aido.lan.int.sig.de.em0lar.dev";
+        };
+        beryl = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/beryl/configuration.nix
+            ];
+          };
+          deploy.hostname = "beryl.lan.int.sig.de.em0lar.dev";
         };
         foros = {
           nixosSystem = {
