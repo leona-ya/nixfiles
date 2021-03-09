@@ -10,7 +10,6 @@
 
   networking.hostName = "beryl";
   networking.domain = "int.sig.de.em0lar.dev";
-  services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
   systemd.network.networks."10-eth0" = {
     DHCP = "yes";
     matchConfig = {

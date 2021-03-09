@@ -2,22 +2,6 @@
 
 {
   services.nginx.virtualHosts = {
-    "git.em0lar.de" = {
-      enableACME = true;
-      forceSSL = true;
-      serverAliases = [
-        "git.emolar.de"
-        "git.labcode.de"
-      ];
-      locations."/" = {
-        extraConfig = "return 301 https://git.em0lar.dev$request_uri;";
-      };
-    };
-    "git.em0lar.dev" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://hyperion.lan.int.sig.de.em0lar.dev:40000";
-    };
     "auth.em0lar.de" = {
       enableACME = true;
       forceSSL = true;

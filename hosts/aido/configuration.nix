@@ -17,4 +17,5 @@
   };
   networking.useHostResolvConf = false;
   em0lar.nftables.checkIPTables = false;
+  nix.gc.automatic = false;
 }
