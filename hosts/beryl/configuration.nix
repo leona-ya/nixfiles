@@ -6,6 +6,7 @@
       ./wireguard.nix
       ../../common
       ../../services/gitea
+      ../../services/hedgedoc
   ];
 
   networking.hostName = "beryl";
