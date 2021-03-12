@@ -44,19 +44,21 @@
   '';
 
   environment.systemPackages = with pkgs; [
+    bat
     bind.dnsutils # for dig
     file
     git
     gnupg
     htop
+    iftop
+    jq
+    mtr
+    neovim
+    nmap
+    python38Packages.virtualenvwrapper
     rsync
+    tmux
     wget
     whois
-    neovim
-    tmux
-    mtr
-    bat
-    jq
-    python38Packages.virtualenvwrapper
   ];
 }

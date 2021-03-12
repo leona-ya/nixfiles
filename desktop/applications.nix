@@ -21,45 +21,38 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    libusb-compat-0_1
+    lm_sensors
     pinentry
     pinentry-qt
-    xdg_utils
-    libusb-compat-0_1
     wl-clipboard
-    lm_sensors
+    xdg_utils
   ];
 
   users.users.em0lar.packages = with pkgs; [
-    (firefox-wayland.override { extraNativeMessagingHosts = [ passff-host ]; })
-    jetbrains.idea-ultimate
-    jetbrains.datagrip
-    python3
-    pass-wayland
-    rofi-pass
-    gimp
-    thunderbird
-    spotify
-    mpv
-    youtube-dl
-    evince
-    hamster
-    chromium
-    (ferdi.overrideAttrs (oldAttrs: rec {
-      version = "5.6.0-beta.5";
-      name = "${oldAttrs.pname}-${version}";
-      src = pkgs.fetchurl {
-        url = "https://github.com/getferdi/ferdi/releases/download/v${version}/ferdi_${version}_amd64.deb";
-        sha256 = "0x26hnszgq9pn76j1q9zklagwq5hyip7hgca7cvy9p7r59i36dbw";
-      };
-    }))
-    teams # school, grr
-    texlive.combined.scheme-medium
-    gnome3.vinagre
-    mumble
-    libreoffice-fresh
-    inkscape
-    pandoc
     ansible_2_9
+    chromium
+    element-desktop
+    evince
+    (firefox-wayland.override { extraNativeMessagingHosts = [ passff-host ]; })
+    gimp
+    gnome3.vinagre
+    hamster
+    inkscape
+    jetbrains.datagrip
+    jetbrains.idea-ultimate
+    libreoffice-fresh
+    mpv
+    mumble
+    pandoc
+    pass-wayland
+    postman
+    python3
+    rofi-pass
+    spotify
+    texlive.combined.scheme-medium
+    thunderbird
+    youtube-dl
     z-lua
   ];
 
