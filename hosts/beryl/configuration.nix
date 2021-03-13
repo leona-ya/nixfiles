@@ -7,6 +7,7 @@
       ../../common
       ../../services/gitea
       ../../services/hedgedoc
+      ../../services/matrix
   ];
 
   networking.hostName = "beryl";

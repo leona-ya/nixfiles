@@ -37,7 +37,7 @@
     "matrix.labcode.de" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://hyperion.lan.int.sig.de.em0lar.dev:8008";
+      locations."/".proxyPass = "https://matrix.labcode.de";
     };
   };
 }
