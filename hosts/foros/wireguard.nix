@@ -37,6 +37,21 @@
     routes = [
       { routeConfig.Destination = "0.0.0.0/0"; }
       { routeConfig.Destination = "::/0"; }
+      {
+        routeConfig = {
+          Destination = "::/0";
+          Table = 30;
+        };
+      }
+    ];
+    routingPolicyRules = [
+      {
+        routingPolicyRuleConfig = {
+          Family = "ipv6";
+          Table = 30;
+          From = "2a0f:4ac0:1e0:100::1/64";
+        };
+      }
     ];
     dns = [
       "2606:4700:4700::1111"
