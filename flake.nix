@@ -10,13 +10,18 @@
     flake-registry.url = "github:NixOS/flake-registry";
     flake-registry.flake = false;
     deploy-rs.url = "github:serokell/deploy-rs";
+    em0lar-dev-website = {
+      url = "git+https://git.em0lar.dev/em0lar/em0lar.dev?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-registry, deploy-rs, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, flake-registry, deploy-rs, em0lar-dev-website, ... }:
     let
-      overlays = {
-        packages = (final: prev: import ./packages final prev);
-      };
+      overlays = [
+        (final: prev: import ./packages final prev)
+        em0lar-dev-website.overlay
+      ];
       legacyPackages."x86_64-linux" = (import nixpkgs {
         system = "x86_64-linux";
       }).extend self.overlays.packages;
@@ -43,7 +48,7 @@
         }
         home-manager.nixosModules.home-manager
         {
-          nixpkgs.overlays = [ self.overlays.packages ];
+          nixpkgs.overlays = overlays;
         }
       ];
 
@@ -103,7 +108,6 @@
         };
       };
     in {
-      inherit overlays;
       nixosConfigurations = (nixpkgs.lib.mapAttrs (name: config: (nixpkgs.lib.nixosSystem rec {
         system = config.nixosSystem.system;
         modules = config.nixosSystem.modules;

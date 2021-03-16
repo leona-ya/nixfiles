@@ -21,6 +21,7 @@
           prefix = "/public";
           external = "https://mautrix-telegram.labcode.de/public";
         };
+        hostname = "::1";
         port = 8010;
       };
 
@@ -53,6 +54,6 @@
   services.nginx.virtualHosts."mautrix-telegram.labcode.de" = {
     forceSSL = true;
     enableACME = true;
-    locations."/public/".proxyPass = "http://127.0.0.1:8632/public/";
+    locations."/public/".proxyPass = "http://[::1]:8010/public/";
   };
 }

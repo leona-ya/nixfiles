@@ -1,5 +1,5 @@
 self: super:
 {
-  ory-oathkeeper = self.callPackage ./ory/oathkeeper { };
+  e1mo-ask = self.callPackage ./e1mo-ask { };
 }
 

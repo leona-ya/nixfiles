@@ -34,6 +34,7 @@
             "2a0f:4ac0:1e0:100::/64"
           ];
           PublicKey = "CnswutrDvUJdDIsopjkvjO/SiOrKdx3ob0jvDf0LLFI=";
+          PersistentKeepalive = 21;
         };
       }
       { # beryl
@@ -43,6 +44,7 @@
             "2a0f:4ac0:1e0:101::/64"
           ];
           PublicKey = "DBfzjdPqk5Ee8OYsqNy2LoM7kvbh8ppmK836jlGz43s=";
+          PersistentKeepalive = 21;
         };
       }
     ];

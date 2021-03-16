@@ -21,6 +21,28 @@
         "type": "github"
       }
     },
+    "em0lar-dev-website": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1615840059,
+        "narHash": "sha256-YAWc4luRwpH5o4c2R7Hfo8CF4kbSGEWIYxMX6ajRDEw=",
+        "ref": "main",
+        "rev": "2538d56a08e585b3b83a32cc82bac6ee227f65a4",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://git.em0lar.dev/em0lar/em0lar.dev"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://git.em0lar.dev/em0lar/em0lar.dev"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -50,6 +72,21 @@
       "original": {
         "owner": "NixOS",
         "repo": "flake-registry",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1614513358,
+        "narHash": "sha256-LakhOx3S1dRjnh0b5Dg3mbZyH0ToC9I8Y2wKSkBaTzU=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5466c5bbece17adaab2d82fae80b46e807611bf3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     },
@@ -130,6 +167,7 @@
     "root": {
       "inputs": {
         "deploy-rs": "deploy-rs",
+        "em0lar-dev-website": "em0lar-dev-website",
         "flake-registry": "flake-registry",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2"
