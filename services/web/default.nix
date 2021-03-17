@@ -21,22 +21,6 @@ in {
       forceSSL = true;
       locations."/".proxyPass = "http://phoebe.lan.int.sig.de.em0lar.dev:8080";
     };
-    "md.em0lar.dev" = {
-      enableACME = true;
-      forceSSL = true;
-      serverAliases = [
-        "md.emolar.de"
-        "md.labcode.de"
-      ];
-      locations."/" = {
-        extraConfig = "return 301 https://md.em0lar.de$request_uri;";
-      };
-    };
-    "md.em0lar.de" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://hyperion.lan.int.sig.de.em0lar.dev:40001";
-    };
     "matrix.labcode.de" = {
       enableACME = true;
       forceSSL = true;
@@ -205,6 +189,34 @@ in {
         "www.paulreisenberg.de"
       ];
       locations."/".proxyPass = "http://10.151.4.14:8080";
+    };
+    "opendatamap.net" = {
+      enableACME = true;
+      forceSSL = true;
+      serverAliases = [
+        "www.opendatamap.net"
+      ];
+      root = pkgs.opendatamap-net;
+    };
+    "grafana.opendatamap.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://51.15.21.208:3000";
+    };
+    "kanban.opendatamap.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://51.15.21.208:3010";
+    };
+    "node-red.opendatamap.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://51.15.21.208:1880";
+    };
+    "rhein-sieg.opendatamap.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://51.15.21.208:3005";
     };
   };
   services.phpfpm.pools."nginx-default" = {
