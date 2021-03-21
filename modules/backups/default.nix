@@ -17,14 +17,20 @@ in {
     };
     paths = mkOption {
       type = with types; listOf str;
-      default = [ ];
+      default = [
+        "/home"
+        "/var"
+        "/etc"
+        "/root"
+      ];
     };
     excludes = mkOption {
       type = with types; listOf str;
       default = [
-        "/nix"
-        "/tmp"
         "/var/cache"
+        "/var/lock"
+        "/var/spool"
+        "/var/log"
       ];
     };
     repo = mkOption {
@@ -36,6 +42,7 @@ in {
     };
     encryptionPassCommand = mkOption {
       type = types.str;
+      default = "cat ${config.em0lar.secrets.backup_passphrase.path}";
     };
     sshPort = mkOption {
       type = types.str;
@@ -43,6 +50,7 @@ in {
     };
     sshKeyFilePath = mkOption {
      type = types.str;
+     default = "${config.em0lar.secrets.backup_ssh_key.path}";
     };
     compression = mkOption {
       type = types.str;

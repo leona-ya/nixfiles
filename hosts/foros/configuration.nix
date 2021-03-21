@@ -19,4 +19,15 @@
   };
   networking.useHostResolvConf = false;
   em0lar.nftables.checkIPTables = false;
+
+  em0lar = {
+    secrets = {
+      "backup_ssh_key".owner = "root";
+      "backup_passphrase".owner = "root";
+    };
+    backups = {
+      enable = true;
+      repo = "backup@helene.lan.int.sig.de.em0lar.dev:/mnt/backup/repos/synced/foros.int.sig.de.em0lar.dev";
+    };
+  };
 }

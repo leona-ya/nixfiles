@@ -16,10 +16,9 @@
   networking.hostId = "a4232228";
 
   em0lar.secrets = {
-    "backups_ssh_key".source-path = "${../../secrets/mimas/backup_ssh_key.gpg}";
-    "backups_passphrase".source-path = "${../../secrets/mimas/backup_passphrase.gpg}";
+    "backup_ssh_key".owner = "root";
+    "backup_passphrase".owner = "root";
     "alt_rsa_ssh_key" = {
-      source-path = "${../../secrets/mimas/alt_rsa_ssh_key.gpg}";
       owner = "em0lar";
     };
   };
@@ -36,14 +35,7 @@
   };
   em0lar.backups = {
     enable = true;
-    paths = [
-      "/home"
-      "/var"
-      "/etc"
-      "/root"
-    ];
     excludes = [
-      "/nix"
       "/var/cache"
       "/var/lock"
       "/var/spool"
@@ -54,12 +46,8 @@
       "node_modules"
       ".venv"
       ".cache"
-      "/tmp"
-      "/secrets"
     ];
     repo = "backup@helene.int.sig.de.labcode.de:/mnt/backup/repos/unsynced/mimas.int.sig.de.em0lar.dev";
-    encryptionPassCommand = "cat ${config.em0lar.secrets.backups_passphrase.path}";
-    sshKeyFilePath = config.em0lar.secrets.backups_ssh_key.path;
     enableSystemdTimer = false;
   };
   system.stateVersion = "20.09";
