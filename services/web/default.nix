@@ -19,7 +19,7 @@ in {
     "auth.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://phoebe.lan.int.sig.de.em0lar.dev:8080";
+      locations."/".proxyPass = "http://ladon.lan.int.sig.de.em0lar.dev:8080";
     };
     "matrix.labcode.de" = {
       enableACME = true;
