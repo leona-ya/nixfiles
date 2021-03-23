@@ -106,6 +106,14 @@
           };
           deploy.hostname = "mimas.lan.int.sig.de.em0lar.dev";
         };
+        naiad = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/naiad/configuration.nix
+            ];
+          };
+        };
       };
     in {
       nixosConfigurations = (nixpkgs.lib.mapAttrs (name: config: (nixpkgs.lib.nixosSystem rec {
