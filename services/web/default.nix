@@ -188,7 +188,7 @@ in {
       serverAliases = [
         "www.paulreisenberg.de"
       ];
-      locations."/".proxyPass = "http://10.151.4.14:8080";
+      locations."/".proxyPass = "http://10.151.4.14:8000";
     };
     "opendatamap.net" = {
       enableACME = true;

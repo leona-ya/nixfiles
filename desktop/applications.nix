@@ -50,6 +50,7 @@
     python3
     rofi-pass
     spotify
+    superTuxKart
     texlive.combined.scheme-medium
     thunderbird
     youtube-dl

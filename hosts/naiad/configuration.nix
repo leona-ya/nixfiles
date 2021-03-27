@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../../common
       ./initrd.nix
+      ./wireguard.nix
     ];
 
   boot.loader.grub.enable = true;

@@ -42,6 +42,7 @@
           imports = [
             ./modules/backups
             ./modules/nftables
+            ./modules/prometheus
             ./modules/secrets
           ];
           documentation.info.enable = false;
