@@ -2,7 +2,7 @@
 
 {
   networking.useDHCP = false;
-  networking.hostName = "mimas";
+  networking.hostName = "turingmachine";
   networking.domain = "int.sig.de.em0lar.dev";
   services.resolved.domains = [
     "int.sig.de.labcode.de"
@@ -38,7 +38,7 @@
     };
   };
   em0lar.secrets = {
-    "wpa_supplicant.conf".source-path = "${../../secrets/mimas/wpa_supplicant.conf.gpg}";
+    "wpa_supplicant.conf".owner = "root";
   };
   environment.etc."wpa_supplicant.conf".source = config.em0lar.secrets."wpa_supplicant.conf".path;
 }

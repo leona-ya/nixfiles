@@ -3,7 +3,6 @@
 {
   boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   em0lar.secrets."wireguard_clients_privatekey" = {
-    source-path = "${../../secrets/mimas/wireguard_clients_privatekey.gpg}";
     owner = "systemd-network";
     group-name = "systemd-network";
   };

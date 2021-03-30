@@ -99,14 +99,14 @@
           };
           deploy.hostname = "ladon.lan.int.sig.de.em0lar.dev";
         };
-        mimas = {
+        turingmachine = {
           nixosSystem = {
             system = "x86_64-linux";
             modules = defaultModules ++ [
-              ./hosts/mimas/configuration.nix
+              ./hosts/turingmachine/configuration.nix
             ];
           };
-          deploy.hostname = "mimas.lan.int.sig.de.em0lar.dev";
+          deploy.hostname = "turingmachine.lan.int.sig.de.em0lar.dev";
         };
         naiad = {
           nixosSystem = {
