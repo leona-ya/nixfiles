@@ -16,6 +16,7 @@
     recommendedTlsSettings = true;
 
     commonHttpConfig = ''
+      server_names_hash_bucket_size 64;
       charset utf-8;
       map $scheme $hsts_header {
         https "max-age=31536000; includeSubdomains";

@@ -42,7 +42,8 @@
           imports = [
             ./modules/backups
             ./modules/nftables
-            ./modules/prometheus
+            ./modules/telegraf
+            ./modules/grafana.nix
             ./modules/secrets
           ];
           documentation.info.enable = false;

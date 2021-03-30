@@ -20,7 +20,7 @@
       enable = true;
       repo = "backup@helene.lan.int.sig.de.em0lar.dev:/mnt/backup/repos/synced/beryl.int.sig.de.em0lar.dev";
     };
-    prometheus = {
+    telegraf = {
       enable = true;
       host = "[fd8f:d15b:9f40:102:5c52:b6ff:fee2:db4d]";
     };

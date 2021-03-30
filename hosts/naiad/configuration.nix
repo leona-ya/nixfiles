@@ -7,6 +7,7 @@
       ../../common
       ./initrd.nix
       ./wireguard.nix
+      ../../services/monitoring
     ];
 
   boot.loader.grub.enable = true;
@@ -41,7 +42,11 @@
     };
   };
 
-  #em0lar = {
+  em0lar = {
+    telegraf = {
+      enable = true;
+      host = "[fd8f:d15b:9f40:0c20::1]";
+    };
   #  secrets = {
   #    "backup_ssh_key".owner = "root";
   #    "backup_passphrase".owner = "root";
@@ -50,7 +55,7 @@
   #    enable = true;
   #    repo = "backup@helene.int.sig.de.labcode.de:/mnt/backup/repos/synced/naiad.ncp.nue.de.em0lar.dev";
   #  };
-  #};
+  };
 
   system.stateVersion = "21.05";
 }
