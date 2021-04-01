@@ -98,6 +98,13 @@
             PublicKey = "duhZn+JOja6bILYxs6D2dKQk7GhmflSsqr+AMOVqJkg=";
           };
         }
+        { # myron
+          wireguardPeerConfig = {
+            AllowedIPs = [ "fd8f:d15b:9f40:0c21::1/72" ];
+            Endpoint = "myron.het.hel.fi.em0lar.dev:51441";
+            PublicKey = "xEgZUGdhPkIAZYmDszEUHm86zStsJMF3lowGIkjQE1k=";
+          };
+        }
       ];
     };
     networks."30-wg-server" = {

@@ -17,6 +17,7 @@
               "[fd8f:d15b:9f40:102:945b:9eff:fe23:2caa]" # foros
               "[fd8f:d15b:9f40:102:3016:54ff:fe12:f68c]" # ladon
               "[fd8f:d15b:9f40:0c20::1]" # naiad
+              "[fd8f:d15b:9f40:0c21::1]" # myron
             ];
           }
         ];
