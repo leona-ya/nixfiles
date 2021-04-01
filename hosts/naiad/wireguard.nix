@@ -16,8 +16,8 @@
     wireguardPeers = [{
       wireguardPeerConfig = {
         AllowedIPs = [ "fd8f:d15b:9f40:0900::/48" ];
-        PublicKey = "Gs1RhJtusDwCvB6ssR7MMn5uPt2ciZb/GxDHVGuw6G0=";
-        Endpoint = "janus.ion.rhr.de.em0lar.dev:40001";
+        PublicKey = "376YjLMEUFHWFE5Xkn3qRyIQ/kAHzM4DhvIcC5boCQ8=";
+        Endpoint = "wg-sternpunkt.em0lar.dev:51441";
       };
     }];
   };

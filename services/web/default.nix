@@ -185,9 +185,6 @@ in {
     "kopftausch.paulchenpanther.de" = { # for pr
       enableACME = true;
       forceSSL = true;
-      serverAliases = [
-        "www.paulreisenberg.de"
-      ];
       locations."/".proxyPass = "http://10.151.4.14:8000";
     };
     "opendatamap.net" = {

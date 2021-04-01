@@ -60,5 +60,6 @@
     tmux
     wget
     whois
+    wireguard-tools
   ];
 }

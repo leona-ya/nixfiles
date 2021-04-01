@@ -125,9 +125,11 @@
       deploy.nodes = (nixpkgs.lib.mapAttrs (name: config: {
         hostname = if (config ? deploy.hostname) then config.deploy.hostname else (self.nixosConfigurations."${name}".config.networking.hostName + "." + self.nixosConfigurations."${name}".config.networking.domain);
         profiles.system = {
+          autoRollback = false;
+          magicRollback = false;
           user = "root";
           sshUser = "em0lar";
-          sshOpts = [ "-p" "61337" "-o" "StrictHostKeyChecking=no"];
+          sshOpts = [ "-4" "-p" "61337" "-o" "StrictHostKeyChecking=no"];
           path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."${name}";
         };
       }) hosts);
