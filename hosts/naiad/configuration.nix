@@ -8,6 +8,7 @@
       ./initrd.nix
       ./wireguard.nix
       ../../services/monitoring
+      ../../services/dns/secondary
     ];
 
   boot.loader.grub.enable = true;

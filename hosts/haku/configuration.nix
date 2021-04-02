@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./wireguard.nix
       ../../common
+      ../../services/dns/secondary
     ];
 
   boot.loader.systemd-boot.enable = true;

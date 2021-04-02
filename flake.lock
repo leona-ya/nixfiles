@@ -21,9 +21,30 @@
         "type": "github"
       }
     },
-    "em0lar-dev-website": {
+    "dns": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1617248583,
+        "narHash": "sha256-dEg3a2SXJf8dFqJ+X1pN4TGFSnFkyjdqWPDd0HaVDFs=",
+        "owner": "kirelagin",
+        "repo": "dns.nix",
+        "rev": "a891c4ad70457e080a32891ea2b004b5c05afad5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kirelagin",
+        "repo": "dns.nix",
+        "type": "github"
+      }
+    },
+    "em0lar-dev-website": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -76,6 +97,21 @@
       }
     },
     "flake-utils": {
+      "locked": {
+        "lastModified": 1614513358,
+        "narHash": "sha256-LakhOx3S1dRjnh0b5Dg3mbZyH0ToC9I8Y2wKSkBaTzU=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5466c5bbece17adaab2d82fae80b46e807611bf3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
       "locked": {
         "lastModified": 1614513358,
         "narHash": "sha256-LakhOx3S1dRjnh0b5Dg3mbZyH0ToC9I8Y2wKSkBaTzU=",
@@ -167,6 +203,7 @@
     "root": {
       "inputs": {
         "deploy-rs": "deploy-rs",
+        "dns": "dns",
         "em0lar-dev-website": "em0lar-dev-website",
         "flake-registry": "flake-registry",
         "home-manager": "home-manager",

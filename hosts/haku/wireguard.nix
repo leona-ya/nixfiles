@@ -109,7 +109,7 @@
     };
     networks."30-wg-server" = {
       name = "wg-server";
-      linkConfig = { RequiredForOnline = "no"; };
+      linkConfig = { RequiredForOnline = "yes"; };
       address = [
         "fd8f:d15b:9f40:0c00::1/72"
       ];

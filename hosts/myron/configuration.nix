@@ -7,6 +7,7 @@
       ../../common
       ./initrd.nix
       ./wireguard.nix
+      ../../services/dns/primary
     ];
 
   boot.loader.grub.enable = true;

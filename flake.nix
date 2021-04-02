@@ -14,9 +14,13 @@
       url = "git+https://git.em0lar.dev/em0lar/em0lar.dev?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dns = {
+      url = "github:kirelagin/dns.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-registry, deploy-rs, em0lar-dev-website, ... }:
+  outputs = inputs@{ self, dns, nixpkgs, home-manager, flake-registry, deploy-rs, em0lar-dev-website, ... }:
     let
       overlays = [
         (final: prev: import ./packages final prev)
@@ -25,6 +29,11 @@
       legacyPackages."x86_64-linux" = (import nixpkgs {
         system = "x86_64-linux";
       }).extend self.overlays.packages;
+
+      sourcesModule = {
+        _file = ./flake.nix;
+        _module.args.inputs = inputs;
+      };
 
       defaultModules = [
         {
@@ -45,6 +54,7 @@
             ./modules/telegraf
             ./modules/grafana.nix
             ./modules/secrets
+            ./modules/bind
           ];
           documentation.info.enable = false;
         }
@@ -52,6 +62,7 @@
         {
           nixpkgs.overlays = overlays;
         }
+        sourcesModule
       ];
 
       hosts = {
@@ -137,7 +148,7 @@
           magicRollback = false;
           user = "root";
           sshUser = "em0lar";
-          sshOpts = [ "-4" "-p" "61337" "-o" "StrictHostKeyChecking=no"];
+          sshOpts = [ "-4" "-p" "61337" "-o" "StrictHostKeyChecking=no" ];
           path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."${name}";
         };
       }) hosts);
