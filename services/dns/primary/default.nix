@@ -1,31 +1,35 @@
 { config, inputs, lib, pkgs, ... }:
 
+with inputs.nixpkgs.lib;
+
 let
   dns = inputs.dns;
   dnsutil = dns.util.${config.nixpkgs.system};
 
-  lbcd_dev_zone = dnsutil.writeZone "lbcd.dev" (import zones/lbcd.dev.nix { inherit lib dns config; }).zone;
+  helper = import ./helper.nix { inherit dns; };
+  zoneDefinitions = import ../zoneDefinitions.nix { inherit dnsutil helper lib dns config; };
+
+  zoneDefinitionsDNSSEC = filterAttrs (name: zoneConfig: zoneConfig . dnssec or false) zoneDefinitions;
 in {
   networking.firewall.allowedTCPPorts = [ 53 ];
   networking.firewall.allowedUDPPorts = [ 53 ];
 
-  em0lar.secrets = {
-    "dnssec/lbcd.dev/Klbcd.dev.+013+19394.private".owner = "named";
-    "dnssec/lbcd.dev/Klbcd.dev.+013+19394.key".owner = "named";
-  };
-
-  systemd.services.bind.preStart = ''
-    ${pkgs.coreutils}/bin/mkdir -p /run/named/dnssec
-    ${pkgs.coreutils}/bin/mkdir -p /run/named/zones
-    ${pkgs.coreutils}/bin/chown named /run/named/zones
-
-    # DNSSEC
-    ${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."dnssec/lbcd.dev/Klbcd.dev.+013+19394.private".path} /run/named/dnssec/Klbcd.dev.+013+19394.private
-    ${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."dnssec/lbcd.dev/Klbcd.dev.+013+19394.key".path} /run/named/dnssec/Klbcd.dev.+013+19394.key
-
-    # Zonefiles
-    ${pkgs.coreutils}/bin/ln -sf ${lbcd_dev_zone} /run/named/zones/lbcd.dev.zone
-  '';
+  em0lar.secrets = mapAttrs' (name: zoneConfig:
+    nameValuePair "dnssec/${name}/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.private" { owner = "named"; }
+  ) zoneDefinitionsDNSSEC // mapAttrs' (name: zoneConfig:
+   nameValuePair "dnssec/${name}/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.key" { owner = "named"; }
+  ) zoneDefinitionsDNSSEC;
+  systemd.services.bind.serviceConfig.ExecStartPre = [
+    "${pkgs.coreutils}/bin/mkdir -p /run/named/dnssec"
+    "${pkgs.coreutils}/bin/mkdir -p /run/named/zones"
+    "${pkgs.coreutils}/bin/chown named /run/named/zones"
+  ] ++ mapAttrsToList (name: zoneConfig:
+    "${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."dnssec/${name}/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.private".path} /run/named/dnssec/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.private"
+  ) zoneDefinitionsDNSSEC ++ mapAttrsToList (name: zoneConfig:
+    "${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."dnssec/${name}/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.key".path} /run/named/dnssec/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.key"
+  ) zoneDefinitionsDNSSEC ++ mapAttrsToList (name: zoneConfig:
+    "${pkgs.coreutils}/bin/ln -sf ${zoneConfig.zone} /run/named/zones/${name}.zone"
+  ) zoneDefinitions;
 
   em0lar.bind = {
     enable = true;
@@ -37,17 +41,15 @@ in {
         fd8f:d15b:9f40:0c20::1; # naiad
       };
     '';
-    zones = [
-      {
-        name = "lbcd.dev";
-        master = true;
-        file = "/run/named/zones/lbcd.dev.zone";
-        slaves = [ "fd8f:d15b:9f40::/48" ];
-        extraConfig = ''
-          auto-dnssec maintain;
-          inline-signing yes;
-        '';
-      }
-    ];
+    zones = mapAttrsToList (name: zoneConfig: {
+      name = "${name}";
+      master = true;
+      file = "/run/named/zones/${name}.zone";
+      slaves = [ "fd8f:d15b:9f40::/48" ];
+      extraConfig = lib.mkIf ( zoneConfig . dnssec or false) ''
+        auto-dnssec maintain;
+        inline-signing yes;
+      '';
+    }) zoneDefinitions;
   };
 }

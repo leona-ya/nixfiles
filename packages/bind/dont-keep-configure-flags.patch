@@ -1,0 +1,38 @@
+diff -ru a/bin/named/include/named/globals.h b/bin/named/include/named/globals.h
+--- a/bin/named/include/named/globals.h
++++ b/bin/named/include/named/globals.h
+@@ -69,7 +69,9 @@
+ EXTERN const char *named_g_product     INIT(PACKAGE_NAME);
+ EXTERN const char *named_g_description INIT(PACKAGE_DESCRIPTION);
+ EXTERN const char *named_g_srcid       INIT(PACKAGE_SRCID);
++#if 0
+ EXTERN const char *named_g_configargs  INIT(PACKAGE_CONFIGARGS);
++#endif
+ EXTERN const char *named_g_builder     INIT(PACKAGE_BUILDER);
+ EXTERN in_port_t named_g_port	       INIT(0);
+ EXTERN in_port_t named_g_tlsport       INIT(0);
+diff -ru a/bin/named/main.c b/bin/named/main.c
+--- a/bin/named/main.c
++++ b/bin/named/main.c
+@@ -502,7 +502,9 @@
+ 	}
+ 
+ 	printf("running on %s\n", named_os_uname());
++#if 0
+ 	printf("built by %s with %s\n", PACKAGE_BUILDER, PACKAGE_CONFIGARGS);
++#endif
+ #ifdef __clang__
+ 	printf("compiled by CLANG %s\n", __VERSION__);
+ #else /* ifdef __clang__ */
+@@ -1107,9 +1109,11 @@
+ 		      NAMED_LOGMODULE_MAIN, ISC_LOG_NOTICE, "running on %s",
+ 		      named_os_uname());
+ 
++#if 0
+ 	isc_log_write(named_g_lctx, NAMED_LOGCATEGORY_GENERAL,
+ 		      NAMED_LOGMODULE_MAIN, ISC_LOG_NOTICE, "built with %s",
+ 		      PACKAGE_CONFIGARGS);
++#endif
+ 
+ 	isc_log_write(named_g_lctx, NAMED_LOGCATEGORY_GENERAL,
+ 		      NAMED_LOGMODULE_MAIN, ISC_LOG_NOTICE,
