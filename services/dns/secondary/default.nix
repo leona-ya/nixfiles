@@ -3,11 +3,7 @@
 with inputs.nixpkgs.lib;
 
 let
-  dns = inputs.dns;
-  dnsutil = dns.util.${config.nixpkgs.system};
-
-  helper = import ./helper.nix { inherit dns; };
-  zoneDefinitions = import ../zoneDefinitions.nix { inherit dnsutil helper lib dns config; };
+  zoneDefinitions = import ../zoneDefinitions.nix { inherit inputs lib config; };
 in {
   networking.firewall.allowedTCPPorts = [ 53 ];
   networking.firewall.allowedUDPPorts = [ 53 ];

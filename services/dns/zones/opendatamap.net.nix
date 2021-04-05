@@ -12,7 +12,7 @@
       minimum = 600;
     });
 
-    NS = [ "ns1.em0lar.dev." "ns2.em0lar.dev." "ns3.em0lar.dev." ];
+    NS = helper.ns;
 
     A = helper.hosts.web.A;
     AAAA = helper.hosts.web.AAAA;
