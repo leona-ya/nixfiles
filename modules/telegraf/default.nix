@@ -15,7 +15,7 @@ in {
     services.telegraf = {
       enable = true;
       extraConfig = {
-        agent.interval = "60s";
+        agent.interval = "20s";
         inputs = {
           system = { };
           mem = { };

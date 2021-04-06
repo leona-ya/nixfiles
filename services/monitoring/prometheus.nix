@@ -3,7 +3,7 @@
 {
   services.prometheus = {
     enable = true;
-    globalConfig.scrape_interval = "60s";
+    globalConfig.scrape_interval = "30s";
     webExternalUrl = "https://prometheus.em0lar.dev/";
 
     scrapeConfigs = [

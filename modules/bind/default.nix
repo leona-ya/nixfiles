@@ -46,15 +46,17 @@ in {
       '' + cfg.extraOptions;
       extraConfig = ''
         statistics-channels {
-          inet ::1 port 8053;
+          inet 127.0.0.1 port 8053;
         };
       '' + cfg.extraConfig;
     };
+    services.prometheus.exporters.bind = {
+      enable = true;
+      bindVersion = "xml.v3";
+    };
     em0lar.telegraf.extraInputs = lib.mkIf config.em0lar.telegraf.enable {
-      bind = {
-        urls = [ "http://[::1]:8053/xml/v3" ];
-        gather_views = false;
-        gather_memory_contexts = false;
+      prometheus =  {
+        urls = [ "http://127.0.0.1:9119" ];
       };
     };
   };
