@@ -26,7 +26,28 @@ in {
     services.resolved.enable = false;
     services.bind = {
       enable = true;
-      zones = cfg.zones;
+      zones = [
+        {
+          name = "localhost";
+          master = true;
+          file = ./rfc1912_zones/localhost.zone;
+        }
+        {
+          name = "127.in-addr.arpa";
+          master = true;
+          file = ./rfc1912_zones/127.in-addr.arpa.zone;
+        }
+        {
+          name = "0.in-addr.arpa";
+          master = true;
+          file = ./rfc1912_zones/0.in-addr.arpa.zone;
+        }
+        {
+          name = "255.in-addr.arpa";
+          master = true;
+          file = ./rfc1912_zones/255.in-addr.arpa.zone;
+        }
+      ] ++ cfg.zones;
       forwarders = [
           "2606:4700:4700::1111"
           "2606:4700:4700::1001"
