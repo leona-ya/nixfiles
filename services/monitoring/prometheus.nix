@@ -147,6 +147,18 @@
                 description = "A systemd unit on {{ $labels.host }} has failed\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}";
               };
             }
+            {
+              alert = "HttpStatusCodeWrong";
+              expr = "http_response_http_response_code != 200";
+              for = "5m";
+              labels = {
+                severity = "critical";
+              };
+              annotations = {
+                summary = "HTTP service {{ $labels.server }} responded incorrect";
+                description = "The HTTP service {{ $labels.service }} responded with {{ $value }} instead of 200.\n  LABELS: {{ $labels }}";
+              };
+            }
           ];
         }];
       }
