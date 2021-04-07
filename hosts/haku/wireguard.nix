@@ -6,7 +6,6 @@
     51441
     51442
   ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   em0lar.secrets = {
     "wireguard_wg-public_privatekey".owner = "systemd-network";
     "wireguard_wg-server_privatekey".owner = "systemd-network";

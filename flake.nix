@@ -52,7 +52,6 @@
             ./modules/backups
             ./modules/nftables
             ./modules/telegraf
-            ./modules/grafana.nix
             ./modules/secrets
             ./modules/bind
           ];

@@ -14,7 +14,7 @@ in {
       }
     ];
   };
-  em0lar.grafana = {
+  services.grafana = {
     enable = true;
     protocol = "socket";
 
@@ -65,7 +65,7 @@ in {
 
   users.users.nginx.extraGroups = [ "grafana" ];
   services.nginx.virtualHosts.${grafanaDomain} = {
-    locations."/".proxyPass = "http://unix:${toString config.em0lar.grafana.socket}";
+    locations."/".proxyPass = "http://unix:${toString config.services.grafana.socket}";
     enableACME = true;
     forceSSL = true;
   };

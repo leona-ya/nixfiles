@@ -2,7 +2,6 @@
 { config, ... }:
 
 {
-  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   em0lar.secrets."wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];
 

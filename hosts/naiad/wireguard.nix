@@ -2,7 +2,6 @@
 { config, ... }:
 
 {
-  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   em0lar.secrets."wireguard_server_privatekey".owner = "systemd-network";
 
   systemd.network.netdevs."30-wg-server" = {

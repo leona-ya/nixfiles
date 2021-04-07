@@ -21,7 +21,7 @@
           "::/0"
         ];
         PublicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
-        Endpoint = "195.39.247.188:51440";
+        Endpoint = "wg-sternpunkt.em0lar.dev:51440";
         PersistentKeepalive = 21;
       };
     }];
