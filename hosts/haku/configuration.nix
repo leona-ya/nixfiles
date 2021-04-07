@@ -31,6 +31,10 @@
       enable = true;
       repo = "backup@helene.int.sig.de.labcode.de:/mnt/backup/repos/synced/haku.pbb.wob.de.em0lar.dev";
     };
+    telegraf = {
+      enable = true;
+      host = "[fd8f:d15b:9f40:0c00::1]";
+    };
   };
 }
 
