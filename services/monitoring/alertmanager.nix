@@ -1,6 +1,8 @@
 { config, ... }:
 
-{
+let
+  alert_message = "{{ .CommonAnnotations.summary }}";
+in {
   em0lar.secrets."alertmanager-env" = {};
   em0lar.secrets."alertmanager-basic-auth".owner = "nginx";
 
@@ -29,18 +31,22 @@
         smtp_smarthost = "mail.labcode.de:587";
         smtp_auth_username = smtp_from;
         smtp_auth_password = "\${ALERTMANAGER_MAIL_PASSWORD}";
+        opsgenie_api_url = "https://api.eu.opsgenie.com";
+        opsgenie_api_key = "\${ALERTMANAGER_OPSGENIE_API_KEY}";
       };
       route = {
         group_by = ["alertname" "cluster" "service"];
-        group_wait = "30s";
-        group_interval = "5m";
+        group_wait = "15s";
+        group_interval = "1m";
         repeat_interval = "6h";
-        receiver = "warning";
+        receiver = "info";
         routes = [
           {
-            match = {
-              severity = "critical";
-            };
+            match.severity = "warning";
+            receiver = "warning";
+          }
+          {
+            match.severity = "critical";
             receiver = "critical";
           }
         ];
@@ -58,20 +64,28 @@
       ];
       receivers = [
         {
-          name = "warning";
-          webhook_configs = [{
-            url = "https://alertmanager-bot.em0lar.dev";
-            send_resolved = true;
-          }];
-        }
-        {
           name = "critical";
-          webhook_configs = [{
-            url = "https://alertmanager-bot.em0lar.dev";
-            send_resolved = true;
+          opsgenie_configs = [{
+           priority = "P1";
+           message = alert_message;
           }];
           email_configs = [{
             to = "em0lar@em0lar.de";
+            headers.subject = "[ALERT] " + alert_message;
+          }];
+        }
+        {
+          name = "warning";
+          opsgenie_configs = [{
+           message = alert_message;
+           priority = "P2";
+         }];
+        }
+        {
+          name = "info";
+          opsgenie_configs = [{
+            message = alert_message;
+            priority = "P3";
           }];
         }
       ];

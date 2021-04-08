@@ -1,9 +1,23 @@
 { config, lib, pkgs, hosts, ... }:
 
 {
+  em0lar.secrets."prometheus-basic-auth".owner = "nginx";
+
+  services.nginx.virtualHosts."prometheus.em0lar.dev" = {
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${toString config.services.prometheus.port}/";
+      basicAuthFile = config.em0lar.secrets."prometheus-basic-auth".path;
+    };
+    enableACME = true;
+    forceSSL = true;
+  };
+
   services.prometheus = {
     enable = true;
-    globalConfig.scrape_interval = "30s";
+    globalConfig = {
+      scrape_interval = "30s";
+      evaluation_interval = "30s";
+    };
     webExternalUrl = "https://prometheus.em0lar.dev/";
 
     scrapeConfigs = [
@@ -47,8 +61,8 @@
                 severity = "warning";
               };
               annotations = {
-                summary = "WARNING - {{ $labels.instance }} down";
-                description = "{{ $labels.instance }} has been down for more than 5 minutes.";
+                summary = "{{ $labels.instance }} down";
+                description = "{{ $labels.instance }} has been down for more than 5 minutes.\n";
               };
             }
             {
@@ -59,8 +73,8 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "CRITICAL - {{ $labels.instance }} down";
-                description = "{{ $labels.instance }} has been down for more than 15 minutes.";
+                summary = "{{ $labels.instance }} down";
+                description = "{{ $labels.instance }} has been down for more than 15 minutes.\n";
               };
             }
             {
@@ -71,8 +85,8 @@
                 severity = "warning";
               };
               annotations = {
-                summary = "WARNING - Disk of {{ $labels.host }} is almost full";
-                description = "Disk is almost full\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}";
+                summary = "Disk of {{ $labels.host }} is almost full";
+                description = "Disk is almost full\n Value: {{ $value }}\n";
               };
             }
             {
@@ -83,8 +97,8 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "CRITICAL - Disk of {{ $labels.host }} is almost full";
-                description = "Disk is almost full\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}";
+                summary = "Disk of {{ $labels.host }} is almost full";
+                description = "Disk is almost full\n Value: {{ $value }}\n";
               };
             }
             {
@@ -95,8 +109,8 @@
                 severity = "warning";
               };
               annotations = {
-                summary = "WARNING - Host disk of {{ $labels.host }} will fill in 8 hours";
-                description = "Disk will fill in 8 hours at current write rate\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}";
+                summary = "Host disk of {{ $labels.host }} will fill in 8 hours";
+                description = "Disk will fill in 8 hours at current write rate\n Value: {{ $value }}\n";
               };
             }
             {
@@ -107,8 +121,8 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "CRITICAL - Host disk of {{ $labels.host }} will fill in 4 hours";
-                description = "Disk will fill in 4 hours at current write rate\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}";
+                summary = "Host disk of {{ $labels.host }} will fill in 4 hours";
+                description = "Disk will fill in 4 hours at current write rate\n Value: {{ $value }}";
               };
             }
             {
@@ -119,8 +133,8 @@
                 severity = "warning";
               };
               annotations = {
-                summary = "WARNING - {{ $labels.host }} is low on system memory";
-                description = "{{ $labels.host }} is low on system memory\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}";
+                summary = "{{ $labels.host }} is low on system memory";
+                description = "{{ $labels.host }} is low on system memory\n Value: {{ $value }}\n";
               };
             }
             {
@@ -131,8 +145,8 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "CRITICAL - {{ $labels.host }} is low on system memory";
-                description = "{{ $labels.host }} is low on system memory\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}";
+                summary = "{{ $labels.host }} is low on system memory";
+                description = "{{ $labels.host }} is low on system memory\n Value: {{ $value }}\n";
               };
             }
             {
@@ -143,8 +157,8 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "CRITICAL - A systemd unit on {{ $labels.host }} has failed";
-                description = "A systemd unit on {{ $labels.host }} has failed\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}";
+                summary = "A systemd unit on {{ $labels.host }} has failed";
+                description = "A systemd unit on {{ $labels.host }} has failed\n Value: {{ $value }}\n";
               };
             }
             {
@@ -156,7 +170,7 @@
               };
               annotations = {
                 summary = "HTTP service {{ $labels.server }} responded incorrect";
-                description = "The HTTP service {{ $labels.service }} responded with {{ $value }} instead of 200.\n  LABELS: {{ $labels }}";
+                description = "The HTTP service {{ $labels.service }} responded with {{ $value }} instead of 200.\n";
               };
             }
           ];

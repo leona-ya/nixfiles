@@ -5,7 +5,6 @@
     ./prometheus.nix
     ./grafana.nix
     ./alertmanager.nix
-    ./alertmanager-bot.nix
   ];
 
   em0lar.telegraf.extraInputs = {
