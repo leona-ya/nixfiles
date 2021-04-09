@@ -22,20 +22,27 @@
   networking.useHostResolvConf = false;
   system.stateVersion = "20.09";
 
-  em0lar = {
-    secrets = {
-      "backup_ssh_key".owner = "root";
-      "backup_passphrase".owner = "root";
-    };
-    backups = {
-      enable = true;
-      repo = "backup@helene.int.sig.de.labcode.de:/mnt/backup/repos/synced/haku.pbb.wob.de.em0lar.dev";
-    };
-    telegraf = {
-      enable = true;
-      host = "[fd8f:d15b:9f40:0c00::1]";
+  em0lar.secrets = {
+    "backup_ssh_key".owner = "root";
+    "backup_passphrase".owner = "root";
+  };
+  em0lar.backups = {
+    enable = true;
+    repo = "backup@helene.int.sig.de.labcode.de:/mnt/backup/repos/synced/haku.pbb.wob.de.em0lar.dev";
+  };
+  em0lar.telegraf = {
+    enable = true;
+    host = "[fd8f:d15b:9f40:0c00::1]";
+    extraInputs = {
+      wireguard = {
+        devices = [
+          "wg-public"
+          "wg-server"
+        ];
+      };
     };
   };
+  systemd.services.telegraf.serviceConfig.AmbientCapabilities = [ "CAP_NET_ADMIN" ];
 }
 
 

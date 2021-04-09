@@ -56,13 +56,13 @@
             {
               alert = "InstanceDown";
               expr = "up == 0";
-              for = "5m";
+              for = "10m";
               labels = {
                 severity = "warning";
               };
               annotations = {
                 summary = "{{ $labels.instance }} down";
-                description = "{{ $labels.instance }} has been down for more than 5 minutes.\n";
+                description = "{{ $labels.instance }} has been down for more than 10 minutes.\n";
               };
             }
             {
@@ -171,6 +171,30 @@
               annotations = {
                 summary = "HTTP service {{ $labels.server }} responded incorrect";
                 description = "The HTTP service {{ $labels.service }} responded with {{ $value }} instead of 200.\n";
+              };
+            }
+            {
+              alert = "WireguardHandshakeTooLongAgo";
+              expr = "time() - (wireguard_peer_last_handshake_time_ns / 1e+9) > 600";
+              for = "0s";
+              labels = {
+                severity = "warning";
+              };
+              annotations = {
+                summary = "Wireguard host handshake is more than 10min ago";
+                description = "The handshake with the wireguard host with public key {{ $labels.public_key }} is {{ $value }} seconds ago.\n";
+              };
+            }
+            {
+              alert = "WireguardHandshakeTooLongAgo";
+              expr = "time() - (wireguard_peer_last_handshake_time_ns / 1e+9) > 900";
+              for = "0s";
+              labels = {
+                severity = "critical";
+              };
+              annotations = {
+                summary = "Wireguard host handshake is more than 15min ago";
+                description = "The handshake with the wireguard host with public key {{ $labels.public_key }} is {{ $value }} seconds ago.\n";
               };
             }
           ];
