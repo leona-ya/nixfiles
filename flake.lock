@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1617248583,
-        "narHash": "sha256-dEg3a2SXJf8dFqJ+X1pN4TGFSnFkyjdqWPDd0HaVDFs=",
+        "lastModified": 1617971069,
+        "narHash": "sha256-Lg9X/O5e2qnLBjkGRVKMiOGssxZrsIgm9a26LJ1Ib38=",
         "owner": "kirelagin",
         "repo": "dns.nix",
-        "rev": "a891c4ad70457e080a32891ea2b004b5c05afad5",
+        "rev": "c27914e527b79912ddc86a0f0f1ae5bd6a325519",
         "type": "github"
       },
       "original": {

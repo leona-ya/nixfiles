@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021040801;
+      serial = 2021040901;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -21,8 +21,14 @@ in {
     NS = helper.ns;
 
     MX = helper.mail.mxSimple;
-
     TXT = [ helper.mail.spf ];
+    DKIM = [{
+      selector = "dkim";
+      t = [ "s" ];
+      s = [ "email" ];
+      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D9oTjw3GT1mQY7oOb9k7oEqxwFzpH3x0+5I3BzPiahiuhUdXgW5pt1KOddwVLzxsKkqTkTACyLRAaJVX4yKq06GeiIKYE8NU1Tt+N4/cUVjLqWQ8q80u8UkLdgrdIlwBb+p079OXogSnpg0N762bqyB1uEADhUNjRP6lQMYfBAzqVJNkUo4ABm+GsWlcPuhOBc0Sp6F5IhvBx/uyyzz46f/50kHOQgYWCblGwglrX9awEEBiMtWtGNBH7iO0DqL4AiJJC8PBvj2kS5sCdZRfCHRBGPczClmvCWf2JA6pL+PFqwtne35KGFIRHOluv3cn6YzQU3jhTaMMOWrgXHcFQIDAQAB";
+    }];
+
     CAA = helper.caa;
 
     A = helper.hosts.web.A;
@@ -45,9 +51,6 @@ in {
       "ns2" = haku_host;
       "ns3" = naiad_host;
 
-      "dkim._domainkey".TXT = [
-        (txt ''v=DKIM1;k=rsa;t=s;s=email;p=" "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D9oTjw3GT1mQY7oOb9k7oEqxwFzpH3x0+5I3BzPiahiuhUdXgW5pt1KOddwVLzxsKkqTkTACyLRAaJVX4yKq06GeiIKYE8NU1Tt+N4/cUVjLqWQ8q80u8UkLdgrdIlwBb+p079OXogSnpg0N762bqyB1uEADhUNjRP6lQMYfBAzqVJNkUo4ABm+GsWlcPuhOBc0Sp6F5IhvBx/" "uyyzz46f/50kHOQgYWCblGwglrX9awEEBiMtWtGNBH7iO0DqL4AiJJC8PBvj2kS5sCdZRfCHRBGPczClmvCWf2JA6pL+PFqwtne35KGFIRHOluv3cn6YzQU3jhTaMMOWrgXHcFQIDAQAB'')
-      ];
       backupmx.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
       "wg-sternpunkt".CNAME = [ "haku.pbb.wob.de.em0lar.dev." ];
 
