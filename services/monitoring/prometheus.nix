@@ -151,7 +151,7 @@
             }
             {
               alert = "HostSystemdServiceCrashed";
-              expr = "systemd_units_active_code{active=\"failed\"} == 1";
+              expr = "systemd_units_active_code{active=\"failed\"} > 0";
               for = "5m";
               labels = {
                 severity = "critical";
