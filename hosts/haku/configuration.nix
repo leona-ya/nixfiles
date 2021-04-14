@@ -28,7 +28,6 @@
   };
   em0lar.backups = {
     enable = true;
-    repo = "backup@helene.int.sig.de.labcode.de:/mnt/backup/repos/synced/haku.pbb.wob.de.em0lar.dev";
   };
   em0lar.telegraf = {
     enable = true;

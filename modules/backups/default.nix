@@ -35,6 +35,7 @@ in {
     };
     repo = mkOption {
       type = types.str;
+      default = "ssh://backup@[fd8f:d15b:9f40:102:9cf1:ccff:fead:6e31]:61337/mnt/backup/repos/synced/${config.networking.hostName}.${config.networking.domain}";
     };
     encryptionMode = mkOption {
       type = types.str;
@@ -43,10 +44,6 @@ in {
     encryptionPassCommand = mkOption {
       type = types.str;
       default = "cat ${config.em0lar.secrets.backup_passphrase.path}";
-    };
-    sshPort = mkOption {
-      type = types.str;
-      default = "1880";
     };
     sshKeyFilePath = mkOption {
      type = types.str;
@@ -90,7 +87,8 @@ in {
           passCommand = cfg.encryptionPassCommand;
         };
         environment = {
-          BORG_RSH = "ssh -o StrictHostKeyChecking=no -p ${cfg.sshPort} -i ${cfg.sshKeyFilePath}";
+          BORG_RSH = "ssh -o StrictHostKeyChecking=no -i ${cfg.sshKeyFilePath}";
+          BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
         };
         compression = cfg.compression;
         prune.keep = cfg.pruneKeepConfig;

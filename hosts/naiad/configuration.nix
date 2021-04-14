@@ -43,20 +43,15 @@
     };
   };
 
-  em0lar = {
-    telegraf = {
-      enable = true;
-      host = "[fd8f:d15b:9f40:0c20::1]";
-    };
-  #  secrets = {
-  #    "backup_ssh_key".owner = "root";
-  #    "backup_passphrase".owner = "root";
-  #  };
-  #  backups = {
-  #    enable = true;
-  #    repo = "backup@helene.int.sig.de.labcode.de:/mnt/backup/repos/synced/naiad.ncp.nue.de.em0lar.dev";
-  #  };
+  em0lar.telegraf = {
+    enable = true;
+    host = "[fd8f:d15b:9f40:0c20::1]";
   };
+  em0lar.secrets = {
+    "backup_ssh_key" = {};
+    "backup_passphrase" = {};
+  };
+  em0lar.backups.enable = true;
 
   system.stateVersion = "21.05";
 }

@@ -27,10 +27,7 @@
       "backup_ssh_key".owner = "root";
       "backup_passphrase".owner = "root";
     };
-    backups = {
-      enable = true;
-      repo = "backup@helene.lan.int.sig.de.em0lar.dev:/mnt/backup/repos/synced/ladon.int.sig.de.em0lar.dev";
-    };
+    backups.enable = true;
     telegraf = {
       enable = true;
       host = "[fd8f:d15b:9f40:102:3016:54ff:fe12:f68c]";

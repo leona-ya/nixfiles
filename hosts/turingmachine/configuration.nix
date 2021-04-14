@@ -47,7 +47,7 @@
       ".venv"
       ".cache"
     ];
-    repo = "backup@helene.int.sig.de.labcode.de:/mnt/backup/repos/unsynced/mimas.int.sig.de.em0lar.dev";
+    repo = "ssh://backup@[fd8f:d15b:9f40:102:9cf1:ccff:fead:6e31]:61337/mnt/backup/repos/unsynced/mimas.int.sig.de.em0lar.dev";
     enableSystemdTimer = false;
   };
   system.stateVersion = "20.09";
