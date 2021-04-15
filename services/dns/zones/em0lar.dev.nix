@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021040901;
+      serial = 2021041101;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -20,14 +20,13 @@ in {
 
     NS = helper.ns;
 
-    MX = helper.mail.mxSimple;
+    MX = [ (mx.mx 10 "myron.het.hel.fi.em0lar.dev.") ];
     TXT = [ helper.mail.spf ];
     DKIM = [{
-      selector = "dkim";
-      t = [ "s" ];
-      s = [ "email" ];
-      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D9oTjw3GT1mQY7oOb9k7oEqxwFzpH3x0+5I3BzPiahiuhUdXgW5pt1KOddwVLzxsKkqTkTACyLRAaJVX4yKq06GeiIKYE8NU1Tt+N4/cUVjLqWQ8q80u8UkLdgrdIlwBb+p079OXogSnpg0N762bqyB1uEADhUNjRP6lQMYfBAzqVJNkUo4ABm+GsWlcPuhOBc0Sp6F5IhvBx/uyyzz46f/50kHOQgYWCblGwglrX9awEEBiMtWtGNBH7iO0DqL4AiJJC8PBvj2kS5sCdZRfCHRBGPczClmvCWf2JA6pL+PFqwtne35KGFIRHOluv3cn6YzQU3jhTaMMOWrgXHcFQIDAQAB";
+      selector = "mail";
+      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv0tgSLW0Z6cRachWzv4rSN2meAoDl/B8yaMNDwA5B+3wGWI5gVe2dxRog/ZYqEvXFJBUsOp5zm6nPesLe6P9f8okFaHOvSnh6Y88qnqoCqxB17Dvim2zoQ9002svT0TrASkGt9y0mDJJzeYOVJAs5oTXOMGwtRFZONKnLtFtaivkGWlSR1qc3Ei21VQkAMiyC22yPt8ZjA/QhVeGDPfooH8/uDa1si2ti4oVpqxBUQzzZu6qat2RwM00hMfjhkUmpd0EisJ2o/3LDa+UKcVToqPHiCLEI7NJiWoqm0VVinHbaOOqs/A84FiXc8jtlZLN6vcjFZp5/VpLZwquXWZSawIDAQAB";
     }];
+    DMARC = helper.mail.dmarc;
 
     CAA = helper.caa;
 
@@ -51,8 +50,16 @@ in {
       "ns2" = haku_host;
       "ns3" = naiad_host;
 
+      mail = myron_host;
       backupmx.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
       "wg-sternpunkt".CNAME = [ "haku.pbb.wob.de.em0lar.dev." ];
+
+      "ca".MX = [ (mx.mx 10 "myron.het.hel.fi.em0lar.dev.") ];
+      "ca".TXT = [ helper.mail.spf ];
+      "ca".DKIM = [{
+        selector = "mail";
+        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2WJ46bl9UqBY9ZxqkVCBdSiysIJMUbWS3BK10Lupe4T5+jWAcdzJraznWeaVF/mR/9TyiB7lE79ZB6WxHxTwwJ5UZjURwImKAKqSGPXPACIj+LHyx5j2nHN4CawC6bkCmpGT99B7I/5bCelekoAHV9U/4pE2YEjgA0VxvlSKHB2Y7cPWL303DInYGaTrvMczuwLYoEwIiBirffYNqHyrOJE9A+ZQRdLjM8DFOxegAOV9mcHb3MwneJuu86Czz45UIrQ7AxkMUNKgHitqTSnXzLWd4BF6Kf3XUh/lED7WPdviBLJo/1H0Cgch8RRlinTeDVliHDQ6/zLWpk6+k3iKkQIDAQAB";
+      }];
 
       www.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
       auth.CNAME = [ "foros.int.sig.de.em0lar.dev." ];

@@ -30,5 +30,12 @@
       access_log off;
     '';
   };
+  services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/public/" = {
+      alias = "/var/data/public/";
+    };
+  };
 }
 

@@ -17,6 +17,11 @@ in {
       "a"
       "mx"
     ]);
+    dmarc = [{
+      p = "quarantine";
+      sp = "quarantine";
+      rua = "mailto:noc@em0lar.dev";
+    }];
   };
   caa = letsEncrypt "noc@em0lar.dev";  # Common template combinators included
   hosts = {

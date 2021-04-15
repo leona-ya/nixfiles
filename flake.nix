@@ -18,9 +18,13 @@
       url = "github:kirelagin/dns.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, dns, nixpkgs, home-manager, flake-registry, deploy-rs, em0lar-dev-website, ... }:
+  outputs = inputs@{ self, dns, nixpkgs, home-manager, flake-registry, deploy-rs, em0lar-dev-website, mailserver, ... }:
     let
       overlays = [
         (final: prev: import ./packages final prev)
@@ -130,6 +134,7 @@
           nixosSystem = {
             system = "x86_64-linux";
             modules = defaultModules ++ [
+              mailserver.nixosModule
               ./hosts/myron/configuration.nix
             ];
           };

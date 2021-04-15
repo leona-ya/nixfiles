@@ -8,6 +8,7 @@
       ./initrd.nix
       ./wireguard.nix
       ../../services/dns/primary
+      ../../services/mail
     ];
 
   boot.loader.grub.enable = true;

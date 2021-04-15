@@ -17,6 +17,15 @@
 
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/5b0aa515-d260-42fc-b2b7-8f178359b51b";
 
+  fileSystems."/mnt/cryptmail" = {
+    device = "/dev/mapper/cryptmail";
+    fsType = "ext4";
+  };
+
+  boot.initrd.luks.devices."cryptmail" = {
+    device = "/dev/disk/by-id/scsi-0HC_Volume_10661813";
+  };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/B965-A55E";
       fsType = "vfat";
