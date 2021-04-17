@@ -4,10 +4,12 @@
   imports = [
     (fetchGit {
       url = "ssh://git@git.em0lar.dev:2222/em0lar/nixfiles-mail-secrets.git";
-      rev = "5787f90d62d60a3c6142aa32783cec53f3c258d9";
+      rev = "1e204180495c48e3ad88dbdab6186132576a9107";
       ref = "main";
     }).outPath
   ];
+
+  em0lar.secrets."mail/superusers".owner = "dovecot2";
 
   fileSystems."/var/vmail" = {
     device = "/mnt/cryptmail/vmail";
@@ -35,6 +37,18 @@
 
     localDnsResolver = false;
     certificateScheme = 3;
+  };
+
+  services.dovecot2 = {
+    extraConfig = ''
+      auth_master_user_separator = *
+      passdb {
+        driver = passwd-file
+        args = ${config.em0lar.secrets."mail/superusers".path}
+        master = yes
+        result_success = continue
+      }
+    '';
   };
 
 

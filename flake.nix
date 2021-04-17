@@ -54,10 +54,11 @@
           };
           imports = [
             ./modules/backups
-            ./modules/nftables
-            ./modules/telegraf
-            ./modules/secrets
             ./modules/bind
+            ./modules/imapsync
+            ./modules/nftables
+            ./modules/secrets
+            ./modules/telegraf
           ];
           documentation.info.enable = false;
         }
