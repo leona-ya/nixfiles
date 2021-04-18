@@ -7,6 +7,7 @@
       rev = "1e204180495c48e3ad88dbdab6186132576a9107";
       ref = "main";
     }).outPath
+    ./autoconfig.nix
   ];
 
   em0lar.secrets."mail/superusers".owner = "dovecot2";

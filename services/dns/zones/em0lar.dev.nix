@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021041101;
+      serial = 2021041801;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -51,6 +51,7 @@ in {
       "ns3" = naiad_host;
 
       mail = myron_host;
+      autoconfig.CNAME = [ "myron.het.hel.fi.em0lar.dev." ];
       backupmx.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
       "wg-sternpunkt".CNAME = [ "haku.pbb.wob.de.em0lar.dev." ];
 

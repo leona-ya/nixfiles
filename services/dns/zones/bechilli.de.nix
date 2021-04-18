@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021040901;
+      serial = 2021041801;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -25,5 +25,9 @@
       helper.mail.spf
     ];
     CAA = helper.caa;
+
+    subdomains = {
+      autoconfig.CNAME = [ "myron.het.hel.fi.em0lar.dev." ];
+    };
   };
 }
