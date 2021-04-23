@@ -71,6 +71,7 @@ in {
         };
       '' + cfg.extraConfig;
     };
+    systemd.services.bind.serviceConfig.StateDirectory = "named";
     services.prometheus.exporters.bind = {
       enable = true;
       bindVersion = "xml.v3";

@@ -9,8 +9,8 @@ in {
   networking.firewall.allowedUDPPorts = [ 53 ];
 
   systemd.services.bind.preStart = ''
-    ${pkgs.coreutils}/bin/mkdir -p /run/named/zones
-    ${pkgs.coreutils}/bin/chown named /run/named/zones
+    ${pkgs.coreutils}/bin/mkdir -p /var/lib/named/zones
+    ${pkgs.coreutils}/bin/chown named /var/lib/named/zones
   '';
 
   em0lar.bind = {
