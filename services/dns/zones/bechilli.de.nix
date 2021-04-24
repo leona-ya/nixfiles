@@ -14,7 +14,9 @@
 
     NS = helper.ns;
 
-    MX = helper.mail.mxSimple;
+    MX = [
+      (mx.mx 10 "cetus.het.hel.fi.labcode.de.")
+    ];
     DKIM = [{
       selector = "dkim";
       t = [ "s" ];

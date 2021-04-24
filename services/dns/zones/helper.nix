@@ -2,16 +2,11 @@
 
 with dns.lib.combinators;
 
-let
-  mailserver = "cetus.het.hel.fi.labcode.de.";
-in {
+{
   ns = [ "ns1.em0lar.dev." "ns2.em0lar.dev." "ns3.em0lar.dev." ];
   mail = rec {
     mxSimple = [
-      (mx.mx 10 mailserver)
-    ];
-    mxWithFallback = mxSimple ++ [
-      (mx.mx 100 "backupmx.dont-break.it.")
+      (mx.mx 10 "myron.het.hel.fi.em0lar.dev.")
     ];
     spf = (with dns.lib.combinators.spf; soft [
       "a"

@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021040901;
+      serial = 2021042406;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -14,14 +14,17 @@
 
     NS = helper.ns;
 
-    MX = helper.mail.mxWithFallback;
+    MX = helper.mail.mxSimple;
     DKIM = [{
-      selector = "dkim";
-      t = [ "s" ];
-      s = [ "email" ];
-      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo0hycCrpWmzBIvErNUk10dgm/u6x+755HDRgqce/EB8CutPTgN+zUB17I3mPTGBcEqfn4HkIE21NXhdefbaJ9c2RM9xgC+uyDnz6pyjjEwNAdoGs5rIjCGt7ZfxiWkN85b4OPZa34xa120FmB9y2ZFaWd+4f0VFx3qOGAocceh6uvVZGO9QTjkqck1DgzXl/BLvLt+7vAt4jSGR/IeChy5te4e/p8G7slKVmEWgNkwS/tmwa88lEayK6w1zTW0cmLoaefQPJnuYZi9OedF8jYiFVFBDd5p81l2/qombtX6+5EZ9JCn9d0kmMQDQl+vzuaRSO70dSOEzQkEAXvDeqaQIDAQAB";
+      selector = "mail";
+      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt5yOpQ86C+iZUnyuqBAoOqUAnVrngnZ3Ifj+ij2UMeHEUh9Opd8RCwKINLC84yNPHP2lSaNfseNadKozkVmUTTMXaD606v0qAzU8e4mx7YF80+g6XHugm6skkKZ/C00eGfJIsU/74e9eV96vN9QTP9BpMstcDdaCzKKhJbUD/waXDx3QKhJ5iKH8KAT2B2pfS2Rhb4HkyxDDGCazTLkgXCJlbU3ZR6kNPYouZ6NM/S7SsBPI/2/ewnso59pPFy9VsgMqUzVCPQ/B3aXr1Y4mHuBsBvDJYlk3SYCfrsVcMKu/l0fSrph8AGJyQ7Kz30SxoSbfZhCkMIXgfE/K1jcjSwIDAQAB";
     }];
-    TXT = [ helper.mail.spf ];
+    DMARC = helper.mail.dmarc;
+    TXT = [
+      helper.mail.spf
+      "google-site-verification=VV1yAQsf26RrJxUXjd-LGIRjQnO9TZ32uu8XeU0fu6U"
+    ];
+
     CAA = helper.caa;
 
     A = helper.hosts.web.A;
@@ -30,12 +33,12 @@
     subdomains = {
       nl.MX = helper.mail.mxSimple;
       nl.TXT = [ helper.mail.spf ];
-      services.MX = helper.mail.mxWithFallback;
+      services.MX = helper.mail.mxSimple;
       services.DKIM = [{
         selector = "dkim";
         t = [ "s" ];
         s = [ "email" ];
-        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3B7IXz4nSFvw3pS/7GZwgHiMtAeIwzjWhZXiYsh9ZdUmHwlaW510Hjv+K2ET1H6w8Fv++OITvXbzEWEVRpXFWsvuaGYrzWD7l30V05V+o0HQDtyKN6TigX6Z+v0G7ucljY06h9u0LXYArPkXya1WpFvrIk06M8hqtk7eT19TqqVSZ7SVOba6bBV46Lm3iwIM9BXPBvclCwEvR1/tXGxRfp74Wor3wvWNjvsWwaXMRep352WOjuZyj05GfV2XVZ9A7tcpjhcKD27pzZ0Tv+npou9InFgM4yRW/1QazbCpQ0qrT8kuT0mo5Y9Oh6+T0HaR/Bpx4w6jx0z1AlJ6zqKchwIDAQAB";
+        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2HWgAPc+JvAItn1icsdsMVjeVAw5gk4ISR8aWe8Npt1hWsJeeoIRxRThuL6Z3+ERlFEwNhb9O8VbK7QzhcE5HvRWo47pqVN/Q2wRfX8Y0aFx2KVHXVZt3rCivQAWaqSa+wfJFxjAMiSNz7sZk9yjex4+ErSdKH4wmNhiYYgBaZlGhWgUz8dhASVBHI9BXhVZjaVBjmn8CpVHw2OUHI+rfXUEzwiyJf319+xOaVnytzF55Nb++HSwxboqQfR+BgiWxzC5WZDRSgs7VQnlLn8DFEjPOhU8leTttAqSf71I6nDf7bcKBL0yhfEmM2Jm7awVc2KUZF5zWQea9l716tBOyQIDAQAB";
       }];
       services.TXT = [ helper.mail.spf ];
 

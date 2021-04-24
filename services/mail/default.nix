@@ -4,7 +4,7 @@
   imports = [
     (fetchGit {
       url = "ssh://git@git.em0lar.dev:2222/em0lar/nixfiles-mail-secrets.git";
-      rev = "1e204180495c48e3ad88dbdab6186132576a9107";
+      rev = "bc638f08202abadaf003adc926f30e1fbffc7e6c";
       ref = "main";
     }).outPath
     ./autoconfig.nix
@@ -23,10 +23,6 @@
   mailserver = {
     enable = true;
     fqdn = "${config.networking.hostName}.${config.networking.domain}";
-    domains = [
-      "em0lar.dev"
-      "ca.em0lar.dev"
-    ];
     messageSizeLimit = 52428800;
 
     enableImap = false;

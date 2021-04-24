@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021040902;
+      serial = 2021042406;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -14,15 +14,17 @@
 
     NS = helper.ns;
 
-    MX = helper.mail.mxWithFallback;
+    MX = helper.mail.mxSimple;
 
-    TXT = [ helper.mail.spf ];
+    TXT = [
+      helper.mail.spf
+      "google-site-verification=T-Sfq35kze0or8AKMVb9v_nPgAyiLWBE3fnR0ynUw48"
+    ];
     DKIM = [{
-      selector = "dkim";
-      t = [ "s" ];
-      s = [ "email" ];
-      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D9oTjw3GT1mQY7oOb9k7oEqxwFzpH3x0+5I3BzPiahiuhUdXgW5pt1KOddwVLzxsKkqTkTACyLRAaJVX4yKq06GeiIKYE8NU1Tt+N4/cUVjLqWQ8q80u8UkLdgrdIlwBb+p079OXogSnpg0N762bqyB1uEADhUNjRP6lQMYfBAzqVJNkUo4ABm+GsWlcPuhOBc0Sp6F5IhvBx/uyyzz46f/50kHOQgYWCblGwglrX9awEEBiMtWtGNBH7iO0DqL4AiJJC8PBvj2kS5sCdZRfCHRBGPczClmvCWf2JA6pL+PFqwtne35KGFIRHOluv3cn6YzQU3jhTaMMOWrgXHcFQIDAQAB";
+      selector = "mail";
+      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArrl2qY4nBdgLQnLvR1S6KUM7PU4nqGwZUTvQ+cSgGxUMnVCo8KQ9P/h9EFOxyW6hsvQhU40X9r1JyYocBpZDsmtlDrxV17+VZQSN119eBLcaqHFqxJlXayQX7oDMBjokFF+IzoVSi5s461L1iAzDj7EfV6PPNhKmQvSuRlQbvGCrlzCXEv/HlzSF7/BBohorOfWmSJyDt5SXZxx5VOBqEQON1WZhwAtrMDfrvS6TaHlU/v0S49VZrQrFulmxg9NOX6TNXyfoim4s66h4lR5a2JyvxmIH8AWMZdVQ3bey25jDWtPyE7SuLm1w0U4YZcMZVLNGTJo5D1c03QJRjAyF8QIDAQAB";
     }];
+    DMARC = helper.mail.dmarc;
 
     CAA = helper.caa;
 
@@ -30,23 +32,11 @@
     AAAA = helper.hosts.web.AAAA;
 
     subdomains = {
-      ml.MX = helper.mail.mxWithFallback;
-      ml.DKIM = [{
-        selector = "dkim";
-        t = [ "s" ];
-        s = [ "email" ];
-        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApfjwwui6to37BbwmY6O6dTLeF/1MBDqlqWWKyvP+18lGeYG00y+QtTSmyqmens/tjDqX7mTX1v4PIuddT6KMUuvy28VADka4gLtpgReRuF8+4VMyPAN3ziLQapH8Fgw2ZhucdFcz14S8MKls26T94iyrn43UlpqfauxGcPDqbhu18Wfy5EgJLhqlTKYv1xVM2Fvx0k+HQFY7RQMF5gzzY0ToTv3kqbf8r/w39vPgwEODQT2RD5IdbNe5yXTphmwN1+uydFfYqj62EzPUKD4nCCe1RDh5GtHTGAsKt8KdVufZBIML4EYolh8iyIdozn8JtcOqdagE9ToF6gVvtvnkJwIDAQAB";
-      }];
-      ml.TXT = [ helper.mail.spf ];
-      nl.MX = helper.mail.mxSimple;
-      nl.TXT = [ helper.mail.spf ];
-      ca.MX = helper.mail.mxWithFallback;
+      ca.MX = helper.mail.mxSimple;
       ca.TXT = [ helper.mail.spf ];
       ca.DKIM = [{
-        selector = "dkim";
-        t = [ "s" ];
-        s = [ "email" ];
-        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAruAiCE8lXVKqR0nihVRuiLUiAk0yGikVKLj/IsFGvl8GH88DtfaZhss0XCOY9m7fIQPf0j3dh3bFrbh3sPX5hhgZwv+sV/KLR1JhESduVnksZC1w+ZKhjjBoNFkBdSsPuU0bp7KBGjGJ8hS4H3M2AxOF0SnpR1kUAL9j+IFwi0KGuKuuX03RHCZVWGNjt72qKdFRNIW9BlK/AqZXG0toPfkMCRIluH1aGJmN9kIgc8Q/dJeXWfGBgGvW1Idc708XlnoLOkM5Giajmz2+gC+BcOCJf4/WFm7c6ZRzsuM6yVXdKT7bSm4ey6duZ9MIyeDQD83CbsXC6BBwP/JN6ZHrwwIDAQAB";
+        selector = "mail";
+        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzVQD7sCSZNuzYN8Lxzu8Ynv19Z0E3dtu0AufKrQg7XNX5caQ+m32um1KfzIN/XTe4PTWCLb99M+6ROfl3DS6JxEP31JNv9CHesnprrMzlODnMdRsBw5PP0UT9oebmdVH2VJeNtYlt34Sof3bUcNEqG9ocW4p3WEEY1Eg8X+CgZc2aecUsEYWGi9Ric85a0Rza66v47UZSe/Rw+NTAkzsJUGCuaw+vR2sGTnPa1je3KEsP3eYwDlhm2qdRoFXw5drwoF7hXiucPXNrNm1VWHwOjDwMUHiI+yUt7GAbJ2dq081qtkcnoyQCOVyPzxSSMcIfpKqu1swpQlSlkYr7R/MHQIDAQAB";
       }];
 
       www.CNAME = [ "foros.int.sig.de.em0lar.dev." ];

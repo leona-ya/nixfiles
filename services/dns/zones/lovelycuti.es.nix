@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021040901;
+      serial = 2021042405;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -14,14 +14,14 @@
 
     NS = helper.ns;
 
-    MX = helper.mail.mxWithFallback;
+    MX = helper.mail.mxSimple;
     DKIM = [{
-      selector = "dkim";
-      t = [ "s" ];
-      s = [ "email" ];
-      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7tBTDV2m8+2fG6lKNzNni3iXSrn2J+u+a7JkYULEoHHTXz66G1EEOXE8sDvwChEQMqZV6LXMPfLrhubHGnaEHq8a+qmXQ1Xylz252TAyh4XFr1sNH2WTxw/nUZjL7Rlmbmba0bqZwi6rMwd5QRagcsi7UfqPwj5mEsrPXOBDNbQ5l5S+IJ+Wj7M0BAOhON092uBNVseXvuaYNIJU2ndmLqmcqHIfsVrfp8yaSBPMilAVT1RciGBgw0T1wy/BU/89AAq/kIIGycNoTR+ZvdU/2K54BFgbzuVgqg0DWINmfJsSblLYfymdsvNsUrETzmR4SH1fVMbCiH9UoT+wUPAU7wIDAQAB";
+      selector = "mail";
+      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw8uVXCr8ggi0Sla2CWAxchWA2jHNy9lKe2zKkiSQ+Pjexod3hMtbsi47ywyaoi2SPdMOWYOgGuaPEj65ZRg4fOGTtEC7M/PB/0b4WHMeEo3stLIMtD4UrzLxGXlkuNKO3nWEU+TsYQBOP3kxsChkZ7hRukDflFNCkPNQ8P1SjngZBG1nn+Bo+BIB3OSfe5Tl5wyp54mM08U+eHZI/YOl6nt0WCunXPMKsR7CnP7BE6JJd9tPVHhJxRL5U13COGhMZSQ4wSCJdL3FQ0CGoj4TIY9skTeBAMEkwvTSJ5UKB83Z7Tec6gmrOKZxnbgji9Ja+nGJF0MSJL5jsMSh6bO4sQIDAQAB";
     }];
+    DMARC = helper.mail.dmarc;
     TXT = [ helper.mail.spf ];
+
     CAA = helper.caa;
 
     A = helper.hosts.web.A;

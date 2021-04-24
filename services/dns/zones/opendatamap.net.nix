@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021040302;
+      serial = 2021042405;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -21,6 +21,8 @@
     TXT = [
       helper.mail.spf
     ];
+    DMARC = helper.mail.dmarc;
+
     CAA = helper.caa;
     subdomains = {
       www.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
