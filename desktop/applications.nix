@@ -35,20 +35,27 @@
     element-desktop
     evince
     (firefox-wayland.override { extraNativeMessagingHosts = [ passff-host ]; })
+    gcc
     gimp
     gnome3.vinagre
     hamster
     inkscape
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
+    (jetbrains.datagrip.override {
+      jdk = jetbrains.jdk;
+    })
+    (jetbrains.idea-ultimate.override {
+      jdk = jetbrains.jdk;
+    })
     libreoffice-fresh
     mpv
     mumble
+    openttd
     pandoc
     pass-wayland
     postman
     python3
-    rofi-pass
+    rofi-pass 
+    rustc rustfmt cargo
     spotify
     superTuxKart
     texlive.combined.scheme-medium
@@ -93,4 +100,5 @@
     '';
   };
   environment.variables.SSH_AUTH_SOCK = "/run/user/1000/gnupg/S.gpg-agent.ssh";
+  environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
 }

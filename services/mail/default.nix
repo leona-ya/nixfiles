@@ -4,7 +4,7 @@
   imports = [
     (fetchGit {
       url = "ssh://git@git.em0lar.dev:2222/em0lar/nixfiles-mail-secrets.git";
-      rev = "bc638f08202abadaf003adc926f30e1fbffc7e6c";
+      rev = "6bbef181479224a6a059f094a96bed4559a15541";
       ref = "main";
     }).outPath
     ./autoconfig.nix

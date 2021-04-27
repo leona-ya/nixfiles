@@ -39,7 +39,10 @@
   };
 
   users = {
-    users.mautrix-telegram.group = "mautrix-telegram";
+    users.mautrix-telegram = {
+    	group = "mautrix-telegram";
+	isSystemUser = true;
+    };
     groups.mautrix-telegram = {};
   };
 
