@@ -2,13 +2,19 @@
 
 {
   imports = [
-      "${modulesPath}/virtualisation/lxc-container.nix"
+      ./hardware-configuration.nix
       ./wireguard.nix
       ./network.nix
       ../../common
       ../../services/nextcloud
       ../../services/web
   ];
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/sda";
+
+  services.qemuGuest.enable = true;
 
   em0lar = {
     secrets = {
@@ -18,7 +24,7 @@
     backups.enable = true;
     telegraf = {
       enable = true;
-      host = "[fd8f:d15b:9f40:102:945b:9eff:fe23:2caa]";
+      host = "[fd8f:d15b:9f40:102:2c5a:56ff:fe4f:e4c4]";
     };
   };
 }

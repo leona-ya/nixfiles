@@ -1,7 +1,6 @@
 { config, ... }:
 
 {
-  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   em0lar.secrets."wireguard_haku_privatekey" = {
     source-path = "${../../secrets/foros/wireguard_haku_privatekey.gpg}";
     owner = "systemd-network";

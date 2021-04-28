@@ -2,7 +2,7 @@
 
 {
   imports = [
-      "${modulesPath}/virtualisation/lxc-container.nix"
+      ./hardware-configuration.nix
       ./wireguard.nix
       ./network.nix
       ../../common
@@ -10,6 +10,12 @@
       ../../services/hedgedoc
       ../../services/matrix
   ];
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/sda";
+
+  services.qemuGuest.enable = true;
 
   em0lar = {
     secrets = {
@@ -19,7 +25,7 @@
     backups.enable = true;
     telegraf = {
       enable = true;
-      host = "[fd8f:d15b:9f40:102:5c52:b6ff:fee2:db4d]";
+      host = "[fd8f:d15b:9f40:102:8079:3aff:fe35:9ddc]";
     };
   };
 }

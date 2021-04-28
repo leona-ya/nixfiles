@@ -1,7 +1,6 @@
 { config, ... }:
 
 {
-  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   em0lar.secrets."wireguard_haku_privatekey" = {
     owner = "systemd-network";
     group-name = "systemd-network";

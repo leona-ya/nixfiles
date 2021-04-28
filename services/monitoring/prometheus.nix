@@ -27,8 +27,8 @@
         static_configs = [
           {
             targets = [
-              "[fd8f:d15b:9f40:102:5c52:b6ff:fee2:db4d]" # beryl
-              "[fd8f:d15b:9f40:102:945b:9eff:fe23:2caa]" # foros
+              "[fd8f:d15b:9f40:102:8079:3aff:fe35:9ddc]" # beryl
+              "[fd8f:d15b:9f40:102:2c5a:56ff:fe4f:e4c4]" # foros
               "[fd8f:d15b:9f40:102:3016:54ff:fe12:f68c]" # ladon
               "[fd8f:d15b:9f40:0c00::1]" # haku
               "[fd8f:d15b:9f40:0c20::1]" # naiad

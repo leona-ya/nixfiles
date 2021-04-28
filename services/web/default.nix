@@ -21,11 +21,6 @@ in {
       forceSSL = true;
       locations."/".proxyPass = "http://ladon.lan.int.sig.de.em0lar.dev:8080";
     };
-    "matrix.labcode.de" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "https://matrix.labcode.de";
-    };
     "element.em0lar.de" = {
       enableACME = true;
       forceSSL = true;
@@ -199,11 +194,6 @@ in {
       enableACME = true;
       forceSSL = true;
       locations."/".proxyPass = "http://51.15.21.208:3000";
-    };
-    "kanban.opendatamap.net" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://51.15.21.208:3010";
     };
     "node-red.opendatamap.net" = {
       enableACME = true;
