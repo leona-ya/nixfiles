@@ -8,7 +8,7 @@ in {
       enableACME = true;
       forceSSL = true;
       serverAliases = [
-        "autoconfig.bechilli.de"
+        "autoconfig.maroni.me"
       ];
       locations = {
         "= /mail/config-v1.1.xml" = {

@@ -50,6 +50,12 @@ in {
   "lovelycuti.es" = {
     zone = dnsutil.writeZone "lovelycuti.es" (import zones/lovelycuti.es.nix { inherit helper lib dns config; }).zone;
   };
+  "maroni.me" = {
+    zone = dnsutil.writeZone "maroni.me" (import zones/maroni.me.nix { inherit helper lib dns config; }).zone;
+    dnssec = true;
+    dnssecKeyID = "19113";
+    dnssecKeyAlgorithm = "013";
+  };
   "opendatamap.net" = {
     zone = dnsutil.writeZone "opendatamap.net" (import zones/opendatamap.net.nix { inherit helper lib dns config; }).zone;
     dnssec = true;
