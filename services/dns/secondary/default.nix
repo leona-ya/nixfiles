@@ -21,7 +21,7 @@ in {
     zones = mapAttrsToList (name: zoneConfig: {
       name = "${name}";
       master = false;
-      file = "zones/${name}.zone";
+      file = "/var/lib/named/zones/${name}.zone";
       masters = [
         "fd8f:d15b:9f40:0c21::1" # myron
       ];

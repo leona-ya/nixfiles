@@ -16,14 +16,8 @@
     ];
   };
 
-  systemd.services.gitea.serviceConfig.MemoryHigh = "200M";
-  systemd.services.gitea.serviceConfig.MemoryMax = "300M";
   services.gitea = {
     enable = true;
-    package = pkgs.gitea.override {
-      sqliteSupport = false;
-      pamSupport = false;
-    };
     stateDir = "/var/lib/gitea";
     log.level = "Warn";
     appName = "em0lar's Gitea";
