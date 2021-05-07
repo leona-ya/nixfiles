@@ -105,6 +105,15 @@
             ];
           };
         };
+        rechaku = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/rechaku/configuration.nix
+            ];
+          };
+          deploy.hostname = "49.12.7.88";
+        };
         ladon = {
           nixosSystem = {
             system = "x86_64-linux";

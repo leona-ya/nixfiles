@@ -17,7 +17,6 @@
     wireguardPeers = [{
       wireguardPeerConfig = {
         AllowedIPs = [
-          "0.0.0.0/0"
           "::/0"
         ];
         PublicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
@@ -30,11 +29,9 @@
     name = "wg-haku";
     linkConfig = { RequiredForOnline = "yes"; };
     address = [
-      "195.39.247.144/32"
-      "2a0f:4ac0:1e0:100::1/64"
+      "2a01:4f8:c17:235a:1000::2/128"
     ];
     routes = [
-      { routeConfig.Destination = "0.0.0.0/0"; }
       { routeConfig.Destination = "::/0"; }
       {
         routeConfig = {
@@ -48,7 +45,7 @@
         routingPolicyRuleConfig = {
           Family = "ipv6";
           Table = 30;
-          From = "2a0f:4ac0:1e0:100::1/64";
+          From = "2a01:4f8:c17:235a::1/64";
         };
       }
     ];
@@ -66,13 +63,13 @@
   systemd.network.networks."10-eth0".routes = [
     {
       routeConfig = {
-        Destination = "195.39.247.188/32";
+        Destination = "49.12.7.88/32";
         Gateway = "_dhcp4";
       };
     }
     {
       routeConfig = {
-        Destination = "2a0f:4ac0:0:1::d25/128";
+        Destination = "2a01:4f8:c17:235a::1/128";
         Gateway = "_ipv6ra";
       };
     }

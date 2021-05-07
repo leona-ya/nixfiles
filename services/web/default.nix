@@ -19,7 +19,7 @@ in {
     "auth.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://ladon.lan.int.sig.de.em0lar.dev:8080";
+      locations."/".proxyPass = "http://10.151.4.19:8080";
     };
     "element.em0lar.de" = {
       enableACME = true;
@@ -118,7 +118,7 @@ in {
         "wifi.em0lar.de"
         "wifi.labcode.de"
       ];
-      locations."/".proxyPass = "http://phoebe.lan.int.sig.de.em0lar.dev:40000";
+      locations."/".proxyPass = "http://10.151.4.19:40000";
     };
     "tell.em0lar.de" = {
       enableACME = true;
