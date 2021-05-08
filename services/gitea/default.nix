@@ -42,12 +42,9 @@
     settings = {
       mailer = {
         ENABLED = true;
-        SUBJECT = "%(APP_NAME)s";
-        HOST = "mail.labcode.de:465";
-        USER = "no-reply@labcode.de";
-        SEND_AS_PLAIN_TEXT = true;
-        USE_SENDMAIL = false;
-        FROM = "\"em0lar's Gitea\" <no-reply@labcode.de>";
+        HOST = "mail.em0lar.dev:465";
+        USER = "no-reply@em0lar.dev";
+        FROM = "\"em0lar's Gitea\" <no-reply@em0lar.dev>";
       };
 
       picture = {
