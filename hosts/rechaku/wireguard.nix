@@ -184,6 +184,15 @@
             PublicKey = "WbzIGoZFfRKoX/aBVQfkNlG9zXVHvlEhNGWV1/LBMmY=";
           };
         }
+        { # titan [e1mo]
+          wireguardPeerConfig = {
+            AllowedIPs = [
+              "10.151.9.7/32"
+              "fd8f:d15b:9f40:0903:100::1/72"
+            ];
+            PublicKey = "G5hjwwszdHDLHMWOiHjiHdfXpOGPwkvtD/r6D4Hs4no=";
+          };
+        }
       ];
     };
     networks."30-wg-clients" = {
