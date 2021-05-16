@@ -63,6 +63,7 @@
     youtube-dl
     z-lua
   ];
+  services.fwupd.enable = true;
 
   services.udev.packages = [ pkgs.yubikey-personalization ];
   environment.variables.MOZ_USE_XINPUT2 = "1"; # for firefox

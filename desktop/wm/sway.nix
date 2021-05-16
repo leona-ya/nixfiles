@@ -10,6 +10,7 @@
     grim
     qt5.qtwayland
     slurp
+    wdisplays
   ];
 
   environment.variables.SDL_VIDEODRIVER = "wayland";
@@ -29,7 +30,10 @@
       wrapperFeatures.gtk = true;
 
       config = {
-        fonts = [ "JetBrains Mono 8" ]; # Jetbrains Mono
+        fonts = {
+          names = [ "JetBrains Mono" ];
+          size = 8.0;
+        }; # Jetbrains Mono
         terminal = "alacritty";
         menu = "rofi -show drun";
 

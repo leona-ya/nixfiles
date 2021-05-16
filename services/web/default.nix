@@ -140,16 +140,16 @@ in {
             ],
             "message" => [
               "subject" => "[tell.em0lar.de] Someone wanted to tell you something",
-              "sender" => "no-reply@labcode.de",
+              "sender" => "no-reply@em0lar.dev",
               "force-sender" => true, // Always set it to sender even if a senders E-Mail is given
             ],
             "email" => [
               "provider" => "smtp",
               "smtp" => [
-                "host" => "mail.labcode.de",
+                "host" => "mail.em0lar.dev",
                 "port" => 465,
                 "crypt" => "smtps",
-                "user" => "no-reply@labcode.de",
+                "user" => "no-reply@em0lar.dev",
                 "pass" => trim(file_get_contents('${config.em0lar.secrets."e1mo_ask_smtp_password".path}'))
               ],
             ],
