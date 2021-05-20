@@ -13,7 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "haku";
-  networking.domain = "pbb.wob.de.em0lar.dev";
+  networking.domain = "pbb.dus.de.em0lar.dev";
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
   boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;
 

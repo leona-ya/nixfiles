@@ -4,8 +4,8 @@ with dns.lib.combinators;
 
 let
 myron_host = host "95.217.178.242" "2a01:4f9:c010:beb5::1";
-#haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
-haku_host = host "49.12.7.88" "2a01:4f8:c17:235a::1";
+haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
+rechaku_host = host "49.12.7.88" "2a01:4f8:c17:235a::1";
 naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
 in {
   zone = {
@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021050604;
+      serial = 2021052001;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -42,29 +42,22 @@ in {
       "janus.ion.rhr.de" = host "93.90.205.65" "2001:8d8:1800:30a::1";
       "myron.het.hel.fi" = myron_host;
       "naiad.ncp.nue.de" = naiad_host;
-      "haku.pbb.wob.de" = haku_host;
-      "rechaku.het.fks.de" = haku_host;
+      "haku.pbb.wob.de".CNAME = [ "haku.pbb.dus.de.em0lar.dev." ];
+      "haku.pbb.dus.de" = haku_host;
+      "rechaku.het.fks.de" = rechaku_host;
       #"foros.int.sig.de" = host "195.39.247.144" "2a0f:4ac0:1e0:100::1";
       #"beryl.int.sig.de" = host "195.39.247.145" "2a0f:4ac0:1e0:101::1";
-      "foros.int.sig.de".AAAA = [
-        (ttl 60 "2a01:4f8:c17:235a:1000::2")
-       ];
-      "beryl.int.sig.de".AAAA = [
-        (ttl 60 "2a01:4f8:c17:235a:1000::3")
-       ];
-      "ns.int.sig.de" = host "10.151.0.1" "fd8f:d15b:9f40::1";
-      "lan.int.sig.de" = delegateTo [
-        "ns.int.sig.de"
-      ];
+      "foros.int.sig.de" = host "195.39.247.144" "2a01:4f8:c17:235a:1000::2";
+      "beryl.int.sig.de" = host "195.39.247.145" "2a01:4f8:c17:235a:1000::3";
 
       "ns1" = myron_host;
-      "ns2" = haku_host;
+      "ns2" = rechaku_host;
       "ns3" = naiad_host;
 
       mail = myron_host;
       autoconfig.CNAME = [ "myron.het.hel.fi.em0lar.dev." ];
       backupmx.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
-      "wg-sternpunkt".CNAME = [ "haku.pbb.wob.de.em0lar.dev." ];
+      "wg-sternpunkt".CNAME = [ "haku.pbb.dus.de.em0lar.dev." ];
 
       "ca".MX = [ (mx.mx 10 "myron.het.hel.fi.em0lar.dev.") ];
       "ca".TXT = [ helper.mail.spf ];

@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021050602;
+      serial = 2021051701;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -26,9 +26,7 @@
     CAA = helper.caa;
     subdomains = {
       www.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
-      grafana.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
-      node-red.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
-      rhein-sieg.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
+      "*".A = [ "162.55.82.116" ];
     };
   };
 }
