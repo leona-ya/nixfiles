@@ -61,7 +61,7 @@
                 severity = "warning";
               };
               annotations = {
-                summary = "{{ $labels.instance }} down";
+                summary = "WARN - {{ $labels.instance }} down";
                 description = "{{ $labels.instance }} has been down for more than 10 minutes.\n";
               };
             }
@@ -73,7 +73,7 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "{{ $labels.instance }} down";
+                summary = "CRIT - {{ $labels.instance }} down";
                 description = "{{ $labels.instance }} has been down for more than 15 minutes.\n";
               };
             }
@@ -85,7 +85,7 @@
                 severity = "warning";
               };
               annotations = {
-                summary = "Disk of {{ $labels.host }} is almost full";
+                summary = "WARN - Disk of {{ $labels.host }} is almost full";
                 description = "Disk is almost full\n Value: {{ $value }}\n";
               };
             }
@@ -97,32 +97,32 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "Disk of {{ $labels.host }} is almost full";
+                summary = "CRIT - Disk of {{ $labels.host }} is almost full";
                 description = "Disk is almost full\n Value: {{ $value }}\n";
               };
             }
             {
               alert = "LowStoragePredict";
-              expr = "predict_linear(disk_free{path!=\"/nix/store\"}[1h], 8 * 3600) < 0";
+              expr = "predict_linear(disk_free{path!=\"/nix/store\"}[1h], 5 * 3600) < 0";
               for = "30m";
               labels = {
                 severity = "warning";
               };
               annotations = {
-                summary = "Host disk of {{ $labels.host }} will fill in 8 hours";
-                description = "Disk will fill in 8 hours at current write rate\n Value: {{ $value }}\n";
+                summary = "WARN - Host disk of {{ $labels.host }} will fill in 5 hours";
+                description = "Disk will fill in 5 hours at current write rate\n Value: {{ $value }}\n";
               };
             }
             {
               alert = "LowStoragePredict";
-              expr = "predict_linear(disk_free{path!=\"/nix/store\"}[1h], 4 * 3600) < 0";
+              expr = "predict_linear(disk_free{path!=\"/nix/store\"}[1h], 3 * 3600) < 0";
               for = "60m";
               labels = {
                 severity = "critical";
               };
               annotations = {
-                summary = "Host disk of {{ $labels.host }} will fill in 4 hours";
-                description = "Disk will fill in 4 hours at current write rate\n Value: {{ $value }}";
+                summary = "CRIT - Host disk of {{ $labels.host }} will fill in 3 hours";
+                description = "Disk will fill in 3 hours at current write rate\n Value: {{ $value }}";
               };
             }
             {
@@ -133,7 +133,7 @@
                 severity = "warning";
               };
               annotations = {
-                summary = "{{ $labels.host }} is low on system memory";
+                summary = "WARN - {{ $labels.host }} is low on system memory";
                 description = "{{ $labels.host }} is low on system memory\n Value: {{ $value }}\n";
               };
             }
@@ -145,7 +145,7 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "{{ $labels.host }} is low on system memory";
+                summary = "CRIT - {{ $labels.host }} is low on system memory";
                 description = "{{ $labels.host }} is low on system memory\n Value: {{ $value }}\n";
               };
             }
@@ -157,7 +157,7 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "A systemd unit on {{ $labels.host }} has failed";
+                summary = "CRIT - A systemd unit on {{ $labels.host }} has failed";
                 description = "A systemd unit on {{ $labels.host }} has failed\n Value: {{ $value }}\n";
               };
             }
@@ -169,7 +169,7 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "HTTP service {{ $labels.server }} responded incorrect";
+                summary = "CRIT - HTTP service {{ $labels.server }} responded incorrect";
                 description = "The HTTP service {{ $labels.service }} responded with {{ $value }} instead of 200.\n";
               };
             }
@@ -181,7 +181,7 @@
                 severity = "warning";
               };
               annotations = {
-                summary = "Wireguard host handshake is more than 10min ago";
+                summary = "WARN - Wireguard host handshake is more than 10min ago";
                 description = "The handshake with the wireguard host with public key {{ $labels.public_key }} is {{ $value }} seconds ago.\n";
               };
             }
@@ -193,7 +193,7 @@
                 severity = "critical";
               };
               annotations = {
-                summary = "Wireguard host handshake is more than 15min ago";
+                summary = "CRIT - Wireguard host handshake is more than 15min ago";
                 description = "The handshake with the wireguard host with public key {{ $labels.public_key }} is {{ $value }} seconds ago.\n";
               };
             }
