@@ -15,4 +15,4 @@ while [[ $# -gt 0 ]]; do
 done
 
 rsync -r /home/em0lar/dev/nixfiles aido.lan.int.sig.de.em0lar.dev:/tmp
-ssh -A aido.lan.int.sig.de.em0lar.dev "cd /tmp/nixfiles && nix run github:serokell/deploy-rs .#${HOST} && cd /tmp && rm -rf /tmp/nixfiles"
+ssh -A aido.lan.int.sig.de.em0lar.dev "cd /tmp/nixfiles && deploy -s .#${HOST} && cd /tmp && rm -rf /tmp/nixfiles"

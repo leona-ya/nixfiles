@@ -3,6 +3,7 @@
 
 {
   em0lar.secrets."wireguard_server_privatekey".owner = "systemd-network";
+  networking.firewall.allowedUDPPorts = [ 51441 ];
 
   systemd.network.netdevs."30-wg-server" = {
     netdevConfig = {
@@ -10,6 +11,7 @@
       Name = "wg-server";
     };
     wireguardConfig = {
+      ListenPort = 51441;
       PrivateKeyFile = config.em0lar.secrets."wireguard_server_privatekey".path;
     };
     wireguardPeers = [{

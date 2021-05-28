@@ -17,7 +17,7 @@
             "0.0.0.0/0"
           ];
           PublicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
-          Endpoint = "haku.pbb.dus.de.em0lar.dev:51440";
+          Endpoint = "wg-sternpunkt.em0lar.dev:51440";
           PersistentKeepalive = 21;
         };
       }];
