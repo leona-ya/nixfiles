@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021052001;
+      serial = 2021052801;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -69,6 +69,7 @@ in {
       www.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
       auth.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
       alertmanager.CNAME = [ "naiad.ncp.nue.de.em0lar.dev." ];
+      alertmanager-bot.CNAME = [ "naiad.ncp.nue.de.em0lar.dev." ];
       git.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
       grafana.CNAME = [ "naiad.ncp.nue.de.em0lar.dev." ];
       md.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];

@@ -26,7 +26,7 @@
     messageSizeLimit = 52428800;
 
     enableImap = false;
-    enableSubmission = false;
+    enableSubmission = true;
     enablePop3 = false;
     enablePop3Ssl = false;
 
