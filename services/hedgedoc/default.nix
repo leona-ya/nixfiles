@@ -14,6 +14,7 @@
       email = false;
       allowEmailRegister = false;
       allowAnonymous = false;
+      allowAnonymousEdits = true;
       db = {
         dialect = "postgres";
         host = "/run/postgresql";
