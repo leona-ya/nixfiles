@@ -18,6 +18,9 @@
   environment.variables.QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
   environment.variables._JAVA_AWT_WM_NONREPARENTING = "1";
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+
   home-manager.users.em0lar = {
     wayland.windowManager.sway = let
       cfg = config.home-manager.users.em0lar.wayland.windowManager.sway;
@@ -100,10 +103,10 @@
           "${modifier}+Shift+9" = "move container to workspace 9";
           "${modifier}+Shift+0" = "move container to workspace 10";
 
-          "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%";
-          "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%";
-          "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle";
-          "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+          "XF86AudioRaiseVolume" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -i 5";
+          "XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -d 5";
+          "XF86AudioMute" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -t";
+          "XF86AudioMicMute" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer --default-source -t";
           "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
           "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
 
