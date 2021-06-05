@@ -58,7 +58,7 @@
     rustc rustfmt cargo
     spotify
     superTuxKart
-    texlive.combined.scheme-medium
+    texlive.combined.scheme-full
     thunderbird
     youtube-dl
     z-lua

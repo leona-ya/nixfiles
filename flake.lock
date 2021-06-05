@@ -133,11 +133,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1622145920,
-        "narHash": "sha256-/tt6IApLuVcGP5auy4zjLzfm5+MBHYLS3Nauvv2U2EQ=",
+        "lastModified": 1622753049,
+        "narHash": "sha256-clDbg4Lg4RGHJnGBLi2jp5kV4+01P42dAYB0imNmrhU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0e6c61a44092e98ba1d75b41f4f947843dc7814d",
+        "rev": "45f9cb06a9152ca367edc3e7eaa5449338885167",
         "type": "github"
       },
       "original": {
@@ -155,11 +155,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1622149400,
-        "narHash": "sha256-sJL7/4C4XXtaOd7rj79jJUKosjLk4328+L8tj9fLgHk=",
+        "lastModified": 1622699922,
+        "narHash": "sha256-KJ2R+URPXVCdignP9v2eCA+/YwiNYY5HSQ0/Szv47KM=",
         "owner": "simple-nixos-mailserver",
         "repo": "nixos-mailserver",
-        "rev": "500685bc38507a4e5c19f86f0a9782191f5148e4",
+        "rev": "49074b7835c6d40846cb23953c04a03e1d2a4a9e",
         "type": "gitlab"
       },
       "original": {
@@ -189,6 +189,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1622521809,
+        "narHash": "sha256-7XcqrtrHDeaasKzg/ruroLsC2fb6Fi3aenCrv1+xVLk=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "b2186d6c3cdc58fb3a8def0f608bcae61138cc6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1610942247,
@@ -207,11 +223,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1622194753,
-        "narHash": "sha256-76qtvFp/vFEz46lz5iZMJ0mnsWQYmuGYlb0fHgKqqMg=",
+        "lastModified": 1622545032,
+        "narHash": "sha256-1Y+2LFqnMBEH9OZzMBdLWl6GWFt/xzNz0V5X+m05Ing=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "540dccb2aeaffa9dc69bfdc41c55abd7ccc6baa3",
+        "rev": "1c2986bbb806c57f9470bf3231d8da7250ab9091",
         "type": "github"
       },
       "original": {
@@ -229,6 +245,7 @@
         "flake-registry": "flake-registry",
         "home-manager": "home-manager",
         "mailserver": "mailserver",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2"
       }
     },

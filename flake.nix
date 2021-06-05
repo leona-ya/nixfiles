@@ -22,9 +22,10 @@
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs@{ self, dns, nixpkgs, home-manager, flake-registry, deploy-rs, em0lar-dev-website, mailserver, ... }:
+  outputs = inputs@{ self, dns, nixpkgs, home-manager, flake-registry, deploy-rs, em0lar-dev-website, mailserver, nixos-hardware, ... }:
     let
       overlays = [
         (final: prev: import ./packages final prev)
@@ -127,6 +128,7 @@
           nixosSystem = {
             system = "x86_64-linux";
             modules = defaultModules ++ [
+              nixos-hardware.nixosModules.lenovo-thinkpad-t480s
               ./hosts/turingmachine/configuration.nix
             ];
           };
