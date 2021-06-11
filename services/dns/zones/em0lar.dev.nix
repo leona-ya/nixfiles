@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021052801;
+      serial = 2021060803;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -51,7 +51,7 @@ in {
       "beryl.int.sig.de" = host "195.39.247.145" "2a01:4f8:c17:235a:1000::3";
 
       "ns1" = myron_host;
-      "ns2" = rechaku_host;
+      "ns2" = haku_host;
       "ns3" = naiad_host;
 
       mail = myron_host;
@@ -75,6 +75,7 @@ in {
       md.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
       prometheus.CNAME = [ "naiad.ncp.nue.de.em0lar.dev." ];
       stun.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
+      todo.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
       turn.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
       webmail.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
       wifi.CNAME = [ "foros.int.sig.de.em0lar.dev." ];

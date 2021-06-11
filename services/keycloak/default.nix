@@ -17,7 +17,7 @@
     enable = true;
     httpPort = "8080";
     frontendUrl = "";
-    databasePasswordFile = config.em0lar.secrets."keycloak_database_password".path;
+    database.passwordFile = config.em0lar.secrets."keycloak_database_password".path;
     extraConfig = {
       "subsystem=undertow" = {
         "server=default-server" = {

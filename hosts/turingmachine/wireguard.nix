@@ -30,7 +30,7 @@
     ];
     routes = [
       #{ routeConfig.Destination = "10.151.0.0/16"; }
-      #{ routeConfig.Destination = "fd8f:d15b:9f40:0900::/54"; }
+      #{ routeConfig.Destination = "fd8f:d15b:9f40::/48"; }
     ];
   };
 }

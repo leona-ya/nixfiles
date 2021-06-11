@@ -42,6 +42,11 @@
     };
   };
   systemd.services.telegraf.serviceConfig.AmbientCapabilities = [ "CAP_NET_ADMIN" ];
+  services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/".proxyPass = "http://[fd8f:d15b:9f40:901::1]:8000";
+  };
 }
 
 

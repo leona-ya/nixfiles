@@ -60,6 +60,7 @@
             ./modules/nftables
             ./modules/secrets
             ./modules/telegraf
+            ./modules/vikunja
           ];
           documentation.info.enable = false;
         }

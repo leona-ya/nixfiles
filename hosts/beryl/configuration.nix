@@ -9,6 +9,7 @@
       ../../services/gitea
       ../../services/hedgedoc
       ../../services/matrix
+      ../../services/vikunja
   ];
 
   boot.loader.grub.enable = true;
