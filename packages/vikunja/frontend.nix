@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, unzip, ... }:
+{ lib, stdenv, fetchurl, unzip, ... }:
 
 stdenv.mkDerivation rec {
   pname = "vikunja-frontend";
@@ -9,7 +9,6 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ unzip ];
-  buildInputs = [ unzip ];
 
   unpackPhase = ''
     runHook preUnpack

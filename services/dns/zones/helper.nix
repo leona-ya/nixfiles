@@ -22,7 +22,7 @@ with dns.lib.combinators;
   hosts = {
     web = {
      A = [ "195.39.247.144" ];
-     AAAA = [ "2a01:4f8:c17:235a:1000::2" ];
+     AAAA = [ "2a0f:4ac0:1e0:100::1" ];
     };
   };
 }

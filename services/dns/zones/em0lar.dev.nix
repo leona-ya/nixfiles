@@ -5,7 +5,6 @@ with dns.lib.combinators;
 let
 myron_host = host "95.217.178.242" "2a01:4f9:c010:beb5::1";
 haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
-rechaku_host = host "49.12.7.88" "2a01:4f8:c17:235a::1";
 naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
 in {
   zone = {
@@ -13,7 +12,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021060803;
+      serial = 2021061101;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -44,11 +43,8 @@ in {
       "naiad.ncp.nue.de" = naiad_host;
       "haku.pbb.wob.de".CNAME = [ "haku.pbb.dus.de.em0lar.dev." ];
       "haku.pbb.dus.de" = haku_host;
-      "rechaku.het.fks.de" = rechaku_host;
-      #"foros.int.sig.de" = host "195.39.247.144" "2a0f:4ac0:1e0:100::1";
-      #"beryl.int.sig.de" = host "195.39.247.145" "2a0f:4ac0:1e0:101::1";
-      "foros.int.sig.de" = host "195.39.247.144" "2a01:4f8:c17:235a:1000::2";
-      "beryl.int.sig.de" = host "195.39.247.145" "2a01:4f8:c17:235a:1000::3";
+      "foros.int.sig.de" = host "195.39.247.144" "2a0f:4ac0:1e0:100::1";
+      "beryl.int.sig.de" = host "195.39.247.145" "2a0f:4ac0:1e0:101::1";
 
       "ns1" = myron_host;
       "ns2" = haku_host;
@@ -70,6 +66,7 @@ in {
       auth.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
       alertmanager.CNAME = [ "naiad.ncp.nue.de.em0lar.dev." ];
       alertmanager-bot.CNAME = [ "naiad.ncp.nue.de.em0lar.dev." ];
+      convos.CNAME = [ "myron.het.hel.fi.em0lar.dev." ];
       git.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
       grafana.CNAME = [ "naiad.ncp.nue.de.em0lar.dev." ];
       md.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];

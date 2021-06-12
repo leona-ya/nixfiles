@@ -9,6 +9,7 @@
       ./wireguard.nix
       ../../services/dns/primary
       ../../services/mail
+     ../../services/convos
     ];
 
   boot.loader.grub.enable = true;
