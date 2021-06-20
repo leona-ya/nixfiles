@@ -55,7 +55,7 @@
     postman
     python3
     rofi-pass 
-    rustc rustfmt cargo
+    rustup
     spotify
     superTuxKart
     texlive.combined.scheme-full
@@ -96,9 +96,14 @@
       sshKeys = [ "430411806903447FF65FCBCBB1ADA545CD2CBACD" ];
     };
     programs.password-store.enable = true;
-    programs.zsh.initExtra = ''
-      eval "$(${pkgs.z-lua}/bin/z --init zsh)"
-    '';
+    programs.zsh = {
+      initExtra = ''
+        eval "$(${pkgs.z-lua}/bin/z --init zsh)"
+      '';
+      shellAliases = {
+        "pdev" = "pandoc --template eisvogel --listings";
+      };
+    };
   };
   environment.variables.SSH_AUTH_SOCK = "/run/user/1000/gnupg/S.gpg-agent.ssh";
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";

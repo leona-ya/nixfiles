@@ -34,7 +34,6 @@
         "ip" = "ip -c";
         "watch" = "watch -c";
         "xtssh" = "TERM=xterm-256color ssh";
-        "leo" = "echo $(whoami) is cute!";
       };
       oh-my-zsh = {
         enable = true;
