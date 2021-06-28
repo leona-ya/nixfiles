@@ -38,6 +38,7 @@
       oh-my-zsh = {
         enable = true;
         plugins = [
+          "gitfast"
           "git"
           "sudo"
           "virtualenvwrapper"

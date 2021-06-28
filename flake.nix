@@ -90,6 +90,16 @@
           };
           deploy.hostname = "beryl.lan.int.sig.de.em0lar.dev";
         };
+        #dwd = {
+        #  nixosSystem = {
+        #    system = "x86_64-linux";
+        #    modules = defaultModules ++ [
+        #      nixos-hardware.nixosModules.pcengines-apu
+        #      ./hosts/dwd/configuration.nix
+        #    ];
+        #  };
+        #  deploy.hostname = "dwd.lan.int.sig.de.em0lar.dev";
+        #};
         foros = {
           nixosSystem = {
             system = "x86_64-linux";

@@ -190,21 +190,6 @@ in {
       ];
       root = pkgs.opendatamap-net;
     };
-    "grafana.opendatamap.net" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://51.15.21.208:3000";
-    };
-    "node-red.opendatamap.net" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://51.15.21.208:1880";
-    };
-    "rhein-sieg.opendatamap.net" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://51.15.21.208:3005";
-    };
   };
   services.phpfpm.pools."nginx-default" = {
     user = config.services.nginx.user;

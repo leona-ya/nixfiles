@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, unzip, ... }:
+{ stdenv, lib, fetchurl, unzip, ... }:
 
 stdenv.mkDerivation rec {
   pname = "vikunja-frontend";
@@ -10,22 +10,17 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ unzip ];
 
-  unpackPhase = ''
-    runHook preUnpack
-
-    unzip $src -d vikunja-frontend
-
-    runHook postUnpack
-    '';
+  sourceRoot = ".";
 
   installPhase = ''
     runHook preInstall
 
     mkdir -p $out/
-    cp -r vikunja-frontend/* $out/
+    cp -r * $out/
 
     runHook postInstall
   '';
+
   meta = {
     description = "Frontend of the Vikunja to-do list app";
     homepage = "https://vikunja.io/";
