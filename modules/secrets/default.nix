@@ -1,4 +1,4 @@
-# inspired by petabyteboy (git.petabyte.dev/petabyteboy/nixfiles)
+# inspired by petabyte (git.petabyte.dev/petabyteboy/nixfiles)
 { config, lib, pkgs, ... }:
 
 with lib;
@@ -43,7 +43,7 @@ let
   });
   enabledFiles = filterAttrs (n: file: file.enable) config.em0lar.secrets;
 
-  mkDeploySecret = file: pkgs.writeScript "deploy-secret-${removeSuffix ".gpg" (baseNameOf file.source-path)}.sh" ''
+  mkDecryptSecret = file: pkgs.writeScript "decrypt-secret-${removeSuffix ".gpg" (baseNameOf file.source-path)}.sh" ''
     #!${pkgs.runtimeShell}
     set -eu pipefail
     if [ ! -f "${file.path}" ]; then
@@ -55,9 +55,14 @@ let
         cat ${escapeShellArg file.source-path} > ${file.path}
       ''}
     fi
+  '';
+  mkSetupSecret = file: pkgs.writeScript "setup-secret-${removeSuffix ".gpg" (baseNameOf file.source-path)}.sh" ''
+    #!${pkgs.runtimeShell}
+    set -eu pipefail
     chown ${escapeShellArg file.owner}:${escapeShellArg file.group-name} ${escapeShellArg file.path}
     chmod ${escapeShellArg file.mode} ${escapeShellArg file.path}
   '';
+
 
 in {
   options.em0lar.secrets = mkOption {
@@ -65,18 +70,32 @@ in {
     default = { };
   };
   config = mkIf (enabledFiles != { }) {
-    system.activationScripts.setup-secrets = let
+    system.activationScripts = let
       files = unique (map (flip removeAttrs ["_module"]) (attrValues enabledFiles));
-      script = ''
-        echo setting up secrets...
+      decrypt = ''
+        function fail() {
+          rm $1
+          echo "failed to decrypt $1"
+        }
+        echo decrypting up secrets...
         mkdir -p /secrets
         mountpoint -q /secrets || mount -t tmpfs -o size=50m tmpfs /secrets
-        chown root:root /secrets
+        chown 0:0 /secrets
         chmod 0755 /secrets
         ${concatMapStringsSep "\n" (file: ''
-          ${mkDeploySecret file} || echo "failed to deploy ${file.source-path} to ${file.path}"
+          ${mkDecryptSecret file} || fail ${file.path}
         '') files}
       '';
-    in stringAfter [ "users" "groups" ] "source ${pkgs.writeText "setup-secrets.sh" script}";
+      setup = ''
+        echo setting up secrets...
+        ${concatMapStringsSep "\n" (file: ''
+          ${mkSetupSecret file} || echo "failed to set up ${file.path}"
+        '') files}
+      '';
+    in {
+      decrypt-secrets.text = "source ${pkgs.writeText "decrypt-secrets.sh" decrypt}";
+      setup-secrets = stringAfter [ "users" "groups" ] "source ${pkgs.writeText "setup-secrets.sh" setup}";
+      users.deps = [ "decrypt-secrets" ];
+    };
   };
 }

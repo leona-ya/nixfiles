@@ -7,6 +7,7 @@
     ../users/e1mo
     ./nginx.nix
   ];
+  users.mutableUsers = false;
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   nix = {
@@ -29,7 +30,7 @@
   services.openssh.challengeResponseAuthentication = false;
   services.openssh.permitRootLogin = lib.mkDefault "no";
 
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = lib.mkDefault false;
 
   time.timeZone = "Europe/Berlin";
 

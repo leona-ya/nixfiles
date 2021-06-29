@@ -8,7 +8,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID9x/kL2fFqQSEyFvdEgiM2UKYAZyV1oct9alS6mweVa e1mo (ssh_0x6D617FD0A85BAADA)"
     ];
     shell = pkgs.zsh;
-    initialPassword = "foobar2342";
+    hashedPassword = "!";
   };
 
   home-manager.users.e1mo = {

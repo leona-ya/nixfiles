@@ -18,10 +18,12 @@
   em0lar.secrets = {
     "backup_ssh_key".owner = "root";
     "backup_passphrase".owner = "root";
-    "alt_rsa_ssh_key" = {
-      owner = "em0lar";
-    };
+    "alt_rsa_ssh_key".owner = "em0lar";
+    "user-em0lar-password".owner = "root";
   };
+
+  users.users.em0lar.passwordFile = config.em0lar.secrets.user-em0lar-password.path;
+  security.sudo.wheelNeedsPassword = true;
 
   home-manager.users.em0lar = {
     home.file.alt_rsa_ssh_key = {

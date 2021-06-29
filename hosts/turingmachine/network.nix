@@ -8,7 +8,10 @@
     "int.sig.de.labcode.de"
   ];
 
-  networking.wireless.enable = true;
+  networking.wireless = {
+    enable = true;
+    interfaces = [ "wifi0" ];
+  };
   systemd.network = {
     links."10-eth0" = {
       matchConfig.MACAddress = "8c:16:45:89:d1:64";

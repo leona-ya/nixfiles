@@ -1,8 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
+  em0lar.secrets.global-user-root-password.source-path = "${../../secrets/all/user-root-password.gpg}";
+
   users.users.root = {
     shell = pkgs.zsh;
+    passwordFile = config.em0lar.secrets.global-user-root-password.path;
   };
 
   home-manager.users.root = {
