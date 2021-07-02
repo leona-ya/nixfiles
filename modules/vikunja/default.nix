@@ -23,11 +23,6 @@ in {
       defaultText = "pkgs.vikunja-frontend";
       description = "vikunja-frontend derivation to use.";
     };
-    stateDir = mkOption {
-      type = types.str;
-      default = "/var/lib/vikunja";
-      description = "Vikunja data directory";
-    };
     environmentFiles = mkOption {
       type = types.listOf types.path;
       default = [ ];
@@ -95,7 +90,7 @@ in {
       };
       path = mkOption {
         type = types.str;
-        default = "${cfg.stateDir}/vikunja.db";
+        default = "/var/lib/vikunja/vikunja.db";
         description = "Path to the sqlite3 database file.";
       };
     };
@@ -109,7 +104,7 @@ in {
         frontendurl = "${cfg.frontendScheme}://${cfg.frontendHostname}/";
       };
       files = {
-        basepath = "${cfg.stateDir}/files";
+        basepath = "/var/lib/vikunja/files";
       };
     };
 
@@ -123,7 +118,7 @@ in {
       serviceConfig = {
         Type = "simple";
         DynamicUser = true;
-        StateDirectory = baseNameOf cfg.stateDir;
+        StateDirectory = "vikunja";
         ExecStart = "${cfg.package-api}/bin/vikunja";
         Restart = "always";
         EnvironmentFile = cfg.environmentFiles;

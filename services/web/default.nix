@@ -90,7 +90,9 @@ in {
       };
       locations."/" = {
         extraConfig = ''
+          ${commonHeaders}
           autoindex on;
+          add_header Access-Control-Allow-Origin '*';
         '';
       };
     };
