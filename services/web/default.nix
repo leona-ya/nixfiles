@@ -19,7 +19,7 @@ in {
     "auth.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://10.151.4.19:8080";
+      locations."/".proxyPass = "http://10.151.4.4:8080";
     };
     "element.em0lar.de" = {
       enableACME = true;

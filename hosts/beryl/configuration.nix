@@ -26,7 +26,7 @@
     backups.enable = true;
     telegraf = {
       enable = true;
-      host = "[fd8f:d15b:9f40:102:8079:3aff:fe35:9ddc]";
+      host = "[fd8f:d15b:9f40:11:8079:3aff:fe35:9ddc]";
     };
   };
 }

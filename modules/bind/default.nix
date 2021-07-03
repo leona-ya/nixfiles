@@ -17,6 +17,10 @@ in {
       type = types.str;
       default = "";
     };
+    enableAllowQueryOption = mkOption {
+      type = types.bool;
+      default = true;
+    };
     extraConfig = mkOption {
       type = types.str;
       default = "";
@@ -58,10 +62,11 @@ in {
           "8.8.8.8"
           "8.8.4.4"
       ];
-      cacheNetworks = [
+      cacheNetworks = lib.mkIf cfg.enableAllowQueryOption [
         "127.0.0.0/24"
         "::1/128"
       ];
+      directory = "/var/lib/named";
       extraOptions = ''
         querylog no;
       '' + cfg.extraOptions;
@@ -71,7 +76,6 @@ in {
         };
       '' + cfg.extraConfig;
     };
-    systemd.services.bind.serviceConfig.StateDirectory = "named";
     services.prometheus.exporters.bind = {
       enable = true;
       bindVersion = "xml.v3";
