@@ -64,4 +64,11 @@
       };
     };
   };
+
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "30 3 * * * root systemctl restart pppd-versatel" # Versatel reconnects DSL after 24 hours
+    ];
+  };
 }

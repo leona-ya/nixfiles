@@ -20,7 +20,7 @@ in {
       iifname wg-server oifname br-tethys ct state new accept
     '';
     extraConfig = ''
-      table inet nat {
+      table ip nat {
       	chain prerouting {
       		type nat hook prerouting priority 0; policy accept;
       	}
