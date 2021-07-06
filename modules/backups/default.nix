@@ -35,7 +35,7 @@ in {
     };
     repo = mkOption {
       type = types.str;
-      default = "ssh://backup@[fd8f:d15b:9f40:102:9cf1:ccff:fead:6e31]:61337/mnt/backup/repos/synced/${config.networking.hostName}.${config.networking.domain}";
+      default = "ssh://borg@[fd8f:d15b:9f40:11:982d:6eff:fefc:10a2]:61337/mnt/backup/repos/synced/${config.networking.hostName}.${config.networking.domain}";
     };
     encryptionMode = mkOption {
       type = types.str;
@@ -76,7 +76,7 @@ in {
   };
   config = mkIf cfg.enable {
     services.borgbackup.jobs = {
-      helene = {
+      aido = {
         user = cfg.user;
         group = cfg.group;
         paths = cfg.paths;
@@ -87,16 +87,17 @@ in {
           passCommand = cfg.encryptionPassCommand;
         };
         environment = {
-          BORG_RSH = "ssh -o StrictHostKeyChecking=no -i ${cfg.sshKeyFilePath}";
+          BORG_RSH = "ssh -o StrictHostKeyChecking=no -i ${cfg.sshKeyFilePath} -p 61337";
           BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
         };
         compression = cfg.compression;
         prune.keep = cfg.pruneKeepConfig;
+        prune.prefix = "";
         doInit = true;
         startAt = [ ];
       };
     };
-    systemd.timers.borgbackup-job-helene = lib.mkIf cfg.enableSystemdTimer {
+    systemd.timers.borgbackup-job-aido = lib.mkIf cfg.enableSystemdTimer {
       timerConfig = cfg.systemdTimerConfig;
       wantedBy = [ "timers.target" ];
     };

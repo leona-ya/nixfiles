@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   em0lar.secrets."keycloak_database_password" = {
@@ -15,8 +15,11 @@
   users.groups.keycloak = {};
   services.keycloak = {
     enable = true;
+    package = (pkgs.keycloak.override {
+      jre = pkgs.openjdk11;
+    });
     httpPort = "8080";
-    frontendUrl = "";
+    frontendUrl = "https://auth.em0lar.dev/auth";
     database.passwordFile = config.em0lar.secrets."keycloak_database_password".path;
     extraConfig = {
       "subsystem=undertow" = {

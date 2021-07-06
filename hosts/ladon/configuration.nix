@@ -33,4 +33,8 @@
       host = "[fd8f:d15b:9f40:102:3016:54ff:fe12:f68c]";
     };
   };
+  services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
+    enableACME = lib.mkForce false;
+    forceSSL = lib.mkForce false;
+  };
 }

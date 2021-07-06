@@ -4,6 +4,7 @@
   imports = [
       ./hardware-configuration.nix
       ../../common
+      ../../services/backup-relay
   ];
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -18,7 +19,7 @@
   services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
   systemd.network = {
     links."10-eth" = {
-        matchConfig.MACAdress = "9a:2d:6e:fc:10:a2";
+        matchConfig.MACAddress = "9a:2d:6e:fc:10:a2";
         linkConfig.Name = "eth0";
     };
     networks."10-eth0" = {

@@ -24,6 +24,7 @@
         ];
         PublicKey = "376YjLMEUFHWFE5Xkn3qRyIQ/kAHzM4DhvIcC5boCQ8=";
         Endpoint = "wg-sternpunkt.em0lar.dev:51441";
+        PersistentKeepalive = 21;
       };
     }];
   };

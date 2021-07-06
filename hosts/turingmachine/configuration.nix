@@ -45,11 +45,12 @@
       "/home/em0lar/.local/share/containers"
       "/home/em0lar/sync/nas"
       "/var/lib/containers"
-      "node_modules"
-      ".venv"
-      ".cache"
+      "**/node_modules"
+      "**/.venv"
+      "/home/*/.cache"
+      "**/Cache"
     ];
-    repo = "ssh://backup@[fd8f:d15b:9f40:102:9cf1:ccff:fead:6e31]:61337/mnt/backup/repos/unsynced/mimas.int.sig.de.em0lar.dev";
+    repo = "ssh://borg@[fd8f:d15b:9f40:11:982d:6eff:fefc:10a2]:61337/mnt/backup/repos/unsynced/turingmachine.int.sig.de.em0lar.dev";
     enableSystemdTimer = false;
   };
   system.stateVersion = "20.09";
