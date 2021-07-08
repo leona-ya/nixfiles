@@ -40,6 +40,7 @@
         ];
       };
     };
+    diskioDisks = [ "vda" ];
   };
   systemd.services.telegraf.serviceConfig.AmbientCapabilities = [ "CAP_NET_ADMIN" ];
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {

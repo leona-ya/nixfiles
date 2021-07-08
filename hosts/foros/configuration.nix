@@ -25,6 +25,7 @@
     telegraf = {
       enable = true;
       host = "[fd8f:d15b:9f40:11:2c5a:56ff:fe4f:e4c4]";
+      diskioDisks = [ "sda" ];
     };
   };
 }

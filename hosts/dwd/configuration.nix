@@ -24,6 +24,7 @@
   em0lar.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40::1]";
+    diskioDisks = [ "sda" ];
   };
   services.telegraf.extraConfig.inputs.net.interfaces = [ "br*" "ppp-wan" ];
 }

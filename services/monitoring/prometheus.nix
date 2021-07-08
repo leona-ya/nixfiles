@@ -79,6 +79,30 @@
               };
             }
             {
+              alert = "HighCPU";
+              expr = "(cpu_usage_system + cpu_usage_user) > 85";
+              for = "30m";
+              labels = {
+                severity = "warning";
+              };
+              annotations = {
+                summary = "WARN - CPU of {{ $labels.host }} has a high load";
+                description = "CPU has a high load for 30min\n Value: {{ $value }}\n";
+              };
+            }
+            {
+              alert = "HighCPU";
+              expr = "(cpu_usage_system + cpu_usage_user) > 85";
+              for = "60m";
+              labels = {
+                severity = "critical";
+              };
+              annotations = {
+                summary = "CRIT - CPU of {{ $labels.host }} has a high load";
+                description = "CPU has a high load for 60min\n Value: {{ $value }}\n";
+              };
+            }
+            {
               alert = "LowStorage";
               expr = "disk_used_percent{path!=\"/nix/store\"} > 90";
               for = "5m";
@@ -104,7 +128,7 @@
             }
             {
               alert = "LowStoragePredict";
-              expr = "predict_linear(disk_free{path!=\"/nix/store\"}[1h], 5 * 3600) < 0";
+              expr = "predict_linear(disk_free{path!=\"/nix/store\", path!=\"/boot\"}[1h], 5 * 3600) < 0";
               for = "30m";
               labels = {
                 severity = "warning";
@@ -116,7 +140,7 @@
             }
             {
               alert = "LowStoragePredict";
-              expr = "predict_linear(disk_free{path!=\"/nix/store\"}[1h], 3 * 3600) < 0";
+              expr = "predict_linear(disk_free{path!=\"/nix/store\", path!=\"/boot\"}[1h], 3 * 3600) < 0";
               for = "60m";
               labels = {
                 severity = "critical";

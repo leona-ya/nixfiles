@@ -15,13 +15,14 @@ in {
    nameValuePair "dnssec/${name}/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.key" { owner = "named"; }
   ) zoneDefinitionsDNSSEC;
   systemd.services.bind.serviceConfig.ExecStartPre = [
-    "${pkgs.coreutils}/bin/mkdir -p /run/named/dnssec"
+    "${pkgs.coreutils}/bin/mkdir -p /var/lib/named/dnssec"
     "${pkgs.coreutils}/bin/mkdir -p /var/lib/named/zones"
+    "${pkgs.coreutils}/bin/chown named /var/lib/named/dnssec"
     "${pkgs.coreutils}/bin/chown named /var/lib/named/zones"
   ] ++ mapAttrsToList (name: zoneConfig:
-    "${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."dnssec/${name}/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.private".path} /run/named/dnssec/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.private"
+    "${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."dnssec/${name}/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.private".path} /var/lib/named/dnssec/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.private"
   ) zoneDefinitionsDNSSEC ++ mapAttrsToList (name: zoneConfig:
-    "${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."dnssec/${name}/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.key".path} /run/named/dnssec/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.key"
+    "${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."dnssec/${name}/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.key".path} /var/lib/named/dnssec/K${name}.+${zoneConfig.dnssecKeyAlgorithm}+${zoneConfig.dnssecKeyID}.key"
   ) zoneDefinitionsDNSSEC ++ mapAttrsToList (name: zoneConfig:
     "${pkgs.coreutils}/bin/ln -sf ${zoneConfig.zone} /var/lib/named/zones/${name}.zone"
   ) zoneDefinitions;

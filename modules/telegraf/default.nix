@@ -10,6 +10,7 @@ in {
       type = types.attrs;
       default = {};
     };
+    diskioDisks = mkOption { type = types.listOf types.str; };
   };
   config = lib.mkIf cfg.enable {
     services.telegraf = {
@@ -22,6 +23,9 @@ in {
           cpu = { };
           disk = {
             ignore_fs = ["tmpfs" "devtmpfs" "devfs" "iso9660" "overlay" "aufs" "squashfs"];
+          };
+          diskio = {
+            devices = cfg.diskioDisks;
           };
           systemd_units = { };
           net = {
