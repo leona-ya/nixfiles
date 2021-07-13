@@ -36,6 +36,7 @@
     evince
     (firefox-wayland.override { extraNativeMessagingHosts = [ passff-host ]; })
     gcc
+    gh
     gimp
     gnome3.vinagre
     hamster

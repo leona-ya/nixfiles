@@ -54,6 +54,9 @@
           "*" = {
             xkb_options = "compose:prsc";
           };
+          "type:touchpad" = {
+            tap = "enabled";
+          };
         };
 
         keybindings = {
