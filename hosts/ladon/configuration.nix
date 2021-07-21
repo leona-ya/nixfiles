@@ -2,20 +2,30 @@
 
 {
   imports = [
-      "${modulesPath}/virtualisation/lxc-container.nix"
+      ./hardware-configuration.nix
       ../../common
       ../../services/ldap
       ../../services/keycloak
   ];
 
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/sda";
+
   environment.noXlibs = lib.mkForce false;
   networking.hostName = "ladon";
   networking.domain = "int.sig.de.em0lar.dev";
   services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
-  systemd.network.networks."10-eth0" = {
-    DHCP = "yes";
-    matchConfig = {
-      Name = "eth0";
+  systemd.network = {
+    links."10-eth0" = {
+      matchConfig.MACAddress = "6e:f2:ec:90:8c:3c";
+      linkConfig.Name = "eth0";
+    };
+    networks."10-eth0" = {
+      DHCP = "yes";
+      matchConfig = {
+        Name = "eth0";
+      };
     };
   };
   networking.useHostResolvConf = false;
@@ -30,7 +40,8 @@
     backups.enable = true;
     telegraf = {
       enable = true;
-      host = "[fd8f:d15b:9f40:102:3016:54ff:fe12:f68c]";
+      host = "[fd8f:d15b:9f40:11:6cf2:ecff:fe90:8c3c]";
+      diskioDisks = [ "sda" ];
     };
   };
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
