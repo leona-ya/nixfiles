@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1625752546713,
+  "iteration": 1626035906500,
   "links": [],
   "panels": [
     {
@@ -588,13 +588,16 @@
               "viz": false
             },
             "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "normal"
@@ -690,7 +693,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -799,7 +802,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -899,7 +902,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "normal"
@@ -1096,7 +1099,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1479,8 +1482,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "haku",
-          "value": "haku"
+          "text": "dwd",
+          "value": "dwd"
         },
         "datasource": null,
         "definition": "label_values(system_uptime, host)",

@@ -2,7 +2,7 @@
   description = "em0lar's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:em0lar/nixpkgs/bind-directory-setting";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,7 +60,6 @@
             ./modules/nftables
             ./modules/secrets
             ./modules/telegraf
-            ./modules/vikunja
           ];
           documentation.info.enable = false;
         }
@@ -116,15 +115,6 @@
               ./hosts/haku/configuration.nix
             ];
           };
-        };
-        rechaku = {
-          nixosSystem = {
-            system = "x86_64-linux";
-            modules = defaultModules ++ [
-              ./hosts/rechaku/configuration.nix
-            ];
-          };
-          deploy.hostname = "49.12.7.88";
         };
         ladon = {
           nixosSystem = {

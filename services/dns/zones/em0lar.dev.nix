@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@labcode.de";
-      serial = 2021061101;
+      serial = 2021071004;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -76,6 +76,13 @@ in {
       turn.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
       webmail.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
       wifi.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
+
+      nsr = {
+        A = [ "65.21.190.149" ];
+        AAAA = [ "2a01:4f9:c010:b88b::1" ];
+      };
+      "routing.nsr".CNAME = [ "nsr.em0lar.dev." ];
     };
   };
 }
+

@@ -22,6 +22,19 @@
   networking.useHostResolvConf = false;
   system.stateVersion = "20.09";
 
+  systemd.network = {
+    links."10-eth0" = {
+      matchConfig.MACAddress = "52:54:00:e3:fc:60";
+      linkConfig.Name = "eth0";
+    };
+    networks."10-eth0" = {
+      DHCP = "yes";
+      matchConfig = {
+        Name = "eth0";
+      };
+    };
+  };
+
   em0lar.secrets = {
     "backup_ssh_key".owner = "root";
     "backup_passphrase".owner = "root";
