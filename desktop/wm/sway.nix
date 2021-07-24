@@ -24,7 +24,7 @@
   home-manager.users.em0lar = {
     wayland.windowManager.sway = let
       cfg = config.home-manager.users.em0lar.wayland.windowManager.sway;
-      wallpaper = "~/.wallpapers/pbb/river.png";
+      wallpaper = "~/.wallpapers/yuka/river.png";
       lockCommand = "swaylock -i ${wallpaper}";
       modifier = "Mod4";
     in {

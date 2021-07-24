@@ -96,6 +96,20 @@
       enableExtraSocket = true;
       sshKeys = [ "430411806903447FF65FCBCBB1ADA545CD2CBACD" ];
     };
+    programs.qutebrowser = {
+      enable = true;
+      keyBindings.normal = {
+        "<z><l>" = "spawn --userscript qute-pass --username-target secret --username-pattern \"username|user: (.+)\"";
+        "<z><u><l>" = "spawn --userscript qute-pass --username-only --username-target secret --username-pattern \"username|user: (.+)\"";
+        "<z><p><l>" = "spawn --userscript qute-pass --password-only";
+        "J" = "tab-prev";
+        "K" = "tab-next";
+      };
+      settings = {
+        auto_save.session = true;
+        colors.webpage.preferred_color_scheme = "dark";
+      };
+    };
     programs.password-store.enable = true;
     programs.zsh = {
       initExtra = ''
