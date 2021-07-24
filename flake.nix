@@ -152,6 +152,15 @@
             ];
           };
         };
+        rechaku = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/rechaku/configuration.nix
+            ];
+          };
+          deploy.hostname = "188.34.167.131";
+        };
       };
     in {
       nixosConfigurations = (nixpkgs.lib.mapAttrs (name: config: (nixpkgs.lib.nixosSystem rec {
