@@ -82,6 +82,7 @@
         };
       in {
         "*.em0lar.dev" = em0lar;
+        "*.lan" = em0lar;
       };
     };
   };

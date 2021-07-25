@@ -16,13 +16,31 @@
         ListenPort = 51441;
         PrivateKeyFile = config.em0lar.secrets."wireguard_server_privatekey".path;
       };
-      wireguardPeers = [{
-        wireguardPeerConfig = {
-          AllowedIPs = [ "fd8f:d15b:9f40:0900::/48" ];
-          PublicKey = "376YjLMEUFHWFE5Xkn3qRyIQ/kAHzM4DhvIcC5boCQ8=";
-          Endpoint = "wg-sternpunkt.em0lar.dev:51441";
-        };
-      }];
+      wireguardPeers = [
+        {
+          wireguardPeerConfig = {
+            AllowedIPs = [ "fd8f:d15b:9f40:0c21::1/72" ];
+            PublicKey = "xEgZUGdhPkIAZYmDszEUHm86zStsJMF3lowGIkjQE1k=";
+            Endpoint = "myron.net.em0lar.dev:51441";
+          };
+        }
+        { # atlas
+          wireguardPeerConfig = {
+            AllowedIPs = [
+              "fd8f:d15b:9f40::/53"
+            ];
+            PublicKey = "8Jzx9hklD8g6colimGybv9kpC2q0oTIgrISGhLd0QEM=";
+            PersistentKeepalive = 21;
+          };
+        }
+        {
+          wireguardPeerConfig = {
+            AllowedIPs = [ "fd8f:d15b:9f40:0900::/48" ];
+            PublicKey = "376YjLMEUFHWFE5Xkn3qRyIQ/kAHzM4DhvIcC5boCQ8=";
+            Endpoint = "wg.net.em0lar.dev:51441";
+          };
+        }
+      ];
     };
     networks."30-wg-server" = {
       name = "wg-server";

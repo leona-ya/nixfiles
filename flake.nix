@@ -78,7 +78,7 @@
               ./hosts/aido/configuration.nix
             ];
           };
-          deploy.hostname = "aido.lan.int.sig.de.em0lar.dev";
+          deploy.hostname = "aido.lan";
         };
         beryl = {
           nixosSystem = {
@@ -87,7 +87,7 @@
               ./hosts/beryl/configuration.nix
             ];
           };
-          deploy.hostname = "beryl.lan.int.sig.de.em0lar.dev";
+          deploy.hostname = "beryl.lan";
         };
         dwd = {
           nixosSystem = {
@@ -97,7 +97,7 @@
               ./hosts/dwd/configuration.nix
             ];
           };
-          deploy.hostname = "dwd.lan.int.sig.de.em0lar.dev";
+          deploy.hostname = "10.151.0.1";
         };
         foros = {
           nixosSystem = {
@@ -106,7 +106,7 @@
               ./hosts/foros/configuration.nix
             ];
           };
-          deploy.hostname = "foros.lan.int.sig.de.em0lar.dev";
+          deploy.hostname = "foros.lan";
         };
         haku = {
           nixosSystem = {
@@ -123,7 +123,7 @@
               ./hosts/ladon/configuration.nix
             ];
           };
-          deploy.hostname = "ladon.lan.int.sig.de.em0lar.dev";
+          deploy.hostname = "ladon.lan";
         };
         turingmachine = {
           nixosSystem = {
@@ -133,7 +133,7 @@
               ./hosts/turingmachine/configuration.nix
             ];
           };
-          deploy.hostname = "turingmachine.lan.int.sig.de.em0lar.dev";
+          deploy.hostname = "turingmachine.lan";
         };
         naiad = {
           nixosSystem = {

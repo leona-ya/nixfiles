@@ -50,7 +50,7 @@
       "/home/*/.cache"
       "**/Cache"
     ];
-    repo = "ssh://borg@[fd8f:d15b:9f40:11:982d:6eff:fefc:10a2]:61337/mnt/backup/repos/unsynced/turingmachine.int.sig.de.em0lar.dev";
+    repo = "ssh://borg@[fd8f:d15b:9f40:11:982d:6eff:fefc:10a2]:61337/mnt/backup/repos/unsynced/turingmachine.net.em0lar.dev";
     enableSystemdTimer = false;
   };
   system.stateVersion = "20.09";

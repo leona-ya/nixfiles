@@ -14,7 +14,7 @@
 
   environment.noXlibs = lib.mkForce false;
   networking.hostName = "ladon";
-  networking.domain = "int.sig.de.em0lar.dev";
+  networking.domain = "net.em0lar.dev";
   services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
   systemd.network = {
     links."10-eth0" = {

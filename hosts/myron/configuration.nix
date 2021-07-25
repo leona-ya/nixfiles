@@ -19,7 +19,7 @@
   services.qemuGuest.enable = true;
 
   networking.hostName = "myron";
-  networking.domain = "het.hel.fi.em0lar.dev";
+  networking.domain = "net.em0lar.dev";
 
   systemd.network = {
     links."10-eth0" = {

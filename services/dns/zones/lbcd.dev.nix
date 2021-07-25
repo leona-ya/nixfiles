@@ -5,8 +5,8 @@
     TTL = 3600;
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
-      adminEmail = "noc@labcode.de";
-      serial = 2021042401;
+      adminEmail = "noc@em0lar.dev";
+      serial = 2021072402;
       refresh = 3600;
       expire = 604800;
       minimum = 600;

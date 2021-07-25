@@ -3,9 +3,9 @@
 {
   networking.useDHCP = false;
   networking.hostName = "turingmachine";
-  networking.domain = "int.sig.de.em0lar.dev";
+  networking.domain = "net.em0lar.dev";
   services.resolved.domains = [
-    "int.sig.de.labcode.de"
+    "lan"
   ];
 
   networking.wireless = {

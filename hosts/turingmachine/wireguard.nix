@@ -17,7 +17,7 @@
       wireguardPeerConfig = {
         AllowedIPs = [ "10.151.0.0/16" "fd8f:d15b:9f40::/48" ];
         PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
-        Endpoint = "wg-sternpunkt.em0lar.dev:51442";
+        Endpoint = "wg.net.em0lar.dev:51442";
       };
     }];
   };

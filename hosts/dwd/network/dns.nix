@@ -3,9 +3,9 @@
     enable = true;
     zones = [
       {
-        name = "lan.int.sig.de.em0lar.dev";
+        name = "lan";
         master = true;
-        file = "/var/lib/named/zones/lan.int.sig.de.em0lar.dev.zone";
+        file = "/var/lib/named/zones/lan.zone";
         extraConfig = ''
           allow-update { localhost; };
         '';

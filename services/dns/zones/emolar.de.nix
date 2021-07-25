@@ -5,8 +5,8 @@
     TTL = 3600;
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
-      adminEmail = "noc@labcode.de";
-      serial = 2021050602;
+      adminEmail = "noc@em0lar.dev";
+      serial = 2021072402;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -28,10 +28,10 @@
     AAAA = helper.hosts.web.AAAA;
 
     subdomains = {
-      www.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
-      auth.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
-      git.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
-      md.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
+      www.CNAME = [ "foros.net.em0lar.dev." ];
+      auth.CNAME = [ "foros.net.em0lar.dev." ];
+      git.CNAME = [ "beryl.net.em0lar.dev." ];
+      md.CNAME = [ "beryl.net.em0lar.dev." ];
     };
   };
 }

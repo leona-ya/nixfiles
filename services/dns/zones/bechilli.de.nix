@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021050201;
+      serial = 2021072402;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -26,7 +26,7 @@
     CAA = helper.caa;
 
     subdomains = {
-      autoconfig.CNAME = [ "myron.het.hel.fi.em0lar.dev." ];
+      autoconfig.CNAME = [ "myron.net.em0lar.dev." ];
     };
   };
 }

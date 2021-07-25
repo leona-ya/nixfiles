@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   networking.hostName = "aido";
-  networking.domain = "int.sig.de.em0lar.dev";
+  networking.domain = "net.em0lar.dev";
   services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
   systemd.network = {
     links."10-eth" = {

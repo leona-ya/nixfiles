@@ -2,14 +2,14 @@
 
 {
   zone = with dns.lib.combinators; {
-    TTL = 3600;
+    TTL = 600;
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
-      adminEmail = "noc@labcode.de";
-      serial = 2021061101;
+      adminEmail = "noc@em0lar.dev";
+      serial = 2021072402;
       refresh = 3600;
       expire = 604800;
-      minimum = 600;
+      minimum = 300;
     });
 
     NS = helper.ns;
@@ -32,26 +32,20 @@
 
     subdomains = {
       # server
-      "cetus.het.hel.fi" = host "95.216.160.224" "2a01:4f9:c010:1dcf::1";
-      "janus.ion.rhr.de" = host "93.90.205.65" "2001:8d8:1800:30a::1";
-      "dione.int.sig.de".CNAME = [ "foros.int.sig.de.em0lar.dev." ]; # backwards compatibility
-      "nas.home".CNAME = [ "encladus.lan.int.sig.de.em0lar.dev." ]; # backwards compatibility
+      "dione.int.sig.de".CNAME = [ "foros.net.em0lar.dev." ]; # backwards compatibility
+      "nas.home".CNAME = [ "encladus.lan." ]; # backwards compatibility
 
-      mail.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
-      backupmx.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
       ns = host "95.216.160.224" "2a01:4f9:c010:1dcf::1"; # cetus
 
-      www.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
-      auth.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
-      cdn.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
-      git.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
-      matrix.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
-      mautrix-telegram.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
-      md.CNAME = [ "beryl.int.sig.de.em0lar.dev." ];
-      static.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
-      stun.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
-      turn.CNAME = [ "cetus.het.hel.fi.em0lar.dev." ];
-      wifi.CNAME = [ "foros.int.sig.de.em0lar.dev." ];
+      www.CNAME = [ "foros.net.em0lar.dev." ];
+      auth.CNAME = [ "foros.net.em0lar.dev." ];
+      cdn.CNAME = [ "foros.net.em0lar.dev." ];
+      git.CNAME = [ "beryl.net.em0lar.dev." ];
+      matrix.CNAME = [ "beryl.net.em0lar.dev." ];
+      mautrix-telegram.CNAME = [ "beryl.net.em0lar.dev." ];
+      md.CNAME = [ "beryl.net.em0lar.dev." ];
+      static.CNAME = [ "foros.net.em0lar.dev." ];
+      wifi.CNAME = [ "foros.net.em0lar.dev." ];
     };
   };
 }

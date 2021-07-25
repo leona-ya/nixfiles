@@ -13,7 +13,7 @@
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "dwd"; # to the honor of Donald Watts Davies
-  networking.domain = "int.sig.de.em0lar.dev";
+  networking.domain = "net.em0lar.dev";
 
   system.stateVersion = "21.05";
 

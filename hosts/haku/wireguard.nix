@@ -93,14 +93,14 @@
         { # naiad
           wireguardPeerConfig = {
             AllowedIPs = [ "fd8f:d15b:9f40:0c20::1/72" ];
-            Endpoint = "naiad.ncp.nue.de.em0lar.dev:51441";
+            Endpoint = "naiad.net.em0lar.dev:51441";
             PublicKey = "duhZn+JOja6bILYxs6D2dKQk7GhmflSsqr+AMOVqJkg=";
           };
         }
         { # myron
           wireguardPeerConfig = {
             AllowedIPs = [ "fd8f:d15b:9f40:0c21::1/72" ];
-            Endpoint = "myron.het.hel.fi.em0lar.dev:51441";
+            Endpoint = "myron.net.em0lar.dev:51441";
             PublicKey = "xEgZUGdhPkIAZYmDszEUHm86zStsJMF3lowGIkjQE1k=";
           };
         }

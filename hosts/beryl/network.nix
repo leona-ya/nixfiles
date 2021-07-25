@@ -2,7 +2,7 @@
 
 {
   networking.hostName = "beryl";
-  networking.domain = "int.sig.de.em0lar.dev";
+  networking.domain = "net.em0lar.dev";
   systemd.network = {
     links."10-eth0" = {
       matchConfig.MACAddress = "82:79:3a:35:9d:dc";

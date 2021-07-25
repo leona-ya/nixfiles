@@ -18,7 +18,7 @@
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   networking.hostName = "rechaku";
-  networking.domain = "het.fks.de.em0lar.dev";
+  networking.domain = "net.em0lar.dev";
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
   boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;
 

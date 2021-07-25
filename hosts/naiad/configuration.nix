@@ -18,7 +18,7 @@
   services.qemuGuest.enable = true;
 
   networking.hostName = "naiad";
-  networking.domain = "ncp.nue.de.em0lar.dev";
+  networking.domain = "net.em0lar.dev";
 
   systemd.network = {
     links."10-eth0" = {
