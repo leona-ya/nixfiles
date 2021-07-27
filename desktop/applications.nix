@@ -119,6 +119,16 @@
         "pdev" = "pandoc --template eisvogel --listings";
       };
     };
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = [ "org.qutebrowser.qutebrowser.desktop" ];
+        "x-scheme-handler/http" = [ "org.qutebrowser.qutebrowser.desktop" ];
+        "x-scheme-handler/https" = [ "org.qutebrowser.qutebrowser.desktop" ];
+        "x-scheme-handler/about" = [ "org.qutebrowser.qutebrowser.desktop" ];
+        "x-scheme-handler/unknown" = [ "org.qutebrowser.qutebrowser.desktop" ];
+      };
+    };
   };
   environment.variables.SSH_AUTH_SOCK = "/run/user/1000/gnupg/S.gpg-agent.ssh";
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";

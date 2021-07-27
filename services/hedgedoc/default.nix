@@ -66,7 +66,10 @@
     "md.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://unix:/run/hedgedoc/hedgedoc.sock";
+      locations."/" = {
+        proxyPass = "http://unix:/run/hedgedoc/hedgedoc.sock";
+        proxyWebsockets = true;
+      };
     };
   };
 }

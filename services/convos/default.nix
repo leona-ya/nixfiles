@@ -15,11 +15,7 @@
     locations = {
       "/" = {
         proxyPass = "http://localhost:${toString config.services.convos.listenPort}";
-        extraConfig = ''
-          proxy_set_header Upgrade $http_upgrade;
-          proxy_set_header Connection $connection_upgrade;
-          proxy_set_header Host $host;
-        '';
+        proxyWebsockets = true;
       };
     };
   };
