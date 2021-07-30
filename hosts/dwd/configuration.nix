@@ -15,8 +15,6 @@
   networking.hostName = "dwd"; # to the honor of Donald Watts Davies
   networking.domain = "net.em0lar.dev";
 
-  system.stateVersion = "21.05";
-
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
     enableACME = lib.mkForce false;
     forceSSL = lib.mkForce false;
@@ -27,4 +25,6 @@
     diskioDisks = [ "sda" ];
   };
   services.telegraf.extraConfig.inputs.net.interfaces = [ "br*" "ppp-wan" ];
+
+  system.stateVersion = "21.05";
 }

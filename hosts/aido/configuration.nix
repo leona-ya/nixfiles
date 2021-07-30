@@ -39,4 +39,6 @@
     forceSSL = lib.mkForce false;
   };
   environment.systemPackages = [ inputs.deploy-rs.defaultPackage.x86_64-linux ];
+
+  system.stateVersion = "21.05";
 }

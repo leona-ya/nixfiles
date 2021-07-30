@@ -1,9 +1,10 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   em0lar.secrets = {"nextcloud/admin_password".owner = "nextcloud"; };
   services.nextcloud = {
     enable = true;
+    package = pkgs.nextcloud22;
     hostName = "cloud.leomaroni.de";
 
     https = true;

@@ -21,7 +21,6 @@
   networking.useDHCP = false;
   networking.interfaces.enp1s0.useDHCP = true;
   networking.useHostResolvConf = false;
-  system.stateVersion = "20.09";
 
   systemd.network = {
     links."10-eth0" = {
@@ -62,6 +61,8 @@
     forceSSL = true;
     locations."/".proxyPass = "http://[fd8f:d15b:9f40:901::1]:8000";
   };
+
+  system.stateVersion = "20.09";
 }
 
 

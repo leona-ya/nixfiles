@@ -48,4 +48,6 @@
     enableACME = lib.mkForce false;
     forceSSL = lib.mkForce false;
   };
+
+  system.stateVersion = "21.05";
 }

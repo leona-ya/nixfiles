@@ -28,4 +28,6 @@
       diskioDisks = [ "sda" ];
     };
   };
+
+  system.stateVersion = "21.05";
 }

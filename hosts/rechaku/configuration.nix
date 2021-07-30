@@ -23,7 +23,6 @@
   boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;
 
   networking.useHostResolvConf = false;
-  system.stateVersion = "20.09";
   systemd.network = {
     links."10-ens3" = {
       linkConfig.Name = "ens3";
@@ -45,5 +44,6 @@
       ];
     };
   };
+  system.stateVersion = "21.05";
 }
 
