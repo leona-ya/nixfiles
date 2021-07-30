@@ -30,7 +30,7 @@
       };
     };
     links."10-wifi0" = {
-      matchConfig.MACAddress = "d4:6d:6d:cb:11:f0";
+      matchConfig.MACAddress = "38:de:ad:67:b3:7b";
       linkConfig.Name = "wifi0";
     };
     networks."10-wifi0" = {

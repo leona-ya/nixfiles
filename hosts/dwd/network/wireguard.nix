@@ -50,7 +50,6 @@
     name = "wg-server";
     linkConfig = { RequiredForOnline = "yes"; };
     address = [
-      "10.151.12.128/32"
       "fd8f:d15b:9f40::1/56"
     ];
     routes = [
