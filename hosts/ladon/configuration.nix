@@ -33,10 +33,6 @@
   networking.firewall.interfaces.eth0.allowedTCPPorts = [ 389  636 ];
 
   em0lar = {
-    secrets = {
-      "backup_ssh_key".owner = "root";
-      "backup_passphrase".owner = "root";
-    };
     backups.enable = true;
     telegraf = {
       enable = true;

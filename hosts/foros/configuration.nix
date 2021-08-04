@@ -16,17 +16,11 @@
 
   services.qemuGuest.enable = true;
 
-  em0lar = {
-    secrets = {
-      "backup_ssh_key".owner = "root";
-      "backup_passphrase".owner = "root";
-    };
-    backups.enable = true;
-    telegraf = {
-      enable = true;
-      host = "[fd8f:d15b:9f40:11:2c5a:56ff:fe4f:e4c4]";
-      diskioDisks = [ "sda" ];
-    };
+  em0lar.backups.enable = true;
+  em0lar.telegraf = {
+    enable = true;
+    host = "[fd8f:d15b:9f40:11:2c5a:56ff:fe4f:e4c4]";
+    diskioDisks = [ "sda" ];
   };
 
   system.stateVersion = "21.05";

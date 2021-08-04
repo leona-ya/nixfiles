@@ -49,10 +49,6 @@
     host = "[fd8f:d15b:9f40:0c21::1]";
     diskioDisks = [ "sda" "sdb" ];
   };
-  em0lar.secrets = {
-    "backup_ssh_key" = {};
-    "backup_passphrase" = {};
-  };
   em0lar.backups.enable = true;
 
   system.stateVersion = "21.05";

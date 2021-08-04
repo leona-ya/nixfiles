@@ -35,10 +35,6 @@
     };
   };
 
-  em0lar.secrets = {
-    "backup_ssh_key".owner = "root";
-    "backup_passphrase".owner = "root";
-  };
   em0lar.backups = {
     enable = true;
   };

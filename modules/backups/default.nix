@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   cfg = config.em0lar.backups;
@@ -101,5 +101,49 @@ in {
       timerConfig = cfg.systemdTimerConfig;
       wantedBy = [ "timers.target" ];
     };
+
+    em0lar.secrets = {
+      "backup_ssh_key".owner = "root";
+      "backup_passphrase".owner = "root";
+    };
+
+    # prometheus borg exporter
+    em0lar.telegraf.extraInputs = lib.mkIf config.em0lar.telegraf.enable {
+      prometheus =  {
+        urls = [ "http://127.0.0.1:7373" ];
+      };
+    };
+    systemd.services.prometheus-borg-exporter = lib.mkIf config.em0lar.telegraf.enable {
+      description = "Start Prometheus BorgBackup exporter";
+      wantedBy = ["multi-user.target"];
+      after = ["networking.target"];
+      serviceConfig = {
+        ExecStart = "${pkgs.prometheus-borg-exporter}/bin/prometheus-borg-exporter -s --sudo-command /run/wrappers/bin/sudo -l debug -c /run/current-system/sw/bin/borg-job-aido  --failed-archive-suffix .failed";
+        User = "prometheus-borg";
+        StateDirectory = "prometheus-borg-exporter";
+      };
+    };
+    users.users.prometheus-borg = lib.mkIf config.em0lar.telegraf.enable {
+      description = "Prometheus Borg Exporter Service";
+      group = "prometheus-borg";
+      isSystemUser = true;
+      createHome = true;
+      home = "/var/lib/prometheus-borg-exporter";
+    };
+    users.groups.prometheus-borg = lib.mkIf config.em0lar.telegraf.enable {};
+    security.sudo.extraRules = lib.mkIf config.em0lar.telegraf.enable [{
+      users = [ "prometheus-borg" ];
+      runAs = "root";
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/borg-job-aido info --json";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/sw/bin/borg-job-aido list --json";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+      ];
+    }];
   };
 }

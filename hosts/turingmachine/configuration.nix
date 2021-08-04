@@ -17,8 +17,6 @@
   networking.hostId = "a4232228";
 
   em0lar.secrets = {
-    "backup_ssh_key".owner = "root";
-    "backup_passphrase".owner = "root";
     "alt_rsa_ssh_key".owner = "em0lar";
     "user-em0lar-password".owner = "root";
   };

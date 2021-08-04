@@ -23,7 +23,7 @@ let
         type = types.str;
         default = "root";
       };
-      group-name = mkOption {
+      group = mkOption {
         type = types.str;
         default = "root";
       };
@@ -59,7 +59,7 @@ let
   mkSetupSecret = file: pkgs.writeScript "setup-secret-${removeSuffix ".gpg" (baseNameOf file.source-path)}.sh" ''
     #!${pkgs.runtimeShell}
     set -eu pipefail
-    chown ${escapeShellArg file.owner}:${escapeShellArg file.group-name} ${escapeShellArg file.path}
+    chown ${escapeShellArg file.owner}:${escapeShellArg file.group} ${escapeShellArg file.path}
     chmod ${escapeShellArg file.mode} ${escapeShellArg file.path}
   '';
 
