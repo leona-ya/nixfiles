@@ -222,6 +222,18 @@
                 description = "The handshake with the wireguard host with public key {{ $labels.public_key }} is {{ $value }} seconds ago.\n";
               };
             }
+            {
+              alert = "BorgBackupTooLongAgo";
+              expr = "time() - borgbackup_last_successful_archive_gauge > 97200";
+              for = "0s";
+              labels = {
+                severity = "critical";
+              };
+              annotations = {
+                summary = "CRIT - BorgBackup on {{ $labels.host }} is more than 27h ago";
+                description = "The BorgBackup on {{ $labels.host }} ran last at {{ $value }}ssh a.\n";
+              };
+            }
           ];
         }];
       }

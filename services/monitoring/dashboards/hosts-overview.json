@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 11,
   "links": [],
   "panels": [
     {
@@ -68,7 +67,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
@@ -132,7 +131,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
@@ -195,7 +194,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
@@ -259,7 +258,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
@@ -323,17 +322,17 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(cpu_usage_system + cpu_usage_user) by (host)",
+          "expr": "avg(mem_used_percent) by (host)",
           "interval": "",
           "legendFormat": "{{host}}",
           "refId": "A"
         }
       ],
-      "title": "CPU ",
+      "title": "RAM ",
       "type": "gauge"
     },
     {
@@ -387,7 +386,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
@@ -437,7 +436,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
@@ -563,7 +562,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
@@ -639,9 +638,125 @@
         }
       ],
       "type": "table"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "color-background"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": null
+              },
+              {
+                "color": "dark-red",
+                "value": 97200
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "host"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 13,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "8.0.6",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "time() - borgbackup_last_successful_archive_gauge",
+          "format": "table",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Last successful BorgBackup",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "aggregate"
+              },
+              "Value #A": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "host": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Time (last)": 0,
+              "host": 1
+            },
+            "renameByName": {
+              "Time": "",
+              "Time (last)": "",
+              "Value #A (last)": "Time"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Time"
+              }
+            ]
+          }
+        }
+      ],
+      "type": "table"
     }
   ],
-  "refresh": "5s",
+  "refresh": "",
   "schemaVersion": 30,
   "style": "dark",
   "tags": [],
@@ -649,12 +764,12 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Hosts Overview",
   "uid": "tXTi7Mm7Z",
-  "version": 11
+  "version": 1
 }

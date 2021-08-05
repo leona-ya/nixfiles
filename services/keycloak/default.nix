@@ -3,7 +3,7 @@
 {
   em0lar.secrets."keycloak_database_password" = {
     owner = "keycloak";
-    group-name = "postgres";
+    group = "postgres";
     mode = "0440";
   };
   users.users.keycloak = {

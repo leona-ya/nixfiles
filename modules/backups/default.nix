@@ -118,7 +118,7 @@ in {
       wantedBy = ["multi-user.target"];
       after = ["networking.target"];
       serviceConfig = {
-        ExecStart = "${pkgs.prometheus-borg-exporter}/bin/prometheus-borg-exporter -s --sudo-command /run/wrappers/bin/sudo -l debug -c /run/current-system/sw/bin/borg-job-aido  --failed-archive-suffix .failed";
+        ExecStart = "${pkgs.prometheus-borg-exporter}/bin/prometheus-borg-exporter -s --sudo-command /run/wrappers/bin/sudo -l warn -c /run/current-system/sw/bin/borg-job-aido --failed-archive-suffix .failed";
         User = "prometheus-borg";
         StateDirectory = "prometheus-borg-exporter";
       };
