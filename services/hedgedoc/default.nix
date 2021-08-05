@@ -2,11 +2,12 @@
 
 {
   em0lar.secrets = {
-    "hedgedoc/saml_idpcert.pem".owner = "hedgedoc";
+    "hedgedoc-env".owner = "hedgedoc";
   };
   services.hedgedoc = {
     enable = true;
     configuration = {
+      debug = true;
       path = "/run/hedgedoc/hedgedoc.sock";
       domain = "md.em0lar.dev";
       protocolUseSSL = true;
@@ -19,17 +20,14 @@
         dialect = "postgres";
         host = "/run/postgresql";
       };
-      saml = {
-        issuer = "hedgedoc";
-        identifierFormat = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified";
-        idpSsoUrl = "https://auth.em0lar.dev/auth/realms/em0lar/protocol/saml";
-        idpCert = config.em0lar.secrets."hedgedoc/saml_idpcert.pem".path;
-        attribute = {
-          email = "email";
-          username = "username";
-        };
+      oauth2 = {
+        tokenURL = "https://auth.em0lar.dev/auth/realms/em0lar/protocol/openid-connect/token";
+        authorizationURL = "https://auth.em0lar.dev/auth/realms/em0lar/protocol/openid-connect/auth";
+        clientID = "hedgedoc";
+        clientSecret = "";
       };
     };
+    environmentFile = config.em0lar.secrets.hedgedoc-env.path;
   };
 
   systemd.services.hedgedoc = {
