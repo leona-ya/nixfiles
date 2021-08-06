@@ -1,10 +1,7 @@
 { config, ... }:
 
 {
-  em0lar.secrets."wireguard_wg-clients_privatekey" = {
-    owner = "systemd-network";
-    group-name = "systemd-network";
-  };
+  em0lar.secrets."wireguard_wg-clients_privatekey".owner = "systemd-network";
   systemd.network.netdevs."30-wg-clients" = {
     netdevConfig = {
       Kind = "wireguard";
