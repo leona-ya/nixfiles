@@ -57,6 +57,7 @@
     python3
     rofi-pass 
     rustup
+    sengi
     spotify
     superTuxKart
     texlive.combined.scheme-full
