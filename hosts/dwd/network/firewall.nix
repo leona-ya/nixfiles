@@ -18,6 +18,9 @@ in {
       iifname wg-server oifname br-lan ct state new accept
       iifname br-tethys oifname wg-server ct state new accept
       iifname wg-server oifname br-tethys ct state new accept
+
+      iifname br-lan oifname br-dmz ct state new accept
+      iifname br-tethys oifname br-tethys ct state new accept
     '';
     extraConfig = ''
       table ip nat {

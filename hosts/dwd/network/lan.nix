@@ -49,18 +49,18 @@
       routes = [
         { routeConfig.Destination = "195.39.247.144/32"; }
         { routeConfig.Destination = "195.39.247.145/32"; }
-        {
-          routeConfig = {
-            Destination = "2a0f:4ac0:1e0:100::/64";
-            Gateway = "fd8f:d15b:9f40:11:2c5a:56ff:fe4f:e4c4";
-          };
-        }
-        {
-          routeConfig = {
-            Destination = "2a0f:4ac0:1e0:101::/64";
-            Gateway = "fd8f:d15b:9f40:11:8079:3aff:fe35:9ddc";
-          };
-        }
+        #{
+        #  routeConfig = {
+        #    Destination = "2a0f:4ac0:1e0:100::/64";
+        #    Gateway = "fd8f:d15b:9f40:11:2c5a:56ff:fe4f:e4c4";
+        #  };
+        #}
+        #{
+        #  routeConfig = {
+        #    Destination = "2a0f:4ac0:1e0:101::/64";
+        #    Gateway = "fd8f:d15b:9f40:11:8079:3aff:fe35:9ddc";
+        #  };
+        #}
       ];
     };
 
