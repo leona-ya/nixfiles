@@ -65,7 +65,10 @@ in {
 
   users.users.nginx.extraGroups = [ "grafana" ];
   services.nginx.virtualHosts.${grafanaDomain} = {
-    locations."/".proxyPass = "http://unix:${toString config.services.grafana.socket}";
+    locations."/" = {
+      proxyPass = "http://unix:${toString config.services.grafana.socket}";
+      proxyWebsockets = true;
+    };
     enableACME = true;
     forceSSL = true;
   };
