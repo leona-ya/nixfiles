@@ -21,6 +21,14 @@
     "user-em0lar-password".owner = "root";
   };
 
+  services.upower = {
+    enable = true;
+    percentageLow = 10;
+    percentageCritical = 7;
+    percentageAction = 5;
+  };
+  systemd.services.upower.wantedBy = lib.mkForce [ "multi-user.target" ];
+
   users.users.em0lar.passwordFile = config.em0lar.secrets.user-em0lar-password.path;
   security.sudo.wheelNeedsPassword = true;
 

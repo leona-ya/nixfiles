@@ -28,6 +28,15 @@
         "tb" = "nc termbin.com 9999";
         "vim" = "nvim";
         "ip" = "ip -c";
+        "use" = "nix-shell -p ";
+        "cat" = "bat --style=header ";
+        "grep" = "rg";
+        "l" = "exa";
+        "ls" = "exa";
+        "ll" = "exa -l";
+        "la" = "exa -la";
+        "tree" = "exa -T";
+        "sudo" = "sudo ";
       };
       oh-my-zsh = {
         enable = true;

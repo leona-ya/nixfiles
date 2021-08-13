@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ options, pkgs, lib, ... }:
 
 {
   imports = [
@@ -29,6 +29,8 @@
   services.openssh.passwordAuthentication = false;
   services.openssh.challengeResponseAuthentication = false;
   services.openssh.permitRootLogin = lib.mkDefault "no";
+  services.iperf3.enable = true;
+  services.iperf3.openFirewall = true;
 
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
 
@@ -48,17 +50,24 @@
   environment.systemPackages = with pkgs; [
     bat
     bind.dnsutils # for dig
+    fd
     file
+    exa
     git
     gnupg
+    gptfdisk
     htop
     iftop
+    iperf
     jq
+    lm_sensors
     mtr
     neovim
     nmap
     python38Packages.virtualenvwrapper
+    ripgrep
     rsync
+    tcpdump
     tmux
     wget
     whois

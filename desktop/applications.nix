@@ -32,7 +32,7 @@
   users.users.em0lar.packages = with pkgs; [
     ansible_2_9
     chromium
-    element-desktop
+    element-desktop-wayland
     evince
     (firefox-wayland.override { extraNativeMessagingHosts = [ passff-host ]; })
     gcc
@@ -110,6 +110,9 @@
         auto_save.session = true;
         colors.webpage.preferred_color_scheme = "dark";
       };
+      extraConfig = ''
+        c.qt.args.append('widevine-path=${pkgs.widevine-cdm}/lib/libwidevinecdm.so')
+      '';
     };
     programs.password-store.enable = true;
     programs.zsh = {

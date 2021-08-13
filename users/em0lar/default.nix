@@ -35,6 +35,15 @@
         "ip" = "ip -c";
         "watch" = "watch -c";
         "xtssh" = "TERM=xterm-256color ssh";
+        "use" = "nix-shell -p ";
+        "cat" = "bat --style=header ";
+        "grep" = "rg";
+        "l" = "exa";
+        "ls" = "exa";
+        "ll" = "exa -l";
+        "la" = "exa -la --git";
+        "tree" = "exa -T";
+        "sudo" = "sudo ";
       };
       oh-my-zsh = {
         enable = true;
