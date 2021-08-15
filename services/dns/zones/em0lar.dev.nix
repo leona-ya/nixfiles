@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021072502;
+      serial = 2021081501;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -42,6 +42,7 @@ in {
       "haku.net" = haku_host;
       "foros.net" = host "195.39.247.144" "2a0f:4ac0:1e0:100::1";
       "beryl.net" = host "195.39.247.145" "2a0f:4ac0:1e0:101::1";
+      "adonis.net" = host "130.61.64.61" "2603:c020:8004:50e0:4cb7:23e8:1668:f629";
       "wg.net".CNAME = [ "haku.net.em0lar.dev." ];
 
       "ns1" = myron_host;

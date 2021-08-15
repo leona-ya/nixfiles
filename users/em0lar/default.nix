@@ -82,6 +82,7 @@
         transfer = {
           fsckObjects = true;
         };
+        feature.manyFiles = true;
       };
     };
 

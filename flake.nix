@@ -71,6 +71,14 @@
       ];
 
       hosts = {
+        adonis = {
+          nixosSystem = {
+            system = "aarch64-linux";
+            modules = defaultModules ++ [
+              ./hosts/adonis/configuration.nix
+            ];
+          };
+        };
         aido = {
           nixosSystem = {
             system = "x86_64-linux";
