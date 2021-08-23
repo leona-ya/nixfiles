@@ -7,5 +7,6 @@ self: super:
   opendatamap-net = self.callPackage ./opendatamap-net { };
   sengi = self.callPackage ./sengi { };
   widevine-cdm = self.callPackage ./widevine { };
+  vouch-proxy = self.callPackage ./vouch-proxy { };
 }
 

@@ -61,7 +61,7 @@
     spotify
     superTuxKart
     texlive.combined.scheme-full
-    thunderbird
+    thunderbird-wayland
     youtube-dl
     z-lua
   ];

@@ -60,6 +60,7 @@
             ./modules/nftables
             ./modules/secrets
             ./modules/telegraf
+            ./modules/vouch-proxy
           ];
           documentation.info.enable = false;
         }

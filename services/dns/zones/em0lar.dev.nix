@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021081501;
+      serial = 2021082104;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -69,10 +69,9 @@ in {
       git.CNAME = [ "beryl.net.em0lar.dev." ];
       grafana.CNAME = [ "naiad.net.em0lar.dev." ];
       md.CNAME = [ "beryl.net.em0lar.dev." ];
+      paperless.CNAME = [ "beryl.net.em0lar.dev." ];
       prometheus.CNAME = [ "naiad.net.em0lar.dev." ];
-      stun.CNAME = [ "cetus.net.em0lar.dev." ];
       todo.CNAME = [ "beryl.net.em0lar.dev." ];
-      turn.CNAME = [ "cetus.net.em0lar.dev." ];
       webmail.CNAME = [ "foros.net.em0lar.dev." ];
       wifi.CNAME = [ "foros.net.em0lar.dev." ];
 

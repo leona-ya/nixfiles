@@ -10,6 +10,8 @@
       ../../services/hedgedoc
       ../../services/matrix
       ../../services/vikunja
+      #../../services/vouch-proxy
+      ../../services/paperless-ng
   ];
 
   boot.loader.grub.enable = true;

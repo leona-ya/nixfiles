@@ -55,6 +55,7 @@
       "**/node_modules"
       "**/.venv"
       "/home/*/.cache"
+      "/home/*/.rustup"
       "**/Cache"
     ];
     enableSystemdTimer = false;

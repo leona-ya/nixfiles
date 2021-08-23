@@ -21,7 +21,7 @@
         DHCPv6PrefixDelegation = true;
       };
       dhcpV6Config = {
-        PrefixDelegationHint = 1;
+        PrefixDelegationHint = 64;
       };
     };
 
@@ -44,7 +44,7 @@
         DHCPv6PrefixDelegation = true;
       };
       dhcpV6Config = {
-        PrefixDelegationHint = 2;
+        PrefixDelegationHint = 64;
       };
       routes = [
         { routeConfig.Destination = "195.39.247.144/32"; }
