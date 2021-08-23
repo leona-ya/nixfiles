@@ -1,15 +1,23 @@
 { config, lib, pkgs, hosts, ... }:
 
 {
-  em0lar.secrets."prometheus-basic-auth".owner = "nginx";
+  em0lar.secrets."prometheus/vouch-proxy-env".owner = "nginx";
 
   services.nginx.virtualHosts."prometheus.em0lar.dev" = {
     locations."/" = {
       proxyPass = "http://127.0.0.1:${toString config.services.prometheus.port}/";
-      basicAuthFile = config.em0lar.secrets."prometheus-basic-auth".path;
     };
     enableACME = true;
     forceSSL = true;
+  };
+
+  services.vouch-proxy = {
+    enable = true;
+    servers."prometheus.em0lar.dev" = {
+      clientId = "prometheus";
+      port = 12300;
+      environmentFiles = [ config.em0lar.secrets."prometheus/vouch-proxy-env".path ];
+    };
   };
 
   services.prometheus = {

@@ -3,18 +3,28 @@
 let
   alert_message = "{{ .CommonAnnotations.summary }}";
 in {
-  em0lar.secrets."alertmanager-env" = {};
-  em0lar.secrets."alertmanager-basic-auth".owner = "nginx";
+  em0lar.secrets = {
+    "prometheus/alertmanager-env" = {};
+    "prometheus/vouch-proxy-env" = {};
+  };
 
-  systemd.services.alertmanager.serviceConfig.EnvironmentFile = [ config.em0lar.secrets."alertmanager-env".path ];
+  systemd.services.alertmanager.serviceConfig.EnvironmentFile = [ config.em0lar.secrets."prometheus/alertmanager-env".path ];
 
   services.nginx.virtualHosts."alertmanager.em0lar.dev" = {
     locations."/" = {
       proxyPass = "http://127.0.0.1:${toString config.services.prometheus.alertmanager.port}/";
-      basicAuthFile = config.em0lar.secrets."alertmanager-basic-auth".path;
     };
     enableACME = true;
     forceSSL = true;
+  };
+
+  services.vouch-proxy = {
+    enable = true;
+    servers."alertmanager.em0lar.dev" = {
+      clientId = "prometheus";
+      port = 12301;
+      environmentFiles = [ config.em0lar.secrets."prometheus/vouch-proxy-env".path ];
+    };
   };
 
   services.prometheus.alertmanager = {
