@@ -4,7 +4,7 @@
   imports = [
     (fetchGit {
       url = "ssh://git@git.em0lar.dev:2222/em0lar/nixfiles-mail-secrets.git";
-      rev = "cb4f49a360bb31fcae6d4c55b1d861b30e4d0d10";
+      rev = "08f0faea0fec43817bd3ff4afca468114fa9ece6";
       ref = "main";
     }).outPath
     ./autoconfig.nix
@@ -48,6 +48,14 @@
     '';
   };
 
+#  services.rspamd.workers.controller = {
+#    bindSockets = [{
+#      socket = "127.0.0.1:11334";
+#    }];
+#    extraConfig = ''
+#      secure_ip = "127.0.0.1"
+#    '';
+#  };
 
   services.nginx.virtualHosts = {
     "mail.em0lar.dev" = {

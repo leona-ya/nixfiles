@@ -22,37 +22,22 @@
       after = [ "postgresql.service" ];
       serviceConfig = {
         EnvironmentFile = config.em0lar.secrets."paperless-ng/env".path;
-        ProtectProc = lib.mkForce "default";
-        ProcSubset = lib.mkForce "all";
-        RestrictAddressFamilies = lib.mkForce [ "AF_UNIX AF_INET AF_INET6" ];
+        RestrictAddressFamilies = lib.mkForce [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         BindReadOnlyPaths = [
-          "/nix/store"
-          "-/etc/resolv.conf"
-          "-/etc/nsswitch.conf"
-          "-/etc/hosts"
-          "-/etc/localtime"
-          "/run/postgresql"
+          "-/run/postgresql"
         ];
       };
     };
     paperless-ng-consumer = {
-      unitConfig.JoinsNamespaceOf = "paperless-ng-server.service";
       serviceConfig.EnvironmentFile = config.em0lar.secrets."paperless-ng/env".path;
     };
     paperless-ng-web = {
       unitConfig.JoinsNamespaceOf = "paperless-ng-server.service";
       serviceConfig = {
         EnvironmentFile = config.em0lar.secrets."paperless-ng/env".path;
-        ProtectProc = lib.mkForce "default";
-        ProcSubset = lib.mkForce "all";
-        RestrictAddressFamilies = lib.mkForce [ "AF_UNIX AF_INET AF_INET6" ];
+        RestrictAddressFamilies = lib.mkForce [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         BindReadOnlyPaths = [
-          "/nix/store"
-          "-/etc/resolv.conf"
-          "-/etc/nsswitch.conf"
-          "-/etc/hosts"
-          "-/etc/localtime"
-          "/run/postgresql"
+          "-/run/postgresql"
         ];
       };
     };
