@@ -98,6 +98,15 @@
           };
           deploy.hostname = "beryl.lan";
         };
+        cole = {
+          nixosSystem = {
+            system = "aarch64-linux";
+            modules = defaultModules ++ [
+              ./hosts/cole/configuration.nix
+            ];
+          };
+          deploy.hostname = "cole.lan";
+        };
         dwd = {
           nixosSystem = {
             system = "x86_64-linux";
@@ -106,7 +115,7 @@
               ./hosts/dwd/configuration.nix
             ];
           };
-          deploy.hostname = "10.151.0.1";
+          deploy.hostname = "dwd.lan";
         };
         foros = {
           nixosSystem = {
@@ -179,12 +188,10 @@
       deploy.nodes = (nixpkgs.lib.mapAttrs (name: config: {
         hostname = if (config ? deploy.hostname) then config.deploy.hostname else (self.nixosConfigurations."${name}".config.networking.hostName + "." + self.nixosConfigurations."${name}".config.networking.domain);
         profiles.system = {
-          autoRollback = false;
-          magicRollback = false;
           user = "root";
           sshUser = "em0lar";
-          sshOpts = [ "-4" "-p" "61337" "-o" "StrictHostKeyChecking=no" ];
-          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."${name}";
+          sshOpts = [ "-o" "StrictHostKeyChecking=no" ];
+          path = deploy-rs.lib.${config.nixosSystem.system}.activate.nixos self.nixosConfigurations."${name}";
         };
       }) hosts);
   };
