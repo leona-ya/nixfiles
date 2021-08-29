@@ -19,13 +19,8 @@
 
   systemd.services = {
     paperless-ng-server = {
-      after = [ "postgresql.service" ];
       serviceConfig = {
         EnvironmentFile = config.em0lar.secrets."paperless-ng/env".path;
-        RestrictAddressFamilies = lib.mkForce [ "AF_UNIX" "AF_INET" "AF_INET6" ];
-        BindReadOnlyPaths = [
-          "-/run/postgresql"
-        ];
       };
     };
     paperless-ng-consumer = {
@@ -35,10 +30,6 @@
       unitConfig.JoinsNamespaceOf = "paperless-ng-server.service";
       serviceConfig = {
         EnvironmentFile = config.em0lar.secrets."paperless-ng/env".path;
-        RestrictAddressFamilies = lib.mkForce [ "AF_UNIX" "AF_INET" "AF_INET6" ];
-        BindReadOnlyPaths = [
-          "-/run/postgresql"
-        ];
       };
     };
   };

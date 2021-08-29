@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021082104;
+      serial = 2021082105;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -50,7 +50,7 @@ in {
       "ns3" = naiad_host;
 
       mail = myron_host;
-      autoconfig.CNAME = [ "myron.em0lar.dev." ];
+      autoconfig.CNAME = [ "myron.net.em0lar.dev." ];
       "wg-sternpunkt".CNAME = [ "wg.net.em0lar.dev." ]; # backwards compatability
       "encladus.lan.int.sig.de".CNAME = [ "encladus.lan." ]; # backwards compatability
 
