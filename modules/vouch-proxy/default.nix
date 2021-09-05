@@ -55,10 +55,10 @@ let
       error_page 401 = @error401;
     '';
     locations."/".extraConfig = ''
-      auth_request /_vouch-validate;
+      auth_request /_vouch/validate;
     '';
-    locations."= /_vouch-validate" = {
-      proxyPass = "http://127.0.0.1:${toString serviceConfig.port}/validate";
+    locations."/_vouch" = {
+      proxyPass = "http://127.0.0.1:${toString serviceConfig.port}";
       extraConfig = ''
         proxy_pass_request_body off;
         proxy_set_header Content-Length "";
@@ -66,12 +66,6 @@ let
         auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
         auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
         auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
-      '';
-    };
-    locations."/_vouch/" = {
-      proxyPass = "http://127.0.0.1:${toString serviceConfig.port}/";
-      extraConfig = ''
-        proxy_set_header X-Original-URI $request_uri;
       '';
     };
 
@@ -101,6 +95,7 @@ in {
               "preferred_username"
             ];
           };
+          document_root = "/_vouch";
         };
         oauth = {
           provider = "oidc";

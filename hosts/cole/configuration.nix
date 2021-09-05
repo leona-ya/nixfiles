@@ -2,6 +2,7 @@
   imports = [
       ./network.nix
       ../../common
+      ./printing.nix
   ];
 
   boot.loader.grub.enable = false;

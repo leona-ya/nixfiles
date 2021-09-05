@@ -2,13 +2,13 @@
 
 buildGoModule rec {
   pname = "vouch-proxy";
-  version = "unstable-2021-08-22";
+  version = "0.34.0";
 
   src = fetchFromGitHub {
     owner = "vouch";
     repo = "vouch-proxy";
-    rev = "ab754cdf520d2eaaf967675066169dc6014658ab";
-    sha256 = "sha256-lx2lsTmKBHdJxOeBqaeinRc9MGXwmZA1BUG+jnRJVJ0=";
+    rev = "v${version}";
+    sha256 = "sha256-xkCnBRGSryFf90dOeoZKQhugX66zkF/gYF1v6N9yjTQ=";
   };
 
   vendorSha256 = "sha256-ifH+420FIrib+zQtzzHtMMYd84BED+vgnRw4xToYIl4=";
@@ -17,6 +17,8 @@ buildGoModule rec {
     "-s" "-w"
     "-X main.version=${version}"
   ];
+
+  doCheck = false;
 
   preCheck = ''
     export VOUCH_ROOT=$PWD

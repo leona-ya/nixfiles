@@ -59,6 +59,7 @@
     rustup
     sengi
     spotify
+    sublime4
     superTuxKart
     texlive.combined.scheme-full
     thunderbird-wayland
