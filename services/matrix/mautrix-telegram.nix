@@ -41,7 +41,7 @@
   users = {
     users.mautrix-telegram = {
     	group = "mautrix-telegram";
-	isSystemUser = true;
+    	isSystemUser = true;
     };
     groups.mautrix-telegram = {};
   };

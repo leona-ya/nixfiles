@@ -17,6 +17,14 @@
     wireguardPeers = [
       {
         wireguardPeerConfig = {
+          AllowedIPs = [ "fd8f:d15b:9f40:0c10::1/72" ];
+          PublicKey = "KVB9uOM1n3VgdhjWzLkXLygMPzg/n+MORLba80EE7Xc=";
+          Endpoint = "adonis.net.em0lar.dev:51441";
+          PersistentKeepalive = 21;
+        };
+      }
+      {
+        wireguardPeerConfig = {
           AllowedIPs = [ "fd8f:d15b:9f40:0c20::1/72" ];
           PublicKey = "duhZn+JOja6bILYxs6D2dKQk7GhmflSsqr+AMOVqJkg=";
           Endpoint = "naiad.net.em0lar.dev:51441";

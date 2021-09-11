@@ -90,11 +90,20 @@
             PersistentKeepalive = 21;
           };
         }
+        {
+          wireguardPeerConfig = {
+            AllowedIPs = [ "fd8f:d15b:9f40:0c10::1/72" ];
+            PublicKey = "KVB9uOM1n3VgdhjWzLkXLygMPzg/n+MORLba80EE7Xc=";
+            Endpoint = "adonis.net.em0lar.dev:51441";
+            PersistentKeepalive = 21;
+          };
+        }
         { # naiad
           wireguardPeerConfig = {
             AllowedIPs = [ "fd8f:d15b:9f40:0c20::1/72" ];
             Endpoint = "naiad.net.em0lar.dev:51441";
             PublicKey = "duhZn+JOja6bILYxs6D2dKQk7GhmflSsqr+AMOVqJkg=";
+            PersistentKeepalive = 21;
           };
         }
         { # myron
@@ -102,6 +111,7 @@
             AllowedIPs = [ "fd8f:d15b:9f40:0c21::1/72" ];
             Endpoint = "myron.net.em0lar.dev:51441";
             PublicKey = "xEgZUGdhPkIAZYmDszEUHm86zStsJMF3lowGIkjQE1k=";
+            PersistentKeepalive = 21;
           };
         }
       ];

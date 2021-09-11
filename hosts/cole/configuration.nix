@@ -3,6 +3,7 @@
       ./network.nix
       ../../common
       ./printing.nix
+      ../../services/pressux
   ];
 
   boot.loader.grub.enable = false;
