@@ -32,7 +32,7 @@
   users.users.em0lar.packages = with pkgs; [
     ansible_2_9
     chromium
-    element-desktop-wayland
+    element-desktop
     evince
     (firefox-wayland.override { extraNativeMessagingHosts = [ passff-host ]; })
     gcc
@@ -40,6 +40,7 @@
     gimp
     gnome3.vinagre
     hamster
+    homebank
     inkscape
     (jetbrains.datagrip.override {
       jdk = jetbrains.jdk;
@@ -65,6 +66,7 @@
     thunderbird-wayland
     youtube-dl
     z-lua
+    zoom-us
   ];
   services.fwupd.enable = true;
 
@@ -83,7 +85,10 @@
       enable = true;
       iconTheme.name = "Adwaita";
       iconTheme.package = pkgs.gnome3.adwaita-icon-theme;
-
+      theme = {
+        name = "Adawaita-dark";
+        package = pkgs.gnome.gnome_themes_standard;
+      };
       gtk3 = {
         extraConfig = {
           gtk-application-prefer-dark-theme = true;

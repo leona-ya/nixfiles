@@ -188,6 +188,7 @@
       deploy.nodes = (nixpkgs.lib.mapAttrs (name: config: {
         hostname = if (config ? deploy.hostname) then config.deploy.hostname else (self.nixosConfigurations."${name}".config.networking.hostName + "." + self.nixosConfigurations."${name}".config.networking.domain);
         profiles.system = {
+          autoRollback = false;
           user = "root";
           sshUser = "em0lar";
           sshOpts = [ "-o" "StrictHostKeyChecking=no" ];

@@ -95,7 +95,10 @@ in {
     in {
       decrypt-secrets.text = "source ${pkgs.writeText "decrypt-secrets.sh" decrypt}";
       setup-secrets = stringAfter [ "users" "groups" ] "source ${pkgs.writeText "setup-secrets.sh" setup}";
-      users.deps = [ "decrypt-secrets" ];
+      users = {
+        deps = [ "decrypt-secrets" ];
+        supportsDryActivation = lib.mkForce false;
+      };
     };
   };
 }
