@@ -62,6 +62,8 @@
   em0lar.secrets."wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];
 
+  environment.systemPackages = [ inputs.deploy-rs.defaultPackage.aarch64-linux ];
+
   networking.hostName = "adonis";
   networking.domain = "net.em0lar.dev";
 }

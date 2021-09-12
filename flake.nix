@@ -105,7 +105,7 @@
               ./hosts/cole/configuration.nix
             ];
           };
-          deploy.hostname = "cole.lan";
+          deploy.hostname = "fd8f:d15b:9f40:10:ba27:ebff:fe5d:d0af";
         };
         dwd = {
           nixosSystem = {
@@ -191,7 +191,7 @@
           autoRollback = false;
           user = "root";
           sshUser = "em0lar";
-          sshOpts = [ "-o" "StrictHostKeyChecking=no" ];
+          sshOpts = [ "-o" "StrictHostKeyChecking=no" "-p" "61337" ];
           path = deploy-rs.lib.${config.nixosSystem.system}.activate.nixos self.nixosConfigurations."${name}";
         };
       }) hosts);

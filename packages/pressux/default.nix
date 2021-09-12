@@ -1,4 +1,4 @@
-{ lib, rustPlatform, fetchFromGitea, pkg-config, openssl }:
+{ lib, rustPlatform, fetchFromGitea, pkg-config, openssl, cups }:
 
 rustPlatform.buildRustPackage rec {
   pname = "pressux";
@@ -9,14 +9,14 @@ rustPlatform.buildRustPackage rec {
     domain = "git.em0lar.dev";
     owner = "em0lar";
     repo = "pressux";
-    rev = "03ce95030ac34f92e5a139b05177b5be38119e0d";
-    sha256 = "sha256-szpbvfa6E4iZ8HpJNlfT0oT3Gj37TZJ+4KKRl9vPc/8=";
+    rev = "ab34b4a9c049ef6cfd55d5357ea051b7e2b22e25";
+    sha256 = "sha256-MRIRxRZkH9c86vcRg++svAKV4OHVEoyh1raTXjEy3p0=";
   };
 
   cargoSha256 = "sha256-nnd4LiH2Fq21hMlRybX21WH1nJkS5Qs4n69awgNBSKs=";
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ openssl ];
+  buildInputs = [ openssl cups ];
 
   meta = with lib; {
     description = "A helper for printing and scanning";
