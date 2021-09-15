@@ -7,7 +7,7 @@
       ../../common
       ./initrd.nix
       ./wireguard.nix
-      ../../services/dns/primary
+      ../../services/dns-knot/primary
       ../../services/mail
      ../../services/convos
     ];
