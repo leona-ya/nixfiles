@@ -8,8 +8,17 @@
       ./initrd.nix
       ./wireguard.nix
       ../../services/monitoring
-      ../../services/dns/secondary
+      ../../services/dns-knot/secondary
     ];
+
+  # Secondary DNS
+  services.knot.extraConfig = ''
+    server:
+      listen: 127.0.0.11@53
+      listen: 37.120.184.164@53
+      listen: 2a03:4000:f:85f::1@53
+      listen: fd8f:d15b:9f40:c20::1@53
+  '';
 
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
