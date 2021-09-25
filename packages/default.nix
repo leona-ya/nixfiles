@@ -6,7 +6,8 @@ self: super:
   opendatamap-net = self.callPackage ./opendatamap-net { };
   pressux = self.callPackage ./pressux { };
   sengi = self.callPackage ./sengi { };
-  vouch-proxy = self.callPackage ./vouch-proxy { };
+  vikunja-api = self.callPackage ./vikunja/api.nix { };
+  vikunja-frontend = self.callPackage ./vikunja/frontend.nix { };
   widevine-cdm = self.callPackage ./widevine { };
 }
 

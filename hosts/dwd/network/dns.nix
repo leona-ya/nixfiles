@@ -1,4 +1,5 @@
 { ... }: {
+  services.resolved.enable = false;
   services.kresd = {
     enable = true;
     extraConfig = ''
@@ -15,7 +16,8 @@
       ))
     '';
     listenPlain = [
-      "127.0.0.12:53"
+      "127.0.0.1:53"
+      "[::1]:53"
       "10.151.0.1:53"
       "[fd8f:d15b:9f40:10::1]:53"
       "10.151.4.254:53"

@@ -56,7 +56,22 @@
 #      secure_ip = "127.0.0.1"
 #    '';
 #  };
-
+  services.rspamd = {
+    locals = {
+      "groups.conf".text = ''
+        symbols {
+          "FORGED_RECIPIENTS" { weight = 0; }
+          "FORGED_SENDER" { weight = 0; }
+        }'';
+    };
+    extraConfig = ''
+      actions {
+        reject = 15;
+        add_header = 8;
+        greylist = 6;
+      }
+    '';
+  };
   services.nginx.virtualHosts = {
     "mail.em0lar.dev" = {
       enableACME = true;
