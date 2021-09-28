@@ -20,7 +20,10 @@
   };
   systemd.network.networks."30-wg-clients" = {
     name = "wg-clients";
-    linkConfig = { RequiredForOnline = "no"; };
+    linkConfig = {
+      RequiredForOnline = "no";
+      #ActivationPolicy = "manual";
+    };
     address = [
       "10.151.9.2/32"
       "fd8f:d15b:9f40:0901::1/72"

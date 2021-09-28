@@ -1,4 +1,5 @@
 { ... }: {
+  services.resolved.enable = false;
   services.kresd = {
     enable = true;
     extraConfig = ''
@@ -14,6 +15,7 @@
           '8.8.4.4'
         })
       ))
+      cache.size = 100*MB
     '';
     listenPlain = [
       "127.0.0.1:53"

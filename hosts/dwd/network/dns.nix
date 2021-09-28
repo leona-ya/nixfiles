@@ -14,6 +14,13 @@
           '149.112.112.11'
         })
       ))
+      cache.size = 100*MB
+      modules = {
+        predict = {
+          window = 15,
+          period = 24*(60/15)
+        }
+      }
     '';
     listenPlain = [
       "127.0.0.1:53"
