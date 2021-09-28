@@ -22,15 +22,15 @@
     name = "wg-clients";
     linkConfig = {
       RequiredForOnline = "no";
-      #ActivationPolicy = "manual";
+      ActivationPolicy = "manual";
     };
     address = [
       "10.151.9.2/32"
       "fd8f:d15b:9f40:0901::1/72"
     ];
     routes = [
-      #{ routeConfig.Destination = "10.151.0.0/16"; }
-      #{ routeConfig.Destination = "fd8f:d15b:9f40::/48"; }
+      { routeConfig.Destination = "10.151.0.0/16"; }
+      { routeConfig.Destination = "fd8f:d15b:9f40::/48"; }
     ];
   };
 }
