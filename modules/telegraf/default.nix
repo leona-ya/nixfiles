@@ -40,6 +40,7 @@ in {
             listen = "[::1]:9273";
             metric_version = 2;
             expiration_interval = "120s";
+            export_timestamp = true;
           };
         };
       };

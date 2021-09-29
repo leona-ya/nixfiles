@@ -110,6 +110,7 @@ in {
     # prometheus borg exporter
     em0lar.telegraf.extraInputs = lib.mkIf config.em0lar.telegraf.enable {
       prometheus =  {
+        metric_version = 2;
         urls = [ "http://127.0.0.1:7373" ];
       };
     };

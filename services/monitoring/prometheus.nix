@@ -232,7 +232,7 @@
             }
             {
               alert = "BorgBackupTooLongAgo";
-              expr = "time() - borgbackup_last_successful_archive_gauge > 97200";
+              expr = "time() - borgbackup_last_successful_archive > 97200";
               for = "0s";
               labels = {
                 severity = "critical";

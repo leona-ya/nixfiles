@@ -8,6 +8,12 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
@@ -67,7 +73,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -131,7 +137,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -194,7 +200,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -258,7 +264,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -322,7 +328,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -386,7 +392,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -436,7 +442,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -562,7 +568,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -691,11 +697,11 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - borgbackup_last_successful_archive_gauge",
+          "expr": "time() - borgbackup_last_successful_archive",
           "format": "table",
           "interval": "",
           "legendFormat": "",

@@ -1,8 +1,13 @@
-{ ... }: {
+{ pkgs, ... }: {
   services.resolved.enable = false;
   services.kresd = {
     enable = true;
+    package = pkgs.knot-resolver.override { extraFeatures = true; };
     extraConfig = ''
+      modules.load('http')
+      net.listen('127.0.0.1', 8453, { kind = 'webmgmt' })
+      http.prometheus.namespace = 'kresd_'
+
       policy.add(policy.suffix(policy.FLAGS({'NO_CACHE', 'NO_EDNS'}), {todname('lan.')}))
       policy.add(policy.suffix(policy.STUB({'127.0.0.11'}), {todname('lan.')}))
 
@@ -32,6 +37,14 @@
       "10.151.6.1:53"
     ];
   };
+
+  em0lar.telegraf.extraInputs = {
+    prometheus =  {
+      urls = [ "http://127.0.0.1:8453/metrics" ];
+      metric_version = 2;
+    };
+  };
+
   services.knot = {
     enable = true;
     extraConfig = ''
