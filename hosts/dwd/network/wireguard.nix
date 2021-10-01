@@ -42,6 +42,7 @@
       {
         wireguardPeerConfig = {
           AllowedIPs = [
+            "10.151.8.0/25"
             "10.151.9.0/24"
             "10.151.16.0/24"
             "fd8f:d15b:9f40:0900::/56"
@@ -61,6 +62,7 @@
       "fd8f:d15b:9f40::1/56"
     ];
     routes = [
+      { routeConfig.Destination = "10.151.8.0/25"; }
       { routeConfig.Destination = "10.151.9.0/24"; }
       { routeConfig.Destination = "10.151.16.0/24"; }
       { routeConfig.Destination = "fd8f:d15b:9f40:0900::/56"; }

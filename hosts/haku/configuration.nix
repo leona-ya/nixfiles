@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./openvpn.nix
       ./wireguard.nix
       ../../common
       ../../services/dns-knot/secondary
