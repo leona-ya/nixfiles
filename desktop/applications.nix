@@ -45,6 +45,9 @@
     (jetbrains.datagrip.override {
       jdk = jetbrains.jdk;
     })
+    (jetbrains.idea-community.override {
+    	jdk = jetbrains.jdk;
+    })
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
@@ -59,6 +62,7 @@
     rofi-pass 
     rustup
     sengi
+    slack
     spotify
     sublime4
     superTuxKart
@@ -78,6 +82,7 @@
     enable = true;
     dockerCompat = true;
   };
+  programs.java.enable = true;
 
   home-manager.users.em0lar = {
     xdg.enable = true;
@@ -124,11 +129,18 @@
     programs.zsh = {
       initExtra = ''
         eval "$(${pkgs.z-lua}/bin/z --init zsh)"
+        eval "$(direnv hook zsh)"
       '';
       shellAliases = {
         "pdev" = "pandoc --template eisvogel --listings";
       };
     };
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      nix-direnv.enableFlakes = true;
+    };
+
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
@@ -137,6 +149,7 @@
         "x-scheme-handler/https" = [ "org.qutebrowser.qutebrowser.desktop" ];
         "x-scheme-handler/about" = [ "org.qutebrowser.qutebrowser.desktop" ];
         "x-scheme-handler/unknown" = [ "org.qutebrowser.qutebrowser.desktop" ];
+	      "x-scheme-handler/slack" = [ "slack.desktop" ];
       };
     };
   };

@@ -69,7 +69,7 @@
     rsync
     tcpdump
     tmux
-    wget
+    wget2
     whois
     wireguard-tools
   ];

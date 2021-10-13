@@ -1,6 +1,9 @@
 { pkgs, config, ... }:
 
 {
+  imports = [
+    ./shared.nix
+  ];
   em0lar.secrets = {"nextcloud/admin_password".owner = "nextcloud"; };
   services.nextcloud = {
     enable = true;

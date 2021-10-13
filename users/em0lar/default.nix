@@ -44,6 +44,8 @@
         "la" = "exa -la --git";
         "tree" = "exa -T";
         "sudo" = "sudo ";
+        "wget" = "wget2";
+        "wt" = "wget2";
       };
       oh-my-zsh = {
         enable = true;

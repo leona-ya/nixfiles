@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021091501;
+      serial = 2021100504;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -44,6 +44,8 @@
 
       www.CNAME = [ "foros.net.em0lar.dev." ];
       cloud.CNAME = [ "foros.net.em0lar.dev." ];
+      "shared.cloud".CNAME = [ "haku.net.em0lar.dev." ];
+      "shared.cloud.int".CNAME = [ "foros.net.em0lar.dev." ];
     };
   };
 }

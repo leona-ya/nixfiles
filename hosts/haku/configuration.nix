@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./openvpn.nix
       ./wireguard.nix
+      ./nextcloud-caching.nix
       ../../common
       ../../services/dns-knot/secondary
     ];

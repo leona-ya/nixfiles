@@ -21,7 +21,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1632933930928,
+  "iteration": 1634135501422,
   "links": [],
   "panels": [
     {
@@ -468,7 +468,7 @@
         "colorScheme": "interpolateSpectral",
         "exponent": 0.5,
         "max": null,
-        "min": null,
+        "min": 0,
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
@@ -491,17 +491,19 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(kresd_latency_bucket{host=\"$host\", le!=\"+Inf\"}[$__rate_interval])",
+          "expr": "sum by (le)(rate(kresd_latency_bucket{host=\"dwd\"}[$__rate_interval]))\n/ ignoring (le) group_left\nsum(rate(kresd_latency_bucket{host=\"dwd\"}[$__rate_interval])) * 100",
+          "hide": false,
           "interval": "",
           "legendFormat": "{{le}}",
           "refId": "A"
         }
       ],
-      "title": "Latency",
+      "title": "Latency (percent)",
       "tooltip": {
         "show": true,
         "showHistogram": false
       },
+      "tooltipDecimals": 2,
       "transformations": [],
       "type": "heatmap",
       "xAxis": {
@@ -524,7 +526,7 @@
       "yBucketSize": null
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 30,
   "style": "dark",
   "tags": [],
@@ -560,12 +562,12 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Knot Resolver DNS",
   "uid": "K5fCUwNnz",
-  "version": 6
+  "version": 1
 }
