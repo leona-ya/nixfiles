@@ -35,6 +35,7 @@
             name = "keycloak";
             authurl = "https://auth.em0lar.dev/auth/realms/em0lar";
             clientid = "vikunja";
+            clientsecret = "b322f24b-b57f-41d0-b0bc-96b00a5ed329";
           }];
         };
       };

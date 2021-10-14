@@ -9,6 +9,10 @@ self: super:
   vikunja-api = self.callPackage ./vikunja/api.nix { };
   vikunja-frontend = self.callPackage ./vikunja/frontend.nix { };
   widevine-cdm = self.callPackage ./widevine { };
-  setuptools-scm = self.callPackage ./setuptools-scm { };
+  python = super.python3.override {
+    packageOverrides = self: super: {
+      ocrmypdf = self.callPackage ./ocrmypdf { };
+    };
+  };
 }
 
