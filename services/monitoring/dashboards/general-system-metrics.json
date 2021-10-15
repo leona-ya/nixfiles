@@ -8,6 +8,12 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
@@ -15,7 +21,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1626035906500,
+  "iteration": 1634333870362,
   "links": [],
   "panels": [
     {
@@ -75,7 +81,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "expr": "system_uptime{host=~\"$host\"}",
@@ -131,7 +137,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "expr": "sum(increase(net_bytes_recv{host=\"$host\"}[$__range]))",
@@ -190,7 +196,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "expr": "count(systemd_units_active_code{host=\"$host\",active=\"failed\"}) or vector(0)",
@@ -252,7 +258,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "expr": "system_load5{host=~\"$host\"}",
@@ -314,7 +320,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "expr": "system_load15{host=~\"$host\"}",
@@ -377,7 +383,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "expr": "mem_used_percent{host=~\"$host\"}",
@@ -442,7 +448,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "expr": "disk_used_percent{host=\"$host\", path=\"/\"}",
@@ -499,7 +505,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "expr": "count(systemd_units_active_code{host=\"$host\",active=~\"active\"}) or vector(0)",
@@ -555,7 +561,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "expr": "sum(increase(net_bytes_sent{host=\"$host\"}[$__range]))",
@@ -577,30 +583,27 @@
           },
           "custom": {
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "left",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 10,
-            "gradientMode": "hue",
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
             "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
-              "mode": "normal"
+              "mode": "none"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -622,10 +625,50 @@
           },
           "unit": "percent"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "temp[- high]* - [a-z0-9-]*"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "celsius"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "custom.axisSoftMin",
+                "value": 20
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "temp - high - [a-z0-9-]*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#E02F44",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 8,
+        "h": 11,
         "w": 12,
         "x": 0,
         "y": 7
@@ -641,7 +684,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "exemplar": true,
@@ -656,6 +699,22 @@
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sensors_temp_input{host=\"$host\", chip=~\"$temp_chip\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "temp - {{chip}}",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "sensors_temp_max{host=\"$host\", chip=~\"$temp_chip\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "temp - high - {{chip}}",
+          "refId": "D"
         }
       ],
       "timeFrom": null,
@@ -721,7 +780,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 11,
         "w": 12,
         "x": 12,
         "y": 7
@@ -765,7 +824,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 18
       },
       "id": 12,
       "panels": [],
@@ -831,7 +890,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 19
       },
       "id": 17,
       "options": {
@@ -961,7 +1020,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 19
       },
       "id": 18,
       "options": {
@@ -1038,7 +1097,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 27
       },
       "id": 19,
       "options": {
@@ -1054,7 +1113,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.1.6",
       "targets": [
         {
           "exemplar": true,
@@ -1130,7 +1189,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 27
       },
       "id": 20,
       "options": {
@@ -1172,7 +1231,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 32
+        "y": 35
       },
       "id": 28,
       "panels": [],
@@ -1245,7 +1304,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 33
+        "y": 36
       },
       "id": 30,
       "options": {
@@ -1336,7 +1395,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 33
+        "y": 36
       },
       "id": 31,
       "options": {
@@ -1436,7 +1495,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 41
+        "y": 44
       },
       "id": 32,
       "options": {
@@ -1472,7 +1531,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
+  "refresh": "",
   "schemaVersion": 30,
   "style": "dark",
   "tags": [],
@@ -1481,7 +1540,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "dwd",
           "value": "dwd"
         },
@@ -1507,11 +1566,42 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "k10temp-pci-00c3"
+          ],
+          "value": [
+            "k10temp-pci-00c3"
+          ]
+        },
+        "datasource": null,
+        "definition": "label_values(sensors_temp_input{host=\"$host\"}, chip)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "temp chip",
+        "multi": true,
+        "name": "temp_chip",
+        "options": [],
+        "query": {
+          "query": "label_values(sensors_temp_input{host=\"$host\"}, chip)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 5,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},

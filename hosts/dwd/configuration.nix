@@ -23,8 +23,12 @@
     enable = true;
     host = "[fd8f:d15b:9f40::1]";
     diskioDisks = [ "sda" ];
+    extraInputs = {
+      sensors = { };
+    };
   };
   services.telegraf.extraConfig.inputs.net.interfaces = [ "br*" "ppp-wan" ];
+  systemd.services.telegraf.path = [ pkgs.lm_sensors ];
 
   system.stateVersion = "21.05";
 }

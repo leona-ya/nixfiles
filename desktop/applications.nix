@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
 {
   fonts.fontconfig.localConf = lib.fileContents ./fontconfig.xml;
@@ -54,6 +54,9 @@
     libreoffice-fresh
     mpv
     mumble
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [ wlrobs ];
+    })
     openttd
     pandoc
     pass-wayland
@@ -72,6 +75,15 @@
     z-lua
     zoom-us
   ];
+
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  boot.kernelModules = [
+    "v4l2loopback"
+  ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=2 exclusive_caps=1
+  '';
+
   services.fwupd.enable = true;
 
   services.udev.packages = [ pkgs.yubikey-personalization ];
@@ -106,7 +118,10 @@
       enableSshSupport = true;
       pinentryFlavor = "qt";
       enableExtraSocket = true;
-      sshKeys = [ "430411806903447FF65FCBCBB1ADA545CD2CBACD" ];
+      sshKeys = [
+        "8AB64FC46268F8634C86BA3F52B5C315E98D38C4"
+	      "D91C5A1E23D3EE4DC72A5BEF0EA93C9F634A79F5"
+      ];
     };
     programs.qutebrowser = {
       enable = true;
