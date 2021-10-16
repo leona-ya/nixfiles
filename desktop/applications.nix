@@ -16,6 +16,7 @@
     roboto
     jetbrains-mono
     font-awesome
+    meslo-lgs-nf
   ];
 
   nixpkgs.config.allowUnfree = true;

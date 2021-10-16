@@ -47,6 +47,7 @@
         "wget" = "wget2";
         "wt" = "wget2";
       };
+      initExtra = builtins.readFile ../zsh-extra.zsh;
       oh-my-zsh = {
         enable = true;
         plugins = [
@@ -54,8 +55,24 @@
           "git"
           "sudo"
           "virtualenvwrapper"
+          "zsh-autocomplete"
         ];
-        theme = lib.mkDefault "fishy";
+        theme = lib.mkDefault "powerlevel10k/powerlevel10k";
+        custom = builtins.toString (pkgs.stdenv.mkDerivation {
+          name = "oh-my-zsh-custom-dir";
+          buildInputs = with pkgs; [
+            zsh-autocomplete
+            zsh-powerlevel10k
+          ];
+          unpackPhase = "true";
+          installPhase =
+            ''
+              mkdir -p $out/themes
+              ln -s ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k $out/themes/powerlevel10k
+              mkdir -p $out/plugins
+              ln -s ${pkgs.zsh-autocomplete}/share/zsh-autocomplete $out/plugins/zsh-autocomplete
+            '';
+        });
       };
     };
 

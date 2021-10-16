@@ -14,5 +14,6 @@ self: super:
       ocrmypdf = self.callPackage ./ocrmypdf { };
     };
   };
+  zsh-autocomplete = self.callPackage ./zsh-autocomplete { };
 }
 
