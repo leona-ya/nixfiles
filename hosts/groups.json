@@ -1,0 +1,22 @@
+{
+  "monitoring": {
+    "hosts": [
+      "beryl",
+      "dwd",
+      "foros",
+      "haku",
+      "ladon",
+      "myron",
+      "naiad"
+    ]
+  },
+  "wireguard": {
+    "hosts": [
+      "adonis",
+      "dwd",
+      "haku",
+      "myron",
+      "naiad"
+    ]
+  }
+}

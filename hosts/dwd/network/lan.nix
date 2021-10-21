@@ -23,6 +23,9 @@
       dhcpV6Config = {
         PrefixDelegationHint = 64;
       };
+      dhcpV6PrefixDelegationConfig = {
+        SubnetId = 0;
+      };
     };
 
     netdevs."05-br-tethys" = {
@@ -45,6 +48,9 @@
       };
       dhcpV6Config = {
         PrefixDelegationHint = 64;
+      };
+      dhcpV6PrefixDelegationConfig = {
+        SubnetId = 1;
       };
       routes = [
         { routeConfig.Destination = "195.39.247.144/32"; }
@@ -80,6 +86,9 @@
       networkConfig = {
         ConfigureWithoutCarrier = true;
         DHCPv6PrefixDelegation = true;
+      };
+      dhcpV6PrefixDelegationConfig = {
+        SubnetId = 2;
       };
     };
 

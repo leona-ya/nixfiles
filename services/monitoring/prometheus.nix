@@ -1,6 +1,8 @@
 { config, lib, pkgs, hosts, ... }:
 
-{
+let
+  hosthelper = import ../../hosts { inherit lib config; };
+in {
   em0lar.secrets."prometheus/vouch-proxy-env".owner = "nginx";
 
   services.nginx.virtualHosts."prometheus.em0lar.dev" = {
@@ -34,15 +36,7 @@
         metrics_path = "/metrics";
         static_configs = [
           {
-            targets = [
-              "[fd8f:d15b:9f40:11:8079:3aff:fe35:9ddc]" # beryl
-              "[fd8f:d15b:9f40:11:2c5a:56ff:fe4f:e4c4]" # foros
-              "[fd8f:d15b:9f40:11:6cf2:ecff:fe90:8c3c]" # ladon
-              "[fd8f:d15b:9f40::1]" # dwd
-              "[fd8f:d15b:9f40:0c00::1]" # haku
-              "[fd8f:d15b:9f40:0c20::1]" # naiad
-              "[fd8f:d15b:9f40:0c21::1]" # myron
-            ];
+            targets = hosthelper.groups.monitoring.g_ips;
           }
         ];
       }
