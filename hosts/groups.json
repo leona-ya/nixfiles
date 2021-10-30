@@ -12,7 +12,6 @@
   },
   "wireguard": {
     "hosts": [
-      "adonis",
       "dwd",
       "haku",
       "myron",

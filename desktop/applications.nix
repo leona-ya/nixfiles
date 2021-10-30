@@ -31,6 +31,7 @@
   ];
 
   users.users.em0lar.packages = with pkgs; [
+    _1password-gui
     ansible_2_9
     chromium
     element-desktop
@@ -65,6 +66,7 @@
     python3
     rofi-pass 
     rustup
+    sbt
     sengi
     slack
     spotify
@@ -91,10 +93,11 @@
   environment.variables.MOZ_USE_XINPUT2 = "1"; # for firefox
   hardware.bluetooth.enable = true;
 
-  virtualisation.podman = {
+  virtualisation.docker = {
     enable = true;
-    dockerCompat = true;
+    enableOnBoot = false;
   };
+  em0lar.nftables.generateDockerRules = true;
   programs.java.enable = true;
 
   home-manager.users.em0lar = {

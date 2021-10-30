@@ -5,6 +5,8 @@ let
   fwcfg = config.networking.firewall;
   cfg = config.em0lar.nftables;
 
+  doDocker = config.virtualisation.docker.enable && cfg.generateDockerRules;
+
   mkPorts = cond: ports: ranges: action: let
     portStrings = (map (range: "${toString range.from}-${toString range.to}") ranges)
                ++ (map toString ports);
@@ -59,9 +61,22 @@ let
 
         ${cfg.extraForward}
 
+        ${lib.optionalString doDocker ''
+          oifname docker0 ct state invalid drop
+          oifname docker0 ct state established,related accept
+          iifname docker0 accept
+        ''}
         counter
       }
     }
+    ${lib.optionalString doDocker ''
+      table ip nat {
+        chain docker-postrouting {
+          type nat hook postrouting priority 10
+          iifname docker0 masquerade
+        }
+      }
+    ''}
     ${cfg.extraConfig}
   '';
 
@@ -102,6 +117,10 @@ in {
         type = types.bool;
         default = true;
       };
+      generateDockerRules = mkOption {
+        type = types.bool;
+        default = true;
+      };
     };
   };
 
@@ -120,6 +139,9 @@ in {
     in lib.mkIf (!cfg.checkIPTables) {
       ExecStart = lib.mkOverride 0 rulesScript;
       ExecReload = lib.mkOverride 0 rulesScript;
+    };
+    virtualisation.docker = lib.mkIf doDocker {
+      extraOptions = "--iptables=false";
     };
   };
 }
