@@ -36,7 +36,7 @@ in {
         metrics_path = "/metrics";
         static_configs = [
           {
-            targets = hosthelper.groups.monitoring.g_ips;
+            targets = hosthelper.groups.monitoring.g_hostnames;
           }
         ];
       }

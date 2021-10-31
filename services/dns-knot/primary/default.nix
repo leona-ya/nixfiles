@@ -3,6 +3,7 @@ let
   dns = inputs.dns;
   dnsutil = dns.util.${config.nixpkgs.system};
   helper = import ./zones/helper.nix { inherit dns; };
+  hosthelper = import ../../../hosts { inherit lib config; };
 in {
   networking.firewall.allowedTCPPorts = [ 53 ];
   networking.firewall.allowedUDPPorts = [ 53 ];
@@ -61,7 +62,7 @@ in {
           file: "${dnsutil.writeZone "em0lar.de" (import zones/em0lar.de.nix { inherit helper lib dns config; }).zone}"
           template: signedprimary
         - domain: em0lar.dev
-          file: "${dnsutil.writeZone "em0lar.dev" (import zones/em0lar.dev.nix { inherit helper lib dns config; }).zone}"
+          file: "${dnsutil.writeZone "em0lar.dev" (import zones/em0lar.dev.nix { inherit hosthelper helper lib dns config; }).zone}"
           template: signedprimary
         - domain: emolar.de
           file: "${dnsutil.writeZone "emolar.de" (import zones/emolar.de.nix { inherit helper lib dns config; }).zone}"

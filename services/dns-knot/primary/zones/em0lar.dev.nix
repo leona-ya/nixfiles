@@ -1,4 +1,4 @@
-{ helper, dns, config, lib, ... }:
+{ hosthelper, helper, dns, config, lib, ... }:
 
 with dns.lib.combinators;
 
@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021091501;
+      serial = 2021103002;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -36,7 +36,7 @@ in {
     A = helper.hosts.web.A;
     AAAA = helper.hosts.web.AAAA;
 
-    subdomains = {
+    subdomains = hosthelper.services.dns-int.g_dns_records // {
       "myron.net" = myron_host;
       "naiad.net" = naiad_host;
       "haku.net" = haku_host;

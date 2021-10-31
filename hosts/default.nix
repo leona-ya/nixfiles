@@ -121,8 +121,7 @@ in rec {
   groups =
     (lib.recursiveUpdate (builtins.fromJSON (builtins.readFile ./groups.json)) {
       monitoring = {
-        g_ips = builtins.map (host: "[${host.meta.intIpv6}]")
-          (getHosts groups.monitoring.hosts hosts);
+        g_hostnames = builtins.map (host: "${host}.wg.net.em0lar.dev") groups.monitoring.hosts;
       };
       wireguard = {
         interfaces = {
@@ -191,4 +190,10 @@ in rec {
           }) hosts.${currentHost}.services.wireguard.interfaces;
       };
     });
+  services = {
+    dns-int.g_dns_records = lib.mapAttrs' (hostname: config:
+      lib.nameValuePair "${hostname}.wg.net" {
+        AAAA = [ config.meta.intIpv6 ];
+      }) hosts;
+  };
 }
