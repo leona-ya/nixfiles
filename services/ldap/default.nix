@@ -2,6 +2,9 @@
 
 {
   em0lar.secrets = {"ldap/root_password".owner = "openldap"; };
+  em0lar.nftables.extraInput = ''
+    ip6 saddr fd8f:d15b:9f40::/48 tcp dport 389 accept
+  '';
 
   services.openldap = {
     enable = true;
