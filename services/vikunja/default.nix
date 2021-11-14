@@ -1,11 +1,11 @@
 { config, pkgs, lib, ... }:
 
 {
-  em0lar.secrets."vikunja_environment_file" = {};
+  em0lar.sops.secrets."services/vikunja/env" = {};
 
   services.vikunja = {
     enable = true;
-    environmentFiles = [ config.em0lar.secrets."vikunja_environment_file".path ];
+    environmentFiles = [ config.sops.secrets."services/vikunja/env".path ];
     frontendScheme = "https";
     frontendHostname = "todo.em0lar.dev";
     database = {

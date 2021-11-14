@@ -16,9 +16,9 @@
   boot.kernelParams = [ "zfs.zfs_arc_max=1024000000" ];
   networking.hostId = "a4232228";
 
-  em0lar.secrets = {
-    "alt_rsa_ssh_key".owner = "em0lar";
-    "user-em0lar-password".owner = "root";
+  em0lar.sops.secrets = {
+    "hosts/turingmachine/alt_rsa_ssh_key".owner = "em0lar";
+    "hosts/turingmachine/user_em0lar_pw".neededForUsers = true;
   };
 
   services.upower = {
@@ -29,17 +29,12 @@
   };
   systemd.services.upower.wantedBy = lib.mkForce [ "multi-user.target" ];
 
-  users.users.em0lar.passwordFile = config.em0lar.secrets.user-em0lar-password.path;
+  users.users.em0lar.passwordFile = config.sops.secrets."hosts/turingmachine/user_em0lar_pw".path;
   security.sudo.wheelNeedsPassword = true;
 
   home-manager.users.em0lar = {
-    home.file.alt_rsa_ssh_key = {
-      source = config.em0lar.secrets."alt_rsa_ssh_key".path;
-      target = ".ssh/alt_rsa";
-    };
-
     programs.ssh.extraConfig = ''
-      IdentityFile ~/.ssh/alt_rsa
+      IdentityFile ${config.sops.secrets."hosts/turingmachine/alt_rsa_ssh_key".path}
     '';
   };
   em0lar.backups = {

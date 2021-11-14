@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  em0lar.secrets."keycloak_database_password" = {
+  em0lar.sops.secrets."services/keycloak/database_password" = {
     owner = "keycloak";
     group = "postgres";
     mode = "0440";
@@ -20,7 +20,7 @@
     });
     httpPort = "8080";
     frontendUrl = "https://auth.em0lar.dev/auth";
-    database.passwordFile = config.em0lar.secrets."keycloak_database_password".path;
+    database.passwordFile = config.sops.secrets."services/keycloak/database_password".path;
     extraConfig = {
       "subsystem=undertow" = {
         "server=default-server" = {

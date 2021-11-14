@@ -4,7 +4,7 @@ let
   grafanaDomain = "grafana.em0lar.dev";
 
 in {
-  em0lar.secrets."grafana_oauth_client_secret".owner = "grafana";
+  em0lar.sops.secrets."services/monitoring/grafana/env".owner = "grafana";
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "grafana" ];
@@ -60,7 +60,7 @@ in {
     };
   };
   systemd.services.grafana.serviceConfig = {
-    EnvironmentFile = config.em0lar.secrets.grafana_oauth_client_secret.path;
+    EnvironmentFile = config.sops.secrets."services/monitoring/grafana/env".path;
   };
 
   users.users.nginx.extraGroups = [ "grafana" ];

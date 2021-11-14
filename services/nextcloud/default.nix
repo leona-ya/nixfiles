@@ -4,7 +4,7 @@
   imports = [
     ./shared.nix
   ];
-  em0lar.secrets = {"nextcloud/admin_password".owner = "nextcloud"; };
+  em0lar.sops.secrets."services/nextcloud/admin_password".owner = "nextcloud";
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud22;
@@ -24,7 +24,7 @@
       dbname = "nextcloud";
 
       adminuser = "admin";
-      adminpassFile = config.em0lar.secrets."nextcloud/admin_password".path;
+      adminpassFile = config.sops.secrets."services/nextcloud/admin_password".path;
 
       defaultPhoneRegion = "DE";
     };

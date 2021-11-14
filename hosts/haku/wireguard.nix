@@ -7,10 +7,10 @@ in {
     51441
     51442
   ];
-  em0lar.secrets = {
-    "wireguard_wg-public_privatekey".owner = "systemd-network";
-    "wireguard_wg-server_privatekey".owner = "systemd-network";
-    "wireguard_wg-clients_privatekey".owner = "systemd-network";
+  em0lar.sops.secrets = {
+    "hosts/haku/wireguard_wg-public_privatekey".owner = "systemd-network";
+    "hosts/haku/wireguard_wg-server_privatekey".owner = "systemd-network";
+    "hosts/haku/wireguard_wg-clients_privatekey".owner = "systemd-network";
   };
   em0lar.nftables.extraForward = ''
     ct state invalid drop
@@ -31,7 +31,7 @@ in {
         };
         wireguardConfig = {
           ListenPort = 51442;
-          PrivateKeyFile = config.em0lar.secrets."wireguard_wg-clients_privatekey".path;
+          PrivateKeyFile = config.sops.secrets."hosts/haku/wireguard_wg-clients_privatekey".path;
         };
         wireguardPeers = [
           { # turingmachine [em0lar]

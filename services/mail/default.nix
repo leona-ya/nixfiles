@@ -4,13 +4,13 @@
   imports = [
     (fetchGit {
       url = "ssh://git@git.em0lar.dev:2222/em0lar/nixfiles-mail-secrets.git";
-      rev = "4b0bafb017e6ea0500d28481dad8112e16de188b";
+      rev = "5bc5f8d2ee970b35c3d0fe43d75152edb3767b31";
       ref = "main";
     }).outPath
     ./autoconfig.nix
   ];
 
-  em0lar.secrets."mail/superusers".owner = "dovecot2";
+  em0lar.sops.secrets."services/mail/users/superusers".owner = "dovecot2";
 
   fileSystems."/var/vmail" = {
     device = "/mnt/cryptmail/vmail";
@@ -41,7 +41,7 @@
       auth_master_user_separator = *
       passdb {
         driver = passwd-file
-        args = ${config.em0lar.secrets."mail/superusers".path}
+        args = ${config.sops.secrets."services/mail/users/superusers".path}
         master = yes
         result_success = continue
       }

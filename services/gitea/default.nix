@@ -1,9 +1,15 @@
 { pkgs, config, lib, ... }:
 
 {
-  em0lar.secrets = {
-    "gitea/mail".owner = "gitea";
-    "gitea/ssh_deploy_key".owner = "gitea";
+  em0lar.sops.secrets = {
+    "all/mail/no_reply_password" = {
+      owner = "gitea";
+      group = "gitea";
+    };
+    "services/gitea/ssh_deploy_key" = {
+      owner = "gitea";
+      group = "gitea";
+    };
   };
 
   services.postgresql = {
@@ -37,7 +43,7 @@
       user = "gitea";
     };
 
-    mailerPasswordFile = config.em0lar.secrets."gitea/mail".path;
+    mailerPasswordFile = config.sops.secrets."all/mail/no_reply_password".path;
 
     settings = {
       mailer = {
@@ -74,9 +80,11 @@
     };
   };
 
-  systemd.services.gitea.serviceConfig.ExecStartPre = [
-    "${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."gitea/ssh_deploy_key".path} /var/lib/gitea/ssh_deploy_key"
-  ];
+  systemd.services.gitea.serviceConfig = {
+    ExecStartPre = [
+      "${pkgs.coreutils}/bin/ln -sf ${config.sops.secrets."services/gitea/ssh_deploy_key".path} /var/lib/gitea/ssh_deploy_key"
+    ];
+  };
 
   services.nginx.virtualHosts = {
     "git.em0lar.de" = {

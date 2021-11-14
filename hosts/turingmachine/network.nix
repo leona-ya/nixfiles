@@ -40,8 +40,8 @@
       };
     };
   };
-  em0lar.secrets = {
-    "wpa_supplicant.conf".owner = "root";
+  em0lar.sops.secrets = {
+    "hosts/turingmachine/wpa_supplicant.conf" = {};
   };
-  environment.etc."wpa_supplicant.conf".source = config.em0lar.secrets."wpa_supplicant.conf".path;
+  environment.etc."wpa_supplicant.conf".source = config.sops.secrets."hosts/turingmachine/wpa_supplicant.conf".path;
 }

@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  em0lar.secrets."prometheus/alertmanager-bot-env" = {};
+  em0lar.sops.secrets."services/monitoring/prometheus/alertmanager_bot_env" = {};
 
   systemd.services.alertmanager-bot = {
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.alertmanager-bot}/bin/alertmanager-bot";
-      EnvironmentFile = config.em0lar.secrets."prometheus/alertmanager-bot-env".path;
+      EnvironmentFile = config.sops.secrets."services/monitoring/prometheus/alertmanager_bot_env".path;
       DynamicUser = true;
       StateDirectory = "alertmanager-bot";
       Restart = "always";

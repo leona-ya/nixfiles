@@ -1,10 +1,10 @@
 { config, lib, ... }:
 
 {
-  em0lar.secrets."matrix/mautrix-telegram-environment" = {};
+  em0lar.sops.secrets."services/matrix/mautrix_telegram_environment" = {};
   services.mautrix-telegram = {
     enable = true;
-    environmentFile = config.em0lar.secrets."matrix/mautrix-telegram-environment".path;
+    environmentFile = config.sops.secrets."services/matrix/mautrix_telegram_environment".path;
     serviceDependencies = [ "matrix-synapse.service" ];
     settings = {
       homeserver = {

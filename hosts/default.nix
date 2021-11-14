@@ -164,7 +164,7 @@ in rec {
             wireguardConfig = {
               ListenPort = groups.wireguard.interfaces.${ifName}.port;
               PrivateKeyFile =
-                config.em0lar.secrets."wireguard_wg-${ifName}_privatekey".path;
+                config.sops.secrets."hosts/${currentHost}/wireguard_wg-${ifName}_privatekey".path;
             };
             wireguardPeers =
               groups.wireguard.g_currenthost_generate_peers ifName

@@ -1,0 +1,114 @@
+keys:
+  - &admin 430411806903447FF65FCBCBB1ADA545CD2CBACD
+  - &aido age1avcqge6kpzpfrnv6fyxgj00y9gp3h4epnt5swqjc3reedqeeqg3q39n82u
+  - &beryl age1htlafv7cjyy7tg35e2fgaztd92gsa3htv59wwp028e5eavpjxd3qe5j9k6
+  - &dwd age1xph9c9rtyjrz3cnd6t940dnzuruqw27l7yp98ac33rdz53q429gsu702k4
+  - &foros age1fuda4uhcvllkay49pfftngdx8q2gmj2ly5rdgs0d90q7e5nzxa3qafee6f
+  - &haku age1r0ry9fmygcw0w7ltwkff7wlcm0g57g0lu62m92yz6e73kmrha9ps3xvdw6
+  - &ladon age1cnyhx8t6x54fq2mfhdllsr47huzy3ax2sneqydfhgvkduxfk0cxqkcdw9j
+  - &myron age160q2qgm8jcxmkah5mj83u2pljty2tk2zv9szv2awryenj8qcsdts3fzw5u
+  - &naiad age1apjvmw80k4nh7fvr07lfhqtku7amw6x8ulc7hyyplr78aaj0xehqm440d7
+  - &turingmachine age1wqgja2wvgeuzvjqvsk862ppdmfv8mqmgxc543x3a5g02dddadu3seflurp
+creation_rules:
+  - path_regex: secrets/all/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *beryl
+          - *dwd
+          - *foros
+          - *haku
+          - *ladon
+          - *myron
+          - *naiad
+          - *turingmachine
+
+  # hosts
+  - path_regex: secrets/hosts/beryl.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *beryl
+  - path_regex: secrets/hosts/dwd.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *dwd
+  - path_regex: secrets/hosts/foros.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *foros
+  - path_regex: secrets/hosts/haku.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *haku
+  - path_regex: secrets/hosts/ladon.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *ladon
+  - path_regex: secrets/hosts/myron.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *myron
+  - path_regex: secrets/hosts/naiad.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *naiad
+  - path_regex: secrets/hosts/turingmachine.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *turingmachine
+
+
+  # services
+  - path_regex: secrets/services/backup-relay.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *aido
+  - path_regex: secrets/services/(gitea|hedgedoc|matrix|paperless-ng|vikunja).yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *beryl
+  - path_regex: secrets/services/nextcloud.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *foros
+  - path_regex: secrets/services/(keycloak|ldap).yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *ladon
+  - path_regex: secrets/services/mail.yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *myron
+  - path_regex: secrets/services/(monitoring).yaml
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *naiad

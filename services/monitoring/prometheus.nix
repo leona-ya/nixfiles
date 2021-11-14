@@ -3,7 +3,7 @@
 let
   hosthelper = import ../../hosts { inherit lib config; };
 in {
-  em0lar.secrets."prometheus/vouch-proxy-env".owner = "nginx";
+  em0lar.sops.secrets."services/monitoring/prometheus/vouch_proxy_env" = {};
 
   services.nginx.virtualHosts."prometheus.em0lar.dev" = {
     locations."/" = {
@@ -18,7 +18,7 @@ in {
     servers."prometheus.em0lar.dev" = {
       clientId = "prometheus";
       port = 12300;
-      environmentFiles = [ config.em0lar.secrets."prometheus/vouch-proxy-env".path ];
+      environmentFiles = [ config.sops.secrets."services/monitoring/prometheus/vouch_proxy_env".path ];
     };
   };
 

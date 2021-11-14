@@ -1,9 +1,9 @@
 { config, lib, ... }:
 
 {
-  em0lar.secrets = {
-    "paperless-ng/env".owner = "root";
-    "paperless-ng/vouch-proxy-env".owner = "root";
+  em0lar.sops.secrets = {
+    "services/paperless-ng/env".owner = "root";
+    "services/paperless-ng/vouch_proxy_env".owner = "root";
   };
 
   services.paperless-ng = {
@@ -20,16 +20,16 @@
   systemd.services = {
     paperless-ng-server = {
       serviceConfig = {
-        EnvironmentFile = config.em0lar.secrets."paperless-ng/env".path;
+        EnvironmentFile = config.sops.secrets."services/paperless-ng/env".path;
       };
     };
     paperless-ng-consumer = {
-      serviceConfig.EnvironmentFile = config.em0lar.secrets."paperless-ng/env".path;
+      serviceConfig.EnvironmentFile = config.sops.secrets."services/paperless-ng/env".path;
     };
     paperless-ng-web = {
       unitConfig.JoinsNamespaceOf = "paperless-ng-server.service";
       serviceConfig = {
-        EnvironmentFile = config.em0lar.secrets."paperless-ng/env".path;
+        EnvironmentFile = config.sops.secrets."services/paperless-ng/env".path;
       };
     };
   };
@@ -63,7 +63,7 @@
     servers."paperless.em0lar.dev" = {
       clientId = "paperless";
       port = 12300;
-      environmentFiles = [ config.em0lar.secrets."paperless-ng/vouch-proxy-env".path ];
+      environmentFiles = [ config.sops.secrets."services/paperless-ng/vouch_proxy_env".path ];
     };
   };
 }

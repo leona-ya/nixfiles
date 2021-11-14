@@ -1,8 +1,10 @@
 { lib, config, pkgs, ... }:
 
 {
-  em0lar.secrets."matrix/synapse-secrets.yaml".owner = "matrix-synapse";
-  em0lar.secrets."matrix/synapse-homeserver.signing.key".owner = "matrix-synapse";
+  em0lar.sops.secrets = {
+    "services/matrix/synapse/secrets.yaml".owner = "matrix-synapse";
+    "services/matrix/synapse/homeserver_signing_key".owner = "matrix-synapse";
+  };
 
   services.postgresql = {
     enable = true;
@@ -51,7 +53,7 @@
     ];
 
     extraConfigFiles = [
-      config.em0lar.secrets."matrix/synapse-secrets.yaml".path
+      config.sops.secrets."services/matrix/synapse/secrets.yaml".path
     ];
 
     url_preview_enabled = false;
@@ -88,7 +90,7 @@
   };
 
   systemd.services.matrix-synapse.serviceConfig.ExecStartPre = [
-    "${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."matrix/synapse-homeserver.signing.key".path} ${config.services.matrix-synapse.dataDir}/homeserver.signing.key"
+    "${pkgs.coreutils}/bin/ln -sf ${config.sops.secrets."services/matrix/synapse/homeserver_signing_key".path} ${config.services.matrix-synapse.dataDir}/homeserver.signing.key"
   ];
 
   services.nginx.virtualHosts."matrix.labcode.de" = {

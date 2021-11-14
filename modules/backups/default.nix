@@ -43,11 +43,11 @@ in {
     };
     encryptionPassCommand = mkOption {
       type = types.str;
-      default = "cat ${config.em0lar.secrets.backup_passphrase.path}";
+      default = "cat ${config.sops.secrets."hosts/${config.networking.hostName}/backup_passphrase".path}";
     };
     sshKeyFilePath = mkOption {
      type = types.str;
-     default = "${config.em0lar.secrets.backup_ssh_key.path}";
+     default = "${config.sops.secrets."hosts/${config.networking.hostName}/backup_ssh_key".path}";
     };
     compression = mkOption {
       type = types.str;
@@ -102,9 +102,9 @@ in {
       wantedBy = [ "timers.target" ];
     };
 
-    em0lar.secrets = {
-      "backup_ssh_key".owner = "root";
-      "backup_passphrase".owner = "root";
+    em0lar.sops.secrets = {
+      "hosts/${config.networking.hostName}/backup_ssh_key" = {};
+      "hosts/${config.networking.hostName}/backup_passphrase" = {};
     };
 
     # prometheus borg exporter

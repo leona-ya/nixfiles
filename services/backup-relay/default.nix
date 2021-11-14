@@ -1,13 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  em0lar.secrets."backup_cifs_credentials".owner = "root";
-  em0lar.secrets."b2-rclone-conf".owner = "root";
+  em0lar.sops.secrets = {
+    "services/backup-relay/backup_cifs_credentials" = {};
+    "services/backup-relay/b2_rclone_conf" = {};
+  };
   fileSystems = {
     "/mnt/backup" = {
       device = "//encladus.lan/backup/borg";
       fsType = "cifs";
-      options = ["_netdev,credentials=${config.em0lar.secrets.backup_cifs_credentials.path},uid=${toString config.users.users.borg.uid}" ]; #uid=null
+      options = ["_netdev,credentials=${config.sops.secrets."services/backup-relay/b2_rclone_conf".path},uid=${toString config.users.users.borg.uid}" ]; #uid=null
     };
   };
   services.borgbackup.repos = {
@@ -48,8 +50,8 @@
   systemd.services.b2-backup-sync = {
     description = "B2 Backup sync";
     script = ''
-      ${pkgs.rclone}/bin/rclone --config ${config.em0lar.secrets.b2-rclone-conf.path} sync /mnt/backup/repos/synced b2:labcode-backup
-      ${pkgs.rclone}/bin/rclone --config ${config.em0lar.secrets.b2-rclone-conf.path} cleanup b2:labcode-backup
+      ${pkgs.rclone}/bin/rclone --config ${config.sops.secrets."services/backup-relay/backup_cifs_credentials".path} sync /mnt/backup/repos/synced b2:labcode-backup
+      ${pkgs.rclone}/bin/rclone --config ${config.sops.secrets."services/backup-relay/backup_cifs_credentials".path} cleanup b2:labcode-backup
     '';
   };
   systemd.timers.b2-backup-sync = {

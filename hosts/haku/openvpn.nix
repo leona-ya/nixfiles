@@ -1,25 +1,24 @@
 { config, ... }: {
-  em0lar.secrets."openvpn/ovpn_client-ca" = {};
-  em0lar.secrets."openvpn/ovpn_client-cert" = {};
-  em0lar.secrets."openvpn/ovpn_client-key" = {};
-  em0lar.secrets."openvpn/dh" = {};
-
-  services.openvpn.servers = {
-  client = {
+  em0lar.sops.secrets = {
+    "hosts/haku/openvpn/client_ca" = {};
+    "hosts/haku/openvpn/client_cert" = {};
+    "hosts/haku/openvpn/client_key" = {};
+    "hosts/haku/openvpn/dh" = {};
+  };
+  services.openvpn.servers.client = {
     config = ''
       dev tun0
       port 993
       proto tcp-server
       cipher AES-256-GCM
       server 10.151.8.0 255.255.255.128
-      ca ${config.em0lar.secrets."openvpn/ovpn_client-ca".path}
-      cert ${config.em0lar.secrets."openvpn/ovpn_client-cert".path}
-      key ${config.em0lar.secrets."openvpn/ovpn_client-key".path}
-      dh ${config.em0lar.secrets."openvpn/dh".path}
+      ca ${config.sops.secrets."hosts/haku/openvpn/client_ca".path}
+      cert ${config.sops.secrets."hosts/haku/openvpn/client_cert".path}
+      key ${config.sops.secrets."hosts/haku/openvpn/client_key".path}
+      dh ${config.sops.secrets."hosts/haku/openvpn/dh".path}
     '';
     up = "ip route add 10.151.8.0/25 dev tun0";
     down = "ip route del 10.151.8.0/25 dev tun0";
-    };
   };
   em0lar.nftables = {
     extraForward = ''

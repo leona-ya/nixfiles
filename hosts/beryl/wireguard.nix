@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  em0lar.secrets."wireguard_haku_privatekey".owner = "systemd-network";
+  em0lar.sops.secrets."hosts/beryl/wireguard_wg-public_privatekey".owner = "systemd-network";
   systemd.network = {
     netdevs."30-wg-haku" = {
       netdevConfig = {
@@ -9,7 +9,7 @@
         Name = "wg-haku";
       };
       wireguardConfig = {
-        PrivateKeyFile = config.em0lar.secrets."wireguard_haku_privatekey".path;
+        PrivateKeyFile = config.sops.secrets."hosts/beryl/wireguard_wg-public_privatekey".path;
       };
       wireguardPeers = [{
         wireguardPeerConfig = {

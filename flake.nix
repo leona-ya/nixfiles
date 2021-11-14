@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,9 +24,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, dns, nixpkgs, home-manager, flake-registry, deploy-rs, em0lar-dev-website, mailserver, nixos-hardware, ... }:
+  outputs = inputs@{
+    self,
+    flake-utils,
+    dns,
+    nixpkgs,
+    home-manager,
+    flake-registry,
+    deploy-rs,
+    em0lar-dev-website,
+    mailserver,
+    nixos-hardware,
+    sops-nix,
+    ...
+   }:
     let
       overlays = [
         (final: prev: import ./packages final prev)
@@ -59,6 +77,7 @@
             ./modules/imapsync
             ./modules/nftables
             ./modules/secrets
+            ./modules/sops
             ./modules/telegraf
             ./modules/vouch-proxy
           ];
@@ -69,6 +88,7 @@
           nixpkgs.overlays = overlays;
         }
         sourcesModule
+        sops-nix.nixosModules.sops
       ];
 
       hosts = {
@@ -180,7 +200,17 @@
           deploy.hostname = "188.34.167.131";
         };
       };
-    in {
+    in
+    flake-utils.lib.eachDefaultSystem(system:
+      let pkgs = nixpkgs.legacyPackages.${system}; in
+      {
+        devShell = pkgs.mkShell {
+         buildInputs = [
+           pkgs.sops
+         ];
+       };
+      }
+    ) // {
       nixosConfigurations = (nixpkgs.lib.mapAttrs (name: config: (nixpkgs.lib.nixosSystem rec {
         system = config.nixosSystem.system;
         modules = config.nixosSystem.modules;

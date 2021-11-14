@@ -1,8 +1,8 @@
 { config, ... }:
 
 {
-  em0lar.secrets = {
-    "hedgedoc-env".owner = "hedgedoc";
+  em0lar.sops.secrets = {
+    "services/hedgedoc/env".owner = "hedgedoc";
   };
   services.hedgedoc = {
     enable = true;
@@ -27,7 +27,7 @@
         clientSecret = "";
       };
     };
-    environmentFile = config.em0lar.secrets.hedgedoc-env.path;
+    environmentFile = config.sops.secrets."services/hedgedoc/env".path;
   };
 
   systemd.services.hedgedoc = {

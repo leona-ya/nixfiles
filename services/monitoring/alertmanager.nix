@@ -3,12 +3,12 @@
 let
   alert_message = "{{ .CommonAnnotations.summary }}";
 in {
-  em0lar.secrets = {
-    "prometheus/alertmanager-env" = {};
-    "prometheus/vouch-proxy-env" = {};
+  em0lar.sops.secrets = {
+    "services/monitoring/prometheus/alertmanager_env" = {};
+    "services/monitoring/prometheus/vouch_proxy_env" = {};
   };
 
-  systemd.services.alertmanager.serviceConfig.EnvironmentFile = [ config.em0lar.secrets."prometheus/alertmanager-env".path ];
+  systemd.services.alertmanager.serviceConfig.EnvironmentFile = [ config.sops.secrets."services/monitoring/prometheus/alertmanager_env".path ];
 
   services.nginx.virtualHosts."alertmanager.em0lar.dev" = {
     locations."/" = {
@@ -23,7 +23,7 @@ in {
     servers."alertmanager.em0lar.dev" = {
       clientId = "prometheus";
       port = 12301;
-      environmentFiles = [ config.em0lar.secrets."prometheus/vouch-proxy-env".path ];
+      environmentFiles = [ config.sops.secrets."services/monitoring/prometheus/vouch_proxy_env".path ];
     };
   };
 

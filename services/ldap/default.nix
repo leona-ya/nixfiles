@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  em0lar.secrets = {"ldap/root_password".owner = "openldap"; };
+  em0lar.sops.secrets."services/ldap/root_password".owner = "openldap";
   em0lar.nftables.extraInput = ''
     ip6 saddr fd8f:d15b:9f40::/48 tcp dport 389 accept
   '';
@@ -56,7 +56,7 @@
             olcSuffix = "dc=em0lar,dc=dev";
             olcRootDN = "cn=root,dc=em0lar,dc=dev";
             olcRootPW = {
-              path = config.em0lar.secrets."ldap/root_password".path;
+              path = config.sops.secrets."services/ldap/root_password".path;
             };
             olcAccess = [
               "{0}to attrs=userPassword

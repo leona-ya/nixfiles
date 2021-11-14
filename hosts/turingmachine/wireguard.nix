@@ -1,14 +1,14 @@
 { config, ... }:
 
 {
-  em0lar.secrets."wireguard_wg-clients_privatekey".owner = "systemd-network";
+  em0lar.sops.secrets."hosts/turingmachine/wireguard_wg-clients_privatekey".owner = "systemd-network";
   systemd.network.netdevs."30-wg-clients" = {
     netdevConfig = {
       Kind = "wireguard";
       Name = "wg-clients";
     };
     wireguardConfig = {
-      PrivateKeyFile = config.em0lar.secrets."wireguard_wg-clients_privatekey".path;
+      PrivateKeyFile = config.sops.secrets."hosts/turingmachine/wireguard_wg-clients_privatekey".path;
     };
     wireguardPeers = [{
       wireguardPeerConfig = {

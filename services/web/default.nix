@@ -3,7 +3,7 @@
 let
   commonHeaders = lib.concatStringsSep "\n" (lib.filter (line: lib.hasPrefix "add_header" line) (lib.splitString "\n" config.services.nginx.commonHttpConfig));
 in {
-  em0lar.secrets."e1mo_ask_smtp_password".owner = "nginx";
+  em0lar.sops.secrets."all/mail/no_reply_password".owner = "nginx";
   services.nginx.virtualHosts = {
     "auth.em0lar.de" = {
       enableACME = true;
@@ -152,7 +152,7 @@ in {
                 "port" => 465,
                 "crypt" => "smtps",
                 "user" => "no-reply@em0lar.dev",
-                "pass" => trim(file_get_contents('${config.em0lar.secrets."e1mo_ask_smtp_password".path}'))
+                "pass" => trim(file_get_contents('${config.sops.secrets."all/mail/no_reply_password".path}'))
               ],
             ],
           ];
