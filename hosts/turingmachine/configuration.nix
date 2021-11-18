@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ../../common
     ../../desktop
+    ../../services/dns-kresd
     ./network.nix
     ./wireguard.nix
   ];

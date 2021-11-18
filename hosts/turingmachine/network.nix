@@ -1,6 +1,15 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
+  services.kresd = {
+    package = pkgs.knot-resolver.override { extraFeatures = true; };
+    extraConfig = ''
+      modules.load('http')
+      net.listen('127.0.0.1', 8453, { kind = 'webmgmt' })
+      policy.add(policy.suffix(policy.FLAGS({'NO_CACHE', 'NO_EDNS', 'NO_0X20'}), {todname('lan.')}))
+      policy.add(policy.suffix(policy.STUB('10.151.0.1'), {todname('lan.')}))
+    '';
+  };
   networking.useDHCP = false;
   networking.hostName = "turingmachine";
   networking.domain = "net.em0lar.dev";

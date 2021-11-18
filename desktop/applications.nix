@@ -54,6 +54,7 @@
       jdk = jetbrains.jdk;
     })
     libreoffice-fresh
+    mitmproxy
     mpv
     mumble
     (wrapOBS {
@@ -66,9 +67,8 @@
     python3
     rofi-pass 
     rustup
-    sbt
     sengi
-    slack
+    signal-desktop
     spotify
     sublime4
     superTuxKart
@@ -76,6 +76,10 @@
     thunderbird-wayland
     youtube-dl
     z-lua
+  ] ++ [
+    nodejs-16_x
+    sbt
+    slack
     zoom-us
   ];
 
