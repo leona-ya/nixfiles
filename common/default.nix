@@ -41,6 +41,7 @@
   networking.useNetworkd = true;
   em0lar.nftables.enable = true;
   networking.useDHCP = false;
+  services.resolved.dnssec = "false"; # broken :(
   services.resolved.extraConfig = ''
     FallbackDNS=
     Cache=no-negative
@@ -63,6 +64,7 @@
     mtr
     neovim
     nmap
+    openssl
     python38Packages.virtualenvwrapper
     ripgrep
     rsync

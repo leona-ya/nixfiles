@@ -62,6 +62,7 @@
               "{0}to attrs=userPassword
                 by anonymous auth
                 by self write
+                by dn.children=\"ou=services,dc=em0lar,dc=dev\" write
                 by * none"
               "{1}to *
                 by dn.children=\"ou=services,dc=em0lar,dc=dev\" write

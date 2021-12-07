@@ -34,6 +34,7 @@
     _1password-gui
     ansible_2_9
     chromium
+    citra
     element-desktop
     evince
     (firefox-wayland.override { extraNativeMessagingHosts = [ passff-host ]; })
@@ -54,6 +55,7 @@
       jdk = jetbrains.jdk;
     })
     libreoffice-fresh
+    nheko
     mitmproxy
     mpv
     mumble
@@ -80,7 +82,10 @@
     nodejs-16_x
     sbt
     slack
-    zoom-us
+    (zoom-us.overrideAttrs (old: {
+      postFixup = old.postFixup + ''
+        wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
+      '';}))
   ];
 
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
@@ -103,6 +108,8 @@
   };
   em0lar.nftables.generateDockerRules = true;
   programs.java.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
 
   home-manager.users.em0lar = {
     xdg.enable = true;

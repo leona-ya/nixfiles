@@ -15,5 +15,10 @@ self: super:
     };
   };
   zsh-autocomplete = self.callPackage ./zsh-autocomplete { };
+#  zoom = (super.zoom-us.overrideAttrs (old: {
+#    postFixup = old.postFixup + ''
+#      wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
+#    '';
+#  }));
 }
 
