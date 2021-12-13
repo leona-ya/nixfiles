@@ -1,7 +1,8 @@
 { lib, config, currentHost ? config.networking.hostName, ... }:
+with lib;
 let
   getHosts = hostnames: hosts:
-    builtins.map (hostname: lib.getAttrFromPath [ hostname ] hosts) hostnames;
+    builtins.map (hostname: getAttrFromPath [ hostname ] hosts) hostnames;
 in rec {
   hosts = {
     adonis = {
@@ -28,7 +29,7 @@ in rec {
             "server" = {
               ips = [ "${hosts.dwd.meta.intIpv6}/56" ];
               publicKey = "8Jzx9hklD8g6colimGybv9kpC2q0oTIgrISGhLd0QEM=";
-              routed = [ "fd8f:d15b:9f40::/53" "10.151.0.0/21" ];
+              routed = [ "fd8f:d15b:9f40::/54" "10.151.0.0/21" ];
               additonalInterfaceRoutes = [
                 { routeConfig.Destination = "10.151.8.0/22"; }
                 { routeConfig.Destination = "10.151.16.0/24"; }
@@ -39,6 +40,17 @@ in rec {
       };
     };
     foros = { meta = { intIpv6 = "fd8f:d15b:9f40:11:2c5a:56ff:fe4f:e4c4"; }; };
+    kupe = {
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fec0:8539";
+      };
+      nyo = {
+        mac = "52:54:00:c0:85:39";
+        duid = "00:02:00:00:ab:11:9b:68:58:51:30:82:69:52";
+        legacyAddress = "10.151.20.10";
+        address = "2a01:4f8:212:ad7:1000::f28";
+      };
+    };
     haku = {
       meta = { intIpv6 = "fd8f:d15b:9f40:0c00::1"; };
       services = {
@@ -117,9 +129,24 @@ in rec {
         };
       };
     };
+    nyo = {
+      meta = { intIpv6 = "fd8f:d15b:9f40:0c30::1"; };
+      services = {
+        wireguard = {
+          interfaces = {
+            "server" = {
+              ips = [ "${hosts.nyo.meta.intIpv6}/60" ];
+              publicKey = "AilevKAZRnvQUkJhg/R9APpYUdEbnE1g2BP+FUQwBBI=";
+              routed = [ "fd8f:d15b:9f40:0c30::/60" ];
+              hostname = "nyo.net.em0lar.dev";
+            };
+          };
+        };
+      };
+    };
   };
   groups =
-    (lib.recursiveUpdate (builtins.fromJSON (builtins.readFile ./groups.json)) {
+    (recursiveUpdate (builtins.fromJSON (builtins.readFile ./groups.json)) {
       monitoring = {
         g_hostnames = builtins.map (host: "${host}.wg.net.em0lar.dev") groups.monitoring.hosts;
       };
@@ -142,7 +169,7 @@ in rec {
             in {
               wireguardPeerConfig = {
                 AllowedIPs = [ ifaceConfig.routed ];
-                Endpoint = lib.mkIf (ifaceConfig ? hostname)
+                Endpoint = mkIf (ifaceConfig ? hostname)
                   "${ifaceConfig.hostname}:${toString groupConfig.port}";
                 PublicKey = ifaceConfig.publicKey;
                 PersistentKeepalive = 21;
@@ -152,11 +179,11 @@ in rec {
                 (builtins.filter (x: x != currentHost) groups.wireguard.hosts)
                 hosts)));
 
-        g_systemd_network_netdevconfig = lib.mapAttrs' (ifName: value:
+        g_systemd_network_netdevconfig = mapAttrs' (ifName: value:
           let
             ifaceConfig =
               hosts.${currentHost}.services.wireguard.interfaces.${ifName};
-          in lib.nameValuePair "30-wg-${ifName}" {
+          in nameValuePair "30-wg-${ifName}" {
             netdevConfig = {
               Kind = "wireguard";
               Name = "wg-${ifName}";
@@ -173,12 +200,12 @@ in rec {
               else
                 [ ]);
           }) hosts.${currentHost}.services.wireguard.interfaces;
-        g_systemd_network_networkconfig = lib.mapAttrs' (ifName: value:
+        g_systemd_network_networkconfig = mapAttrs' (ifName: value:
           let
             ifaceConfig =
               hosts.${currentHost}.services.wireguard.interfaces.${ifName};
             groupConfig = groups.wireguard.interfaces.${ifName};
-          in lib.nameValuePair "30-wg-${ifName}" {
+          in nameValuePair "30-wg-${ifName}" {
             name = "wg-${ifName}";
             linkConfig = { RequiredForOnline = "yes"; };
             networkConfig = { IPForward = true; };
@@ -190,10 +217,20 @@ in rec {
           }) hosts.${currentHost}.services.wireguard.interfaces;
       };
     });
+  nyo.g_assignements = builtins.mapAttrs (hostnname: config:
+    config.nyo
+  ) (filterAttrs (
+    hostname: config: config ? nyo
+  ) hosts);
   services = {
-    dns-int.g_dns_records = lib.mapAttrs' (hostname: config:
-      lib.nameValuePair "${hostname}.wg.net" {
+    dns-int.g_dns_records = mapAttrs' (hostname: config:
+      nameValuePair "${hostname}.wg.net" {
         AAAA = [ config.meta.intIpv6 ];
-      }) hosts;
+      }) hosts // mapAttrs' (hostname: config:
+      nameValuePair "${hostname}.nyo.net" {
+        A = [ config.nyo.legacyAddress ];
+      }) (filterAttrs (
+        hostname: config: config ? nyo
+      ) hosts);
   };
 }

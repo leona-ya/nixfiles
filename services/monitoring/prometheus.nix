@@ -233,7 +233,19 @@ in {
               };
               annotations = {
                 summary = "CRIT - BorgBackup on {{ $labels.host }} is more than 27h ago";
-                description = "The BorgBackup on {{ $labels.host }} ran last at {{ $value }}ssh a.\n";
+                description = "The BorgBackup on {{ $labels.host }} ran last at {{ $value }}.\n";
+              };
+            }
+            {
+              alert = "MDRaidDiskFailed";
+              expr = "mdstat_DisksFailed > 97200";
+              for = "0s";
+              labels = {
+                severity = "critical";
+              };
+              annotations = {
+                summary = "CRIT - MDRaid Disk failure on {{ $labels.host }}";
+                description = "A disk on {{ $labels.host }} in {{ $labels.Name }} failed.\n";
               };
             }
           ];

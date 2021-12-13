@@ -192,6 +192,26 @@ in {
       ];
       root = pkgs.opendatamap-net;
     };
+    "gat.leomaroni.de" = {
+      enableACME = true;
+      forceSSL = true;
+      root = "/var/www/gat.leomaroni.de";
+      extraConfig = ''
+        client_max_body_size 100M;
+      '';
+      locations."/" = {
+        index = "index.php";
+        tryFiles = "$uri $uri/ /index.php?$args";
+      };
+      locations."~ \\.php$ " = {
+        extraConfig = ''
+          fastcgi_index index.php;
+          fastcgi_pass unix:${config.services.phpfpm.pools."nginx-gat".socket};
+          include ${pkgs.nginx}/conf/fastcgi_params;
+          include ${pkgs.nginx}/conf/fastcgi.conf;
+        '';
+       };
+    };
   };
   services.phpfpm.pools."nginx-default" = {
     user = config.services.nginx.user;
@@ -206,5 +226,42 @@ in {
       "listen.group" = config.services.nginx.group;
     };
     phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
+  };
+  services.phpfpm.pools."nginx-gat" = {
+    user = config.services.nginx.user;
+    phpPackage = pkgs.php74;
+    settings = {
+      "pm" = "dynamic";
+      "pm.max_children" = 32;
+      "pm.max_requests" = 500;
+      "pm.start_servers" = 2;
+      "pm.min_spare_servers" = 2;
+      "pm.max_spare_servers" = 5;
+      "listen.owner" = config.services.nginx.user;
+      "listen.group" = config.services.nginx.group;
+    };
+    phpOptions = ''
+      upload_max_filesize = "100M";
+      post_max_size = "100M";
+      memory_limit = "100M";
+      display_errors = On;
+    '';
+    phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
+  };
+
+
+  # --------------------------
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+    ensureDatabases = [ "gat" ];
+    ensureUsers = [
+      {
+        name = "gat";
+        ensurePermissions = {
+          "gat.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
   };
 }

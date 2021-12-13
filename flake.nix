@@ -154,6 +154,14 @@
             ];
           };
         };
+        kupe = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/kupe/configuration.nix
+            ];
+          };
+        };
         ladon = {
           nixosSystem = {
             system = "x86_64-linux";
@@ -178,6 +186,14 @@
             system = "x86_64-linux";
             modules = defaultModules ++ [
               ./hosts/naiad/configuration.nix
+            ];
+          };
+        };
+        nyo = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/nyo/configuration.nix
             ];
           };
         };

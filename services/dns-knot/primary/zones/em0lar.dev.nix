@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021103002;
+      serial = 2021121204;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -40,6 +40,8 @@ in {
       "myron.net" = myron_host;
       "naiad.net" = naiad_host;
       "haku.net" = haku_host;
+      "kupe.net" = host "195.39.247.146" "2a01:4f8:212:ad7:1000::f28";
+      "nyo.net" = host "136.243.42.251" "2a01:4f8:212:ad7::1";
       "foros.net" = host "195.39.247.144" "2a0f:4ac0:1e0:100::1";
       "beryl.net" = host "195.39.247.145" "2a0f:4ac0:1e0:101::1";
       "adonis.net" = host "130.61.64.61" "2603:c020:8004:50e0:4cb7:23e8:1668:f629";

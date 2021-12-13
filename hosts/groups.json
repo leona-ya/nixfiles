@@ -5,9 +5,11 @@
       "dwd",
       "foros",
       "haku",
+      "kupe",
       "ladon",
       "myron",
-      "naiad"
+      "naiad",
+      "nyo"
     ]
   },
   "wireguard": {
@@ -15,7 +17,8 @@
       "dwd",
       "haku",
       "myron",
-      "naiad"
+      "naiad",
+      "nyo"
     ]
   }
 }

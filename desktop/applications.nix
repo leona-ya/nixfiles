@@ -45,6 +45,9 @@
     hamster
     homebank
     inkscape
+    (jetbrains.jetbrains-client.override {
+      jdk = jetbrains.jdk;
+    })
     (jetbrains.datagrip.override {
       jdk = jetbrains.jdk;
     })
@@ -76,6 +79,7 @@
     superTuxKart
     texlive.combined.scheme-full
     thunderbird-wayland
+    virt-manager
     youtube-dl
     z-lua
   ] ++ [

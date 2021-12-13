@@ -11,6 +11,7 @@
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   nix = {
+    package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -70,7 +71,7 @@
     rsync
     tcpdump
     tmux
-    wget2
+    wget
     whois
     wireguard-tools
   ];
