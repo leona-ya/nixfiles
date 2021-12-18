@@ -44,6 +44,17 @@ in {
         ];
         networkConfig.ConfigureWithoutCarrier = true;
       };
+      "05-br-nh" = {
+        matchConfig = {
+          Name = "br-nh";
+        };
+        address = [
+          "10.151.21.62/26"
+          "fd8f:d15b:9f40:0c32::1/64"
+          "2a01:4f8:212:ad7:2000::1/68"
+        ];
+        networkConfig.ConfigureWithoutCarrier = true;
+      };
     } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
     netdevs = {
       "05-br-nhp" = {
@@ -52,7 +63,14 @@ in {
           Kind = "bridge";
         };
       };
-    } // hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
+      "05-br-nh" = {
+        netdevConfig = {
+          Name = "br-nh";
+          Kind = "bridge";
+        };
+      };
+    } //
+     hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
   };
   virtualisation.libvirtd.allowedBridges = [
     "virbr0"
@@ -66,9 +84,15 @@ in {
 
       iifname br-nhp oifname eth0 ct state new accept
       iifname eth0 oifname br-nhp ct state new accept
+      iifname br-nh oifname eth0 ct state new accept
 
       iifname wg-server oifname br-nhp ct state new accept
       iifname br-nhp oifname wg-server ct state new accept
+      iifname wg-server oifname br-nh ct state new accept
+      iifname br-nh oifname wg-server ct state new accept
+
+      iifname br-nhp oifname br-nh ct state new accept
+      iifname br-nh oifname br-nhp ct state new accept
     '';
     extraConfig = ''
       table ip nat {

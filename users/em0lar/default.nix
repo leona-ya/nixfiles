@@ -117,7 +117,11 @@
           port = 2222;
           extraOptions.PubkeyAcceptedKeyTypes = "+ssh-rsa";
         };
+        yuka-gitea = {
+          extraOptions.PubkeyAcceptedKeyTypes = "+ssh-rsa";
+        };
       in {
+        "git.yuka.dev" = yuka-gitea;
         "git.em0lar.dev" = em0lar-gitea;
         "*.em0lar.dev" = em0lar;
         "*.nyo.net.em0lar.dev" = em0lar-nyo;

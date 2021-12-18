@@ -12,9 +12,9 @@ in {
     extraConfig = ''
       server:
         listen: 127.0.0.11@53
-        listen: 95.217.178.242@53
-        listen: 2a01:4f9:c010:beb5::1@53
-        listen: fd8f:d15b:9f40:c21::1@53
+        listen: 195.39.247.146@53
+        listen: 2a01:4f8:212:ad7:1000::f28@53
+        listen: fd8f:d15b:9f40:c31:5054:ff:fec0:8539@53
       remote:
         - id: internal_ns2
           address: fd8f:d15b:9f40:0c00::1

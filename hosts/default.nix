@@ -20,7 +20,15 @@ in rec {
         };
       };
     };
-    beryl = { meta = { intIpv6 = "fd8f:d15b:9f40:11:8079:3aff:fe35:9ddc"; }; };
+    beryl = {
+      meta.intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe4e:5cbf";
+      nyo = {
+        mac = "52:54:00:4e:5c:bf";
+        duid = "00:02:00:00:ab:11:fd:dc:c3:f1:66:4a:de:40";
+        legacyAddress = "10.151.20.11";
+        address = "2a01:4f8:212:ad7:1000::b33";
+      };
+    };
     dwd = {
       meta = { intIpv6 = "fd8f:d15b:9f40::1"; };
       services = {
@@ -39,7 +47,15 @@ in rec {
         };
       };
     };
-    foros = { meta = { intIpv6 = "fd8f:d15b:9f40:11:2c5a:56ff:fe4f:e4c4"; }; };
+    foros = {
+     meta.intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5";
+     nyo = {
+       mac = "52:54:00:e7:6a:e5";
+       duid = "00:02:00:00:ab:11:82:40:af:d3:85:17:b2:1f";
+       legacyAddress = "10.151.20.12";
+       address = "2a01:4f8:212:ad7:1000::987";
+     };
+   };
     kupe = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fec0:8539";
@@ -92,13 +108,29 @@ in rec {
                     PersistentKeepalive = 21;
                   };
                 }
+                { # kupe
+                  wireguardPeerConfig = {
+                    AllowedIPs =
+                      [ "195.39.247.146/32" ];
+                    PublicKey = "MTGJvKwt7pofvLbJ2gMoOs8z8qFjt3F3e2crlJMHajQ=";
+                    PersistentKeepalive = 21;
+                  };
+                }
               ];
             };
           };
         };
       };
     };
-    ladon = { meta = { intIpv6 = "fd8f:d15b:9f40:11:6cf2:ecff:fe90:8c3c"; }; };
+    ladon = {
+      meta = { intIpv6 = "fd8f:d15b:9f40:c32:5054:ff:fed2:a792"; };
+      nyo = {
+        mac = "52:54:00:d2:a7:92";
+        duid = "00:02:00:00:ab:11:a9:cf:70:02:82:59:f4:eb";
+        legacyAddress = "10.151.21.10";
+        address = "2a01:4f8:212:ad7:2000::1a2";
+      };
+    };
     myron = {
       meta = { intIpv6 = "fd8f:d15b:9f40:0c21::1"; };
       services = {
@@ -135,9 +167,9 @@ in rec {
         wireguard = {
           interfaces = {
             "server" = {
-              ips = [ "${hosts.nyo.meta.intIpv6}/60" ];
+              ips = [ "10.151.20.254/32" "${hosts.nyo.meta.intIpv6}/60" ];
               publicKey = "AilevKAZRnvQUkJhg/R9APpYUdEbnE1g2BP+FUQwBBI=";
-              routed = [ "fd8f:d15b:9f40:0c30::/60" ];
+              routed = [ "fd8f:d15b:9f40:0c30::/60" "10.151.20.0/22" ];
               hostname = "nyo.net.em0lar.dev";
             };
           };

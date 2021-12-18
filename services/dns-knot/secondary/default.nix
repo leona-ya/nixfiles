@@ -6,10 +6,10 @@
     extraConfig = ''
       remote:
         - id: internal_ns1
-          address: fd8f:d15b:9f40:0c21::1
+          address: fd8f:d15b:9f40:c31:5054:ff:fec0:8539
       acl:
         - id: internal_notify
-          address: [fd8f:d15b:9f40:0c21::1]
+          address: [fd8f:d15b:9f40:c31:5054:ff:fec0:8539]
           action: notify
       mod-rrl:
         - id: default

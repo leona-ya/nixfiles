@@ -26,6 +26,27 @@ let
         "fd8f:d15b:9f40:0c31::".prefixLength = 64;
       };
     };
+    "br-nh" = {
+      legacyPrefixes = {
+        "10.151.21.0" = {
+          prefixLength = 26;
+          start = "10.151.21.40";
+          end = "10.151.21.60";
+          nameservers = [ "1.1.1.1" ];
+          gateway = "10.151.21.62";
+        };
+      };
+      prefix = {
+        prefix = "2a01:4f8:212:ad7:2000::";
+        prefixLength = 68;
+        start = "100";
+        end = "fff";
+        nameservers = [ "2606:4700:4700::1111" ];
+      };
+      slaacPrefixes = {
+        "fd8f:d15b:9f40:0c32::".prefixLength = 64;
+      };
+    };
   };
   assignments = hosthelper.nyo.g_assignements;
 in {

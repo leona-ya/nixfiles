@@ -116,7 +116,6 @@
               ./hosts/beryl/configuration.nix
             ];
           };
-          deploy.hostname = "beryl.lan";
         };
         cole = {
           nixosSystem = {
@@ -144,7 +143,6 @@
               ./hosts/foros/configuration.nix
             ];
           };
-          deploy.hostname = "foros.lan";
         };
         haku = {
           nixosSystem = {
@@ -169,7 +167,7 @@
               ./hosts/ladon/configuration.nix
             ];
           };
-          deploy.hostname = "ladon.lan";
+          deploy.hostname = "ladon.wg.net.em0lar.dev";
         };
         turingmachine = {
           nixosSystem = {

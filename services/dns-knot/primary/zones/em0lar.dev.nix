@@ -6,13 +6,14 @@ let
 myron_host = host "95.217.178.242" "2a01:4f9:c010:beb5::1";
 haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
 naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
+kupe_host = host "195.39.247.146" "2a01:4f8:212:ad7:1000::f28";
 in {
   zone = {
     TTL = 600;
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021121204;
+      serial = 2021121801;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -40,14 +41,14 @@ in {
       "myron.net" = myron_host;
       "naiad.net" = naiad_host;
       "haku.net" = haku_host;
-      "kupe.net" = host "195.39.247.146" "2a01:4f8:212:ad7:1000::f28";
+      "kupe.net" = kupe_host;
       "nyo.net" = host "136.243.42.251" "2a01:4f8:212:ad7::1";
-      "foros.net" = host "195.39.247.144" "2a0f:4ac0:1e0:100::1";
-      "beryl.net" = host "195.39.247.145" "2a0f:4ac0:1e0:101::1";
+      "foros.net" = host "195.39.247.144" "2a01:4f8:212:ad7:1000::987";
+      "beryl.net" = host "195.39.247.145" "2a01:4f8:212:ad7:1000::b33";
       "adonis.net" = host "130.61.64.61" "2603:c020:8004:50e0:4cb7:23e8:1668:f629";
       "wg.net".CNAME = [ "haku.net.em0lar.dev." ];
 
-      "ns1" = myron_host;
+      "ns1" = kupe_host;
       "ns2" = haku_host;
       "ns3" = naiad_host;
 
@@ -76,13 +77,6 @@ in {
       todo.CNAME = [ "beryl.net.em0lar.dev." ];
       webmail.CNAME = [ "foros.net.em0lar.dev." ];
       wifi.CNAME = [ "foros.net.em0lar.dev." ];
-
-      nsr = {
-        A = [ "65.21.190.149" ];
-        AAAA = [ "2a01:4f9:c010:b88b::1" ];
-      };
-      "routing.nsr".CNAME = [ "nsr.em0lar.dev." ];
     };
   };
 }
-

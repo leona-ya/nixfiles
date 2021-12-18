@@ -19,7 +19,7 @@ in {
     "auth.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://10.151.4.27:8080";
+      locations."/".proxyPass = "http://ladon.nyo.net.em0lar.dev:8080";
     };
     "element.em0lar.de" = {
       enableACME = true;
@@ -120,7 +120,6 @@ in {
         "wifi.em0lar.de"
         "wifi.labcode.de"
       ];
-      locations."/".proxyPass = "http://10.151.4.19:40000";
     };
     "tell.em0lar.de" = {
       enableACME = true;
@@ -170,19 +169,6 @@ in {
           include ${pkgs.nginx}/conf/fastcgi.conf;
         '';
        };
-    };
-    "paulreisenberg.de" = { # for pr
-      enableACME = true;
-      forceSSL = true;
-      serverAliases = [
-        "www.paulreisenberg.de"
-      ];
-      locations."/".proxyPass = "http://10.151.4.14:80";
-    };
-    "kopftausch.paulchenpanther.de" = { # for pr
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://10.151.4.14:8000";
     };
     "opendatamap.net" = {
       enableACME = true;

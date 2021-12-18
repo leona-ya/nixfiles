@@ -4,6 +4,8 @@
   imports = [
     ./hardware-configuration.nix
     ./initrd.nix
+    ./wireguard.nix
+    ../../services/dns-knot/primary
     ../../common
   ];
 

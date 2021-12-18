@@ -5,7 +5,7 @@
   networking.domain = "net.em0lar.dev";
   systemd.network = {
     links."10-eth0" = {
-      matchConfig.MACAddress = "82:79:3a:35:9d:dc";
+      matchConfig.MACAddress = "52:54:00:4e:5c:bf";
       linkConfig.Name = "eth0";
     };
     networks."10-eth0" = {

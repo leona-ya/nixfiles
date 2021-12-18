@@ -8,9 +8,8 @@
       ./initrd.nix
       ./wireguard.nix
       ../../services/dns-kresd
-      ../../services/dns-knot/primary
       ../../services/mail
-     ../../services/convos
+      ../../services/convos
     ];
 
   boot.loader.grub.enable = true;
