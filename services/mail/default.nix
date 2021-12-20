@@ -12,11 +12,6 @@
 
   em0lar.sops.secrets."services/mail/users/superusers".owner = "dovecot2";
 
-  fileSystems."/var/vmail" = {
-    device = "/mnt/cryptmail/vmail";
-    options = [ "bind" ];
-  };
-
   security.acme.certs."${config.networking.hostName}.${config.networking.domain}".extraDomainNames = [
     "mail.em0lar.dev"
   ];

@@ -7,6 +7,9 @@
     ./wireguard.nix
     ../../services/dns-knot/primary
     ../../common
+    ../../services/mail
+#    ../../services/convos
+    ../../services/dns-kresd
   ];
 
   boot.loader.systemd-boot.enable = true;

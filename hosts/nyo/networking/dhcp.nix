@@ -22,8 +22,9 @@ let
         end = "fff";
         nameservers = [ "2606:4700:4700::1111" ];
       };
-      slaacPrefixes = {
+      raPrefixes = {
         "fd8f:d15b:9f40:0c31::".prefixLength = 64;
+        "2a01:4f8:212:ad7:1000::".prefixLength = 68;
       };
     };
     "br-nh" = {
@@ -43,7 +44,7 @@ let
         end = "fff";
         nameservers = [ "2606:4700:4700::1111" ];
       };
-      slaacPrefixes = {
+      raPrefixes = {
         "fd8f:d15b:9f40:0c32::".prefixLength = 64;
       };
     };
@@ -142,7 +143,7 @@ in {
     enable = true;
     config = concatStrings (
       mapAttrsToList (
-        iface: { slaacPrefixes, ... }: ''
+        iface: { raPrefixes, ... }: ''
           interface ${iface} {
             AdvSendAdvert on;
             AdvManagedFlag on;
@@ -153,7 +154,7 @@ in {
                   AdvRouterAddr on;
                 };
               ''
-            ) slaacPrefixes
+            ) raPrefixes
           ) + ''
             };
           ''

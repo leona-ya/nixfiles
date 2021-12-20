@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021121801;
+      serial = 2021121901;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -52,12 +52,12 @@ in {
       "ns2" = haku_host;
       "ns3" = naiad_host;
 
-      mail = myron_host;
-      autoconfig.CNAME = [ "myron.net.em0lar.dev." ];
+      mail = kupe_host;
+      autoconfig.CNAME = [ "kupe.net.em0lar.dev." ];
       "wg-sternpunkt".CNAME = [ "wg.net.em0lar.dev." ]; # backwards compatability
       "encladus.lan.int.sig.de".CNAME = [ "encladus.lan." ]; # backwards compatability
 
-      "ca".MX = [ (mx.mx 10 "myron.net.em0lar.dev.") ];
+      "ca".MX = [ (mx.mx 10 "kupe.net.em0lar.dev.") ];
       "ca".TXT = [ helper.mail.spf ];
       "ca".DKIM = [{
         selector = "mail";
@@ -68,7 +68,7 @@ in {
       auth.CNAME = [ "foros.net.em0lar.dev." ];
       alertmanager.CNAME = [ "naiad.net.em0lar.dev." ];
       alertmanager-bot.CNAME = [ "naiad.net.em0lar.dev." ];
-      convos.CNAME = [ "myron.net.em0lar.dev." ];
+      convos.CNAME = [ "kupe.net.em0lar.dev." ];
       git.CNAME = [ "beryl.net.em0lar.dev." ];
       grafana.CNAME = [ "naiad.net.em0lar.dev." ];
       md.CNAME = [ "beryl.net.em0lar.dev." ];

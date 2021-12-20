@@ -30,21 +30,6 @@
       ];
       routes = [
         { routeConfig.Destination = "0.0.0.0/0"; }
-        {
-          routeConfig = {
-            Destination = "0.0.0.0";
-            Table = 30;
-          };
-        }
-      ];
-      routingPolicyRules = [
-        {
-          routingPolicyRuleConfig = {
-            Family = "ipv4";
-            Table = 30;
-            From = "195.39.247.146/32";
-          };
-        }
       ];
       dns = [
         "1.1.1.1"

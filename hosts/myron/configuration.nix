@@ -7,8 +7,6 @@
       ../../common
       ./initrd.nix
       ./wireguard.nix
-      ../../services/dns-kresd
-      ../../services/mail
       ../../services/convos
     ];
 

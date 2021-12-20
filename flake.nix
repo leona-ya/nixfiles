@@ -156,6 +156,7 @@
           nixosSystem = {
             system = "x86_64-linux";
             modules = defaultModules ++ [
+              mailserver.nixosModule
               ./hosts/kupe/configuration.nix
             ];
           };
@@ -199,7 +200,6 @@
           nixosSystem = {
             system = "x86_64-linux";
             modules = defaultModules ++ [
-              mailserver.nixosModule
               ./hosts/myron/configuration.nix
             ];
           };
