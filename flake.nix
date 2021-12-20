@@ -196,14 +196,6 @@
             ];
           };
         };
-        myron = {
-          nixosSystem = {
-            system = "x86_64-linux";
-            modules = defaultModules ++ [
-              ./hosts/myron/configuration.nix
-            ];
-          };
-        };
         rechaku = {
           nixosSystem = {
             system = "x86_64-linux";

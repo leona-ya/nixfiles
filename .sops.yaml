@@ -7,7 +7,6 @@ keys:
   - &haku age1r0ry9fmygcw0w7ltwkff7wlcm0g57g0lu62m92yz6e73kmrha9ps3xvdw6
   - &kupe age15h358g33202zydy8mkfruh98f92rnhum86zapm3seg56s2xvgvvqzsj7xq
   - &ladon age1wnadll9sggrpug7ntwvlq87j68sazx98flawtx88nhnju4a2eg7qzwnex6
-  - &myron age160q2qgm8jcxmkah5mj83u2pljty2tk2zv9szv2awryenj8qcsdts3fzw5u
   - &naiad age1apjvmw80k4nh7fvr07lfhqtku7amw6x8ulc7hyyplr78aaj0xehqm440d7
   - &nyo age1asek433y0fj8n2c3l9d0mhunw4njvyke2swqmaf3cap5fsye5d2sqwa7gy
   - &turingmachine age1wqgja2wvgeuzvjqvsk862ppdmfv8mqmgxc543x3a5g02dddadu3seflurp
@@ -24,7 +23,6 @@ creation_rules:
           - *haku
           - *kupe
           - *ladon
-          - *myron
           - *naiad
           - *nyo
           - *turingmachine
@@ -66,12 +64,6 @@ creation_rules:
           - *admin
         age:
           - *ladon
-  - path_regex: secrets/hosts/myron.yaml
-    key_groups:
-      - pgp:
-          - *admin
-        age:
-          - *myron
   - path_regex: secrets/hosts/naiad.yaml
     key_groups:
       - pgp:

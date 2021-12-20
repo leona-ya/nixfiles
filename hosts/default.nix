@@ -131,21 +131,6 @@ in rec {
         address = "2a01:4f8:212:ad7:2000::1a2";
       };
     };
-    myron = {
-      meta = { intIpv6 = "fd8f:d15b:9f40:0c21::1"; };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.myron.meta.intIpv6}/72" ];
-              publicKey = "xEgZUGdhPkIAZYmDszEUHm86zStsJMF3lowGIkjQE1k=";
-              routed = [ "fd8f:d15b:9f40:0c21::1/72" ];
-              hostname = "myron.net.em0lar.dev";
-            };
-          };
-        };
-      };
-    };
     naiad = {
       meta = { intIpv6 = "fd8f:d15b:9f40:0c20::1"; };
       services = {

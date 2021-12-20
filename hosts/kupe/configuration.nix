@@ -8,7 +8,7 @@
     ../../services/dns-knot/primary
     ../../common
     ../../services/mail
-#    ../../services/convos
+    ../../services/convos
     ../../services/dns-kresd
   ];
 

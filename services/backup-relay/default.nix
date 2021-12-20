@@ -37,10 +37,6 @@
       path = "/mnt/backup/repos/synced/naiad.net.em0lar.dev";
       authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL8lo78J22v9FIAMJKad+6KpCTqrYmHrjiWoZYlYN7fP backup@naiad" ];
     };
-    myron = {
-      path = "/mnt/backup/repos/synced/myron.net.em0lar.dev";
-      authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFe4lTjlL/nDxdjHGtYwNOSswLi6G6ndmjo4lOMCDzP8 backup@myron" ];
-    };
     turingmachine = {
       path = "/mnt/backup/repos/synced/turingmachine.net.em0lar.dev";
       authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIhL7xVXxcTN6qX/trg6IoH4dftCnkZ/RRIii/5KNpIV em0lar@turingmachine" ];

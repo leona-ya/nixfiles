@@ -3,7 +3,6 @@
 with dns.lib.combinators;
 
 let
-myron_host = host "95.217.178.242" "2a01:4f9:c010:beb5::1";
 haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
 naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
 kupe_host = host "195.39.247.146" "2a01:4f8:212:ad7:1000::f28";
@@ -38,7 +37,6 @@ in {
     AAAA = helper.hosts.web.AAAA;
 
     subdomains = hosthelper.services.dns-int.g_dns_records // {
-      "myron.net" = myron_host;
       "naiad.net" = naiad_host;
       "haku.net" = haku_host;
       "kupe.net" = kupe_host;
