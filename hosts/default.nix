@@ -67,6 +67,17 @@ in rec {
         address = "2a01:4f8:212:ad7:1000::f28";
       };
     };
+    hack = {
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe65:7a8e";
+      };
+      nyo = {
+        mac = "52:54:00:65:7a:8e";
+        duid = "00:02:00:00:ab:11:83:85:8b:4d:78:f2:6f:1d";
+        legacyAddress = "10.151.20.13";
+        address = "2a01:4f8:212:ad7:1000::fc5";
+      };
+    };
     haku = {
       meta = { intIpv6 = "fd8f:d15b:9f40:0c00::1"; };
       services = {

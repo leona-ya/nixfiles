@@ -35,7 +35,7 @@ in {
     };
     repo = mkOption {
       type = types.str;
-      default = "ssh://borg@[fd8f:d15b:9f40:11:982d:6eff:fefc:10a2]:61337/mnt/backup/repos/synced/${config.networking.hostName}.${config.networking.domain}";
+      default = "ssh://borg@hack.wg.net.em0lar.dev:61337/mnt/backup/repos/synced/${config.networking.hostName}.${config.networking.domain}";
     };
     encryptionMode = mkOption {
       type = types.str;
@@ -76,7 +76,7 @@ in {
   };
   config = mkIf cfg.enable {
     services.borgbackup.jobs = {
-      aido = {
+      hack = {
         user = cfg.user;
         group = cfg.group;
         paths = cfg.paths;
@@ -97,7 +97,7 @@ in {
         startAt = [ ];
       };
     };
-    systemd.timers.borgbackup-job-aido = lib.mkIf cfg.enableSystemdTimer {
+    systemd.timers.borgbackup-job-hack = lib.mkIf cfg.enableSystemdTimer {
       timerConfig = cfg.systemdTimerConfig;
       wantedBy = [ "timers.target" ];
     };
@@ -119,7 +119,7 @@ in {
       wantedBy = ["multi-user.target"];
       after = ["networking.target"];
       serviceConfig = {
-        ExecStart = "${pkgs.prometheus-borg-exporter}/bin/prometheus-borg-exporter -s --sudo-command /run/wrappers/bin/sudo -l warn -c /run/current-system/sw/bin/borg-job-aido --failed-archive-suffix .failed";
+        ExecStart = "${pkgs.prometheus-borg-exporter}/bin/prometheus-borg-exporter -s --sudo-command /run/wrappers/bin/sudo -l warn -c /run/current-system/sw/bin/borg-job-hack --failed-archive-suffix .failed";
         User = "prometheus-borg";
         StateDirectory = "prometheus-borg-exporter";
       };
@@ -137,11 +137,11 @@ in {
       runAs = "root";
       commands = [
         {
-          command = "/run/current-system/sw/bin/borg-job-aido info --json";
+          command = "/run/current-system/sw/bin/borg-job-hack info --json";
           options = [ "SETENV" "NOPASSWD" ];
         }
         {
-          command = "/run/current-system/sw/bin/borg-job-aido list --json";
+          command = "/run/current-system/sw/bin/borg-job-hack list --json";
           options = [ "SETENV" "NOPASSWD" ];
         }
       ];

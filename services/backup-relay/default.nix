@@ -7,7 +7,7 @@
   };
   fileSystems = {
     "/mnt/backup" = {
-      device = "//encladus.lan/backup/borg";
+      device = "//10.151.1.1/backup/borg";
       fsType = "cifs";
       options = ["_netdev,credentials=${config.sops.secrets."services/backup-relay/backup_cifs_credentials".path},uid=${toString config.users.users.borg.uid}" ]; #uid=null
     };

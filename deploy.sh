@@ -32,5 +32,5 @@ fi
 
 echo $HOSTS
 
-rsync -r /home/em0lar/dev/nixfiles 10.151.4.6:/tmp -e "ssh -p 61337"
-ssh -A -p 61337 10.151.4.6 "cd /tmp/nixfiles && deploy -s --targets $HOSTS && cd /tmp && rm -rf /tmp/nixfiles"
+rsync -r /home/em0lar/dev/nixfiles hack.net.em0lar.dev:/tmp -e "ssh -p 61337"
+ssh -A -p 61337 hack.net.em0lar.dev "cd /tmp/nixfiles && deploy -s --targets $HOSTS && cd /tmp && rm -rf /tmp/nixfiles"

@@ -100,15 +100,6 @@
             ];
           };
         };
-        aido = {
-          nixosSystem = {
-            system = "x86_64-linux";
-            modules = defaultModules ++ [
-              ./hosts/aido/configuration.nix
-            ];
-          };
-          deploy.hostname = "aido.lan";
-        };
         beryl = {
           nixosSystem = {
             system = "x86_64-linux";
@@ -141,6 +132,14 @@
             system = "x86_64-linux";
             modules = defaultModules ++ [
               ./hosts/foros/configuration.nix
+            ];
+          };
+        };
+        hack = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/hack/configuration.nix
             ];
           };
         };

@@ -66,6 +66,7 @@
       plugins = with obs-studio-plugins; [ wlrobs ];
     })
     openttd
+    openssl
     pandoc
     pass-wayland
     postman
