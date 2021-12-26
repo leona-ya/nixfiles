@@ -172,6 +172,15 @@ in rec {
         };
       };
     };
+    utopia = {
+      meta = { intIpv6 = "fd8f:d15b:9f40:c32:5054:ff:fe77:e68f"; };
+      nyo = {
+        mac = "52:54:00:77:e6:8f";
+        duid = "00:02:00:00:ab:11:ca:6f:7a:9e:92:e9:a1:af";
+        legacyAddress = "10.151.21.11";
+        address = "2a01:4f8:212:ad7:2000::c7e";
+      };
+    };
   };
   groups =
     (recursiveUpdate (builtins.fromJSON (builtins.readFile ./groups.json)) {
