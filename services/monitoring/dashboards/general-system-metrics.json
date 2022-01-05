@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1639826599987,
+  "iteration": 1640800574136,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -80,7 +80,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "system_uptime{host=~\"$host\"}",
@@ -135,7 +135,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(increase(net_bytes_recv{host=\"$host\"}[$__range]))",
@@ -193,7 +193,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "count(systemd_units_active_code{host=\"$host\",active=\"failed\"}) or vector(0)",
@@ -254,7 +254,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "system_load5{host=~\"$host\"}",
@@ -315,7 +315,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "system_load15{host=~\"$host\"}",
@@ -378,7 +378,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "mem_used_percent{host=~\"$host\"}",
@@ -441,7 +441,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "disk_used_percent{host=\"$host\", path=\"/\"}",
@@ -495,7 +495,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "count(systemd_units_active_code{host=\"$host\",active=~\"active\"}) or vector(0)",
@@ -550,7 +550,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(increase(net_bytes_sent{host=\"$host\"}[$__range]))",
@@ -606,7 +606,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -736,6 +736,10 @@
       "pluginVersion": "8.1.6",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "cpu_usage_system{host=\"$host\", cpu=\"cpu-total\"}",
           "interval": "",
@@ -743,6 +747,11 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
           "expr": "cpu_usage_user{host=\"$host\", cpu=\"cpu-total\"}",
           "hide": false,
           "interval": "",
@@ -750,6 +759,46 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "cpu_usage_guest{host=\"$host\", cpu=\"cpu-total\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "guest",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "cpu_usage_iowait{host=\"$host\", cpu=\"cpu-total\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "iowait",
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "cpu_usage_steal{host=\"$host\", cpu=\"cpu-total\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "steal",
+          "refId": "G"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "sensors_temp_input{host=\"$host\", chip=~\"$temp_chip\"}",
           "hide": false,
@@ -758,6 +807,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "sensors_temp_max{host=\"$host\", chip=~\"$temp_chip\"}",
           "hide": false,
@@ -846,12 +899,21 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "expr": "cpu_usage_system{host=~\"$host\",cpu!=\"cpu-total\"} + cpu_usage_user{host=~\"$host\",cpu!=\"cpu-total\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "cpu_usage_system{host=~\"$host\",cpu!=\"cpu-total\"} + cpu_usage_user{host=~\"$host\",cpu!=\"cpu-total\"} + cpu_usage_guest{host=~\"$host\",cpu!=\"cpu-total\"}",
           "interval": "",
           "legendFormat": "{{cpu}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "",
           "hide": false,
           "interval": "",
@@ -1150,7 +1212,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -1560,7 +1622,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 33,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1593,10 +1655,13 @@
       },
       {
         "current": {
-          "isNone": true,
-          "selected": false,
-          "text": "None",
-          "value": ""
+          "selected": true,
+          "text": [
+            "None"
+          ],
+          "value": [
+            ""
+          ]
         },
         "definition": "label_values(sensors_temp_input{host=\"$host\"}, chip)",
         "hide": 0,
@@ -1618,7 +1683,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {},

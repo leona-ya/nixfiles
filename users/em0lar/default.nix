@@ -111,7 +111,8 @@
           port = 61337;
         };
         em0lar-nyo = {
-          proxyCommand = "ssh -W root@%h:22 nyo.net.em0lar.dev";
+          port = 22;
+          user = "root";
         };
         em0lar-gitea = {
           port = 2222;

@@ -103,7 +103,7 @@ creation_rules:
           - *admin
         age:
           - *foros
-  - path_regex: secrets/services/(keycloak|ldap).yaml
+  - path_regex: secrets/services/(keycloak|ldap|hydra-sso).yaml
     key_groups:
       - pgp:
           - *admin

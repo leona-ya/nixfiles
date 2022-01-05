@@ -127,6 +127,14 @@ in rec {
                     PersistentKeepalive = 21;
                   };
                 }
+                { # ladon
+                  wireguardPeerConfig = {
+                    AllowedIPs =
+                      [ "195.39.247.147/32" ];
+                    PublicKey = "ys2dZHPk2YgdEIOs+dKq/nK3oTX1bBBmAuEsOLSpyi4=";
+                    PersistentKeepalive = 21;
+                  };
+                }
               ];
             };
           };
@@ -134,12 +142,12 @@ in rec {
       };
     };
     ladon = {
-      meta = { intIpv6 = "fd8f:d15b:9f40:c32:5054:ff:fed2:a792"; };
+      meta = { intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fed2:a792"; };
       nyo = {
         mac = "52:54:00:d2:a7:92";
         duid = "00:02:00:00:ab:11:a9:cf:70:02:82:59:f4:eb";
-        legacyAddress = "10.151.21.10";
-        address = "2a01:4f8:212:ad7:2000::1a2";
+        legacyAddress = "10.151.20.14";
+        address = "2a01:4f8:212:ad7:1000::1a2";
       };
     };
     naiad = {

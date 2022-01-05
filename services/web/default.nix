@@ -5,22 +5,6 @@ let
 in {
   em0lar.sops.secrets."all/mail/no_reply_password".owner = "nginx";
   services.nginx.virtualHosts = {
-    "auth.em0lar.de" = {
-      enableACME = true;
-      forceSSL = true;
-      serverAliases = [
-        "auth.emolar.de"
-        "auth.labcode.de"
-      ];
-      locations."/" = {
-        extraConfig = "return 301 https://auth.em0lar.dev$request_uri;";
-      };
-    };
-    "auth.em0lar.dev" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://ladon.nyo.net.em0lar.dev:8080";
-    };
     "element.em0lar.de" = {
       enableACME = true;
       forceSSL = true;

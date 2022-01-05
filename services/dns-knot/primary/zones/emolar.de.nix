@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021121901;
+      serial = 2021122901;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -29,7 +29,6 @@
 
     subdomains = {
       www.CNAME = [ "foros.net.em0lar.dev." ];
-      auth.CNAME = [ "foros.net.em0lar.dev." ];
       git.CNAME = [ "beryl.net.em0lar.dev." ];
       md.CNAME = [ "beryl.net.em0lar.dev." ];
     };

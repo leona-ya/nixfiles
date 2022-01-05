@@ -7,9 +7,7 @@
   programs.light.enable = true;
 
   users.users.em0lar.packages = with pkgs; [
-    grim
     qt5.qtwayland
-    slurp
     wdisplays
   ];
 
@@ -24,7 +22,7 @@
   home-manager.users.em0lar = {
     wayland.windowManager.sway = let
       cfg = config.home-manager.users.em0lar.wayland.windowManager.sway;
-      wallpaper = "~/.wallpapers/yuka/cool-space.png";
+      wallpaper = "~/.wallpapers/space2.jpg";
       lockCommand = "swaylock -i ${wallpaper}";
       modifier = "Mod4";
     in {
@@ -122,6 +120,8 @@
           "${modifier}+Shift+q" = "kill";
 
           "${modifier}+r" = "mode resize";
+
+          "${modifier}+Shift+s" = "exec ${pkgs.grim}/bin/grim -t jpeg -g \"$(${pkgs.slurp}/bin/slurp)\" ~/screenshot-$(date +%Y-%m-%d_%H-%m-%s).jpg";
         };
       };
     };

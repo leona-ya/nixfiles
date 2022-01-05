@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021122601;
+      serial = 2021122902;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -44,6 +44,7 @@ in {
       "nyo.net" = host "136.243.42.251" "2a01:4f8:212:ad7::1";
       "foros.net" = host "195.39.247.144" "2a01:4f8:212:ad7:1000::987";
       "beryl.net" = host "195.39.247.145" "2a01:4f8:212:ad7:1000::b33";
+      "ladon.net" = host "195.39.247.147" "2a01:4f8:212:ad7:1000::1a2";
       "adonis.net" = host "130.61.64.61" "2603:c020:8004:50e0:4cb7:23e8:1668:f629";
       "wg.net".CNAME = [ "haku.net.em0lar.dev." ];
 
@@ -64,7 +65,7 @@ in {
       }];
 
       www.CNAME = [ "foros.net.em0lar.dev." ];
-      auth.CNAME = [ "foros.net.em0lar.dev." ];
+      auth.CNAME = [ "ladon.net.em0lar.dev." ];
       alertmanager.CNAME = [ "naiad.net.em0lar.dev." ];
       alertmanager-bot.CNAME = [ "naiad.net.em0lar.dev." ];
       convos.CNAME = [ "kupe.net.em0lar.dev." ];
@@ -73,6 +74,8 @@ in {
       md.CNAME = [ "beryl.net.em0lar.dev." ];
       paperless.CNAME = [ "beryl.net.em0lar.dev." ];
       prometheus.CNAME = [ "naiad.net.em0lar.dev." ];
+      sso.CNAME = [ "ladon.net.em0lar.dev." ];
+      "hydra.sso".CNAME = [ "ladon.net.em0lar.dev." ];
       todo.CNAME = [ "beryl.net.em0lar.dev." ];
       webmail.CNAME = [ "foros.net.em0lar.dev." ];
       wifi.CNAME = [ "foros.net.em0lar.dev." ];

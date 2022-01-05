@@ -33,15 +33,18 @@
   users.users.em0lar.packages = with pkgs; [
     _1password-gui
     ansible_2_9
-    chromium
     citra
     element-desktop
     evince
+    feh
     (firefox-wayland.override { extraNativeMessagingHosts = [ passff-host ]; })
     gcc
     gh
     gimp
-    gnome3.vinagre
+    gnome.eog
+    gnome.gnome-bluetooth
+    gnome.nautilus
+    gnome.vinagre
     hamster
     homebank
     inkscape
@@ -57,7 +60,7 @@
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
-    libreoffice-fresh
+    libreoffice-still
     nheko
     mitmproxy
     mpv
@@ -74,7 +77,9 @@
     rofi-pass 
     rustup
     sengi
+    scribusUnstable
     signal-desktop
+    speedcrunch
     spotify
     sublime4
     superTuxKart
@@ -120,11 +125,11 @@
     xdg.enable = true;
     gtk = {
       enable = true;
-      iconTheme.name = "Adwaita";
-      iconTheme.package = pkgs.gnome3.adwaita-icon-theme;
+      iconTheme.name = "Qogir-dark";
+      iconTheme.package = pkgs.qogir-icon-theme;
       theme = {
-        name = "Adawaita-dark";
-        package = pkgs.gnome.gnome_themes_standard;
+        name = "Qogir-dark";
+        package = pkgs.qogir-theme;
       };
       gtk3 = {
         extraConfig = {
@@ -143,6 +148,27 @@
 	      "D91C5A1E23D3EE4DC72A5BEF0EA93C9F634A79F5"
       ];
     };
+    programs.chromium = {
+      enable = true;
+      package = pkgs.symlinkJoin {
+        name = "chromium";
+        paths = [ pkgs.chromium ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/chromium --add-flags "--enable-features=WebUIDarkMode --force-dark-mode"
+        '';
+      };
+      extensions = [
+        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+        { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass
+        # { id = "lckanjgmijmafbedllaakclkaicjfmnk"; } # clear urls
+        # { id = "gdbofhhdmcladcmmfjolgndfkpobecpg"; } # don't track me google
+     ];
+    };
+    programs.browserpass = {
+      enable = true;
+      browsers = [ "chromium" ];
+    };
     programs.qutebrowser = {
       enable = true;
       keyBindings.normal = {
@@ -151,6 +177,14 @@
         "<z><p><l>" = "spawn --userscript qute-pass --password-only";
         "J" = "tab-prev";
         "K" = "tab-next";
+      };
+      searchEngines = {
+        DEFAULT = "https://www.google.com/search?hl=en&q={}";
+        wen = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
+        wde = "https://de.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
+        nw = "https://nixos.wiki/index.php?search={}";
+        nsp = "https://search.nixos.org/packages?channel=unstable&query={}";
+        nso = "https://search.nixos.org/options?channel=unstable&query={}";
       };
       settings = {
         auto_save.session = true;
@@ -178,12 +212,16 @@
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "text/html" = [ "org.qutebrowser.qutebrowser.desktop" ];
-        "x-scheme-handler/http" = [ "org.qutebrowser.qutebrowser.desktop" ];
-        "x-scheme-handler/https" = [ "org.qutebrowser.qutebrowser.desktop" ];
-        "x-scheme-handler/about" = [ "org.qutebrowser.qutebrowser.desktop" ];
-        "x-scheme-handler/unknown" = [ "org.qutebrowser.qutebrowser.desktop" ];
+        "text/html" = [ "chromium-browser.desktop" ];
+        "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
+        "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
+        "x-scheme-handler/about" = [ "chromium-browser.desktop" ];
+        "x-scheme-handler/unknown" = [ "chromium-browser.desktop" ];
 	      "x-scheme-handler/slack" = [ "slack.desktop" ];
+        "image/avif" = [ "org.gnome.eog.desktop" ];
+        "image/jpeg" = [ "org.gnome.eog.desktop" ];
+        "image/png" = [ "org.gnome.eog.desktop" ];
+        "image/svg+xml" = [ "org.gnome.eog.desktop" ];
       };
     };
   };

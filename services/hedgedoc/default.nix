@@ -21,8 +21,8 @@
         host = "/run/postgresql";
       };
       oauth2 = {
-        tokenURL = "https://auth.em0lar.dev/auth/realms/em0lar/protocol/openid-connect/token";
-        authorizationURL = "https://auth.em0lar.dev/auth/realms/em0lar/protocol/openid-connect/auth";
+        tokenURL = "https://hydra.sso.em0lar.dev/oauth2/token";
+        authorizationURL = "https://hydra.sso.em0lar.dev/oauth2/auth";
         clientID = "hedgedoc";
         clientSecret = "";
       };

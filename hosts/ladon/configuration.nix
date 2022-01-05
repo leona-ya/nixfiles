@@ -4,9 +4,11 @@
   imports = [
       ./hardware-configuration.nix
       ./initrd.nix
+      ./wireguard.nix
       ../../common
       ../../services/ldap
       ../../services/keycloak
+      ../../services/hydra-sso
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

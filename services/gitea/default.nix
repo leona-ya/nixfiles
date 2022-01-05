@@ -77,6 +77,11 @@
         THEMES = "gitea,arc-green";
         DEFAULT_THEME = "arc-green";
       };
+
+      oauth2_client = {
+        OPENID_CONNECT_SCOPES = "profile email";
+        USERNAME = "userid";
+      };
     };
   };
 

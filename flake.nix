@@ -74,7 +74,6 @@
           imports = [
             ./modules/backups
             ./modules/bind
-            ./modules/imapsync
             ./modules/nftables
             ./modules/secrets
             ./modules/sops
@@ -156,6 +155,7 @@
             system = "x86_64-linux";
             modules = defaultModules ++ [
               mailserver.nixosModule
+              ./modules/imapsync
               ./hosts/kupe/configuration.nix
             ];
           };
@@ -164,6 +164,7 @@
           nixosSystem = {
             system = "x86_64-linux";
             modules = defaultModules ++ [
+              ./modules/ory-hydra
               ./hosts/ladon/configuration.nix
             ];
           };

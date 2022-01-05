@@ -9,12 +9,9 @@ rec {
   vikunja-api = self.callPackage ./vikunja/api.nix { };
   vikunja-frontend = self.callPackage ./vikunja/frontend.nix { };
   widevine-cdm = self.callPackage ./widevine { };
-  python = super.python3.override {
-    packageOverrides = self: super: {
-      ocrmypdf = self.callPackage ./ocrmypdf { };
-    };
-  };
   zsh-autocomplete = self.callPackage ./zsh-autocomplete { };
+  legitima = self.callPackage ./legitima { };
+  ory-hydra = self.callPackage ./ory-hydra { };
   jetbrains = (self.recurseIntoAttrs (self.callPackages ./jetbrains {
     vmopts = null;
     jdk = jetbrains.jdk;

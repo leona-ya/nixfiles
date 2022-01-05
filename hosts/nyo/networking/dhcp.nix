@@ -46,6 +46,7 @@ let
       };
       raPrefixes = {
         "fd8f:d15b:9f40:0c32::".prefixLength = 64;
+        "2a01:4f8:212:ad7:2000::".prefixLength = 68;
       };
     };
   };

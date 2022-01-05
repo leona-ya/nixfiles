@@ -32,8 +32,8 @@
         openid = {
           enabled = true;
           providers = [{
-            name = "keycloak";
-            authurl = "https://auth.em0lar.dev/auth/realms/em0lar";
+            name = "sso";
+            authurl = "https://hydra.sso.em0lar.dev/";
             clientid = "vikunja";
           }];
         };

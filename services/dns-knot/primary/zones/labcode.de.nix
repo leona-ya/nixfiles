@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021121901;
+      serial = 2021122901;
       refresh = 3600;
       expire = 604800;
       minimum = 300;
@@ -38,7 +38,7 @@
       ns = host "95.216.160.224" "2a01:4f9:c010:1dcf::1"; # cetus
 
       www.CNAME = [ "foros.net.em0lar.dev." ];
-      auth.CNAME = [ "foros.net.em0lar.dev." ];
+      auth.CNAME = [ "ladon.net.em0lar.dev." ];
       cdn.CNAME = [ "foros.net.em0lar.dev." ];
       git.CNAME = [ "beryl.net.em0lar.dev." ];
       matrix.CNAME = [ "beryl.net.em0lar.dev." ];
