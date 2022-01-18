@@ -12,6 +12,18 @@ rec {
   zsh-autocomplete = self.callPackage ./zsh-autocomplete { };
   legitima = self.callPackage ./legitima { };
   ory-hydra = self.callPackage ./ory-hydra { };
+  #mesa = super.mesa.overrideAttrs (old: rec {
+  #  version = "21.2.6";
+  #  src = self.fetchurl {
+  #    urls = [
+  #      "https://mesa.freedesktop.org/archive/mesa-${version}.tar.xz"
+  #      "ftp://ftp.freedesktop.org/pub/mesa/mesa-${version}.tar.xz"
+  #      "ftp://ftp.freedesktop.org/pub/mesa/${version}/mesa-${version}.tar.xz"
+  #      "ftp://ftp.freedesktop.org/pub/mesa/older-versions/21.x/${version}/mesa-${version}.tar.xz"
+  #    ];
+  #    sha256 = "0m69h3f9fr66h6xjxfc485zfdci6kl8j24ab0kx5k23f7kcj4zhy";
+  #  };
+  #});
   jetbrains = (self.recurseIntoAttrs (self.callPackages ./jetbrains {
     vmopts = null;
     jdk = jetbrains.jdk;
@@ -19,4 +31,3 @@ rec {
     jdk = super.jetbrains.jdk;
   });
 }
-

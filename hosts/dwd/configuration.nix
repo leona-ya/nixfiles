@@ -27,7 +27,7 @@
       sensors = { };
     };
   };
-  services.telegraf.extraConfig.inputs.net.interfaces = [ "br*" "ppp-wan" ];
+  services.telegraf.extraConfig.inputs.net.interfaces = [ "br*" "ppp-wan" "wg-server" ];
   systemd.services.telegraf.path = [ pkgs.lm_sensors ];
 
   system.stateVersion = "21.05";

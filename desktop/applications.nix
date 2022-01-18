@@ -68,6 +68,7 @@
     (wrapOBS {
       plugins = with obs-studio-plugins; [ wlrobs ];
     })
+    obsidian
     openttd
     openssl
     pandoc
@@ -207,6 +208,7 @@
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
+      config.global.skip_dotenv = true;
     };
 
     xdg.mimeApps = {

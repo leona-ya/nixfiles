@@ -32,5 +32,5 @@ fi
 
 echo $HOSTS
 
-rsync -r /home/em0lar/dev/nixfiles hack.net.em0lar.dev:/tmp -e "ssh -p 61337"
+rsync -r /home/em0lar/dev/nixfiles hack.net.em0lar.dev:/tmp -e "ssh -p 61337" --exclude ".direnv" --exclude "result"
 ssh -A -p 61337 hack.net.em0lar.dev "cd /tmp/nixfiles && deploy -s --targets $HOSTS && cd /tmp && rm -rf /tmp/nixfiles"

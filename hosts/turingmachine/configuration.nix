@@ -30,7 +30,7 @@
   systemd.services.upower.wantedBy = lib.mkForce [ "multi-user.target" ];
 
   users.users.em0lar.passwordFile = config.sops.secrets."hosts/turingmachine/user_em0lar_pw".path;
-  security.sudo.wheelNeedsPassword = true;
+  #security.sudo.wheelNeedsPassword = true;
 
   home-manager.users.em0lar = {
     programs.ssh.extraConfig = ''
@@ -49,6 +49,7 @@
       "/var/lib/containers"
       "**/node_modules"
       "**/.venv"
+      "**/target"
       "/home/*/.cache"
       "/home/*/.rustup"
       "**/Cache"

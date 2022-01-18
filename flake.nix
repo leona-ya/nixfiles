@@ -124,7 +124,7 @@
               ./hosts/dwd/configuration.nix
             ];
           };
-          deploy.hostname = "dwd.lan";
+          deploy.hostname = "dwd.wg.net.em0lar.dev";
         };
         foros = {
           nixosSystem = {
@@ -178,7 +178,7 @@
               ./hosts/turingmachine/configuration.nix
             ];
           };
-          deploy.hostname = "turingmachine.lan";
+          deploy.hostname = "fd8f:d15b:9f40:10:8e16:45ff:fe89:d164";
         };
         naiad = {
           nixosSystem = {
@@ -225,6 +225,7 @@
         hostname = if (config ? deploy.hostname) then config.deploy.hostname else (self.nixosConfigurations."${name}".config.networking.hostName + "." + self.nixosConfigurations."${name}".config.networking.domain);
         profiles.system = {
           autoRollback = false;
+	  magicRollback = false;
           user = "root";
           sshUser = "em0lar";
           sshOpts = [ "-o" "StrictHostKeyChecking=no" "-p" "61337" ];

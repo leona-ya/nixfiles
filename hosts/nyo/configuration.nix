@@ -16,6 +16,7 @@
 
   environment.etc."mdadm.conf".text = ''
     HOMEHOST <ignore>
+    MAILADDR noc@em0lar.dev
   '';
   boot.initrd.mdadmConf = config.environment.etc."mdadm.conf".text;
 
