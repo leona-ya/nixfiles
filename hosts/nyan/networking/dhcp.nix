@@ -16,7 +16,7 @@ let
         };
       };
       prefix = {
-        prefix = "2a01:4f8:212:ad7:1000::";
+        prefix = "2a01:4f8:242:155f:1000::";
         prefixLength = 68;
         start = "100";
         end = "fff";
@@ -24,7 +24,7 @@ let
       };
       raPrefixes = {
         "fd8f:d15b:9f40:0c31::".prefixLength = 64;
-        "2a01:4f8:212:ad7:1000::".prefixLength = 68;
+        "2a01:4f8:242:155f:1000::".prefixLength = 68;
       };
     };
     "br-nh" = {
@@ -38,7 +38,7 @@ let
         };
       };
       prefix = {
-        prefix = "2a01:4f8:212:ad7:2000::";
+        prefix = "2a01:4f8:242:155f:2000::";
         prefixLength = 68;
         start = "100";
         end = "fff";
@@ -46,7 +46,7 @@ let
       };
       raPrefixes = {
         "fd8f:d15b:9f40:0c32::".prefixLength = 64;
-        "2a01:4f8:212:ad7:2000::".prefixLength = 68;
+        "2a01:4f8:242:155f:2000::".prefixLength = 68;
       };
     };
     "br-n" = {
@@ -60,14 +60,14 @@ let
         };
       };
       prefix = {
-        prefix = "2a01:4f8:212:ad7:3000::";
+        prefix = "2a01:4f8:242:155f:3000::";
         prefixLength = 68;
         start = "100";
         end = "fff";
         nameservers = [ "2606:4700:4700::1111" ];
       };
       raPrefixes = {
-        "2a01:4f8:212:ad7:3000::".prefixLength = 68;
+        "2a01:4f8:242:155f:3000::".prefixLength = 68;
       };
     };
     "br-np" = {
@@ -81,18 +81,18 @@ let
         };
       };
       prefix = {
-        prefix = "2a01:4f8:212:ad7:4000::";
+        prefix = "2a01:4f8:242:155f:4000::";
         prefixLength = 68;
         start = "100";
         end = "fff";
         nameservers = [ "2606:4700:4700::1111" ];
       };
       raPrefixes = {
-        "2a01:4f8:212:ad7:4000::".prefixLength = 68;
+        "2a01:4f8:242:155f:4000::".prefixLength = 68;
       };
     };
   };
-  assignments = hosthelper.nyo.g_assignements;
+  assignments = hosthelper.nyan.g_assignements;
 in {
   em0lar.nftables.extraInput = let
     ifaces = concatStringsSep ", " (

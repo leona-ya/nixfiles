@@ -184,11 +184,11 @@
             ];
           };
         };
-        nyo = {
+        nyan = {
           nixosSystem = {
             system = "x86_64-linux";
             modules = defaultModules ++ [
-              ./hosts/nyo/configuration.nix
+              ./hosts/nyan/configuration.nix
             ];
           };
         };
@@ -221,7 +221,7 @@
         hostname = if (config ? deploy.hostname) then config.deploy.hostname else (self.nixosConfigurations."${name}".config.networking.hostName + "." + self.nixosConfigurations."${name}".config.networking.domain);
         profiles.system = {
           autoRollback = false;
-	  magicRollback = false;
+	        magicRollback = false;
           user = "root";
           sshUser = "em0lar";
           sshOpts = [ "-o" "StrictHostKeyChecking=no" "-p" "61337" ];

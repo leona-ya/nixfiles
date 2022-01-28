@@ -6,13 +6,13 @@ in {
     ./dhcp.nix
   ];
 
-  em0lar.sops.secrets."hosts/nyo/wireguard_wg-server_privatekey".owner = "systemd-network";
+  em0lar.sops.secrets."hosts/nyan/wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];
 
   systemd.network = {
     links = {
       "10-eth0" = {
-        matchConfig.MACAddress = "08:62:66:a4:5a:c6";
+        matchConfig.MACAddress = "a8:a1:59:36:6a:f2";
         linkConfig.Name = "eth0";
       };
     };
@@ -22,7 +22,7 @@ in {
         matchConfig = {
           Name = "eth0";
         };
-        address = [ "2a01:4f8:212:ad7::1/64" ];
+        address = [ "2a01:4f8:242:155f::1/64" ];
         routes = [
           {
             routeConfig = {
@@ -40,7 +40,7 @@ in {
         address = [
           "10.151.20.254/24"
           "fd8f:d15b:9f40:0c31::1/64"
-          "2a01:4f8:212:ad7:1000::1/68"
+          "2a01:4f8:242:155f:1000::1/68"
         ];
         networkConfig.ConfigureWithoutCarrier = true;
       };
@@ -51,7 +51,7 @@ in {
         address = [
           "10.151.21.62/26"
           "fd8f:d15b:9f40:0c32::1/64"
-          "2a01:4f8:212:ad7:2000::1/68"
+          "2a01:4f8:242:155f:2000::1/68"
         ];
         networkConfig.ConfigureWithoutCarrier = true;
       };
@@ -61,7 +61,7 @@ in {
         };
         address = [
           "10.151.21.126/26"
-          "2a01:4f8:212:ad7:3000::1/68"
+          "2a01:4f8:242:155f:3000::1/68"
         ];
         networkConfig.ConfigureWithoutCarrier = true;
       };
@@ -71,7 +71,7 @@ in {
         };
         address = [
           "10.151.21.190/26"
-          "2a01:4f8:212:ad7:4000::1/68"
+          "2a01:4f8:242:155f:4000::1/68"
         ];
         networkConfig.ConfigureWithoutCarrier = true;
       };

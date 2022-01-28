@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2022012701;
+      serial = 2022012803;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -38,13 +38,14 @@ in {
 
     subdomains = hosthelper.services.dns-int.g_dns_records // {
       "naiad.net" = naiad_host;
-      "hack.net".AAAA = [ "2a01:4f8:212:ad7:1000::fc5" ];
+      "hack.net".AAAA = [ "2a01:4f8:242:155f:1000::fc5" ];
       "haku.net" = haku_host;
       "kupe.net" = kupe_host;
       "nyo.net" = host "136.243.42.251" "2a01:4f8:212:ad7::1";
-      "foros.net" = host "195.39.247.144" "2a01:4f8:212:ad7:1000::987";
-      "beryl.net" = host "195.39.247.145" "2a01:4f8:212:ad7:1000::b33";
-      "ladon.net" = host "195.39.247.147" "2a01:4f8:212:ad7:1000::1a2";
+      "nyan.net" = host "168.119.67.67" "2a01:4f8:242:155f::1";
+      "foros.net" = host "195.39.247.144" "2a01:4f8:242:155f:1000::987";
+      "beryl.net" = host "195.39.247.145" "2a01:4f8:242:155f:1000::b33";
+      "ladon.net" = host "195.39.247.147" "2a01:4f8:242:155f:1000::1a2";
       "adonis.net" = host "130.61.64.61" "2603:c020:8004:50e0:4cb7:23e8:1668:f629";
       "wg.net".CNAME = [ "haku.net.em0lar.dev." ];
 

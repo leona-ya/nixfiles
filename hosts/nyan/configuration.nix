@@ -11,7 +11,7 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.devices = [ "/dev/sda" "/dev/sdb" ]; # or "nodev" for efi only
 
-  networking.hostName = "nyo";
+  networking.hostName = "nyan";
   networking.domain = "net.em0lar.dev";
 
   environment.etc."mdadm.conf".text = ''

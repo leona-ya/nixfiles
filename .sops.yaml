@@ -8,7 +8,7 @@ keys:
   - &kupe age15h358g33202zydy8mkfruh98f92rnhum86zapm3seg56s2xvgvvqzsj7xq
   - &ladon age1wnadll9sggrpug7ntwvlq87j68sazx98flawtx88nhnju4a2eg7qzwnex6
   - &naiad age1apjvmw80k4nh7fvr07lfhqtku7amw6x8ulc7hyyplr78aaj0xehqm440d7
-  - &nyo age1asek433y0fj8n2c3l9d0mhunw4njvyke2swqmaf3cap5fsye5d2sqwa7gy
+  - &nyan age1wc3shhw82lj9mdnh2zy62k78k3et0mq3dcqmef9r69sc0cvt29ts9jzkv0
   - &turingmachine age1wqgja2wvgeuzvjqvsk862ppdmfv8mqmgxc543x3a5g02dddadu3seflurp
 creation_rules:
   - path_regex: secrets/all/[^/]+\.yaml$
@@ -24,7 +24,7 @@ creation_rules:
           - *kupe
           - *ladon
           - *naiad
-          - *nyo
+          - *nyan
           - *turingmachine
 
   # hosts
@@ -70,12 +70,12 @@ creation_rules:
           - *admin
         age:
           - *naiad
-  - path_regex: secrets/hosts/nyo.yaml
+  - path_regex: secrets/hosts/nyan.yaml
     key_groups:
       - pgp:
           - *admin
         age:
-          - *nyo
+          - *nyan
   - path_regex: secrets/hosts/turingmachine.yaml
     key_groups:
       - pgp:

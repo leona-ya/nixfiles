@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021122901;
+      serial = 2022012801;
       refresh = 3600;
       expire = 604800;
       minimum = 600;

@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021122901;
+      serial = 2022012801;
       refresh = 3600;
       expire = 604800;
       minimum = 300;
@@ -34,8 +34,6 @@
       # server
       "dione.int.sig.de".CNAME = [ "foros.net.em0lar.dev." ]; # backwards compatibility
       "nas.home".CNAME = [ "encladus.lan." ]; # backwards compatibility
-
-      ns = host "95.216.160.224" "2a01:4f9:c010:1dcf::1"; # cetus
 
       www.CNAME = [ "foros.net.em0lar.dev." ];
       auth.CNAME = [ "ladon.net.em0lar.dev." ];

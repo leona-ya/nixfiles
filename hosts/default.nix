@@ -22,11 +22,11 @@ in rec {
     };
     beryl = {
       meta.intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe4e:5cbf";
-      nyo = {
+      nyan = {
         mac = "52:54:00:4e:5c:bf";
         duid = "00:02:00:00:ab:11:fd:dc:c3:f1:66:4a:de:40";
         legacyAddress = "10.151.20.11";
-        address = "2a01:4f8:212:ad7:1000::b33";
+        address = "2a01:4f8:242:155f:1000::b33";
       };
     };
     dwd = {
@@ -49,33 +49,33 @@ in rec {
     };
     foros = {
      meta.intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5";
-     nyo = {
+     nyan = {
        mac = "52:54:00:e7:6a:e5";
        duid = "00:02:00:00:ab:11:82:40:af:d3:85:17:b2:1f";
        legacyAddress = "10.151.20.12";
-       address = "2a01:4f8:212:ad7:1000::987";
+       address = "2a01:4f8:242:155f:1000::987";
      };
    };
     kupe = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fec0:8539";
       };
-      nyo = {
+      nyan = {
         mac = "52:54:00:c0:85:39";
         duid = "00:02:00:00:ab:11:9b:68:58:51:30:82:69:52";
         legacyAddress = "10.151.20.10";
-        address = "2a01:4f8:212:ad7:1000::f28";
+        address = "2a01:4f8:242:155f:1000::f28";
       };
     };
     hack = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe65:7a8e";
       };
-      nyo = {
+      nyan = {
         mac = "52:54:00:65:7a:8e";
         duid = "00:02:00:00:ab:11:83:85:8b:4d:78:f2:6f:1d";
         legacyAddress = "10.151.20.13";
-        address = "2a01:4f8:212:ad7:1000::fc5";
+        address = "2a01:4f8:242:155f:1000::fc5";
       };
     };
     haku = {
@@ -143,11 +143,11 @@ in rec {
     };
     ladon = {
       meta = { intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fed2:a792"; };
-      nyo = {
+      nyan = {
         mac = "52:54:00:d2:a7:92";
         duid = "00:02:00:00:ab:11:a9:cf:70:02:82:59:f4:eb";
         legacyAddress = "10.151.20.14";
-        address = "2a01:4f8:212:ad7:1000::1a2";
+        address = "2a01:4f8:242:155f:1000::1a2";
       };
     };
     naiad = {
@@ -165,16 +165,16 @@ in rec {
         };
       };
     };
-    nyo = {
+    nyan = {
       meta = { intIpv6 = "fd8f:d15b:9f40:0c30::1"; };
       services = {
         wireguard = {
           interfaces = {
             "server" = {
-              ips = [ "10.151.20.254/32" "${hosts.nyo.meta.intIpv6}/60" ];
+              ips = [ "10.151.20.254/32" "${hosts.nyan.meta.intIpv6}/60" ];
               publicKey = "AilevKAZRnvQUkJhg/R9APpYUdEbnE1g2BP+FUQwBBI=";
               routed = [ "fd8f:d15b:9f40:0c30::/60" "10.151.20.0/22" ];
-              hostname = "nyo.net.em0lar.dev";
+              hostname = "nyan.net.em0lar.dev";
             };
           };
         };
@@ -182,11 +182,11 @@ in rec {
     };
     utopia = {
       meta = { intIpv6 = "fd8f:d15b:9f40:c32:5054:ff:fe77:e68f"; };
-      nyo = {
+      nyan = {
         mac = "52:54:00:77:e6:8f";
         duid = "00:02:00:00:ab:11:ca:6f:7a:9e:92:e9:a1:af";
         legacyAddress = "10.151.21.11";
-        address = "2a01:4f8:212:ad7:2000::c7e";
+        address = "2a01:4f8:242:155f:2000::c7e";
       };
     };
   };
@@ -262,20 +262,20 @@ in rec {
           }) hosts.${currentHost}.services.wireguard.interfaces;
       };
     });
-  nyo.g_assignements = builtins.mapAttrs (hostnname: config:
-    config.nyo
+  nyan.g_assignements = builtins.mapAttrs (hostnname: config:
+    config.nyan
   ) (filterAttrs (
-    hostname: config: config ? nyo
+    hostname: config: config ? nyan
   ) hosts);
   services = {
     dns-int.g_dns_records = mapAttrs' (hostname: config:
       nameValuePair "${hostname}.wg.net" {
         AAAA = [ config.meta.intIpv6 ];
       }) hosts // mapAttrs' (hostname: config:
-      nameValuePair "${hostname}.nyo.net" {
-        A = [ config.nyo.legacyAddress ];
+      nameValuePair "${hostname}.nyan.net" {
+        A = [ config.nyan.legacyAddress ];
       }) (filterAttrs (
-        hostname: config: config ? nyo
+        hostname: config: config ? nyan
       ) hosts);
   };
 }
