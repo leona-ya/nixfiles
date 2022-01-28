@@ -2,31 +2,30 @@
   description = "em0lar's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    flake-registry.url = "github:NixOS/flake-registry";
-    flake-registry.flake = false;
     deploy-rs.url = "github:serokell/deploy-rs";
     em0lar-dev-website = {
       url = "git+https://git.em0lar.dev/em0lar/em0lar.dev?ref=main";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable-small";
     };
     dns = {
       url = "github:kirelagin/dns.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable-small";
     };
     mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable-small";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable-small";
     };
   };
 
@@ -34,9 +33,9 @@
     self,
     flake-utils,
     dns,
-    nixpkgs,
+    nixpkgs-unstable-small,
+    nixpkgs-unstable,
     home-manager,
-    flake-registry,
     deploy-rs,
     em0lar-dev-website,
     mailserver,
@@ -49,9 +48,6 @@
         (final: prev: import ./packages final prev)
         em0lar-dev-website.overlay
       ];
-      legacyPackages."x86_64-linux" = (import nixpkgs {
-        system = "x86_64-linux";
-      }).extend self.overlays.packages;
 
       sourcesModule = {
         _file = ./flake.nix;
@@ -60,17 +56,10 @@
 
       defaultModules = [
         {
-          nix.nixPath = [
-            "nixpkgs=${nixpkgs}"
+          nix.nixPath = nixpkgs-unstable.lib.mkDefault [
+            "nixpkgs=${nixpkgs-unstable-small}"
             "home-manager=${home-manager}"
           ];
-          nix.extraOptions = ''
-            flake-registry = ${flake-registry}/flake-registry.json
-          '';
-          nix.registry = {
-            home-manager.flake = home-manager;
-            nixpkgs.flake = nixpkgs;
-          };
           imports = [
             ./modules/backups
             ./modules/bind
@@ -130,6 +119,7 @@
           nixosSystem = {
             system = "x86_64-linux";
             modules = defaultModules ++ [
+              ./modules/firefly-iii
               ./hosts/foros/configuration.nix
             ];
           };
@@ -176,6 +166,12 @@
             modules = defaultModules ++ [
               nixos-hardware.nixosModules.lenovo-thinkpad-t480s
               ./hosts/turingmachine/configuration.nix
+              {
+                nix.nixPath = nixpkgs-unstable.lib.mkForce [
+                  "nixpkgs=${nixpkgs-unstable}"
+                  "home-manager=${home-manager}"
+                ];
+              }
             ];
           };
           deploy.hostname = "fd8f:d15b:9f40:10:8e16:45ff:fe89:d164";
@@ -208,7 +204,7 @@
       };
     in
     flake-utils.lib.eachDefaultSystem(system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in
+      let pkgs = nixpkgs-unstable.legacyPackages.${system}; in
       {
         devShell = pkgs.mkShell {
          buildInputs = [
@@ -217,11 +213,11 @@
        };
       }
     ) // {
-      nixosConfigurations = (nixpkgs.lib.mapAttrs (name: config: (nixpkgs.lib.nixosSystem rec {
+      nixosConfigurations = (nixpkgs-unstable.lib.mapAttrs (name: config: (nixpkgs-unstable.lib.nixosSystem rec {
         system = config.nixosSystem.system;
         modules = config.nixosSystem.modules;
       })) hosts);
-      deploy.nodes = (nixpkgs.lib.mapAttrs (name: config: {
+      deploy.nodes = (nixpkgs-unstable.lib.mapAttrs (name: config: {
         hostname = if (config ? deploy.hostname) then config.deploy.hostname else (self.nixosConfigurations."${name}".config.networking.hostName + "." + self.nixosConfigurations."${name}".config.networking.domain);
         profiles.system = {
           autoRollback = false;

@@ -37,7 +37,7 @@
     element-desktop
     evince
     feh
-    (firefox-wayland.override { extraNativeMessagingHosts = [ passff-host ]; })
+    firefox-wayland
     gcc
     gh
     gimp
@@ -169,31 +169,6 @@
     programs.browserpass = {
       enable = true;
       browsers = [ "chromium" ];
-    };
-    programs.qutebrowser = {
-      enable = true;
-      keyBindings.normal = {
-        "<z><l>" = "spawn --userscript qute-pass --username-target secret --username-pattern \"username|user: (.+)\"";
-        "<z><u><l>" = "spawn --userscript qute-pass --username-only --username-target secret --username-pattern \"username|user: (.+)\"";
-        "<z><p><l>" = "spawn --userscript qute-pass --password-only";
-        "J" = "tab-prev";
-        "K" = "tab-next";
-      };
-      searchEngines = {
-        DEFAULT = "https://www.google.com/search?hl=en&q={}";
-        wen = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
-        wde = "https://de.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
-        nw = "https://nixos.wiki/index.php?search={}";
-        nsp = "https://search.nixos.org/packages?channel=unstable&query={}";
-        nso = "https://search.nixos.org/options?channel=unstable&query={}";
-      };
-      settings = {
-        auto_save.session = true;
-        colors.webpage.preferred_color_scheme = "dark";
-      };
-      extraConfig = ''
-        c.qt.args.append('widevine-path=${pkgs.widevine-cdm}/lib/libwidevinecdm.so')
-      '';
     };
     programs.password-store.enable = true;
     programs.zsh = {

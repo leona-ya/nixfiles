@@ -35,6 +35,7 @@
             name = "sso";
             authurl = "https://hydra.sso.em0lar.dev/";
             clientid = "vikunja";
+            clientsecret = "4d0fb45b-f508-446b-a1ac-ecee41f90511";
           }];
         };
       };

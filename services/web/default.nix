@@ -199,7 +199,6 @@ in {
   };
   services.phpfpm.pools."nginx-gat" = {
     user = config.services.nginx.user;
-    phpPackage = pkgs.php74;
     settings = {
       "pm" = "dynamic";
       "pm.max_children" = 32;

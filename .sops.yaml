@@ -97,7 +97,7 @@ creation_rules:
           - *admin
         age:
           - *beryl
-  - path_regex: secrets/services/nextcloud.yaml
+  - path_regex: secrets/services/(nextcloud|firefly-iii).yaml
     key_groups:
       - pgp:
           - *admin

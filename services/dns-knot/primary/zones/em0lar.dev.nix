@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2021122902;
+      serial = 2022012701;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -69,6 +69,7 @@ in {
       alertmanager.CNAME = [ "naiad.net.em0lar.dev." ];
       alertmanager-bot.CNAME = [ "naiad.net.em0lar.dev." ];
       convos.CNAME = [ "kupe.net.em0lar.dev." ];
+      fin.CNAME = [ "foros.net.em0lar.dev." ];
       git.CNAME = [ "beryl.net.em0lar.dev." ];
       grafana.CNAME = [ "naiad.net.em0lar.dev." ];
       md.CNAME = [ "beryl.net.em0lar.dev." ];

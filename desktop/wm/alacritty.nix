@@ -40,7 +40,7 @@
           };
         };
 
-        background_opacity = 0.7;
+        window.opacity = 0.7;
       };
     };
   };

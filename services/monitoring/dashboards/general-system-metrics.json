@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1640800574136,
+  "iteration": 1643213834520,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -80,7 +80,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "system_uptime{host=~\"$host\"}",
@@ -135,7 +135,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(increase(net_bytes_recv{host=\"$host\"}[$__range]))",
@@ -193,7 +193,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "count(systemd_units_active_code{host=\"$host\",active=\"failed\"}) or vector(0)",
@@ -254,7 +254,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "system_load5{host=~\"$host\"}",
@@ -315,7 +315,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "system_load15{host=~\"$host\"}",
@@ -378,7 +378,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "mem_used_percent{host=~\"$host\"}",
@@ -441,7 +441,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "disk_used_percent{host=\"$host\", path=\"/\"}",
@@ -495,7 +495,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "count(systemd_units_active_code{host=\"$host\",active=~\"active\"}) or vector(0)",
@@ -550,7 +550,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(increase(net_bytes_sent{host=\"$host\"}[$__range]))",
@@ -606,7 +606,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -635,7 +635,7 @@
             "axisPlacement": "left",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 10,
+            "fillOpacity": 70,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -652,27 +652,24 @@
             "spanNulls": true,
             "stacking": {
               "group": "A",
-              "mode": "none"
+              "mode": "percent"
             },
             "thresholdsStyle": {
               "mode": "off"
             }
           },
           "mappings": [],
+          "max": 1,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
-          "unit": "percent"
+          "unit": "percentunit"
         },
         "overrides": [
           {
@@ -696,6 +693,13 @@
               {
                 "id": "custom.axisSoftMin",
                 "value": 20
+              },
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
               }
             ]
           },
@@ -709,6 +713,28 @@
                 "id": "color",
                 "value": {
                   "fixedColor": "#E02F44",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "J"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#454545",
                   "mode": "fixed"
                 }
               }
@@ -730,7 +756,7 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi"
         }
       },
       "pluginVersion": "8.1.6",
@@ -793,6 +819,30 @@
           "interval": "",
           "legendFormat": "steal",
           "refId": "G"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "cpu_usage_nice{host=\"$host\", cpu=\"cpu-total\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "low priority",
+          "refId": "H"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "cpu_usage_idle{host=\"$host\", cpu=\"cpu-total\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "idle",
+          "refId": "J"
         },
         {
           "datasource": {
@@ -904,7 +954,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "cpu_usage_system{host=~\"$host\",cpu!=\"cpu-total\"} + cpu_usage_user{host=~\"$host\",cpu!=\"cpu-total\"} + cpu_usage_guest{host=~\"$host\",cpu!=\"cpu-total\"}",
+          "expr": "cpu_usage_system{host=~\"$host\",cpu!=\"cpu-total\"} + cpu_usage_user{host=~\"$host\",cpu!=\"cpu-total\"} + cpu_usage_guest{host=~\"$host\",cpu!=\"cpu-total\"} + cpu_usage_nice{host=~\"$host\",cpu!=\"cpu-total\"}",
           "interval": "",
           "legendFormat": "{{cpu}}",
           "refId": "A"
@@ -947,6 +997,7 @@
           "custom": {
             "axisLabel": "",
             "axisPlacement": "auto",
+            "axisSoftMax": 5,
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 10,
@@ -976,7 +1027,6 @@
             }
           },
           "mappings": [],
-          "max": 5,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -1212,7 +1262,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -1577,7 +1627,7 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "Bps"
         },
         "overrides": []
       },
@@ -1621,7 +1671,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": "5s",
   "schemaVersion": 34,
   "style": "dark",
   "tags": [],
@@ -1655,13 +1705,10 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": [
-            "None"
-          ],
-          "value": [
-            ""
-          ]
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
         },
         "definition": "label_values(sensors_temp_input{host=\"$host\"}, chip)",
         "hide": 0,

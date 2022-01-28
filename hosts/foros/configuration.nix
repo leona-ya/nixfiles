@@ -9,6 +9,7 @@
       ../../common
       ../../services/nextcloud
       ../../services/web
+      ../../services/firefly-iii
   ];
 
   boot.loader.systemd-boot.enable = true;

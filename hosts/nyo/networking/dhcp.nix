@@ -70,6 +70,27 @@ let
         "2a01:4f8:212:ad7:3000::".prefixLength = 68;
       };
     };
+    "br-np" = {
+      legacyPrefixes = {
+        "10.151.21.128" = {
+          prefixLength = 26;
+          start = "10.151.21.160";
+          end = "10.151.21.180";
+          nameservers = [ "1.1.1.1" ];
+          gateway = "10.151.21.190";
+        };
+      };
+      prefix = {
+        prefix = "2a01:4f8:212:ad7:4000::";
+        prefixLength = 68;
+        start = "100";
+        end = "fff";
+        nameservers = [ "2606:4700:4700::1111" ];
+      };
+      raPrefixes = {
+        "2a01:4f8:212:ad7:4000::".prefixLength = 68;
+      };
+    };
   };
   assignments = hosthelper.nyo.g_assignements;
 in {

@@ -27,7 +27,7 @@
   services.openssh.enable = true;
   services.openssh.ports = [ 61337 ];
   services.openssh.passwordAuthentication = false;
-  services.openssh.challengeResponseAuthentication = false;
+  services.openssh.kbdInteractiveAuthentication = false;
   services.openssh.permitRootLogin = lib.mkDefault "no";
   services.iperf3.enable = true;
   services.iperf3.openFirewall = true;
