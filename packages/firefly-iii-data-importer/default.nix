@@ -1,4 +1,4 @@
-{ pkgs, stdenv, lib, fetchFromGitHub, dataDir ? "/var/lib/firefly-iii" }:
+{ pkgs, stdenv, lib, fetchFromGitHub, dataDir ? "/var/lib/firefly-iii/data-importer" }:
 
 let
   package = (import ./composition.nix {
@@ -14,19 +14,19 @@ let
   });
 
 in package.override rec {
-  pname = "firefly-iii";
-  version = "5.6.10";
+  pname = "firefly-iii-data-importer";
+  version = "0.7.0";
 
   src = fetchFromGitHub {
     owner = "firefly-iii";
-    repo = "firefly-iii";
+    repo = "data-importer";
     rev = "${version}";
-    sha256 = "0azncfjpw65klk8856d67r0ysayxkja0jch2qmr2hzzv8k1lr1fa";
+    sha256 = "0wprggljd2ffqiyl8s6jfjk45gz87w348b38b37f62hx7ks1vaa0";
   };
 
   meta = with lib; {
-    description = "A personal finances manager";
-    homepage = "https://www.firefly-iii.org/";
+    description = "The Firefly III Data Importer can import data into Firefly III";
+    homepage = "https://github.com/firefly-iii/data-importer";
     license = licenses.agpl3;
     maintainers = with maintainers; [ em0lar ];
     platforms = platforms.linux;

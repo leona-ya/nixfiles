@@ -27,6 +27,7 @@
           };
         }
       ];
+      networkConfig.IPv6PrivacyExtensions = "no";
     };
   };
   networking.useHostResolvConf = false;

@@ -49,6 +49,7 @@
           };
         }
       ];
+      networkConfig.IPv6PrivacyExtensions = "no";
     };
   };
 

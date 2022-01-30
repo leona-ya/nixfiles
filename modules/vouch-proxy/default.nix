@@ -25,6 +25,11 @@ let
             For example the jwt secret and oidc secrets should be set in one of these files.
           '';
         };
+        addAuthRequestToMainLocation = mkOption {
+          type = types.bool;
+          default = false;
+          description = "Add auth_request to / location.";
+        };
       };
     };
   mkService = domain: serviceConfig:

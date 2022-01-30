@@ -43,6 +43,7 @@
       matchConfig = {
         Name = "eth0";
       };
+      networkConfig.IPv6PrivacyExtensions = "no";
     };
   };
 

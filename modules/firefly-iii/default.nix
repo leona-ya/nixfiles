@@ -7,19 +7,9 @@ let
   package = pkgs.firefly-iii.override {
     dataDir = cfg.dataDir;
   };
-
-  # shell script for local administration
-  artisan = pkgs.writeScriptBin "firefly-iii" ''
-    #! ${pkgs.runtimeShell}
-    cd ${package}
-    sudo=exec
-    if [[ "$USER" != ${cfg.user} ]]; then
-      sudo='exec /run/wrappers/bin/sudo -u ${cfg.user}'
-    fi
-    $sudo ${pkgs.php}/bin/php artisan $*
-  '';
-
-
+  dataImporterPackage = pkgs.firefly-iii-data-importer.override {
+    dataDir = cfg.data-importer.dataDir;
+  };
 in {
   options.services.firefly-iii = {
     enable = mkEnableOption "Firefly III";
@@ -78,6 +68,34 @@ in {
         Refer to <link xlink:href="https://github.com/firefly-iii/firefly-iii/blob/main/.env.example"/> for details on supported values.
       '';
     };
+
+    setupNginx = mkOption {
+       description = "Setup nginx";
+       default = true;
+       type = types.bool;
+    };
+
+    data-importer = {
+      enable = mkEnableOption "Firefly III Data Importer";
+      dataDir = mkOption {
+        description = "Firefly III Data Importer data directory";
+        default = "/var/lib/firefly-iii/data-importer";
+        type = types.str;
+      };
+      hostname = mkOption {
+        description = "The Hostname under which the data-importer is running.";
+        example = "data-importer.example.dev";
+        type = types.str;
+      };
+      extraConfig = mkOption {
+        type = types.nullOr types.lines;
+        default = null;
+        description = ''
+          Lines to be appended verbatim to the Firefly III configuration.
+          Refer to <link xlink:href="https://github.com/firefly-iii/data-importer/blob/main/.env.example"/> for details on supported values.
+        '';
+      };
+    };
   };
 
   config = mkIf cfg.enable {
@@ -91,24 +109,42 @@ in {
       } // cfg.poolConfig;
     };
 
-    services.nginx = {
+    services.nginx = lib.mkIf cfg.setupNginx {
       enable = mkDefault true;
-      virtualHosts."${cfg.frontendHostname}" = {
-        root = mkForce "${package}/public";
-#        root = "/var/www/firefly-iii";
-        locations = {
-          "/" = {
-            index = "index.php";
-            extraConfig = ''try_files $uri $uri/ /index.php?$query_string;'';
+      virtualHosts = {
+        "${cfg.frontendHostname}" = {
+          root = "${package}/public";
+          locations = {
+            "/" = {
+              index = "index.php";
+              extraConfig = "try_files $uri $uri/ /index.php?$query_string;";
+            };
+            "~* \.php(?:$|/)" = {
+              extraConfig = ''
+                include ${pkgs.nginx}/conf/fastcgi_params;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                fastcgi_pass unix:${config.services.phpfpm.pools."firefly-iii".socket};
+              '';
+            };
           };
-          "~* \.php(?:$|/)" = {
-            extraConfig = ''
-              try_files $uri $uri/ /index.php?$query_string;
-              include ${pkgs.nginx}/conf/fastcgi_params;
-              fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-              fastcgi_param modHeadersAvailable true;
-              fastcgi_pass unix:${config.services.phpfpm.pools."firefly-iii".socket};
-            '';
+        };
+        "${cfg.data-importer.hostname}" = lib.mkIf cfg.data-importer.enable {
+          root = "${dataImporterPackage}/public";
+          locations = {
+            "/" = {
+              index = "index.php";
+              extraConfig = "try_files $uri $uri/ /index.php?$query_string;";
+            };
+            "~* \.php(?:$|/)" = {
+              extraConfig = ''
+                include ${pkgs.nginx}/conf/fastcgi_params;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                fastcgi_param modHeadersAvailable true;
+                fastcgi_buffers 16 16k;
+                fastcgi_buffer_size 32k;
+                fastcgi_pass unix:${config.services.phpfpm.pools."firefly-iii".socket};
+              '';
+            };
           };
         };
       };
@@ -148,13 +184,63 @@ in {
         ${pkgs.php}/bin/php artisan cache:clear
       '';
     };
+    systemd.services.firefly-iii-data-impoter-setup = lib.mkIf cfg.data-importer.enable {
+      description = "Preperation tasks for Firefly III Data Importer";
+      before = [ "phpfpm-firefly-iii.service" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        User = cfg.user;
+        WorkingDirectory = package;
+        PermissionsStartOnly = true;
+      };
+      preStart = ''
+        mkdir -p ${cfg.data-importer.dataDir}/storage/uploads
+        chown -R ${cfg.user}:${cfg.group} ${cfg.data-importer.dataDir}
+        chmod -R ug+rwX,o-rwx ${cfg.data-importer.dataDir}
+      '';
+      script = ''
+        # set permissions
+        umask 077
+        # create .env file
+        echo "
+        ${toString cfg.data-importer.extraConfig}
+        " > "${cfg.data-importer.dataDir}/.env"
+
+        ${pkgs.php}/bin/php artisan cache:clear
+      '';
+    };
 
     systemd.tmpfiles.rules = [
       "d ${cfg.dataDir}/storage/app 0700 ${cfg.user} ${cfg.group} - -"
       "d ${cfg.dataDir}/storage/fonts 0700 ${cfg.user} ${cfg.group} - -"
       "d ${cfg.dataDir}/storage/framework 0700 ${cfg.user} ${cfg.group} - -"
       "d ${cfg.dataDir}/storage/framework/sessions 0700 ${cfg.user} ${cfg.group} - -"
+    ] ++ optionals cfg.data-importer.enable [
+      "d ${cfg.data-importer.dataDir}/storage/app 0700 ${cfg.user} ${cfg.group} - -"
+      "d ${cfg.data-importer.dataDir}/storage/fonts 0700 ${cfg.user} ${cfg.group} - -"
+      "d ${cfg.data-importer.dataDir}/storage/framework 0700 ${cfg.user} ${cfg.group} - -"
+      "d ${cfg.data-importer.dataDir}/storage/framework/sessions 0700 ${cfg.user} ${cfg.group} - -"
     ];
+    systemd.services.firefly-iii-cron = {
+      description = "Firefly III Cron";
+      serviceConfig = {
+        Type = "oneshot";
+        User = cfg.user;
+        WorkingDirectory = package;
+        PermissionsStartOnly = true;
+      };
+      script = ''
+        ${pkgs.php}/bin/php artisan firefly-iii:cron
+      '';
+    };
+    systemd.timers.firefly-iii-cron = {
+      timerConfig = {
+        OnCalendar = "daily";
+        RandomizedDelaySec = 1200;
+      };
+      wantedBy = [ "timers.target" ];
+    };
 
     users = {
       users = mkIf (cfg.user == "firefly-iii") {

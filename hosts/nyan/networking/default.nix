@@ -95,12 +95,6 @@ in {
           Kind = "bridge";
         };
       };
-      "05-br-np" = {
-        netdevConfig = {
-          Name = "br-np";
-          Kind = "bridge";
-        };
-      };
     } //
      hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
   };
@@ -118,8 +112,6 @@ in {
       iifname eth0 oifname br-nhp ct state new accept
       iifname br-nh oifname eth0 ct state new accept
       iifname br-n oifname eth0 ct state new accept
-      iifname eth0 oifname br-np ct state new accept
-      iifname br-np oifname eth0 ct state new accept
 
       iifname wg-server oifname br-nhp ct state new accept
       iifname br-nhp oifname wg-server ct state new accept

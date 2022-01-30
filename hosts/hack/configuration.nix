@@ -22,12 +22,14 @@
       matchConfig = {
         Name = "eth0";
       };
+      networkConfig.IPv6PrivacyExtensions = "no";
     };
   };
   networking.useDHCP = false;
 
   nix.gc.automatic = false;
   environment.systemPackages = [ inputs.deploy-rs.defaultPackage.x86_64-linux ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   em0lar.telegraf = {
     enable = true;

@@ -5,14 +5,14 @@ with dns.lib.combinators;
 let
 haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
 naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
-kupe_host = host "195.39.247.146" "2a01:4f8:212:ad7:1000::f28";
+kupe_host = host "195.39.247.146" "2a01:4f8:242:155f:1000::f28";
 in {
   zone = {
     TTL = 600;
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2022012803;
+      serial = 2022012901;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -71,6 +71,7 @@ in {
       alertmanager-bot.CNAME = [ "naiad.net.em0lar.dev." ];
       convos.CNAME = [ "kupe.net.em0lar.dev." ];
       fin.CNAME = [ "foros.net.em0lar.dev." ];
+      "dataimporter.fin".CNAME = [ "foros.net.em0lar.dev." ];
       git.CNAME = [ "beryl.net.em0lar.dev." ];
       grafana.CNAME = [ "naiad.net.em0lar.dev." ];
       md.CNAME = [ "beryl.net.em0lar.dev." ];

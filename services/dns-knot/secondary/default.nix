@@ -33,8 +33,6 @@
           template: secondary
         - domain: labcode.de
           template: secondary
-        - domain: lbcd.dev
-          template: secondary
         - domain: leomaroni.de
           template: secondary
         - domain: lovelycuti.es

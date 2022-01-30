@@ -1,18 +1,16 @@
-{ lib, fetchFromGitea, rustPlatform, makeWrapper, pkg-config, openssl }:
+{ lib, fetchgit, rustPlatform, makeWrapper, pkg-config, openssl }:
 
 rustPlatform.buildRustPackage rec {
   pname = "legitima";
-  version = "unstable-2021-01-02";
+  version = "unstable-2021-01-30";
 
-  src = fetchFromGitea {
-    domain = "git.em0lar.dev";
-    owner = "em0lar";
-    repo = "legitima";
-    rev = "42eb80a7c7c2286ef10d42b59d77fa76db6ff8e2";
-    sha256 = "sha256-qPTTJKk1C2a7J8ema5oWfEPu7AcB5+GrtaQ0W+TXBjs=";
+  src = fetchgit {
+    url = "https://cyberchaos.dev/em0lar/legitima.git";
+    rev = "9ab8fc28f10b88eb3edfa83fbfdfb3987ab3ccb8";
+    sha256 = "sha256-T2koCkjg8XQIZHbQvU+wNlH90IRmhzTTPLx6iCX5lnk=";
   };
 
-  cargoSha256 = "sha256-LZDCJGePcX4yITMMBNVwrIz4Iz6w1+WYJCHTlHEuslI=";
+  cargoSha256 = "sha256-U3dI08NDi/OruTO5NIJx6y/cBQM0hs5+EU21u9kloWg=";
 
   nativeBuildInputs = [ pkg-config makeWrapper ];
   buildInputs = [ openssl ];
@@ -20,7 +18,6 @@ rustPlatform.buildRustPackage rec {
   preBuild = ''
     export LEGITIMA_STATIC_ROOT_PATH=$data
   '';
-
 
   postInstall = ''
     mkdir $data
@@ -34,7 +31,7 @@ rustPlatform.buildRustPackage rec {
 
   meta = with lib; {
     description = "";
-    homepage = "https://git.em0lar.dev/em0lar/legitima";
+    homepage = "https://cyberchaos.dev/em0lar/legitima";
     license = licenses.unlicense;
     maintainers = [ maintainers.em0lar ];
   };

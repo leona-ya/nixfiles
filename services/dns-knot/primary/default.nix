@@ -13,7 +13,7 @@ in {
       server:
         listen: 127.0.0.11@53
         listen: 195.39.247.146@53
-        listen: 2a01:4f8:212:ad7:1000::f28@53
+        listen: 2a01:4f8:242:155f:1000::f28@53
         listen: fd8f:d15b:9f40:c31:5054:ff:fec0:8539@53
       remote:
         - id: internal_ns2
@@ -69,9 +69,6 @@ in {
           template: signedprimary
         - domain: labcode.de
           file: "${dnsutil.writeZone "labcode.de" (import zones/labcode.de.nix { inherit helper lib dns config; }).zone}"
-          template: signedprimary
-        - domain: lbcd.dev
-          file: "${dnsutil.writeZone "lbcd.dev" (import zones/lbcd.dev.nix { inherit helper lib dns config; }).zone}"
           template: signedprimary
         - domain: leomaroni.de
           file: "${dnsutil.writeZone "leomaroni.de" (import zones/leomaroni.de.nix { inherit helper lib dns config; }).zone}"
