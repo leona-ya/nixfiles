@@ -121,7 +121,8 @@
   programs.java.enable = true;
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
-#  services.autofs.enable = true;
+  services.udisks2.enable = true;
+  programs.gnome-disks.enable = true;
 
 
   home-manager.users.em0lar = {
