@@ -15,7 +15,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    trustedUsers = [ "root" "@wheel" "em0lar" ];
+    settings.trusted-users = [ "root" "@wheel" "em0lar" ];
     gc = {
       automatic = lib.mkDefault true;
       options = lib.mkDefault "--delete-older-than 7d";

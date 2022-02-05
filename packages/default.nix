@@ -20,4 +20,14 @@ rec {
   }) // {
     jdk = super.jetbrains.jdk;
   });
+  swaylock-effects = super.swaylock-effects.overrideAttrs ( old: rec {
+    name = "swaylock-effects-${version}";
+    version = "unstable-2021-10-10";
+    src = super.fetchFromGitHub {
+      owner = "mortie";
+      repo = "swaylock-effects";
+      rev = "a8fc557b86e70f2f7a30ca9ff9b3124f89e7f204";
+      sha256 = "sha256-GN+cxzC11Dk1nN9wVWIyv+rCrg4yaHnCePRYS1c4JTk=";
+    };
+  });
 }

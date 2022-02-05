@@ -15,13 +15,13 @@ let
 
 in package.override rec {
   pname = "firefly-iii";
-  version = "5.6.10";
+  version = "5.6.14";
 
   src = fetchFromGitHub {
     owner = "firefly-iii";
     repo = "firefly-iii";
     rev = "${version}";
-    sha256 = "0azncfjpw65klk8856d67r0ysayxkja0jch2qmr2hzzv8k1lr1fa";
+    sha256 = "0427k35q6sp95zf31g0p847rbm9b40afacxv8n8hf6zvzmy4n33l";
   };
 
   meta = with lib; {

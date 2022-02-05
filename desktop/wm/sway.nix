@@ -42,6 +42,12 @@
 
         startup = [ ];
 
+        window = {
+          border = 0;
+          hideEdgeBorders = "both";
+        };
+        gaps.inner = 10;
+
         output = {
           "*" = {
             bg = "${wallpaper} fill";
@@ -92,6 +98,16 @@
           "${modifier}+8" = "workspace 8";
           "${modifier}+9" = "workspace 9";
           "${modifier}+0" = "workspace 10";
+          "${modifier}+F1" = "workspace 11";
+          "${modifier}+F2" = "workspace 12";
+          "${modifier}+F3" = "workspace 13";
+          "${modifier}+F4" = "workspace 14";
+          "${modifier}+F5" = "workspace 15";
+          "${modifier}+F6" = "workspace 16";
+          "${modifier}+F7" = "workspace 17";
+          "${modifier}+F8" = "workspace 18";
+          "${modifier}+F9" = "workspace 19";
+          "${modifier}+F10" = "workspace 20";
 
           "${modifier}+Shift+1" = "move container to workspace 1";
           "${modifier}+Shift+2" = "move container to workspace 2";
@@ -103,6 +119,16 @@
           "${modifier}+Shift+8" = "move container to workspace 8";
           "${modifier}+Shift+9" = "move container to workspace 9";
           "${modifier}+Shift+0" = "move container to workspace 10";
+          "${modifier}+Shift+F1" = "move container to workspace 11";
+          "${modifier}+Shift+F2" = "move container to workspace 12";
+          "${modifier}+Shift+F3" = "move container to workspace 13";
+          "${modifier}+Shift+F4" = "move container to workspace 14";
+          "${modifier}+Shift+F5" = "move container to workspace 15";
+          "${modifier}+Shift+F6" = "move container to workspace 16";
+          "${modifier}+Shift+F7" = "move container to workspace 17";
+          "${modifier}+Shift+F8" = "move container to workspace 18";
+          "${modifier}+Shift+F9" = "move container to workspace 19";
+          "${modifier}+Shift+F10" = "move container to workspace 20";
 
           "XF86AudioRaiseVolume" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -i 5";
           "XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -d 5";
@@ -111,7 +137,7 @@
           "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
           "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
 
-          "${modifier}+l" = "exec ${lockCommand}";
+          "${modifier}+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 20x10";
           "${modifier}+d" = "exec ${cfg.config.menu}";
           "${modifier}+p" = "exec ${pkgs.rofi-pass}/bin/rofi-pass";
 
@@ -124,6 +150,13 @@
           "${modifier}+Shift+s" = "exec ${pkgs.grim}/bin/grim -t jpeg -g \"$(${pkgs.slurp}/bin/slurp)\" ~/screenshot-$(date +%Y-%m-%d_%H-%m-%s).jpg";
         };
       };
+      extraConfig = ''
+        client.focused #00000000 #000000B3 #FFFFFF
+        client.unfocused #00000000 #00000066 #FFFFFF
+        client.focused_inactive #00000000 #00000066 #FFFFFF
+        titlebar_border_thickness 3
+        titlebar_padding 8 6
+      '';
     };
     programs.zsh.initExtra = ''
       if [ "$(tty)" = "/dev/tty1" ]; then

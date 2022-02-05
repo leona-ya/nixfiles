@@ -17,9 +17,8 @@
     "lan"
   ];
 
-  networking.wireless = {
+  networking.wireless.iwd = {
     enable = true;
-    interfaces = [ "wifi0" ];
   };
   systemd.network = {
     links."10-eth0" = {
@@ -44,9 +43,7 @@
     };
     networks."10-wifi0" = {
       DHCP = "yes";
-      matchConfig = {
-        Name = "wifi0";
-      };
+      matchConfig.MACAddress = "38:de:ad:67:b3:7b";
     };
   };
   em0lar.sops.secrets = {
