@@ -58,7 +58,7 @@
         fixed-address 10.151.1.2;
       }
       host printer {
-        option host-name "hue.lan";
+        option host-name "printer.lan";
         hardware ethernet 30:cd:a7:b4:dc:3f;
         fixed-address 10.151.1.3;
       }

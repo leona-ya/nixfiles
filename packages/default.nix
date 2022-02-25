@@ -14,6 +14,7 @@ rec {
   ory-hydra = self.callPackage ./ory-hydra { };
   firefly-iii = self.callPackage ./firefly-iii { };
   firefly-iii-data-importer = self.callPackage ./firefly-iii-data-importer { };
+  obsidian = self.callPackage ./obsidian { };
   jetbrains = (self.recurseIntoAttrs (self.callPackages ./jetbrains {
     vmopts = null;
     jdk = jetbrains.jdk;

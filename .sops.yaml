@@ -91,7 +91,7 @@ creation_rules:
           - *admin
         age:
           - *hack
-  - path_regex: secrets/services/(gitea|hedgedoc|matrix|paperless-ng|vikunja).yaml
+  - path_regex: secrets/services/(gitea|hedgedoc|matrix|paperless-ng|vikunja|vaultwarden).yaml
     key_groups:
       - pgp:
           - *admin

@@ -24,58 +24,40 @@
   environment.systemPackages = with pkgs; [
     libusb-compat-0_1
     lm_sensors
-    pinentry
-    pinentry-qt
     wl-clipboard
     xdg_utils
   ];
 
   users.users.em0lar.packages = with pkgs; [
     _1password-gui
-    ansible_2_9
-    citra
-    element-desktop
     evince
     feh
-    firefox-wayland
     gcc
-    gh
     gimp
     gnome.eog
     gnome.gnome-bluetooth
     gnome.nautilus
     gnome.vinagre
-    hamster
     homebank
-    inkscape
     (jetbrains.jetbrains-client.override {
       jdk = jetbrains.jdk;
-    })
-    (jetbrains.datagrip.override {
-      jdk = jetbrains.jdk;
-    })
-    (jetbrains.idea-community.override {
-    	jdk = jetbrains.jdk;
     })
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
     libreoffice-still
     nheko
-    mitmproxy
     mpv
-    mumble
     (wrapOBS {
       plugins = with obs-studio-plugins; [ wlrobs ];
     })
     obsidian
-    openttd
-    openssl
+    openssl_3_0
     pandoc
     pass-wayland
     postman
     python3
-    rofi-pass 
+    rofi-pass
     rustup
     sengi
     scribusUnstable
@@ -84,13 +66,13 @@
     spotify
     sublime4
     superTuxKart
-    texlive.combined.scheme-full
+    texlive.combined.scheme-tetex
     thunderbird-wayland
     virt-manager
     youtube-dl
     z-lua
   ] ++ [
-    nodejs-16_x
+    nodejs
     sbt
     slack
     (zoom-us.overrideAttrs (old: {
@@ -145,7 +127,7 @@
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      pinentryFlavor = "qt";
+      pinentryFlavor = "gnome3";
       enableExtraSocket = true;
       sshKeys = [
         "8AB64FC46268F8634C86BA3F52B5C315E98D38C4"
@@ -208,5 +190,8 @@
   };
   environment.variables.SSH_AUTH_SOCK = "/run/user/1000/gnupg/S.gpg-agent.ssh";
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.samsung-unified-linux-driver ];
+  };
 }

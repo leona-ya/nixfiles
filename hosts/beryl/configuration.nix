@@ -13,6 +13,7 @@
       ../../services/vikunja
       #../../services/vouch-proxy
       ../../services/paperless-ng
+      ../../services/vaultwarden
   ];
 
   boot.loader.systemd-boot.enable = true;

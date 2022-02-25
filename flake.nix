@@ -56,7 +56,7 @@
 
       defaultModules = [
         {
-          nix.nixPath = nixpkgs-unstable.lib.mkDefault [
+          nix.nixPath = nixpkgs-unstable-small.lib.mkDefault [
             "nixpkgs=${nixpkgs-unstable-small}"
             "home-manager=${home-manager}"
           ];
@@ -204,11 +204,11 @@
        };
       }
     ) // {
-      nixosConfigurations = (nixpkgs-unstable.lib.mapAttrs (name: config: (nixpkgs-unstable.lib.nixosSystem rec {
+      nixosConfigurations = (nixpkgs-unstable-small.lib.mapAttrs (name: config: (nixpkgs-unstable-small.lib.nixosSystem rec {
         system = config.nixosSystem.system;
         modules = config.nixosSystem.modules;
       })) hosts);
-      deploy.nodes = (nixpkgs-unstable.lib.mapAttrs (name: config: {
+      deploy.nodes = (nixpkgs-unstable-small.lib.mapAttrs (name: config: {
         hostname = if (config ? deploy.hostname) then config.deploy.hostname else (self.nixosConfigurations."${name}".config.networking.hostName + "." + self.nixosConfigurations."${name}".config.networking.domain);
         profiles.system = {
           autoRollback = false;

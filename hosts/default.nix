@@ -106,7 +106,7 @@ in rec {
                 { # foros
                   wireguardPeerConfig = {
                     AllowedIPs =
-                      [ "195.39.247.144/32" "2a0f:4ac0:1e0:100::/64" ];
+                      [ "195.39.247.144/32" ];
                     PublicKey = "CnswutrDvUJdDIsopjkvjO/SiOrKdx3ob0jvDf0LLFI=";
                     PersistentKeepalive = 21;
                   };
@@ -114,7 +114,7 @@ in rec {
                 { # beryl
                   wireguardPeerConfig = {
                     AllowedIPs =
-                      [ "195.39.247.145/32" "2a0f:4ac0:1e0:101::/64" ];
+                      [ "195.39.247.145/32" ];
                     PublicKey = "DBfzjdPqk5Ee8OYsqNy2LoM7kvbh8ppmK836jlGz43s=";
                     PersistentKeepalive = 21;
                   };
@@ -132,6 +132,14 @@ in rec {
                     AllowedIPs =
                       [ "195.39.247.147/32" ];
                     PublicKey = "ys2dZHPk2YgdEIOs+dKq/nK3oTX1bBBmAuEsOLSpyi4=";
+                    PersistentKeepalive = 21;
+                  };
+                }
+                { # turingmachine
+                  wireguardPeerConfig = {
+                    AllowedIPs =
+                      [ "195.39.247.148/32" "2a0f:4ac0:1e0:100::/64" ];
+                    PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
                     PersistentKeepalive = 21;
                   };
                 }

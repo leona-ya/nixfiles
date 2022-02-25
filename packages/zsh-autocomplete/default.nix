@@ -2,13 +2,13 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "zsh-autocomplete";
-  version = "21.09.22";
+  version = "22.01.21";
 
   src = fetchFromGitHub {
     owner = "marlonrichert";
     repo = "zsh-autocomplete";
     rev = version;
-    sha256 = "sha256-c4+5ta0ATuy9hIygSnqaquHf+YIStvHMaABwq3qyru8=";
+    sha256 = "sha256-+UziTYsjgpiumSulrLojuqHtDrgvuG91+XNiaMD7wIs=";
   };
 
   installPhase = ''
@@ -18,7 +18,7 @@ stdenvNoCC.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "Real-time type-ahead completion for Zsh. Asynchronous find-as-you-type autocompletion.";
+    description = "Real-time type-ahead completion for Zsh. Asynchronous find-as-you-type autocompletion";
     homepage = "https://github.com/marlonrichert/zsh-autocomplete/";
     license = licenses.mit;
     platforms = platforms.unix;

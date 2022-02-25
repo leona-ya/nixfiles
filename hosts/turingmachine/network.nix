@@ -36,6 +36,20 @@
       dhcpV6Config = {
         RouteMetric = 512;
       };
+      routes = [
+        {
+          routeConfig = {
+            Destination = "195.39.247.188/32";
+            Gateway = "_dhcp4";
+          };
+        }
+        {
+          routeConfig = {
+            Destination = "2a0f:4ac0:0:1::d25/128";
+            Gateway = "_ipv6ra";
+          };
+        }
+      ];
     };
     links."10-wifi0" = {
       matchConfig.MACAddress = "38:de:ad:67:b3:7b";
@@ -44,6 +58,20 @@
     networks."10-wifi0" = {
       DHCP = "yes";
       matchConfig.MACAddress = "38:de:ad:67:b3:7b";
+      routes = [
+        {
+          routeConfig = {
+            Destination = "195.39.247.188/32";
+            Gateway = "_dhcp4";
+          };
+        }
+        {
+          routeConfig = {
+            Destination = "2a0f:4ac0:0:1::d25/128";
+            Gateway = "_ipv6ra";
+          };
+        }
+      ];
     };
   };
   em0lar.sops.secrets = {

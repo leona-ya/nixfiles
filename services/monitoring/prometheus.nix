@@ -202,30 +202,6 @@ in {
               };
             }
             {
-              alert = "WireguardHandshakeTooLongAgo";
-              expr = "time() - (wireguard_peer_last_handshake_time_ns / 1e+9) > 600";
-              for = "0s";
-              labels = {
-                severity = "warning";
-              };
-              annotations = {
-                summary = "WARN - Wireguard host handshake is more than 10min ago";
-                description = "The handshake with the wireguard host with public key {{ $labels.public_key }} is {{ $value }} seconds ago.\n";
-              };
-            }
-            {
-              alert = "WireguardHandshakeTooLongAgo";
-              expr = "time() - (wireguard_peer_last_handshake_time_ns / 1e+9) > 900";
-              for = "0s";
-              labels = {
-                severity = "critical";
-              };
-              annotations = {
-                summary = "CRIT - Wireguard host handshake is more than 15min ago";
-                description = "The handshake with the wireguard host with public key {{ $labels.public_key }} is {{ $value }} seconds ago.\n";
-              };
-            }
-            {
               alert = "BorgBackupTooLongAgo";
               expr = "time() - borgbackup_last_successful_archive > 97200";
               for = "0s";

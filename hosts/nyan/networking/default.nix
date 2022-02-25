@@ -43,6 +43,7 @@ in {
           "2a01:4f8:242:155f:1000::1/68"
         ];
         networkConfig.ConfigureWithoutCarrier = true;
+        networkConfig.IPv6PrivacyExtensions = "no";
       };
       "05-br-nh" = {
         matchConfig = {
@@ -54,6 +55,7 @@ in {
           "2a01:4f8:242:155f:2000::1/68"
         ];
         networkConfig.ConfigureWithoutCarrier = true;
+        networkConfig.IPv6PrivacyExtensions = "no";
       };
       "05-br-n" = {
         matchConfig = {

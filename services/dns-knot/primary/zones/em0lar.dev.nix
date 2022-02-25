@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.em0lar.dev.";
       adminEmail = "noc@em0lar.dev";
-      serial = 2022012901;
+      serial = 2022020601;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -80,6 +80,7 @@ in {
       sso.CNAME = [ "ladon.net.em0lar.dev." ];
       "hydra.sso".CNAME = [ "ladon.net.em0lar.dev." ];
       todo.CNAME = [ "beryl.net.em0lar.dev." ];
+      vaultwarden.CNAME = [ "beryl.net.em0lar.dev." ];
       webmail.CNAME = [ "foros.net.em0lar.dev." ];
       wifi.CNAME = [ "foros.net.em0lar.dev." ];
     };
