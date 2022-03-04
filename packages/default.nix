@@ -8,8 +8,6 @@ rec {
   sengi = self.callPackage ./sengi { };
   vikunja-api = self.callPackage ./vikunja/api.nix { };
   vikunja-frontend = self.callPackage ./vikunja/frontend.nix { };
-  widevine-cdm = self.callPackage ./widevine { };
-  zsh-autocomplete = self.callPackage ./zsh-autocomplete { };
   legitima = self.callPackage ./legitima { };
   ory-hydra = self.callPackage ./ory-hydra { };
   firefly-iii = self.callPackage ./firefly-iii { };
