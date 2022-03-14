@@ -90,6 +90,7 @@ in rec {
               hostname = "haku.net.em0lar.dev";
               interfaceRoutes = [
                 { routeConfig.Destination = "10.151.0.0/21"; }
+                { routeConfig.Destination = "10.151.20.0/22"; }
                 { routeConfig.Destination = "fd8f:d15b:9f40::/53"; }
                 { routeConfig.Destination = "fd8f:d15b:9f40:0c00::/54"; }
               ];

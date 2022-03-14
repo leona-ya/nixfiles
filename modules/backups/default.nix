@@ -97,6 +97,10 @@ in {
         startAt = [ ];
       };
     };
+    systemd.services.borgbackup-job-hack.serviceConfig = {
+      Restart = "on-failure";
+      RestartSec = "10min";
+    };
     systemd.timers.borgbackup-job-hack = lib.mkIf cfg.enableSystemdTimer {
       timerConfig = cfg.systemdTimerConfig;
       wantedBy = [ "timers.target" ];

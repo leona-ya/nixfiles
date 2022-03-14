@@ -30,6 +30,7 @@
 
   users.users.em0lar.packages = with pkgs; [
     _1password-gui
+    bitwarden
     evince
     feh
     gcc
@@ -45,7 +46,7 @@
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
-    libreoffice-still
+    libreoffice-fresh
     nheko
     mpv
     (wrapOBS {
@@ -147,6 +148,7 @@
       extensions = [
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
         { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass
+        { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
         # { id = "lckanjgmijmafbedllaakclkaicjfmnk"; } # clear urls
         # { id = "gdbofhhdmcladcmmfjolgndfkpobecpg"; } # don't track me google
      ];
@@ -185,6 +187,7 @@
         "image/jpeg" = [ "org.gnome.eog.desktop" ];
         "image/png" = [ "org.gnome.eog.desktop" ];
         "image/svg+xml" = [ "org.gnome.eog.desktop" ];
+        "application/pdf" = [ "org.gnome.Evince.desktop" ];
       };
     };
   };

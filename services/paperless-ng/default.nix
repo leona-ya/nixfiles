@@ -21,6 +21,7 @@
     paperless-ng-server = {
       serviceConfig = {
         EnvironmentFile = config.sops.secrets."services/paperless-ng/env".path;
+        PrivateNetwork = lib.mkForce false;
       };
     };
     paperless-ng-consumer = {

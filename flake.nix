@@ -56,10 +56,6 @@
 
       defaultModules = [
         {
-          nix.nixPath = nixpkgs-unstable-small.lib.mkDefault [
-            "nixpkgs=${nixpkgs-unstable-small}"
-            "home-manager=${home-manager}"
-          ];
           imports = [
             ./modules/backups
             ./modules/bind
@@ -78,12 +74,20 @@
         sourcesModule
         sops-nix.nixosModules.sops
       ];
+      nixpkgsUnstable = [
+        {
+          nix.nixPath = nixpkgs-unstable-small.lib.mkDefault [
+            "nixpkgs=${nixpkgs-unstable-small}"
+            "home-manager=${home-manager}"
+          ];
+        }
+      ];
 
       hosts = {
         adonis = {
           nixosSystem = {
             system = "aarch64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               ./hosts/adonis/configuration.nix
             ];
           };
@@ -91,7 +95,7 @@
         beryl = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               ./hosts/beryl/configuration.nix
             ];
           };
@@ -99,7 +103,7 @@
         cole = {
           nixosSystem = {
             system = "aarch64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               ./hosts/cole/configuration.nix
             ];
           };
@@ -108,7 +112,7 @@
         dwd = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               nixos-hardware.nixosModules.pcengines-apu
               ./hosts/dwd/configuration.nix
             ];
@@ -118,7 +122,7 @@
         foros = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               ./modules/firefly-iii
               ./hosts/foros/configuration.nix
             ];
@@ -127,7 +131,7 @@
         hack = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               ./hosts/hack/configuration.nix
             ];
           };
@@ -135,7 +139,7 @@
         haku = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               ./hosts/haku/configuration.nix
             ];
           };
@@ -143,7 +147,7 @@
         kupe = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               mailserver.nixosModule
               ./modules/imapsync
               ./hosts/kupe/configuration.nix
@@ -153,7 +157,7 @@
         ladon = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               ./modules/ory-hydra
               ./hosts/ladon/configuration.nix
             ];
@@ -179,7 +183,7 @@
         naiad = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               ./hosts/naiad/configuration.nix
             ];
           };
@@ -187,7 +191,7 @@
         nyan = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ [
+            modules = defaultModules ++ nixpkgsUnstable ++ [
               ./hosts/nyan/configuration.nix
             ];
           };

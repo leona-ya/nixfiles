@@ -182,6 +182,15 @@ in {
         '';
        };
     };
+    "kopftausch.paulchenpanther.de" = {
+      forceSSL = true;
+      enableACME = true;
+      locations = {
+        "/" = {
+          proxyPass = "http://10.151.21.40:8000";
+        };
+      };
+    };
   };
   services.phpfpm.pools."nginx-default" = {
     user = config.services.nginx.user;
