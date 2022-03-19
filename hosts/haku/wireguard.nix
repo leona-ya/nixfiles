@@ -34,7 +34,7 @@ in {
           PrivateKeyFile = config.sops.secrets."hosts/haku/wireguard_wg-clients_privatekey".path;
         };
         wireguardPeers = [
-          { # turingmachine [em0lar]
+          { # turingmachine
             wireguardPeerConfig = {
               AllowedIPs = [
                 "10.151.9.2/32"
@@ -43,7 +43,16 @@ in {
               PublicKey = "gOBDoXc3zWVpnyx81fgVKmR2un14MW+c+SM/G6F3sFY=";
             };
           }
-          { # abraxas [em0lar]
+          { # nyx
+            wireguardPeerConfig = {
+              AllowedIPs = [
+                "10.151.9.3/32"
+                "fd8f:d15b:9f40:0901:200::1/72"
+              ];
+              PublicKey = "MdSVqYNSF2Lylb1kTdfW33ZwQcGff1ueQRrjiPeqDVg=";
+            };
+          }
+          { # abraxas
             wireguardPeerConfig = {
               AllowedIPs = [
                 "10.151.9.4/32"
@@ -52,7 +61,7 @@ in {
               PublicKey = "VZJ/wdbMd5e09nxVH2YT9FJ6sI5Wpq2HzWovjz8BVSg=";
             };
           }
-          { # Luna [Dirk]
+          { # Luna [DM]
             wireguardPeerConfig = {
               AllowedIPs = [
                 "10.151.9.5/32"
@@ -61,7 +70,7 @@ in {
               PublicKey = "0tlj84AXn/vVl7fAkgKsDcAcW3CN4y92sr/MKL9TBRI=";
             };
           }
-          { # Luna Phone [Dirk]
+          { # Luna Phone [DM]
             wireguardPeerConfig = {
               AllowedIPs = [
                 "10.151.9.6/32"
