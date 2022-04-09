@@ -7,12 +7,12 @@ in {
     51441
     51442
   ];
-  em0lar.sops.secrets = {
+  l.sops.secrets = {
     "hosts/haku/wireguard_wg-public_privatekey".owner = "systemd-network";
     "hosts/haku/wireguard_wg-server_privatekey".owner = "systemd-network";
     "hosts/haku/wireguard_wg-clients_privatekey".owner = "systemd-network";
   };
-  em0lar.nftables.extraForward = ''
+  l.nftables.extraForward = ''
     ct state invalid drop
     ct state established,related accept
     iifname wg-public ct state new accept

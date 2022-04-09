@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  em0lar.sops.secrets."services/monitoring/prometheus/alertmanager_bot_env" = {};
+  l.sops.secrets."services/monitoring/prometheus/alertmanager_bot_env" = {};
 
   systemd.services.alertmanager-bot = {
     wantedBy = [ "multi-user.target" ];
@@ -20,7 +20,7 @@
     };
   };
 
-  services.nginx.virtualHosts."alertmanager-bot.em0lar.dev" = {
+  services.nginx.virtualHosts."alertmanager-bot.leona.is" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = {

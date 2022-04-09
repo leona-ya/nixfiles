@@ -2,7 +2,7 @@
 { ... }:
 
 {
-  home-manager.users.em0lar = {
+  home-manager.users.leona = {
     programs.alacritty = {
       enable = true;
       settings = {

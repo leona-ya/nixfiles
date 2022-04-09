@@ -4,9 +4,9 @@
   zone = with dns.lib.combinators; {
     TTL = 3600;
     SOA = ((ttl 600) {
-      nameServer = "ns1.em0lar.dev.";
-      adminEmail = "noc@em0lar.dev";
-      serial = 2022012801;
+      nameServer = "ns1.leona.is.";
+      adminEmail = "noc@leona.is";
+      serial = 2022032201;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -39,13 +39,13 @@
         p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzVQD7sCSZNuzYN8Lxzu8Ynv19Z0E3dtu0AufKrQg7XNX5caQ+m32um1KfzIN/XTe4PTWCLb99M+6ROfl3DS6JxEP31JNv9CHesnprrMzlODnMdRsBw5PP0UT9oebmdVH2VJeNtYlt34Sof3bUcNEqG9ocW4p3WEEY1Eg8X+CgZc2aecUsEYWGi9Ric85a0Rza66v47UZSe/Rw+NTAkzsJUGCuaw+vR2sGTnPa1je3KEsP3eYwDlhm2qdRoFXw5drwoF7hXiucPXNrNm1VWHwOjDwMUHiI+yUt7GAbJ2dq081qtkcnoyQCOVyPzxSSMcIfpKqu1swpQlSlkYr7R/MHQIDAQAB";
       }];
 
-      www.CNAME = [ "foros.net.em0lar.dev." ];
-      auth.CNAME = [ "ladon.net.em0lar.dev." ];
-      element.CNAME = [ "foros.net.em0lar.dev." ];
-      git.CNAME = [ "beryl.net.em0lar.dev." ];
-      md.CNAME = [ "beryl.net.em0lar.dev." ];
-      tell.CNAME = [ "foros.net.em0lar.dev." ];
-      wifi.CNAME = [ "foros.net.em0lar.dev." ];
+      www.CNAME = [ "kupe.net.em0lar.dev." ];
+      auth.CNAME = [ "ladon.net.leona.is." ];
+      element.CNAME = [ "foros.net.leona.is." ];
+      git.CNAME = [ "beryl.net.leona.is." ];
+      md.CNAME = [ "beryl.net.leona.is." ];
+      tell.CNAME = [ "foros.net.leona.is." ];
+      wifi.CNAME = [ "foros.net.leona.is." ];
     };
   };
 }

@@ -2,9 +2,8 @@
 
 {
   imports = [
-    ../users/em0lar
     ../users/root
-    ../users/e1mo
+    ../users/leona
     ./nginx.nix
   ];
   users.mutableUsers = false;
@@ -15,7 +14,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    settings.trusted-users = [ "root" "@wheel" "em0lar" ];
+    settings.trusted-users = [ "root" "@wheel" "leona" ];
     gc = {
       automatic = lib.mkDefault true;
       options = lib.mkDefault "--delete-older-than 7d";
@@ -25,7 +24,7 @@
   services.journald.extraConfig = "SystemMaxUse=256M";
 
   services.openssh.enable = true;
-  services.openssh.ports = [ 61337 ];
+  services.openssh.ports = [ 54973 ];
   services.openssh.passwordAuthentication = false;
   services.openssh.kbdInteractiveAuthentication = false;
   services.openssh.permitRootLogin = lib.mkDefault "no";
@@ -40,7 +39,7 @@
   programs.zsh.enable = true;
 
   networking.useNetworkd = true;
-  em0lar.nftables.enable = true;
+  l.nftables.enable = true;
   networking.useDHCP = false;
   services.resolved.dnssec = "false"; # broken :(
   services.resolved.extraConfig = ''

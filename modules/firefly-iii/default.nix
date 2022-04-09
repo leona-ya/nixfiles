@@ -256,5 +256,5 @@ in {
     };
   };
 
-  meta.maintainers = with maintainers; [ em0lar ];
+  meta.maintainers = with maintainers; [ leona ];
 }

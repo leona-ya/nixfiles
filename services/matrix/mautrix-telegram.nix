@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  em0lar.sops.secrets."services/matrix/mautrix_telegram_environment" = {};
+  l.sops.secrets."services/matrix/mautrix_telegram_environment" = {};
   services.mautrix-telegram = {
     enable = true;
     environmentFile = config.sops.secrets."services/matrix/mautrix_telegram_environment".path;

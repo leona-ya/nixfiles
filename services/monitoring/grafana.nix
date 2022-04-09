@@ -1,10 +1,10 @@
 { pkgs, lib, config, ... }:
 
 let
-  grafanaDomain = "grafana.em0lar.dev";
+  grafanaDomain = "grafana.leona.is";
 
 in {
-  em0lar.sops.secrets."services/monitoring/grafana/env".owner = "grafana";
+  l.sops.secrets."services/monitoring/grafana/env".owner = "grafana";
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "grafana" ];

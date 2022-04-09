@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  security.acme.defaults.email = "noc@em0lar.dev";
+  security.acme.defaults.email = "noc@leona.is";
   security.acme.acceptTerms = true;
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];

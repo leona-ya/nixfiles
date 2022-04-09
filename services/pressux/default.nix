@@ -4,10 +4,10 @@ let
   configFile = format.generate "config.jsonq" {
     server = "mail.em0lar.dev";
     username = "print@em0lar.dev";
-    password_file = config.em0lar.secrets."pressux_password_file".path;
+    password_file = config.l.secrets."pressux_password_file".path;
   };
 in {
-  em0lar.secrets."pressux_password_file".owner = "pressux";
+  l.secrets."pressux_password_file".owner = "pressux";
   systemd.services.pressux = {
     description = "pressux";
     after = [ "network.target" "cups.service" ];

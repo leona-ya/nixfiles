@@ -4,20 +4,20 @@
   imports = [
     (fetchGit {
       url = "ssh://git@git.em0lar.dev:2222/em0lar/nixfiles-mail-secrets.git";
-      rev = "e489f5d7e7741b090d13963a6bff061053eae291";
+      rev = "29539d272053465da399f0e6c1e8adca4da44cea";
       ref = "main";
     }).outPath
     ./autoconfig.nix
   ];
 
-  em0lar.sops.secrets."services/mail/users/superusers".owner = "dovecot2";
+  l.sops.secrets."services/mail/users/superusers".owner = "dovecot2";
 
-  security.acme.certs."${config.networking.hostName}.${config.networking.domain}".extraDomainNames = [
+  security.acme.certs."${config.networking.hostName}.net.em0lar.dev".extraDomainNames = [
     "mail.em0lar.dev"
   ];
   mailserver = {
     enable = true;
-    fqdn = "${config.networking.hostName}.${config.networking.domain}";
+    fqdn = "${config.networking.hostName}.net.em0lar.dev";
     messageSizeLimit = 52428800;
 
     enableImap = false;

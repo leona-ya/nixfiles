@@ -1,10 +1,10 @@
 { pkgs, lib, config, ... }:
 let
-  cfg = config.em0lar.telegraf;
+  cfg = config.l.telegraf;
 
 in {
-  options.em0lar.telegraf = with lib; {
-    enable = mkEnableOption "em0lar telegraf";
+  options.l.telegraf = with lib; {
+    enable = mkEnableOption "leona telegraf";
     host = mkOption { type = types.str; };
     extraInputs = mkOption {
       type = types.attrs;

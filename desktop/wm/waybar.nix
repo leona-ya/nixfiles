@@ -5,8 +5,8 @@ let
   styles = ./waybar-style.css;
   configFile = pkgs.writeText "waybar-config.json" (builtins.toJSON cfg.config);
 in {
-  users.users.em0lar.packages = with pkgs; [ waybar ];
-  home-manager.users.em0lar = {
+  users.users.leona.packages = with pkgs; [ waybar ];
+  home-manager.users.leona = {
     xdg.configFile."waybar/config".source = ./waybar-config.json;
     xdg.configFile."waybar/style.css".source = ./waybar-style.css;
     wayland.windowManager.sway.config.startup = [{

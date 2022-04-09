@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }:
 let
-  cfg = config.em0lar.sops;
+  cfg = config.l.sops;
 in {
-  options.em0lar.sops = with lib; {
+  options.l.sops = with lib; {
     secrets = mkOption {
       type = types.attrs;
       default = {};

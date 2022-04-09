@@ -1,10 +1,10 @@
 { pkgs, lib, config, ... }:
 let
-  cfg = config.em0lar.bind;
+  cfg = config.l.bind;
 
 in {
-  options.em0lar.bind = with lib; {
-    enable = mkEnableOption "em0lar bind";
+  options.l.bind = with lib; {
+    enable = mkEnableOption "leona bind";
     localForwarding = mkOption {
       type = types.bool;
       default = true;
@@ -80,7 +80,7 @@ in {
       enable = true;
       bindVersion = "xml.v3";
     };
-    em0lar.telegraf.extraInputs = lib.mkIf config.em0lar.telegraf.enable {
+    l.telegraf.extraInputs = lib.mkIf config.l.telegraf.enable {
       prometheus =  {
         urls = [ "http://127.0.0.1:9119" ];
       };

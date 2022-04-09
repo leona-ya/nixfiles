@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  em0lar.sops.secrets = {
+  l.sops.secrets = {
     "services/paperless-ng/env".owner = "root";
     "services/paperless-ng/vouch_proxy_env".owner = "root";
   };
@@ -12,7 +12,7 @@
       PAPERLESS_ENABLE_HTTP_REMOTE_USER = true;
       PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME = "HTTP_X_AUTH_REMOTE_USER";
       PAPERLESS_DBHOST = "/run/postgresql";
-      PAPERLESS_CORS_ALLOWED_HOSTS = "https://paperless.em0lar.dev";
+      PAPERLESS_CORS_ALLOWED_HOSTS = "https://paperless.leona.is";
       PAPERLESS_OCR_LANGUAGE = "deu+eng";
     };
   };
@@ -45,7 +45,7 @@
     ];
   };
 
-  services.nginx.virtualHosts."paperless.em0lar.dev" = {
+  services.nginx.virtualHosts."paperless.leona.is" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = {
@@ -61,7 +61,7 @@
 
   services.vouch-proxy = {
     enable = true;
-    servers."paperless.em0lar.dev" = {
+    servers."paperless.leona.is" = {
       clientId = "paperless";
       port = 12300;
       environmentFiles = [ config.sops.secrets."services/paperless-ng/vouch_proxy_env".path ];

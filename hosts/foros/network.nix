@@ -2,7 +2,7 @@
 
 {
   networking.hostName = "foros";
-  networking.domain = "net.em0lar.dev";
+  networking.domain = "net.leona.is";
   systemd.network = {
     links."10-eth0" = {
       matchConfig.MACAddress = "52:54:00:e7:6a:e5";
@@ -31,5 +31,5 @@
     };
   };
   networking.useHostResolvConf = false;
-  em0lar.nftables.checkIPTables = false;
+  l.nftables.checkIPTables = false;
 }

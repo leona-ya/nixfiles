@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  em0lar.sops.secrets."services/ldap/root_password".owner = "openldap";
-  em0lar.nftables.extraInput = ''
+  l.sops.secrets."services/ldap/root_password".owner = "openldap";
+  l.nftables.extraInput = ''
     ip6 saddr fd8f:d15b:9f40::/48 tcp dport 389 accept
   '';
 
@@ -53,8 +53,8 @@
             objectClass = [ "olcDatabaseConfig" "olcMdbConfig" ];
             olcDatabase = "{1}mdb";
             olcDbDirectory = "/var/db/ldap";
-            olcSuffix = "dc=em0lar,dc=dev";
-            olcRootDN = "cn=root,dc=em0lar,dc=dev";
+            olcSuffix = "dc=leona,dc=is";
+            olcRootDN = "cn=root,dc=leona,dc=is";
             olcRootPW = {
               path = config.sops.secrets."services/ldap/root_password".path;
             };
@@ -62,10 +62,10 @@
               "{0}to attrs=userPassword
                 by anonymous auth
                 by self write
-                by dn.children=\"ou=services,dc=em0lar,dc=dev\" write
+                by dn.children=\"ou=services,dc=leona,dc=is\" write
                 by * none"
               "{1}to *
-                by dn.children=\"ou=services,dc=em0lar,dc=dev\" write
+                by dn.children=\"ou=services,dc=leona,dc=is\" write
                 by self read by * none"
             ];
           };

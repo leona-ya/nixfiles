@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  em0lar.sops.secrets."services/keycloak/database_password" = {
+  l.sops.secrets."services/keycloak/database_password" = {
     owner = "keycloak";
     group = "postgres";
     mode = "0440";

@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 
 {
-  em0lar.sops.secrets = {
+  l.sops.secrets = {
     "services/matrix/synapse/secrets.yaml".owner = "matrix-synapse";
     "services/matrix/synapse/homeserver_signing_key".owner = "matrix-synapse";
   };

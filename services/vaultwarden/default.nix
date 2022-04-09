@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  em0lar.sops.secrets = {
+  l.sops.secrets = {
     "services/vaultwarden/env" = {
       owner = "vaultwarden";
       group = "vaultwarden";
@@ -27,7 +27,7 @@
       ipHeader = "X-Real-IP";
       emergencyAccessAllowed = false;
       signupsAllowed = false;
-      domain = "https://vaultwarden.em0lar.dev";
+      domain = "https://pass.leona.is";
       rocketAddress = "::1";
       rocketPort = 8081;
       smtpHost = "mail.em0lar.dev";
@@ -39,7 +39,7 @@
   };
 
   services.nginx.virtualHosts = {
-    "vaultwarden.em0lar.dev" = {
+    "pass.leona.is" = {
       enableACME = true;
       forceSSL = true;
       locations."/".proxyPass = "http://localhost:8081";

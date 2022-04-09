@@ -1,19 +1,3 @@
-# zsh-autocomplete
-# https://github.com/marlonrichert/zsh-autocomplete/blob/main/.zshrc
-zstyle ':autocomplete:*' min-delay 0.0  # float
-# Wait this many seconds for typing to stop, before showing completions.
-
-zstyle ':autocomplete:*' min-input 2  # int
-# Wait until this many characters have been typed, before showing completions.
-
-zstyle ':autocomplete:*' list-lines 8  # int
-# If there are fewer than this many lines below the prompt, move the prompt up
-# to make room for showing this many lines of completions (approximately).
-
-zstyle ':autocomplete:history-incremental-search-*:*' min-input 0  # int
-
-zstyle ':autocomplete:*' recent-dirs zsh-z
-
 ## ----------------------------------------------------------------------------------  ##
 
 # powerlevel10k
@@ -494,7 +478,7 @@ zstyle ':autocomplete:*' recent-dirs zsh-z
   typeset -g POWERLEVEL9K_VCS_DISABLED_WORKDIR_PATTERN='~'
 
   # Disable the default Git status formatting.
-  typeset -g POWERLEVEL9K_VCS_DISABLE_GITSTATUS_FORMATTING=true
+  typeset -g POWERLEVEL9K_VCS_DISABLE_GITSTATUS_FORMATTING=false
   # Install our own Git status formatter.
   typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${$((my_git_formatter(1)))+${my_git_format}}'
   typeset -g POWERLEVEL9K_VCS_LOADING_CONTENT_EXPANSION='${$((my_git_formatter(0)))+${my_git_format}}'

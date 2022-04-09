@@ -4,9 +4,9 @@
   zone = with dns.lib.combinators; {
     TTL = 3600;
     SOA = ((ttl 600) {
-      nameServer = "ns1.em0lar.dev.";
-      adminEmail = "noc@em0lar.dev";
-      serial = 2022012801;
+      nameServer = "ns1.leona.is.";
+      adminEmail = "noc@leona.is";
+      serial = 2022032201;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -25,7 +25,7 @@
 
     CAA = helper.caa;
     subdomains = {
-      www.CNAME = [ "foros.net.em0lar.dev." ];
+      www.CNAME = [ "foros.net.leona.is." ];
       "*".A = [ "162.55.82.116" ];
     };
   };

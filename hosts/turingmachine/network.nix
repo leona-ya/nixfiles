@@ -12,7 +12,7 @@
   };
   networking.useDHCP = false;
   networking.hostName = "turingmachine";
-  networking.domain = "net.em0lar.dev";
+  networking.domain = "net.leona.is";
   services.resolved.domains = [
     "lan"
   ];
@@ -74,7 +74,7 @@
       ];
     };
   };
-  em0lar.sops.secrets = {
+  l.sops.secrets = {
     "hosts/turingmachine/wpa_supplicant.conf" = {};
   };
   environment.etc."wpa_supplicant.conf".source = config.sops.secrets."hosts/turingmachine/wpa_supplicant.conf".path;

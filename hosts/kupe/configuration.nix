@@ -3,12 +3,11 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./initrd.nix
     ./wireguard.nix
-    ../../services/dns-knot/primary
     ../../common
+    ../../services/initrd-ssh
+    ../../services/dns-knot/primary
     ../../services/mail
-    ../../services/convos
     ../../services/dns-kresd
   ];
 
@@ -16,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "kupe";
-  networking.domain = "net.em0lar.dev";
+  networking.domain = "net.leona.is";
 
   systemd.network = {
     links."10-eth0" = {
@@ -32,12 +31,12 @@
     };
   };
 
-  em0lar.telegraf = {
+  l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:10:5054:ff:fec0:8539]";
     diskioDisks = [ "vda" ];
   };
-  em0lar.backups.enable = true;
+  l.backups.enable = true;
 
   system.stateVersion = "22.05";
 }

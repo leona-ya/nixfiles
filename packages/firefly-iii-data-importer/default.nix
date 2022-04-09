@@ -28,7 +28,7 @@ in package.override rec {
     description = "The Firefly III Data Importer can import data into Firefly III";
     homepage = "https://github.com/firefly-iii/data-importer";
     license = licenses.agpl3;
-    maintainers = with maintainers; [ em0lar ];
+    maintainers = with maintainers; [ leona ];
     platforms = platforms.linux;
   };
 }

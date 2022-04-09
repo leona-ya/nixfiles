@@ -38,7 +38,7 @@ in {
     ssh = {
       enable = true;
       port = 22;
-      authorizedKeys = config.users.users.em0lar.openssh.authorizedKeys.keys;
+      authorizedKeys = config.users.users.leona.openssh.authorizedKeys.keys;
       hostKeys = [ "/boot/ssh_initrd_ed25519" "/boot/ssh_initrd_rsa" ];
     };
   };

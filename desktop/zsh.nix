@@ -2,7 +2,7 @@
 
 {
   environment.variables.PURE_GIT_PULL = "0";
-  home-manager.users.em0lar = {
+  home-manager.users.leona = {
     programs.zsh = {
       initExtra = ''
         fpath+=("${pkgs.pure-prompt}/share/zsh/site-functions")

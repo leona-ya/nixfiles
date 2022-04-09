@@ -73,7 +73,7 @@ let
   };
   assignments = hosthelper.nyan.g_assignements;
 in {
-  em0lar.nftables.extraInput = let
+  l.nftables.extraInput = let
     ifaces = concatStringsSep ", " (
       attrNames interfaces
     );

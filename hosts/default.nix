@@ -14,7 +14,7 @@ in rec {
               ips = [ "${hosts.dwd.meta.intIpv6}/72" ];
               publicKey = "KVB9uOM1n3VgdhjWzLkXLygMPzg/n+MORLba80EE7Xc=";
               routed = [ "fd8f:d15b:9f40:0c10::1/72" ];
-              hostname = "adonis.net.em0lar.dev";
+              hostname = "adonis.net.leona.is";
             };
           };
         };
@@ -87,7 +87,7 @@ in rec {
               ips = [ "${hosts.haku.meta.intIpv6}/72" ];
               publicKey = "376YjLMEUFHWFE5Xkn3qRyIQ/kAHzM4DhvIcC5boCQ8=";
               routed = [ "fd8f:d15b:9f40::/48" "10.151.0.0/16" ];
-              hostname = "haku.net.em0lar.dev";
+              hostname = "haku.net.leona.is";
               interfaceRoutes = [
                 { routeConfig.Destination = "10.151.0.0/21"; }
                 { routeConfig.Destination = "10.151.20.0/22"; }
@@ -159,6 +159,15 @@ in rec {
         address = "2a01:4f8:242:155f:1000::1a2";
       };
     };
+    laurel = {
+      meta = { intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe68:7591"; };
+      nyan = {
+        mac = "52:54:00:68:75:91";
+        duid = "00:02:00:00:ab:11:2f:e7:59:42:ff:d4:ca:5d";
+        legacyAddress = "10.151.20.15";
+        address = "2a01:4f8:242:155f:1000::b4d";
+      };
+    };
     naiad = {
       meta = { intIpv6 = "fd8f:d15b:9f40:0c20::1"; };
       services = {
@@ -168,7 +177,7 @@ in rec {
               ips = [ "${hosts.naiad.meta.intIpv6}/72" ];
               publicKey = "duhZn+JOja6bILYxs6D2dKQk7GhmflSsqr+AMOVqJkg=";
               routed = [ "fd8f:d15b:9f40:0c20::1/72" ];
-              hostname = "naiad.net.em0lar.dev";
+              hostname = "naiad.net.leona.is";
             };
           };
         };
@@ -183,7 +192,7 @@ in rec {
               ips = [ "10.151.20.254/32" "${hosts.nyan.meta.intIpv6}/60" ];
               publicKey = "AilevKAZRnvQUkJhg/R9APpYUdEbnE1g2BP+FUQwBBI=";
               routed = [ "fd8f:d15b:9f40:0c30::/60" "10.151.20.0/22" ];
-              hostname = "nyan.net.em0lar.dev";
+              hostname = "nyan.net.leona.is";
             };
           };
         };
@@ -202,7 +211,7 @@ in rec {
   groups =
     (recursiveUpdate (builtins.fromJSON (builtins.readFile ./groups.json)) {
       monitoring = {
-        g_hostnames = builtins.map (host: "${host}.wg.net.em0lar.dev") groups.monitoring.hosts;
+        g_hostnames = builtins.map (host: "${host}.wg.net.leona.is") groups.monitoring.hosts;
       };
       wireguard = {
         interfaces = {

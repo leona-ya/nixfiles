@@ -3,9 +3,9 @@
 let
   hosthelper = import ../../hosts { inherit lib config; };
 in {
-  em0lar.sops.secrets."services/monitoring/prometheus/vouch_proxy_env" = {};
+  l.sops.secrets."services/monitoring/prometheus/vouch_proxy_env" = {};
 
-  services.nginx.virtualHosts."prometheus.em0lar.dev" = {
+  services.nginx.virtualHosts."prometheus.leona.is" = {
     locations."/" = {
       proxyPass = "http://127.0.0.1:${toString config.services.prometheus.port}/";
     };
@@ -15,7 +15,7 @@ in {
 
   services.vouch-proxy = {
     enable = true;
-    servers."prometheus.em0lar.dev" = {
+    servers."prometheus.leona.is" = {
       clientId = "prometheus";
       port = 12300;
       environmentFiles = [ config.sops.secrets."services/monitoring/prometheus/vouch_proxy_env".path ];
@@ -29,7 +29,7 @@ in {
       scrape_interval = "30s";
       evaluation_interval = "30s";
     };
-    webExternalUrl = "https://prometheus.em0lar.dev/";
+    webExternalUrl = "https://prometheus.leona.is/";
 
     scrapeConfigs = [
       {

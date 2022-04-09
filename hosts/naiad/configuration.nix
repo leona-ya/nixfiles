@@ -27,7 +27,7 @@
   services.qemuGuest.enable = true;
 
   networking.hostName = "naiad";
-  networking.domain = "net.em0lar.dev";
+  networking.domain = "net.leona.is";
 
   systemd.network = {
     links."10-eth0" = {
@@ -53,13 +53,13 @@
     };
   };
 
-  em0lar.telegraf = {
+  l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:0c20::1]";
     diskioDisks = [ "sda" ];
   };
 
-  em0lar.backups.enable = true;
+  l.backups.enable = true;
 
   system.stateVersion = "21.05";
 }

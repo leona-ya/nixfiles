@@ -6,7 +6,7 @@ in {
     ./dhcp.nix
   ];
 
-  em0lar.sops.secrets."hosts/nyan/wireguard_wg-server_privatekey".owner = "systemd-network";
+  l.sops.secrets."hosts/nyan/wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];
 
   systemd.network = {
@@ -105,7 +105,7 @@ in {
     "br-nhp"
   ];
 
-  em0lar.nftables = {
+  l.nftables = {
     extraForward = ''
       ct state invalid drop
       ct state established,related accept

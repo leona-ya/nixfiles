@@ -4,9 +4,9 @@
   zone = with dns.lib.combinators; {
     TTL = 3600;
     SOA = ((ttl 600) {
-      nameServer = "ns1.em0lar.dev.";
-      adminEmail = "noc@em0lar.dev";
-      serial = 2022012801;
+      nameServer = "ns1.leona.is.";
+      adminEmail = "noc@leona.is";
+      serial = 2022032201;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -28,9 +28,9 @@
     AAAA = helper.hosts.web.AAAA;
 
     subdomains = {
-      www.CNAME = [ "foros.net.em0lar.dev." ];
-      git.CNAME = [ "beryl.net.em0lar.dev." ];
-      md.CNAME = [ "beryl.net.em0lar.dev." ];
+      www.CNAME = [ "foros.net.leona.is." ];
+      git.CNAME = [ "beryl.net.leona.is." ];
+      md.CNAME = [ "beryl.net.leona.is." ];
     };
   };
 }

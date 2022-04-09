@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 {
-  em0lar.sops.secrets."services/nextcloud/admin_password".owner = "nextcloud";
+  l.sops.secrets."services/nextcloud/admin_password".owner = "nextcloud";
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud23;

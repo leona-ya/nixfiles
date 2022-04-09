@@ -3,10 +3,10 @@
 {
   imports = [
       ./hardware-configuration.nix
-      ./initrd.nix
       ./wireguard.nix
       ./network.nix
       ../../common
+      ../../services/initrd-ssh
       ../../services/gitea
       ../../services/hedgedoc
       ../../services/matrix
@@ -21,8 +21,8 @@
 
   services.qemuGuest.enable = true;
 
-  em0lar.backups.enable = true;
-  em0lar.telegraf = {
+  l.backups.enable = true;
+  l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:c31:5054:ff:fe4e:5cbf]";
     diskioDisks = [ "vda" ];

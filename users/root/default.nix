@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 {
-  em0lar.sops.secrets."all/users/root_pw".neededForUsers = true;
+  l.sops.secrets."all/users/root_pw".neededForUsers = true;
 
   users.users.root = {
     shell = pkgs.zsh;

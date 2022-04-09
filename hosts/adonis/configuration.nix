@@ -28,7 +28,7 @@
         Name = "wg-server";
       };
       wireguardConfig = {
-        PrivateKeyFile = config.em0lar.secrets."wireguard_wg-server_privatekey".path;
+        PrivateKeyFile = config.leona.secrets."wireguard_wg-server_privatekey".path;
         ListenPort = 51441;
       };
       wireguardPeers = [
@@ -45,7 +45,7 @@
           wireguardPeerConfig = {
             AllowedIPs = [ "fd8f:d15b:9f40::/48" ];
             PublicKey = "376YjLMEUFHWFE5Xkn3qRyIQ/kAHzM4DhvIcC5boCQ8=";
-            Endpoint = "wg.net.em0lar.dev:51441";
+            Endpoint = "wg.net.leona.is:51441";
           };
         }
       ];
@@ -59,11 +59,11 @@
       ];
     };
   };
-  em0lar.secrets."wireguard_wg-server_privatekey".owner = "systemd-network";
+  l.secrets."wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];
 
   environment.systemPackages = [ inputs.deploy-rs.defaultPackage.aarch64-linux ];
 
   networking.hostName = "adonis";
-  networking.domain = "net.em0lar.dev";
+  networking.domain = "net.leona.is";
 }

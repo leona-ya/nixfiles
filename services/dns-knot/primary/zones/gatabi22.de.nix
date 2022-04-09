@@ -15,10 +15,6 @@
     NS = helper.ns;
 
     MX = helper.mail.mxSimple;
-    DKIM = [{
-      selector = "mail";
-      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw8uVXCr8ggi0Sla2CWAxchWA2jHNy9lKe2zKkiSQ+Pjexod3hMtbsi47ywyaoi2SPdMOWYOgGuaPEj65ZRg4fOGTtEC7M/PB/0b4WHMeEo3stLIMtD4UrzLxGXlkuNKO3nWEU+TsYQBOP3kxsChkZ7hRukDflFNCkPNQ8P1SjngZBG1nn+Bo+BIB3OSfe5Tl5wyp54mM08U+eHZI/YOl6nt0WCunXPMKsR7CnP7BE6JJd9tPVHhJxRL5U13COGhMZSQ4wSCJdL3FQ0CGoj4TIY9skTeBAMEkwvTSJ5UKB83Z7Tec6gmrOKZxnbgji9Ja+nGJF0MSJL5jsMSh6bO4sQIDAQAB";
-    }];
     DMARC = helper.mail.dmarc;
     TXT = [ helper.mail.spf ];
 
@@ -26,5 +22,9 @@
 
     A = helper.hosts.web.A;
     AAAA = helper.hosts.web.AAAA;
+
+    subdomains = {
+      www.CNAME = [ "foros.net.leona.is." ];
+    };
   };
 }

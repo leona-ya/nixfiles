@@ -13,13 +13,13 @@
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "dwd"; # to the honor of Donald Watts Davies
-  networking.domain = "net.em0lar.dev";
+  networking.domain = "net.leona.is";
 
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
     enableACME = lib.mkForce false;
     forceSSL = lib.mkForce false;
   };
-  em0lar.telegraf = {
+  l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40::1]";
     diskioDisks = [ "sda" ];

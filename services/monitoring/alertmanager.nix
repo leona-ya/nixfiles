@@ -3,14 +3,14 @@
 let
   alert_message = "{{ .CommonAnnotations.summary }}";
 in {
-  em0lar.sops.secrets = {
+  l.sops.secrets = {
     "services/monitoring/prometheus/alertmanager_env" = {};
     "services/monitoring/prometheus/vouch_proxy_env" = {};
   };
 
   systemd.services.alertmanager.serviceConfig.EnvironmentFile = [ config.sops.secrets."services/monitoring/prometheus/alertmanager_env".path ];
 
-  services.nginx.virtualHosts."alertmanager.em0lar.dev" = {
+  services.nginx.virtualHosts."alertmanager.leona.is" = {
     locations."/" = {
       proxyPass = "http://127.0.0.1:${toString config.services.prometheus.alertmanager.port}/";
     };
@@ -20,7 +20,7 @@ in {
 
   services.vouch-proxy = {
     enable = true;
-    servers."alertmanager.em0lar.dev" = {
+    servers."alertmanager.leona.is" = {
       clientId = "prometheus";
       port = 12301;
       environmentFiles = [ config.sops.secrets."services/monitoring/prometheus/vouch_proxy_env".path ];
@@ -29,7 +29,7 @@ in {
 
   services.prometheus.alertmanager = {
     enable = true;
-    webExternalUrl = "https://alertmanager.em0lar.dev/";
+    webExternalUrl = "https://alertmanager.leona.is/";
     listenAddress = "127.0.0.1";
     extraFlags = [
       "--cluster.listen-address="
@@ -70,18 +70,18 @@ in {
         {
           name = "warning";
           webhook_configs = [{
-            url = "https://alertmanager-bot.em0lar.dev";
+            url = "https://alertmanager-bot.leona.is";
             send_resolved = true;
           }];
         }
         {
           name = "critical";
           webhook_configs = [{
-            url = "https://alertmanager-bot.em0lar.dev";
+            url = "https://alertmanager-bot.leona.is";
             send_resolved = true;
           }];
           email_configs = [{
-            to = "em0lar@em0lar.de";
+            to = "leona@leona.is";
             headers.subject = "[ALERT] " + alert_message;
           }];
         }

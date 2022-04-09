@@ -41,7 +41,7 @@ let
       };
     };
   });
-  enabledFiles = filterAttrs (n: file: file.enable) config.em0lar.secrets;
+  enabledFiles = filterAttrs (n: file: file.enable) config.l.secrets;
 
   mkDecryptSecret = file: pkgs.writeScript "decrypt-secret-${removeSuffix ".gpg" (baseNameOf file.source-path)}.sh" ''
     #!${pkgs.runtimeShell}
@@ -65,7 +65,7 @@ let
 
 
 in {
-  options.em0lar.secrets = mkOption {
+  options.l.secrets = mkOption {
     type = with types; attrsOf secret-file;
     default = { };
   };

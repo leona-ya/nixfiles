@@ -10,7 +10,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "hack";
-  networking.domain = "net.em0lar.dev";
+  networking.domain = "net.leona.is";
   services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
   systemd.network = {
     links."10-eth" = {
@@ -31,7 +31,7 @@
   environment.systemPackages = [ inputs.deploy-rs.defaultPackage.x86_64-linux ];
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  em0lar.telegraf = {
+  l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:c31:5054:ff:fe65:7a8e]";
     diskioDisks = [ "vda" ];

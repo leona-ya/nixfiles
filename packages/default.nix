@@ -13,12 +13,12 @@ rec {
   firefly-iii = self.callPackage ./firefly-iii { };
   firefly-iii-data-importer = self.callPackage ./firefly-iii-data-importer { };
   obsidian = self.callPackage ./obsidian { };
-  jetbrains = (self.recurseIntoAttrs (self.callPackages ./jetbrains {
-    vmopts = null;
-    jdk = jetbrains.jdk;
-  }) // {
-    jdk = super.jetbrains.jdk;
-  });
+#  jetbrains = (self.recurseIntoAttrs (self.callPackages ./jetbrains {
+#    vmopts = null;
+#    jdk = jetbrains.jdk;
+#  }) // {
+#    jdk = super.jetbrains.jdk;
+#  });
   swaylock-effects = super.swaylock-effects.overrideAttrs ( old: rec {
     name = "swaylock-effects-${version}";
     version = "unstable-2021-10-10";

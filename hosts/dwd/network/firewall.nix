@@ -2,7 +2,7 @@
 let
   wanInterface = "ppp-wan";
 in {
-  em0lar.nftables = {
+  l.nftables = {
     extraForward = ''
       ct state invalid drop
       ct state established,related accept

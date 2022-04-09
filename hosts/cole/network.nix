@@ -1,7 +1,7 @@
 { pkgs, config, ... }: {
 
   networking.hostName = "cole";
-  networking.domain = "net.em0lar.dev";
+  networking.domain = "net.leona.is";
   services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
   systemd.network = {
     links."10-eth0" = {
@@ -48,14 +48,14 @@
 
   # wifi
   hardware.enableRedistributableFirmware = true;
-  em0lar.secrets = {
+  l.secrets = {
     "wifi/chaosthings.psk" = {};
   };
   networking.wireless.iwd.enable = true;
   systemd.services.iwd.serviceConfig = {
     Restart = "always";
     ExecStartPre = [
-      "${pkgs.coreutils}/bin/ln -sf ${config.em0lar.secrets."wifi/chaosthings.psk".path} /var/lib/iwd/chaosthings.psk"
+      "${pkgs.coreutils}/bin/ln -sf ${config.leona.secrets."wifi/chaosthings.psk".path} /var/lib/iwd/chaosthings.psk"
     ];
   };
 }

@@ -33,6 +33,6 @@ rustPlatform.buildRustPackage rec {
     description = "";
     homepage = "https://cyberchaos.dev/em0lar/legitima";
     license = licenses.unlicense;
-    maintainers = [ maintainers.em0lar ];
+    maintainers = [ maintainers.leona ];
   };
 }

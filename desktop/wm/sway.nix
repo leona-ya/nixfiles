@@ -6,7 +6,7 @@
   programs.sway.enable = true;
   programs.light.enable = true;
 
-  users.users.em0lar.packages = with pkgs; [
+  users.users.leona.packages = with pkgs; [
     qt5.qtwayland
     wdisplays
   ];
@@ -19,9 +19,9 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
 
-  home-manager.users.em0lar = {
+  home-manager.users.leona = {
     wayland.windowManager.sway = let
-      cfg = config.home-manager.users.em0lar.wayland.windowManager.sway;
+      cfg = config.home-manager.users.leona.wayland.windowManager.sway;
       wallpaper = "~/.wallpapers/space2.jpg";
       lockCommand = "swaylock -i ${wallpaper}";
       modifier = "Mod4";

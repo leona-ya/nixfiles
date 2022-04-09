@@ -8,7 +8,7 @@
     ./alertmanager-bot.nix
   ];
 
-  em0lar.telegraf.extraInputs = {
+  l.telegraf.extraInputs = {
     http_response = {
       interval = "90s";
       urls = [

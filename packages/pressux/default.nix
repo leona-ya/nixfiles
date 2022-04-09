@@ -19,6 +19,6 @@ rustPlatform.buildRustPackage rec {
     description = "A helper for printing and scanning";
     homepage = "https://git.em0lar.dev/em0lar/pressux";
     license = licenses.unlicense;
-    maintainers = [ maintainers.em0lar ];
+    maintainers = [ maintainers.leona ];
   };
 }

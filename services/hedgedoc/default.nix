@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  em0lar.sops.secrets = {
+  l.sops.secrets = {
     "services/hedgedoc/env".owner = "hedgedoc";
   };
   services.hedgedoc = {
@@ -9,7 +9,7 @@
     configuration = {
       debug = true;
       path = "/run/hedgedoc/hedgedoc.sock";
-      domain = "md.em0lar.dev";
+      domain = "md.leona.is";
       protocolUseSSL = true;
       allowFreeURL = true;
       email = false;
@@ -21,8 +21,8 @@
         host = "/run/postgresql";
       };
       oauth2 = {
-        tokenURL = "https://hydra.sso.em0lar.dev/oauth2/token";
-        authorizationURL = "https://hydra.sso.em0lar.dev/oauth2/auth";
+        tokenURL = "https://hydra.sso.leona.is/oauth2/token";
+        authorizationURL = "https://hydra.sso.leona.is/oauth2/auth";
         clientID = "hedgedoc";
         clientSecret = "";
       };
@@ -50,18 +50,17 @@
 
   users.users.nginx.extraGroups = [ "hedgedoc" ];
   services.nginx.virtualHosts = {
-    "md.em0lar.de" = {
+    "md.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
       serverAliases = [
-        "md.emolar.de"
         "md.labcode.de"
       ];
       locations."/" = {
-        extraConfig = "return 301 https://md.em0lar.dev$request_uri;";
+        extraConfig = "return 301 https://md.leona.is$request_uri;";
       };
     };
-    "md.em0lar.dev" = {
+    "md.leona.is" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {

@@ -3,7 +3,7 @@
 with dns.lib.combinators;
 
 {
-  ns = [ "ns1.em0lar.dev." "ns2.em0lar.dev." "ns3.em0lar.dev." ];
+  ns = [ "ns1.leona.is." "ns2.leona.is." "ns3.leona.is." ];
   mail = rec {
     mxSimple = [
       (mx.mx 10 "kupe.net.em0lar.dev.")
@@ -15,10 +15,10 @@ with dns.lib.combinators;
     dmarc = [{
       p = "quarantine";
       sp = "quarantine";
-      rua = "mailto:noc@em0lar.dev";
+      rua = "mailto:noc@leona.is";
     }];
   };
-  caa = letsEncrypt "noc@em0lar.dev";  # Common template combinators included
+  caa = letsEncrypt "noc@leona.is";  # Common template combinators included
   hosts = {
     web = {
      A = [ "195.39.247.144" ];

@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 let
-  swayConfig = config.home-manager.users.em0lar.wayland.windowManager.sway.config;
+  swayConfig = config.home-manager.users.leona.wayland.windowManager.sway.config;
 in {
-  users.users.em0lar.packages = with pkgs; [ mako ];
-  home-manager.users.em0lar = {
+  users.users.leona.packages = with pkgs; [ mako ];
+  home-manager.users.leona = {
     programs.mako = {
       enable = true;
       defaultTimeout = 10000;

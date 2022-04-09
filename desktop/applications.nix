@@ -28,7 +28,7 @@
     xdg_utils
   ];
 
-  users.users.em0lar.packages = with pkgs; [
+  users.users.leona.packages = with pkgs; [
     _1password-gui
     bitwarden
     evince
@@ -40,9 +40,9 @@
     gnome.nautilus
     gnome.vinagre
     homebank
-    (jetbrains.jetbrains-client.override {
-      jdk = jetbrains.jdk;
-    })
+#    (jetbrains.jetbrains-client.override {
+#      jdk = jetbrains.jdk;
+#    })
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
@@ -100,7 +100,7 @@
     enable = true;
     enableOnBoot = false;
   };
-  em0lar.nftables.generateDockerRules = true;
+  l.nftables.generateDockerRules = true;
   programs.java.enable = true;
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
@@ -108,7 +108,7 @@
   programs.gnome-disks.enable = true;
 
 
-  home-manager.users.em0lar = {
+  home-manager.users.leona = {
     xdg.enable = true;
     gtk = {
       enable = true;
@@ -133,6 +133,7 @@
       sshKeys = [
         "8AB64FC46268F8634C86BA3F52B5C315E98D38C4"
 	      "D91C5A1E23D3EE4DC72A5BEF0EA93C9F634A79F5"
+	      "EB5CEED62922C6050F9FC85BD5B08ADFC75E3605"
       ];
     };
     programs.chromium = {
@@ -170,7 +171,7 @@
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
-      config.global.skip_dotenv = true;
+      config.global.load_dotenv = false;
     };
 
     xdg.configFile."mimeapps.list".force = true;

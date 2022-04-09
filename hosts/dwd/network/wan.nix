@@ -1,6 +1,6 @@
 { config, lib, ... }:
 {
-  em0lar.sops.secrets."hosts/dwd/pppd_secrets".owner = "root";
+  l.sops.secrets."hosts/dwd/pppd_secrets".owner = "root";
 
   environment.etc."ppp/pap-secrets".source = config.sops.secrets."hosts/dwd/pppd_secrets".path;
   environment.etc."ppp/chap-secrets".source = config.sops.secrets."hosts/dwd/pppd_secrets".path;

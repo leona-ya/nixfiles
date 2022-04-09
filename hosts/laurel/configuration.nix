@@ -3,17 +3,15 @@
 {
   imports = [
       ./hardware-configuration.nix
-      ./wireguard.nix
+#      ./wireguard.nix
       ../../common
       ../../services/initrd-ssh
-      ../../services/ldap
-      ../../services/keycloak
-      ../../services/hydra-sso
+      ../../services/hedgedoc
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "ladon";
+  networking.hostName = "laurel";
   networking.domain = "net.leona.is";
   services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
   systemd.network = {
@@ -31,10 +29,10 @@
   };
   networking.useHostResolvConf = false;
   l.nftables.checkIPTables = false;
-  l.backups.enable = true;
+#  l.backups.enable = true;
   l.telegraf = {
     enable = true;
-    host = "[fd8f:d15b:9f40:c32:5054:ff:fed2:a792]";
+    host = "[fd8f:d15b:9f40:c31:5054:ff:fe68:7591]";
     diskioDisks = [ "sda" ];
   };
 

@@ -9,7 +9,7 @@ let
     dataDir = cfg.data-importer.dataDir;
   };
 in {
-  em0lar.sops.secrets = {
+  l.sops.secrets = {
     "all/mail/no_reply_password" = {
       owner = "firefly-iii";
       group = "firefly-iii";
@@ -37,13 +37,13 @@ in {
   services.firefly-iii = {
     enable = true;
     frontendScheme = "https";
-    frontendHostname = "fin.em0lar.dev";
+    frontendHostname = "fin.leona.is";
     setupNginx = false;
     extraConfig = ''
       TRUSTED_PROXIES=**
       APP_LOG_LEVEL=warning
       APP_ENV=local
-      SITE_OWNER=noc@em0lar.dev
+      SITE_OWNER=noc@leona.is
       APP_KEY=TRKPVh8T3jdyGZWzF8vmACrXte4WqfU6
       APP_KEY_FILE=${config.sops.secrets."services/firefly-iii/app_key".path}
       TZ=Europe/Berlin
@@ -65,10 +65,10 @@ in {
 #    MAIL_ENCRYPTION=null
     data-importer = {
       enable = true;
-      hostname = "dataimporter.fin.em0lar.dev";
+      hostname = "dataimporter.fin.leona.is";
       extraConfig = ''
         FIREFLY_III_URL=http://[fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5]:8212
-        VANITY_URL=https://fin.em0lar.dev
+        VANITY_URL=https://fin.leona.is
         FIREFLY_III_CLIENT_ID=65
       '';
     };
@@ -95,7 +95,7 @@ in {
         '';
       };
     };
-    "fin.em0lar.dev" = {
+    "fin.leona.is" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
@@ -108,7 +108,7 @@ in {
         '';
       };
     };
-    "dataimporter.fin.em0lar.dev" = lib.mkIf cfg.data-importer.enable {
+    "dataimporter.fin.leona.is" = lib.mkIf cfg.data-importer.enable {
       enableACME = true;
       forceSSL = true;
       root = "${dataImporterPackage}/public";
@@ -133,7 +133,7 @@ in {
 
   services.vouch-proxy = {
     enable = true;
-    servers."fin.em0lar.dev" = {
+    servers."fin.leona.is" = {
       clientId = "firefly-iii";
       port = 12300;
       environmentFiles = [ config.sops.secrets."services/firefly-iii/vouch_proxy_env".path ];

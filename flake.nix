@@ -1,5 +1,5 @@
 {
-  description = "em0lar's NixOS config";
+  description = "leona's NixOS config";
 
   inputs = {
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
@@ -10,8 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     deploy-rs.url = "github:serokell/deploy-rs";
-    em0lar-dev-website = {
-      url = "git+https://git.em0lar.dev/em0lar/em0lar.dev?ref=main";
+    leona-is-website = {
+      url = "git+https://cyberchaos.dev/leona/leona.is?ref=main";
       inputs.nixpkgs.follows = "nixpkgs-unstable-small";
     };
     dns = {
@@ -37,7 +37,7 @@
     nixpkgs-unstable,
     home-manager,
     deploy-rs,
-    em0lar-dev-website,
+    leona-is-website,
     mailserver,
     nixos-hardware,
     sops-nix,
@@ -46,7 +46,7 @@
     let
       overlays = [
         (final: prev: import ./packages final prev)
-        em0lar-dev-website.overlay
+        leona-is-website.overlay
       ];
 
       sourcesModule = {
@@ -117,7 +117,7 @@
               ./hosts/dwd/configuration.nix
             ];
           };
-          deploy.hostname = "dwd.wg.net.em0lar.dev";
+          deploy.hostname = "dwd.wg.net.leona.is";
         };
         foros = {
           nixosSystem = {
@@ -162,7 +162,15 @@
               ./hosts/ladon/configuration.nix
             ];
           };
-          deploy.hostname = "ladon.wg.net.em0lar.dev";
+        };
+        laurel = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ nixpkgsUnstable ++ [
+              ./hosts/laurel/configuration.nix
+            ];
+          };
+          deploy.hostname = "laurel.wg.net.leona.is";
         };
         turingmachine = {
           nixosSystem = {
@@ -218,8 +226,8 @@
           autoRollback = false;
 	        magicRollback = false;
           user = "root";
-          sshUser = "em0lar";
-          sshOpts = [ "-o" "StrictHostKeyChecking=no" "-p" "61337" ];
+          sshUser = "leona";
+          sshOpts = [ "-o" "StrictHostKeyChecking=no" ];
           path = deploy-rs.lib.${config.nixosSystem.system}.activate.nixos self.nixosConfigurations."${name}";
         };
       }) hosts);

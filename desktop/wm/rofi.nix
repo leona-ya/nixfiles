@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home-manager.users.em0lar = {
+  home-manager.users.leona = {
     programs.rofi = {
       enable = true;
       theme = "solarized";

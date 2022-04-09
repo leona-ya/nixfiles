@@ -93,7 +93,7 @@ in {
       default = {
         vouch = {
           listen = "127.0.0.1";
-          jwt.issuer = "em0lar SSO";
+          jwt.issuer = "leona SSO";
           allowAllUsers = true;
           headers = {
             claims = [

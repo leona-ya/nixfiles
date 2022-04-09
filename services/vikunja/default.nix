@@ -1,13 +1,13 @@
 { config, pkgs, lib, ... }:
 
 {
-  em0lar.sops.secrets."services/vikunja/env" = {};
+  l.sops.secrets."services/vikunja/env" = {};
 
   services.vikunja = {
     enable = true;
     environmentFiles = [ config.sops.secrets."services/vikunja/env".path ];
     frontendScheme = "https";
-    frontendHostname = "todo.em0lar.dev";
+    frontendHostname = "todo.leona.is";
     database = {
       type = "postgres";
       user = "vikunja";
@@ -33,7 +33,7 @@
           enabled = true;
           providers = [{
             name = "sso";
-            authurl = "https://hydra.sso.em0lar.dev/";
+            authurl = "https://hydra.sso.leona.is/";
             clientid = "vikunja";
             clientsecret = "4d0fb45b-f508-446b-a1ac-ecee41f90511";
           }];

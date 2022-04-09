@@ -1,16 +1,16 @@
 { config, pkgs, lib, ... }:
 
 let
-  legitimaBaseURL = "https://sso.em0lar.dev";
+  legitimaBaseURL = "https://sso.leona.is";
 in {
-  em0lar.sops.secrets."services/hydra-sso/hydra-env" = {};
+  l.sops.secrets."services/hydra-sso/hydra-env" = {};
 
   environment.systemPackages = [ pkgs.ory-hydra ];
 
   services.ory-hydra = {
     enable = true;
     environmentFiles = [ config.sops.secrets."services/hydra-sso/hydra-env".path ];
-    publicBaseHost = "hydra.sso.em0lar.dev";
+    publicBaseHost = "hydra.sso.leona.is";
     settings = {
       dsn = "postgres://ory-hydra@/ory-hydra?host=/run/postgresql";
       urls = {
@@ -38,7 +38,7 @@ in {
 
   # -----------------------------
   # legitima
-  em0lar.sops.secrets."services/hydra-sso/legitima_config" = {
+  l.sops.secrets."services/hydra-sso/legitima_config" = {
     owner = "legitima";
   };
 
@@ -77,7 +77,7 @@ in {
 
   users.groups.legitima = {};
 
-  services.nginx.virtualHosts."sso.em0lar.dev" = {
+  services.nginx.virtualHosts."sso.leona.is" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = {

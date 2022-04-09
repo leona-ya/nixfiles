@@ -31,7 +31,7 @@ in appimageTools.wrapType2 {
     description = "Mastodon & Pleroma Multi-account Desktop Client";
     homepage = "https://nicolasconstant.github.io/sengi/";
     license = licenses.agpl3Plus;
-    maintainers = with maintainers; [ em0lar ];
+    maintainers = with maintainers; [ leona ];
     platforms = [ "x86_64-linux" ];
   };
 }

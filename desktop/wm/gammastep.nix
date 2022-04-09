@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  home-manager.users.em0lar = {
+  home-manager.users.leona = {
     services.gammastep = {
       enable = true;
       latitude = "50.8";

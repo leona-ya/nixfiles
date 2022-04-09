@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 
 {
-  em0lar.sops.secrets = {
+  l.sops.secrets = {
     "all/mail/no_reply_password" = {
       owner = "gitea";
       group = "gitea";

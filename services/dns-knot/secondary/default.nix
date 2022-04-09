@@ -31,11 +31,13 @@
           template: secondary
         - domain: emolar.de
           template: secondary
+        - domain: gatabi22.de
+          template: secondary
         - domain: labcode.de
           template: secondary
-        - domain: leomaroni.de
+        - domain: leona.is
           template: secondary
-        - domain: lovelycuti.es
+        - domain: leomaroni.de
           template: secondary
         - domain: maroni.me
           template: secondary

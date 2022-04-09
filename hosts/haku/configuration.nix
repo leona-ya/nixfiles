@@ -4,9 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./openvpn.nix
       ./wireguard.nix
-      ./nextcloud-caching.nix
       ../../common
       ../../services/dns-knot/secondary
     ];
@@ -25,7 +23,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "haku";
-  networking.domain = "net.em0lar.dev";
+  networking.domain = "net.leona.is";
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
   boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;
 
@@ -47,10 +45,10 @@
     };
   };
 
-  em0lar.backups = {
+  l.backups = {
     enable = true;
   };
-  em0lar.telegraf = {
+  l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:0c00::1]";
     extraInputs = {

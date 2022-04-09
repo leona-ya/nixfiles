@@ -78,7 +78,7 @@
         fixed-address 10.151.1.66;
       }
       host sonos-em0lar {
-        option host-name "sonos-em0lar.lan";
+        option host-name "sonos-leona.lan";
         hardware ethernet 00:0e:58:cd:70:3c;
         fixed-address 10.151.1.67;
       }

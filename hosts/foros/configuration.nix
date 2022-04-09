@@ -5,8 +5,8 @@
       ./hardware-configuration.nix
       ./wireguard.nix
       ./network.nix
-      ./initrd.nix
       ../../common
+      ../../services/initrd-ssh
       ../../services/nextcloud
       ../../services/web
       ../../services/firefly-iii
@@ -17,8 +17,8 @@
 
   services.qemuGuest.enable = true;
 
-  em0lar.backups.enable = true;
-  em0lar.telegraf = {
+  l.backups.enable = true;
+  l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5]";
     diskioDisks = [ "vda" ];

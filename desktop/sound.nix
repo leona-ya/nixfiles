@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  users.users.em0lar.packages = with pkgs; [ pavucontrol qjackctl ];
+  users.users.leona.packages = with pkgs; [ pavucontrol qjackctl ];
 
   security.rtkit.enable = true;
   services.pipewire = {

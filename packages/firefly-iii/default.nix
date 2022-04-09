@@ -28,7 +28,7 @@ in package.override rec {
     description = "A personal finances manager";
     homepage = "https://www.firefly-iii.org/";
     license = licenses.agpl3;
-    maintainers = with maintainers; [ em0lar ];
+    maintainers = with maintainers; [ leona ];
     platforms = platforms.linux;
   };
 }

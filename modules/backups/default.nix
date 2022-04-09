@@ -1,12 +1,12 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.em0lar.backups;
+  cfg = config.l.backups;
 
   inherit (lib) mkEnableOption mkIf mkOption types;
 in {
-  options.em0lar.backups = {
-    enable = mkEnableOption "em0lar backups";
+  options.l.backups = {
+    enable = mkEnableOption "leona backups";
     user = mkOption {
       type = types.str;
       default = "root";
@@ -35,7 +35,7 @@ in {
     };
     repo = mkOption {
       type = types.str;
-      default = "ssh://borg@hack.wg.net.em0lar.dev:61337/mnt/backup/repos/synced/${config.networking.hostName}.${config.networking.domain}";
+      default = "ssh://borg@hack.wg.net.leona.is:54973/mnt/backup/repos/synced/${config.networking.hostName}.${config.networking.domain}";
     };
     encryptionMode = mkOption {
       type = types.str;
@@ -87,7 +87,7 @@ in {
           passCommand = cfg.encryptionPassCommand;
         };
         environment = {
-          BORG_RSH = "ssh -o StrictHostKeyChecking=no -i ${cfg.sshKeyFilePath} -p 61337";
+          BORG_RSH = "ssh -o StrictHostKeyChecking=no -i ${cfg.sshKeyFilePath} -p 54973";
           BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
         };
         compression = cfg.compression;
@@ -106,19 +106,19 @@ in {
       wantedBy = [ "timers.target" ];
     };
 
-    em0lar.sops.secrets = {
+    l.sops.secrets = {
       "hosts/${config.networking.hostName}/backup_ssh_key" = {};
       "hosts/${config.networking.hostName}/backup_passphrase" = {};
     };
 
     # prometheus borg exporter
-    em0lar.telegraf.extraInputs = lib.mkIf config.em0lar.telegraf.enable {
+    l.telegraf.extraInputs = lib.mkIf config.l.telegraf.enable {
       prometheus =  {
         metric_version = 2;
         urls = [ "http://127.0.0.1:7373" ];
       };
     };
-    systemd.services.prometheus-borg-exporter = lib.mkIf config.em0lar.telegraf.enable {
+    systemd.services.prometheus-borg-exporter = lib.mkIf config.l.telegraf.enable {
       description = "Start Prometheus BorgBackup exporter";
       wantedBy = ["multi-user.target"];
       after = ["networking.target"];
@@ -128,15 +128,15 @@ in {
         StateDirectory = "prometheus-borg-exporter";
       };
     };
-    users.users.prometheus-borg = lib.mkIf config.em0lar.telegraf.enable {
+    users.users.prometheus-borg = lib.mkIf config.l.telegraf.enable {
       description = "Prometheus Borg Exporter Service";
       group = "prometheus-borg";
       isSystemUser = true;
       createHome = true;
       home = "/var/lib/prometheus-borg-exporter";
     };
-    users.groups.prometheus-borg = lib.mkIf config.em0lar.telegraf.enable {};
-    security.sudo.extraRules = lib.mkIf config.em0lar.telegraf.enable [{
+    users.groups.prometheus-borg = lib.mkIf config.l.telegraf.enable {};
+    security.sudo.extraRules = lib.mkIf config.l.telegraf.enable [{
       users = [ "prometheus-borg" ];
       runAs = "root";
       commands = [

@@ -4,9 +4,9 @@
   zone = with dns.lib.combinators; {
     TTL = 600;
     SOA = ((ttl 600) {
-      nameServer = "ns1.em0lar.dev.";
-      adminEmail = "noc@em0lar.dev";
-      serial = 2022012801;
+      nameServer = "ns1.leona.is.";
+      adminEmail = "noc@leona.is";
+      serial = 2022032201;
       refresh = 3600;
       expire = 604800;
       minimum = 300;
@@ -32,18 +32,18 @@
 
     subdomains = {
       # server
-      "dione.int.sig.de".CNAME = [ "foros.net.em0lar.dev." ]; # backwards compatibility
+      "dione.int.sig.de".CNAME = [ "foros.net.leona.is." ]; # backwards compatibility
       "nas.home".CNAME = [ "encladus.lan." ]; # backwards compatibility
 
-      www.CNAME = [ "foros.net.em0lar.dev." ];
-      auth.CNAME = [ "ladon.net.em0lar.dev." ];
-      cdn.CNAME = [ "foros.net.em0lar.dev." ];
-      git.CNAME = [ "beryl.net.em0lar.dev." ];
-      matrix.CNAME = [ "beryl.net.em0lar.dev." ];
-      mautrix-telegram.CNAME = [ "beryl.net.em0lar.dev." ];
-      md.CNAME = [ "beryl.net.em0lar.dev." ];
-      static.CNAME = [ "foros.net.em0lar.dev." ];
-      wifi.CNAME = [ "foros.net.em0lar.dev." ];
+      www.CNAME = [ "foros.net.leona.is." ];
+      auth.CNAME = [ "ladon.net.leona.is." ];
+      cdn.CNAME = [ "foros.net.leona.is." ];
+      git.CNAME = [ "beryl.net.leona.is." ];
+      matrix.CNAME = [ "beryl.net.leona.is." ];
+      mautrix-telegram.CNAME = [ "beryl.net.leona.is." ];
+      md.CNAME = [ "beryl.net.leona.is." ];
+      static.CNAME = [ "foros.net.leona.is." ];
+      wifi.CNAME = [ "foros.net.leona.is." ];
     };
   };
 }

@@ -3,7 +3,7 @@
 let
   commonHeaders = lib.concatStringsSep "\n" (lib.filter (line: lib.hasPrefix "add_header" line) (lib.splitString "\n" config.services.nginx.commonHttpConfig));
 in {
-  em0lar.sops.secrets."all/mail/no_reply_password".owner = "nginx";
+  l.sops.secrets."all/mail/no_reply_password".owner = "nginx";
   services.nginx.virtualHosts = {
     "element.em0lar.de" = {
       enableACME = true;
@@ -17,25 +17,18 @@ in {
         };
       };
     };
-    "em0lar.de" = let
+    "www.leona.is" = let
       client = { "m.homeserver" = { base_url = "https://matrix.labcode.de"; }; };
       server = { "m.server" = "matrix.labcode.de:443"; };
     in {
       enableACME = true;
       forceSSL = true;
       serverAliases = [
-        "www.em0lar.de"
-        "emolar.de"
-        "www.emolar.de"
         "labcode.de"
-        "www.labcode.de"
-        "leomaroni.de"
-        "www.leomaroni.de"
-        "www.em0lar.dev"
       ];
       locations = {
         "/" = {
-          extraConfig = "return 301 https://em0lar.dev$request_uri;";
+          extraConfig = "return 301 https://leona.is$request_uri;";
         };
         "= /.well-known/matrix/client" = {
           root = pkgs.writeTextDir ".well-known/matrix/client" "${builtins.toJSON client}";
@@ -57,10 +50,10 @@ in {
         };
       };
     };
-    "em0lar.dev" = {
+    "leona.is" = {
       enableACME = true;
       forceSSL = true;
-      root = pkgs.em0lar-dev-website;
+      root = pkgs.leona-is-website;
     };
     "static.labcode.de" = {
       enableACME = true;
@@ -181,6 +174,16 @@ in {
           include ${pkgs.nginx}/conf/fastcgi.conf;
         '';
        };
+    };
+    "gatabi22.de" = {
+      forceSSL = true;
+      enableACME = true;
+      locations = {
+        "/".proxyPass = "http://10.151.21.42:8345";
+        "= /".return = "302 https://gatabi22.de/Abi2022";
+        "/static/".proxyPass = "http://10.151.21.42:80";
+        "/media/".proxyPass = "http://10.151.21.42:80";
+      };
     };
     "kopftausch.paulchenpanther.de" = {
       forceSSL = true;
