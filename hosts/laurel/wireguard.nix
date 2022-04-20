@@ -9,7 +9,7 @@
         Name = "wg-haku";
       };
       wireguardConfig = {
-        PrivateKeyFile = config.sops.secrets."hosts/ladon/wireguard_wg-public_privatekey".path;
+        PrivateKeyFile = config.sops.secrets."hosts/laurel/wireguard_wg-public_privatekey".path;
       };
       wireguardPeers = [{
         wireguardPeerConfig = {
@@ -26,7 +26,7 @@
       name = "wg-haku";
       linkConfig = { RequiredForOnline = "yes"; };
       address = [
-        "195.39.247.147/32"
+        "195.39.247.149/32"
       ];
       routes = [
         { routeConfig.Destination = "0.0.0.0/0"; }

@@ -45,7 +45,6 @@
       git.CNAME = [ "beryl.net.leona.is." ];
       md.CNAME = [ "beryl.net.leona.is." ];
       tell.CNAME = [ "foros.net.leona.is." ];
-      wifi.CNAME = [ "foros.net.leona.is." ];
     };
   };
 }

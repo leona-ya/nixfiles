@@ -8,12 +8,7 @@
       ../../common
       ../../services/initrd-ssh
       ../../services/gitea
-      ../../services/hedgedoc
       ../../services/matrix
-      ../../services/vikunja
-      #../../services/vouch-proxy
-      ../../services/paperless-ng
-      ../../services/vaultwarden
   ];
 
   boot.loader.systemd-boot.enable = true;

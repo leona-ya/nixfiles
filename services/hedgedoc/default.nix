@@ -50,16 +50,6 @@
 
   users.users.nginx.extraGroups = [ "hedgedoc" ];
   services.nginx.virtualHosts = {
-    "md.em0lar.dev" = {
-      enableACME = true;
-      forceSSL = true;
-      serverAliases = [
-        "md.labcode.de"
-      ];
-      locations."/" = {
-        extraConfig = "return 301 https://md.leona.is$request_uri;";
-      };
-    };
     "md.leona.is" = {
       enableACME = true;
       forceSSL = true;

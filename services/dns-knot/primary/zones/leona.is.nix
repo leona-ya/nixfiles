@@ -8,11 +8,11 @@ naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
 kupe_host = host "195.39.247.146" "2a01:4f8:242:155f:1000::f28";
 in {
   zone = {
-    TTL = 86400;
-    SOA = ((ttl 300) {
+    TTL = 600;
+    SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022032402;
+      serial = 2022041701;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -45,8 +45,8 @@ in {
       "nyan.net" = host "168.119.67.67" "2a01:4f8:242:155f::1";
       "foros.net" = host "195.39.247.144" "2a01:4f8:242:155f:1000::987";
       "beryl.net" = host "195.39.247.145" "2a01:4f8:242:155f:1000::b33";
-      "laurel.net" = host "195.39.247.146" "2a01:4f8:242:155f:1000::1a2";
       "ladon.net" = host "195.39.247.147" "2a01:4f8:242:155f:1000::1a2";
+      "laurel.net" = host "195.39.247.148" "2a01:4f8:242:155f:1000::b4d";
       "adonis.net" = host "130.61.64.61" "2603:c020:8004:50e0:4cb7:23e8:1668:f629";
       "wg.net".CNAME = [ "haku.net.leona.is." ];
 
@@ -70,19 +70,18 @@ in {
       auth.CNAME = [ "ladon.net.leona.is." ];
       alertmanager.CNAME = [ "naiad.net.leona.is." ];
       alertmanager-bot.CNAME = [ "naiad.net.leona.is." ];
+      cloud.CNAME = [ "foros.net.leona.is." ];
       fin.CNAME = [ "foros.net.leona.is." ];
       "dataimporter.fin".CNAME = [ "foros.net.leona.is." ];
       git.CNAME = [ "beryl.net.leona.is." ];
       grafana.CNAME = [ "naiad.net.leona.is." ];
-      md.CNAME = [ "beryl.net.leona.is." ];
-      paperless.CNAME = [ "beryl.net.leona.is." ];
+      md.CNAME = [ "laurel.net.leona.is." ];
+      paperless.CNAME = [ "laurel.net.leona.is." ];
       prometheus.CNAME = [ "naiad.net.leona.is." ];
       sso.CNAME = [ "ladon.net.leona.is." ];
       "hydra.sso".CNAME = [ "ladon.net.leona.is." ];
-      todo.CNAME = [ "beryl.net.leona.is." ];
-      pass.CNAME = [ "beryl.net.leona.is." ];
-      webmail.CNAME = [ "foros.net.leona.is." ];
-      wifi.CNAME = [ "foros.net.leona.is." ];
+      todo.CNAME = [ "laurel.net.leona.is." ];
+      pass.CNAME = [ "laurel.net.leona.is." ];
     };
   };
 }

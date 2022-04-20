@@ -54,6 +54,7 @@
     })
     obsidian
     openssl_3_0
+    openttd
     pandoc
     pass-wayland
     postman
@@ -131,9 +132,8 @@
       pinentryFlavor = "gnome3";
       enableExtraSocket = true;
       sshKeys = [
-        "8AB64FC46268F8634C86BA3F52B5C315E98D38C4"
-	      "D91C5A1E23D3EE4DC72A5BEF0EA93C9F634A79F5"
-	      "EB5CEED62922C6050F9FC85BD5B08ADFC75E3605"
+	      "F18DB4002D5F6A2E62BF9F4E6361BB12143B6647" # leona
+	      "D91C5A1E23D3EE4DC72A5BEF0EA93C9F634A79F5" # cc
       ];
     };
     programs.chromium = {

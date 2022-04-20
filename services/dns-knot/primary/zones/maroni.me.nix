@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022032201;
+      serial = 2022041701;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -27,6 +27,7 @@
 
     subdomains = {
       autoconfig.CNAME = [ "kupe.net.em0lar.dev." ];
+      cloud.CNAME = [ "foros.net.leona.is." ];
     };
   };
 }

@@ -5,7 +5,7 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud23;
-    hostName = "cloud.leomaroni.de";
+    hostName = "cloud.leona.is";
 
     https = true;
 
@@ -13,6 +13,10 @@
     autoUpdateApps.startAt = "05:00:00";
 
     config = {
+      extraTrustedDomains = [
+        "cloud.leomaroni.de"
+        "cloud.maroni.me"
+      ];
       overwriteProtocol = "https";
 
       dbtype = "pgsql";
@@ -43,5 +47,6 @@
   services.nginx.virtualHosts."${config.services.nextcloud.hostName}" = {
     enableACME = true;
     forceSSL = true;
+    serverAliases = config.services.nextcloud.config.extraTrustedDomains;
   };
 }

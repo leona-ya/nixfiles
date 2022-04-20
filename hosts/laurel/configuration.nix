@@ -3,10 +3,13 @@
 {
   imports = [
       ./hardware-configuration.nix
-#      ./wireguard.nix
+      ./wireguard.nix
       ../../common
       ../../services/initrd-ssh
       ../../services/hedgedoc
+      ../../services/paperless
+      ../../services/vaultwarden
+      ../../services/vikunja
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -29,11 +32,11 @@
   };
   networking.useHostResolvConf = false;
   l.nftables.checkIPTables = false;
-#  l.backups.enable = true;
+  l.backups.enable = true;
   l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:c31:5054:ff:fe68:7591]";
-    diskioDisks = [ "sda" ];
+    diskioDisks = [ "vda" ];
   };
 
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {

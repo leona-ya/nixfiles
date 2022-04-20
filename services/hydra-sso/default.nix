@@ -28,9 +28,12 @@ in {
   };
 
   services.postgresql = {
-    ensureDatabases = [ "ory-hydra" ];
+    ensureDatabases = [ "ory-hydra" "legitima" ];
     ensureUsers = [
       { name = "ory-hydra";
+        ensurePermissions = { "DATABASE \"ory-hydra\"" = "ALL PRIVILEGES"; };
+      }
+      { name = "legitima";
         ensurePermissions = { "DATABASE \"ory-hydra\"" = "ALL PRIVILEGES"; };
       }
     ];
@@ -44,7 +47,7 @@ in {
 
   systemd.services.legitima = {
     description = "legitima";
-    after = [ "network.target" ];
+    after = [ "network.target" "ory-hydra.service" ];
     wantedBy = [ "multi-user.target" ];
     restartTriggers = [ config.sops.secrets."services/hydra-sso/legitima_config".path ];
 

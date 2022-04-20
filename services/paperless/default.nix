@@ -2,11 +2,11 @@
 
 {
   l.sops.secrets = {
-    "services/paperless-ng/env".owner = "root";
-    "services/paperless-ng/vouch_proxy_env".owner = "root";
+    "services/paperless/env".owner = "root";
+    "services/paperless/vouch_proxy_env".owner = "root";
   };
 
-  services.paperless-ng = {
+  services.paperless = {
     enable = true;
     extraConfig = {
       PAPERLESS_ENABLE_HTTP_REMOTE_USER = true;
@@ -18,19 +18,15 @@
   };
 
   systemd.services = {
-    paperless-ng-server = {
-      serviceConfig = {
-        EnvironmentFile = config.sops.secrets."services/paperless-ng/env".path;
-        PrivateNetwork = lib.mkForce false;
-      };
+    paperless-schedulee.serviceConfig = {
+      EnvironmentFile = config.sops.secrets."services/paperless/env".path;
+      PrivateNetwork = lib.mkForce false;
     };
-    paperless-ng-consumer = {
-      serviceConfig.EnvironmentFile = config.sops.secrets."services/paperless-ng/env".path;
-    };
-    paperless-ng-web = {
-      unitConfig.JoinsNamespaceOf = "paperless-ng-server.service";
+    paperless-consumer.serviceConfig.EnvironmentFile = config.sops.secrets."services/paperless/env".path;
+    paperless-web = {
+      unitConfig.JoinsNamespaceOf = "paperless-scheduler.service";
       serviceConfig = {
-        EnvironmentFile = config.sops.secrets."services/paperless-ng/env".path;
+        EnvironmentFile = config.sops.secrets."services/paperless/env".path;
       };
     };
   };
@@ -64,7 +60,7 @@
     servers."paperless.leona.is" = {
       clientId = "paperless";
       port = 12300;
-      environmentFiles = [ config.sops.secrets."services/paperless-ng/vouch_proxy_env".path ];
+      environmentFiles = [ config.sops.secrets."services/paperless/vouch_proxy_env".path ];
     };
   };
 }

@@ -144,6 +144,14 @@ in rec {
                     PersistentKeepalive = 21;
                   };
                 }
+                { # laurel
+                  wireguardPeerConfig = {
+                    AllowedIPs =
+                      [ "195.39.247.149/32"];
+                    PublicKey = "0zhic69IA9xKXljBzB4ZqYMmFtLVYZCPw0L65grIaRg=";
+                    PersistentKeepalive = 21;
+                  };
+                }
               ];
             };
           };

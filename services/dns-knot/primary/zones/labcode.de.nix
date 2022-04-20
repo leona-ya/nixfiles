@@ -43,7 +43,6 @@
       mautrix-telegram.CNAME = [ "beryl.net.leona.is." ];
       md.CNAME = [ "beryl.net.leona.is." ];
       static.CNAME = [ "foros.net.leona.is." ];
-      wifi.CNAME = [ "foros.net.leona.is." ];
     };
   };
 }

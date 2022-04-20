@@ -32,6 +32,10 @@
       path = "/mnt/backup/repos/synced/ladon.net.leona.is";
       authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINkp8EVZ43eeenJlOGVciMkulk5LByQQ9gK3alZdQbeY backup@ladon" ];
     };
+    laurel = {
+      path = "/mnt/backup/repos/synced/laurel.net.leona.is";
+      authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIClgjBPeo98RYOr6Qk14x+2q8QAOjp02ylDgpTYpPSFV backup@laurel" ];
+    };
     naiad = {
       path = "/mnt/backup/repos/synced/naiad.net.leona.is";
       authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL8lo78J22v9FIAMJKad+6KpCTqrYmHrjiWoZYlYN7fP backup@naiad" ];

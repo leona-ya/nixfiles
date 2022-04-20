@@ -88,18 +88,10 @@
         "*.iml"
       ];
       extraConfig = {
-        init = {
-          defaultBranch = "main";
-        };
-        tag = {
-          gpgSign = true;
-        };
-        pull = {
-          ff = "only";
-        };
-        transfer = {
-          fsckObjects = true;
-        };
+        init.defaultBranch = "main";
+        tag.gpgSign = true;
+        pull.ff = "only";
+        transfer.fsckObjects = true;
         feature.manyFiles = true;
       };
     };

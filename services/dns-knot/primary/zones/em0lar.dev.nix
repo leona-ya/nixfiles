@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022032202;
+      serial = 2022041501;
       refresh = 300;
       expire = 604800;
       minimum = 300;
