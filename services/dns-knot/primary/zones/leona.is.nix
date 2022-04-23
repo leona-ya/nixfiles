@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022041701;
+      serial = 2022042101;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -46,7 +46,7 @@ in {
       "foros.net" = host "195.39.247.144" "2a01:4f8:242:155f:1000::987";
       "beryl.net" = host "195.39.247.145" "2a01:4f8:242:155f:1000::b33";
       "ladon.net" = host "195.39.247.147" "2a01:4f8:242:155f:1000::1a2";
-      "laurel.net" = host "195.39.247.148" "2a01:4f8:242:155f:1000::b4d";
+      "laurel.net" = host "195.39.247.149" "2a01:4f8:242:155f:1000::b4d";
       "adonis.net" = host "130.61.64.61" "2603:c020:8004:50e0:4cb7:23e8:1668:f629";
       "wg.net".CNAME = [ "haku.net.leona.is." ];
 

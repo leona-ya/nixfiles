@@ -27,9 +27,8 @@
     };
     networks."10-eth0" = {
       DHCP = "yes";
-      matchConfig = {
-        Name = "eth0";
-      };
+      matchConfig.Name = "eth0";
+      linkConfig = { RequiredForOnline = "yes"; };
       dhcpV4Config = {
         RouteMetric = 512;
       };
@@ -58,6 +57,7 @@
     networks."10-wifi0" = {
       DHCP = "yes";
       matchConfig.MACAddress = "38:de:ad:67:b3:7b";
+      linkConfig = { RequiredForOnline = "yes"; };
       routes = [
         {
           routeConfig = {

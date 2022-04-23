@@ -18,7 +18,7 @@
     HOMEHOST <ignore>
     MAILADDR noc@leona.is
   '';
-  boot.initrd.mdadmConf = config.environment.etc."mdadm.conf".text;
+  boot.initrd.services.swraid.mdadmConf = config.environment.etc."mdadm.conf".text;
 
   l.nftables.checkIPTables = false;
   virtualisation.libvirtd.enable = true;

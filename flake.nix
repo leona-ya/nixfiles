@@ -9,7 +9,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable-small";
+    };
     leona-is-website = {
       url = "git+https://cyberchaos.dev/leona/leona.is?ref=main";
       inputs.nixpkgs.follows = "nixpkgs-unstable-small";
@@ -212,6 +215,7 @@
         devShell = pkgs.mkShell {
          buildInputs = [
            pkgs.sops
+           deploy-rs.defaultPackage.${system}
          ];
        };
       }
@@ -227,7 +231,7 @@
 	        magicRollback = false;
           user = "root";
           sshUser = "leona";
-          sshOpts = [ "-o" "StrictHostKeyChecking=no" ];
+          sshOpts = [ "-o" "StrictHostKeyChecking=no" "-p" "54973" ];
           path = deploy-rs.lib.${config.nixosSystem.system}.activate.nixos self.nixosConfigurations."${name}";
         };
       }) hosts);

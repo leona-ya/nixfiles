@@ -33,7 +33,7 @@
     bitwarden
     evince
     feh
-    gcc
+    gcc11
     gimp
     gnome.eog
     gnome.gnome-bluetooth
@@ -107,7 +107,10 @@
   programs.seahorse.enable = true;
   services.udisks2.enable = true;
   programs.gnome-disks.enable = true;
-
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 
   home-manager.users.leona = {
     xdg.enable = true;

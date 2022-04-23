@@ -18,7 +18,7 @@
   };
 
   systemd.services = {
-    paperless-schedulee.serviceConfig = {
+    paperless-scheduler.serviceConfig = {
       EnvironmentFile = config.sops.secrets."services/paperless/env".path;
       PrivateNetwork = lib.mkForce false;
     };
