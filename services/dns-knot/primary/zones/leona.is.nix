@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022042101;
+      serial = 2022042801;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -82,6 +82,7 @@ in {
       "hydra.sso".CNAME = [ "ladon.net.leona.is." ];
       todo.CNAME = [ "laurel.net.leona.is." ];
       pass.CNAME = [ "laurel.net.leona.is." ];
+      pl.CNAME = [ "laurel.net.leona.is." ];
     };
   };
 }

@@ -3,7 +3,11 @@
 with dns.lib.combinators;
 
 {
-  ns = [ "ns1.leona.is." "ns2.leona.is." "ns3.leona.is." ];
+  ns = map (ttl 86400) [
+   (ns "ns1.leona.is.")
+   (ns "ns2.leona.is.")
+   (ns "ns3.leona.is.")
+ ];
   mail = rec {
     mxSimple = [
       (mx.mx 10 "kupe.net.em0lar.dev.")
