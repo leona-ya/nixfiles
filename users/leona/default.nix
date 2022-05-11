@@ -4,7 +4,7 @@
   l.sops.secrets."all/users/leona_pw".neededForUsers = true;
   users.users.leona = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "bluetooth" "video" "audio" "docker" "libvirtd" ];
+    extraGroups = [ "wheel" "bluetooth" "video" "audio" "docker" "libvirtd" "dialout" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILN9nTU+lsrfp+uLo1IvMEIi64m6ke0FmfZ6FxBgmKXp leona@leona.is"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkvy9P1Qweq1kykgn3IWIBWe/v/dTNAx+hd9i2aKe1O openpgp:0xCACA6CB6"

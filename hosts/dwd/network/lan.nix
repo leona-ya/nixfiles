@@ -19,12 +19,15 @@
       networkConfig = {
         ConfigureWithoutCarrier = true;
         DHCPv6PrefixDelegation = true;
+        IPv6AcceptRA = false;
       };
       dhcpV6Config = {
-        PrefixDelegationHint = 64;
+        PrefixDelegationHint = "::/64";
       };
       dhcpV6PrefixDelegationConfig = {
+#        UplinkInterface = "ppp-wan";
         SubnetId = 0;
+        Announce = true;
       };
     };
 
@@ -45,12 +48,15 @@
       networkConfig = {
         ConfigureWithoutCarrier = true;
         DHCPv6PrefixDelegation = true;
+        IPv6AcceptRA = false;
       };
       dhcpV6Config = {
-        PrefixDelegationHint = 64;
+        PrefixDelegationHint = "::/64";
       };
       dhcpV6PrefixDelegationConfig = {
+#        UplinkInterface = "ppp-wan";
         SubnetId = 1;
+        Announce = true;
       };
     };
 
@@ -70,9 +76,15 @@
       networkConfig = {
         ConfigureWithoutCarrier = true;
         DHCPv6PrefixDelegation = true;
+        IPv6AcceptRA = false;
+      };
+      dhcpV6Config = {
+        PrefixDelegationHint = "::/64";
       };
       dhcpV6PrefixDelegationConfig = {
+#        UplinkInterface = "ppp-wan";
         SubnetId = 2;
+        Announce = true;
       };
     };
 

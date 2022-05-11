@@ -34,6 +34,18 @@ in {
           nginx = {
             urls = ["http://localhost/nginx_status"];
           };
+          postgresql = lib.mkIf config.services.postgresql.enable {
+            address = "host=/run/postgresql user=telegraf database=postgres";
+          };
+          postgresql_extensible = lib.mkIf config.services.postgresql.enable [{
+            address = "host=/run/postgresql user=telegraf dbname=postgres";
+            query = [
+              {
+                sqlquery = "SELECT datname, state,count(datname) FROM pg_catalog.pg_stat_activity GROUP BY datname,state";
+                measurement="pg_stat_activity";
+              }
+            ];
+          }];
         } // cfg.extraInputs;
         outputs = {
           prometheus_client = {
@@ -57,5 +69,11 @@ in {
         '';
       };
     };
+    services.postgresql.ensureUsers = [
+      { name = "telegraf"; }
+    ];
+    systemd.services.postgresql.postStart = lib.mkIf config.services.postgresql.enable ''
+      $PSQL -tAc 'GRANT pg_read_all_stats TO telegraf' -d postgres
+    '';
   };
 }

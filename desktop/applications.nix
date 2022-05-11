@@ -27,6 +27,7 @@
     wl-clipboard
     xdg_utils
   ];
+  programs.nix-ld.enable = true;
 
   users.users.leona.packages = with pkgs; [
     _1password-gui
@@ -43,6 +44,12 @@
 #    (jetbrains.jetbrains-client.override {
 #      jdk = jetbrains.jdk;
 #    })
+    cmake
+    gnumake
+    platformio
+    (jetbrains.clion.override {
+      jdk = jetbrains.jdk;
+    })
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })

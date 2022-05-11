@@ -1,4 +1,4 @@
-{ config, lib, pkgs, hosts, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   hosthelper = import ../../hosts { inherit lib config; };
@@ -79,6 +79,18 @@ in {
               annotations = {
                 summary = "CRIT - {{ $labels.instance }} down";
                 description = "{{ $labels.instance }} has been down for more than 15 minutes.\n";
+              };
+            }
+            {
+              alert = "PingFailed";
+              expr = "ping_result_code != 0";
+              for = "15m";
+              labels = {
+                severity = "critical";
+              };
+              annotations = {
+                summary = "CRIT - ping to {{ $labels.url }} failed";
+                description = "Ping to {{ $labels.url }} fails for more than 15 minutes.\n";
               };
             }
             {

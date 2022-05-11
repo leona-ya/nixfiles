@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022042801;
+      serial = 2022042901;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -49,6 +49,7 @@ in {
       "laurel.net" = host "195.39.247.149" "2a01:4f8:242:155f:1000::b4d";
       "adonis.net" = host "130.61.64.61" "2603:c020:8004:50e0:4cb7:23e8:1668:f629";
       "wg.net".CNAME = [ "haku.net.leona.is." ];
+      "haj-social".CNAME = [ "laurel.net.leona.is." ];
 
       "ns1" = kupe_host;
       "ns2" = haku_host;

@@ -24,5 +24,7 @@
     diskioDisks = [ "vda" ];
   };
 
+  services.postgresql.package = pkgs.postgresql_14;
+
   system.stateVersion = "21.05";
 }

@@ -8,6 +8,7 @@
       ../../services/initrd-ssh
       ../../services/hedgedoc
       ../../services/paperless
+      ../../services/haj-social
       ../../services/vaultwarden
       ../../services/vikunja
   ];
@@ -58,5 +59,6 @@
     forceSSL = lib.mkForce false;
   };
 
+  services.postgresql.package = pkgs.postgresql_14;
   system.stateVersion = "21.05";
 }

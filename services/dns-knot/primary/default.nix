@@ -79,9 +79,6 @@ in {
         - domain: leomaroni.de
           file: "${dnsutil.writeZone "leomaroni.de" (import zones/leomaroni.de.nix { inherit helper lib dns config; }).zone}"
           template: signedprimary
-        - domain: lovelycuti.es
-          file: "${dnsutil.writeZone "lovelycuti.es" (import zones/lovelycuti.es.nix { inherit helper lib dns config; }).zone}"
-          template: primary
         - domain: maroni.me
           file: "${dnsutil.writeZone "maroni.me" (import zones/maroni.me.nix { inherit helper lib dns config; }).zone}"
           template: signedprimary

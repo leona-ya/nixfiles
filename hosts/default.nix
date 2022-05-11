@@ -6,7 +6,11 @@ let
 in rec {
   hosts = {
     adonis = {
-      meta = { intIpv6 = "fd8f:d15b:9f40:0c10::1"; };
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:0c10::1";
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
+      };
       services = {
         wireguard = {
           interfaces = {
@@ -21,7 +25,11 @@ in rec {
       };
     };
     beryl = {
-      meta.intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe4e:5cbf";
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe4e:5cbf";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
       nyan = {
         mac = "52:54:00:4e:5c:bf";
         duid = "00:02:00:00:ab:11:fd:dc:c3:f1:66:4a:de:40";
@@ -30,7 +38,11 @@ in rec {
       };
     };
     dwd = {
-      meta = { intIpv6 = "fd8f:d15b:9f40::1"; };
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40::1";
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
+      };
       services = {
         wireguard = {
           interfaces = {
@@ -48,17 +60,23 @@ in rec {
       };
     };
     foros = {
-     meta.intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5";
-     nyan = {
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
+      nyan = {
        mac = "52:54:00:e7:6a:e5";
        duid = "00:02:00:00:ab:11:82:40:af:d3:85:17:b2:1f";
        legacyAddress = "10.151.20.12";
        address = "2a01:4f8:242:155f:1000::987";
-     };
+      };
    };
     kupe = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fec0:8539";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
       };
       nyan = {
         mac = "52:54:00:c0:85:39";
@@ -70,6 +88,8 @@ in rec {
     hack = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe65:7a8e";
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = true;
       };
       nyan = {
         mac = "52:54:00:65:7a:8e";
@@ -79,7 +99,11 @@ in rec {
       };
     };
     haku = {
-      meta = { intIpv6 = "fd8f:d15b:9f40:0c00::1"; };
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:0c00::1";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
       services = {
         wireguard = {
           interfaces = {
@@ -159,7 +183,11 @@ in rec {
       };
     };
     ladon = {
-      meta = { intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fed2:a792"; };
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fed2:a792";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
       nyan = {
         mac = "52:54:00:d2:a7:92";
         duid = "00:02:00:00:ab:11:a9:cf:70:02:82:59:f4:eb";
@@ -168,7 +196,11 @@ in rec {
       };
     };
     laurel = {
-      meta = { intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe68:7591"; };
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe68:7591";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
       nyan = {
         mac = "52:54:00:68:75:91";
         duid = "00:02:00:00:ab:11:2f:e7:59:42:ff:d4:ca:5d";
@@ -177,7 +209,11 @@ in rec {
       };
     };
     naiad = {
-      meta = { intIpv6 = "fd8f:d15b:9f40:0c20::1"; };
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:0c20::1";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
       services = {
         wireguard = {
           interfaces = {
@@ -192,7 +228,11 @@ in rec {
       };
     };
     nyan = {
-      meta = { intIpv6 = "fd8f:d15b:9f40:0c30::1"; };
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:0c30::1";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
       services = {
         wireguard = {
           interfaces = {
@@ -207,7 +247,11 @@ in rec {
       };
     };
     utopia = {
-      meta = { intIpv6 = "fd8f:d15b:9f40:c32:5054:ff:fe77:e68f"; };
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:c32:5054:ff:fe77:e68f";
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
+      };
       nyan = {
         mac = "52:54:00:77:e6:8f";
         duid = "00:02:00:00:ab:11:ca:6f:7a:9e:92:e9:a1:af";
@@ -218,6 +262,8 @@ in rec {
   };
   groups =
     (recursiveUpdate (builtins.fromJSON (builtins.readFile ./groups.json)) {
+      g_public_v4_hostnames = lib.mapAttrsToList (k: v: "${k}.net.leona.is") (lib.filterAttrs (k: v: v.meta.hasPublicIpv4) hosts);
+      g_public_v6_hostnames = lib.mapAttrsToList (k: v: "${k}.net.leona.is") (lib.filterAttrs (k: v: v.meta.hasPublicIpv6) hosts);
       monitoring = {
         g_hostnames = builtins.map (host: "${host}.wg.net.leona.is") groups.monitoring.hosts;
       };

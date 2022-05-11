@@ -60,7 +60,12 @@
       address = [ "fd8f:d15b:9f40::1/64" ];
       DHCP = "ipv6";
       dhcpV6Config = {
-        ForceDHCPv6PDOtherInformation = true;
+        WithoutRA="solicit";
+      };
+      dhcpV6PrefixDelegationConfig = {
+#        UplinkInterface = ":self";
+        SubnetId = 0;
+        Announce = false;
       };
     };
   };

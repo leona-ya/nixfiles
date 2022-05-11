@@ -21,6 +21,7 @@
     paperless-scheduler.serviceConfig = {
       EnvironmentFile = config.sops.secrets."services/paperless/env".path;
       PrivateNetwork = lib.mkForce false;
+      after = [ "postgresql.service" ];
     };
     paperless-consumer.serviceConfig.EnvironmentFile = config.sops.secrets."services/paperless/env".path;
     paperless-web = {

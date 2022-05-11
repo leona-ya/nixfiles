@@ -105,7 +105,7 @@ creation_rules:
           - *admin
         age:
           - *beryl
-  - path_regex: secrets/services/(hedgedoc|paperless|vikunja|vaultwarden).yaml
+  - path_regex: secrets/services/(hedgedoc|paperless|pleroma|vikunja|vaultwarden).yaml
     key_groups:
       - pgp:
           - *admin

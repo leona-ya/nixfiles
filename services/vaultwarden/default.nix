@@ -42,7 +42,10 @@
     "pass.leona.is" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://localhost:8081";
+      locations."/" = {
+        proxyPass = "http://localhost:8081";
+        proxyWebsockets = true;
+      };
     };
   };
 }
