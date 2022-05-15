@@ -189,7 +189,7 @@
               }
             ];
           };
-          deploy.hostname = "fd8f:d15b:9f40:10:8e16:45ff:fe89:d164";
+          deploy.hostname = "2a0f:4ac0:1e0:100::1";
         };
         naiad = {
           nixosSystem = {

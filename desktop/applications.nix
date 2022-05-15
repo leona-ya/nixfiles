@@ -47,6 +47,9 @@
     cmake
     gnumake
     platformio
+    (jetbrains.jetbrains-client.override {
+      jdk = jetbrains.jdk;
+    })
     (jetbrains.clion.override {
       jdk = jetbrains.jdk;
     })
@@ -75,7 +78,7 @@
     spotify
     sublime4
     superTuxKart
-    texlive.combined.scheme-tetex
+    texlive.combined.scheme-full
     thunderbird-wayland
     virt-manager
     youtube-dl

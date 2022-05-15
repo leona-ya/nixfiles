@@ -28,7 +28,16 @@
   networking.useDHCP = false;
 
   nix.gc.automatic = false;
+  nix.distributedBuilds = false;
   environment.systemPackages = [ inputs.deploy-rs.defaultPackage.x86_64-linux ];
+  nix.settings.trusted-users = [ "nix-builder" ];
+  users.users.nix-builder = {
+    isSystemUser = true;
+    shell = pkgs.bash;
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHgj7AC90pEBD0hHthE5BNobdfY+Uc2UJl+Ez5QL5PBo" ];
+    group = "nix-builder";
+  };
+  users.groups.nix-builder = {};
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   l.telegraf = {

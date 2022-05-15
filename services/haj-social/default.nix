@@ -31,7 +31,7 @@
           src = builtins.fetchGit {
             url = "https://github.com/haj-social/static.git";
             ref = "main";
-            rev = "f6ad14c4f148160b765d484e36695f6769ba30b1";
+            rev = "38235c2633dc1b6462853400bdcb842c18349dc3";
           };
 
           installPhase = ''
