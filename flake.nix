@@ -9,10 +9,6 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable-small";
-    };
     leona-is-website = {
       url = "git+https://cyberchaos.dev/leona/leona.is?ref=main";
       inputs.nixpkgs.follows = "nixpkgs-unstable-small";
@@ -39,7 +35,6 @@
     nixpkgs-unstable-small,
     nixpkgs-unstable,
     home-manager,
-    deploy-rs,
     leona-is-website,
     mailserver,
     nixos-hardware,
@@ -77,7 +72,7 @@
         sourcesModule
         sops-nix.nixosModules.sops
       ];
-      nixpkgsUnstable = [
+      nixpkgsUnstableSmall = [
         {
           nix.nixPath = nixpkgs-unstable-small.lib.mkDefault [
             "nixpkgs=${nixpkgs-unstable-small}"
@@ -87,93 +82,91 @@
       ];
 
       hosts = {
-        adonis = {
-          nixosSystem = {
-            system = "aarch64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
-              ./hosts/adonis/configuration.nix
-            ];
-          };
-        };
         beryl = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./hosts/beryl/configuration.nix
             ];
           };
+          deployment = {};
         };
         cole = {
           nixosSystem = {
             system = "aarch64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./hosts/cole/configuration.nix
             ];
           };
-          deploy.hostname = "fd8f:d15b:9f40:10:ba27:ebff:fe5d:d0af";
+          deployment.targetHost = "fd8f:d15b:9f40:10:ba27:ebff:fe5d:d0af";
         };
         dwd = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               nixos-hardware.nixosModules.pcengines-apu
               ./hosts/dwd/configuration.nix
             ];
           };
-          deploy.hostname = "dwd.wg.net.leona.is";
+          deployment.targetHost = "dwd.wg.net.leona.is";
         };
         foros = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./modules/firefly-iii
               ./hosts/foros/configuration.nix
             ];
           };
+          deployment = {};
         };
         hack = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./hosts/hack/configuration.nix
             ];
           };
+          deployment = {};
         };
         haku = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./hosts/haku/configuration.nix
             ];
           };
+          deployment = {};
         };
         kupe = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               mailserver.nixosModule
               ./modules/imapsync
               ./hosts/kupe/configuration.nix
             ];
           };
+          deployment = {};
         };
         ladon = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./modules/ory-hydra
               ./hosts/ladon/configuration.nix
             ];
           };
+          deployment = {};
         };
         laurel = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./hosts/laurel/configuration.nix
             ];
           };
-          deploy.hostname = "laurel.wg.net.leona.is";
+          deployment.targetHost = "laurel.wg.net.leona.is";
         };
         turingmachine = {
           nixosSystem = {
@@ -189,23 +182,28 @@
               }
             ];
           };
-          deploy.hostname = "2a0f:4ac0:1e0:100::1";
+          deployment = {
+            targetHost = null;
+            allowLocalDeployment = true;
+          };
         };
         naiad = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./hosts/naiad/configuration.nix
             ];
           };
+          deployment = {};
         };
         nyan = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstable ++ [
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./hosts/nyan/configuration.nix
             ];
           };
+          deployment = {};
         };
       };
     in
@@ -215,25 +213,37 @@
         devShell = pkgs.mkShell {
          buildInputs = [
            pkgs.sops
-           deploy-rs.defaultPackage.${system}
+           pkgs.colmena
          ];
        };
       }
     ) // {
-      nixosConfigurations = (nixpkgs-unstable-small.lib.mapAttrs (name: config: (nixpkgs-unstable-small.lib.nixosSystem rec {
+      nixosConfigurations = (builtins.mapAttrs (name: config: (nixpkgs-unstable-small.lib.nixosSystem rec {
         system = config.nixosSystem.system;
         modules = config.nixosSystem.modules;
       })) hosts);
-      deploy.nodes = (nixpkgs-unstable-small.lib.mapAttrs (name: config: {
-        hostname = if (config ? deploy.hostname) then config.deploy.hostname else (self.nixosConfigurations."${name}".config.networking.hostName + "." + self.nixosConfigurations."${name}".config.networking.domain);
-        profiles.system = {
-          autoRollback = false;
-	        magicRollback = false;
-          user = "root";
-          sshUser = "leona";
-          sshOpts = [ "-o" "StrictHostKeyChecking=no" "-p" "54973" ];
-          path = deploy-rs.lib.${config.nixosSystem.system}.activate.nixos self.nixosConfigurations."${name}";
+      colmena = {
+        meta = {
+          nixpkgs = import nixpkgs-unstable-small {
+            system = "x86_64-linux";
+          };
+          nodeNixpkgs.turingmachine = import nixpkgs-unstable {
+            system = "x86_64-linux";
+          };
         };
-      }) hosts);
+      } // builtins.mapAttrs (host: config: let
+        nixosConfig = self.nixosConfigurations."${host}";
+        jsonGroups = builtins.fromJSON (builtins.readFile ./hosts/groups.json);
+        groups = builtins.attrNames (nixpkgs-unstable-small.lib.filterAttrs (gname: val: (builtins.elem host val.hosts)) jsonGroups);
+      in {
+        nixpkgs.system = nixosConfig.config.nixpkgs.system;
+        imports = nixosConfig._module.args.modules;
+        deployment = {
+          tags = groups;
+          buildOnTarget = true;
+          targetHost = nixosConfig.config.networking.hostName + "." + nixosConfig.config.networking.domain;
+          targetUser = "leona";
+        } // config.deployment;
+      }) (hosts);
   };
 }

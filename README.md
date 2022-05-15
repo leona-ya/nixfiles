@@ -6,7 +6,6 @@ In this repo is the configuration for all my [NixOS](https://nixos.org) based se
 ```
 nixfiles
 ├── common              # NixOS configuration applyed to all hosts
-├── deploy.sh           # custom deploy script
 ├── desktop             # NixOS configuration for all desktop devices
 ├── hosts               # NixOS configuration for specific hosts 
 ├── lib                 # helpers

@@ -29,7 +29,6 @@
 
   nix.gc.automatic = false;
   nix.distributedBuilds = false;
-  environment.systemPackages = [ inputs.deploy-rs.defaultPackage.x86_64-linux ];
   nix.settings.trusted-users = [ "nix-builder" ];
   users.users.nix-builder = {
     isSystemUser = true;

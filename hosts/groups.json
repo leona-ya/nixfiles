@@ -1,4 +1,30 @@
 {
+  "best-effort": {
+    "hosts": [
+      "beryl",
+      "foros",
+      "kupe",
+      "ladon",
+      "laurel",
+      "naiad"
+    ]
+  },
+  "dns": {
+    "hosts": [
+      "kupe",
+      "haku",
+      "naiad"
+    ]
+  },
+  "nyan-vms": {
+    "hosts": [
+      "beryl",
+      "foros",
+      "hack",
+      "ladon",
+      "laurel"
+    ]
+  },
   "monitoring": {
     "hosts": [
       "beryl",
