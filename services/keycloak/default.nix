@@ -15,20 +15,14 @@
   users.groups.keycloak = {};
   services.keycloak = {
     enable = true;
-    package = (pkgs.keycloak.override {
-      jre = pkgs.openjdk11;
-    });
-    httpPort = "8080";
-    frontendUrl = "https://auth.em0lar.dev/auth";
     database.passwordFile = config.sops.secrets."services/keycloak/database_password".path;
-    extraConfig = {
-      "subsystem=undertow" = {
-        "server=default-server" = {
-          "http-listener=default" = {
-            "proxy-address-forwarding" = true;
-          };
-        };
-      };
+    initialAdminPassword = "";
+    settings = {
+      http-host = "127.0.0.1";
+      http-port = 8080;
+      http-relative-path = "/auth";
+      hostname = "auth.em0lar.dev";
+      proxy = "edge";
     };
   };
   systemd.services.keycloak = {

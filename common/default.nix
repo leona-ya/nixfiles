@@ -11,11 +11,6 @@
   home-manager.useGlobalPkgs = true;
   l.sops.secrets."all/nix-build/builder_ssh_key".owner = "root";
   nix = {
-    package = (pkgs.nix.overrideAttrs(old: rec {
-      version = "2.8.1";
-      sha256 = "sha256-zldZ4SiwkISFXxrbY/UdwooIZ3Z/I6qKxtpc3zD0T/o=";
-      src = pkgs.fetchFromGitHub { owner = "NixOS"; repo = "nix"; rev = version; inherit sha256; };
-    }));
     extraOptions = ''
       experimental-features = nix-command flakes
       builders-use-substitutes = true

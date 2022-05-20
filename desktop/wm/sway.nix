@@ -156,6 +156,9 @@
         client.focused_inactive #00000000 #00000066 #FFFFFF
         titlebar_border_thickness 3
         titlebar_padding 8 6
+
+        bindswitch lid:on output eDP-1 disable
+        bindswitch lid:off output eDP-1 enable
       '';
     };
     programs.zsh.initExtra = ''
