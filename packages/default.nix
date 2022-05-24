@@ -29,4 +29,5 @@ rec {
     };
     patches = [];
   });
+  pleroma-fe = self.callPackage ./pleroma-fe {};
 }

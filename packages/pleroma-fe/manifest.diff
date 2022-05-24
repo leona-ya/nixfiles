@@ -1,0 +1,12 @@
+diff --git a/index.html b/index.html
+index ba072eda..6494a3da 100644
+--- a/index.html
++++ b/index.html
+@@ -3,6 +3,7 @@
+   <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
++    <link rel="manifest" href="/manifest.json">
+     <!--server-generated-meta-->
+     <link rel="icon" type="image/png" href="/favicon.png">
+   </head>

@@ -1,0 +1,15 @@
+diff --git a/build/webpack.prod.conf.js b/build/webpack.prod.conf.js
+index a67ed2f6..61cd552d 100644
+--- a/build/webpack.prod.conf.js
++++ b/build/webpack.prod.conf.js
+@@ -10,9 +10,7 @@ var env = process.env.NODE_ENV === 'testing'
+     ? require('../config/test.env')
+     : config.build.env
+
+-let commitHash = require('child_process')
+-    .execSync('git rev-parse --short HEAD')
+-    .toString();
++let commitHash = "@rev@";
+
+ var webpackConfig = merge(baseWebpackConfig, {
+   mode: 'production',

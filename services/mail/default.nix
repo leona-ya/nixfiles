@@ -3,8 +3,8 @@
 {
   imports = [
     (fetchGit {
-      url = "ssh://git@git.em0lar.dev:2222/em0lar/nixfiles-mail-secrets.git";
-      rev = "29539d272053465da399f0e6c1e8adca4da44cea";
+      url = "ssh://gitlab@cyberchaos.dev:62954/leona/nixfiles-mail-secrets.git";
+      rev = "8a3700bde85666c9258d4bc3bc0e840a2c61435f";
       ref = "main";
     }).outPath
     ./autoconfig.nix
@@ -14,6 +14,7 @@
 
   security.acme.certs."${config.networking.hostName}.net.em0lar.dev".extraDomainNames = [
     "mail.em0lar.dev"
+    "kupe.net.leona.is"
   ];
   mailserver = {
     enable = true;
