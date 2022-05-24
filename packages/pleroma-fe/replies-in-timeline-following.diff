@@ -1,0 +1,14 @@
+diff --git a/src/modules/config.js b/src/modules/config.js
+index e0401339..02f7eb00 100644
+--- a/src/modules/config.js
++++ b/src/modules/config.js
+@@ -49,7 +49,7 @@ export const defaultState = {
+   autohideFloatingPostButton: false,
+   pauseOnUnfocused: true,
+   stopGifs: true,
+-  replyVisibility: 'all',
++  replyVisibility: 'following',
+   notificationVisibility: {
+     follows: true,
+     mentions: true,
+

@@ -18,6 +18,7 @@ stdenv.mkDerivation rec {
       inherit (src) rev;
     })
     ./manifest.diff
+    ./replies-in-timeline-following.diff
   ];
 
   nativeBuildInputs = [ fixup_yarn_lock yarn nodejs ];
