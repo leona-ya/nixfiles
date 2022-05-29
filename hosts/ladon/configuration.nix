@@ -42,6 +42,7 @@
     enableACME = lib.mkForce false;
     forceSSL = lib.mkForce false;
   };
+  services.postgresql.package = pkgs.postgresql_14;
 
   system.stateVersion = "21.05";
 }

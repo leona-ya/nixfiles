@@ -6,16 +6,19 @@
 
 buildGoModule rec {
   pname = "ory-hydra";
-  version = "1.10.7";
+  version = "1.11.8";
 
   src = fetchFromGitHub {
     owner = "ory";
     repo = "hydra";
     rev = "v${version}";
-    sha256 = "sha256-/cuzMTOMtju24tRO8KtW8yzztYFj9dSZRnYOMyAVMsk=";
+    sha256 = "sha256-9V+nD7VfzXFijH/r7uP/FKyt/3UCWMJbMY6h8hW7Xm4=";
   };
 
-  vendorSha256 = "sha256-H3lAjlDpEcdQlFc5mwHOHhPjTSltUEleKIyZwUcXmtI=";
+  vendorSha256 = "sha256-AlTL4HJUogBhz/nTUH+3JKuq5I/nCv/erfoKSpwe/jE=";
+  prePatch = ''
+    rm -r internal/httpclient-next
+  '';
 
   preBuild =
     let
