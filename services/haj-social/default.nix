@@ -9,7 +9,10 @@
     package = (pkgs.pleroma.override {
       cookieFile = "/var/lib/pleroma/.cookie";
     }).overrideAttrs (old: {
-      patches = [ ./manifest.diff ];
+      patches = [
+        ./manifest.diff
+        ./reply-visibility.diff
+      ];
       postInstall = let
         custom-styles = {
           haj-social = "/static/themes/haj-social.json";

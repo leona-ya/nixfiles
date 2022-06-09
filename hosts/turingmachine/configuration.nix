@@ -33,7 +33,7 @@
   systemd.services.upower.wantedBy = lib.mkForce [ "multi-user.target" ];
 
   users.users.leona.passwordFile = config.sops.secrets."hosts/turingmachine/user_em0lar_pw".path;
-  #security.sudo.wheelNeedsPassword = true;
+  security.sudo.wheelNeedsPassword = true;
 
   home-manager.users.leona = {
     programs.ssh.extraConfig = ''
@@ -58,6 +58,14 @@
       "**/Cache"
     ];
     enableSystemdTimer = false;
+  };
+
+  services.nginx.virtualHosts = {
+    "legitima.turingmachine.net.leona.is" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://localhost:8000";
+    };
   };
   system.stateVersion = "20.09";
 }

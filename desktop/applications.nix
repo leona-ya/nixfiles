@@ -72,7 +72,6 @@
     rofi-pass
     rustup
     sengi
-    scribusUnstable
     signal-desktop
     speedcrunch
     spotify
@@ -210,6 +209,7 @@
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   services.printing = {
     enable = true;
-    drivers = [ pkgs.samsung-unified-linux-driver ];
+    drivers = [ pkgs.samsung-unified-linux-driver pkgs.cups-toshiba-estudio ];
   };
+  programs.steam.enable = true;
 }
