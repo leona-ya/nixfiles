@@ -7,6 +7,7 @@
       ../../common
       ../../services/initrd-ssh
       ../../services/hedgedoc
+      ../../services/matrix
       ../../services/paperless
       ../../services/haj-social
       ../../services/vaultwarden

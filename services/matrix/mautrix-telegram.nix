@@ -8,8 +8,8 @@
     serviceDependencies = [ "matrix-synapse.service" ];
     settings = {
       homeserver = {
-        address = "https://matrix.labcode.de:443";
-        domain = "labcode.de";
+        address = "https://matrix.leona.is:443";
+        domain = "leona.is";
       };
 
       appservice = {
@@ -19,7 +19,7 @@
         public = {
           enabled = true;
           prefix = "/public";
-          external = "https://mautrix-telegram.labcode.de/public";
+          external = "https://mautrix-telegram.leona.is/public";
         };
         hostname = "::1";
         port = 8010;
@@ -28,7 +28,7 @@
       bridge = {
         relaybot.authless_portals = false;
         permissions = {
-          "@leo:labcode.de" = "admin";
+          "@leona@leona.is" = "admin";
         };
 
         username_template = "tg_{userid}";
@@ -54,7 +54,7 @@
     };
   };
 
-  services.nginx.virtualHosts."mautrix-telegram.labcode.de" = {
+  services.nginx.virtualHosts."mautrix-telegram.leona.is" = {
     forceSSL = true;
     enableACME = true;
     locations."/public/".proxyPass = "http://[::1]:8010/public/";

@@ -2,8 +2,8 @@
 
 {
   l.sops.secrets = {
-    "services/matrix/synapse/secrets.yaml".owner = "matrix-synapse";
-    "services/matrix/synapse/homeserver_signing_key".owner = "matrix-synapse";
+    "services/matrix-old/synapse/secrets.yaml".owner = "matrix-synapse";
+    "services/matrix-old/synapse/homeserver_signing_key".owner = "matrix-synapse";
   };
 
   services.postgresql = {
@@ -20,15 +20,15 @@
     '';
   };
 
-#  users.users.matrix-synapse.extraGroups = [ "mautrix-telegram" ];
+  users.users.matrix-synapse.extraGroups = [ "mautrix-telegram" ];
 
   services.matrix-synapse = {
     enable = true;
 
     settings = {
       enable_registration = false;
-      server_name = "leona.is";
-      public_baseurl = "https://matrix.leona.is:443/";
+      server_name = "labcode.de";
+      public_baseurl = "https://matrix.labcode.de:443/";
 
       database_type = "psycopg2";
       database_args = {
@@ -48,9 +48,9 @@
           x_forwarded = true;
         }
       ];
-#      app_service_config_files = [
-#        "/var/lib/mautrix-telegram/telegram-registration.yaml"
-#      ];
+      app_service_config_files = [
+        "/var/lib/mautrix-telegram/telegram-registration.yaml"
+      ];
       url_preview_enabled = false;
       log_config = pkgs.writeText "matrix-synapse-log-config" ''
         version: 1
@@ -79,15 +79,15 @@
       '';
     };
     extraConfigFiles = [
-      config.sops.secrets."services/matrix/synapse/secrets.yaml".path
+      config.sops.secrets."services/matrix-old/synapse/secrets.yaml".path
     ];
   };
 
   systemd.services.matrix-synapse.serviceConfig.ExecStartPre = [
-    "${pkgs.coreutils}/bin/ln -sf ${config.sops.secrets."services/matrix/synapse/homeserver_signing_key".path} ${config.services.matrix-synapse.dataDir}/homeserver.signing.key"
+    "${pkgs.coreutils}/bin/ln -sf ${config.sops.secrets."services/matrix-old/synapse/homeserver_signing_key".path} ${config.services.matrix-synapse.dataDir}/homeserver.signing.key"
   ];
 
-  services.nginx.virtualHosts."matrix.leona.is" = {
+  services.nginx.virtualHosts."matrix.labcode.de" = {
     forceSSL = true;
     enableACME = true;
     locations = {

@@ -112,14 +112,14 @@ creation_rules:
           - *leona
         age:
           - *hack
-  - path_regex: secrets/services/(gitea|matrix).yaml
+  - path_regex: secrets/services/(gitea|matrix-old).yaml
     key_groups:
       - pgp:
           - *old
           - *leona
         age:
           - *beryl
-  - path_regex: secrets/services/(hedgedoc|paperless|pleroma|vikunja|vaultwarden).yaml
+  - path_regex: secrets/services/(hedgedoc|matrix|paperless|pleroma|vikunja|vaultwarden).yaml
     key_groups:
       - pgp:
           - *old

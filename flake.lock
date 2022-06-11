@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1651475719,
-        "narHash": "sha256-+5VrSUrtDFBa9HCHzL2dZEEvdDhRbGUYwYIMm2jDB/c=",
+        "lastModified": 1654956599,
+        "narHash": "sha256-E7BLtgVZ1t1UvJP2x0TVVzSLwIw4a1oaPrg2qfEsZ3w=",
         "ref": "main",
-        "rev": "c267e4727f0cacb4ef32ec7ba76eef582821d7a3",
-        "revCount": 1,
+        "rev": "614f2def5b481d55daf2a3f8e5e27d5e4952d948",
+        "revCount": 2,
         "type": "git",
         "url": "https://cyberchaos.dev/leona/leona.is"
       },
@@ -217,11 +217,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1654593855,
-        "narHash": "sha256-c+SyXvj7THre87OyIdZfRVR+HhI/g1ZDrQ3VUtTuHkU=",
+        "lastModified": 1654682581,
+        "narHash": "sha256-Jb1PQCwKgwdNAp907eR5zPzuxV+kRroA3UIxUxCMJ9s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "033bd4fa9a8fbe0c68a88e925d9a884161044b25",
+        "rev": "e0169d7a9d324afebf5679551407756c77af8930",
         "type": "github"
       },
       "original": {
@@ -233,11 +233,11 @@
     },
     "nixpkgs-unstable-small": {
       "locked": {
-        "lastModified": 1654641387,
-        "narHash": "sha256-x2HnWQYpHCuW86nTSTSV/N2+DTeqmoXr0fBvP0jIDH0=",
+        "lastModified": 1654819923,
+        "narHash": "sha256-s3m3dbCVWw7XAFbkIJyPKtlqgbcDD+2BrBOGTRn0fIw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b83c88740dbf88ce9ee9b18bf0b5947786e069ad",
+        "rev": "a58de450c514aa1bc5a4999f92656ab6b600dc59",
         "type": "github"
       },
       "original": {

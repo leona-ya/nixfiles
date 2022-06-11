@@ -6,13 +6,14 @@ let
 haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
 naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
 kupe_host = host "195.39.247.146" "2a01:4f8:242:155f:1000::f28";
+laurel_host = host "195.39.247.149" "2a01:4f8:242:155f:1000::b4d";
 in {
   zone = {
     TTL = 600;
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022060501;
+      serial = 2022060905;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -36,6 +37,7 @@ in {
     A = helper.hosts.web.A;
     AAAA = helper.hosts.web.AAAA;
 
+
     subdomains = hosthelper.services.dns-int.g_dns_records // {
       "naiad.net" = naiad_host;
       "hack.net".AAAA = [ "2a01:4f8:242:155f:1000::fc5" ];
@@ -46,7 +48,7 @@ in {
       "foros.net" = host "195.39.247.144" "2a01:4f8:242:155f:1000::987";
       "beryl.net" = host "195.39.247.145" "2a01:4f8:242:155f:1000::b33";
       "ladon.net" = host "195.39.247.147" "2a01:4f8:242:155f:1000::1a2";
-      "laurel.net" = host "195.39.247.149" "2a01:4f8:242:155f:1000::b4d";
+      "laurel.net" = laurel_host;
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
       "wg.net".CNAME = [ "haku.net.leona.is." ];
@@ -77,6 +79,7 @@ in {
       "dataimporter.fin".CNAME = [ "foros.net.leona.is." ];
       git.CNAME = [ "beryl.net.leona.is." ];
       grafana.CNAME = [ "naiad.net.leona.is." ];
+      matrix.CNAME = [ "laurel.net.leona.is." ];
       md.CNAME = [ "laurel.net.leona.is." ];
       paperless.CNAME = [ "laurel.net.leona.is." ];
       prometheus.CNAME = [ "naiad.net.leona.is." ];

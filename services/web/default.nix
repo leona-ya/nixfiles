@@ -50,10 +50,33 @@ in {
         };
       };
     };
-    "leona.is" = {
+    "leona.is" = let
+       client = { "m.homeserver" = { base_url = "https://matrix.leona.is"; }; };
+       server = { "m.server" = "matrix.leona.is:443"; };
+     in {
       enableACME = true;
       forceSSL = true;
       root = pkgs.leona-is-website;
+      locations = {
+        "= /.well-known/matrix/client" = {
+          root = pkgs.writeTextDir ".well-known/matrix/client" "${builtins.toJSON client}";
+          extraConfig = ''
+            ${commonHeaders}
+            add_header Access-Control-Allow-Origin *;
+            add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
+            add_header Access-Control-Allow-Headers 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
+          '';
+        };
+        "= /.well-known/matrix/server" = {
+          root = pkgs.writeTextDir ".well-known/matrix/server" "${builtins.toJSON server}";
+          extraConfig = ''
+            ${commonHeaders}
+            add_header Access-Control-Allow-Origin *;
+            add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
+            add_header Access-Control-Allow-Headers 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
+          '';
+        };
+      };
     };
     "static.labcode.de" = {
       enableACME = true;

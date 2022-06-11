@@ -8,7 +8,7 @@
       ../../common
       ../../services/initrd-ssh
       ../../services/gitea
-      ../../services/matrix
+      ../../services/matrix-old
   ];
 
   boot.loader.systemd-boot.enable = true;
