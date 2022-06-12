@@ -20,8 +20,6 @@
     '';
   };
 
-  users.users.matrix-synapse.extraGroups = [ "mautrix-telegram" ];
-
   services.matrix-synapse = {
     enable = true;
 
@@ -47,9 +45,6 @@
           tls = false;
           x_forwarded = true;
         }
-      ];
-      app_service_config_files = [
-        "/var/lib/mautrix-telegram/telegram-registration.yaml"
       ];
       url_preview_enabled = false;
       log_config = pkgs.writeText "matrix-synapse-log-config" ''

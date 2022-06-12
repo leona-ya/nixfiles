@@ -14,6 +14,8 @@
       PAPERLESS_DBHOST = "/run/postgresql";
       PAPERLESS_CORS_ALLOWED_HOSTS = "https://paperless.leona.is";
       PAPERLESS_OCR_LANGUAGE = "deu+eng";
+      PAPERLESS_TASK_WORKERS = 2;
+      PAPERLESS_THREADS_PER_WORKER = 1;
     };
   };
 
