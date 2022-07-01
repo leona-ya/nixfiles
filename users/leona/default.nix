@@ -31,7 +31,6 @@
       }];
       shellAliases = {
         "tb" = "nc termbin.com 9999";
-        "vim" = "nvim";
         "ip" = "ip -c";
         "watch" = "watch -c";
         "xtssh" = "TERM=xterm-256color ssh";
@@ -53,7 +52,7 @@
           "gitfast"
           "git"
           "sudo"
-          "virtualenvwrapper"
+#          "virtualenvwrapper"
 #          "zsh-autocomplete"
         ];
         theme = lib.mkDefault "powerlevel10k/powerlevel10k";

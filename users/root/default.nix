@@ -38,7 +38,6 @@
       }];
       shellAliases = {
         "tb" = "nc termbin.com 9999";
-        "vim" = "nvim";
         "ip" = "ip -c";
         "watch" = "watch -c";
         "xtssh" = "TERM=xterm-256color ssh";

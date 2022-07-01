@@ -5,6 +5,7 @@
     ../users/root
     ../users/leona
     ./nginx.nix
+    ./nvim.nix
   ];
   users.mutableUsers = false;
   home-manager.useUserPackages = true;
@@ -62,6 +63,7 @@
 
   environment.systemPackages = with pkgs; [
     bat
+    bottom
     bind.dnsutils # for dig
     fd
     file
@@ -70,12 +72,10 @@
     gnupg
     gptfdisk
     htop
-    iftop
     iperf
     jq
     lm_sensors
     mtr
-    neovim
     nmap
     openssl
     python38Packages.virtualenvwrapper
