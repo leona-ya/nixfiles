@@ -9,6 +9,7 @@
   };
 
   home-manager.users.root = {
+    home.stateVersion = "22.05";
     # prevent ifd
     manual.manpages.enable = false;
 

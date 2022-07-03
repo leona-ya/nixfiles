@@ -1,8 +1,4 @@
-{ pkgs, lib, config, ... }:
-
-let
-  commonHeaders = lib.concatStringsSep "\n" (lib.filter (line: lib.hasPrefix "add_header" line) (lib.splitString "\n" config.services.nginx.commonHttpConfig));
-in {
+{ pkgs, lib, config, ... }: {
   services.nginx.virtualHosts = {
     "autoconfig.em0lar.dev" = {
       enableACME = true;

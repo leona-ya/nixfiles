@@ -15,6 +15,7 @@
   };
 
   home-manager.users.leona = {
+    home.stateVersion = "22.05";
     manual.manpages.enable = false;
 
     programs.zsh = {
