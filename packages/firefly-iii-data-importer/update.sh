@@ -8,7 +8,7 @@ if ! command -v composer2nix &> /dev/null; then
 fi
 
 #CURRENT_VERSION=$(nix eval --raw '(with import ../../../.. {}; firefly-iii.version)')
-CURRENT_VERSION=0.6.5
+CURRENT_VERSION=0.7.0
 TARGET_VERSION=$(curl https://api.github.com/repos/firefly-iii/data-importer/releases/latest | jq -r ".tag_name")
 FIREFLYIII=https://github.com/firefly-iii/data-importer/raw/$TARGET_VERSION
 SHA256=$(nix-prefetch-url --unpack "https://github.com/firefly-iii/data-importer/archive/$TARGET_VERSION/data-importer.tar.gz")

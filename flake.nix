@@ -62,6 +62,7 @@
             ./modules/sops
             ./modules/telegraf
             ./modules/vouch-proxy
+            ./modules/grocy
           ];
           documentation.info.enable = false;
         }

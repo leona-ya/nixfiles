@@ -10,6 +10,7 @@
       ../../services/nextcloud
       ../../services/web
       ../../services/firefly-iii
+      ../../services/grocy
   ];
 
   boot.loader.systemd-boot.enable = true;

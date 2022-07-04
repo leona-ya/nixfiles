@@ -15,13 +15,13 @@ let
 
 in package.override rec {
   pname = "firefly-iii-data-importer";
-  version = "0.7.0";
+  version = "0.9.10";
 
   src = fetchFromGitHub {
     owner = "firefly-iii";
     repo = "data-importer";
     rev = "${version}";
-    sha256 = "0wprggljd2ffqiyl8s6jfjk45gz87w348b38b37f62hx7ks1vaa0";
+    sha256 = "0bc9ww75lmdgy2qqmj5f6gz0ghl1fc58598hsmrns8v7qm58cflz";
   };
 
   meta = with lib; {
