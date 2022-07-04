@@ -161,10 +161,5 @@
         bindswitch lid:off output eDP-1 enable
       '';
     };
-    programs.zsh.initExtra = ''
-      if [ "$(tty)" = "/dev/tty1" ]; then
-        exec sway
-      fi
-    '';
   };
 }

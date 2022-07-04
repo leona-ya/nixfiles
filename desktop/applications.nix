@@ -32,6 +32,7 @@
   users.users.leona.packages = with pkgs; [
     _1password-gui
     bitwarden
+    element-desktop
     evince
     feh
     gcc11
@@ -41,16 +42,9 @@
     gnome.nautilus
     gnome.vinagre
     homebank
-#    (jetbrains.jetbrains-client.override {
-#      jdk = jetbrains.jdk;
-#    })
     cmake
     gnumake
-    platformio
     (jetbrains.jetbrains-client.override {
-      jdk = jetbrains.jdk;
-    })
-    (jetbrains.clion.override {
       jdk = jetbrains.jdk;
     })
     (jetbrains.idea-ultimate.override {
@@ -209,7 +203,7 @@
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   services.printing = {
     enable = true;
-    drivers = [ pkgs.samsung-unified-linux-driver pkgs.cups-toshiba-estudio ];
+    drivers = [  pkgs.cups-toshiba-estudio ];
   };
   programs.steam.enable = true;
 }
