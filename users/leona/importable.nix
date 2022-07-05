@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   users.users.leona = {
     isNormalUser = true;
     extraGroups = [ "wheel" "bluetooth" "video" "audio" "docker" "libvirtd" "dialout" ];
