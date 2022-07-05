@@ -70,6 +70,27 @@ let
         "2a01:4f8:242:155f:3000::".prefixLength = 68;
       };
     };
+    "br-np" = {
+      legacyPrefixes = {
+        "10.151.21.192" = {
+          prefixLength = 26;
+          start = "10.151.21.240";
+          end = "10.151.21.254";
+          nameservers = [ "1.1.1.1" ];
+          gateway = "10.151.21.192";
+        };
+      };
+      prefix = {
+        prefix = "2a01:4f8:242:155f:4000::";
+        prefixLength = 68;
+        start = "100";
+        end = "fff";
+        nameservers = [ "2606:4700:4700::1111" ];
+      };
+      raPrefixes = {
+        "2a01:4f8:242:155f:4000::".prefixLength = 68;
+      };
+    };
   };
   assignments = hosthelper.nyan.g_assignements;
 in {

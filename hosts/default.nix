@@ -246,6 +246,18 @@ in rec {
         };
       };
     };
+    fdg-web = {
+      meta = {
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
+      };
+      nyan = {
+        mac = "52:54:00:47:a2:f1";
+        duid = "00:02:00:00:ab:11:53:f2:e5:e7:f2:2a:48:54";
+        legacyAddress = "10.151.21.192";
+        address = "2a01:4f8:242:155f:4000::b8b";
+      };
+    };
     utopia = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c32:5054:ff:fe77:e68f";

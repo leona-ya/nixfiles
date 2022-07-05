@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022070201;
+      serial = 2022070401;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -80,6 +80,7 @@ in {
       git.CNAME = [ "beryl.net.leona.is." ];
       grafana.CNAME = [ "naiad.net.leona.is." ];
       grocy.CNAME = [ "foros.net.leona.is." ];
+      "api.grocy".CNAME = [ "foros.net.leona.is." ];
       matrix.CNAME = [ "laurel.net.leona.is." ];
       md.CNAME = [ "laurel.net.leona.is." ];
       paperless.CNAME = [ "laurel.net.leona.is." ];
