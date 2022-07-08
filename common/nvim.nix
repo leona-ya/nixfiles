@@ -10,6 +10,7 @@
             let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
         '';
       }
+      { plugin = ctrlp-vim; }
       { plugin = vimtex;
         config = ''
           let g:vimtex_compiler_latexmk_engines = {
@@ -22,5 +23,8 @@
 	      '';
       }
     ];
+    extraConfig = ''
+      set relativenumber
+    '';
   };
 }

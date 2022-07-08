@@ -26,6 +26,21 @@ in {
       ${commonHeaders}
     '';
   };
+#  services.nginx.virtualHosts."api.grocy.leona.is" = {
+#    root = "${pkgs.grocy}/public";
+#    locations."/".extraConfig = ''
+#      rewrite ^ /index.php/api;
+#    '';
+#    locations."~ \.php$".extraConfig = ''
+#      fastcgi_split_path_info ^(.+\.php)(/.+)$;
+#      fastcgi_pass unix:${config.services.phpfpm.pools.grocy.socket};
+#      include ${config.services.nginx.package}/conf/fastcgi.conf;
+#      include ${config.services.nginx.package}/conf/fastcgi_params;
+#    '';
+#    enableACME = true;
+#    forceSSL = true;
+#  };
+
   services.vouch-proxy = {
     enable = true;
     servers."grocy.leona.is" = {

@@ -171,7 +171,7 @@ in rec {
                 { # laurel
                   wireguardPeerConfig = {
                     AllowedIPs =
-                      [ "195.39.247.149/32"];
+                      [ "195.39.247.149/32" ];
                     PublicKey = "0zhic69IA9xKXljBzB4ZqYMmFtLVYZCPw0L65grIaRg=";
                     PersistentKeepalive = 21;
                   };
@@ -254,7 +254,7 @@ in rec {
       nyan = {
         mac = "52:54:00:47:a2:f1";
         duid = "00:02:00:00:ab:11:53:f2:e5:e7:f2:2a:48:54";
-        legacyAddress = "10.151.21.192";
+        legacyAddress = "10.151.21.193";
         address = "2a01:4f8:242:155f:4000::b8b";
       };
     };

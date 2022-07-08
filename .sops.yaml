@@ -154,3 +154,11 @@ creation_rules:
           - *leona
         age:
           - *naiad
+
+  - path_regex: secrets/services/dns-knot-secondary.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *haku
+          - *naiad
