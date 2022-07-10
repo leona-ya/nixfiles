@@ -249,7 +249,7 @@ in rec {
     fdg-web = {
       meta = {
         hasPublicIpv4 = false;
-        hasPublicIpv6 = false;
+        hasPublicIpv6 = true;
       };
       nyan = {
         mac = "52:54:00:47:a2:f1";
@@ -355,7 +355,7 @@ in rec {
     dns-int.g_dns_records = mapAttrs' (hostname: config:
       nameValuePair "${hostname}.wg.net" {
         AAAA = [ config.meta.intIpv6 ];
-      }) hosts // mapAttrs' (hostname: config:
+      }) (filterAttrs (h: config: config.meta ? intIpv6) hosts) // mapAttrs' (hostname: config:
       nameValuePair "${hostname}.nyan.net" {
         A = [ config.nyan.legacyAddress ];
       }) (filterAttrs (

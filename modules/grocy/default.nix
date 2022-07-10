@@ -65,20 +65,8 @@ in {
       type = with types; attrsOf (oneOf [ str int bool ]);
       default = {};
       description = ''
-        PHP-FPM pool directives. Refer to the "List of pool directives" section of
-        <link xlink:href="https://www.php.net/manual/en/install.fpm.configuration.php"/>
-        for details. Note that settings names must be enclosed in quotes (e.g.
-        <literal>"pm.max_children"</literal> instead of <literal>pm.max_children</literal>).
       '';
       example = literalExpression ''
-        {
-          "pm" = "dynamic";
-          "pm.max_children" = 75;
-          "pm.start_servers" = 10;
-          "pm.min_spare_servers" = 5;
-          "pm.max_spare_servers" = 20;
-          "pm.max_requests" = 500;
-        }
       '';
     };
   };

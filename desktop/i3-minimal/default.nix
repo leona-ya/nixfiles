@@ -4,9 +4,6 @@
     displayManager.startx.enable = true;
   };
   home-manager.users.leona = {
-    home.file.".XCompose".text = ''
-
-    '';
     xsession.windowManager.i3 = let
       cfg = config.home-manager.users.leona.xsession.windowManager.i3;
       wallpaper = "~/.wallpapers/space2.jpg";
