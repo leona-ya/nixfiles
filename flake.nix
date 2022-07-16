@@ -121,6 +121,15 @@
           };
           deployment = {};
         };
+        gaika = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
+              ./hosts/gaika/configuration.nix
+            ];
+          };
+          deployment.targetHost = "10.151.0.5";
+        };
         hack = {
           nixosSystem = {
             system = "x86_64-linux";

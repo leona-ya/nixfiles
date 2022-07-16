@@ -4,7 +4,7 @@
   imports = [
     (fetchGit {
       url = "ssh://gitlab@cyberchaos.dev:62954/leona/nixfiles-mail-secrets.git";
-      rev = "e4aa5892682ebfd99f67b3ba80811a051c099a5e";
+      rev = "6ee6bc8005faf92d43499b3d0d15acbbe9d42dc1";
       ref = "main";
     }).outPath
     ./autoconfig.nix
@@ -12,13 +12,14 @@
 
   l.sops.secrets."services/mail/users/superusers".owner = "dovecot2";
 
-  security.acme.certs."${config.networking.hostName}.net.em0lar.dev".extraDomainNames = [
+  security.acme.certs."${config.networking.hostName}.net.leona.is".extraDomainNames = [
     "mail.em0lar.dev"
-    "kupe.net.leona.is"
+    "mail.leona.is"
+    "kupe.net.em0lar.dev"
   ];
   mailserver = {
     enable = true;
-    fqdn = "${config.networking.hostName}.net.em0lar.dev";
+    fqdn = "${config.networking.hostName}.net.leona.is";
     messageSizeLimit = 52428800;
 
     enableImap = false;
@@ -72,6 +73,9 @@
     "mail.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
+      serverAliases = [
+        "mail.leona.is"
+      ];
       #locations."/rspamd/" = {
       #  proxyPass = "http://unix:/var/run/rspamd/worker-controller.sock:/";
       #  extraConfig = ''

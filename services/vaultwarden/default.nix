@@ -30,7 +30,7 @@
       domain = "https://pass.leona.is";
       rocketAddress = "::1";
       rocketPort = 8081;
-      smtpHost = "mail.em0lar.dev";
+      smtpHost = "mail.leona.is";
       smtpPort = 465;
       smtpSsl = true;
       smtpExplicitTLS = true;

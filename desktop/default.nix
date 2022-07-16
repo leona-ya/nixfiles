@@ -13,4 +13,15 @@
     enableACME = lib.mkForce false;
     forceSSL = lib.mkForce false;
   };
+  services.zfs = lib.mkIf (lib.elem "zfs" config.boot.supportedFilesystems) {
+    autoScrub.enable = true;
+    autoSnapshot = {
+      enable = true;
+      frequent = 12;
+      hourly = 24;
+      daily = 7;
+      weekly = 0;
+      monthly = 0;
+    };
+  };
 }

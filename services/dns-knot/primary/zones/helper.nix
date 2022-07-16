@@ -10,7 +10,7 @@ with dns.lib.combinators;
  ];
   mail = rec {
     mxSimple = [
-      (mx.mx 10 "kupe.net.em0lar.dev.")
+      (mx.mx 10 "kupe.net.leona.is.")
     ];
     spf = (with dns.lib.combinators.spf; soft [
       "a"

@@ -37,8 +37,8 @@ in {
 
     configuration = {
       global = rec {
-        smtp_from = "no-reply@em0lar.dev";
-        smtp_smarthost = "mail.em0lar.dev:587";
+        smtp_from = "no-reply@leona.is";
+        smtp_smarthost = "mail.leona.is:587";
         smtp_auth_username = smtp_from;
         smtp_auth_password = "\${ALERTMANAGER_MAIL_PASSWORD}";
       };

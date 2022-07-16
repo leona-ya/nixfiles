@@ -22,7 +22,7 @@
   home-manager.users.leona = {
     wayland.windowManager.sway = let
       cfg = config.home-manager.users.leona.wayland.windowManager.sway;
-      wallpaper = "~/.wallpapers/space2.jpg";
+      wallpaper = "~/.wallpapers/nasa-webb1.jpg";
       lockCommand = "swaylock -i ${wallpaper}";
       modifier = "Mod4";
     in {

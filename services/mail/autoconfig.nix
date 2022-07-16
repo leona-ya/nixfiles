@@ -13,19 +13,19 @@
             <?xml version="1.0" encoding="UTF-8"?>
 
             <clientConfig version="1.1">
-             <emailProvider id="em0lar.dev">
-               <domain>em0lar.dev</domain>
-               <displayName>em0lar.dev Mail</displayName>
-               <displayShortName>em0lar</displayShortName>
+             <emailProvider id="leona.is">
+               <domain>leona</domain>
+               <displayName>leona Mail</displayName>
+               <displayShortName>leona</displayShortName>
                <incomingServer type="imap">
-                 <hostname>mail.em0lar.dev</hostname>
+                 <hostname>mail.leona.is</hostname>
                  <port>993</port>
                  <socketType>SSL</socketType>
                  <authentication>password-cleartext</authentication>
                  <username>%EMAILADDRESS%</username>
                </incomingServer>
                <outgoingServer type="smtp">
-                 <hostname>mail.em0lar.dev</hostname>
+                 <hostname>mail.leona.is</hostname>
                  <port>465</port>
                  <socketType>SSL</socketType>
                  <authentication>password-cleartext</authentication>

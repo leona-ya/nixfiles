@@ -20,7 +20,7 @@ config :pleroma, :instance,
 config :pleroma, Pleroma.Emails.Mailer,
   enabled: true,
   adapter: Swoosh.Adapters.SMTP,
-  relay: "mail.em0lar.dev",
+  relay: "mail.leona.is",
   port: 465,
   ssl: true,
   auth: :always
