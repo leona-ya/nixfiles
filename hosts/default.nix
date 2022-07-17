@@ -5,25 +5,7 @@ let
     builtins.map (hostname: getAttrFromPath [ hostname ] hosts) hostnames;
 in rec {
   hosts = {
-    adonis = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:0c10::1";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = false;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.dwd.meta.intIpv6}/72" ];
-              publicKey = "KVB9uOM1n3VgdhjWzLkXLygMPzg/n+MORLba80EE7Xc=";
-              routed = [ "fd8f:d15b:9f40:0c10::1/72" ];
-              hostname = "adonis.net.leona.is";
-            };
-          };
-        };
-      };
-    };
+
     beryl = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe4e:5cbf";
@@ -46,15 +28,15 @@ in rec {
       services = {
         wireguard = {
           interfaces = {
-            "server" = {
-              ips = [ "${hosts.dwd.meta.intIpv6}/56" ];
-              publicKey = "8Jzx9hklD8g6colimGybv9kpC2q0oTIgrISGhLd0QEM=";
-              routed = [ "fd8f:d15b:9f40::/54" "10.151.0.0/21" ];
-              additonalInterfaceRoutes = [
-                { routeConfig.Destination = "10.151.8.0/22"; }
-                { routeConfig.Destination = "10.151.16.0/24"; }
-              ];
-            };
+#            "server" = {
+#              ips = [ "${hosts.dwd.meta.intIpv6}/56" ];
+#              publicKey = "8Jzx9hklD8g6colimGybv9kpC2q0oTIgrISGhLd0QEM=";
+#              routed = [ "fd8f:d15b:9f40::/54" "10.151.0.0/21" ];
+#              additonalInterfaceRoutes = [
+#                { routeConfig.Destination = "10.151.8.0/22"; }
+#                { routeConfig.Destination = "10.151.16.0/24"; }
+#              ];
+#            };
           };
         };
       };
@@ -83,6 +65,24 @@ in rec {
         duid = "00:02:00:00:ab:11:9b:68:58:51:30:82:69:52";
         legacyAddress = "10.151.20.10";
         address = "2a01:4f8:242:155f:1000::f28";
+      };
+    };
+    gaika = {
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:10:11:32ff:fe2a:888e";
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
+      };
+      services.wireguard.interfaces = {
+        "server" = {
+          ips = [ "${hosts.gaika.meta.intIpv6}/56" ];
+          publicKey = "rn6dN9VdCiYMaNcP7eiCUuOB103OpIAva08EPklNfgo=";
+          routed = [ "fd8f:d15b:9f40::/56" "10.151.0.0/22" ];
+#          additonalInterfaceRoutes = [
+#            { routeConfig.Destination = "10.151.8.0/22"; }
+#            { routeConfig.Destination = "10.151.16.0/24"; }
+#          ];
+        };
       };
     };
     hack = {
@@ -249,7 +249,7 @@ in rec {
     fdg-web = {
       meta = {
         hasPublicIpv4 = false;
-        hasPublicIpv6 = true;
+        hasPublicIpv6 = false;
       };
       nyan = {
         mac = "52:54:00:47:a2:f1";

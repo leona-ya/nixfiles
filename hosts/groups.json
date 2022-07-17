@@ -30,6 +30,7 @@
       "beryl",
       "dwd",
       "foros",
+      "gaika",
       "hack",
       "haku",
       "kupe",
@@ -41,7 +42,7 @@
   },
   "wireguard": {
     "hosts": [
-      "dwd",
+      "gaika",
       "haku",
       "naiad",
       "nyan"

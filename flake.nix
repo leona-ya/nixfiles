@@ -129,6 +129,7 @@
             ];
           };
           deployment.targetHost = "10.151.0.5";
+          deployment.targetPort = 54973;
         };
         hack = {
           nixosSystem = {

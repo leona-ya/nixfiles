@@ -4,6 +4,7 @@ keys:
   - &beryl age1mfj25jy2g86pnshqugjxx8enaju5vsdahywlateysz5kuvtx0unqun7kur
   - &dwd age1xph9c9rtyjrz3cnd6t940dnzuruqw27l7yp98ac33rdz53q429gsu702k4
   - &foros age1xhel4guw25h45qk2mjtyszq7x9pgk3w0nr9glchf36kkxf2823fqu32uvp
+  - &gaika age19yum7ka8gn7pm5qgrjhcx4ac2sclk3d7wl2088750v508ghzrpnsjwvynj
   - &hack age14j9p5c7lxcntt5tmggwjv9wwrp2rvulxd4f8fpxlpax8649yu40q6lec7r
   - &haku age1r0ry9fmygcw0w7ltwkff7wlcm0g57g0lu62m92yz6e73kmrha9ps3xvdw6
   - &kupe age15h358g33202zydy8mkfruh98f92rnhum86zapm3seg56s2xvgvvqzsj7xq
@@ -22,6 +23,7 @@ creation_rules:
           - *beryl
           - *dwd
           - *foros
+          - *gaika
           - *hack
           - *haku
           - *kupe
@@ -53,6 +55,12 @@ creation_rules:
           - *leona
         age:
           - *foros
+  - path_regex: secrets/hosts/gaika.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *gaika
   - path_regex: secrets/hosts/haku.yaml
     key_groups:
       - pgp:
