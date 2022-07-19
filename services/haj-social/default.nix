@@ -51,6 +51,7 @@
   services.nginx.virtualHosts."social.haj.gf" = {
     enableACME = true;
     forceSSL = true;
+    kTLS = true;
     locations = {
       "/" = {
         proxyPass = "http://localhost:4001";

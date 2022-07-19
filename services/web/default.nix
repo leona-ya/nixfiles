@@ -8,6 +8,7 @@ in {
     "element.em0lar.de" = {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       root = pkgs.element-web.override {
         conf = {
           default_server_config."m.homeserver" = {
@@ -23,6 +24,7 @@ in {
     in {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       serverAliases = [
         "labcode.de"
       ];
@@ -56,6 +58,7 @@ in {
      in {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       root = pkgs.leona-is-website;
       locations = {
         "= /.well-known/matrix/client" = {
@@ -81,6 +84,7 @@ in {
     "static.labcode.de" = {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       serverAliases = [
         "cdn.labcode.de"
       ];
@@ -99,6 +103,7 @@ in {
     "opendatamap.net" = {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       serverAliases = [
         "www.opendatamap.net"
       ];
@@ -107,6 +112,7 @@ in {
     "gat.leomaroni.de" = {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       root = "/var/www/gat.leomaroni.de";
       extraConfig = ''
         client_max_body_size 100M;
@@ -127,6 +133,7 @@ in {
     "gatabi22.de" = {
       forceSSL = true;
       enableACME = true;
+      kTLS = true;
       locations = {
         "/".proxyPass = "http://10.151.21.42:8345";
         "= /".return = "302 https://gatabi22.de/Abi2022";
@@ -137,6 +144,7 @@ in {
     "kopftausch.paulchenpanther.de" = {
       forceSSL = true;
       enableACME = true;
+      kTLS = true;
       locations = {
         "/" = {
           proxyPass = "http://10.151.21.40:8000";

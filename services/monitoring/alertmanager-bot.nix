@@ -23,6 +23,7 @@
   services.nginx.virtualHosts."alertmanager-bot.leona.is" = {
     enableACME = true;
     forceSSL = true;
+    kTLS = true;
     locations."/" = {
       proxyPass = "http://[::1]:8080/";
       extraConfig = ''

@@ -27,7 +27,6 @@ in {
           diskio = {
             devices = cfg.diskioDisks;
           };
-          systemd_units = { };
           net = {
             ignore_protocol_stats = true;
           };
@@ -46,6 +45,7 @@ in {
               }
             ];
           }];
+          systemd_units = { };
         } // cfg.extraInputs;
         outputs = {
           prometheus_client = {

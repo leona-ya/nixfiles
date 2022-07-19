@@ -85,6 +85,7 @@
   services.nginx.virtualHosts."matrix.labcode.de" = {
     forceSSL = true;
     enableACME = true;
+    kTLS = true;
     locations = {
       "/" = {
         proxyPass = "http://[::1]:8008";

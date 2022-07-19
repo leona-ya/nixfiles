@@ -47,6 +47,7 @@
   services.nginx.virtualHosts."paperless.leona.is" = {
     enableACME = true;
     forceSSL = true;
+    kTLS = true;
     locations."/" = {
       proxyPass = "http://127.0.0.1:28981";
       proxyWebsockets = true;

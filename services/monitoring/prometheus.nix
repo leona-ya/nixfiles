@@ -11,6 +11,7 @@ in {
     };
     enableACME = true;
     forceSSL = true;
+    kTLS = true;
   };
 
   services.vouch-proxy = {

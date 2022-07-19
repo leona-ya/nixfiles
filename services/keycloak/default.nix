@@ -32,21 +32,10 @@
       Group = "keycloak";
     };
   };
-  services.nginx.virtualHosts = {
-    "auth.em0lar.de" = {
-      enableACME = true;
-      forceSSL = true;
-      serverAliases = [
-        "auth.labcode.de"
-      ];
-      locations."/" = {
-        extraConfig = "return 301 https://auth.em0lar.dev$request_uri;";
-      };
-    };
-    "auth.em0lar.dev" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://localhost:8080";
-    };
+  services.nginx.virtualHosts."auth.em0lar.dev" = {
+    enableACME = true;
+    forceSSL = true;
+    kTLS = true;
+    locations."/".proxyPass = "http://localhost:8080";
   };
 }

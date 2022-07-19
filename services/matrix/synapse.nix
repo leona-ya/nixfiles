@@ -90,6 +90,7 @@
   services.nginx.virtualHosts."matrix.leona.is" = {
     forceSSL = true;
     enableACME = true;
+    kTLS = true;
     locations = {
       "/" = {
         proxyPass = "http://[::1]:8008";

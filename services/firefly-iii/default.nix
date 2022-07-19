@@ -98,6 +98,7 @@ in {
     "fin.leona.is" = {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       locations."/" = {
         proxyPass = "http://[fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5]:8212";
         extraConfig = ''
@@ -111,6 +112,7 @@ in {
     "dataimporter.fin.leona.is" = lib.mkIf cfg.data-importer.enable {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       root = "${dataImporterPackage}/public";
       locations = {
         "/" = {

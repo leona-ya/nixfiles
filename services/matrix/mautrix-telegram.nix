@@ -57,6 +57,7 @@
   services.nginx.virtualHosts."mautrix-telegram.leona.is" = {
     forceSSL = true;
     enableACME = true;
+    kTLS = true;
     locations."/public/".proxyPass = "http://[::1]:8010/public/";
   };
 }

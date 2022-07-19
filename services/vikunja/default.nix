@@ -18,11 +18,11 @@
       service.timezone = "Europe/Berlin";
       mailer = {
         enabled = true;
-        host = "mail.em0lar.dev";
+        host = "mail.leona.is";
         port = 465;
         forcessl = true;
-        username = "no-reply@em0lar.dev";
-        fromemail = "no-reply@em0lar.dev";
+        username = "no-reply@leona.is";
+        fromemail = "no-reply@leona.is";
       };
       log.http = "off";
       auth = {
@@ -44,6 +44,7 @@
   services.nginx.virtualHosts."${config.services.vikunja.frontendHostname}" = {
     enableACME = true;
     forceSSL = true;
+    kTLS = true;
   };
 
   services.postgresql = {

@@ -47,6 +47,7 @@
   services.nginx.virtualHosts."${config.services.nextcloud.hostName}" = {
     enableACME = true;
     forceSSL = true;
+    kTLS = true;
     serverAliases = config.services.nextcloud.config.extraTrustedDomains;
   };
 }

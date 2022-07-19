@@ -80,9 +80,11 @@ in {
 
   users.groups.legitima = {};
 
+  services.nginx.virtualHosts."hydra.sso.leona.is".kTLS = true;
   services.nginx.virtualHosts."sso.leona.is" = {
     enableACME = true;
     forceSSL = true;
+    kTLS = true;
     locations."/" = {
       proxyPass = "http://[::1]:8000";
     };

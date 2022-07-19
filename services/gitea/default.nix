@@ -95,6 +95,7 @@
     "git.em0lar.de" = {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       serverAliases = [
         "git.emolar.de"
         "git.labcode.de"
@@ -106,6 +107,7 @@
     "git.em0lar.dev" = {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       locations."/".proxyPass = "http://unix:/run/gitea/gitea.sock";
     };
   };

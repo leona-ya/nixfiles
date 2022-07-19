@@ -71,5 +71,6 @@ in {
     };
     enableACME = true;
     forceSSL = true;
+    kTLS = true;
   };
 }

@@ -42,6 +42,7 @@
     "pass.leona.is" = {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       locations."/" = {
         proxyPass = "http://localhost:8081";
         proxyWebsockets = true;

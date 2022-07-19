@@ -53,6 +53,7 @@
     "md.leona.is" = {
       enableACME = true;
       forceSSL = true;
+      kTLS = true;
       locations."/" = {
         proxyPass = "http://unix:/run/hedgedoc/hedgedoc.sock";
         proxyWebsockets = true;
