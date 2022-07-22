@@ -109,7 +109,8 @@
               ./hosts/dwd/configuration.nix
             ];
           };
-          deployment.targetHost = "dwd.wg.net.leona.is";
+          deployment.targetHost = "10.151.4.1";
+          deployment.targetPort = 54973;
         };
         foros = {
           nixosSystem = {

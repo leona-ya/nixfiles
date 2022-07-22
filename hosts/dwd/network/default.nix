@@ -6,7 +6,7 @@
     ./dhcp.nix
     ./dns.nix
     ./firewall.nix
-    ./wireguard.nix
+#    ./wireguard.nix
   ];
 
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;

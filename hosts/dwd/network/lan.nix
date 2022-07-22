@@ -13,80 +13,24 @@
         Name = "br-lan";
       };
       address = [
-        "10.151.0.1/22"
-        "fd8f:d15b:9f40:10::1/64"
+        "10.151.4.1/22"
+#        "fd8f:d15b:9f40:10::1/64"
       ];
       networkConfig = {
         ConfigureWithoutCarrier = true;
         DHCPv6PrefixDelegation = true;
         IPv6AcceptRA = false;
       };
-      dhcpV6Config = {
-        PrefixDelegationHint = "::/64";
-      };
-      dhcpV6PrefixDelegationConfig = {
-#        UplinkInterface = "ppp-wan";
-        SubnetId = 0;
-        Announce = true;
-      };
+#      dhcpV6Config = {
+#        PrefixDelegationHint = "::/64";
+#      };
+#      dhcpV6PrefixDelegationConfig = {
+##        UplinkInterface = "ppp-wan";
+#        SubnetId = 0;
+#        Announce = true;
+#      };
     };
 
-    netdevs."05-br-tethys" = {
-      netdevConfig = {
-        Name = "br-tethys";
-        Kind = "bridge";
-      };
-    };
-    networks."05-br-tethys" = {
-      matchConfig = {
-        Name = "br-tethys";
-      };
-      address = [
-        "10.151.4.254/24"
-        "fd8f:d15b:9f40:11::1/64"
-      ];
-      networkConfig = {
-        ConfigureWithoutCarrier = true;
-        DHCPv6PrefixDelegation = true;
-        IPv6AcceptRA = false;
-      };
-      dhcpV6Config = {
-        PrefixDelegationHint = "::/64";
-      };
-      dhcpV6PrefixDelegationConfig = {
-#        UplinkInterface = "ppp-wan";
-        SubnetId = 1;
-        Announce = true;
-      };
-    };
-
-    netdevs."05-br-dmz" = {
-      netdevConfig = {
-        Name = "br-dmz";
-        Kind = "bridge";
-      };
-    };
-    networks."05-br-dmz" = {
-      matchConfig = {
-        Name = "br-dmz";
-      };
-      address = [
-        "10.151.6.1/24"
-      ];
-      networkConfig = {
-        ConfigureWithoutCarrier = true;
-        DHCPv6PrefixDelegation = true;
-        IPv6AcceptRA = false;
-      };
-      dhcpV6Config = {
-        PrefixDelegationHint = "::/64";
-      };
-      dhcpV6PrefixDelegationConfig = {
-#        UplinkInterface = "ppp-wan";
-        SubnetId = 2;
-        Announce = true;
-      };
-    };
 
     # PHYSICAL
     links."10-eth1" = {
@@ -113,27 +57,7 @@
         Name = "eth2";
       };
       networkConfig = {
-        Bridge = "br-tethys";
-        VLAN = "eth2.7";
-      };
-    };
-
-    # PHYSICAL + VLAN
-    netdevs."15-eth2.7" = {
-      netdevConfig = {
-        Name = "eth2.7";
-        Kind = "vlan";
-      };
-      vlanConfig = {
-        Id = 7;
-      };
-    };
-    networks."15-eth2.7" = {
-      matchConfig = {
-        Name = "eth2.7";
-      };
-      networkConfig = {
-        Bridge = "br-dmz";
+        Bridge = "br-lan";
       };
     };
   };
