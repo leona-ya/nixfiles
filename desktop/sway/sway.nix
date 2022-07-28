@@ -23,7 +23,7 @@
     wayland.windowManager.sway = let
       cfg = config.home-manager.users.leona.wayland.windowManager.sway;
       wallpaper = "~/.wallpapers/nasa-webb1.jpg";
-      lockCommand = "swaylock -i ${wallpaper}";
+      lockCommand = "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 20x10";
       modifier = "Mod4";
     in {
       enable = true;
@@ -40,7 +40,13 @@
 
         bars = [ ];
 
-        startup = [ ];
+
+        startup = [
+#          {
+#            command =
+#              "${pkgs.swayidle}/bin/swayidle -w before-sleep '${lockCommand}'";
+#          }
+        ];
 
         window = {
           border = 0;
@@ -137,7 +143,7 @@
           "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
           "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
 
-          "${modifier}+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 20x10";
+          "${modifier}+l" = "exec ${lockCommand}";
           "${modifier}+d" = "exec ${cfg.config.menu}";
           "${modifier}+p" = "exec ${pkgs.rofi-pass}/bin/rofi-pass";
 

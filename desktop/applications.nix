@@ -123,6 +123,7 @@
     enable = true;
     nssmdns = true;
   };
+  #services.pcscd.enable = true;
 
   home-manager.users.leona = {
     xdg.enable = true;

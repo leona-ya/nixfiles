@@ -4,7 +4,7 @@
   l.sops.secrets."services/nextcloud/admin_password".owner = "nextcloud";
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud23;
+    package = pkgs.nextcloud24;
     hostName = "cloud.leona.is";
 
     https = true;

@@ -22,6 +22,7 @@
           \}
 	      '';
       }
+      { plugin = YouCompleteMe; }
     ];
     extraConfig = ''
       set relativenumber
