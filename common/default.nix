@@ -44,7 +44,7 @@
     kbdInteractiveAuthentication = false;
     permitRootLogin = lib.mkDefault "no";
   };
-  services.mosh.enable = true;
+  programs.mosh.enable = true;
   services.iperf3.enable = true;
   services.iperf3.openFirewall = true;
 
