@@ -52,13 +52,13 @@ in {
               PublicKey = "MdSVqYNSF2Lylb1kTdfW33ZwQcGff1ueQRrjiPeqDVg=";
             };
           }
-          { # abraxas
+          { # leko
             wireguardPeerConfig = {
               AllowedIPs = [
                 "10.151.9.4/32"
                 "fd8f:d15b:9f40:0901:100::1/72"
               ];
-              PublicKey = "VZJ/wdbMd5e09nxVH2YT9FJ6sI5Wpq2HzWovjz8BVSg=";
+              PublicKey = "uDe4SqBm4ohNX9AZJOW4Uk7j1xIIgBAkll4NC1vdpDo=";
             };
           }
           { # Luna [DM]

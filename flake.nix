@@ -178,7 +178,7 @@
               ./hosts/laurel/configuration.nix
             ];
           };
-          deployment.targetHost = "laurel.wg.net.leona.is";
+          deployment = {};
         };
         turingmachine = {
           nixosSystem = {

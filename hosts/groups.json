@@ -42,6 +42,7 @@
   },
   "wireguard": {
     "hosts": [
+      "dwd",
       "gaika",
       "haku",
       "naiad",

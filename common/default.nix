@@ -37,11 +37,14 @@
 
   services.journald.extraConfig = "SystemMaxUse=256M";
 
-  services.openssh.enable = true;
-  services.openssh.ports = [ 54973 ];
-  services.openssh.passwordAuthentication = false;
-  services.openssh.kbdInteractiveAuthentication = false;
-  services.openssh.permitRootLogin = lib.mkDefault "no";
+  services.openssh = {
+    enable = true;
+    ports = [ 54973 ];
+    passwordAuthentication = false;
+    kbdInteractiveAuthentication = false;
+    permitRootLogin = lib.mkDefault "no";
+  };
+  services.mosh.enable = true;
   services.iperf3.enable = true;
   services.iperf3.openFirewall = true;
 

@@ -21,22 +21,22 @@ in rec {
     };
     dwd = {
       meta = {
-        intIpv6 = "fd8f:d15b:9f40::1";
+        intIpv6 = "fd8f:d15b:9f40:100::1";
         hasPublicIpv4 = false;
         hasPublicIpv6 = false;
       };
       services = {
         wireguard = {
           interfaces = {
-#            "server" = {
-#              ips = [ "${hosts.dwd.meta.intIpv6}/56" ];
-#              publicKey = "8Jzx9hklD8g6colimGybv9kpC2q0oTIgrISGhLd0QEM=";
-#              routed = [ "fd8f:d15b:9f40::/54" "10.151.0.0/21" ];
+            "server" = {
+              ips = [ "${hosts.dwd.meta.intIpv6}/56" ];
+              publicKey = "8Jzx9hklD8g6colimGybv9kpC2q0oTIgrISGhLd0QEM=";
+              routed = [ "fd8f:d15b:9f40:100::/56" "10.151.4.0/22" ];
 #              additonalInterfaceRoutes = [
 #                { routeConfig.Destination = "10.151.8.0/22"; }
 #                { routeConfig.Destination = "10.151.16.0/24"; }
 #              ];
-#            };
+            };
           };
         };
       };
