@@ -12,7 +12,7 @@
       attrs = {
         objectClass = "olcGlobal";
         cn = "config";
-        olcPidFile = "/run/slapd/slapd.pid";
+        olcPidFile = "/run/openldap/openldap.pid";
       };
       children = {
         "cn=schema" = {
@@ -52,7 +52,7 @@
           attrs = {
             objectClass = [ "olcDatabaseConfig" "olcMdbConfig" ];
             olcDatabase = "{1}mdb";
-            olcDbDirectory = "/var/db/ldap";
+            olcDbDirectory = "/var/lib/openldap/db";
             olcSuffix = "dc=leona,dc=is";
             olcRootDN = "cn=root,dc=leona,dc=is";
             olcRootPW = {

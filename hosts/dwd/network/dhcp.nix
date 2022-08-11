@@ -25,6 +25,12 @@
         range 10.151.5.1 10.151.5.254;
         option routers 10.151.4.1;
       }
+
+      host hue {
+        option host-name "hue.lan";
+        hardware ethernet ec:b5:fa:19:62:7a;
+        fixed-address 10.151.4.128;
+      }
     '';
   };
 #  services.radvd = {
