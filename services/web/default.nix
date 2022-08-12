@@ -130,16 +130,12 @@ in {
         '';
        };
     };
-    "gatabi22.de" = {
-      forceSSL = true;
+    "cv.leona.is" = {
       enableACME = true;
+      forceSSL = true;
       kTLS = true;
-      locations = {
-        "/".proxyPass = "http://10.151.21.42:8345";
-        "= /".return = "302 https://gatabi22.de/Abi2022";
-        "/static/".proxyPass = "http://10.151.21.42:80";
-        "/media/".proxyPass = "http://10.151.21.42:80";
-      };
+      root = "/var/www/cv.leona.is";
+      locations."/".index = "index.pdf";
     };
     "kopftausch.paulchenpanther.de" = {
       forceSSL = true;
