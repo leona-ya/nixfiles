@@ -80,3 +80,9 @@ config :pleroma, :manifest,
 config :pleroma, :restrict_unauthenticated,
   timelines: %{local: false, federated: true}
 
+config :pleroma, :emoji,
+   shortcode_globs: ["/emoji/*/*.png", "/emoji/*.png"],
+   groups: [
+     Blobs: ["/emoji/blobs/*.png"], # special file
+     Custom: ["/emoji/custom/*.png"]
+   ]
