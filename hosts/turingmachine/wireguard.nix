@@ -52,6 +52,12 @@
         { routeConfig.Destination = "10.151.0.0/16"; }
         { routeConfig.Destination = "fd8f:d15b:9f40::/48"; }
       ];
+      dns = [
+        "10.151.9.1"
+#        "1.0.0.1"
+        "fd8f:d15b:9f40:c00::1"
+#        "2606:4700:4700::1001"
+      ];
     };
     "30-wg-public" = {
       name = "wg-public";
@@ -66,12 +72,6 @@
       routes = [
         { routeConfig.Destination = "0.0.0.0/0"; }
         { routeConfig.Destination = "::/0"; }
-      ];
-      dns = [
-        "1.1.1.1"
-        "1.0.0.1"
-        "2606:4700:4700::1111"
-        "2606:4700:4700::1001"
       ];
     };
   };

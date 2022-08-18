@@ -31,12 +31,6 @@
       routes = [
         { routeConfig.Destination = "0.0.0.0/0"; }
       ];
-      dns = [
-        "1.1.1.1"
-        "1.0.0.1"
-        "8.8.8.8"
-        "8.8.4.4"
-      ];
     };
     networks."10-eth0".routes = [
       {

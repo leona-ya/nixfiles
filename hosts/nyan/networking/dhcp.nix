@@ -7,11 +7,11 @@ let
   interfaces = {
     "br-nhp" = {
       legacyPrefixes = {
-        "10.151.20.0" = {
+        "10.151.20.0" = rec {
           prefixLength = 24;
           start = "10.151.20.100";
           end = "10.151.20.200";
-          nameservers = [ "1.1.1.1" ];
+          nameservers = [ gateway ];
           gateway = "10.151.20.254";
         };
       };
@@ -20,7 +20,7 @@ let
         prefixLength = 68;
         start = "100";
         end = "fff";
-        nameservers = [ "2606:4700:4700::1111" ];
+        nameservers = [ "2a01:4f8:242:155f:1000::1" ];
       };
       raPrefixes = {
         "fd8f:d15b:9f40:0c31::".prefixLength = 64;
@@ -29,11 +29,11 @@ let
     };
     "br-nh" = {
       legacyPrefixes = {
-        "10.151.21.0" = {
+        "10.151.21.0" = rec {
           prefixLength = 26;
           start = "10.151.21.40";
           end = "10.151.21.60";
-          nameservers = [ "1.1.1.1" ];
+          nameservers = [ gateway ];
           gateway = "10.151.21.62";
         };
       };
@@ -42,7 +42,7 @@ let
         prefixLength = 68;
         start = "100";
         end = "fff";
-        nameservers = [ "2606:4700:4700::1111" ];
+        nameservers = [ "2a01:4f8:242:155f:2000::1" ];
       };
       raPrefixes = {
         "fd8f:d15b:9f40:0c32::".prefixLength = 64;
@@ -51,11 +51,11 @@ let
     };
     "br-n" = {
       legacyPrefixes = {
-        "10.151.21.64" = {
+        "10.151.21.64" = rec {
           prefixLength = 26;
           start = "10.151.21.100";
           end = "10.151.21.120";
-          nameservers = [ "1.1.1.1" ];
+          nameservers = [ gateway ];
           gateway = "10.151.21.126";
         };
       };
@@ -64,7 +64,7 @@ let
         prefixLength = 68;
         start = "100";
         end = "fff";
-        nameservers = [ "2606:4700:4700::1111" ];
+        nameservers = [ "2a01:4f8:242:155f:3000::1" ];
       };
       raPrefixes = {
         "2a01:4f8:242:155f:3000::".prefixLength = 68;
@@ -72,11 +72,11 @@ let
     };
     "br-np" = {
       legacyPrefixes = {
-        "10.151.21.192" = {
+        "10.151.21.192" = rec {
           prefixLength = 26;
           start = "10.151.21.240";
           end = "10.151.21.254";
-          nameservers = [ "1.1.1.1" ];
+          nameservers = [ gateway ];
           gateway = "10.151.21.192";
         };
       };
@@ -85,7 +85,7 @@ let
         prefixLength = 68;
         start = "100";
         end = "fff";
-        nameservers = [ "2606:4700:4700::1111" ];
+        nameservers = [ "2a01:4f8:242:155f:4000::1" ];
       };
       raPrefixes = {
         "2a01:4f8:242:155f:4000::".prefixLength = 68;

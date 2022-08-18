@@ -11,7 +11,6 @@
 
   networking.hostName = "hack";
   networking.domain = "net.leona.is";
-  services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
   systemd.network = {
     links."10-eth" = {
         matchConfig.MACAddress = "52:54:00:65:7a:8e";

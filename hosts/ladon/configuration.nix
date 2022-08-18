@@ -15,7 +15,6 @@
 
   networking.hostName = "ladon";
   networking.domain = "net.leona.is";
-  services.resolved.dnssec = "false"; # dnssec check is already done on other dns server
   systemd.network = {
     links."10-eth0" = {
       matchConfig.MACAddress = "52:54:00:d2:a7:92";

@@ -114,6 +114,31 @@ in {
     "br-np"
   ];
 
+  services.kresd.listenPlain = [
+     "127.0.0.1:53"
+     "[::1]:53"
+     "10.151.20.254:53"
+     "[2a01:4f8:242:155f:1000::1]:53"
+     "10.151.21.62:53"
+     "[2a01:4f8:242:155f:2000::1]:53"
+     "10.151.21.126:53"
+     "[2a01:4f8:242:155f:3000::1]:53"
+     "10.151.21.192:53"
+     "[2a01:4f8:242:155f:4000::1]:53"
+   ];
+
+  networking.firewall.interfaces = {
+    "br-nhp".allowedUDPPorts = [ 53 ];
+    "br-nhp".allowedTCPPorts = [ 53 ];
+    "br-nh".allowedUDPPorts = [ 53 ];
+    "br-nh".allowedTCPPorts = [ 53 ];
+    "br-n".allowedUDPPorts = [ 53 ];
+    "br-n".allowedTCPPorts = [ 53 ];
+    "br-np".allowedUDPPorts = [ 53 ];
+    "br-np".allowedTCPPorts = [ 53 ];
+    "wg-server".allowedUDPPorts = [ 53 ];
+    "wg-server".allowedTCPPorts = [ 53 ];
+  };
   l.nftables = {
     extraForward = ''
       ct state invalid drop

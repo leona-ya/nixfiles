@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./networking
     ../../common
+    ../../services/dns-kresd
   ];
 
   boot.loader.grub.enable = true;
