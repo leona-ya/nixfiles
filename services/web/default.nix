@@ -79,6 +79,13 @@ in {
             add_header Access-Control-Allow-Headers 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
           '';
         };
+        "= /cute" = {
+          return = "200 'yes'";
+          extraConfig = ''
+            ${commonHeaders}
+            add_header Content-Type text/html;
+          '';
+        };
       };
     };
     "static.labcode.de" = {
