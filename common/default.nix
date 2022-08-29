@@ -50,7 +50,7 @@
 
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
 
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "Etc/UTC";
 
   environment.variables.EDITOR = "nvim";
   programs.zsh.enable = true;

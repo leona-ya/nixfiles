@@ -31,6 +31,7 @@
 
   users.users.leona.packages = with pkgs; [
     _1password-gui
+    arduino
     bitwarden
     element-desktop
     evince
@@ -50,6 +51,7 @@
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
+    kicad
     libreoffice-fresh
     nheko
     mpv
@@ -99,7 +101,7 @@
   services.udev.packages = [ pkgs.yubikey-personalization ];
   environment.variables.MOZ_USE_XINPUT2 = "1"; # for firefox
   hardware.bluetooth.enable = true;
-
+  virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;

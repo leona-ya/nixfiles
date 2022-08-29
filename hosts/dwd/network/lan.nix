@@ -14,7 +14,7 @@
       };
       address = [
         "10.151.4.1/22"
-#        "fd8f:d15b:9f40:10::1/64"
+        "fd8f:d15b:9f40:101::1/64"
       ];
       networkConfig = {
         ConfigureWithoutCarrier = true;

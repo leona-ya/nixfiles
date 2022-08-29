@@ -33,20 +33,22 @@
       }
     '';
   };
-#  services.radvd = {
-#    enable = true;
-#    config = ''
-#      interface br-lan {
-#        AdvSendAdvert on;
-#        MinRtrAdvInterval 3;
-#        MaxRtrAdvInterval 10;
-#        prefix ::/64 {
-#          AdvOnLink on;
-#          AdvAutonomous on;
-#          AdvRouterAddr on;
-#        };
-#        RDNSS fd8f:d15b:9f40:10::1 { };
-#      };
+  services.radvd = {
+    enable = true;
+    config = ''
+      interface br-lan {
+        AdvSendAdvert on;
+        MinRtrAdvInterval 3;
+        MaxRtrAdvInterval 10;
+        prefix ::/64 {
+          AdvOnLink on;
+          AdvAutonomous on;
+          AdvRouterAddr on;
+        };
+        RDNSS fd8f:d15b:9f40:101::1 { };
+      };
+    '';
+  };
 #      interface br-tethys {
 #        AdvSendAdvert on;
 #        MinRtrAdvInterval 3;

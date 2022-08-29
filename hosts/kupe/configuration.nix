@@ -8,7 +8,6 @@
     ../../services/initrd-ssh
     ../../services/dns-knot/primary
     ../../services/mail
-    ../../services/dns-kresd
   ];
 
   boot.loader.systemd-boot.enable = true;

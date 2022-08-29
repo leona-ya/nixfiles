@@ -48,7 +48,7 @@
     "format-muted": " muted"
   },
   "clock": {
-    "format": "{:%a %Y-%m-%d %H:%M:%S}",
+    "format": "{:%a %Y-%m-%d %H:%M:%S%z}",
     "interval": 1
   },
   "network": {

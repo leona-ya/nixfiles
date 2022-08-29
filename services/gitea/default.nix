@@ -33,7 +33,6 @@
     cookieSecure = true;
     disableRegistration = true;
     ssh = {
-      enable = true;
       clonePort = 2222;
     };
 
@@ -63,6 +62,7 @@
 
       server = {
         START_SSH_SERVER = true;
+        DISABLE_SSH = false;
         BUILTIN_SSH_SERVER_USER = "git";
         DISABLE_ROUTER_LOG = true;
         PROTOCOL = "unix";
