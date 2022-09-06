@@ -3,6 +3,7 @@
 {
   l.sops.secrets."hosts/turingmachine/wireguard_wg-clients_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/turingmachine/wireguard_wg-public_privatekey".owner = "systemd-network";
+  l.sops.secrets."hosts/turingmachine/wireguard_wg-public-bkp_privatekey".owner = "systemd-network";
   systemd.network.netdevs = {
     "30-wg-clients" = {
       netdevConfig = {
@@ -36,6 +37,23 @@
         };
       }];
     };
+    "30-wg-public-bkp" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg-public-bkp";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = config.sops.secrets."hosts/turingmachine/wireguard_wg-public-bkp_privatekey".path;
+      };
+      wireguardPeers = [{
+        wireguardPeerConfig = {
+          AllowedIPs = [ "::/0" ];
+          PublicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
+          Endpoint = "wg.net.leona.is:51440";
+        };
+      }];
+    };
+
   };
   systemd.network.networks = {
     "30-wg-clients" = {
@@ -71,6 +89,19 @@
       ];
       routes = [
         { routeConfig.Destination = "0.0.0.0/0"; }
+        { routeConfig.Destination = "::/0"; }
+      ];
+    };
+    "30-wg-public-bkp" = {
+      name = "wg-public-bkp";
+      linkConfig = {
+        RequiredForOnline = "no";
+        ActivationPolicy = "manual";
+      };
+      address = [
+        "2a01:4f8:242:155f:5100::1/72"
+      ];
+      routes = [
         { routeConfig.Destination = "::/0"; }
       ];
     };

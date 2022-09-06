@@ -127,7 +127,7 @@ creation_rules:
           - *leona
         age:
           - *beryl
-  - path_regex: secrets/services/(hedgedoc|matrix|paperless|pleroma|vikunja|vaultwarden).yaml
+  - path_regex: secrets/services/(hedgedoc|matrix|netbox|paperless|pleroma|vikunja|vaultwarden).yaml
     key_groups:
       - pgp:
           - *old

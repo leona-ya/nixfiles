@@ -21,7 +21,7 @@
 
   l.sops.secrets = {
     "hosts/turingmachine/alt_rsa_ssh_key".owner = "leona";
-    "hosts/turingmachine/user_em0lar_pw".neededForUsers = true;
+    "hosts/turingmachine/user_leona_pw".neededForUsers = true;
   };
 
   services.upower = {
@@ -32,7 +32,7 @@
   };
   systemd.services.upower.wantedBy = lib.mkForce [ "multi-user.target" ];
 
-  users.users.leona.passwordFile = config.sops.secrets."hosts/turingmachine/user_em0lar_pw".path;
+  users.users.leona.passwordFile = config.sops.secrets."hosts/turingmachine/user_leona_pw".path;
   security.sudo.wheelNeedsPassword = true;
 
   home-manager.users.leona = {

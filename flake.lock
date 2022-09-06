@@ -90,11 +90,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1661573386,
-        "narHash": "sha256-pBEg8iY00Af/SAtU2dlmOAv+2x7kScaGlFRDjNoVJO8=",
+        "lastModified": 1661824092,
+        "narHash": "sha256-nSWLWytlXbeLrx5A+r5Pso7CvVrX5EgmIIXW/EXvPHQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d89bdff445eadff03fe414e9c30486bc8166b72b",
+        "rev": "5bd66dc6cd967033489c69d486402b75d338eeb6",
         "type": "github"
       },
       "original": {
@@ -112,11 +112,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1654956599,
-        "narHash": "sha256-E7BLtgVZ1t1UvJP2x0TVVzSLwIw4a1oaPrg2qfEsZ3w=",
+        "lastModified": 1662125278,
+        "narHash": "sha256-TO0s6ehYh+k6nFLs67xrqii2t8k+GjN9f8JfCTlhncU=",
         "ref": "main",
-        "rev": "614f2def5b481d55daf2a3f8e5e27d5e4952d948",
-        "revCount": 2,
+        "rev": "383d748e4ee19eadc361cf10a96510b64f40f919",
+        "revCount": 3,
         "type": "git",
         "url": "https://cyberchaos.dev/leona/leona.is"
       },
@@ -151,11 +151,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1660407119,
-        "narHash": "sha256-04lWO0pDbhAXFdL4v2VzzwgxrZ5IefKn+TmZPiPeKxg=",
+        "lastModified": 1662092548,
+        "narHash": "sha256-nmAbyJ5+DBXcNJ2Rcy/Gx84maqtLdr6xEe82+AXCaY8=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "12620020f76b1b5d2b0e6fbbda831ed4f5fe56e1",
+        "rev": "786633331724f36967853b98d9100b5cfaa4d798",
         "type": "github"
       },
       "original": {
@@ -198,11 +198,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1661541451,
-        "narHash": "sha256-LALyT63vpo1sftSmHAbbrj+emfCOo93Jv4xVOIcmnl0=",
+        "lastModified": 1662019588,
+        "narHash": "sha256-oPEjHKGGVbBXqwwL+UjsveJzghWiWV0n9ogo1X6l4cw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "38e16b192af13ff6cffc8a35a25f390f1e96b585",
+        "rev": "2da64a81275b68fdad38af669afeda43d401e94b",
         "type": "github"
       },
       "original": {
@@ -214,11 +214,11 @@
     },
     "nixpkgs-unstable-small": {
       "locked": {
-        "lastModified": 1661663669,
-        "narHash": "sha256-TsVDHYX9boTJPsgzGrQLZN5hv5V96pUVL5RgK5yLKPY=",
+        "lastModified": 1662070595,
+        "narHash": "sha256-fYrdaUXhV4oPhkehHRwj78d1VjATnK4SF0fElEQUyLw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6cae4be2a768154ae9815d8238f00b03a89ea21f",
+        "rev": "9f867325b5da6c4c9211707abdb481e1d0b3e589",
         "type": "github"
       },
       "original": {

@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022081201;
+      serial = 2022090501;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -83,6 +83,7 @@ in {
       grocy.CNAME = [ "foros.net.leona.is." ];
       inv.CNAME = [ "foros.net.leona.is." ];
       "api.grocy".CNAME = [ "foros.net.leona.is." ];
+      netbox.CNAME = [ "laurel.net.leona.is." ];
       matrix.CNAME = [ "laurel.net.leona.is." ];
       md.CNAME = [ "laurel.net.leona.is." ];
       paperless.CNAME = [ "laurel.net.leona.is." ];

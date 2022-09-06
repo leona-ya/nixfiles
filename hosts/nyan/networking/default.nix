@@ -7,6 +7,7 @@ in {
   ];
 
   l.sops.secrets."hosts/nyan/wireguard_wg-server_privatekey".owner = "systemd-network";
+  l.sops.secrets."hosts/nyan/wireguard_wg-public-bkp_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];
 
   systemd.network = {

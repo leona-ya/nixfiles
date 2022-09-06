@@ -23,6 +23,7 @@
 
   l.nftables.checkIPTables = false;
   virtualisation.libvirtd.enable = true;
+  security.polkit.enable = true;
 
   l.telegraf = {
     enable = true;

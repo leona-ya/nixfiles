@@ -242,6 +242,24 @@ in rec {
               routed = [ "fd8f:d15b:9f40:0c30::/60" "10.151.20.0/22" ];
               hostname = "nyan.net.leona.is";
             };
+            "public-bkp" = {
+              ips = [ "2a01:4f8:242:155f:5000::1/68" ];
+              publicKey = "VdYP3HO46HsWhpqZRBZg7MP9ATmhyLZYjY/+yifeNyI=";
+              routed = [ "2a01:4f8:242:155f:5000::1/68" ];
+              interfaceRoutes = [
+                { routeConfig.Destination = "2a01:4f8:242:155f:5000::1/68"; }
+              ];
+              extraWireguardPeers = [
+                { # turingmachine
+                  wireguardPeerConfig = {
+                    AllowedIPs =
+                      [ "2a01:4f8:242:155f:5100::/72" ];
+                    PublicKey = "Dnbcb55rMzOF5907nMjYbRLAHzg96VlOrQTRcjzyoBw=";
+                    PersistentKeepalive = 21;
+                  };
+                }
+              ];
+            };
           };
         };
       };
@@ -289,6 +307,7 @@ in rec {
             ];
           };
           public = { port = 51440; };
+          public-bkp = { port = 51443; };
         };
         g_currenthost_generate_peers = ifName:
           (builtins.map (x:

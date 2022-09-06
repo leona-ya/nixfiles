@@ -8,6 +8,7 @@
       ../../services/initrd-ssh
       ../../services/hedgedoc
       ../../services/matrix
+      ../../services/netbox
       ../../services/paperless
       ../../services/haj-social
       ../../services/vaultwarden
