@@ -92,15 +92,6 @@
           };
           deployment = {};
         };
-        cole = {
-          nixosSystem = {
-            system = "aarch64-linux";
-            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
-              ./hosts/cole/configuration.nix
-            ];
-          };
-          deployment.targetHost = "fd8f:d15b:9f40:10:ba27:ebff:fe5d:d0af";
-        };
         dwd = {
           nixosSystem = {
             system = "x86_64-linux";

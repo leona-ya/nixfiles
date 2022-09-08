@@ -32,10 +32,10 @@ in rec {
               ips = [ "${hosts.dwd.meta.intIpv6}/56" ];
               publicKey = "8Jzx9hklD8g6colimGybv9kpC2q0oTIgrISGhLd0QEM=";
               routed = [ "fd8f:d15b:9f40:100::/56" "10.151.4.0/22" ];
-#              additonalInterfaceRoutes = [
-#                { routeConfig.Destination = "10.151.8.0/22"; }
-#                { routeConfig.Destination = "10.151.16.0/24"; }
-#              ];
+              #              additonalInterfaceRoutes = [
+              #                { routeConfig.Destination = "10.151.8.0/22"; }
+              #                { routeConfig.Destination = "10.151.16.0/24"; }
+              #              ];
             };
           };
         };
@@ -48,12 +48,12 @@ in rec {
         hasPublicIpv6 = true;
       };
       nyan = {
-       mac = "52:54:00:e7:6a:e5";
-       duid = "00:02:00:00:ab:11:82:40:af:d3:85:17:b2:1f";
-       legacyAddress = "10.151.20.12";
-       address = "2a01:4f8:242:155f:1000::987";
+        mac = "52:54:00:e7:6a:e5";
+        duid = "00:02:00:00:ab:11:82:40:af:d3:85:17:b2:1f";
+        legacyAddress = "10.151.20.12";
+        address = "2a01:4f8:242:155f:1000::987";
       };
-   };
+    };
     kupe = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fec0:8539";
@@ -78,10 +78,10 @@ in rec {
           ips = [ "${hosts.gaika.meta.intIpv6}/56" ];
           publicKey = "rn6dN9VdCiYMaNcP7eiCUuOB103OpIAva08EPklNfgo=";
           routed = [ "fd8f:d15b:9f40::/56" "10.151.0.0/22" ];
-#          additonalInterfaceRoutes = [
-#            { routeConfig.Destination = "10.151.8.0/22"; }
-#            { routeConfig.Destination = "10.151.16.0/24"; }
-#          ];
+          #          additonalInterfaceRoutes = [
+          #            { routeConfig.Destination = "10.151.8.0/22"; }
+          #            { routeConfig.Destination = "10.151.16.0/24"; }
+          #          ];
         };
       };
     };
@@ -130,32 +130,28 @@ in rec {
               extraWireguardPeers = [
                 { # foros
                   wireguardPeerConfig = {
-                    AllowedIPs =
-                      [ "195.39.247.144/32" ];
+                    AllowedIPs = [ "195.39.247.144/32" ];
                     PublicKey = "CnswutrDvUJdDIsopjkvjO/SiOrKdx3ob0jvDf0LLFI=";
                     PersistentKeepalive = 21;
                   };
                 }
                 { # beryl
                   wireguardPeerConfig = {
-                    AllowedIPs =
-                      [ "195.39.247.145/32" ];
+                    AllowedIPs = [ "195.39.247.145/32" ];
                     PublicKey = "DBfzjdPqk5Ee8OYsqNy2LoM7kvbh8ppmK836jlGz43s=";
                     PersistentKeepalive = 21;
                   };
                 }
                 { # kupe
                   wireguardPeerConfig = {
-                    AllowedIPs =
-                      [ "195.39.247.146/32" ];
+                    AllowedIPs = [ "195.39.247.146/32" ];
                     PublicKey = "MTGJvKwt7pofvLbJ2gMoOs8z8qFjt3F3e2crlJMHajQ=";
                     PersistentKeepalive = 21;
                   };
                 }
                 { # ladon
                   wireguardPeerConfig = {
-                    AllowedIPs =
-                      [ "195.39.247.147/32" ];
+                    AllowedIPs = [ "195.39.247.147/32" ];
                     PublicKey = "ys2dZHPk2YgdEIOs+dKq/nK3oTX1bBBmAuEsOLSpyi4=";
                     PersistentKeepalive = 21;
                   };
@@ -170,8 +166,7 @@ in rec {
                 }
                 { # laurel
                   wireguardPeerConfig = {
-                    AllowedIPs =
-                      [ "195.39.247.149/32" ];
+                    AllowedIPs = [ "195.39.247.149/32" ];
                     PublicKey = "0zhic69IA9xKXljBzB4ZqYMmFtLVYZCPw0L65grIaRg=";
                     PersistentKeepalive = 21;
                   };
@@ -246,19 +241,15 @@ in rec {
               ips = [ "2a01:4f8:242:155f:5000::1/68" ];
               publicKey = "VdYP3HO46HsWhpqZRBZg7MP9ATmhyLZYjY/+yifeNyI=";
               routed = [ "2a01:4f8:242:155f:5000::1/68" ];
-              interfaceRoutes = [
-                { routeConfig.Destination = "2a01:4f8:242:155f:5000::1/68"; }
-              ];
-              extraWireguardPeers = [
-                { # turingmachine
-                  wireguardPeerConfig = {
-                    AllowedIPs =
-                      [ "2a01:4f8:242:155f:5100::/72" ];
-                    PublicKey = "Dnbcb55rMzOF5907nMjYbRLAHzg96VlOrQTRcjzyoBw=";
-                    PersistentKeepalive = 21;
-                  };
-                }
-              ];
+              interfaceRoutes =
+                [{ routeConfig.Destination = "2a01:4f8:242:155f:5000::1/68"; }];
+              extraWireguardPeers = [{ # turingmachine
+                wireguardPeerConfig = {
+                  AllowedIPs = [ "2a01:4f8:242:155f:5100::/72" ];
+                  PublicKey = "Dnbcb55rMzOF5907nMjYbRLAHzg96VlOrQTRcjzyoBw=";
+                  PersistentKeepalive = 21;
+                };
+              }];
             };
           };
         };
@@ -292,10 +283,13 @@ in rec {
   };
   groups =
     (recursiveUpdate (builtins.fromJSON (builtins.readFile ./groups.json)) {
-      g_public_v4_hostnames = lib.mapAttrsToList (k: v: "${k}.net.leona.is") (lib.filterAttrs (k: v: v.meta.hasPublicIpv4) hosts);
-      g_public_v6_hostnames = lib.mapAttrsToList (k: v: "${k}.net.leona.is") (lib.filterAttrs (k: v: v.meta.hasPublicIpv6) hosts);
+      g_public_v4_hostnames = lib.mapAttrsToList (k: v: "${k}.net.leona.is")
+        (lib.filterAttrs (k: v: v.meta.hasPublicIpv4) hosts);
+      g_public_v6_hostnames = lib.mapAttrsToList (k: v: "${k}.net.leona.is")
+        (lib.filterAttrs (k: v: v.meta.hasPublicIpv6) hosts);
       monitoring = {
-        g_hostnames = builtins.map (host: "${host}.wg.net.leona.is") groups.monitoring.hosts;
+        g_hostnames = builtins.map (host: "${host}.wg.net.leona.is")
+          groups.monitoring.hosts;
       };
       wireguard = {
         interfaces = {
@@ -322,10 +316,14 @@ in rec {
                 PublicKey = ifaceConfig.publicKey;
                 PersistentKeepalive = 21;
               };
-            }) (builtins.filter (x: x.services.wireguard.interfaces ? ${ifName})
-              (getHosts
-                (builtins.filter (x: x != currentHost) groups.wireguard.hosts)
-                hosts)));
+            }) (builtins.filter (x:
+              x.services.wireguard.interfaces.${ifName} ? hostname
+              || hosts.${currentHost}.services.wireguard.interfaces.${ifName}
+              ? hostname)
+              (builtins.filter (x: x.services.wireguard.interfaces ? ${ifName})
+                (getHosts
+                  (builtins.filter (x: x != currentHost) groups.wireguard.hosts)
+                  hosts))));
 
         g_systemd_network_netdevconfig = mapAttrs' (ifName: value:
           let
@@ -365,20 +363,15 @@ in rec {
           }) hosts.${currentHost}.services.wireguard.interfaces;
       };
     });
-  nyan.g_assignements = builtins.mapAttrs (hostnname: config:
-    config.nyan
-  ) (filterAttrs (
-    hostname: config: config ? nyan
-  ) hosts);
+  nyan.g_assignements = builtins.mapAttrs (hostnname: config: config.nyan)
+    (filterAttrs (hostname: config: config ? nyan) hosts);
   services = {
     dns-int.g_dns_records = mapAttrs' (hostname: config:
-      nameValuePair "${hostname}.wg.net" {
-        AAAA = [ config.meta.intIpv6 ];
-      }) (filterAttrs (h: config: config.meta ? intIpv6) hosts) // mapAttrs' (hostname: config:
-      nameValuePair "${hostname}.nyan.net" {
-        A = [ config.nyan.legacyAddress ];
-      }) (filterAttrs (
-        hostname: config: config ? nyan
-      ) hosts);
+      nameValuePair "${hostname}.wg.net" { AAAA = [ config.meta.intIpv6 ]; })
+      (filterAttrs (h: config: config.meta ? intIpv6) hosts) // mapAttrs'
+      (hostname: config:
+        nameValuePair "${hostname}.nyan.net" {
+          A = [ config.nyan.legacyAddress ];
+        }) (filterAttrs (hostname: config: config ? nyan) hosts);
   };
 }
