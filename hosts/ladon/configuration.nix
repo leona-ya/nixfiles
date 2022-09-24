@@ -4,7 +4,7 @@
   imports = [
       ./hardware-configuration.nix
       ./wireguard.nix
-      ../../common
+      ../../profiles/base
       ../../services/initrd-ssh
       ../../services/ldap
       ../../services/keycloak

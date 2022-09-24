@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./networking
-    ../../common
+    ../../profiles/base
     ../../services/dns-kresd
   ];
 

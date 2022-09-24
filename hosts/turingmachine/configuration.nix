@@ -3,8 +3,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../common
-    ../../desktop
+    ../../profiles/base
+    ../../profiles/desktop
     ./network.nix
     ./wireguard.nix
   ];

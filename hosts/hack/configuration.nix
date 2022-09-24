@@ -3,7 +3,7 @@
 {
   imports = [
       ./hardware-configuration.nix
-      ../../common
+      ../../profiles/base
       ../../services/backup-relay
   ];
   boot.loader.systemd-boot.enable = true;

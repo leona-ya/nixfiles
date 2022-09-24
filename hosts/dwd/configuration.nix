@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../common
+      ../../profiles/base
       ./network
     ];
 

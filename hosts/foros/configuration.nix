@@ -5,7 +5,7 @@
       ./hardware-configuration.nix
       ./wireguard.nix
       ./network.nix
-      ../../common
+      ../../profiles/base
       ../../services/initrd-ssh
       ../../services/nextcloud
       ../../services/web

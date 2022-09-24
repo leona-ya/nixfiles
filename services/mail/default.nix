@@ -15,7 +15,7 @@
   security.acme.certs."${config.networking.hostName}.net.leona.is".extraDomainNames = [
     "mail.em0lar.dev"
     "mail.leona.is"
-    "kupe.net.em0lar.dev"
+#    "kupe.net.em0lar.dev"
   ];
   mailserver = {
     enable = true;

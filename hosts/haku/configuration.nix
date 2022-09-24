@@ -5,7 +5,7 @@
     [
       ./hardware-configuration.nix
       ./wireguard.nix
-      ../../common
+      ../../profiles/base
       ../../services/dns-knot/secondary
       ../../services/dns-kresd
     ];
