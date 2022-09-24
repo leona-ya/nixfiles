@@ -4,7 +4,7 @@
   imports = [
     (fetchGit {
       url = "ssh://gitlab@cyberchaos.dev:62954/leona/nixfiles-mail-secrets.git";
-      rev = "bc060aeb4db9cfd76b3f2c66f58f9913e588ef8f";
+      rev = "13a8893d8a57690724e75a80715de00987bee8e5";
       ref = "main";
     }).outPath
     ./autoconfig.nix

@@ -101,7 +101,7 @@
             ];
           };
           deployment.targetHost = "10.151.4.1";
-          deployment.targetPort = 54973;
+	  deployment.targetPort = 54973;
         };
         foros = {
           nixosSystem = {
@@ -121,7 +121,6 @@
             ];
           };
           deployment.targetHost = "10.151.0.5";
-          deployment.targetPort = 54973;
         };
         hack = {
           nixosSystem = {

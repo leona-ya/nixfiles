@@ -16,6 +16,7 @@
       PAPERLESS_OCR_LANGUAGE = "deu+eng";
       PAPERLESS_TASK_WORKERS = 2;
       PAPERLESS_THREADS_PER_WORKER = 1;
+      PAPERLESS_TIME_ZONE = config.time.timeZone;
     };
   };
 
