@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022090501;
+      serial = 2022092401;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -44,6 +44,7 @@ in {
       "haku.net" = haku_host;
       "kupe.net" = kupe_host;
       "nyo.net" = host "136.243.42.251" "2a01:4f8:212:ad7::1";
+      "charon.net".AAAA = [ "2a01:4f9:6a:13c6::1" ];
       "nyan.net" = host "168.119.67.67" "2a01:4f8:242:155f::1";
       "foros.net" = host "195.39.247.144" "2a01:4f8:242:155f:1000::987";
       "beryl.net" = host "195.39.247.145" "2a01:4f8:242:155f:1000::b33";

@@ -1,7 +1,7 @@
 keys:
-  - &old 430411806903447FF65FCBCBB1ADA545CD2CBACD
   - &leona EB5CEED62922C6050F9FC85BD5B08ADFC75E3605
   - &beryl age1mfj25jy2g86pnshqugjxx8enaju5vsdahywlateysz5kuvtx0unqun7kur
+  - &charon age17c540zjsr894qx0ask9sy2vy9vmuuyxhjdetw5rzqjxjqf2y0syqxvtkke
   - &dwd age1xph9c9rtyjrz3cnd6t940dnzuruqw27l7yp98ac33rdz53q429gsu702k4
   - &foros age1xhel4guw25h45qk2mjtyszq7x9pgk3w0nr9glchf36kkxf2823fqu32uvp
   - &gaika age19yum7ka8gn7pm5qgrjhcx4ac2sclk3d7wl2088750v508ghzrpnsjwvynj
@@ -17,10 +17,10 @@ creation_rules:
   - path_regex: secrets/all/[^/]+\.yaml$
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *beryl
+          - *charon
           - *dwd
           - *foros
           - *gaika
@@ -37,21 +37,24 @@ creation_rules:
   - path_regex: secrets/hosts/beryl.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *beryl
+  - path_regex: secrets/hosts/charon.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *charon
   - path_regex: secrets/hosts/dwd.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *dwd
   - path_regex: secrets/hosts/foros.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *foros
@@ -64,49 +67,42 @@ creation_rules:
   - path_regex: secrets/hosts/haku.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *haku
   - path_regex: secrets/hosts/kupe.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *kupe
   - path_regex: secrets/hosts/ladon.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *ladon
   - path_regex: secrets/hosts/laurel.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *laurel
   - path_regex: secrets/hosts/naiad.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *naiad
   - path_regex: secrets/hosts/nyan.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *nyan
   - path_regex: secrets/hosts/turingmachine.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *turingmachine
@@ -116,49 +112,42 @@ creation_rules:
   - path_regex: secrets/services/backup-relay.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *hack
   - path_regex: secrets/services/(gitea|matrix-old).yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *beryl
   - path_regex: secrets/services/(hedgedoc|matrix|netbox|paperless|pleroma|vikunja|vaultwarden).yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *laurel
   - path_regex: secrets/services/(firefly-iii|grocy|nextcloud).yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *foros
   - path_regex: secrets/services/(keycloak|ldap|hydra-sso).yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *ladon
   - path_regex: secrets/services/mail.yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *kupe
   - path_regex: secrets/services/(monitoring).yaml
     key_groups:
       - pgp:
-          - *old
           - *leona
         age:
           - *naiad

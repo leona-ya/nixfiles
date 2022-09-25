@@ -12,11 +12,37 @@ in rec {
         hasPublicIpv4 = true;
         hasPublicIpv6 = true;
       };
-      nyan = {
-        mac = "52:54:00:4e:5c:bf";
-        duid = "00:02:00:00:ab:11:fd:dc:c3:f1:66:4a:de:40";
-        legacyAddress = "10.151.20.11";
-        address = "2a01:4f8:242:155f:1000::b33";
+      charon = {
+        "internal" = {
+          mac = "52:54:00:4e:5c:bf";
+          legacyAddress = "10.151.20.11";
+        };
+        "internet" = {
+          mac = "52:54:00:ba:40:5c";
+          duid = "00:02:00:00:ab:11:fd:dc:c3:f1:66:4a:de:40";
+          legacyAddress = "195.39.247.145";
+          address = "2a01:4f9:6a:13c6:4000::b33";
+        };
+      };
+    };
+    charon = {
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:0c40::1";
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = true;
+      };
+      services = {
+        wireguard = {
+          interfaces = {
+            "server" = {
+              ips = [ "10.151.20.254/32" "fd8f:d15b:9f40:0c40::1/60" ];
+              publicKey = "Gz1LGMs9bVKEjP2tcX47hkcEHQKGTtqfCvcFcS0G1ic=";
+              routed = [ "fd8f:d15b:9f40:0c40::/60" ];
+#              routed = [ "fd8f:d15b:9f40:0c40::/60" "10.151.20.0/22" ];
+              hostname = "charon.net.leona.is";
+            };
+          };
+        };
       };
     };
     dwd = {
@@ -135,13 +161,6 @@ in rec {
                     PersistentKeepalive = 21;
                   };
                 }
-                { # beryl
-                  wireguardPeerConfig = {
-                    AllowedIPs = [ "195.39.247.145/32" ];
-                    PublicKey = "DBfzjdPqk5Ee8OYsqNy2LoM7kvbh8ppmK836jlGz43s=";
-                    PersistentKeepalive = 21;
-                  };
-                }
                 { # kupe
                   wireguardPeerConfig = {
                     AllowedIPs = [ "195.39.247.146/32" ];
@@ -168,6 +187,13 @@ in rec {
                   wireguardPeerConfig = {
                     AllowedIPs = [ "195.39.247.149/32" ];
                     PublicKey = "0zhic69IA9xKXljBzB4ZqYMmFtLVYZCPw0L65grIaRg=";
+                    PersistentKeepalive = 21;
+                  };
+                }
+                { # charon
+                  wireguardPeerConfig = {
+                    AllowedIPs = [ "195.39.247.145/32" "195.39.247.150/32" ];
+                    PublicKey = "d0XoFQpOo0rR1RRTsnBIo6sNb+pT0MOThCSnaLQ4jRQ=";
                     PersistentKeepalive = 21;
                   };
                 }
@@ -234,7 +260,7 @@ in rec {
             "server" = {
               ips = [ "10.151.20.254/32" "${hosts.nyan.meta.intIpv6}/60" ];
               publicKey = "AilevKAZRnvQUkJhg/R9APpYUdEbnE1g2BP+FUQwBBI=";
-              routed = [ "fd8f:d15b:9f40:0c30::/60" "10.151.20.0/22" ];
+              routed = [ "fd8f:d15b:9f40:0c30::/60" ];
               hostname = "nyan.net.leona.is";
             };
             "public-bkp" = {
@@ -363,8 +389,10 @@ in rec {
           }) hosts.${currentHost}.services.wireguard.interfaces;
       };
     });
-  nyan.g_assignements = builtins.mapAttrs (hostnname: config: config.nyan)
+  nyan.g_assignments = builtins.mapAttrs (hostname: config: config.nyan)
     (filterAttrs (hostname: config: config ? nyan) hosts);
+  charon.g_assignments = builtins.mapAttrs (hostname: config: config.charon)
+     (filterAttrs (hostname: config: config ? charon) hosts);
   services = {
     dns-int.g_dns_records = mapAttrs' (hostname: config:
       nameValuePair "${hostname}.wg.net" { AAAA = [ config.meta.intIpv6 ]; })

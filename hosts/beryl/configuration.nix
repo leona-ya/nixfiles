@@ -3,7 +3,7 @@
 {
   imports = [
       ./hardware-configuration.nix
-      ./wireguard.nix
+#      ./wireguard.nix
       ./network.nix
       ../../profiles/base
       ../../services/initrd-ssh

@@ -1,9 +1,9 @@
-{ options, pkgs, lib, config, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   imports = [
-    ../users/root
-    ../users/leona
+    ../../users/root
+    ../../users/leona
     ./nginx.nix
     ./nvim.nix
   ];

@@ -28,6 +28,7 @@
   "monitoring": {
     "hosts": [
       "beryl",
+      "charon",
       "dwd",
       "foros",
       "gaika",
@@ -46,7 +47,8 @@
       "gaika",
       "haku",
       "naiad",
-      "nyan"
+      "nyan",
+      "charon"
     ]
   }
 }

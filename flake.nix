@@ -92,6 +92,15 @@
           };
           deployment = {};
         };
+        charon = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
+              ./hosts/charon/configuration.nix
+            ];
+          };
+          deployment = {};
+        };
         dwd = {
           nixosSystem = {
             system = "x86_64-linux";
@@ -101,7 +110,7 @@
             ];
           };
           deployment.targetHost = "10.151.4.1";
-	  deployment.targetPort = 54973;
+          deployment.targetPort = 54973;
         };
         foros = {
           nixosSystem = {
