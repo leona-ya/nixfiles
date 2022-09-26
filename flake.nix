@@ -120,8 +120,7 @@
               ./hosts/foros/configuration.nix
             ];
           };
-          deployment.targetHost = "2a01:4f9:6a:13c6:4000::dea";
-	  deployment.targetPort = 54973;
+          deployment = {};
         };
         gaika = {
           nixosSystem = {
@@ -169,7 +168,10 @@
               ./hosts/ladon/configuration.nix
             ];
           };
-          deployment = {};
+          deployment = {
+            targetHost = "2a01:4f9:6a:13c6:4000::f00";
+	    targetPort = 54973;
+          };
         };
         laurel = {
           nixosSystem = {

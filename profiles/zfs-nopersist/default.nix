@@ -10,6 +10,7 @@ let
       "opendkim"
       "rspamd"
       "postfix"
+      "openldap"
     ])) // (if config.services.opendkim.enable then { "/var/dkim" = "/persist/var/dkim"; } else { })
        // (if config.services.dovecot2.enable then { "/var/lib/dovecot" = "/persist/var/lib/dovecot"; "/var/sieve" = "/persist/var/sieve"; } else { })
        // (if config.hardware.bluetooth.enable then { "/var/lib/bluetooth" = "/persist/var/lib/bluetooth"; } else { })

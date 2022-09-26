@@ -19,8 +19,7 @@ in {
       type = with types; listOf str;
       default = [
         "/home"
-        "/var"
-        "/etc"
+        "/persist"
         "/root"
       ];
     };
