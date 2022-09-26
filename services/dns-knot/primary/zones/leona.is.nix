@@ -6,14 +6,14 @@ let
 haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
 naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
 kupe_host = host "195.39.247.146" "2a01:4f8:242:155f:1000::f28";
-laurel_host = host "195.39.247.149" "2a01:4f8:242:155f:1000::b4d";
+laurel_host = host "195.39.247.149" "2a01:4f9:6a:13c6:4000::eaa";
 in {
   zone = {
     TTL = 600;
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022092602;
+      serial = 2022092603;
       refresh = 300;
       expire = 604800;
       minimum = 300;

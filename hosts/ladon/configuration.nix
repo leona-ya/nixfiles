@@ -13,6 +13,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["zfs"];
   boot.zfs.devNodes = "/dev/disk/by-path";
+  boot.kernelParams = [
+    "zfs.zfs_arc_max=1024000000"
+  ];
   networking.hostId = "da2123a2";
 
   networking.hostName = "ladon";

@@ -3,9 +3,8 @@
 {
   imports = [
       ./hardware-configuration.nix
-      ./wireguard.nix
       ../../profiles/base
-      ../../services/initrd-ssh
+      ../../profiles/zfs-nopersist
       ../../services/hedgedoc
       ../../services/matrix
       ../../services/netbox
@@ -16,34 +15,36 @@
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = ["zfs"];
+  boot.zfs.devNodes = "/dev/disk/by-path";
+  networking.hostId = "47cdd0f6";
+  boot.kernelParams = [
+    "zfs.zfs_arc_max=1024000000"
+  ];
 
   networking.hostName = "laurel";
   networking.domain = "net.leona.is";
   systemd.network = {
-    links."10-eth0" = {
-      matchConfig.MACAddress = "52:54:00:68:75:91";
-      linkConfig.Name = "eth0";
+    links."10-eth-internal" = {
+      matchConfig.MACAddress = "52:54:00:0a:08:45";
+      linkConfig.Name = "eth-internal";
     };
-    networks."10-eth0" = {
+    networks."10-eth-internal" = {
       DHCP = "yes";
       matchConfig = {
-        Name = "eth0";
+        Name = "eth-internal";
       };
-      routes = [
-        {
-          routeConfig = {
-            Destination = "10.151.0.0/16";
-            Gateway = "_dhcp4";
-          };
-        }
-        {
-          routeConfig = {
-            Destination = "fd8f:d15b:9f40::/48";
-            Gateway = "_ipv6ra";
-          };
-        }
-      ];
-      networkConfig.IPv6PrivacyExtensions = "no";
+    };
+
+    links."10-eth-internet" = {
+      matchConfig.MACAddress = "52:54:00:20:44:2b";
+      linkConfig.Name = "eth-internet";
+    };
+    networks."10-eth-internet" = {
+      DHCP = "yes";
+      matchConfig = {
+        Name = "eth-internet";
+      };
     };
   };
   networking.useHostResolvConf = false;
@@ -51,15 +52,10 @@
   l.backups.enable = true;
   l.telegraf = {
     enable = true;
-    host = "[fd8f:d15b:9f40:c31:5054:ff:fe68:7591]";
+    host = "[fd8f:d15b:9f40:c41:5054:ff:fe0a:845]";
     diskioDisks = [ "vda" ];
   };
 
-  services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
-    enableACME = lib.mkForce false;
-    forceSSL = lib.mkForce false;
-  };
-
   services.postgresql.package = pkgs.postgresql_14;
-  system.stateVersion = "21.05";
+  system.stateVersion = "22.11";
 }

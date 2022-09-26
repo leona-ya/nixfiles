@@ -62,6 +62,9 @@ in {
           { routeConfig = {
               Destination = "195.39.247.147";
               Scope = "link"; }; }
+          { routeConfig = {
+              Destination = "195.39.247.149";
+              Scope = "link"; }; }
         ];
         networkConfig.ConfigureWithoutCarrier = true;
       };

@@ -175,16 +175,9 @@ in rec {
                     PersistentKeepalive = 21;
                   };
                 }
-                { # laurel
-                  wireguardPeerConfig = {
-                    AllowedIPs = [ "195.39.247.149/32" ];
-                    PublicKey = "0zhic69IA9xKXljBzB4ZqYMmFtLVYZCPw0L65grIaRg=";
-                    PersistentKeepalive = 21;
-                  };
-                }
                 { # charon
                   wireguardPeerConfig = {
-                    AllowedIPs = [ "195.39.247.144/32" "195.39.247.145/32" "195.39.247.147/32" "195.39.247.150/32" ];
+                    AllowedIPs = [ "195.39.247.144/32" "195.39.247.145/32" "195.39.247.147/32" "195.39.247.149/32" "195.39.247.150/32" ];
                     PublicKey = "d0XoFQpOo0rR1RRTsnBIo6sNb+pT0MOThCSnaLQ4jRQ=";
                     PersistentKeepalive = 21;
                   };
@@ -216,15 +209,21 @@ in rec {
     };
     laurel = {
       meta = {
-        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe68:7591";
+        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:fe0a:845";
         hasPublicIpv4 = true;
         hasPublicIpv6 = true;
       };
-      nyan = {
-        mac = "52:54:00:68:75:91";
-        duid = "00:02:00:00:ab:11:2f:e7:59:42:ff:d4:ca:5d";
-        legacyAddress = "10.151.20.15";
-        address = "2a01:4f8:242:155f:1000::b4d";
+      charon = {
+        "internal" = {
+          mac = "52:54:00:0a:08:45";
+          legacyAddress = "10.151.20.15";
+        };
+        "internet" = {
+          mac = "52:54:00:20:44:2b";
+          legacyAddress = "195.39.247.149";
+          duid = "00:02:00:00:ab:11:7b:cd:e2:8a:79:e8:dd:ea";
+          address = "2a01:4f9:6a:13c6:4000::eaa";
+        };
       };
     };
     naiad = {

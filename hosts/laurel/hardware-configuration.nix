@@ -10,28 +10,36 @@
 
   boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e7ec6c76-5ce7-4738-954f-4dba495b45d7";
-      fsType = "xfs";
+    { device = "zroot/nixos/root";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
     };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/bac34158-3633-4741-8f8f-1c8480feae9c";
+  fileSystems."/nix" =
+    { device = "zroot/nixos/nix";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    };
+
+  fileSystems."/home" =
+    { device = "zroot/vault/home";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    };
+
+  fileSystems."/persist" =
+    { device = "zroot/vault/persist";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8ABA-2447";
+    { device = "/dev/disk/by-uuid/1806-D47E";
       fsType = "vfat";
     };
 
   swapDevices = [ ];
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = lib.mkDefault false;
-  networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
-
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

@@ -11,8 +11,11 @@ let
       "rspamd"
       "postfix"
       "openldap"
+      "vikunja"
+      "matrix-synapse"
     ])) // (if config.services.opendkim.enable then { "/var/dkim" = "/persist/var/dkim"; } else { })
        // (if config.services.dovecot2.enable then { "/var/lib/dovecot" = "/persist/var/lib/dovecot"; "/var/sieve" = "/persist/var/sieve"; } else { })
+       // (if config.services.vaultwarden.enable then { "/var/lib/bitwarden_rs" = "/persist/var/lib/bitwarden_rs"; } else { })
        // (if config.hardware.bluetooth.enable then { "/var/lib/bluetooth" = "/persist/var/lib/bluetooth"; } else { })
        // (if config.virtualisation.libvirtd.enable then { "/var/lib/libvirt" = "/persist/var/lib/libvirt"; } else { })
        // (if config.security.acme.certs != { } then { "/var/lib/acme" = "/persist/var/lib/acme"; } else { });
