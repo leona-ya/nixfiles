@@ -10,6 +10,7 @@ let
       boot.kernelParams = [
         "panic=30" "boot.panic_on_fail" # reboot the machine upon fatal boot issues
       ];
+      boot.supportedFilesystems = ["zfs"];
       services.openssh.enable = true;
       networking.hostName = "iso";
       users.users.root.openssh.authorizedKeys.keys = [

@@ -42,8 +42,6 @@
           template: secondary
         - domain: emolar.de
           template: secondary
-        - domain: gatabi22.de
-          template: secondary
         - domain: labcode.de
           template: secondary
         - domain: leona.is
@@ -54,9 +52,9 @@
           template: secondary
         - domain: opendatamap.net
           template: secondary
-        - domain: fahrplandatengarten.de
-          master: fdg_ns1
-          acl: fdg_notify
     '';
+#            - domain: fahrplandatengarten.de
+#              master: fdg_ns1
+#              acl: fdg_notify
   };
 }

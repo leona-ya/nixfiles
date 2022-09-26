@@ -30,5 +30,7 @@ in {
   services.grocy.dataDir = "/persist/var/lib/grocy";
   services.paperless.dataDir = "/persist/var/lib/paperless";
   services.netbox.dataDir = "/persist/var/lib/netbox";
+  services.nextcloud.home = "/persist/var/lib/nextcloud";
+  services.firefly-iii.dataDir = "/persist/var/lib/firefly-iii";
 }
 

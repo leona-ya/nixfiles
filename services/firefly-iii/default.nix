@@ -67,7 +67,7 @@ in {
       enable = true;
       hostname = "dataimporter.fin.leona.is";
       extraConfig = ''
-        FIREFLY_III_URL=http://[fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5]:8212
+        FIREFLY_III_URL=http://[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]:8212
         VANITY_URL=https://fin.leona.is
         FIREFLY_III_CLIENT_ID=65
       '';
@@ -78,7 +78,7 @@ in {
     "firefly-iii-internal" = {
       listen = [
         {
-          addr = "[fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5]";
+          addr = "[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]";
           port = 8212;
         }
       ];
@@ -100,7 +100,7 @@ in {
       forceSSL = true;
       kTLS = true;
       locations."/" = {
-        proxyPass = "http://[fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5]:8212";
+        proxyPass = "http://[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]:8212";
         extraConfig = ''
           auth_request_set $auth_resp_x_vouch_email $upstream_http_x_vouch_user;
           auth_request_set $auth_resp_x_vouch_username $upstream_http_x_vouch_idp_claims_preferred_username;

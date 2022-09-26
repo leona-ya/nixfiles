@@ -10,22 +10,36 @@
 
   boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/af4f509d-7995-4078-8e38-e52243b5f4d5";
-      fsType = "xfs";
+    { device = "zroot/nixos/root";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
     };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/42bd4cfd-3824-422d-8098-2e972e0384ca";
+  fileSystems."/nix" =
+    { device = "zroot/nixos/nix";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    };
+
+  fileSystems."/home" =
+    { device = "zroot/vault/home";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    };
+
+  fileSystems."/persist" =
+    { device = "zroot/vault/persist";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8EB4-68C6";
+    { device = "/dev/disk/by-uuid/5603-21C7";
       fsType = "vfat";
     };
 
   swapDevices = [ ];
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

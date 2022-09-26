@@ -5,19 +5,6 @@ let
 in {
   l.sops.secrets."all/mail/no_reply_password".owner = "nginx";
   services.nginx.virtualHosts = {
-    "element.em0lar.de" = {
-      enableACME = true;
-      forceSSL = true;
-      kTLS = true;
-      root = pkgs.element-web.override {
-        conf = {
-          default_server_config."m.homeserver" = {
-            "base_url" = "https://matrix.labcode.de";
-            "server_name" = "labcode.de";
-          };
-        };
-      };
-    };
     "www.leona.is" = let
       client = { "m.homeserver" = { base_url = "https://matrix.labcode.de"; }; };
       server = { "m.server" = "matrix.labcode.de:443"; };
@@ -116,32 +103,11 @@ in {
       ];
       root = pkgs.opendatamap-net;
     };
-    "gat.leomaroni.de" = {
-      enableACME = true;
-      forceSSL = true;
-      kTLS = true;
-      root = "/var/www/gat.leomaroni.de";
-      extraConfig = ''
-        client_max_body_size 100M;
-      '';
-      locations."/" = {
-        index = "index.php";
-        tryFiles = "$uri $uri/ /index.php?$args";
-      };
-      locations."~ \\.php$ " = {
-        extraConfig = ''
-          fastcgi_index index.php;
-          fastcgi_pass unix:${config.services.phpfpm.pools."nginx-gat".socket};
-          include ${pkgs.nginx}/conf/fastcgi_params;
-          include ${pkgs.nginx}/conf/fastcgi.conf;
-        '';
-       };
-    };
     "cv.leona.is" = {
       enableACME = true;
       forceSSL = true;
       kTLS = true;
-      root = "/var/www/cv.leona.is";
+      root = "/persist/var/www/cv.leona.is";
       locations."/".index = "index.pdf";
     };
   };
@@ -158,41 +124,5 @@ in {
       "listen.group" = config.services.nginx.group;
     };
     phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
-  };
-  services.phpfpm.pools."nginx-gat" = {
-    user = config.services.nginx.user;
-    settings = {
-      "pm" = "dynamic";
-      "pm.max_children" = 32;
-      "pm.max_requests" = 500;
-      "pm.start_servers" = 2;
-      "pm.min_spare_servers" = 2;
-      "pm.max_spare_servers" = 5;
-      "listen.owner" = config.services.nginx.user;
-      "listen.group" = config.services.nginx.group;
-    };
-    phpOptions = ''
-      upload_max_filesize = "100M";
-      post_max_size = "100M";
-      memory_limit = "100M";
-      display_errors = On;
-    '';
-    phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
-  };
-
-
-  # --------------------------
-  services.mysql = {
-    enable = true;
-    package = pkgs.mariadb;
-    ensureDatabases = [ "gat" ];
-    ensureUsers = [
-      {
-        name = "gat";
-        ensurePermissions = {
-          "gat.*" = "ALL PRIVILEGES";
-        };
-      }
-    ];
   };
 }

@@ -32,7 +32,7 @@ in {
     "grocy-internal" = {
       listen = [
         {
-          addr = "[fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5]";
+          addr = "[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]";
           port = 8213;
         }
       ];
@@ -55,7 +55,7 @@ in {
       forceSSL = true;
       locations."/".extraConfig = "deny all;";
       locations."/api/" = {
-        proxyPass = "http://[fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5]:8213";
+        proxyPass = "http://[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]:8213";
       };
     };
   };

@@ -69,15 +69,21 @@ in rec {
     };
     foros = {
       meta = {
-        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fee7:6ae5";
+        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:fe3a:685c";
         hasPublicIpv4 = true;
         hasPublicIpv6 = true;
       };
-      nyan = {
-        mac = "52:54:00:e7:6a:e5";
-        duid = "00:02:00:00:ab:11:82:40:af:d3:85:17:b2:1f";
-        legacyAddress = "10.151.20.12";
-        address = "2a01:4f8:242:155f:1000::987";
+      charon = {
+        "internal" = {
+          mac = "52:54:00:3a:68:5c";
+          legacyAddress = "10.151.20.12";
+        };
+        "internet" = {
+          mac = "52:54:00:b9:bf:c9";
+          duid = "00:02:00:00:ab:11:3e:d1:15:72:fd:15:44:a2";
+          legacyAddress = "195.39.247.144";
+          address = "2a01:4f9:6a:13c6:4000::dea";
+        };
       };
     };
     kupe = {
@@ -154,13 +160,6 @@ in rec {
                 { routeConfig.Destination = "2a0f:4ac0:1e0::/48"; }
               ];
               extraWireguardPeers = [
-                { # foros
-                  wireguardPeerConfig = {
-                    AllowedIPs = [ "195.39.247.144/32" ];
-                    PublicKey = "CnswutrDvUJdDIsopjkvjO/SiOrKdx3ob0jvDf0LLFI=";
-                    PersistentKeepalive = 21;
-                  };
-                }
                 { # kupe
                   wireguardPeerConfig = {
                     AllowedIPs = [ "195.39.247.146/32" ];
@@ -192,7 +191,7 @@ in rec {
                 }
                 { # charon
                   wireguardPeerConfig = {
-                    AllowedIPs = [ "195.39.247.145/32" "195.39.247.150/32" ];
+                    AllowedIPs = [ "195.39.247.144/32" "195.39.247.145/32" "195.39.247.150/32" ];
                     PublicKey = "d0XoFQpOo0rR1RRTsnBIo6sNb+pT0MOThCSnaLQ4jRQ=";
                     PersistentKeepalive = 21;
                   };
@@ -291,19 +290,6 @@ in rec {
         duid = "00:02:00:00:ab:11:53:f2:e5:e7:f2:2a:48:54";
         legacyAddress = "10.151.21.193";
         address = "2a01:4f8:242:155f:4000::b8b";
-      };
-    };
-    utopia = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:c32:5054:ff:fe77:e68f";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = false;
-      };
-      nyan = {
-        mac = "52:54:00:77:e6:8f";
-        duid = "00:02:00:00:ab:11:ca:6f:7a:9e:92:e9:a1:af";
-        legacyAddress = "10.151.21.11";
-        address = "2a01:4f8:242:155f:2000::c7e";
       };
     };
   };

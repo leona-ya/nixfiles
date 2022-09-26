@@ -54,6 +54,9 @@ in {
         ];
         routes = [
           { routeConfig = {
+              Destination = "195.39.247.144";
+              Scope = "link"; }; }
+          { routeConfig = {
               Destination = "195.39.247.145";
               Scope = "link"; }; }
         ];

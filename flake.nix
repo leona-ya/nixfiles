@@ -63,6 +63,7 @@
             ./modules/telegraf
             ./modules/vouch-proxy
             ./modules/grocy
+            ./modules/firefly-iii
           ];
           documentation.info.enable = false;
         }
@@ -116,11 +117,11 @@
           nixosSystem = {
             system = "x86_64-linux";
             modules = defaultModules ++ nixpkgsUnstableSmall ++ [
-              ./modules/firefly-iii
               ./hosts/foros/configuration.nix
             ];
           };
-          deployment = {};
+          deployment.targetHost = "2a01:4f9:6a:13c6:4000::dea";
+	  deployment.targetPort = 54973;
         };
         gaika = {
           nixosSystem = {

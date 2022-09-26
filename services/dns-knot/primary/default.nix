@@ -67,9 +67,6 @@ in {
         - domain: emolar.de
           file: "${dnsutil.writeZone "emolar.de" (import zones/emolar.de.nix { inherit helper lib dns config; }).zone}"
           template: signedprimary
-        - domain: gatabi22.de
-          file: "${dnsutil.writeZone "gatabi22.de" (import zones/gatabi22.de.nix { inherit helper lib dns config; }).zone}"
-          template: signedprimary
         - domain: labcode.de
           file: "${dnsutil.writeZone "labcode.de" (import zones/labcode.de.nix { inherit helper lib dns config; }).zone}"
           template: signedprimary

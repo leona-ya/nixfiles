@@ -4,32 +4,30 @@
   networking.hostName = "foros";
   networking.domain = "net.leona.is";
   systemd.network = {
-    links."10-eth0" = {
-      matchConfig.MACAddress = "52:54:00:e7:6a:e5";
-      linkConfig.Name = "eth0";
+    links."10-eth-internal" = {
+      matchConfig.MACAddress = "52:54:00:3a:68:5c";
+      linkConfig.Name = "eth-internal";
     };
-    networks."10-eth0" = {
+    networks."10-eth-internal" = {
       DHCP = "yes";
       matchConfig = {
-        Name = "eth0";
+        Name = "eth-internal";
       };
-      routes = [
-        {
-          routeConfig = {
-            Destination = "10.151.0.0/16";
-            Gateway = "_dhcp4";
-          };
-        }
-        {
-          routeConfig = {
-            Destination = "fd8f:d15b:9f40::/48";
-            Gateway = "_ipv6ra";
-          };
-        }
-      ];
-      networkConfig.IPv6PrivacyExtensions = "no";
+    };
+
+    links."10-eth-internet" = {
+      matchConfig.MACAddress = "52:54:00:b9:bf:c9";
+      linkConfig.Name = "eth-internet";
+    };
+    networks."10-eth-internet" = {
+      DHCP = "yes";
+      matchConfig = {
+        Name = "eth-internet";
+      };
     };
   };
+
+
   networking.useHostResolvConf = false;
   l.nftables.checkIPTables = false;
 }

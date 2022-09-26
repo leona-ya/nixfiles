@@ -25,7 +25,7 @@
     libusb-compat-0_1
     lm_sensors
     wl-clipboard
-    xdg_utils
+    xdg-utils
   ];
   programs.nix-ld.enable = true;
 
@@ -45,9 +45,6 @@
     homebank
     cmake
     gnumake
-    (jetbrains.jetbrains-client.override {
-      jdk = jetbrains.jdk;
-    })
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
