@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022092603;
+      serial = 2022092701;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -40,7 +40,7 @@ in {
 
     subdomains = hosthelper.services.dns-int.g_dns_records // {
       "naiad.net" = naiad_host;
-      "hack.net".AAAA = [ "2a01:4f8:242:155f:1000::fc5" ];
+      "hack.net".AAAA = [ "2a01:4f9:6a:13c6:4000::8de" ];
       "haku.net" = haku_host;
       "kupe.net" = kupe_host;
       "nyo.net" = host "136.243.42.251" "2a01:4f8:212:ad7::1";

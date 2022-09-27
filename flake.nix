@@ -138,7 +138,9 @@
               ./hosts/hack/configuration.nix
             ];
           };
-          deployment = {};
+          deployment = {
+            targetHost = "2a01:4f9:6a:13c6:4000::8de";
+          };
         };
         haku = {
           nixosSystem = {
@@ -177,10 +179,7 @@
               ./hosts/laurel/configuration.nix
             ];
           };
-          deployment = {
-            targetHost = "2a01:4f9:6a:13c6:4000::eaa";
-            targetPort = 54973;
-          };
+          deployment = {};
         };
         turingmachine = {
           nixosSystem = {

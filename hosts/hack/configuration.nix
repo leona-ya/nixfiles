@@ -4,27 +4,35 @@
   imports = [
       ./hardware-configuration.nix
       ../../profiles/base
-      ../../services/backup-relay
+#      ../../services/backup-relay
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = ["zfs"];
+  boot.zfs.devNodes = "/dev/disk/by-path";
+  networking.hostId = "046fab2e";
 
   networking.hostName = "hack";
   networking.domain = "net.leona.is";
   systemd.network = {
-    links."10-eth" = {
-        matchConfig.MACAddress = "52:54:00:65:7a:8e";
-        linkConfig.Name = "eth0";
-    };
-    networks."10-eth0" = {
-      DHCP = "yes";
-      matchConfig = {
-        Name = "eth0";
+      links."10-eth-internal" = {
+        matchConfig.MACAddress = "52:54:00:ef:6d:c3";
+        linkConfig.Name = "eth-internal";
       };
-      networkConfig.IPv6PrivacyExtensions = "no";
+      networks."10-eth-internal" = {
+        DHCP = "yes";
+        matchConfig.Name = "eth-internal";
+      };
+
+    links."10-eth-internet" = {
+      matchConfig.MACAddress = "52:54:00:30:e4:b5";
+      linkConfig.Name = "eth-internet";
+    };
+    networks."10-eth-internet" = {
+      DHCP = "yes";
+      matchConfig.Name = "eth-internet";
     };
   };
-  networking.useDHCP = false;
 
   nix.gc.automatic = false;
   nix.distributedBuilds = false;
@@ -40,9 +48,9 @@
 
   l.telegraf = {
     enable = true;
-    host = "[fd8f:d15b:9f40:c31:5054:ff:fe65:7a8e]";
+    host = "[fd8f:d15b:9f40:c41:5054:ff:feef:6dc3]";
     diskioDisks = [ "vda" ];
   };
 
-  system.stateVersion = "22.05";
+  system.stateVersion = "22.11";
 }

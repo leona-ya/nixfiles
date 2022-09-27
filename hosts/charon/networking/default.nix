@@ -8,7 +8,7 @@ in {
 
   l.sops.secrets."hosts/charon/wireguard_wg-server_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/charon/wireguard_wg-public_privatekey".owner = "systemd-network";
-  networking.firewall.allowedUDPPorts = [ 51441 ];
+  networking.firewall.allowedUDPPorts = [ 51440 51441 ];
 
   systemd.network = {
     links."10-eth0" = {
@@ -94,6 +94,7 @@ in {
           Name = "wg-public";
         };
         wireguardConfig = {
+          ListenPort = 51440;
           PrivateKeyFile = config.sops.secrets."hosts/charon/wireguard_wg-public_privatekey".path;
         };
         wireguardPeers = [{

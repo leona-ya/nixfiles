@@ -177,6 +177,7 @@ in rec {
                 }
                 { # charon
                   wireguardPeerConfig = {
+                    Endpoint = "charon.net.leona.is:51440";
                     AllowedIPs = [ "195.39.247.144/32" "195.39.247.145/32" "195.39.247.147/32" "195.39.247.149/32" "195.39.247.150/32" ];
                     PublicKey = "d0XoFQpOo0rR1RRTsnBIo6sNb+pT0MOThCSnaLQ4jRQ=";
                     PersistentKeepalive = 21;

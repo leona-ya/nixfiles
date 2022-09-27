@@ -33,7 +33,7 @@
     }];
     distributedBuilds = lib.mkDefault true;
   };
-  programs.ssh.knownHosts."[hack.net.leona.is]:54973".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ8wPC4wXbgPdXwOF+7VSNQW/RL62gN6LrHgUDqq/f1N";
+  programs.ssh.knownHosts."[hack.net.leona.is]:54973".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDUbA/xZ2Cy/tuSCR46aEXCWtY2ixe+6P7Gk8hTfesNu";
 
   services.journald.extraConfig = "SystemMaxUse=256M";
 
