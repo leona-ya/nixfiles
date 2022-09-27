@@ -10,22 +10,45 @@
 
   boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/36f2408a-ef9f-4d6f-9f96-d2941afae78c";
-      fsType = "xfs";
+    { device = "zroot/nixos/root";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
     };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/bfd0c696-47dc-401f-8681-ee83efc0996c";
+  fileSystems."/nix" =
+    { device = "zroot/nixos/nix";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    };
+
+  fileSystems."/home" =
+    { device = "zroot/vault/home";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    };
+
+  fileSystems."/persist" =
+    { device = "zroot/vault/persist";
+      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/33DB-12B3";
+    { device = "/dev/disk/by-uuid/B3B4-FFEB";
       fsType = "vfat";
     };
 
   swapDevices = [ ];
 
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
+

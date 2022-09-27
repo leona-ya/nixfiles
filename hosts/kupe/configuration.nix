@@ -3,30 +3,42 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./wireguard.nix
     ../../profiles/base
-    ../../services/initrd-ssh
+    ../../profiles/zfs-nopersist
     ../../services/dns-knot/primary
     ../../services/mail
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = ["zfs"];
+  boot.zfs.devNodes = "/dev/disk/by-path";
+  networking.hostId = "a69a4457";
 
   networking.hostName = "kupe";
   networking.domain = "net.leona.is";
 
   systemd.network = {
-    links."10-eth0" = {
-      matchConfig.MACAddress = "52:54:00:c0:85:39";
-      linkConfig.Name = "eth0";
+    links."10-eth-internal" = {
+      matchConfig.MACAddress = "52:54:00:b8:64:9c";
+      linkConfig.Name = "eth-internal";
     };
-    networks."10-eth0" = {
+    networks."10-eth-internal" = {
       DHCP = "yes";
       matchConfig = {
-        Name = "eth0";
+          Name = "eth-internal";
       };
-      networkConfig.IPv6PrivacyExtensions = "no";
+    };
+
+    links."10-eth-internet" = {
+      matchConfig.MACAddress = "52:54:00:91:96:da";
+      linkConfig.Name = "eth-internet";
+    };
+    networks."10-eth-internet" = {
+      DHCP = "yes";
+      matchConfig = {
+          Name = "eth-internet";
+      };
     };
   };
 

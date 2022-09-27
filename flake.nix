@@ -160,7 +160,10 @@
               ./hosts/kupe/configuration.nix
             ];
           };
-          deployment = {};
+          deployment = {
+            targetHost = "2a01:4f9:6a:13c6:4000::e9c";
+            targetPort = 54973;
+          };
         };
         ladon = {
           nixosSystem = {

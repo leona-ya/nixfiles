@@ -60,6 +60,9 @@ in {
               Destination = "195.39.247.145";
               Scope = "link"; }; }
           { routeConfig = {
+              Destination = "195.39.247.146";
+              Scope = "link"; }; }
+          { routeConfig = {
               Destination = "195.39.247.147";
               Scope = "link"; }; }
           { routeConfig = {

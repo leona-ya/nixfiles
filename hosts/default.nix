@@ -88,15 +88,21 @@ in rec {
     };
     kupe = {
       meta = {
-        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fec0:8539";
+        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:feb8:649c";
         hasPublicIpv4 = true;
         hasPublicIpv6 = true;
       };
-      nyan = {
-        mac = "52:54:00:c0:85:39";
-        duid = "00:02:00:00:ab:11:9b:68:58:51:30:82:69:52";
-        legacyAddress = "10.151.20.10";
-        address = "2a01:4f8:242:155f:1000::f28";
+      charon = {
+        "internal" = {
+          mac = "52:54:00:b8:64:9c";
+          legacyAddress = "10.151.20.10";
+        };
+        "internet" = {
+          mac = "52:54:00:91:96:da";
+          legacyAddress = "195.39.247.146";
+          duid = "00:02:00:00:ab:11:42:d3:0e:0a:64:85:2c:2a";
+          address = "2a01:4f9:6a:13c6:4000::e9c";
+        };
       };
     };
     gaika = {
@@ -160,13 +166,6 @@ in rec {
                 { routeConfig.Destination = "2a0f:4ac0:1e0::/48"; }
               ];
               extraWireguardPeers = [
-                { # kupe
-                  wireguardPeerConfig = {
-                    AllowedIPs = [ "195.39.247.146/32" ];
-                    PublicKey = "MTGJvKwt7pofvLbJ2gMoOs8z8qFjt3F3e2crlJMHajQ=";
-                    PersistentKeepalive = 21;
-                  };
-                }
                 { # turingmachine
                   wireguardPeerConfig = {
                     AllowedIPs =
@@ -178,7 +177,14 @@ in rec {
                 { # charon
                   wireguardPeerConfig = {
                     Endpoint = "charon.net.leona.is:51440";
-                    AllowedIPs = [ "195.39.247.144/32" "195.39.247.145/32" "195.39.247.147/32" "195.39.247.149/32" "195.39.247.150/32" ];
+                    AllowedIPs = [
+                      "195.39.247.144/32"
+                      "195.39.247.145/32"
+                      "195.39.247.146/32"
+                      "195.39.247.147/32"
+                      "195.39.247.149/32"
+                      "195.39.247.150/32"
+                    ];
                     PublicKey = "d0XoFQpOo0rR1RRTsnBIo6sNb+pT0MOThCSnaLQ4jRQ=";
                     PersistentKeepalive = 21;
                   };
