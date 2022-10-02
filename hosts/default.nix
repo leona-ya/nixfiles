@@ -125,7 +125,7 @@ in rec {
     };
     hack = {
       meta = {
-        intIpv6 = "fd8f:d15b:9f40:c31:5054:ff:fe65:7a8e";
+        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:feef:6dc3";
         hasPublicIpv4 = false;
         hasPublicIpv6 = true;
       };
@@ -247,39 +247,6 @@ in rec {
               publicKey = "duhZn+JOja6bILYxs6D2dKQk7GhmflSsqr+AMOVqJkg=";
               routed = [ "fd8f:d15b:9f40:0c20::1/72" ];
               hostname = "naiad.net.leona.is";
-            };
-          };
-        };
-      };
-    };
-    nyan = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:0c30::1";
-        hasPublicIpv4 = true;
-        hasPublicIpv6 = true;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "10.151.20.254/32" "${hosts.nyan.meta.intIpv6}/60" ];
-              publicKey = "AilevKAZRnvQUkJhg/R9APpYUdEbnE1g2BP+FUQwBBI=";
-              routed = [ "fd8f:d15b:9f40:0c30::/60" ];
-              hostname = "nyan.net.leona.is";
-            };
-            "public-bkp" = {
-              ips = [ "2a01:4f8:242:155f:5000::1/68" ];
-              publicKey = "VdYP3HO46HsWhpqZRBZg7MP9ATmhyLZYjY/+yifeNyI=";
-              routed = [ "2a01:4f8:242:155f:5000::1/68" ];
-              interfaceRoutes =
-                [{ routeConfig.Destination = "2a01:4f8:242:155f:5000::1/68"; }];
-              extraWireguardPeers = [{ # turingmachine
-                wireguardPeerConfig = {
-                  AllowedIPs = [ "2a01:4f8:242:155f:5100::/72" ];
-                  PublicKey = "Dnbcb55rMzOF5907nMjYbRLAHzg96VlOrQTRcjzyoBw=";
-                  PersistentKeepalive = 21;
-                };
-              }];
             };
           };
         };

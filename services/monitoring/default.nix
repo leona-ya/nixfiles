@@ -14,11 +14,10 @@ in {
     http_response = {
       interval = "90s";
       urls = [
-        "https://matrix.labcode.de/health"
-        "https://labcode.de/.well-known/matrix/server"
+        "https://matrix.leona.is/health"
+        "https://leona.is/.well-known/matrix/server"
         "https://leona.is"
         "https://cloud.leona.is/login"
-        "https://altenforst.de"
       ];
     };
     ping = [

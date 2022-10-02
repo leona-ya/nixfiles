@@ -2,15 +2,15 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "legitima";
-  version = "unstable-2021-06-17";
+  version = "unstable-2022-10-02";
 
   src = fetchgit {
     url = "https://cyberchaos.dev/leona/legitima.git";
-    rev = "319077bcb65f302abc072389ff60ddbe9741f9fb";
-    sha256 = "sha256-k0X8su3mQd0smj0WaxvpoG19BefFweEg9R2LvIT+Gco=";
+    rev = "ed8c02d27a8f31185cbb03225ba4b80ba8742e01";
+    sha256 = "sha256-dE6+NHqMgngredkIxhhlnKpkb5iKe7G2GyoE46iWt9o=";
   };
 
-  cargoSha256 = "sha256-c/GSKkkX+v+ZOCltWM0BzoTa0uDjY4sM+ndCyv4okCM=";
+  cargoSha256 = "sha256-cv9aR+KR4q6spCi9u/ZRXgKSoL+nPJDqF3EtfPAq4Y4=";
 
   nativeBuildInputs = [ pkg-config makeWrapper ];
   buildInputs = [ openssl postgresql.lib ];

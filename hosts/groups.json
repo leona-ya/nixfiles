@@ -37,8 +37,7 @@
       "kupe",
       "ladon",
       "laurel",
-      "naiad",
-      "nyan"
+      "naiad"
     ]
   },
   "wireguard": {
@@ -47,7 +46,6 @@
       "gaika",
       "haku",
       "naiad",
-      "nyan",
       "charon"
     ]
   }

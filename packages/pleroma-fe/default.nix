@@ -31,6 +31,7 @@ stdenv.mkDerivation rec {
   configurePhase = ''
     runHook preConfigure
     export HOME=$PWD/tmp
+    export NODE_OPTIONS=--openssl-legacy-provider
     mkdir -p $HOME
     yarn config --offline set yarn-offline-mirror ${yarnOfflineCache}
     fixup_yarn_lock yarn.lock

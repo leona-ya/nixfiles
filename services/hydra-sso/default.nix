@@ -64,7 +64,7 @@ in {
       DynamicUser = false;
       User = "legitima";
       Group = "legitima";
-      SupplementaryGroups = "ory-hydra";
+      SupplementaryGroups = "ory-hydra ${config.services.redis.servers.legitima.user}";
       StateDirectory = "legitima";
       ExecStart = "${pkgs.legitima}/bin/legitima";
       Restart = "always";
@@ -79,6 +79,8 @@ in {
   };
 
   users.groups.legitima = {};
+
+  services.redis.servers.legitima.enable = true;
 
   services.nginx.virtualHosts."hydra.sso.leona.is".kTLS = true;
   services.nginx.virtualHosts."sso.leona.is" = {

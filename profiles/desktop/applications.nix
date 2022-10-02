@@ -30,7 +30,6 @@
   programs.nix-ld.enable = true;
 
   users.users.leona.packages = with pkgs; [
-    _1password-gui
     arduino
     bitwarden
     element-desktop
@@ -75,14 +74,6 @@
     virt-manager
     youtube-dl
     z-lua
-  ] ++ [
-    nodejs
-    sbt
-    slack
-    (zoom-us.overrideAttrs (old: {
-      postFixup = old.postFixup + ''
-        wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
-      '';}))
   ];
 
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
