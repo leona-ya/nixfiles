@@ -44,10 +44,13 @@
     homebank
     cmake
     gnumake
+    (jetbrains.clion.override {
+      jdk = jetbrains.jdk;
+    })
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
-    kicad
+    #kicad
     libreoffice-fresh
     nheko
     mpv
@@ -74,6 +77,11 @@
     virt-manager
     youtube-dl
     z-lua
+    (zoom-us.overrideAttrs (old: {
+      postFixup = old.postFixup + ''
+        wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
+      '';
+    }))
   ];
 
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];

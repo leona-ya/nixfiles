@@ -5,7 +5,7 @@
     plugins = with pkgs.vimPlugins; [
       { plugin = ultisnips;
         config = ''
-            let g:UltiSnipsExpandTrigger       = '<Tab>'
+            let g:UltiSnipsExpandTrigger       = '<c-j>'
             let g:UltiSnipsJumpForwardTrigger  = '<Tab>'
             let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
         '';
@@ -25,7 +25,9 @@
       { plugin = YouCompleteMe; }
     ];
     extraConfig = ''
-      set relativenumber
+      set expandtab
+      set shiftwidth=2
+      set number
     '';
   };
 }

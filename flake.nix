@@ -160,10 +160,7 @@
               ./hosts/kupe/configuration.nix
             ];
           };
-          deployment = {
-            targetHost = "2a01:4f9:6a:13c6:4000::e9c";
-            targetPort = 54973;
-          };
+          deployment = {};
         };
         ladon = {
           nixosSystem = {
@@ -208,15 +205,6 @@
             system = "x86_64-linux";
             modules = defaultModules ++ nixpkgsUnstableSmall ++ [
               ./hosts/naiad/configuration.nix
-            ];
-          };
-          deployment = {};
-        };
-        nyan = {
-          nixosSystem = {
-            system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
-              ./hosts/nyan/configuration.nix
             ];
           };
           deployment = {};
