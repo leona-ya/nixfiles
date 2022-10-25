@@ -1,6 +1,6 @@
 { ... }:
 let
-  wanInterface = "eth0";
+  wanInterface = "ppp-wan";
 in {
   l.nftables = {
     extraForward = ''

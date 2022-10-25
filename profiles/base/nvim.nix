@@ -5,9 +5,20 @@
     plugins = with pkgs.vimPlugins; [
       { plugin = ultisnips;
         config = ''
-            let g:UltiSnipsExpandTrigger       = '<c-j>'
-            let g:UltiSnipsJumpForwardTrigger  = '<Tab>'
-            let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+          let g:UltiSnipsExpandTrigger       = '<tab>'
+          let g:UltiSnipsJumpForwardTrigger  = '<tab>'
+          let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+        '';
+      }
+      { plugin = supertab;
+        config = ''
+          let g:SuperTabDefaultCompletionType = '<C-n>'
+        '';
+      }
+      { plugin = YouCompleteMe;
+        config = ''
+          let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+          let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
         '';
       }
       { plugin = ctrlp-vim; }
@@ -22,7 +33,6 @@
           \}
 	      '';
       }
-      { plugin = YouCompleteMe; }
     ];
     extraConfig = ''
       set expandtab

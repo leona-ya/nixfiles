@@ -18,7 +18,7 @@
       ];
       networkConfig = {
         ConfigureWithoutCarrier = true;
-        DHCPv6PrefixDelegation = true;
+        DHCPPrefixDelegation = true;
         IPv6AcceptRA = false;
       };
 #      dhcpV6Config = {

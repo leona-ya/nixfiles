@@ -50,7 +50,7 @@
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
-    #kicad
+    kicad
     libreoffice-fresh
     nheko
     mpv

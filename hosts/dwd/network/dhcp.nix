@@ -40,7 +40,6 @@
         AdvSendAdvert on;
         MinRtrAdvInterval 3;
         MaxRtrAdvInterval 10;
-        AdvDefaultLifetime 0;
         prefix ::/64 {
           AdvOnLink on;
           AdvAutonomous on;
