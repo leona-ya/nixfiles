@@ -111,43 +111,43 @@ in {
     };
 
     # prometheus borg exporter
-    l.telegraf.extraInputs = lib.mkIf config.l.telegraf.enable {
-      prometheus =  {
-        metric_version = 2;
-        urls = [ "http://127.0.0.1:7373" ];
-      };
-    };
-    systemd.services.prometheus-borg-exporter = lib.mkIf config.l.telegraf.enable {
-      description = "Start Prometheus BorgBackup exporter";
-      wantedBy = ["multi-user.target"];
-      after = ["networking.target"];
-      serviceConfig = {
-        ExecStart = "${pkgs.prometheus-borg-exporter}/bin/prometheus-borg-exporter -s --sudo-command /run/wrappers/bin/sudo -l warn -c /run/current-system/sw/bin/borg-job-hack --failed-archive-suffix .failed -i 3600";
-        User = "prometheus-borg";
-        StateDirectory = "prometheus-borg-exporter";
-      };
-    };
-    users.users.prometheus-borg = lib.mkIf config.l.telegraf.enable {
-      description = "Prometheus Borg Exporter Service";
-      group = "prometheus-borg";
-      isSystemUser = true;
-      createHome = true;
-      home = "/var/lib/prometheus-borg-exporter";
-    };
-    users.groups.prometheus-borg = lib.mkIf config.l.telegraf.enable {};
-    security.sudo.extraRules = lib.mkIf config.l.telegraf.enable [{
-      users = [ "prometheus-borg" ];
-      runAs = "root";
-      commands = [
-        {
-          command = "/run/current-system/sw/bin/borg-job-hack info --json";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-        {
-          command = "/run/current-system/sw/bin/borg-job-hack list --json";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-      ];
-    }];
+#    l.telegraf.extraInputs = lib.mkIf config.l.telegraf.enable {
+#      prometheus =  {
+#        metric_version = 2;
+#        urls = [ "http://127.0.0.1:7373" ];
+#      };
+#    };
+#    systemd.services.prometheus-borg-exporter = lib.mkIf config.l.telegraf.enable {
+#      description = "Start Prometheus BorgBackup exporter";
+#      wantedBy = ["multi-user.target"];
+#      after = ["networking.target"];
+#      serviceConfig = {
+#        ExecStart = "${pkgs.prometheus-borg-exporter}/bin/prometheus-borg-exporter -s --sudo-command /run/wrappers/bin/sudo -l warn -c /run/current-system/sw/bin/borg-job-hack --failed-archive-suffix .failed -i 3600";
+#        User = "prometheus-borg";
+#        StateDirectory = "prometheus-borg-exporter";
+#      };
+#    };
+#    users.users.prometheus-borg = lib.mkIf config.l.telegraf.enable {
+#      description = "Prometheus Borg Exporter Service";
+#      group = "prometheus-borg";
+#      isSystemUser = true;
+#      createHome = true;
+#      home = "/var/lib/prometheus-borg-exporter";
+#    };
+#    users.groups.prometheus-borg = lib.mkIf config.l.telegraf.enable {};
+#    security.sudo.extraRules = lib.mkIf config.l.telegraf.enable [{
+#      users = [ "prometheus-borg" ];
+#      runAs = "root";
+#      commands = [
+#        {
+#          command = "/run/current-system/sw/bin/borg-job-hack info --json";
+#          options = [ "SETENV" "NOPASSWD" ];
+#        }
+#        {
+#          command = "/run/current-system/sw/bin/borg-job-hack list --json";
+#          options = [ "SETENV" "NOPASSWD" ];
+#        }
+#      ];
+#    }];
   };
 }

@@ -61,6 +61,11 @@
   };
 
   services.nginx.virtualHosts = {
+    "hydra.turingmachine.net.leona.is" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://localhost:4444";
+    };
     "legitima.turingmachine.net.leona.is" = {
       enableACME = true;
       forceSSL = true;

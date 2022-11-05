@@ -1,33 +1,28 @@
 { lib
 , buildGoModule
 , fetchFromGitHub
-, sqliteSupport ? true
 }:
 
 buildGoModule rec {
   pname = "ory-hydra";
-  version = "1.11.8";
+  version = "2.0.1";
 
   src = fetchFromGitHub {
     owner = "ory";
     repo = "hydra";
     rev = "v${version}";
-    sha256 = "sha256-9V+nD7VfzXFijH/r7uP/FKyt/3UCWMJbMY6h8hW7Xm4=";
+    sha256 = "sha256-m1iTPOXWCJ4X/KRDgtF61EeDX6SpFUunVJCEZSA90hw=";
   };
 
-  vendorSha256 = "sha256-AlTL4HJUogBhz/nTUH+3JKuq5I/nCv/erfoKSpwe/jE=";
+  vendorSha256 = "sha256-+g5X41a/5PyXiSL1SWTGavvmYcUBbDs+9a3divV/Cjk=";
   prePatch = ''
-    rm -r internal/httpclient-next
+    rm -r internal/httpclient
   '';
 
   preBuild =
-    let
-      tags = lib.optional sqliteSupport "sqlite";
-      tagsString = lib.concatStringsSep " " tags;
-    in
     ''
       export buildFlagsArray=(
-        -tags="${tagsString}"
+        -tags="sqlite,json1"
       )
     '';
 

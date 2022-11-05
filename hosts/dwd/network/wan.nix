@@ -57,6 +57,11 @@
       };
       vlanConfig.Id = 7;
     };
+    networks."10-eth0.7" = {
+      matchConfig.name = "eth0.7";
+      linkConfig.ActivationPolicy = "always-up";
+    };
+    #PPP
     networks."10-ppp-wan" = {
       matchConfig = {
         Name = "ppp-wan";
@@ -77,5 +82,4 @@
       };
     };
   };
-  # PPP
 }

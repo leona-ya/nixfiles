@@ -211,7 +211,9 @@
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   services.printing = {
     enable = true;
-    drivers = [  pkgs.cups-toshiba-estudio ];
+    drivers = [ 
+      pkgs.cups-brother-hll2350dw
+    ];
   };
   programs.steam.enable = true;
 }

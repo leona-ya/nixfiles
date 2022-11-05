@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -129,7 +129,7 @@
               ./hosts/gaika/configuration.nix
             ];
           };
-          deployment.targetHost = "10.151.0.5";
+          deployment.targetHost = "gaika.wg.net.leona.is";
         };
         hack = {
           nixosSystem = {

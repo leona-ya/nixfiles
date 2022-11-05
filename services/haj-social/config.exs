@@ -57,6 +57,7 @@ config :pleroma, :mrf_simple,
     "shitposter.club",
     "neckbeard.xyz",
     "gitmo.life",
+    "solitary.social"
   ]
 
 config :pleroma, :frontend_configurations,

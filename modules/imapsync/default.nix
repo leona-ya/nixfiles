@@ -42,7 +42,7 @@ let
 
   mkService = name: jobcfg:
     let
-      cliArgs = "--nolog --host1 ${jobcfg.host1} --ssl1 --user1 ${jobcfg.user1} --passfile1 ${jobcfg.passwordfile1} --host2 ${jobcfg.host2} --ssl2 --user2 ${jobcfg.user2} --passfile2 ${jobcfg.passwordfile2} ${jobcfg.extraArgs}";
+      cliArgs = "--nolog --host1 ${jobcfg.host1} --ssl1 --user1 ${jobcfg.user1} --passfile1 ${jobcfg.passwordfile1} --host2 ${jobcfg.host2} --ssl2 --user2 ${jobcfg.user2} --passfile2 ${jobcfg.passwordfile2} --noemailreport1 --noemailreport2 ${jobcfg.extraArgs}";
     in nameValuePair "imapsync-job-${name}" {
       description = "Imapsync job ${name}";
       serviceConfig = {

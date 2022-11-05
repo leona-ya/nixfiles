@@ -7,7 +7,6 @@
       ./network.nix
       ../../profiles/base
       ../../services/initrd-ssh
-      ../../services/gitea
       ../../services/matrix-old
   ];
 
