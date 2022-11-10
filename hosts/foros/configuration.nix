@@ -10,6 +10,7 @@
       ../../services/web
       ../../services/firefly-iii
       ../../services/grocy
+      ../../services/ical-merger
   ];
 
   boot.loader.systemd-boot.enable = true;

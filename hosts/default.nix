@@ -9,8 +9,8 @@ in rec {
     beryl = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:fe4e:5cbf";
-        hasPublicIpv4 = true;
-        hasPublicIpv6 = true;
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
       };
       charon = {
         "internal" = {

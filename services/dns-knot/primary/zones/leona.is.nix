@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022093001;
+      serial = 2022110701;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -76,6 +76,7 @@ in {
       alertmanager.CNAME = [ "naiad.net.leona.is." ];
       alertmanager-bot.CNAME = [ "naiad.net.leona.is." ];
       cloud.CNAME = [ "foros.net.leona.is." ];
+      "cal.cloud".CNAME = [ "foros.net.leona.is." ];
       cv.CNAME = [ "foros.net.leona.is." ];
       fin.CNAME = [ "foros.net.leona.is." ];
       "dataimporter.fin".CNAME = [ "foros.net.leona.is." ];

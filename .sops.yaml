@@ -127,7 +127,7 @@ creation_rules:
           - *leona
         age:
           - *laurel
-  - path_regex: secrets/services/(firefly-iii|grocy|nextcloud).yaml
+  - path_regex: secrets/services/(firefly-iii|grocy|nextcloud|ical-merger).yaml
     key_groups:
       - pgp:
           - *leona
