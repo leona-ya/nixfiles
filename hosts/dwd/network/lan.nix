@@ -15,10 +15,10 @@
       address = [
         "10.151.4.1/22"
         "fd8f:d15b:9f40:101::1/64"
+        "2a0f:4ac0:1e0:21::1/64"
       ];
       networkConfig = {
         ConfigureWithoutCarrier = true;
-        DHCPPrefixDelegation = true;
         IPv6AcceptRA = false;
       };
 #      dhcpV6Config = {

@@ -19,7 +19,7 @@ in {
     settings = {
       server = {
         protocol = "socket";
-        rootUrl = "https://${grafanaDomain}/";
+        root_url = "https://${grafanaDomain}/";
         domain = grafanaDomain;
       };
       database = {

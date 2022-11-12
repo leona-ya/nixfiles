@@ -189,6 +189,13 @@ in rec {
                     PersistentKeepalive = 21;
                   };
                 }
+                { # dwd
+                  wireguardPeerConfig = {
+                    AllowedIPs = [ "195.39.247.151/32" "2a0f:4ac0:1e0:20::/60" ];
+                    PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
+                    PersistentKeepalive = 21;
+                  };
+                }
               ];
             };
           };

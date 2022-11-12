@@ -23,7 +23,6 @@
           holdoff 5
 
           noipdefault
-          defaultroute
           hide-password
           noauth
           lcp-echo-interval 20
@@ -75,11 +74,22 @@
       dhcpV6Config = {
         WithoutRA = "solicit";
       };
-      dhcpPrefixDelegationConfig = {
-  #        UplinkInterface = ":self";
-        SubnetId = 0;
-        Announce = false;
-      };
+#      dhcpPrefixDelegationConfig = {
+#  #        UplinkInterface = ":self";
+#        SubnetId = 0;
+#        Announce = false;
+#      };
+      routes = [
+        { routeConfig = {
+          Destination = "195.39.247.188/32";
+          Scope = "link";
+          GatewayOnLink = true;
+        }; }
+        { routeConfig = {
+          Destination = "2a0f:4ac0:0:1::d25/128";
+          Gateway = "_ipv6ra";
+        }; }
+      ];
     };
   };
 }

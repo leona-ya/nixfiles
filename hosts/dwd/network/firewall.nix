@@ -7,6 +7,7 @@ in {
       ct state invalid drop
       ct state established,related accept
 
+      iifname br-lan oifname wg-public ct state new accept
       iifname br-lan oifname ${wanInterface} ct state new accept
 
       iifname br-lan oifname br-tethys ct state new accept
@@ -22,7 +23,7 @@ in {
 
       	chain postrouting {
       		type nat hook postrouting priority 100; policy accept;
-      		oifname ${wanInterface} masquerade
+      		oifname wg-public masquerade
       	}
       }
     '';
