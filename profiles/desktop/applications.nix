@@ -50,6 +50,7 @@
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
+    keepassxc
     kicad
     libreoffice-fresh
     nheko

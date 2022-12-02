@@ -56,6 +56,22 @@
     diskioDisks = [ "vda" ];
   };
 
-  services.postgresql.package = pkgs.postgresql_14;
+  services.postgresql = {
+    package = pkgs.postgresql_14;
+    settings = {
+      max_connections = 200;
+      shared_buffers = "768MB";
+      effective_cache_size = "2304MB";
+      maintenance_work_mem = "192MB";
+      checkpoint_completion_target = 0.9;
+      wal_buffers = "16MB";
+      default_statistics_target = 100;
+      random_page_cost = 1.1;
+      effective_io_concurrency = 200;
+      work_mem = "1966kB";
+      min_wal_size = "1GB";
+      max_wal_size = "4GB";
+    };
+  };
   system.stateVersion = "22.11";
 }

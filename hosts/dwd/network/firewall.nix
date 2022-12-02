@@ -14,6 +14,8 @@ in {
 
       iifname br-lan oifname wg-server ct state new accept
       iifname wg-server oifname br-lan ct state new accept
+      icmpv6 type { echo-request, echo-reply, mld-listener-query, mld-listener-report, mld-listener-done, nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert, packet-too-big } accept
+      icmp type echo-request accept
     '';
     extraConfig = ''
       table ip nat {
