@@ -85,5 +85,6 @@ config :pleroma, :emoji,
    shortcode_globs: ["/emoji/*/*.png", "/emoji/*.png"],
    groups: [
      Blobs: ["/emoji/blobs/*.png"], # special file
+     Blobhajs: ["/emoji/blobhaj/*.png"], # special file
      Custom: ["/emoji/custom/*.png"]
    ]
