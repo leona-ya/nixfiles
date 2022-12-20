@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -138,9 +138,7 @@
               ./hosts/hack/configuration.nix
             ];
           };
-          deployment = {
-            targetHost = "2a01:4f9:6a:13c6:4000::8de";
-          };
+          deployment = { };
         };
         haku = {
           nixosSystem = {

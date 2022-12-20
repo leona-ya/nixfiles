@@ -47,17 +47,22 @@ in {
 
     provision = {
       enable = true;
-      datasources = [
-        {
-          type = "prometheus";
+      datasources.settings = {
+        apiVersion = 1;
+        datasources = [{
           name = "Prometheus";
+          type = "prometheus";
           url = "http://[::1]:${toString config.services.prometheus.port}/";
           isDefault = true;
-        }
-      ];
-      dashboards = [
-        { options.path = ./dashboards; }
-      ];
+        }];
+      };
+      dashboards.settings = {
+        apiVersion = 1;
+        providers = [{
+          name = "nix provisioned";
+          options.path = ./dashboards;
+        }];
+      };
     };
   };
   systemd.services.grafana.serviceConfig = {
