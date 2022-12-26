@@ -1,6 +1,13 @@
 { lib, config, pkgs, ... }:
 
-{
+let
+  pleroma-fe = (pkgs.pleroma-fe.overrideAttrs (old: {
+    patches = old.patches ++ [
+      ./fe-replies-in-timeline-following.diff
+#      ./fe-manifest.diff
+    ];
+  }));
+in {
   l.sops.secrets."services/pleroma/secret_config".owner = "pleroma";
   services.pleroma = {
     enable = true;
@@ -10,7 +17,7 @@
       cookieFile = "/var/lib/pleroma/.cookie";
     }).overrideAttrs (old: {
       patches = [
-        ./manifest.diff
+#        ./manifest.diff
         ./reply-visibility.diff
       ];
       postInstall = let
@@ -46,7 +53,7 @@
         };
       in ''
         rm -rf $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static
-        ${pkgs.rsync}/bin/rsync -a ${pkgs.pleroma-fe}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/
+        ${pkgs.rsync}/bin/rsync -a ${pleroma-fe}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/
         ${pkgs.rsync}/bin/rsync -a ${custom-static}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static/
         ${pkgs.rsync}/bin/rsync -a ${custom-emojis}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/emoji/
         chmod u+w -R $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/

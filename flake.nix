@@ -2,8 +2,13 @@
   description = "leona's NixOS config";
 
   inputs = {
+    nixpkgs-master.url = "github:leona-ya/nixpkgs/paperless-ngx/fix-module-1.10.2";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    ccc-nixlib = {
+      url = "gitlab:cyberchaoscreatures/nixlib/main?host=cyberchaos.dev";
+      inputs.nixpkgs.follows = "nixpkgs-unstable-small";
+    };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -34,6 +39,8 @@
     dns,
     nixpkgs-unstable-small,
     nixpkgs-unstable,
+    nixpkgs-master,
+    ccc-nixlib,
     home-manager,
     leona-is-website,
     mailserver,
@@ -45,6 +52,7 @@
       overlays = [
         (final: prev: import ./packages final prev)
         leona-is-website.overlay
+        ccc-nixlib.overlays.pleroma
       ];
 
       sourcesModule = {
@@ -173,8 +181,14 @@
         laurel = {
           nixosSystem = {
             system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
+            modules = defaultModules  ++ [
               ./hosts/laurel/configuration.nix
+              {
+                nix.nixPath = nixpkgs-master.lib.mkForce [
+                  "nixpkgs=${nixpkgs-master}"
+                  "home-manager=${home-manager}"
+                ];
+              }
             ];
           };
           deployment = {};
@@ -230,6 +244,9 @@
             system = "x86_64-linux";
           };
           nodeNixpkgs.turingmachine = import nixpkgs-unstable {
+            system = "x86_64-linux";
+          };
+          nodeNixpkgs.laurel = import nixpkgs-master {
             system = "x86_64-linux";
           };
         };

@@ -28,7 +28,6 @@
     };
     paperless-consumer.serviceConfig.EnvironmentFile = config.sops.secrets."services/paperless/env".path;
     paperless-web = {
-      unitConfig.JoinsNamespaceOf = "paperless-scheduler.service";
       serviceConfig = {
         EnvironmentFile = config.sops.secrets."services/paperless/env".path;
       };
