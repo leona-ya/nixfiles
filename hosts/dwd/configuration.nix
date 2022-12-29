@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ../../profiles/base
+      ../../services/bn-hass
       ./network
     ];
 

@@ -38,6 +38,7 @@
   virtualisation.libvirtd.enable = true;
   security.polkit.enable = true;
 
+  l.backups.enable = true;
   l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:0c40::1]";

@@ -10,7 +10,7 @@ rustPlatform.buildRustPackage rec {
     sha256 = "sha256-Oz7V/EQ0jwv3u5b50JiqnLaG3lO2vtlDtq5RKIAodZs=";
   };
 
-  cargoSha256 = "sha256-aJ8mrBhe27Nz9n82asoGszYJhl1rSUmVYhhtdpGifWA=";
+  cargoSha256 = "sha256-iP3wkWOy1RZBhF//WdE8Y/gLh1yojXny2t7cRwJkIgo=";
 
   nativeBuildInputs = [ pkg-config makeWrapper ];
   buildInputs = [ openssl postgresql.lib ];

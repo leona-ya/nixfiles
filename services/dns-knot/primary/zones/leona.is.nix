@@ -13,7 +13,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022110701;
+      serial = 2022122603;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -43,9 +43,8 @@ in {
       "hack.net".AAAA = [ "2a01:4f9:6a:13c6:4000::8de" ];
       "haku.net" = haku_host;
       "kupe.net" = kupe_host;
-      "nyo.net" = host "136.243.42.251" "2a01:4f8:212:ad7::1";
       "charon.net".AAAA = [ "2a01:4f9:6a:13c6::1" ];
-      "nyan.net" = host "168.119.67.67" "2a01:4f8:242:155f::1";
+      "dwd.net" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       "foros.net" = host "195.39.247.144" "2a01:4f9:6a:13c6:4000::dea";
       "beryl.net" = host "195.39.247.145" "2a01:4f9:6a:13c6:4000::b33";
       "ladon.net" = host "195.39.247.147" " 2a01:4f9:6a:13c6:4000::f00";
@@ -83,6 +82,7 @@ in {
       git.CNAME = [ "beryl.net.leona.is." ];
       grafana.CNAME = [ "naiad.net.leona.is." ];
       grocy.CNAME = [ "foros.net.leona.is." ];
+      "hass.bn" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       inv.CNAME = [ "foros.net.leona.is." ];
       "api.grocy".CNAME = [ "foros.net.leona.is." ];
       netbox.CNAME = [ "laurel.net.leona.is." ];
