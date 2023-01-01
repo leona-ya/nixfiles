@@ -72,7 +72,7 @@ in {
           rm -rf /var/lib/restic-backup
         '';
         pruneOpts = cfg.pruneOpts;
-        # todo: excludes
+        extraBackupArgs = lib.mkIf (cfg.excludes != []) (builtins.map (x: "--exclude \"" + x + "\"") cfg.excludes);
       };
     };
   };

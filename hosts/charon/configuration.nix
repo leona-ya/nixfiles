@@ -38,7 +38,14 @@
   virtualisation.libvirtd.enable = true;
   security.polkit.enable = true;
 
-  l.backups.enable = true;
+  l.backups = {
+    enable = true;
+    excludes = [
+      "/persist/var/lib/libvirt/images/vms"
+      "*.qcow2"
+    ];
+  };
+
   l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:0c40::1]";

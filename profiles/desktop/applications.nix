@@ -44,6 +44,7 @@
     homebank
     cmake
     gnumake
+    inkscape
     (jetbrains.clion.override {
       jdk = jetbrains.jdk;
     })
