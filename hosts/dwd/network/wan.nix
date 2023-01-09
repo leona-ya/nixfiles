@@ -24,6 +24,7 @@
 
           noipdefault
           hide-password
+          defaultroute
           noauth
           lcp-echo-interval 20
           lcp-echo-failure 3

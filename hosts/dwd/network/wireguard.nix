@@ -42,16 +42,16 @@ in {
 ##          Table = 10;
 #        }; }
 #      ];
-      routes = [
-        { routeConfig = {
-          Destination = "0.0.0.0/0";
-          Metric = 512;
-        }; }
-        { routeConfig = {
-          Destination = "::/0";
-          Metric = 512;
-        }; }
-      ];
+#      routes = [
+#        { routeConfig = {
+#          Destination = "0.0.0.0/0";
+#          Metric = 512;
+#        }; }
+#        { routeConfig = {
+#          Destination = "::/0";
+#          Metric = 512;
+#        }; }
+#      ];
     };
   };
 }

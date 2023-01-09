@@ -15,10 +15,10 @@
       address = [
         "10.151.4.1/22"
         "fd8f:d15b:9f40:101::1/64"
-        "2a0f:4ac0:1e0:21::1/64"
       ];
       networkConfig = {
         ConfigureWithoutCarrier = true;
+        DHCPPrefixDelegation = true;
         IPv6AcceptRA = false;
       };
 #      dhcpV6Config = {
@@ -27,7 +27,7 @@
 #      dhcpV6PrefixDelegationConfig = {
 ##        UplinkInterface = "ppp-wan";
 #        SubnetId = 0;
-#        Announce = true;
+##        Announce = true;
 #      };
     };
 
@@ -55,6 +55,21 @@
     networks."10-eth2" = {
       matchConfig = {
         Name = "eth2";
+      };
+      networkConfig = {
+        Bridge = "br-lan";
+      };
+    };
+    links."10-eth3" = {
+      matchConfig = {
+        MACAddress = "00:0d:b9:5a:b3:f3";
+        Type = "ether";
+      };
+      linkConfig.Name = "eth3";
+    };
+    networks."10-eth3" = {
+      matchConfig = {
+        Name = "eth3";
       };
       networkConfig = {
         Bridge = "br-lan";
