@@ -27,10 +27,8 @@
     wl-clipboard
     xdg-utils
   ];
-  programs.nix-ld.enable = true;
 
   users.users.leona.packages = with pkgs; [
-    arduino
     bitwarden
     element-desktop
     evince
@@ -41,18 +39,13 @@
     gnome.gnome-bluetooth
     gnome.nautilus
     gnome.vinagre
-    homebank
     cmake
     gnumake
     inkscape
-    (jetbrains.clion.override {
-      jdk = jetbrains.jdk;
-    })
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
     })
-    keepassxc
-    kicad
+#    kicad
     libreoffice-fresh
     nheko
     mpv
@@ -68,7 +61,6 @@
     python3
     rofi-pass
     rustup
-    sengi
     signal-desktop
     speedcrunch
     spotify
@@ -107,14 +99,13 @@
       bip = "172.37.0.1/16";
       default-address-pools = [
         {
-	  base = "10.38.0.0/16";
-	  size = 24;
-	}
+          base = "10.38.0.0/16";
+          size = 24;
+        }
       ];
     };
   };
   l.nftables.generateDockerRules = true;
-  programs.java.enable = true;
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   services.udisks2.enable = true;
@@ -150,7 +141,6 @@
       enableExtraSocket = true;
       sshKeys = [
 	      "F18DB4002D5F6A2E62BF9F4E6361BB12143B6647" # leona
-	      "D91C5A1E23D3EE4DC72A5BEF0EA93C9F634A79F5" # cc
       ];
     };
     programs.chromium = {
@@ -165,15 +155,15 @@
       };
       extensions = [
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-        { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass
         { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
-        # { id = "lckanjgmijmafbedllaakclkaicjfmnk"; } # clear urls
-        # { id = "gdbofhhdmcladcmmfjolgndfkpobecpg"; } # don't track me google
      ];
     };
-    programs.browserpass = {
+    programs.firefox = {
       enable = true;
-      browsers = [ "chromium" ];
+      profiles = {
+        "leona".id = 0;
+        "uni".id = 1;
+      };
     };
     programs.password-store.enable = true;
     programs.zsh = {
@@ -195,12 +185,11 @@
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "text/html" = [ "chromium-browser.desktop" ];
-        "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
-        "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
-        "x-scheme-handler/about" = [ "chromium-browser.desktop" ];
-        "x-scheme-handler/unknown" = [ "chromium-browser.desktop" ];
-	      "x-scheme-handler/slack" = [ "slack.desktop" ];
+        "text/html" = [ "firefox.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
+        "x-scheme-handler/about" = [ "firefox.desktop" ];
+        "x-scheme-handler/unknown" = [ "firefox.desktop" ];
         "image/avif" = [ "org.gnome.eog.desktop" ];
         "image/jpeg" = [ "org.gnome.eog.desktop" ];
         "image/png" = [ "org.gnome.eog.desktop" ];

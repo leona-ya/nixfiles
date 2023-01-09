@@ -40,25 +40,25 @@
       IdentityFile ${config.sops.secrets."hosts/turingmachine/alt_rsa_ssh_key".path}
     '';
   };
-  l.backups = {
-    enable = true;
-    excludes = [
-      "/var/cache"
-      "/var/lock"
-      "/var/spool"
-      "/var/log"
-      "/home/leona/.local/share/containers"
-      "/home/leona/sync/nas"
-      "/var/lib/containers"
-      "**/node_modules"
-      "**/.venv"
-      "**/target"
-      "/home/*/.cache"
-      "/home/*/.rustup"
-      "**/Cache"
-    ];
-    enableSystemdTimer = false;
-  };
+#  l.backups = {
+#    enable = true;
+#    excludes = [
+#      "/var/cache"
+#      "/var/lock"
+#      "/var/spool"
+#      "/var/log"
+#      "/home/leona/.local/share/containers"
+#      "/home/leona/sync/nas"
+#      "/var/lib/containers"
+#      "**/node_modules"
+#      "**/.venv"
+#      "**/target"
+#      "/home/*/.cache"
+#      "/home/*/.rustup"
+#      "**/Cache"
+#    ];
+#    enableSystemdTimer = false;
+#  };
 
   services.nginx.virtualHosts = {
     "hydra.turingmachine.net.leona.is" = {

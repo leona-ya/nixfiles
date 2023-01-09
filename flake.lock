@@ -319,6 +319,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1673171190,
+        "narHash": "sha256-iz+8B+P2MsEKPBFK4n2MccDDVfJFnuSBRi6sst7v9Jk=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "da9d423c6425cfc53c5b759b8c5486589b3d261f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "ccc-nixlib": "ccc-nixlib",
@@ -331,6 +346,7 @@
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-unstable-small": "nixpkgs-unstable-small",
+        "nur": "nur",
         "sops-nix": "sops-nix"
       }
     },

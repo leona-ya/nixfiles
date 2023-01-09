@@ -9,6 +9,7 @@
       url = "gitlab:cyberchaoscreatures/nixlib/main?host=cyberchaos.dev";
       inputs.nixpkgs.follows = "nixpkgs-unstable-small";
     };
+    nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -40,6 +41,7 @@
     nixpkgs-unstable-small,
     nixpkgs-unstable,
     nixpkgs-master,
+    nur,
     ccc-nixlib,
     home-manager,
     leona-is-website,
@@ -79,6 +81,7 @@
         {
           nixpkgs.overlays = overlays;
         }
+        nur.nixosModules.nur
         sourcesModule
         sops-nix.nixosModules.sops
       ];
@@ -193,6 +196,24 @@
           };
           deployment = {};
         };
+        thia = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ [
+              ./hosts/thia/configuration.nix
+              {
+                nix.nixPath = nixpkgs-unstable.lib.mkForce [
+                  "nixpkgs=${nixpkgs-unstable}"
+                  "home-manager=${home-manager}"
+                ];
+              }
+            ];
+          };
+          deployment = {
+            targetHost = null;
+            allowLocalDeployment = true;
+          };
+        };
         turingmachine = {
           nixosSystem = {
             system = "x86_64-linux";
@@ -241,6 +262,9 @@
       colmena = {
         meta = {
           nixpkgs = import nixpkgs-unstable-small {
+            system = "x86_64-linux";
+          };
+          nodeNixpkgs.thia = import nixpkgs-unstable {
             system = "x86_64-linux";
           };
           nodeNixpkgs.turingmachine = import nixpkgs-unstable {

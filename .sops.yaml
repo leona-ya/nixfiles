@@ -12,6 +12,7 @@ keys:
   - &laurel age1m9nquxf2l7jnvsjucnya93y6n408amvassc5pw353636rlsrggxskxvuhn
   - &naiad age1apjvmw80k4nh7fvr07lfhqtku7amw6x8ulc7hyyplr78aaj0xehqm440d7
   - &nyan age1wc3shhw82lj9mdnh2zy62k78k3et0mq3dcqmef9r69sc0cvt29ts9jzkv0
+  - &thea age1st8tawt7qsf7q24nknscrwzw6d6fcveylggtf2az36j0nke7jv7sx7ce4q
   - &turingmachine age1wqgja2wvgeuzvjqvsk862ppdmfv8mqmgxc543x3a5g02dddadu3seflurp
 creation_rules:
   - path_regex: secrets/all/[^/]+\.yaml$
@@ -31,9 +32,10 @@ creation_rules:
           - *laurel
           - *naiad
           - *nyan
+          - *thea
           - *turingmachine
 
-  # hos
+  # hosts
   - path_regex: secrets/hosts/beryl.yaml
     key_groups:
       - pgp:
@@ -107,6 +109,15 @@ creation_rules:
         age:
           - *turingmachine
 
+
+  # profiles
+  - path_regex: secrets/profiles/desktop.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *thea
+          - *turingmachine
 
   # services
   - path_regex: secrets/services/backup-relay.yaml
