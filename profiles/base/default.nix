@@ -7,6 +7,7 @@
     ./nginx.nix
     ./nvim.nix
   ];
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   users.mutableUsers = false;
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;

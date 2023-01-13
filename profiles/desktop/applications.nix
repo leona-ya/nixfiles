@@ -58,6 +58,7 @@
     pandoc
     pass-wayland
     postman
+    poetry
     python3
     rofi-pass
     rustup
