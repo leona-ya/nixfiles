@@ -104,6 +104,16 @@
           };
           deployment = {};
         };
+        bij = {
+          nixosSystem = {
+            system = "x86_64-linux";
+            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
+              ./hosts/bij/configuration.nix
+            ];
+          };
+          deployment.targetHost = "168.119.100.247";
+          deployment.targetPort = 22;
+        };
         charon = {
           nixosSystem = {
             system = "x86_64-linux";
@@ -283,7 +293,6 @@
         imports = nixosConfig._module.args.modules;
         deployment = {
           tags = groups;
-          buildOnTarget = true;
           targetHost = nixosConfig.config.networking.hostName + "." + nixosConfig.config.networking.domain;
           targetUser = "leona";
         } // config.deployment;
