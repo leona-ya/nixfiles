@@ -47,7 +47,7 @@ in {
         group_by = ["alertname" "cluster" "service"];
         group_wait = "15s";
         group_interval = "1m";
-        repeat_interval = "6h";
+        repeat_interval = "12h";
         receiver = "warning";
         routes = [
           {
@@ -67,22 +67,22 @@ in {
           equal = ["alertname" "cluster" "service"];
         }
       ];
-      receivers = [
+      receivers = let
+        tg_config = {
+          bot_token = "\${ALERTMANAGER_TELEGRAM_TOKEN}";
+          chat_id = 127273642;
+          api_url = "https://api.telegram.org";
+        };
+      in [
         {
           name = "warning";
-          webhook_configs = [{
-            url = "https://alertmanager-bot.leona.is";
-            send_resolved = true;
-          }];
+          telegram_configs = [tg_config];
         }
         {
           name = "critical";
-          webhook_configs = [{
-            url = "https://alertmanager-bot.leona.is";
-            send_resolved = true;
-          }];
+          telegram_configs = [tg_config];
           email_configs = [{
-            to = "leona@leona.is";
+            to = "monitoring@leona.is";
             headers.subject = "[ALERT] " + alert_message;
           }];
         }

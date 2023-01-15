@@ -7,7 +7,6 @@ in {
     ./prometheus.nix
     ./grafana.nix
     ./alertmanager.nix
-    ./alertmanager-bot.nix
   ];
 
   l.telegraf.extraInputs = {
