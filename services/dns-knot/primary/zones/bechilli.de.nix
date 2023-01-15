@@ -26,7 +26,7 @@
     CAA = helper.caa;
 
     subdomains = {
-      autoconfig.CNAME = [ "kupe.net.em0lar.dev." ];
+      autoconfig.CNAME = [ "kupe.net.leona.is." ];
     };
   };
 }

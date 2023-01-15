@@ -134,6 +134,12 @@
         gtk-application-prefer-dark-theme = 1;
       };
     };
+    programs.helix = {
+      enable = true;
+      settings = {
+        theme = "monokai";
+      };
+    };
     programs.gpg.enable = true;
     services.gpg-agent = {
       enable = true;
@@ -199,7 +205,6 @@
       };
     };
   };
-  environment.variables.SSH_AUTH_SOCK = "/run/user/1000/gnupg/S.gpg-agent.ssh";
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   services.printing = {
     enable = true;
