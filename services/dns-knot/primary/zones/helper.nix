@@ -25,8 +25,8 @@ with dns.lib.combinators;
   caa = letsEncrypt "noc@leona.is";  # Common template combinators included
   hosts = {
     web = {
-     A = [ "195.39.247.144" ];
-     AAAA = [ "2a01:4f9:6a:13c6:4000::dea" ];
+     A = [ "168.119.100.247" ];
+     AAAA = [ "2a01:4f8:c010:1098::1" ];
     };
   };
 }

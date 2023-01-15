@@ -92,25 +92,14 @@
       matchBlocks = let
         leona = {
           port = 54973;
-        };
-        leona-nyan = {
-          port = 22;
-          user = "root";
-        };
-        leona-gitea = {
-          port = 2222;
-          extraOptions.PubkeyAcceptedKeyTypes = "+ssh-rsa";
+          forwardAgent = true;
         };
         yuka-gitea = {
           extraOptions.PubkeyAcceptedKeyTypes = "+ssh-rsa";
         };
       in {
         "git.yuka.dev" = yuka-gitea;
-        "git.leona.is" = leona-gitea;
-        "git.em0lar.dev" = leona-gitea;
         "*.net.leona.is" = leona;
-        "*.nyan.net.leona.is" = leona-nyan;
-        "*.lan" = leona;
       };
     };
   };

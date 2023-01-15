@@ -8,13 +8,14 @@ naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
 kupe_host = host "195.39.247.146" "2a01:4f9:6a:13c6:4000::e9c";
 laurel_host = host "195.39.247.149" "2a01:4f9:6a:13c6:4000::eaa";
 bij_v4 = "168.119.100.247";
+laurel_v6 = "2a01:4f8:c012:b172::1";
 in {
   zone = {
     TTL = 600;
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023011301;
+      serial = 2023011401;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -38,7 +39,6 @@ in {
     A = helper.hosts.web.A;
     AAAA = helper.hosts.web.AAAA;
 
-
     subdomains = hosthelper.services.dns-int.g_dns_records // {
       "naiad.net" = naiad_host;
       "hack.net".AAAA = [ "2a01:4f9:6a:13c6:4000::8de" ];
@@ -51,6 +51,7 @@ in {
       "beryl.net" = host "195.39.247.145" "2a01:4f9:6a:13c6:4000::b33";
       "ladon.net" = host "195.39.247.147" " 2a01:4f9:6a:13c6:4000::f00";
       "laurel.net" = laurel_host;
+      "newlaurel.net".AAAA = [ laurel_v6 ];
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
       "wg.net".CNAME = [ "haku.net.leona.is." ];
@@ -61,42 +62,40 @@ in {
       "ns3" = naiad_host;
 
       mail = kupe_host;
-      autoconfig.CNAME = [ "kupe.net.em0lar.dev." ];
+      autoconfig.CNAME = [ "kupe.net.leona.is." ];
       "wg-sternpunkt".CNAME = [ "wg.net.leona.is." ]; # backwards compatability
       "encladus.lan.int.sig.de".CNAME = [ "encladus.lan." ]; # backwards compatability
 
-      "ca".MX = [ (mx.mx 10 "kupe.net.em0lar.dev.") ];
+      "ca".MX = [ (mx.mx 10 "kupe.net.leona.is.") ];
       "ca".TXT = [ helper.mail.spf ];
       "ca".DKIM = [{
         selector = "mail";
         p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2WJ46bl9UqBY9ZxqkVCBdSiysIJMUbWS3BK10Lupe4T5+jWAcdzJraznWeaVF/mR/9TyiB7lE79ZB6WxHxTwwJ5UZjURwImKAKqSGPXPACIj+LHyx5j2nHN4CawC6bkCmpGT99B7I/5bCelekoAHV9U/4pE2YEjgA0VxvlSKHB2Y7cPWL303DInYGaTrvMczuwLYoEwIiBirffYNqHyrOJE9A+ZQRdLjM8DFOxegAOV9mcHb3MwneJuu86Czz45UIrQ7AxkMUNKgHitqTSnXzLWd4BF6Kf3XUh/lED7WPdviBLJo/1H0Cgch8RRlinTeDVliHDQ6/zLWpk6+k3iKkQIDAQAB";
       }];
 
-      www.CNAME = [ "foros.net.leona.is." ];
+      www.CNAME = [ "bij.net.leona.is." ];
       auth.CNAME = [ "ladon.net.leona.is." ];
       alertmanager.CNAME = [ "naiad.net.leona.is." ];
       alertmanager-bot.CNAME = [ "naiad.net.leona.is." ];
-      cloud.CNAME = [ "foros.net.leona.is." ];
-      "cal.cloud".CNAME = [ "foros.net.leona.is." ];
-      cv.CNAME = [ "foros.net.leona.is." ];
-      fin.CNAME = [ "foros.net.leona.is." ];
-      "dataimporter.fin".CNAME = [ "foros.net.leona.is." ];
+      cloud.CNAME = [ "bij.net.leona.is." ];
+      "cal.cloud".CNAME = [ "bij.net.leona.is." ];
+      cv.CNAME = [ "bij.net.leona.is." ];
+      fin.CNAME = [ "bij.net.leona.is." ];
+      "dataimporter.fin".CNAME = [ "bij.net.leona.is." ];
       git.CNAME = [ "beryl.net.leona.is." ];
       grafana.CNAME = [ "naiad.net.leona.is." ];
-      grocy.CNAME = [ "foros.net.leona.is." ];
+      grocy.CNAME = [ "bij.net.leona.is." ];
       "hass.bn" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
-      inv.CNAME = [ "foros.net.leona.is." ];
-      "api.grocy".CNAME = [ "foros.net.leona.is." ];
+      "api.grocy".CNAME = [ "bij.net.leona.is." ];
       netbox.CNAME = [ "laurel.net.leona.is." ];
-      matrix.CNAME = [ "laurel.net.leona.is." ];
+      matrix = host bij_v4 laurel_v6;
       md.CNAME = [ "laurel.net.leona.is." ];
-      paperless.CNAME = [ "laurel.net.leona.is." ];
+      paperless.CNAME = [ "newlaurel.net.leona.is." ];
       prometheus.CNAME = [ "naiad.net.leona.is." ];
       sso.CNAME = [ "ladon.net.leona.is." ];
       "hydra.sso".CNAME = [ "ladon.net.leona.is." ];
       todo.CNAME = [ "laurel.net.leona.is." ];
-      pass.CNAME = [ "laurel.net.leona.is." ];
-      pl.CNAME = [ "laurel.net.leona.is." ];
+      pass.CNAME = host bij_v4 laurel_v6;
     };
   };
 }

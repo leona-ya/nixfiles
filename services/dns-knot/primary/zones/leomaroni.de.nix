@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022092601;
+      serial = 2023011301;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -31,8 +31,6 @@
     AAAA = helper.hosts.web.AAAA;
 
     subdomains = {
-      nl.MX = helper.mail.mxSimple;
-      nl.TXT = [ helper.mail.spf ];
       services.MX = helper.mail.mxSimple;
       services.DKIM = [{
         selector = "dkim";
@@ -43,10 +41,6 @@
       services.TXT = [ helper.mail.spf ];
 
       www.CNAME = [ "foros.net.leona.is." ];
-      gat.CNAME = [ "foros.net.leona.is." ];
-      cloud.CNAME = [ "foros.net.leona.is." ];
-      "shared.cloud".CNAME = [ "haku.net.leona.is." ];
-      "shared.cloud.int".CNAME = [ "foros.net.leona.is." ];
     };
   };
 }

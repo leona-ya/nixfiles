@@ -75,25 +75,25 @@ in {
         };
       };
     };
-    "static.labcode.de" = {
-      enableACME = true;
-      forceSSL = true;
-      kTLS = true;
-      serverAliases = [
-        "cdn.labcode.de"
-      ];
-      root = fetchGit {
-        url = "https://git.em0lar.de/em0lar/static.labcode.de";
-        rev = "f53ae4405b5e160838c4a3097df789dd612740c9";
-      };
-      locations."/" = {
-        extraConfig = ''
-          ${commonHeaders}
-          autoindex on;
-          add_header Access-Control-Allow-Origin '*';
-        '';
-      };
-    };
+#    "static.labcode.de" = {
+#      enableACME = true;
+#      forceSSL = true;
+#      kTLS = true;
+#      serverAliases = [
+#        "cdn.labcode.de"
+#      ];
+#      root = fetchGit {
+#        url = "https://git.em0lar.de/em0lar/static.labcode.de";
+#        rev = "f53ae4405b5e160838c4a3097df789dd612740c9";
+#      };
+#      locations."/" = {
+#        extraConfig = ''
+#          ${commonHeaders}
+#          autoindex on;
+#          add_header Access-Control-Allow-Origin '*';
+#        '';
+#      };
+#    };
     "opendatamap.net" = {
       enableACME = true;
       forceSSL = true;

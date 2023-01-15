@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022092601;
+      serial = 2023011401;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -25,7 +25,7 @@
 
     CAA = helper.caa;
     subdomains = {
-      www.CNAME = [ "foros.net.leona.is." ];
+      www.CNAME = [ "bij.net.leona.is." ];
       "*".A = [ "162.55.82.116" ];
     };
   };

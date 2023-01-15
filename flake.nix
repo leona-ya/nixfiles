@@ -74,6 +74,7 @@
             ./modules/vouch-proxy
             ./modules/grocy
             ./modules/firefly-iii
+            ./modules/nginx-sni-proxy
           ];
           documentation.info.enable = false;
         }
@@ -111,8 +112,7 @@
               ./hosts/bij/configuration.nix
             ];
           };
-          deployment.targetHost = "168.119.100.247";
-          deployment.targetPort = 22;
+          deployment = {};
         };
         charon = {
           nixosSystem = {

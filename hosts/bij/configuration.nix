@@ -6,11 +6,11 @@
       ./network.nix
       ../../profiles/base
       ../../profiles/zfs-nopersist
-#      ../../services/nextcloud
-#      ../../services/web
+      ../../services/nextcloud
+      ../../services/web
 #      ../../services/firefly-iii
 #      ../../services/grocy
-#      ../../services/ical-merger
+      ../../services/ical-merger
   ];
 
   boot.loader.grub = {
@@ -31,7 +31,19 @@
 #    host = "[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]";
 #    diskioDisks = [ "vda" ];
 #  };
-
+  l.nginx-sni-proxy = {
+    enable = true;
+    upstreamHosts = {
+      "newlaurel.net.leona.is" = [
+        "matrix.leona.is"
+        "md.leona.is"
+        "paperless.leona.is"
+        "pass.leona.is"
+        "todo.leona.is"
+      ];
+    };
+  };
+  
   services.postgresql.package = pkgs.postgresql_14;
 
   system.stateVersion = "23.05";

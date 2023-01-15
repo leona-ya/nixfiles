@@ -14,7 +14,6 @@
 
     config = {
       extraTrustedDomains = [
-        "cloud.leomaroni.de"
         "cloud.maroni.me"
       ];
       overwriteProtocol = "https";

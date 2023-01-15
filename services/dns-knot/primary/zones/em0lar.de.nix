@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022092601;
+      serial = 2023011301;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -28,9 +28,6 @@
 
     CAA = helper.caa;
 
-    A = helper.hosts.web.A;
-    AAAA = helper.hosts.web.AAAA;
-
     subdomains = {
       ca.MX = helper.mail.mxSimple;
       ca.TXT = [ helper.mail.spf ];
@@ -38,13 +35,6 @@
         selector = "mail";
         p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzVQD7sCSZNuzYN8Lxzu8Ynv19Z0E3dtu0AufKrQg7XNX5caQ+m32um1KfzIN/XTe4PTWCLb99M+6ROfl3DS6JxEP31JNv9CHesnprrMzlODnMdRsBw5PP0UT9oebmdVH2VJeNtYlt34Sof3bUcNEqG9ocW4p3WEEY1Eg8X+CgZc2aecUsEYWGi9Ric85a0Rza66v47UZSe/Rw+NTAkzsJUGCuaw+vR2sGTnPa1je3KEsP3eYwDlhm2qdRoFXw5drwoF7hXiucPXNrNm1VWHwOjDwMUHiI+yUt7GAbJ2dq081qtkcnoyQCOVyPzxSSMcIfpKqu1swpQlSlkYr7R/MHQIDAQAB";
       }];
-
-      www.CNAME = [ "kupe.net.em0lar.dev." ];
-      auth.CNAME = [ "ladon.net.leona.is." ];
-      element.CNAME = [ "foros.net.leona.is." ];
-      git.CNAME = [ "beryl.net.leona.is." ];
-      md.CNAME = [ "beryl.net.leona.is." ];
-      tell.CNAME = [ "foros.net.leona.is." ];
     };
   };
 }
