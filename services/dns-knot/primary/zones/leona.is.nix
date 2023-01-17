@@ -9,13 +9,14 @@ kupe_host = host "195.39.247.146" "2a01:4f9:6a:13c6:4000::e9c";
 laurel_host = host "195.39.247.149" "2a01:4f9:6a:13c6:4000::eaa";
 bij_v4 = "168.119.100.247";
 laurel_v6 = "2a01:4f8:c012:b172::1";
+ladon_v6 = "2a01:4f8:1c17:e4ce::1";
 in {
   zone = {
     TTL = 600;
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023011401;
+      serial = 2023011702;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -49,9 +50,8 @@ in {
       "dwd.net" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       "foros.net" = host "195.39.247.144" "2a01:4f9:6a:13c6:4000::dea";
       "beryl.net" = host "195.39.247.145" "2a01:4f9:6a:13c6:4000::b33";
-      "ladon.net" = host "195.39.247.147" " 2a01:4f9:6a:13c6:4000::f00";
-      "laurel.net" = laurel_host;
-      "newlaurel.net".AAAA = [ laurel_v6 ];
+      "ladon.net".AAAA = [ ladon_v6 ];
+      "laurel.net".AAAA = [ laurel_v6 ];
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
       "wg.net".CNAME = [ "haku.net.leona.is." ];
@@ -74,9 +74,8 @@ in {
       }];
 
       www.CNAME = [ "bij.net.leona.is." ];
-      auth.CNAME = [ "ladon.net.leona.is." ];
+      auth = host bij_v4 ladon_v6;
       alertmanager.CNAME = [ "naiad.net.leona.is." ];
-      alertmanager-bot.CNAME = [ "naiad.net.leona.is." ];
       cloud.CNAME = [ "bij.net.leona.is." ];
       "cal.cloud".CNAME = [ "bij.net.leona.is." ];
       cv.CNAME = [ "bij.net.leona.is." ];
@@ -91,10 +90,10 @@ in {
       md = host bij_v4 laurel_v6;
       paperless = host bij_v4 laurel_v6;
       prometheus.CNAME = [ "naiad.net.leona.is." ];
-      sso.CNAME = [ "ladon.net.leona.is." ];
-      "hydra.sso".CNAME = [ "ladon.net.leona.is." ];
-      todo.CNAME = [ "laurel.net.leona.is." ];
-      pass.CNAME = host bij_v4 laurel_v6;
+      sso = host bij_v4 ladon_v6;
+      "hydra.sso" = host bij_v4 ladon_v6;
+      todo = host bij_v4 laurel_v6;
+      pass = host bij_v4 laurel_v6;
     };
   };
 }

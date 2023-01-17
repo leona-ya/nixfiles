@@ -41,6 +41,11 @@
         "pass.leona.is"
         "todo.leona.is"
       ];
+      "ladon.net.leona.is" = [
+        "auth.em0lar.dev"
+        "hydra-sso.leona.is"
+        "sso.leona.is"
+      ];
     };
   };
   
