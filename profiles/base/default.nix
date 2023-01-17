@@ -12,6 +12,8 @@
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   l.sops.secrets."all/nix-build/builder_ssh_key".owner = "root";
+  nixpkgs.config.allowUnfree = true;
+  hardware.enableAllFirmware = true;
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
