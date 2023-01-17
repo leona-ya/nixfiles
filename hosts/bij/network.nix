@@ -1,36 +1,46 @@
-{ ... }:
+{ config, lib, ... }:
 
-{
+let
+  hosthelper = import ../../hosts { inherit lib config; };
+in {
+  l.sops.secrets."hosts/bij/wireguard_wg-server_privatekey".owner = "systemd-network";
+  networking.firewall.allowedUDPPorts = [ 51441 ];
+
   networking.hostName = "bij";
   networking.domain = "net.leona.is";
   systemd.network = {
-    links."10-eth0" = {
-      matchConfig.MACAddress = "96:00:01:cf:2e:1c";
-      linkConfig.Name = "eth0";
-    };
-    networks."10-eth0" = {
-      DHCP = "yes";
-      matchConfig = {
-        Name = "eth0";
+    links = {
+      "10-eth0" = {
+        matchConfig.MACAddress = "96:00:01:cf:2e:1c";
+        linkConfig.Name = "eth0";
       };
-      address = [
-        "2a01:4f8:c010:1098::1/64"
-      ];
-      routes = [
-        { routeConfig = { Destination = "::/0"; Gateway = "fe80::1"; GatewayOnLink = true; }; }
-      ];
+      "10-eth-nat" = {
+        matchConfig.MACAddress = "86:00:00:32:55:86";
+        linkConfig.Name = "eth-nat";
+      };
     };
-    links."10-eth-nat" = {
-      matchConfig.MACAddress = "86:00:00:32:55:86";
-      linkConfig.Name = "eth-nat";
-    };
-    networks."10-eth-nat" = {
-      matchConfig.Name = "eth-nat";
-      address = [ "10.62.41.2/32" ];
-      routes = [
-        { routeConfig = { Destination = "10.62.41.0/24"; Gateway = "10.62.41.1"; GatewayOnLink = true; }; }
-      ];
-    };
+    netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
+    networks = {  
+      "10-eth0" = {
+        DHCP = "yes";
+        matchConfig = {
+          Name = "eth0";
+        };
+        address = [
+          "2a01:4f8:c010:1098::1/64"
+        ];
+        routes = [
+          { routeConfig = { Destination = "::/0"; Gateway = "fe80::1"; GatewayOnLink = true; }; }
+        ];
+      };
+      "10-eth-nat" = {
+        matchConfig.Name = "eth-nat";
+        address = [ "10.62.41.2/32" ];
+        routes = [
+          { routeConfig = { Destination = "10.62.41.0/24"; Gateway = "10.62.41.1"; GatewayOnLink = true; }; }
+        ];
+      };
+    } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
   };
   l.nftables = {
     extraForward = ''

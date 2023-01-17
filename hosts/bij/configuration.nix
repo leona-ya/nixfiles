@@ -26,11 +26,11 @@
   services.qemuGuest.enable = true;
 
 #  l.backups.enable = true;
-#  l.telegraf = {
-#    enable = true;
-#    host = "[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]";
-#    diskioDisks = [ "vda" ];
-#  };
+  l.telegraf = {
+    enable = true;
+    host = "[fd8f:d15b:9f40:c21::1]";
+    diskioDisks = [ "sda" ];
+  };
   l.nginx-sni-proxy = {
     enable = true;
     upstreamHosts = {

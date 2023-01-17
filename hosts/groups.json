@@ -27,6 +27,7 @@
   },
   "monitoring": {
     "hosts": [
+      "bij",
       "charon",
       "dwd",
       "gaika",
@@ -40,9 +41,12 @@
   },
   "wireguard": {
     "hosts": [
+      "bij",
       "dwd",
       "gaika",
       "haku",
+      "ladon",
+      "laurel",
       "naiad",
       "charon"
     ]

@@ -5,7 +5,25 @@ let
     builtins.map (hostname: getAttrFromPath [ hostname ] hosts) hostnames;
 in rec {
   hosts = {
-
+    bij = {
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:0c21::1";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
+      services = {
+        wireguard = {
+          interfaces = {
+            "server" = {
+              ips = [ "${hosts.bij.meta.intIpv6}/72" ];
+              publicKey = "axdGRJYscsCWGmSqytzU/ifQdnua4I7Lh83sYIR0AH0=";
+              routed = [ "${hosts.bij.meta.intIpv6}/72" ];
+              hostname = "bij.net.leona.is";
+            };
+          };
+        };
+      };
+    };
     beryl = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:fe4e:5cbf";
@@ -204,9 +222,21 @@ in rec {
     };
     ladon = {
       meta = {
-        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:fea0:d52c";
-        hasPublicIpv4 = true;
+        intIpv6 = "fd8f:d15b:9f40:c21:200::1";
+        hasPublicIpv4 = false;
         hasPublicIpv6 = true;
+      };
+      services = {
+        wireguard = {
+          interfaces = {
+            "server" = {
+              ips = [ "${hosts.ladon.meta.intIpv6}/72" ];
+              publicKey = "wGbDKRc6TeIF559qQBt5cjxhCPA/k82uEdmesqrTRAg=";
+              routed = [ "${hosts.ladon.meta.intIpv6}/72" ];
+              hostname = "ladon.net.leona.is";
+            };
+          };
+        };
       };
       charon = {
         "internal" = {
@@ -223,9 +253,21 @@ in rec {
     };
     laurel = {
       meta = {
-        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:fe0a:845";
-        hasPublicIpv4 = true;
+        intIpv6 = "fd8f:d15b:9f40:c21:100::1";
+        hasPublicIpv4 = false;
         hasPublicIpv6 = true;
+      };
+      services = {
+        wireguard = {
+          interfaces = {
+            "server" = {
+              ips = [ "${hosts.laurel.meta.intIpv6}/72" ];
+              publicKey = "cirPy+T2bcZV0t53qx5XwEdrhouRCvwboyJE38F3gFY=";
+              routed = [ "${hosts.laurel.meta.intIpv6}/72" ];
+              hostname = "laurel.net.leona.is";
+            };
+          };
+        };
       };
       charon = {
         "internal" = {

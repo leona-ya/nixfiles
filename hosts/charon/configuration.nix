@@ -28,7 +28,6 @@
     "zfs.zfs_arc_min=1024000000"
   ];
   networking.hostId = "fb4b69a7";
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   nix.distributedBuilds = false;
 
   networking.hostName = "charon";

@@ -3,6 +3,7 @@
 {
   imports = [
       ./hardware-configuration.nix
+      ./network.nix
       ../../profiles/base
       ../../profiles/zfs-nopersist
       ../../services/hedgedoc
@@ -25,46 +26,12 @@
     "zfs.zfs_arc_max=1024000000"
   ];
 
-  networking.hostName = "newlaurel";
-  networking.domain = "net.leona.is";
-  systemd.network = {
-    links."10-eth0" = {
-      matchConfig.MACAddress = "96:00:01:d0:16:51";
-      linkConfig.Name = "eth0";
-    };
-    networks."10-eth0" = {
-      DHCP = "yes";
-      matchConfig = {
-        Name = "eth0";
-      };
-      address = [
-        "2a01:4f8:c012:b172::1/64"
-      ];
-      dns = [ "2001:4860:4860::8888" ];
-      routes = [
-        { routeConfig = { Destination = "::/0"; Gateway = "fe80::1"; GatewayOnLink = true; }; }
-      ];
-    };
-    links."10-eth-nat" = {
-      matchConfig.MACAddress = "86:00:00:32:55:c5";
-      linkConfig.Name = "eth-nat";
-    };
-    networks."10-eth-nat" = {
-      matchConfig.Name = "eth-nat";
-      address = [ "10.62.41.3/32" ];
-      routes = [
-        { routeConfig = { Destination = "0.0.0.0/0"; Gateway = "10.62.41.1"; GatewayOnLink = true; }; }
-      ];
-    };
+  #l.backups.enable = true;
+  l.telegraf = {
+    enable = true;
+    host = "[fd8f:d15b:9f40:0c21:100::1]";
+    diskioDisks = [ "sda" ];
   };
-  networking.useHostResolvConf = false;
-  l.nftables.checkIPTables = false;
-#  l.backups.enable = true;
-#  l.telegraf = {
-#    enable = true;
-#    host = "[fd8f:d15b:9f40:c41:5054:ff:fe0a:845]";
-#    diskioDisks = [ "vda" ];
-#  };
 
   services.postgresql = {
     package = pkgs.postgresql_14;
