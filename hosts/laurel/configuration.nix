@@ -9,7 +9,7 @@
       ../../services/hedgedoc
       ../../services/matrix
       ../../services/paperless
-#      ../../services/haj-social
+      ../../services/haj-social
       ../../services/vaultwarden
 #      ../../services/vikunja
   ];
