@@ -87,10 +87,9 @@ in {
       grocy.CNAME = [ "bij.net.leona.is." ];
       "hass.bn" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       "api.grocy".CNAME = [ "bij.net.leona.is." ];
-      netbox.CNAME = [ "laurel.net.leona.is." ];
       matrix = host bij_v4 laurel_v6;
-      md.CNAME = [ "laurel.net.leona.is." ];
-      paperless.CNAME = [ "newlaurel.net.leona.is." ];
+      md = host bij_v4 laurel_v6;
+      paperless = host bij_v4 laurel_v6;
       prometheus.CNAME = [ "naiad.net.leona.is." ];
       sso.CNAME = [ "ladon.net.leona.is." ];
       "hydra.sso".CNAME = [ "ladon.net.leona.is." ];

@@ -5,11 +5,11 @@
       ./hardware-configuration.nix
       ../../profiles/base
       ../../profiles/zfs-nopersist
-#      ../../services/hedgedoc
+      ../../services/hedgedoc
       ../../services/matrix
       ../../services/paperless
 #      ../../services/haj-social
-#      ../../services/vaultwarden
+      ../../services/vaultwarden
 #      ../../services/vikunja
   ];
   boot.loader.grub = {

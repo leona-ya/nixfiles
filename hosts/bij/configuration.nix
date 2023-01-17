@@ -34,7 +34,7 @@
   l.nginx-sni-proxy = {
     enable = true;
     upstreamHosts = {
-      "newlaurel.net.leona.is" = [
+      "laurel.net.leona.is" = [
         "matrix.leona.is"
         "md.leona.is"
         "paperless.leona.is"

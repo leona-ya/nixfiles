@@ -38,12 +38,12 @@ creation_rules:
           - *turingmachine
 
   # hosts
-  - path_regex: secrets/hosts/beryl.yaml
+  - path_regex: secrets/hosts/bij.yaml
     key_groups:
       - pgp:
           - *leona
         age:
-          - *beryl
+          - *bij
   - path_regex: secrets/hosts/charon.yaml
     key_groups:
       - pgp:
