@@ -36,7 +36,7 @@ in {
         matchConfig.Name = "eth-nat";
         address = [ "10.62.41.4/32" ];
         routes = [
-          { routeConfig = { Destination = "10.62.41.0/24"; Gateway = "10.62.41.1"; GatewayOnLink = true; }; }
+          { routeConfig = { Destination = "0.0.0.0/0"; Gateway = "10.62.41.1"; GatewayOnLink = true; }; }
         ];
       };
     } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;

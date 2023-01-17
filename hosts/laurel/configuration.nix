@@ -26,7 +26,7 @@
     "zfs.zfs_arc_max=1024000000"
   ];
 
-  #l.backups.enable = true;
+  l.backups.enable = true;
   l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:0c21:100::1]";

@@ -25,7 +25,7 @@
   networking.hostId = "1f9e2eb3";
   services.qemuGuest.enable = true;
 
-#  l.backups.enable = true;
+  l.backups.enable = true;
   l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:c21::1]";
