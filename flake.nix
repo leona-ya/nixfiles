@@ -179,7 +179,7 @@
               ./hosts/kupe/configuration.nix
             ];
           };
-          deployment = {};
+          deployment = { };
         };
         ladon = {
           nixosSystem = {

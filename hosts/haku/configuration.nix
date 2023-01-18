@@ -17,7 +17,8 @@
       listen: 195.39.247.188@53
       listen: 2a0f:4ac0:0:1::d25@53
   '';
-  services.kresd.listenPlain = [
+# fd8f... should be added to knot, but conflict with kresd
+    services.kresd.listenPlain = [
      "127.0.0.1:53"
      "[::1]:53"
      "10.151.9.1:53"

@@ -13,8 +13,8 @@ in {
       server:
         listen: 127.0.0.11@53
         listen: 195.39.247.146@53
-        listen: 2a01:4f9:6a:13c6:4000::e9c@53
-        listen: fd8f:d15b:9f40:c41:5054:ff:feb8:649c@53
+        listen: 2a01:4f8:1c1c:f0b::1@53
+        listen: fd8f:d15b:9f40:c21:300::1@53
       remote:
         - id: internal_ns2
           address: fd8f:d15b:9f40:0c00::1

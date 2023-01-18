@@ -40,6 +40,7 @@
         "paperless.leona.is"
         "pass.leona.is"
         "todo.leona.is"
+        "social.haj.gf"
       ];
       "ladon.net.leona.is" = [
         "auth.em0lar.dev"

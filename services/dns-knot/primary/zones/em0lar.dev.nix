@@ -5,14 +5,14 @@ with dns.lib.combinators;
 let
 haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
 naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
-kupe_host = host "195.39.247.146" "2a01:4f9:6a:13c6:4000::e9c";
+kupe_host = host "195.39.247.146" "2a01:4f8:1c1c:f0b::1";
 in {
   zone = {
     TTL = 600;
     SOA = ((ttl 300) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023011301;
+      serial = 2023011801;
       refresh = 300;
       expire = 604800;
       minimum = 300;

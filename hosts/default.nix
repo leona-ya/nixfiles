@@ -88,8 +88,8 @@ in rec {
     foros = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:fe3a:685c";
-        hasPublicIpv4 = true;
-        hasPublicIpv6 = true;
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
       };
       charon = {
         "internal" = {
@@ -106,9 +106,21 @@ in rec {
     };
     kupe = {
       meta = {
-        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:feb8:649c";
+        intIpv6 = "fd8f:d15b:9f40:c21:300::1";
         hasPublicIpv4 = true;
         hasPublicIpv6 = true;
+      };
+      services = {
+        wireguard = {
+          interfaces = {
+            "server" = {
+              ips = [ "${hosts.kupe.meta.intIpv6}/72" ];
+              publicKey = "g2gq/9nAYSHx4NidfN/w8uQXX8SXoi2S0qQfN+ascAY=";
+              routed = [ "${hosts.kupe.meta.intIpv6}/72" ];
+              hostname = "kupe.net.leona.is";
+            };
+          };
+        };
       };
       charon = {
         "internal" = {
@@ -145,7 +157,7 @@ in rec {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:feef:6dc3";
         hasPublicIpv4 = false;
-        hasPublicIpv6 = true;
+        hasPublicIpv6 = false;
       };
       nyan = {
         mac = "52:54:00:65:7a:8e";
@@ -189,6 +201,16 @@ in rec {
                     AllowedIPs =
                       [ "195.39.247.148/32" "2a0f:4ac0:1e0:100::/64" ];
                     PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
+                    PersistentKeepalive = 21;
+                  };
+                }
+                { # kupe
+                  wireguardPeerConfig = {
+                    Endpoint = "kupe.net.leona.is:51440";
+                    AllowedIPs = [
+                      "195.39.247.146/32"
+                    ];
+                    PublicKey = "6yX+Sfr6KlIn4ThOcRW9NH5iWhzmr6wrOgwMhxOSnTg=";
                     PersistentKeepalive = 21;
                   };
                 }
