@@ -134,7 +134,7 @@ in {
       rulesScript = pkgs.writeScript "nftables-rules" ''
         #! ${pkgs.nftables}/bin/nft -f
         flush ruleset
-        include "${config.networking.nftables.rulesetFile}"
+        ${config.networking.nftables.ruleset}
       '';
     in lib.mkIf (!cfg.checkIPTables) {
       ExecStart = lib.mkOverride 0 rulesScript;

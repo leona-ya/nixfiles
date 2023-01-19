@@ -2,7 +2,7 @@
   description = "leona's NixOS config";
 
   inputs = {
-    nixpkgs-master.url = "github:leona-ya/nixpkgs/paperless-ngx/fix-module-1.10.2";
+    nixpkgs-master.url = "github:NixOS/nixpkgs";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     ccc-nixlib = {
@@ -197,8 +197,8 @@
             modules = defaultModules  ++ [
               ./hosts/laurel/configuration.nix
               {
-                nix.nixPath = nixpkgs-master.lib.mkForce [
-                  "nixpkgs=${nixpkgs-master}"
+                nix.nixPath = nixpkgs-unstable-small.lib.mkForce [
+                  "nixpkgs=${nixpkgs-unstable-small}"
                   "home-manager=${home-manager}"
                 ];
               }
@@ -278,9 +278,6 @@
             system = "x86_64-linux";
           };
           nodeNixpkgs.turingmachine = import nixpkgs-unstable {
-            system = "x86_64-linux";
-          };
-          nodeNixpkgs.laurel = import nixpkgs-master {
             system = "x86_64-linux";
           };
         };

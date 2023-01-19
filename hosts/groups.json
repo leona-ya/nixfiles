@@ -1,8 +1,7 @@
 {
   "best-effort": {
     "hosts": [
-      "beryl",
-      "foros",
+      "bij",
       "kupe",
       "ladon",
       "laurel",
@@ -19,7 +18,6 @@
   "nyan-vms": {
     "hosts": [
       "beryl",
-      "foros",
       "hack",
       "ladon",
       "laurel"
