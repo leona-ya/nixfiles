@@ -134,12 +134,6 @@
         gtk-application-prefer-dark-theme = 1;
       };
     };
-    programs.helix = {
-      enable = true;
-      settings = {
-        theme = "monokai";
-      };
-    };
     programs.gpg.enable = true;
     services.gpg-agent = {
       enable = true;

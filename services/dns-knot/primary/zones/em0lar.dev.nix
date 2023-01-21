@@ -12,7 +12,7 @@ in {
     SOA = ((ttl 300) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023011801;
+      serial = 2023012101;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -56,7 +56,7 @@ in {
       }];
 
       www.CNAME = [ "foros.net.leona.is." ];
-      auth.CNAME = [ "ladon.net.leona.is." ];
+      auth.CNAME = [ "sso.leona.is." ];
       git.CNAME = [ "beryl.net.leona.is." ];
     };
   };

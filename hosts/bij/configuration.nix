@@ -44,7 +44,7 @@
       ];
       "ladon.net.leona.is" = [
         "auth.em0lar.dev"
-        "hydra-sso.leona.is"
+        "hydra.sso.leona.is"
         "sso.leona.is"
       ];
     };

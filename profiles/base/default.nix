@@ -5,7 +5,7 @@
     ../../users/root
     ../../users/leona
     ./nginx.nix
-    ./nvim.nix
+    ./helix.nix
   ];
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   users.mutableUsers = false;
@@ -55,7 +55,7 @@
 
   time.timeZone = "Etc/UTC";
 
-  environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = "hx";
   programs.zsh.enable = true;
 
   networking.useNetworkd = true;
