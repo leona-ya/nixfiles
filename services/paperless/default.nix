@@ -44,7 +44,9 @@
     ];
   };
 
-  services.nginx.virtualHosts."paperless.leona.is" = {
+  security.acme.certs."paperless.int.leona.is".server = "https://acme.int.leona.is/acme/acme/directory";
+  
+  services.nginx.virtualHosts."paperless.int.leona.is" = {
     enableACME = true;
     forceSSL = true;
     kTLS = true;
@@ -61,7 +63,7 @@
 
   services.vouch-proxy = {
     enable = true;
-    servers."paperless.leona.is" = {
+    servers."paperless.int.leona.is" = {
       clientId = "paperless";
       port = 12300;
       environmentFiles = [ config.sops.secrets."services/paperless/vouch_proxy_env".path ];

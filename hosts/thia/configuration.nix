@@ -6,6 +6,7 @@
     ../../profiles/base
     ../../profiles/desktop
     ../../services/int-acme-ca
+    ../../services/paperless
     ./network.nix
   ];
 
@@ -19,6 +20,11 @@
   ];
   networking.hostId = "d5714cb9";
   nix.distributedBuilds = false;
+  services.nginx.defaultListenAddresses = [
+    "0.0.0.0"
+    "[::1]"
+    "[fd8f:d15b:9f40:101::1312]"
+  ];
 
   l.sops.secrets = {
     "profiles/desktop/alt_rsa_ssh_key".owner = "leona";

@@ -16,7 +16,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023011802;
+      serial = 2023012202;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -89,7 +89,7 @@ in {
       "api.grocy".CNAME = [ "bij.net.leona.is." ];
       matrix = host bij_v4 laurel_v6;
       md = host bij_v4 laurel_v6;
-      paperless = host bij_v4 laurel_v6;
+      "paperless.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
       prometheus.CNAME = [ "naiad.net.leona.is." ];
       sso = host bij_v4 ladon_v6;
       "hydra.sso" = host bij_v4 ladon_v6;
