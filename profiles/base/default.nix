@@ -8,6 +8,7 @@
     ./helix.nix
   ];
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  security.pki.certificateFiles = [ ../../lib/leona-is-ca.crt ];
   users.mutableUsers = false;
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;

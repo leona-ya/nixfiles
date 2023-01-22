@@ -74,6 +74,7 @@ in {
       }];
 
       www.CNAME = [ "bij.net.leona.is." ];
+      "acme.int".AAAA = [ "fd8f:d15b:9f40:101::100" ];
       auth = host bij_v4 ladon_v6;
       alertmanager.CNAME = [ "naiad.net.leona.is." ];
       cloud.CNAME = [ "bij.net.leona.is." ];

@@ -13,7 +13,7 @@ keys:
   - &laurel age122uv7r9583kh8dptqppn4pqx9sg4pwq69fc29ufkl6jwz80tueeqvfds23
   - &naiad age1apjvmw80k4nh7fvr07lfhqtku7amw6x8ulc7hyyplr78aaj0xehqm440d7
   - &nyan age1wc3shhw82lj9mdnh2zy62k78k3et0mq3dcqmef9r69sc0cvt29ts9jzkv0
-  - &thea age1st8tawt7qsf7q24nknscrwzw6d6fcveylggtf2az36j0nke7jv7sx7ce4q
+  - &thia age1st8tawt7qsf7q24nknscrwzw6d6fcveylggtf2az36j0nke7jv7sx7ce4q
   - &turingmachine age1wqgja2wvgeuzvjqvsk862ppdmfv8mqmgxc543x3a5g02dddadu3seflurp
 creation_rules:
   - path_regex: secrets/all/[^/]+\.yaml$
@@ -34,7 +34,7 @@ creation_rules:
           - *laurel
           - *naiad
           - *nyan
-          - *thea
+          - *thia
           - *turingmachine
 
   # hosts
@@ -118,7 +118,7 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *thea
+          - *thia
           - *turingmachine
 
   # services
@@ -134,7 +134,7 @@ creation_rules:
           - *leona
         age:
           - *beryl
-  - path_regex: secrets/services/(hedgedoc|matrix|netbox|paperless|pleroma|vikunja|vaultwarden).yaml
+  - path_regex: secrets/services/(hedgedoc|matrix|netbox|pleroma|vikunja|vaultwarden).yaml
     key_groups:
       - pgp:
           - *leona
@@ -164,7 +164,6 @@ creation_rules:
           - *leona
         age:
           - *naiad
-
   - path_regex: secrets/services/dns-knot-secondary.yaml
     key_groups:
       - pgp:
@@ -172,3 +171,9 @@ creation_rules:
         age:
           - *haku
           - *naiad
+  - path_regex: secrets/services/(int-acme-ca|paperless).yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *thia

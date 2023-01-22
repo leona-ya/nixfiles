@@ -14,6 +14,10 @@
       DHCP = "yes";
       matchConfig.Name = "eth0";
       linkConfig = { RequiredForOnline = "yes"; };
+      address = [ 
+        "fd8f:d15b:9f40:101::100/64"
+        "fd8f:d15b:9f40:101::1312/64"
+      ];
     };
   };
 }
