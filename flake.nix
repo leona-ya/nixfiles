@@ -230,8 +230,7 @@
             ];
           };
           deployment = {
-            targetHost = null;
-            allowLocalDeployment = true;
+            targetHost = "fd8f:d15b:9f40:101:3ade:adff:fe67:b37b";
           };
         };
         naiad = {
