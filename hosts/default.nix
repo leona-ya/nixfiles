@@ -24,45 +24,6 @@ in rec {
         };
       };
     };
-    beryl = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:fe4e:5cbf";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = false;
-      };
-      charon = {
-        "internal" = {
-          mac = "52:54:00:4e:5c:bf";
-          legacyAddress = "10.151.20.11";
-        };
-        "internet" = {
-          mac = "52:54:00:ba:40:5c";
-          duid = "00:02:00:00:ab:11:fd:dc:c3:f1:66:4a:de:40";
-          legacyAddress = "195.39.247.145";
-          address = "2a01:4f9:6a:13c6:4000::b33";
-        };
-      };
-    };
-    charon = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:0c40::1";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = true;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "10.151.20.254/32" "fd8f:d15b:9f40:0c40::1/60" ];
-              publicKey = "Gz1LGMs9bVKEjP2tcX47hkcEHQKGTtqfCvcFcS0G1ic=";
-              routed = [ "fd8f:d15b:9f40:0c40::/60" ];
-#              routed = [ "fd8f:d15b:9f40:0c40::/60" "10.151.20.0/22" ];
-              hostname = "charon.net.leona.is";
-            };
-          };
-        };
-      };
-    };
     dwd = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:100::1";
@@ -91,18 +52,6 @@ in rec {
         hasPublicIpv4 = false;
         hasPublicIpv6 = false;
       };
-      charon = {
-        "internal" = {
-          mac = "52:54:00:3a:68:5c";
-          legacyAddress = "10.151.20.12";
-        };
-        "internet" = {
-          mac = "52:54:00:b9:bf:c9";
-          duid = "00:02:00:00:ab:11:3e:d1:15:72:fd:15:44:a2";
-          legacyAddress = "195.39.247.144";
-          address = "2a01:4f9:6a:13c6:4000::dea";
-        };
-      };
     };
     kupe = {
       meta = {
@@ -120,18 +69,6 @@ in rec {
               hostname = "kupe.net.leona.is";
             };
           };
-        };
-      };
-      charon = {
-        "internal" = {
-          mac = "52:54:00:b8:64:9c";
-          legacyAddress = "10.151.20.10";
-        };
-        "internet" = {
-          mac = "52:54:00:91:96:da";
-          legacyAddress = "195.39.247.146";
-          duid = "00:02:00:00:ab:11:42:d3:0e:0a:64:85:2c:2a";
-          address = "2a01:4f9:6a:13c6:4000::e9c";
         };
       };
     };
@@ -214,21 +151,6 @@ in rec {
                     PersistentKeepalive = 21;
                   };
                 }
-                { # charon
-                  wireguardPeerConfig = {
-                    Endpoint = "charon.net.leona.is:51440";
-                    AllowedIPs = [
-                      "195.39.247.144/32"
-                      "195.39.247.145/32"
-                      "195.39.247.146/32"
-                      "195.39.247.147/32"
-                      "195.39.247.149/32"
-                      "195.39.247.150/32"
-                    ];
-                    PublicKey = "d0XoFQpOo0rR1RRTsnBIo6sNb+pT0MOThCSnaLQ4jRQ=";
-                    PersistentKeepalive = 21;
-                  };
-                }
                 { # dwd
                   wireguardPeerConfig = {
                     AllowedIPs = [ "195.39.247.151/32" "2a0f:4ac0:1e0:20::/60" ];
@@ -260,18 +182,6 @@ in rec {
           };
         };
       };
-      charon = {
-        "internal" = {
-          mac = "52:54:00:a0:d5:2c";
-          legacyAddress = "10.151.20.14";
-        };
-        "internet" = {
-          mac = "52:54:00:95:2b:ad";
-          duid = "00:02:00:00:ab:11:04:34:f2:90:13:d2:8f:da";
-          legacyAddress = "195.39.247.147";
-          address = "2a01:4f9:6a:13c6:4000::f00";
-        };
-      };
     };
     laurel = {
       meta = {
@@ -289,18 +199,6 @@ in rec {
               hostname = "laurel.net.leona.is";
             };
           };
-        };
-      };
-      charon = {
-        "internal" = {
-          mac = "52:54:00:0a:08:45";
-          legacyAddress = "10.151.20.15";
-        };
-        "internet" = {
-          mac = "52:54:00:20:44:2b";
-          legacyAddress = "195.39.247.149";
-          duid = "00:02:00:00:ab:11:7b:cd:e2:8a:79:e8:dd:ea";
-          address = "2a01:4f9:6a:13c6:4000::eaa";
         };
       };
     };
@@ -333,6 +231,13 @@ in rec {
         duid = "00:02:00:00:ab:11:53:f2:e5:e7:f2:2a:48:54";
         legacyAddress = "10.151.21.193";
         address = "2a01:4f8:242:155f:4000::b8b";
+      };
+    };
+    thia = {
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:101::1312";
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
       };
     };
   };
@@ -418,10 +323,6 @@ in rec {
           }) hosts.${currentHost}.services.wireguard.interfaces;
       };
     });
-  nyan.g_assignments = builtins.mapAttrs (hostname: config: config.nyan)
-    (filterAttrs (hostname: config: config ? nyan) hosts);
-  charon.g_assignments = builtins.mapAttrs (hostname: config: config.charon)
-     (filterAttrs (hostname: config: config ? charon) hosts);
   services = {
     dns-int.g_dns_records = mapAttrs' (hostname: config:
       nameValuePair "${hostname}.wg.net" { AAAA = [ config.meta.intIpv6 ]; })

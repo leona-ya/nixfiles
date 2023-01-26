@@ -114,15 +114,6 @@
           };
           deployment = {};
         };
-        charon = {
-          nixosSystem = {
-            system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
-              ./hosts/charon/configuration.nix
-            ];
-          };
-          deployment = {};
-        };
         dwd = {
           nixosSystem = {
             system = "x86_64-linux";

@@ -12,7 +12,6 @@
   users.mutableUsers = false;
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
-  l.sops.secrets."all/nix-build/builder_ssh_key".owner = "root";
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
   nix = {
@@ -25,19 +24,7 @@
       automatic = lib.mkDefault true;
       options = lib.mkDefault "--delete-older-than 7d";
     };
-    buildMachines = [{
-     hostName = "hack.net.leona.is";
-     system = "x86_64-linux";
-     maxJobs = 5;
-     speedFactor = 2;
-     supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-     # publicHostKey not working
-     sshUser = "nix-builder";
-     sshKey = config.sops.secrets."all/nix-build/builder_ssh_key".path;
-    }];
-    distributedBuilds = lib.mkDefault true;
   };
-  programs.ssh.knownHosts."[hack.net.leona.is]:54973".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDUbA/xZ2Cy/tuSCR46aEXCWtY2ixe+6P7Gk8hTfesNu";
 
   services.journald.extraConfig = "SystemMaxUse=256M";
 

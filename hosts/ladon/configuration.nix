@@ -18,7 +18,7 @@
   };
   boot.supportedFilesystems = ["zfs"];
   boot.kernelParams = [
-    "zfs.zfs_arc_max=1024000000"
+    "zfs.zfs_arc_max=268000000"
   ];
   networking.hostId = "42539036";
 
