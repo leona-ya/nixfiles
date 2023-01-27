@@ -264,12 +264,12 @@
           nixpkgs = import nixpkgs-unstable-small {
             system = "x86_64-linux";
           };
-          nodeNixpkgs.thia = import nixpkgs-unstable {
-            system = "x86_64-linux";
-          };
-          nodeNixpkgs.turingmachine = import nixpkgs-unstable {
-            system = "x86_64-linux";
-          };
+          #nodeNixpkgs.thia = import nixpkgs-unstable {
+          #  system = "x86_64-linux";
+          #};
+          #nodeNixpkgs.turingmachine = import nixpkgs-unstable {
+          #  system = "x86_64-linux";
+          #};
         };
       } // builtins.mapAttrs (host: config: let
         nixosConfig = self.nixosConfigurations."${host}";
