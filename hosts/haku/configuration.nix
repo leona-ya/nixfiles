@@ -16,13 +16,12 @@
       listen: 127.0.0.11@53
       listen: 195.39.247.188@53
       listen: 2a0f:4ac0:0:1::d25@53
+      listen: fd8f:d15b:9f40:c00::1@53
   '';
 # fd8f... should be added to knot, but conflict with kresd
     services.kresd.listenPlain = [
      "127.0.0.1:53"
      "[::1]:53"
-     "10.151.9.1:53"
-     "[fd8f:d15b:9f40:c00::1]:53"
    ];
 
   boot.loader.systemd-boot.enable = true;

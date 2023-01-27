@@ -1,5 +1,11 @@
 { config, pkgs, ... }: {
   services.resolved.enable = false;
+  l.nftables.extraInput = ''
+    ip saddr 10.151.0.0/16 tcp dport 53 accept
+    ip saddr 10.151.0.0/16 udp dport 53 accept
+    ip6 saddr fd8f:d15b:9f40::/48 tcp dport 53 accept
+    ip6 saddr fd8f:d15b:9f40::/48 udp dport 53 accept
+  '';
   services.kresd = {
     enable = true;
     package = pkgs.knot-resolver.override { extraFeatures = true; };

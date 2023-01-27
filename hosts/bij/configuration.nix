@@ -11,6 +11,7 @@
 #      ../../services/firefly-iii
 #      ../../services/grocy
       ../../services/ical-merger
+      ../../services/dns-kresd
   ];
 
   boot.loader.grub = {
@@ -24,6 +25,13 @@
   ];
   networking.hostId = "1f9e2eb3";
   services.qemuGuest.enable = true;
+
+  services.kresd.listenPlain = [
+    "127.0.0.1:53"
+    "[::1]:53"
+    "[fd8f:d15b:9f40:c21::1]:53"
+    "[fd8f:d15b:9f40:900::1]:53"
+  ];
 
   l.backups.enable = true;
   l.telegraf = {

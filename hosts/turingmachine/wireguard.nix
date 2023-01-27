@@ -17,7 +17,7 @@
         wireguardPeerConfig = {
           AllowedIPs = [ "10.151.0.0/16" "fd8f:d15b:9f40::/48" ];
           PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
-          Endpoint = "wg.net.leona.is:51442";
+          Endpoint = "wg.net.leona.is:4500";
         };
       }];
     };
@@ -73,7 +73,7 @@
       dns = [
         "10.151.9.1"
 #        "1.0.0.1"
-        "fd8f:d15b:9f40:c00::1"
+        "fd8f:d15b:9f40:900::1"
 #        "2606:4700:4700::1001"
       ];
     };

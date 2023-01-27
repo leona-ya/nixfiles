@@ -14,11 +14,79 @@ in rec {
       services = {
         wireguard = {
           interfaces = {
+            "clients" = {
+              ips = [ "10.151.9.1/32" "fd8f:d15b:9f40:0900::1/64"];
+              publicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
+              routed = [
+                "fdf8:d15b:9f40::/48"
+                "10.151.0.0/16"
+              ];
+              interfaceRoutes = [
+                { routeConfig.Destination = "10.151.9.0/24"; }
+                { routeConfig.Destination = "fd8f:d15b:9f40:0900::/56"; }
+              ];
+              extraWireguardPeers = [
+                { # turingmachine
+                  wireguardPeerConfig = {
+                    AllowedIPs = [
+                      "10.151.9.2/32"
+                      "fd8f:d15b:9f40:0901::1/72"
+                    ];
+                    PublicKey = "gOBDoXc3zWVpnyx81fgVKmR2un14MW+c+SM/G6F3sFY=";
+                  };
+                }
+                { # nyx
+                  wireguardPeerConfig = {
+                    AllowedIPs = [
+                      "10.151.9.3/32"
+                      "fd8f:d15b:9f40:0901:200::1/72"
+                    ];
+                    PublicKey = "MdSVqYNSF2Lylb1kTdfW33ZwQcGff1ueQRrjiPeqDVg=";
+                  };
+                }
+                { # leko
+                  wireguardPeerConfig = {
+                    AllowedIPs = [
+                      "10.151.9.4/32"
+                      "fd8f:d15b:9f40:0901:100::1/72"
+                    ];
+                    PublicKey = "uDe4SqBm4ohNX9AZJOW4Uk7j1xIIgBAkll4NC1vdpDo=";
+                  };
+                }
+                { # Luna [DM]
+                  wireguardPeerConfig = {
+                    AllowedIPs = [
+                      "10.151.9.5/32"
+                      "fd8f:d15b:9f40:0902::1/72"
+                    ];
+                    PublicKey = "0tlj84AXn/vVl7fAkgKsDcAcW3CN4y92sr/MKL9TBRI=";
+                  };
+                }
+                { # Luna Phone [DM]
+                  wireguardPeerConfig = {
+                    AllowedIPs = [
+                      "10.151.9.6/32"
+                      "fd8f:d15b:9f40:0902:100::1/72"
+                    ];
+                    PublicKey = "C8MU9Zqx740SjEYPjzIgCOlbe/D6HkDU+Vh6XwVMhFg=";
+                  };
+                }
+              ];
+            };
             "server" = {
-              ips = [ "${hosts.bij.meta.intIpv6}/72" ];
+              ips = [ "${hosts.bij.meta.intIpv6}/72" "10.151.9.1/32" ];
               publicKey = "axdGRJYscsCWGmSqytzU/ifQdnua4I7Lh83sYIR0AH0=";
-              routed = [ "${hosts.bij.meta.intIpv6}/72" ];
+              routed = [
+                "fd8f:d15b:9f40::/48"
+                "10.151.0.0/16"
+              ];
               hostname = "bij.net.leona.is";
+              interfaceRoutes = [
+                { routeConfig.Destination = "10.151.0.0/22"; }
+                { routeConfig.Destination = "10.151.4.0/22"; }
+                { routeConfig.Destination = "fd8f:d15b:9f40::/53"; }
+                { routeConfig.Destination = "fd8f:d15b:9f40:0c00::/54"; }
+              ];
             };
           };
         };
@@ -115,11 +183,9 @@ in rec {
             "server" = {
               ips = [ "${hosts.haku.meta.intIpv6}/72" ];
               publicKey = "376YjLMEUFHWFE5Xkn3qRyIQ/kAHzM4DhvIcC5boCQ8=";
-              routed = [ "fd8f:d15b:9f40::/48" "10.151.0.0/16" ];
+              routed = [ "fd8f:d15b:9f40:0c00::/72" ];
               hostname = "haku.net.leona.is";
               interfaceRoutes = [
-                { routeConfig.Destination = "10.151.0.0/21"; }
-                { routeConfig.Destination = "10.151.20.0/22"; }
                 { routeConfig.Destination = "fd8f:d15b:9f40::/53"; }
                 { routeConfig.Destination = "fd8f:d15b:9f40:0c00::/54"; }
               ];
@@ -260,8 +326,8 @@ in rec {
               { routeConfig.Destination = "10.151.0.0/16"; }
             ];
           };
+          clients = { port = 4500; };
           public = { port = 51440; };
-          public-bkp = { port = 51443; };
         };
         g_currenthost_generate_peers = ifName:
           (builtins.map (x:

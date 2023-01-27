@@ -3,8 +3,9 @@
 let
   hosthelper = import ../../hosts { inherit lib config; };
 in {
+  l.sops.secrets."hosts/bij/wireguard_wg-clients_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/bij/wireguard_wg-server_privatekey".owner = "systemd-network";
-  networking.firewall.allowedUDPPorts = [ 51441 ];
+  networking.firewall.allowedUDPPorts = [ 4500 51441 ];
 
   networking.hostName = "bij";
   networking.domain = "net.leona.is";
@@ -48,6 +49,10 @@ in {
       ct state established,related accept
 
       iifname eth-nat oifname eth0 ct state new accept
+      iifname wg-clients oifname wg-clients ct state new accept
+      iifname wg-clients oifname wg-server ct state new accept
+      iifname wg-server oifname wg-server ct state new accept
+      iifname wg-server oifname wg-clients ct state new accept
     '';
     extraConfig = ''
       table ip nat {

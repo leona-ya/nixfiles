@@ -16,7 +16,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023012203;
+      serial = 2023012601;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -54,7 +54,7 @@ in {
       "laurel.net".AAAA = [ laurel_v6 ];
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
-      "wg.net".CNAME = [ "haku.net.leona.is." ];
+      "wg.net".CNAME = [ "bij.net.leona.is." ];
       "haj-social".CNAME = [ "laurel.net.leona.is." ];
 
       "ns1" = kupe_host;

@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023011302;
+      serial = 2023012602;
       refresh = 3600;
       expire = 604800;
       minimum = 600;
@@ -28,6 +28,7 @@
     subdomains = {
       autoconfig.CNAME = [ "kupe.net.leona.is." ];
       cloud.CNAME = [ "bij.net.leona.is." ];
+      wg.CNAME = [ "bij.net.leona.is." ];
     };
   };
 }
