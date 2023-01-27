@@ -13,6 +13,9 @@
     enableACME = lib.mkForce false;
     forceSSL = lib.mkForce false;
   };
+  services.openssh.settings = {
+    StreamLocalBindUnlink = true;
+  };
   services.zfs = lib.mkIf (lib.elem "zfs" config.boot.supportedFilesystems) {
     autoScrub.enable = true;
     autoSnapshot = {

@@ -94,11 +94,19 @@
           port = 54973;
           forwardAgent = true;
         };
+        leona-desktop = {
+          port = 54973;
+          forwardAgent = true;
+          extraOptions = {
+            RemoteForward = "/run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra";
+          };
+        };
         yuka-gitea = {
           extraOptions.PubkeyAcceptedKeyTypes = "+ssh-rsa";
         };
       in {
         "git.yuka.dev" = yuka-gitea;
+        "thia.wg.net.leona.is" = leona-desktop;
         "*.net.leona.is" = leona;
       };
     };
