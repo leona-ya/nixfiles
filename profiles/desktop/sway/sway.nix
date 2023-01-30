@@ -9,6 +9,7 @@
   users.users.leona.packages = with pkgs; [
     qt5.qtwayland
     wdisplays
+    waypipe
   ];
 
   environment.variables.SDL_VIDEODRIVER = "wayland";

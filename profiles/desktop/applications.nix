@@ -36,7 +36,6 @@
     gcc11
     gimp
     gnome.eog
-    gnome.gnome-bluetooth
     gnome.nautilus
     gnome.vinagre
     cmake
