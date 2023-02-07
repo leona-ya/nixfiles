@@ -29,4 +29,5 @@ rec {
     patches = [];
   });
   ical-merger = self.callPackage ./ical-merger {};
+  nomsable = self.callPackage ./nomsable {};
 }

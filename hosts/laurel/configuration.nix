@@ -10,6 +10,7 @@
       ../../services/matrix
       ../../services/haj-social
       ../../services/vaultwarden
+      ../../services/nomsable
 #      ../../services/vikunja
   ];
   boot.loader.grub = {
