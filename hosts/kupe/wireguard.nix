@@ -17,7 +17,7 @@
             "0.0.0.0/0"
           ];
           PublicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
-          Endpoint = "wg.net.leona.is:51440";
+          Endpoint = "haku.net.leona.is:51440";
           PersistentKeepalive = 21;
         };
       }];
