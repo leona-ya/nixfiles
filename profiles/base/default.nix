@@ -41,7 +41,7 @@
 
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
 
-  time.timeZone = "Etc/UTC";
+  time.timeZone = lib.mkDefault "Etc/UTC";
 
   environment.variables.EDITOR = "hx";
   programs.zsh.enable = true;

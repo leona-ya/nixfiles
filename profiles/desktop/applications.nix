@@ -160,10 +160,10 @@
     };
     programs.firefox = {
       enable = true;
-      profiles = {
-        "leona".id = 0;
-        "uni".id = 1;
-      };
+#      profile = {
+#        "leona".id = 0;
+#        "uni".id = 1;
+#      };
     };
     programs.password-store.enable = true;
     programs.zsh = {

@@ -13,6 +13,7 @@
     enableACME = lib.mkForce false;
     forceSSL = lib.mkForce false;
   };
+  time.timeZone = "Europe/Berlin";
   services.openssh.settings = {
     StreamLocalBindUnlink = true;
   };
