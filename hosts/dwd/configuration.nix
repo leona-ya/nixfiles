@@ -16,6 +16,14 @@
   networking.hostName = "dwd"; # to the honor of Donald Watts Davies
   networking.domain = "net.leona.is";
 
+  services.unifi.enable = true;
+  services.unifi.openFirewall = true;
+  services.unifi.unifiPackage = pkgs.unifi;
+  l.nftables.extraInput = ''
+	  iifname br-lan tcp dport { 8080, 6789, 8443 } accept
+    iifname br-lan udp dport { 3478, 10001 } accept
+  '';
+
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
     enableACME = lib.mkForce false;
     forceSSL = lib.mkForce false;
