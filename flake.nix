@@ -230,7 +230,9 @@
             ];
           };
           deployment = {
+            allowLocalDeployment = true;
             targetHost = "fd8f:d15b:9f40:101:3ade:adff:fe67:b37b";
+            targetPort = 54973;
           };
         };
         naiad = {
@@ -264,12 +266,12 @@
           nixpkgs = import nixpkgs-unstable-small {
             system = "x86_64-linux";
           };
-          #nodeNixpkgs.thia = import nixpkgs-unstable {
-          #  system = "x86_64-linux";
-          #};
-          #nodeNixpkgs.turingmachine = import nixpkgs-unstable {
-          #  system = "x86_64-linux";
-          #};
+          nodeNixpkgs.thia = import nixpkgs-unstable {
+            system = "x86_64-linux";
+          };
+          nodeNixpkgs.turingmachine = import nixpkgs-unstable {
+            system = "x86_64-linux";
+          };
         };
       } // builtins.mapAttrs (host: config: let
         nixosConfig = self.nixosConfigurations."${host}";

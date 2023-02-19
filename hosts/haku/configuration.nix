@@ -4,7 +4,6 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./wireguard.nix
       ../../profiles/base
       ../../services/dns-knot/secondary
       ../../services/dns-kresd

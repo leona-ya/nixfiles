@@ -24,8 +24,8 @@
         use_x_forwarded_for = true;
         trusted_proxies = [ "::1" "127.0.0.1" ];
       };
-#      automation = "!include automations.yaml";
-#      scene = "!include scenes.yaml";
+      automation = "!include automations.yaml";
+      scene = "!include scenes.yaml";
       logger = {
         default = "info";
       };

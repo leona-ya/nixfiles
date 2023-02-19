@@ -57,6 +57,19 @@
       ];
     };
   };
+
+  users.users = {
+    nextcloud.uid = 994;
+    firefly-iii.uid = 995;
+    acme.uid = 996;
+    postgres.uid = 71;
+  };
+  users.groups = {
+    nextcloud.gid = 993;
+    acme.gid = 995;
+    firefly-iii.gid = 994;
+    postgres.gid = 71;
+  };
   
   services.postgresql.package = pkgs.postgresql_14;
 

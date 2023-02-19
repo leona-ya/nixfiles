@@ -3,7 +3,6 @@
 let
   commonHeaders = lib.concatStringsSep "\n" (lib.filter (line: lib.hasPrefix "add_header" line) (lib.splitString "\n" config.services.nginx.commonHttpConfig));
 in {
-  l.sops.secrets."all/mail/no_reply_password".owner = "nginx";
   services.nginx.virtualHosts = {
     "www.leona.is" = let
       client = { "m.homeserver" = { base_url = "https://matrix.labcode.de"; }; };
