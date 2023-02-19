@@ -1,50 +1,49 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -i bash -p nix curl jq nix-update
+#! nix-shell -i nixpkgs=../../../.. -i bash -p nix curl jq
 
-# check if composer2nix is installed
-if ! command -v composer2nix &> /dev/null; then
-  echo "Please install composer2nix (https://github.com/svanderburg/composer2nix) to run this script."
-  exit 1
+# The update script requires composer2nix.
+if ! command -v composer2nix &> /dev/null
+then
+    echo "composer2nix (https://github.com/svanderburg/composer2nix) is required for the update script."
+    exit 1
 fi
 
-#CURRENT_VERSION=$(nix eval --raw '(with import ../../../.. {}; firefly-iii.version)')
-CURRENT_VERSION=5.6.14
-TARGET_VERSION=$(curl https://api.github.com/repos/firefly-iii/firefly-iii/releases/latest | jq -r ".tag_name")
-FIREFLYIII=https://github.com/firefly-iii/firefly-iii/raw/$TARGET_VERSION
-SHA256=$(nix-prefetch-url --unpack "https://github.com/firefly-iii/firefly-iii/archive/$TARGET_VERSION/firefly-iii.tar.gz")
+# Determine the latest version.
+GITHUB_OWNER=firefly-iii
+GITHUB_REPO=firefly-iii
+latest_version=$(curl -s --show-error "https://api.github.com/repos/$GITHUB_OWNER/$GITHUB_REPO/releases/latest" | jq -r '.tag_name')
 
-if [[ "$CURRENT_VERSION" == "$TARGET_VERSION" ]]; then
-  echo "firefly-iii is up-to-date: ${CURRENT_VERSION}"
-  exit 0
+# Determine if we are already at the latest version.
+NIXPKGS_ROOT=../../../..
+current_version=$(nix eval -f $NIXPKGS_ROOT --raw firefly-iii.version)
+
+if [[ "$current_version" == "$latest_version" ]]; then
+    echo "firefly-iii: already at $current_version"
+    exit 0
 fi
 
-curl -LO "$FIREFLYIII/composer.json"
-curl -LO "$FIREFLYIII/composer.lock"
+echo "firefly-iii: $current_version -> $latest_version";
 
+# Download the latest composer.json & composer.lock
+remote_raw="https://github.com/$GITHUB_OWNER/$GITHUB_REPO/raw/$latest_version"
+curl -LO "$remote_raw/composer.json" && curl -LO "$remote_raw/composer.lock"
+
+# Run composer2nix.
 composer2nix --name "firefly-iii" \
-  --composition=composition.nix \
-  --no-dev
+    --composition=composition.nix \
+    --no-dev
 rm composer.json composer.lock
 
-# change version number
-sed -e "s/version =.*;/version = \"$TARGET_VERSION\";/g" \
-    -e "s/sha256 =.*;/sha256 = \"$SHA256\";/g" \
-    -i ./default.nix
+# Update the version number and hash in default.nix
+setKV () {
+    sed -i "s|$1 = \".*\"|$1 = \"${2:-}\"|" ./default.nix
+}
 
-# fix composer-env.nix
-sed -e "s/stdenv\.lib/lib/g" \
-    -e '3s/stdenv, writeTextFile/stdenv, lib, writeTextFile/' \
-    -i ./composer-env.nix
+sha256=$(nix-prefetch-url --unpack --quiet "https://github.com/$GITHUB_OWNER/$GITHUB_REPO/archive/refs/tags/$latest_version.zip")
 
-# fix composition.nix
-sed -e '7s/stdenv writeTextFile/stdenv lib writeTextFile/' \
-    -i composition.nix
+setKV version $latest_version
+setKV sha256 $sha256
 
-# fix missing newline
-echo "" >> composition.nix
-echo "" >> php-packages.nix
-
-#cd ../../../..
-#nix-build -A firefly-iii
-
+# Check if the update worked by attempting a build.
+nix-build $NIXPKGS_ROOT -A firefly-iii
 exit $?

@@ -8,7 +8,7 @@
       ../../profiles/zfs-nopersist
       ../../services/nextcloud
       ../../services/web
-#      ../../services/firefly-iii
+      ../../services/firefly-iii
 #      ../../services/grocy
       ../../services/ical-merger
       ../../services/dns-kresd

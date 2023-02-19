@@ -36,41 +36,29 @@ in {
 
   services.firefly-iii = {
     enable = true;
-    frontendScheme = "https";
-    frontendHostname = "fin.leona.is";
-    setupNginx = false;
-    extraConfig = ''
-      TRUSTED_PROXIES=**
-      APP_LOG_LEVEL=warning
-      APP_ENV=local
-      SITE_OWNER=noc@leona.is
-      APP_KEY=TRKPVh8T3jdyGZWzF8vmACrXte4WqfU6
-      APP_KEY_FILE=${config.sops.secrets."services/firefly-iii/app_key".path}
-      TZ=Europe/Berlin
-      DB_CONNECTION=pgsql
-      DB_HOST=/run/postgresql
-      DB_PORT=5432
-      DB_DATABASE=firefly-iii
-      DB_USERNAME=firefly-iii
-      AUTHENTICATION_GUARD=remote_user_guard
-      AUTHENTICATION_GUARD_HEADER=HTTP_X_VOUCH_USERNAME
-      AUTHENTICATION_GUARD_EMAIL=HTTP_X_VOUCH_EMAIL
-    '';
-#    MAIL_MAILER=log
-#    MAIL_HOST=null
-#    MAIL_PORT=2525
-#    MAIL_FROM=changeme@example.com
-#    MAIL_USERNAME=null
-#    MAIL_PASSWORD=null
-#    MAIL_ENCRYPTION=null
-    data-importer = {
-      enable = true;
-      hostname = "dataimporter.fin.leona.is";
-      extraConfig = ''
-        FIREFLY_III_URL=http://[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]:8212
-        VANITY_URL=https://fin.leona.is
-        FIREFLY_III_CLIENT_ID=65
-      '';
+    appKeyFile = config.sops.secrets."services/firefly-iii/app_key".path;
+    hostname = "fin.leona.is";
+    nginx.addSSL = true;
+    database = {
+      type = "pgsql";
+      host = "/run/postgresql";
+      port = 5432;
+      name = "firefly-iii";
+    };
+    mail = {
+      driver = "smtp";
+      host = "mail.leona.is";
+      port = 587;
+      user = "no-reply@leona.is";
+      passwordFile = config.sops.secrets."all/mail/no_reply_password".path;
+      encryption = "tls";
+    };
+    config = {
+      TZ = "Europe/Berlin";
+      AUTHENTICATION_GUARD = "remote_user_guard";
+      AUTHENTICATION_GUARD_HEADER = "HTTP_X_VOUCH_USERNAME";
+      AUTHENTICATION_GUARD_EMAIL = "HTTP_X_VOUCH_EMAIL";
+      TRUSTED_PROXIES = "**";
     };
   };
 
@@ -78,7 +66,7 @@ in {
     "firefly-iii-internal" = {
       listen = [
         {
-          addr = "[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]";
+          addr = "[::1]";
           port = 8212;
         }
       ];
@@ -88,11 +76,14 @@ in {
           index = "index.php";
           tryFiles = "$uri $uri/ /index.php?$query_string";
         };
-        "~* \.php".extraConfig = ''
+        "~ \.php".extraConfig = ''
           include ${pkgs.nginx}/conf/fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
           fastcgi_pass unix:${config.services.phpfpm.pools."firefly-iii".socket};
         '';
+        "~ \.(js|css|gif|png|ico|jpg|jpeg)$" = {
+          extraConfig = "expires 365d;";
+        };
       };
     };
     "fin.leona.is" = {
@@ -100,35 +91,13 @@ in {
       forceSSL = true;
       kTLS = true;
       locations."/" = {
-        proxyPass = "http://[fd8f:d15b:9f40:c41:5054:ff:fe3a:685c]:8212";
+        proxyPass = "http://[::1]:8212";
         extraConfig = ''
           auth_request_set $auth_resp_x_vouch_email $upstream_http_x_vouch_user;
           auth_request_set $auth_resp_x_vouch_username $upstream_http_x_vouch_idp_claims_preferred_username;
           proxy_set_header X-Vouch-Email $auth_resp_x_vouch_email;
           proxy_set_header X-Vouch-Username $auth_resp_x_vouch_username;
         '';
-      };
-    };
-    "dataimporter.fin.leona.is" = lib.mkIf cfg.data-importer.enable {
-      enableACME = true;
-      forceSSL = true;
-      kTLS = true;
-      root = "${dataImporterPackage}/public";
-      locations = {
-        "/" = {
-          index = "index.php";
-          extraConfig = "try_files $uri $uri/ /index.php?$query_string;";
-        };
-        "~* \.php(?:$|/)" = {
-          extraConfig = ''
-            include ${pkgs.nginx}/conf/fastcgi_params;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            fastcgi_param modHeadersAvailable true;
-            fastcgi_buffers 16 16k;
-            fastcgi_buffer_size 32k;
-            fastcgi_pass unix:${config.services.phpfpm.pools."firefly-iii".socket};
-          '';
-        };
       };
     };
   };
