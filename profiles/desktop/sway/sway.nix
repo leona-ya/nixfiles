@@ -21,10 +21,21 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
 
   home-manager.users.leona = {
+    services.swayidle = let
+      lockCommand = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 20x10";
+    in {
+      enable = true;
+      events = [
+        { event = "before-sleep"; command = lockCommand; }
+        { event = "lock"; command = lockCommand; }
+      ];
+      timeouts = [
+        { timeout = 300; command = lockCommand; }
+      ];
+    };
     wayland.windowManager.sway = let
       cfg = config.home-manager.users.leona.wayland.windowManager.sway;
       wallpaper = "~/.wallpapers/nasa-webb1.jpg";
-      lockCommand = "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 20x10";
       modifier = "Mod4";
     in {
       enable = true;
@@ -40,14 +51,6 @@
         menu = "rofi -show drun";
 
         bars = [ ];
-
-
-        startup = [
-#          {
-#            command =
-#              "${pkgs.swayidle}/bin/swayidle -w before-sleep '${lockCommand}'";
-#          }
-        ];
 
         window = {
           border = 0;
@@ -144,7 +147,7 @@
           "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
           "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
 
-          "${modifier}+l" = "exec ${lockCommand}";
+          "${modifier}+l" = "exec loginctl lock-session";
           "${modifier}+d" = "exec ${cfg.config.menu}";
           "${modifier}+p" = "exec ${pkgs.rofi-pass}/bin/rofi-pass";
 
@@ -154,7 +157,7 @@
 
           "${modifier}+r" = "mode resize";
 
-          "${modifier}+Shift+s" = "exec ${pkgs.grim}/bin/grim -t jpeg -g \"$(${pkgs.slurp}/bin/slurp)\" ~/screenshot-$(date +%Y-%m-%d_%H-%m-%s).jpg";
+          "${modifier}+Shift+s" = "exec ${pkgs.grim}/bin/grim -t png -l 1 -g \"$(${pkgs.slurp}/bin/slurp)\" ~/screenshot-$(date +%Y-%m-%d_%H-%m-%s).png";
         };
       };
       extraConfig = ''
@@ -163,9 +166,6 @@
         client.focused_inactive #00000000 #00000066 #FFFFFF
         titlebar_border_thickness 3
         titlebar_padding 8 6
-
-        bindswitch lid:on output eDP-1 disable
-        bindswitch lid:off output eDP-1 enable
       '';
     };
   };
