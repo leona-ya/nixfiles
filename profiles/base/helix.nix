@@ -15,10 +15,19 @@
         {
           name = "python";
           language-server = {
-            command = "${pkgs.python3Packages.python-lsp-server}/bin/pylsp";
+            command = "pylsp";
+          };
+        }
+        {
+          name = "rust";
+          language-server = {
+            command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
           };
         }
       ];
     };
   };
+  environment.systemPackages = [    
+    (pkgs.python3.withPackages(ps: [ ps.python-lsp-server ] ++ ps.python-lsp-server.optional-dependencies.all ))
+  ];
 }
