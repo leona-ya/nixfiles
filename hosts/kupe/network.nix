@@ -20,32 +20,13 @@ in {
         linkConfig.Name = "eth-nat";
       };
     };
-    netdevs = {
-      "30-wg-haku" = {
-        netdevConfig = {
-          Kind = "wireguard";
-          Name = "wg-haku";
-        };
-        wireguardConfig = {
-          PrivateKeyFile = config.sops.secrets."hosts/kupe/wireguard_wg-public_privatekey".path;
-        };
-        wireguardPeers = [{
-          wireguardPeerConfig = {
-            AllowedIPs = [
-              "0.0.0.0/0"
-            ];
-            PublicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
-            Endpoint = "haku.net.leona.is:51440";
-            PersistentKeepalive = 21;
-          };
-        }];
-      };
-    } // hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
+    netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
     networks = {
       "10-eth0" = {
         matchConfig = {
           Name = "eth0";
         };
+        DHCP = "yes";
         dns = [ "2001:4860:4860::8888" ];
         address = [
           "2a01:4f8:1c1c:f0b::1/64"
@@ -59,16 +40,6 @@ in {
         address = [ "10.62.41.5/32" ];
         routes = [
           { routeConfig = { Destination = "10.62.41.0/24"; Gateway = "10.62.41.1"; GatewayOnLink = true; }; }
-        ];
-      };
-      "30-wg-haku" = {
-        name = "wg-haku";
-        linkConfig = { RequiredForOnline = "yes"; };
-        address = [
-          "195.39.247.146/32"
-        ];
-        routes = [
-          { routeConfig.Destination = "0.0.0.0/0"; }
         ];
       };
     } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;

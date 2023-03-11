@@ -174,8 +174,8 @@ in rec {
     haku = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:0c00::1";
-        hasPublicIpv4 = true;
-        hasPublicIpv6 = true;
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
       };
       services = {
         wireguard = {

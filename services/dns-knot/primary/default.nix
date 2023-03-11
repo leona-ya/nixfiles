@@ -12,7 +12,7 @@ in {
     extraConfig = ''
       server:
         listen: 127.0.0.11@53
-        listen: 195.39.247.146@53
+        listen: 159.69.17.61@53
         listen: 2a01:4f8:1c1c:f0b::1@53
         listen: fd8f:d15b:9f40:c21:300::1@53
       remote:
