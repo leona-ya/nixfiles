@@ -5,7 +5,6 @@
     [
       ./hardware-configuration.nix
       ../../profiles/base
-      ../../services/bn-hass
       ./network
     ];
 
@@ -41,6 +40,15 @@
   };
   services.telegraf.extraConfig.inputs.net.interfaces = [ "eth0" "br*" "ppp-wan" "wg-server" ];
   systemd.services.telegraf.path = [ pkgs.lm_sensors ];
+
+  l.nginx-sni-proxy = {
+    enable = true;
+    upstreamHosts = {
+      "thia.wg.net.leona.is" = [
+        "hass.bn.leona.is"
+      ];
+    };
+  };
 
   system.stateVersion = "21.05";
 }
