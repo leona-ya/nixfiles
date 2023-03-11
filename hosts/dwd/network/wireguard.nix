@@ -23,8 +23,8 @@ in {
             "0.0.0.0/0"
             "::/0"
           ];
-          PublicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
-          Endpoint = "[2a0f:4ac0:0:1::d25]:51440";
+          PublicKey = "f+fi4A3eZ2WWrIQc+OQugriDj1FPASBXdIW39TW5aF0=";
+          Endpoint = "bij.net.leona.is:51440";
           PersistentKeepalive = 21;
         };
       }];
@@ -35,23 +35,36 @@ in {
       name = "wg-public";
       linkConfig = { RequiredForOnline = "yes"; };
       address = [ "195.39.247.151/32" "2a0f:4ac0:1e0:20::1/60" ];
-#      routingPolicyRules = [
-#        { routingPolicyRuleConfig = {
-#          Family = "both";
-#          IncomingInterface = "br-lan";
-##          Table = 10;
-#        }; }
-#      ];
-#      routes = [
-#        { routeConfig = {
-#          Destination = "0.0.0.0/0";
-#          Metric = 512;
-#        }; }
-#        { routeConfig = {
-#          Destination = "::/0";
-#          Metric = 512;
-#        }; }
-#      ];
+      routingPolicyRules = [
+        {
+          routingPolicyRuleConfig = {
+            Family = "ipv4";
+            Table = 30;
+            From = "195.39.247.151/32";
+          };
+        }
+        {
+          routingPolicyRuleConfig = {
+            Family = "ipv6";
+            Table = 30;
+            From = "2a0f:4ac0:1e0:20::1/60";
+          };
+        }
+      ];
+      routes = [
+          {
+            routeConfig = {
+              Destination = "::/0";
+              Table = 30;
+            };
+          }
+          {
+            routeConfig = {
+              Destination = "0.0.0.0/0";
+              Table = 30;
+            };
+          }
+        ];
     };
   };
 }

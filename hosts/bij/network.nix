@@ -5,7 +5,9 @@ let
 in {
   l.sops.secrets."hosts/bij/wireguard_wg-clients_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/bij/wireguard_wg-server_privatekey".owner = "systemd-network";
-  networking.firewall.allowedUDPPorts = [ 4500 51441 ];
+  l.sops.secrets."hosts/bij/wireguard_wg-public-in_privatekey".owner = "systemd-network";
+  l.sops.secrets."hosts/bij/wireguard_wg-public-out_privatekey".owner = "systemd-network";
+  networking.firewall.allowedUDPPorts = [ 4500 51440 51441 ];
 
   networking.hostName = "bij";
   networking.domain = "net.leona.is";
@@ -20,7 +22,50 @@ in {
         linkConfig.Name = "eth-nat";
       };
     };
-    netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
+    netdevs = {
+      "30-wg-public-in" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg-public-in";
+        };
+        wireguardConfig = {
+          PrivateKeyFile = config.sops.secrets."hosts/bij/wireguard_wg-public-in_privatekey".path;
+        };
+        wireguardPeers = [{
+          wireguardPeerConfig = {
+            AllowedIPs = [
+              "0.0.0.0/0"
+              "::/0"
+            ];
+            PublicKey = "kih/GnR4Bov/DM/7Rd21wK+PFQRUNH6sywVuNKkUAkk=";
+            Endpoint = "[2a0f:4ac1:3::1]:51820";
+            PersistentKeepalive = 21;
+          };
+        }];
+      };
+      "30-wg-public-out" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg-public-out";
+        };
+        wireguardConfig = {
+          PrivateKeyFile = config.sops.secrets."hosts/bij/wireguard_wg-public-out_privatekey".path;
+          ListenPort = 51440;
+        };
+        wireguardPeers = [
+          {
+            wireguardPeerConfig = {
+              AllowedIPs = [
+                "195.39.247.151/32"
+                "2a0f:4ac0:1e0:20::1/60"
+              ];
+              PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
+              PersistentKeepalive = 21;
+            };
+          }
+        ];
+      };
+    } // hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
     networks = {  
       "10-eth0" = {
         DHCP = "yes";
@@ -41,6 +86,50 @@ in {
           { routeConfig = { Destination = "10.62.41.0/24"; Gateway = "10.62.41.1"; GatewayOnLink = true; }; }
         ];
       };
+      "30-wg-public-in" = {
+        name = "wg-public-in";
+        linkConfig = { RequiredForOnline = "yes"; };
+        address = [ ];
+        routes = [
+          {
+            routeConfig = {
+              Destination = "::/0";
+              Table = 30;
+            };
+          }
+          {
+            routeConfig = {
+              Destination = "0.0.0.0/0";
+              Table = 30;
+            };
+          }
+        ];
+      };
+      "30-wg-public-out" = {
+        name = "wg-public-out";
+        linkConfig = { RequiredForOnline = "no"; };
+        address = [ ];
+        routes = [
+          { routeConfig.Destination = "195.39.247.144/28"; }
+          { routeConfig.Destination = "2a0f:4ac0:1e0::/48"; }
+        ];
+        routingPolicyRules = [
+          {
+            routingPolicyRuleConfig = {
+              Family = "ipv4";
+              Table = 30;
+              From = "195.39.247.144/28";
+            };
+          }
+          {
+            routingPolicyRuleConfig = {
+              Family = "ipv6";
+              Table = 30;
+              From = "2a0f:4ac0:1e0::/48";
+            };
+          }
+        ];
+      };
     } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
   };
   l.nftables = {
@@ -53,6 +142,9 @@ in {
       iifname wg-clients oifname wg-server ct state new accept
       iifname wg-server oifname wg-server ct state new accept
       iifname wg-server oifname wg-clients ct state new accept
+      iifname wg-public-out oifname wg-public-out ct state new accept
+      iifname wg-public-out oifname wg-public-in ct state new accept
+      iifname wg-public-in oifname wg-public-out ct state new accept
     '';
     extraConfig = ''
       table ip nat {
