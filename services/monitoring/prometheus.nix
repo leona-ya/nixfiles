@@ -168,8 +168,8 @@ in {
             }
             {
               alert = "LowMemory";
-              expr = "mem_used_percent > 80";
-              for = "1m";
+              expr = "mem_used_percent > 90";
+              for = "5m";
               labels = {
                 severity = "warning";
               };
@@ -180,8 +180,8 @@ in {
             }
             {
               alert = "LowMemory";
-              expr = "mem_used_percent > 80";
-              for = "15m";
+              expr = "mem_used_percent > 95";
+              for = "10m";
               labels = {
                 severity = "critical";
               };
