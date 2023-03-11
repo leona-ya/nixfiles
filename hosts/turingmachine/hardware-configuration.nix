@@ -34,6 +34,4 @@
     };
 
   swapDevices = [ ];
-
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }

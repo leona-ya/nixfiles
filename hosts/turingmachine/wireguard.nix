@@ -5,6 +5,22 @@
   l.sops.secrets."hosts/turingmachine/wireguard_wg-public_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/turingmachine/wireguard_wg-public-bkp_privatekey".owner = "systemd-network";
   systemd.network.netdevs = {
+    "30-wg-clients-6" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg-clients-6";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = config.sops.secrets."hosts/turingmachine/wireguard_wg-clients_privatekey".path;
+      };
+      wireguardPeers = [{
+        wireguardPeerConfig = {
+          AllowedIPs = [ "10.151.0.0/16" "fd8f:d15b:9f40::/48" ];
+          PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
+          Endpoint = "[2a01:4f8:c010:1098::1]:4500";
+        };
+      }];
+    };
     "30-wg-clients" = {
       netdevConfig = {
         Kind = "wireguard";
@@ -56,6 +72,27 @@
 
   };
   systemd.network.networks = {
+    "30-wg-clients-6" = {
+      name = "wg-clients-6";
+      linkConfig = {
+        RequiredForOnline = "no";
+        ActivationPolicy = "manual";
+      };
+      address = [
+        "10.151.9.2/32"
+        "fd8f:d15b:9f40:0901::1/72"
+      ];
+      routes = [
+        { routeConfig.Destination = "10.151.0.0/16"; }
+        { routeConfig.Destination = "fd8f:d15b:9f40::/48"; }
+      ];
+      dns = [
+        "10.151.9.1"
+#        "1.0.0.1"
+        "fd8f:d15b:9f40:900::1"
+#        "2606:4700:4700::1001"
+      ];
+    };
     "30-wg-clients" = {
       name = "wg-clients";
       linkConfig = {
