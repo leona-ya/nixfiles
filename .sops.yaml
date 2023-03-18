@@ -104,6 +104,12 @@ creation_rules:
           - *leona
         age:
           - *nyan
+  - path_regex: secrets/hosts/thia.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *thia
   - path_regex: secrets/hosts/turingmachine.yaml
     key_groups:
       - pgp:

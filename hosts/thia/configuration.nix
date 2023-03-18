@@ -33,6 +33,32 @@
     diskioDisks = [ "nvme0n1" ];
   };
 
+  l.backups = {
+    enable = true;
+    paths = [
+      "/home"
+      "/root"
+      "/var/lib/paperless"
+      "/var/lib/hass"
+    ];
+    excludes = [
+      "/var/cache"
+      "/var/lock"
+      "/var/spool"
+      "/var/log"
+      "/home/leona/.local/share/containers"
+      "/home/leona/dev"
+      "/var/lib/containers"
+      "**/node_modules"
+      "**/.venv"
+      "**/target"
+      "/home/*/.cache"
+      "/home/*/.rustup"
+      "**/Cache"
+    ];
+    enableSystemdTimer = false;
+  };
+
   l.sops.secrets = {
     "profiles/desktop/alt_rsa_ssh_key".owner = "leona";
     "profiles/desktop/user_leona_pw".neededForUsers = true;
