@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ config, lib, pkgs, ... }: {
+  l.sops.secrets."services/bn-smarthome/hass-mqtt-yaml.nix".owner = "hass";
   services.home-assistant = {
     enable = true;
     configWritable = false;
@@ -7,7 +8,7 @@
       "input_boolean" "input_button" "input_datetime" "input_number" "input_select" "input_text"
       "logbook" "network" "schedule" "script" "ssdp" "sun" "system_health" "tag"
       "timer" "usb" "zerconf" "zone"  "frontend"
-      "hue" "sonos" "unifi"
+      "hue" "sonos" "unifi" "tasmota"
     ]) // {
       homeassistant = {
         name = "leona's HASS";
@@ -26,11 +27,16 @@
       };
       automation = "!include automations.yaml";
       scene = "!include scenes.yaml";
+      mqtt = "!include mqtt.yaml";
       logger = {
         default = "info";
       };
     };
   };
+  systemd.services.home-assistant.preStart = ''
+    ${pkgs.nix}/bin/nix eval --raw -f ${config.sops.secrets."services/bn-smarthome/hass-mqtt-yaml.nix".path} yaml > /var/lib/hass/mqtt.yaml
+#    ${pkgs.remarshal}/bin/json2yaml /var/lib/hass/mqtt.json /var/lib/hass/mqtt.yaml
+  '';
   services.nginx.virtualHosts."hass.bn.leona.is" = {
     forceSSL = true;
     enableACME = true;

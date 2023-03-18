@@ -22,7 +22,7 @@ in {
         
       )));
     in {
-      defaultListenAddresses = [ "[::0]" ];
+      defaultListenAddresses = [ "[::1]" ];
       streamConfig = ''
         map $ssl_preread_server_name $sni_upstream {
           ${upstreams}
@@ -30,6 +30,7 @@ in {
         }
         server {
           listen 0.0.0.0:443;
+          listen [::]:443;
           ssl_preread on;
           resolver 1.1.1.1;
           proxy_pass $sni_upstream;
@@ -38,6 +39,7 @@ in {
       appendHttpConfig = ''
         server {
           listen        0.0.0.0:80;
+          listen        [::]:80;
           server_name   _;
           return 301 https://$host$request_uri;
         }

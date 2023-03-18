@@ -7,7 +7,7 @@
     ../../profiles/desktop
     ../../services/int-acme-ca
     ../../services/paperless
-    ../../services/bn-hass
+    ../../services/bn-smarthome
     ./network.nix
   ];
 

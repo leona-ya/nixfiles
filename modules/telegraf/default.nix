@@ -30,9 +30,9 @@ in {
           net = {
             ignore_protocol_stats = true;
           };
-          nginx = {
-            urls = ["http://localhost/nginx_status"];
-          };
+#          nginx = {
+#            urls = ["http://localhost/nginx_status"];
+#          };
           postgresql = lib.mkIf config.services.postgresql.enable {
             address = "host=/run/postgresql user=telegraf database=postgres";
           };

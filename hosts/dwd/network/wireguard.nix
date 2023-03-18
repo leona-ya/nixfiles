@@ -39,6 +39,14 @@ in {
         {
           routingPolicyRuleConfig = {
             Family = "ipv4";
+            From = "195.39.247.151/32";
+            SuppressPrefixLength = 0;
+            Priority = 100; 
+          };
+        }
+        {
+          routingPolicyRuleConfig = {
+            Family = "ipv4";
             Table = 30;
             From = "195.39.247.151/32";
           };
@@ -46,8 +54,17 @@ in {
         {
           routingPolicyRuleConfig = {
             Family = "ipv6";
+            From = "2a0f:4ac0:1e0:20::1/60";
+            SuppressPrefixLength = 0;
+            Priority = 100;
+          };
+        }
+        {
+          routingPolicyRuleConfig = {
+            Family = "ipv6";
             Table = 30;
             From = "2a0f:4ac0:1e0:20::1/60";
+            Priority = 200;
           };
         }
       ];
