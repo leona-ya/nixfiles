@@ -27,6 +27,12 @@
     "[fd8f:d15b:9f40:101::1312]"
   ];
 
+  l.telegraf = {
+    enable = true;
+    host = "[fd8f:d15b:9f40:101::1312]";
+    diskioDisks = [ "nvme0n1" ];
+  };
+
   l.sops.secrets = {
     "profiles/desktop/alt_rsa_ssh_key".owner = "leona";
     "profiles/desktop/user_leona_pw".neededForUsers = true;

@@ -57,9 +57,13 @@ in {
         };
       };
     };
-    services.nginx.statusPage = true;
+#    services.nginx.statusPage = true;
 
-    services.nginx.virtualHosts.${cfg.host} = {
+    services.nginx.virtualHosts."${config.networking.hostName}.wg.net.leona.is" = {
+      listen = [{
+        addr = "${cfg.host}";
+        port = 80;
+      }];
       locations."/metrics" = {
         proxyPass = "http://[::1]:9273/metrics";
         extraConfig = ''
