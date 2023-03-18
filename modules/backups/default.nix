@@ -65,11 +65,11 @@ in {
         timerConfig = cfg.systemdTimerConfig;
         initialize = true;
         backupPrepareCommand = mkIf config.services.postgresql.enable ''
-          mkdir -p /var/lib/restic-backup
-          ${pkgs.sudo}/bin/sudo -u postgres ${pkgs.postgresql}/bin/pg_dumpall | ${pkgs.zstd}/bin/zstd --rsyncable > /var/lib/restic-backup/restic-postgres.sql.zst
+          mkdir -p /root/restic-backup
+          ${pkgs.sudo}/bin/sudo -u postgres ${pkgs.postgresql}/bin/pg_dumpall | ${pkgs.zstd}/bin/zstd --rsyncable > /root/restic-backup/restic-postgres.sql.zst
         '';
         backupCleanupCommand = mkIf config.services.postgresql.enable ''
-          rm -rf /var/lib/restic-backup
+          rm -rf /root/restic-backup
         '';
         pruneOpts = cfg.pruneOpts;
         extraBackupArgs = lib.mkIf (cfg.excludes != []) (builtins.map (x: "--exclude \"" + x + "\"") cfg.excludes);
