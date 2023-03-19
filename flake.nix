@@ -125,15 +125,6 @@
           deployment.targetHost = "10.151.4.1";
           deployment.targetPort = 54973;
         };
-        foros = {
-          nixosSystem = {
-            system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
-              ./hosts/foros/configuration.nix
-            ];
-          };
-          deployment = {};
-        };
         gaika = {
           nixosSystem = {
             system = "x86_64-linux";
@@ -142,15 +133,6 @@
             ];
           };
           deployment.targetHost = "gaika.wg.net.leona.is";
-        };
-        hack = {
-          nixosSystem = {
-            system = "x86_64-linux";
-            modules = defaultModules ++ nixpkgsUnstableSmall ++ [
-              ./hosts/hack/configuration.nix
-            ];
-          };
-          deployment = { };
         };
         haku = {
           nixosSystem = {

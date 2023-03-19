@@ -14,14 +14,6 @@
       "naiad"
     ]
   },
-  "nyan-vms": {
-    "hosts": [
-      "beryl",
-      "hack",
-      "ladon",
-      "laurel"
-    ]
-  },
   "monitoring": {
     "hosts": [
       "bij",
