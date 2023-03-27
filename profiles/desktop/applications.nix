@@ -30,6 +30,7 @@
 
   users.users.leona.packages = with pkgs; [
     bitwarden
+    calibre
     element-desktop
     evince
     feh
@@ -59,6 +60,7 @@
     postman
     poetry
     python3
+    qFlipper
     rofi-pass
     rustup
     signal-desktop
@@ -88,7 +90,10 @@
 
   services.fwupd.enable = true;
 
-  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udev.packages = [ 
+    pkgs.yubikey-personalization
+    pkgs.qFlipper
+  ];
   environment.variables.MOZ_USE_XINPUT2 = "1"; # for firefox
   hardware.bluetooth.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
