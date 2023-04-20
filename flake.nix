@@ -185,10 +185,7 @@
             modules = defaultModules ++ [
               ./hosts/thia/configuration.nix
               {
-                nix.nixPath = nixpkgs-unstable.lib.mkForce [
-                  "nixpkgs=${nixpkgs-unstable}"
-                  "home-manager=${home-manager}"
-                ];
+                nix.registry.nixpkgs.flake = nixpkgs-unstable;
               }
             ];
           };
@@ -204,10 +201,7 @@
               nixos-hardware.nixosModules.lenovo-thinkpad-t480s
               ./hosts/turingmachine/configuration.nix
               {
-                nix.nixPath = nixpkgs-unstable.lib.mkForce [
-                  "nixpkgs=${nixpkgs-unstable}"
-                  "home-manager=${home-manager}"
-                ];
+                nix.registry.nixpkgs.flake = nixpkgs-unstable;
               }
             ];
           };
