@@ -392,10 +392,6 @@ in rec {
   services = {
     dns-int.g_dns_records = mapAttrs' (hostname: config:
       nameValuePair "${hostname}.wg.net" { AAAA = [ config.meta.intIpv6 ]; })
-      (filterAttrs (h: config: config.meta ? intIpv6) hosts) // mapAttrs'
-      (hostname: config:
-        nameValuePair "${hostname}.nyan.net" {
-          A = [ config.nyan.legacyAddress ];
-        }) (filterAttrs (hostname: config: config ? nyan) hosts);
-  };
+      (filterAttrs (h: config: config.meta ? intIpv6) hosts);
+    };
 }

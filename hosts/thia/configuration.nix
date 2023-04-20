@@ -54,6 +54,7 @@
       "**/target"
       "/home/*/.cache"
       "/home/*/.rustup"
+      "/home/*/.local/share/Steam"
       "**/Cache"
     ];
     enableSystemdTimer = false;
