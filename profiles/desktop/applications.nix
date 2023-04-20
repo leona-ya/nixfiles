@@ -206,8 +206,10 @@
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   services.printing = {
     enable = true;
-    drivers = [ 
+    drivers = [
+      pkgs.gutenprint
       pkgs.cups-brother-hll2350dw
+      pkgs.cups-brother-ptouch
     ];
   };
   programs.steam.enable = true;

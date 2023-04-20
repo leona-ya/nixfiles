@@ -30,4 +30,5 @@ rec {
   });
   ical-merger = self.callPackage ./ical-merger {};
   nomsable = self.callPackage ./nomsable {};
+  cups-brother-ptouch = self.callPackage ./cups-brother-ptouch {};
 }
