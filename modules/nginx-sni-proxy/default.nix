@@ -22,11 +22,12 @@ in {
         
       )));
     in {
+      defaultSSLListenPort = 7443;
       defaultListenAddresses = [ "[::1]" ];
       streamConfig = ''
         map $ssl_preread_server_name $sni_upstream {
           ${upstreams}
-          default [::1]:443;
+          default [::1]:7443;
         }
         server {
           listen 0.0.0.0:443;
