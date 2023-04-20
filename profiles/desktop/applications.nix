@@ -68,6 +68,8 @@
     spotify
     sublime4
     superTuxKart
+    tectonic
+    texlab
     texlive.combined.scheme-full
     thunderbird-wayland
     virt-manager
