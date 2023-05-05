@@ -38,7 +38,7 @@ in {
               "::/0"
             ];
             PublicKey = "kih/GnR4Bov/DM/7Rd21wK+PFQRUNH6sywVuNKkUAkk=";
-            Endpoint = "[2a0f:4ac1:3::1]:51820";
+            Endpoint = "[2a0f:4ac0:ca6c::1]:51820";
             PersistentKeepalive = 21;
           };
         }];
