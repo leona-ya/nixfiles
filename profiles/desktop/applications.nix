@@ -1,6 +1,7 @@
 { lib, pkgs, config, ... }:
 
 {
+  boot.supportedFilesystems = [ "cifs" ];
   fonts.fontconfig.localConf = lib.fileContents ./fontconfig.xml;
   fonts.fontconfig.defaultFonts = {
     emoji = [ "Noto Color Emoji" ];
