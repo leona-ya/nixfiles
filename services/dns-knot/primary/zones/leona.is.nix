@@ -16,7 +16,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023032301;
+      serial = 2023042002;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -99,6 +99,7 @@ in {
       "mqtt.bn.int".A = [ "10.151.5.36" ];
       "mqtt.bn.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
       "prometheus.bn.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
+      yt.CNAME = [ "bij.net.leona.is." ];
     };
   };
 }

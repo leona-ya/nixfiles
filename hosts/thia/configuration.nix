@@ -8,6 +8,7 @@
     ../../services/int-acme-ca
     ../../services/paperless
     ../../services/bn-smarthome
+    ../../services/youtrack
     ./network.nix
   ];
 
@@ -40,6 +41,7 @@
       "/root"
       "/var/lib/paperless"
       "/var/lib/hass"
+      "/var/lib/youtrack"
     ];
     excludes = [
       "/var/cache"

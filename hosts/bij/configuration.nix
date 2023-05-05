@@ -55,6 +55,9 @@
         "hydra.sso.leona.is"
         "sso.leona.is"
       ];
+      "thia.wg.net.leona.is" = [
+        "yt.leona.is"
+      ];
     };
   };
 
