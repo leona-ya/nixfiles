@@ -75,7 +75,7 @@
     thunderbird-wayland
     virt-manager
     youtube-dl
-    z-lua
+    zoxide fzf
     (zoom-us.overrideAttrs (old: {
       postFixup = old.postFixup + ''
         wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
@@ -176,7 +176,7 @@
     programs.password-store.enable = true;
     programs.zsh = {
       initExtra = ''
-        eval "$(${pkgs.z-lua}/bin/z --init zsh)"
+        eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
         eval "$(direnv hook zsh)"
       '';
       shellAliases = {
