@@ -25,10 +25,15 @@ in {
     zfs rollback -r ${config.fileSystems."/".device}@empty
   '');
 
-  fileSystems = mapAttrs (_: device: {
+  fileSystems = (mapAttrs (_: device: {
     inherit device;
     options = [ "bind" ];
-  }) bindmount-paths;
+  }) bindmount-paths) // {
+    "/var/lib/redis-rspamd" = {
+      device = "/persist/var/lib/redis-rspamd";
+      options = [ "bind" ];
+    };
+  };
 
   services.postgresql.dataDir = "/persist/postgresql/${config.services.postgresql.package.psqlSchema}";
   services.hedgedoc.workDir = "/persist/var/lib/hedgedoc";
@@ -37,5 +42,17 @@ in {
   services.netbox.dataDir = "/persist/var/lib/netbox";
   services.nextcloud.home = "/persist/var/lib/nextcloud";
   services.firefly-iii.dataDir = "/persist/var/lib/firefly-iii";
-}
 
+  services.openssh.hostKeys = [
+    {
+      bits = 4096;
+      path = "/persist/etc/ssh/ssh_host_rsa_key";
+      type = "rsa";
+    }
+    {
+      path = "/persist/etc/ssh/ssh_host_ed25519_key";
+      type = "ed25519";
+    }
+  ];
+  sops.age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
+}

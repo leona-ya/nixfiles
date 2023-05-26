@@ -6,6 +6,7 @@
       ./network.nix
       ../../profiles/base
       ../../profiles/zfs-nopersist
+      ../../profiles/encrypted-fs
       ../../services/nextcloud
       ../../services/web
       ../../services/firefly-iii

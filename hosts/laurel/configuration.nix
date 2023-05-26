@@ -6,6 +6,7 @@
       ./network.nix
       ../../profiles/base
       ../../profiles/zfs-nopersist
+      ../../profiles/encrypted-fs
       ../../services/hedgedoc
       ../../services/matrix
       ../../services/haj-social

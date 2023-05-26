@@ -6,6 +6,7 @@
     ./network.nix
     ../../profiles/base
     ../../profiles/zfs-nopersist
+    ../../profiles/encrypted-fs
     ../../services/dns-knot/primary
     ../../services/mail
   ];

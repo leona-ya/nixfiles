@@ -31,6 +31,7 @@
   fileSystems."/persist" =
     { device = "zroot/vault/persist";
       fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+      neededForBoot = true;
     };
 
   fileSystems."/boot" =
