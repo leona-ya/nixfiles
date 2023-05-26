@@ -1,4 +1,4 @@
-{ fetchFromGitHub, lib, bundlerEnv, stdenv, ruby_2_7 }:
+{ fetchFromGitHub, lib, bundlerEnv, stdenv, ruby }:
 
 let
   build-env = bundlerEnv {
@@ -6,7 +6,7 @@ let
     gemfile = ./Gemfile;
     lockfile = ./Gemfile.lock;
     gemset = ./gemset.nix;
-    ruby = ruby_2_7;
+    ruby = ruby;
   };
 in stdenv.mkDerivation rec {
   pname = "opendatamap-net";
