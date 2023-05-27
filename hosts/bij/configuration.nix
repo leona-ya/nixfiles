@@ -1,30 +1,28 @@
-{ config, pkgs, modulesPath, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
       ./hardware-configuration.nix
       ./network.nix
-      ../../profiles/base
       ../../profiles/zfs-nopersist
       ../../profiles/encrypted-fs
       ../../services/nextcloud
       ../../services/web
       ../../services/firefly-iii
-#      ../../services/grocy
       ../../services/ical-merger
       ../../services/dns-kresd
   ];
 
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    zfsSupport = true;
-    device = "/dev/sda";
-  };
+  deployment.buildOnTarget = true;
+  
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [
     "zfs.zfs_arc_max=1024000000"
+    "console=tty"
   ];
-  networking.hostId = "1f9e2eb3";
+  boot.initrd.kernelModules = [ "virtio_gpu" ];
+  networking.hostId = "aeb28f21";
   services.qemuGuest.enable = true;
 
   services.kresd.listenPlain = [
@@ -61,6 +59,9 @@
       ];
     };
   };
+              nixpkgs.config.permittedInsecurePackages = [
+                "openssl-1.1.1t"
+              ];
 
   users.users = {
     nextcloud.uid = 994;
