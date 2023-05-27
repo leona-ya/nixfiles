@@ -3,7 +3,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../profiles/base
     ../../profiles/desktop
     ../../services/int-acme-ca
     ../../services/paperless

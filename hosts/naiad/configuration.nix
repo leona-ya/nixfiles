@@ -4,7 +4,6 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../profiles/base
       ./initrd.nix
       ./wireguard.nix
       ../../services/monitoring

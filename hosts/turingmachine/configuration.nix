@@ -1,13 +1,16 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, inputs, ... }:
 
 {
   imports = [
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     ./hardware-configuration.nix
     ../../profiles/base
     ../../profiles/desktop
     ./network.nix
     ./wireguard.nix
   ];
+
+  deployment.allowLocalDeployment = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;

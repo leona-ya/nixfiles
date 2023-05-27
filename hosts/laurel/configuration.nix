@@ -4,7 +4,6 @@
   imports = [
       ./hardware-configuration.nix
       ./network.nix
-      ../../profiles/base
       ../../profiles/zfs-nopersist
       ../../profiles/encrypted-fs
       ../../services/hedgedoc

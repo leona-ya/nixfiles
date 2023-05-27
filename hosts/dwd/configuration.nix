@@ -1,10 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
     [
+      inputs.nixos-hardware.nixosModules.pcengines-apu
       ./hardware-configuration.nix
-      ../../profiles/base
       ./network
     ];
 

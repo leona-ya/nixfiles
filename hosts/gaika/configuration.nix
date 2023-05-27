@@ -5,7 +5,6 @@
       ./hardware-configuration.nix
       ./wireguard.nix
       ./network.nix
-      ../../profiles/base
   ];
 
   boot.loader.systemd-boot.enable = true;
