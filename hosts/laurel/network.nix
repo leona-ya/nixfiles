@@ -11,11 +11,11 @@ in {
   systemd.network = {
     links = {
       "10-eth0" = {
-        matchConfig.MACAddress = "96:00:01:d0:16:51";
+        matchConfig.MACAddress = "96:00:02:3a:34:e2";
         linkConfig.Name = "eth0";
       };
       "10-eth-nat" = {
-        matchConfig.MACAddress = "86:00:00:32:55:c5";
+        matchConfig.MACAddress = "86:00:00:49:54:09";
         linkConfig.Name = "eth-nat";
       };
     };

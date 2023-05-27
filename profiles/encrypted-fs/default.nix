@@ -10,4 +10,5 @@
     };
   };
   networking.interfaces."eth0".useDHCP = true;
+  networking.interfaces."eth-nat".useDHCP = true;
 }
