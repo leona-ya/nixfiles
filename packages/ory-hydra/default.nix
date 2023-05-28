@@ -15,12 +15,9 @@ buildGoModule rec {
   };
 
   vendorSha256 = "sha256-+g5X41a/5PyXiSL1SWTGavvmYcUBbDs+9a3divV/Cjk=";
-  prePatch = ''
-    rm -r internal/httpclient
-  '';
-
   preBuild =
     ''
+      rm -r internal/httpclient
       export buildFlagsArray=(
         -tags="sqlite,json1"
       )

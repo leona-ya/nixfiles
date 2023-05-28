@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.mailserver.nixModule
+    inputs.mailserver.nixosModule
     ./hardware-configuration.nix
     ./network.nix
     ../../profiles/zfs-nopersist

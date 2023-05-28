@@ -5,7 +5,7 @@ keys:
   - &gaika age19yum7ka8gn7pm5qgrjhcx4ac2sclk3d7wl2088750v508ghzrpnsjwvynj
   - &haku age1r0ry9fmygcw0w7ltwkff7wlcm0g57g0lu62m92yz6e73kmrha9ps3xvdw6
   - &kupe age1udlqpz3mcwnnrng4wg7w79674e4plrydmeqna3axy8sczq5gushqdhac3p
-  - &ladon age1cf2nhanavcq32t57ezaeuv5x8es59734pyujp0d4eq77a5kmlccs337xes
+  - &ladon age1ccn87qg8fe9jd2ct96j9qcmsfmp2y8hpmenmn3tdm8k9zvtvx9ysl0hklt
   - &laurel age1p2f0el5z3jn2gt70w249fvkzewcqytwx9vez4skd598v7d7dtpxq86enup
   - &naiad age1apjvmw80k4nh7fvr07lfhqtku7amw6x8ulc7hyyplr78aaj0xehqm440d7
   - &thia age1st8tawt7qsf7q24nknscrwzw6d6fcveylggtf2az36j0nke7jv7sx7ce4q
@@ -110,7 +110,7 @@ creation_rules:
           - *leona
         age:
           - *laurel
-  - path_regex: secrets/services/(firefly-iii|grocy|nextcloud|ical-merger).yaml
+  - path_regex: secrets/services/(firefly-iii|grocy|nextcloud|ical-merger|snipe-it).yaml
     key_groups:
       - pgp:
           - *leona

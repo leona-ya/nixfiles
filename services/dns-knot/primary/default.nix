@@ -1,7 +1,7 @@
-{ inputs, dns, config, lib, ... }:
+{ inputs, pkgs, config, lib, ... }:
 let
   dns = inputs.dns;
-  dnsutil = dns.util.${config.nixpkgs.system};
+  dnsutil = dns.util.${pkgs.stdenv.hostPlatform.system};
   helper = import ./zones/helper.nix { inherit dns; };
   hosthelper = import ../../../hosts { inherit lib config; };
 in {
