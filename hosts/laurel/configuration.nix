@@ -33,10 +33,6 @@
     diskioDisks = [ "sda" ];
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1t"
-  ];
-
   users.users = {
     nginx.uid = 60;
     postgres.uid = 71;

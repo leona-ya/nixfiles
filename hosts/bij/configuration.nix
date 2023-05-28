@@ -59,9 +59,6 @@
       ];
     };
   };
-              nixpkgs.config.permittedInsecurePackages = [
-                "openssl-1.1.1t"
-              ];
 
   users.users = {
     nextcloud.uid = 994;
