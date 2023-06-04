@@ -35,6 +35,7 @@ in {
     };
   };
 
+  services.mysql.dataDir = "/persist/var/lib/mysql";
   services.postgresql.dataDir = "/persist/postgresql/${config.services.postgresql.package.psqlSchema}";
   services.hedgedoc.workDir = "/persist/var/lib/hedgedoc";
   services.grocy.dataDir = "/persist/var/lib/grocy";
@@ -42,6 +43,7 @@ in {
   services.netbox.dataDir = "/persist/var/lib/netbox";
   services.nextcloud.home = "/persist/var/lib/nextcloud";
   services.firefly-iii.dataDir = "/persist/var/lib/firefly-iii";
+  services.snipe-it.dataDir = "/persist/var/lib/snipe-it";
 
   services.openssh.hostKeys = [
     {

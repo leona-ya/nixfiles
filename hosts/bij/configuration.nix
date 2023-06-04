@@ -11,6 +11,7 @@
       ../../services/firefly-iii
       ../../services/ical-merger
       ../../services/dns-kresd
+      ../../services/snipe-it
   ];
 
   deployment.buildOnTarget = true;
