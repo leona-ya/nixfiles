@@ -17,7 +17,7 @@
     naiad.configuration = import ./hosts/naiad/configuration.nix;
     thia = {
       configuration = import ./hosts/thia/configuration.nix;
-      nixpkgs = inputs.nixpkgs-unstable;
+#      nixpkgs = inputs.nixpkgs-unstable;
     };
     turingmachine = {
       configuration = import ./hosts/turingmachine/configuration.nix;
