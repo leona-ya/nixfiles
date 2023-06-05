@@ -2,8 +2,8 @@
   description = "leona's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:leona-ya/nixpkgs/nixos-unstable-small";
-    nixpkgs-unstable.url = "github:leona-ya/nixpkgs/youtrack-2023.1";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-unstable.url = "github:leona-ya/nixpkgs/nixos-unstable-small";
     ccc-nixlib = {
       url = "gitlab:cyberchaoscreatures/nixlib/main?host=cyberchaos.dev";
       inputs.nixpkgs.follows = "nixpkgs";

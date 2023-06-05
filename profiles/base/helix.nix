@@ -11,7 +11,7 @@
           wrap-indicator = "";  # set wrap-indicator to "" to hide it
         };
       };
-      languages = [
+      languages.language = [
         {
           name = "nix";
           language-server = {
