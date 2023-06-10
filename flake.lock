@@ -223,11 +223,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1685999310,
-        "narHash": "sha256-gaRMZhc7z4KeU/xS3IWv3kC+WhVcAXOLXXGKLe5zn1Y=",
+        "lastModified": 1686305101,
+        "narHash": "sha256-xCgeI+uTKay3Ab3tMdP9m9flIJbFkRMKwRAmg5PQhJQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "28614ed7a1e3ace824c122237bdc0e5e0b62c5c3",
+        "rev": "1e5d741ea3f3290d7ac06a02ded24bfdc7aadb37",
         "type": "github"
       },
       "original": {
@@ -330,6 +330,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-sphere": {
+      "locked": {
+        "lastModified": 1686393263,
+        "narHash": "sha256-jQ0Li/g4Uv8OrwCx7YDPA23XRCT7SrWHg5Hbxea4zYs=",
+        "owner": "leona-ya",
+        "repo": "nixpkgs",
+        "rev": "d86455dcac8c60f283409837cbbc36f70034bfcc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leona-ya",
+        "ref": "keycloak-features",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1685758009,
@@ -348,11 +364,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1685871533,
-        "narHash": "sha256-l39B1JK0nkczyZSXIt4lNo+Fpu2Bdf6O+LnNBGKC4Dg=",
+        "lastModified": 1686309685,
+        "narHash": "sha256-py1PKOtdRrE74z6yG+OgPYwshgeVBSxdOwBTh5lYELw=",
         "owner": "leona-ya",
         "repo": "nixpkgs",
-        "rev": "953f8464d178ce460d22faee5467b9d4f7485085",
+        "rev": "d3583d451fb61a70af639c3e921917603c54eb48",
         "type": "github"
       },
       "original": {
@@ -364,11 +380,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1685997975,
-        "narHash": "sha256-8Lor4X9esFOhrnsJio9pGgqudeeKVqLHrhnhEX+vAzA=",
+        "lastModified": 1686309702,
+        "narHash": "sha256-NHyCAJ7LHeX3J1X8njpXbIy9oAtN6uuUDf5BEWxvGOU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "7bd8dc56eaeadb672c1019b5bcf03b16b908e03f",
+        "rev": "c779f0f96adc3a00be2c22ad854e9931f1daad76",
         "type": "github"
       },
       "original": {
@@ -388,6 +404,7 @@
         "mailserver": "mailserver",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-sphere": "nixpkgs-sphere",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "sops-nix": "sops-nix"

@@ -23,5 +23,7 @@
       configuration = import ./hosts/turingmachine/configuration.nix;
       nixpkgs = inputs.nixpkgs-unstable;
     };
+    sphere.configuration = import ./hosts/sphere/configuration.nix;
+    sphere.nixpkgs = inputs.nixpkgs-sphere;
   };
 }

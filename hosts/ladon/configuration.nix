@@ -6,7 +6,7 @@
       ./network.nix
       ../../profiles/zfs-nopersist
       ../../services/ldap
-      ../../services/keycloak
+      ../../services/keycloak-old
       ../../services/hydra-sso
   ];
   boot.loader.grub = {

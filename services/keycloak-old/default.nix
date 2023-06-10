@@ -1,17 +1,7 @@
 { config, lib, pkgs, ... }:
 
-let 
-  keycloakTheme = pkgs.stdenv.mkDerivation {
-    name = "leona-keycloak-theme";
-    src = ./theme;
-    dontBuild = true;
-    installPhase = ''
-      mkdir -p $out
-      cp -r * $out
-    '';
-  };
-in {
-  l.sops.secrets."services/keycloak/database_password" = {
+{
+  l.sops.secrets."services/keycloak-old/database_password" = {
     owner = "keycloak";
     group = "postgres";
     mode = "0440";
@@ -25,18 +15,13 @@ in {
   users.groups.keycloak = {};
   services.keycloak = {
     enable = true;
-    package = pkgs.keycloak.override {
-      features = [ "declarative-user-profile" ];
-    };
-    database.passwordFile = config.sops.secrets."services/keycloak/database_password".path;
-    initialAdminPassword = "foobar";
-    themes = {
-      leona = keycloakTheme;
-    };
+    database.passwordFile = config.sops.secrets."services/keycloak-old/database_password".path;
+    initialAdminPassword = "";
     settings = {
       http-host = "127.0.0.1";
       http-port = 8080;
-      hostname = "auth.leona.is";
+      http-relative-path = "/auth";
+      hostname = "auth.em0lar.dev";
       proxy = "edge";
     };
   };
@@ -47,8 +32,7 @@ in {
       Group = "keycloak";
     };
   };
-  services.postgresql.enable = true;
-  services.nginx.virtualHosts."auth.leona.is" = {
+  services.nginx.virtualHosts."auth.em0lar.dev" = {
     enableACME = true;
     forceSSL = true;
     kTLS = true;

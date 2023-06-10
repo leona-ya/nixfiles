@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-unstable.url = "github:leona-ya/nixpkgs/nixos-unstable-small";
+    nixpkgs-sphere.url = "github:leona-ya/nixpkgs/keycloak-features";
     ccc-nixlib = {
       url = "gitlab:cyberchaoscreatures/nixlib/main?host=cyberchaos.dev";
       inputs.nixpkgs.follows = "nixpkgs";

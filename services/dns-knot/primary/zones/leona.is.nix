@@ -9,13 +9,14 @@ kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
 bij_v4 = "168.119.100.247";
 laurel_v6 = "2a01:4f8:c012:b172::1";
 ladon_v6 = "2a01:4f8:1c17:e4ce::1";
+sphere_v6 = "2a01:4f8:c012:b842::1";
 in {
   zone = {
     TTL = 600;
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023060201;
+      serial = 2023060802;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -53,6 +54,7 @@ in {
       "laurel.net".AAAA = [ laurel_v6 ];
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
+      "sphere.net".AAAA = [ sphere_v6 ];
       "wg.net".CNAME = [ "bij.net.leona.is." ];
       "haj-social".CNAME = [ "laurel.net.leona.is." ];
 
@@ -74,7 +76,7 @@ in {
 
       www.CNAME = [ "bij.net.leona.is." ];
       "acme.int".AAAA = [ "fd8f:d15b:9f40:101::100" ];
-      auth = host bij_v4 ladon_v6;
+      auth = host bij_v4 sphere_v6;
       alertmanager.CNAME = [ "naiad.net.leona.is." ];
       cloud.CNAME = [ "bij.net.leona.is." ];
       "cal.cloud".CNAME = [ "bij.net.leona.is." ];

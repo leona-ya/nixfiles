@@ -58,6 +58,9 @@
       "thia.wg.net.leona.is" = [
         "yt.leona.is"
       ];
+      "sphere.net.leona.is" = [
+        "auth.leona.is"
+      ];
     };
   };
 

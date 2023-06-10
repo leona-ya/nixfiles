@@ -1,0 +1,15 @@
+:root {
+    --pf-global--primary-color--100: #c4326b;
+    --default-background-color: #c4326b;
+    --link-hover-color: #c4326b;
+}
+
+.login-pf body {
+    background: url("../img/background.webp") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.card-pf {
+  border: none;
+}

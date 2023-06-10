@@ -36,7 +36,8 @@
     )
   );
 
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+#  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages;
   security.pki.certificateFiles = [ ../../lib/leona-is-ca.crt ];
   users.mutableUsers = false;
   home-manager.useUserPackages = true;

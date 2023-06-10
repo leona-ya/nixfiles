@@ -10,6 +10,7 @@ keys:
   - &naiad age1apjvmw80k4nh7fvr07lfhqtku7amw6x8ulc7hyyplr78aaj0xehqm440d7
   - &thia age1st8tawt7qsf7q24nknscrwzw6d6fcveylggtf2az36j0nke7jv7sx7ce4q
   - &turingmachine age1rcxgtdwh3u7u6lzh9558sqfrs9ndwnzhsjqj57hvdtapcjynvs8szhdw4t
+  - &sphere age17ldwzf52ked9wpqhrw55mhc6ax5r6eh0jpefx6lqql8w5zhlsp4q4g64zr
 creation_rules:
   - path_regex: secrets/all/[^/]+\.yaml$
     key_groups:
@@ -26,6 +27,7 @@ creation_rules:
           - *naiad
           - *thia
           - *turingmachine
+          - *sphere
 
   # hosts
   - path_regex: secrets/hosts/bij.yaml
@@ -88,7 +90,12 @@ creation_rules:
           - *leona
         age:
           - *turingmachine
-
+  - path_regex: secrets/hosts/sphere.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *sphere
 
   # profiles
   - path_regex: secrets/profiles/desktop.yaml
@@ -116,7 +123,7 @@ creation_rules:
           - *leona
         age:
           - *bij
-  - path_regex: secrets/services/(keycloak|ldap|hydra-sso).yaml
+  - path_regex: secrets/services/(keycloak-old|hydra-sso).yaml
     key_groups:
       - pgp:
           - *leona
@@ -141,6 +148,12 @@ creation_rules:
         age:
           - *haku
           - *naiad
+  - path_regex: secrets/services/(keycloak|ldap).yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *sphere
   - path_regex: secrets/services/(int-acme-ca|paperless|bn-smarthome).yaml
     key_groups:
       - pgp:

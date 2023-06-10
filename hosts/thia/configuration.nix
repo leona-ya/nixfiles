@@ -4,13 +4,17 @@
   imports = [
     ./hardware-configuration.nix
     ../../profiles/desktop
-    ../../services/int-acme-ca
+#    ../../services/int-acme-ca
     ../../services/paperless
     ../../services/bn-smarthome
     ../../services/youtrack
     ./network.nix
   ];
 
+  deployment.allowLocalDeployment = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1u"
+  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
