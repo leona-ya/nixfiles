@@ -18,6 +18,7 @@
     jetbrains-mono
     font-awesome
     meslo-lgs-nf
+    inter
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -67,7 +68,6 @@
     signal-desktop
     speedcrunch
     spotify
-    sublime4
     superTuxKart
     tectonic
     texlab

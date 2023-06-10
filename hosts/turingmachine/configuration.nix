@@ -4,7 +4,6 @@
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     ./hardware-configuration.nix
-    ../../profiles/base
     ../../profiles/desktop
     ./network.nix
     ./wireguard.nix
@@ -23,8 +22,8 @@
   networking.hostId = "a4232228";
 
   l.sops.secrets = {
-    "hosts/turingmachine/alt_rsa_ssh_key".owner = "leona";
-    "hosts/turingmachine/user_leona_pw".neededForUsers = true;
+    "profiles/desktop/alt_rsa_ssh_key".owner = "leona";
+    "profiles/desktop/user_leona_pw".neededForUsers = true;
   };
 
   services.upower = {
@@ -35,12 +34,12 @@
   };
   systemd.services.upower.wantedBy = lib.mkForce [ "multi-user.target" ];
 
-  users.users.leona.passwordFile = config.sops.secrets."hosts/turingmachine/user_leona_pw".path;
+  users.users.leona.passwordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
   security.sudo.wheelNeedsPassword = true;
 
   home-manager.users.leona = {
     programs.ssh.extraConfig = ''
-      IdentityFile ${config.sops.secrets."hosts/turingmachine/alt_rsa_ssh_key".path}
+      IdentityFile ${config.sops.secrets."profiles/desktop/alt_rsa_ssh_key".path}
     '';
   };
 #  l.backups = {

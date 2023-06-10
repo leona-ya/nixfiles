@@ -19,6 +19,14 @@
 
   networking.wireless.iwd = {
     enable = true;
+    package = pkgs.iwd.overrideAttrs (final: prev: rec{
+      version = "2.5";
+      src = pkgs.fetchgit {
+        url = "https://git.kernel.org/pub/scm/network/wireless/iwd.git";
+        rev = version;
+        sha256 = "sha256-QGrZid1MVAofFcsnZ20f8RJdyNrVsRkUg2yPGC/iGVU=";
+      };
+    });
   };
   systemd.network = {
     links."10-eth0" = {
@@ -72,6 +80,11 @@
           };
         }
       ];
+    };
+    networks."10-enp0s20f0u4" = {
+      DHCP = "yes";
+      matchConfig.MACAddress = "b6:73:65:9a:78:61";
+      linkConfig = { RequiredForOnline = "no"; };
     };
   };
   l.sops.secrets = {
