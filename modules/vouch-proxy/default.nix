@@ -104,9 +104,9 @@ in {
         };
         oauth = {
           provider = "oidc";
-          auth_url = "https://auth.em0lar.dev/auth/realms/em0lar/protocol/openid-connect/auth";
-          token_url = "https://auth.em0lar.dev/auth/realms/em0lar/protocol/openid-connect/token";
-          user_info_url = "https://auth.em0lar.dev/auth/realms/em0lar/protocol/openid-connect/userinfo";
+          auth_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/auth";
+          token_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/token";
+          user_info_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/userinfo";
           scopes = [
             "openid"
             "email"

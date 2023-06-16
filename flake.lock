@@ -364,11 +364,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1686309685,
-        "narHash": "sha256-py1PKOtdRrE74z6yG+OgPYwshgeVBSxdOwBTh5lYELw=",
+        "lastModified": 1686857462,
+        "narHash": "sha256-We6iCos+LrMusfe/ilxCMD4eCB1vkuwhPo3X4eaGF3c=",
         "owner": "leona-ya",
         "repo": "nixpkgs",
-        "rev": "d3583d451fb61a70af639c3e921917603c54eb48",
+        "rev": "5d41fce67a97f027fd6b27fcaec83859894ae178",
         "type": "github"
       },
       "original": {

@@ -10,6 +10,24 @@ let
       cp -r * $out
     '';
   };
+
+  pluginRestrictClientAuth  = pkgs.stdenv.mkDerivation rec {
+    pname = "keycloak-restrict-client-auth";
+    version = "21.0.0";
+
+    src = pkgs.fetchurl {
+      url = "https://github.com/sventorben/keycloak-restrict-client-auth/releases/download/v${version}/keycloak-restrict-client-auth.jar";
+      sha256 = "sha256-gIcG+UcBziTNiRw053PQqRxzBSYj5BUPkU6PPa58/Ww=";
+    };
+
+    dontUnpack = true;
+    dontBuild = true;
+
+    installPhase = ''
+      mkdir -p $out
+      install "$src" "$out"
+    '';
+  };
 in {
   l.sops.secrets."services/keycloak/database_password" = {
     owner = "keycloak";
@@ -33,6 +51,9 @@ in {
     themes = {
       leona = keycloakTheme;
     };
+    plugins = [
+      pluginRestrictClientAuth
+    ];
     settings = {
       http-host = "127.0.0.1";
       http-port = 8080;
@@ -59,6 +80,9 @@ in {
         proxy_buffers              4 256k;
         proxy_busy_buffers_size    256k;
       '';
+    };
+    locations."= /" = {
+      return = "301 https://auth.leona.is/realms/leona/account/";
     };
   };
 }

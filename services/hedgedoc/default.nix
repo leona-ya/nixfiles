@@ -21,8 +21,9 @@
         host = "/run/postgresql";
       };
       oauth2 = {
-        tokenURL = "https://hydra.sso.leona.is/oauth2/token";
-        authorizationURL = "https://hydra.sso.leona.is/oauth2/auth";
+        tokenURL = "https://auth.leona.is/realms/leona/protocol/openid-connect/token";
+        authorizationURL = "https://auth.leona.is/realms/leona/protocol/openid-connect/auth";
+        userProfileURL = "https://auth.leona.is/realms/leona/protocol/openid-connect/userinfo";
         clientID = "hedgedoc";
         clientSecret = "";
       };
