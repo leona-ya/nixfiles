@@ -12,7 +12,6 @@
     dwd.configuration = import ./hosts/dwd/configuration.nix;
     gaika.configuration = import ./hosts/gaika/configuration.nix;
     kupe.configuration = import ./hosts/kupe/configuration.nix;
-    ladon.configuration = import ./hosts/ladon/configuration.nix;
     laurel.configuration = import ./hosts/laurel/configuration.nix;
     naiad.configuration = import ./hosts/naiad/configuration.nix;
     thia = {

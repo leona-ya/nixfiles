@@ -230,25 +230,6 @@ in rec {
         };
       };
     };
-    ladon = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:c21:200::1";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = true;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.ladon.meta.intIpv6}/72" ];
-              publicKey = "wGbDKRc6TeIF559qQBt5cjxhCPA/k82uEdmesqrTRAg=";
-              routed = [ "${hosts.ladon.meta.intIpv6}/72" ];
-              hostname = "ladon.net.leona.is";
-            };
-          };
-        };
-      };
-    };
     laurel = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c21:100::1";

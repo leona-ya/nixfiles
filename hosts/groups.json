@@ -3,7 +3,6 @@
     "hosts": [
       "bij",
       "kupe",
-      "ladon",
       "laurel",
       "naiad"
     ]
@@ -20,7 +19,6 @@
       "dwd",
       "gaika",
       "kupe",
-      "ladon",
       "laurel",
       "naiad",
       "thia"
@@ -31,9 +29,7 @@
       "bij",
       "dwd",
       "gaika",
-      "haku",
       "kupe",
-      "ladon",
       "laurel",
       "naiad",
       "sphere"
