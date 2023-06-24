@@ -83,7 +83,7 @@
     };
     networks."10-enp0s20f0u4" = {
       DHCP = "yes";
-      matchConfig.MACAddress = "b6:73:65:9a:78:61";
+      matchConfig.Name = "enp0s20f0u4";
       linkConfig = { RequiredForOnline = "no"; };
     };
   };
