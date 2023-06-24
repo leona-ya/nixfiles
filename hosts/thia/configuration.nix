@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../profiles/desktop
-#    ../../services/int-acme-ca
+    ../../services/int-acme-ca
     ../../services/paperless
     ../../services/bn-smarthome
     ../../services/youtrack
