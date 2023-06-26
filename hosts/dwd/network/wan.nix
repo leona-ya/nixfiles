@@ -11,7 +11,7 @@
         autostart = true;
         enable = true;
         config = ''
-          plugin rp-pppoe.so
+          plugin pppoe.so
 
           # interface name
           eth0.7

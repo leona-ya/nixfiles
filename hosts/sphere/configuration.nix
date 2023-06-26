@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -12,7 +12,8 @@
 
   deployment.buildOnTarget = true;
   deployment.targetHost = "2a01:4f8:c012:b842::1";
-  
+
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [
@@ -26,7 +27,7 @@
   l.backups.enable = true;
   l.telegraf = {
     enable = true;
-    host = "[fd8f:d15b:9f40:c21:300::1]";
+    host = "[fd8f:d15b:9f40:c21:400::1]";
     diskioDisks = [ "sda" ];
   };
 

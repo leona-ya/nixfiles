@@ -7,6 +7,8 @@
       ./network.nix
   ];
 
+  deployment.targetHost = "gaika.wg.net.leona.is";
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
