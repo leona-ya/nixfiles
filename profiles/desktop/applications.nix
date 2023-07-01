@@ -43,6 +43,7 @@
     gnome.vinagre
     cmake
     gnumake
+    gh
     inkscape
     (jetbrains.idea-ultimate.override {
       jdk = jetbrains.jdk;
@@ -76,11 +77,11 @@
     virt-manager
     youtube-dl
     zoxide fzf
-    (zoom-us.overrideAttrs (old: {
-      postFixup = old.postFixup + ''
-        wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
-      '';
-    }))
+#    (zoom-us.overrideAttrs (old: {
+#      postFixup = old.postFixup + ''
+#        wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
+#      '';
+#    }))
   ];
 
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
