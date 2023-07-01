@@ -17,7 +17,6 @@
     };
   };
   networking.useHostResolvConf = false;
-  l.nftables.checkIPTables = false;
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
   boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;
 }

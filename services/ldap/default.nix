@@ -2,7 +2,7 @@
 
 {
   l.sops.secrets."services/ldap/root_password".owner = "openldap";
-  l.nftables.extraInput = ''
+  networking.firewall.extraInputRules = ''
     ip6 saddr fd8f:d15b:9f40::/48 tcp dport 389 accept
   '';
 

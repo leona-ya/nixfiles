@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   services.resolved.enable = false;
-  l.nftables.extraInput = ''
+  networking.firewall.extraInputRules = ''
     ip saddr 10.151.0.0/16 tcp dport 53 accept
     ip saddr 10.151.0.0/16 udp dport 53 accept
     ip6 saddr fd8f:d15b:9f40::/48 tcp dport 53 accept

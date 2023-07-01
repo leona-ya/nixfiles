@@ -18,10 +18,9 @@
   services.unifi.enable = true;
   services.unifi.openFirewall = true;
   services.unifi.unifiPackage = pkgs.unifi;
-  l.nftables.extraInput = ''
-	  iifname br-lan tcp dport { 8080, 6789, 8443 } accept
-    iifname br-lan udp dport { 3478, 10001 } accept
-  '';
+
+  networking.firewall.interfaces."br-lan".allowedTCPPorts = [ 8080 6789 8443 ];
+  networking.firewall.interfaces."br-lan".allowedUDPPorts = [ 3478 10001 ];
 
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
     enableACME = lib.mkForce false;

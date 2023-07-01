@@ -1,7 +1,6 @@
 {
   imports = [
     ./backups
-    ./nftables
     ./sops
     ./telegraf
     ./vouch-proxy

@@ -101,20 +101,10 @@
   environment.variables.MOZ_USE_XINPUT2 = "1"; # for firefox
   hardware.bluetooth.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.docker = {
+  virtualisation.podman = {
     enable = true;
-    enableOnBoot = false;
-    daemon.settings = {
-      bip = "172.37.0.1/16";
-      default-address-pools = [
-        {
-          base = "10.38.0.0/16";
-          size = 24;
-        }
-      ];
-    };
+    dockerCompat = true;
   };
-  l.nftables.generateDockerRules = true;
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   services.udisks2.enable = true;

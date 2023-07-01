@@ -76,7 +76,7 @@
   programs.zsh.enable = true;
 
   networking.useNetworkd = true;
-  l.nftables.enable = true;
+  networking.nftables.enable = true;
   networking.useDHCP = false;
   services.resolved.dnssec = "false"; # broken :(
   services.resolved.extraConfig = ''

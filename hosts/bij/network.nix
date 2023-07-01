@@ -132,32 +132,22 @@ in {
       };
     } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
   };
-  l.nftables = {
-    extraForward = ''
-      ct state invalid drop
-      ct state established,related accept
+  networking.firewall.extraForwardRules = ''
+    ct state invalid drop
+    ct state established,related accept
 
-      iifname eth-nat oifname eth0 ct state new accept
-      iifname wg-clients oifname wg-clients ct state new accept
-      iifname wg-clients oifname wg-server ct state new accept
-      iifname wg-server oifname wg-server ct state new accept
-      iifname wg-server oifname wg-clients ct state new accept
-      iifname wg-public-out oifname wg-public-out ct state new accept
-      iifname wg-public-out oifname wg-public-in ct state new accept
-      iifname wg-public-in oifname wg-public-out ct state new accept
-    '';
-    extraConfig = ''
-      table ip nat {
-        chain prerouting {
-          type nat hook prerouting priority 0; policy accept;
-        }
-
-        chain postrouting {
-          type nat hook postrouting priority 100; policy accept;
-          iifname eth-nat oifname eth0 masquerade
-        }
-      }
-    '';
+    iifname eth-nat oifname eth0 ct state new accept
+    iifname wg-clients oifname wg-clients ct state new accept
+    iifname wg-clients oifname wg-server ct state new accept
+    iifname wg-server oifname wg-server ct state new accept
+    iifname wg-server oifname wg-clients ct state new accept
+    iifname wg-public-out oifname wg-public-out ct state new accept
+    iifname wg-public-out oifname wg-public-in ct state new accept
+    iifname wg-public-in oifname wg-public-out ct state new accept
+  '';
+  networking.nat = {
+    externalInterface = "eth0";
+    internalInterfaces = [ "eth-nat" ];
   };
 
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
