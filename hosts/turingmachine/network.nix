@@ -17,17 +17,7 @@
     "lan"
   ];
 
-  networking.wireless.iwd = {
-    enable = true;
-    package = pkgs.iwd.overrideAttrs (final: prev: rec{
-      version = "2.5";
-      src = pkgs.fetchgit {
-        url = "https://git.kernel.org/pub/scm/network/wireless/iwd.git";
-        rev = version;
-        sha256 = "sha256-QGrZid1MVAofFcsnZ20f8RJdyNrVsRkUg2yPGC/iGVU=";
-      };
-    });
-  };
+  networking.wireless.iwd.enable = true;
   systemd.network = {
     links."10-eth0" = {
       matchConfig.MACAddress = "8c:16:45:89:d1:64";
