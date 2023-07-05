@@ -17,7 +17,7 @@ in {
         listen: fd8f:d15b:9f40:c21:300::1@53
       remote:
         - id: internal_ns2
-          address: fd8f:d15b:9f40:0c00::1
+          address: fd8f:d15b:9f40:0c10::1
         - id: internal_ns3
           address: fd8f:d15b:9f40:0c20::1
       acl:
@@ -69,9 +69,6 @@ in {
           template: signedprimary
         - domain: leona.is
           file: "${dnsutil.writeZone "leona.is" (import zones/leona.is.nix { inherit hosthelper helper lib dns config; }).zone}"
-          template: signedprimary
-        - domain: leomaroni.de
-          file: "${dnsutil.writeZone "leomaroni.de" (import zones/leomaroni.de.nix { inherit helper lib dns config; }).zone}"
           template: signedprimary
         - domain: maroni.me
           file: "${dnsutil.writeZone "maroni.me" (import zones/maroni.me.nix { inherit helper lib dns config; }).zone}"

@@ -2,6 +2,7 @@ keys:
   - &leona EB5CEED62922C6050F9FC85BD5B08ADFC75E3605
   - &bij age14s6jax4hc2uz6rusud4lna0uc9m28u9yurv2ewwjchnr2cjqa43qqw2xqp
   - &dwd age1xph9c9rtyjrz3cnd6t940dnzuruqw27l7yp98ac33rdz53q429gsu702k4
+  - &enari age1qvevvg59t6y82jpyg2wqvgekj648dwgzz8hwuu73srv68ulykqwqcl9zxg
   - &gaika age19yum7ka8gn7pm5qgrjhcx4ac2sclk3d7wl2088750v508ghzrpnsjwvynj
   - &haku age1r0ry9fmygcw0w7ltwkff7wlcm0g57g0lu62m92yz6e73kmrha9ps3xvdw6
   - &kupe age1udlqpz3mcwnnrng4wg7w79674e4plrydmeqna3axy8sczq5gushqdhac3p
@@ -19,6 +20,7 @@ creation_rules:
         age:
           - *bij
           - *dwd
+          - *enari
           - *gaika
           - *haku
           - *kupe
@@ -42,6 +44,12 @@ creation_rules:
           - *leona
         age:
           - *dwd
+  - path_regex: secrets/hosts/enari.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *enari
   - path_regex: secrets/hosts/gaika.yaml
     key_groups:
       - pgp:
@@ -146,7 +154,7 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *haku
+          - *enari
           - *naiad
   - path_regex: secrets/services/(keycloak|ldap).yaml
     key_groups:

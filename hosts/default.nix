@@ -114,11 +114,23 @@ in rec {
         };
       };
     };
-    foros = {
+    enari = {
       meta = {
-        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:fe3a:685c";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = false;
+        intIpv6 = "fd8f:d15b:9f40:c10::1";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
+      services = {
+        wireguard = {
+          interfaces = {
+            "server" = {
+              ips = [ "${hosts.enari.meta.intIpv6}/72" ];
+              publicKey = "JbZutdoQLIZaHn89QskIw1TW59x+DcJrUG8nLjndaQk=";
+              routed = [ "${hosts.enari.meta.intIpv6}/72" ];
+              hostname = "enari.net.leona.is";
+            };
+          };
+        };
       };
     };
     kupe = {

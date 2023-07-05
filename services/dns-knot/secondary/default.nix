@@ -22,6 +22,9 @@
           address: [2a01:4f8:242:155f:4000::b8b]
           action: notify
           key: fdg_leona_secondary
+        - id: internal_transfer
+          address: [fd8f:d15b:9f40::/48, 127.0.0.0/8]
+          action: transfer
       mod-rrl:
         - id: default
           rate-limit: 200   # Allow 200 resp/s for each flow
@@ -39,8 +42,6 @@
         - domain: em0lar.de
           template: secondary
         - domain: em0lar.dev
-          template: secondary
-        - domain: emolar.de
           template: secondary
         - domain: labcode.de
           template: secondary

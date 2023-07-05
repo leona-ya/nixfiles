@@ -16,7 +16,7 @@ in {
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023060802;
+      serial = 2023070501;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -48,6 +48,7 @@ in {
       "bij.net" = host bij_v4 "2a01:4f8:c010:1098::1";
       "charon.net".AAAA = [ "2a01:4f9:6a:13c6::1" ];
       "dwd.net" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
+      "enari.net" = host "195.20.227.176" "2001:470:1f0b:1112::1";
       "foros.net" = host "195.39.247.144" "2a01:4f9:6a:13c6:4000::dea";
       "beryl.net" = host "195.39.247.145" "2a01:4f9:6a:13c6:4000::b33";
       "ladon.net".AAAA = [ ladon_v6 ];
