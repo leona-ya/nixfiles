@@ -146,6 +146,7 @@ in {
     iifname wg-public-in oifname wg-public-out ct state new accept
   '';
   networking.nat = {
+    enable = true;
     externalInterface = "eth0";
     internalInterfaces = [ "eth-nat" ];
   };
