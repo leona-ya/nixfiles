@@ -9,7 +9,7 @@ in {
   systemd.network.netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
   systemd.network.networks = hosthelper.groups.wireguard.g_systemd_network_networkconfig;
 
-  services.firewall.extraForwardRules = ''
+  networking.firewall.extraForwardRules = ''
     ct state invalid drop
     ct state established,related accept
 

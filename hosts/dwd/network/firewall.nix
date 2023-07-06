@@ -20,23 +20,26 @@
       }
     }
   '';
-  services.firewall.extraForwardRules = ''
-    ct state invalid drop
-    ct state established,related accept
-
-    iifname br-lan oifname ppp-wan ct state new accept
-
-    iifname br-lan oifname wg-server ct state new accept
-    iifname wg-server oifname br-lan ct state new accept
-  '';
-  networking.nat = {
-    internalInterfces = [ "br-lan" ];
-    externalInterface = "ppp-wan";
-  };
-  networking.firewall.interfaces = {
-    "br-lan" = {
-      allowedUDPPorts = [53];
-      allowedTCPPorts = [53];
+  networking.firewall = {
+    interfaces = {
+      "br-lan" = {
+        allowedUDPPorts = [53];
+        allowedTCPPorts = [53];
+      };
     };
+    extraForwardRules = ''
+      ct state invalid drop
+      ct state established,related accept
+
+      iifname br-lan oifname ppp-wan ct state new accept
+
+      iifname br-lan oifname wg-server ct state new accept
+      iifname wg-server oifname br-lan ct state new accept
+    '';
+  };
+  networking.nat = {
+    enable = true;
+    internalInterfaces = [ "br-lan" ];
+    externalInterface = "ppp-wan";
   };
 }

@@ -34,10 +34,18 @@
   users.users = {
     acme.uid = 996;
     postgres.uid = 71;
+    nginx.uid = 60;
+    telegraf.uid = 256;
+    openldap.uid = 994;
+    keycloak.uid = 995;
   };
   users.groups = {
     acme.gid = 995;
     postgres.gid = 71;
+    nginx.gid = 60;
+    telegraf.gid = 994;
+    openldap.gid = 992;
+    keycloak.gid = 993;
   };
   
   services.postgresql.package = pkgs.postgresql_15;
