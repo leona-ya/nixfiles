@@ -5,7 +5,7 @@ with dns.lib.combinators;
 {
   ns = map (ttl 86400) [
    (ns "ns1.leona.is.")
-#   (ns "ns2.leona.is.")
+   (ns "ns2.leona.is.")
    (ns "ns3.leona.is.")
  ];
   mail = rec {

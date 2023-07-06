@@ -8,7 +8,7 @@ naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
 kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
 in {
   zone = {
-    TTL = 600;
+    TTL = 3600;
     SOA = ((ttl 300) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";

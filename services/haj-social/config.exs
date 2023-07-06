@@ -15,6 +15,8 @@ config :pleroma, :instance,
   registrations_open: false,
   invites_enabled: true,
   federating: true,
+  federation_incoming_replies_max_depth: 100,
+  federation_reachability_timeout_days: 7,
   autofollowed_nicknames: ["flossenpflege"]
 
 config :pleroma, Pleroma.Emails.Mailer,
