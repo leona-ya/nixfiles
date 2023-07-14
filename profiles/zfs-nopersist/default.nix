@@ -14,9 +14,11 @@ let
       "vikunja"
       "matrix-synapse"
       "knot"
+      "loki"
     ])) // (if config.services.opendkim.enable then { "/var/dkim" = "/persist/var/dkim"; } else { })
        // (if config.services.dovecot2.enable then { "/var/lib/dovecot" = "/persist/var/lib/dovecot"; "/var/sieve" = "/persist/var/sieve"; "/var/vmail" = "/persist/var/vmail"; } else { })
        // (if config.services.vaultwarden.enable then { "/var/lib/bitwarden_rs" = "/persist/var/lib/bitwarden_rs"; } else { })
+       // (if config.services.prometheus.enable then { "/var/lib/prometheus2" = "/persist/var/lib/prometheus2"; } else { })
        // (if config.hardware.bluetooth.enable then { "/var/lib/bluetooth" = "/persist/var/lib/bluetooth"; } else { })
        // (if config.virtualisation.libvirtd.enable then { "/var/lib/libvirt" = "/persist/var/lib/libvirt"; } else { })
        // (if config.security.acme.certs != { } then { "/var/lib/acme" = "/persist/var/lib/acme"; } else { });
@@ -33,6 +35,10 @@ in {
       device = "/persist/var/lib/redis-rspamd";
       options = [ "bind" ];
     };
+    "/var/log/nginx" = {
+      device = "/persist/var/log/nginx";
+      options = [ "bind" ];
+    };
   };
 
   services.mysql.dataDir = "/persist/var/lib/mysql";
@@ -44,6 +50,7 @@ in {
   services.nextcloud.home = "/persist/var/lib/nextcloud";
   services.firefly-iii.dataDir = "/persist/var/lib/firefly-iii";
   services.snipe-it.dataDir = "/persist/var/lib/snipe-it";
+  services.grafana.dataDir = "/persist/var/lib/grafana";
 
   services.openssh.hostKeys = [
     {

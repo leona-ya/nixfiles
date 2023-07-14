@@ -192,7 +192,7 @@ in {
             }
             {
               alert = "HostSystemdServiceCrashed";
-              expr = "systemd_units_active_code{active=\"failed\"} > 0";
+              expr = "systemd_units_active_code{active=\"failed\", name!=\"systemd-networkd-wait-online.service\"} > 0";
               for = "5m";
               labels = {
                 severity = "critical";

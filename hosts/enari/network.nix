@@ -4,6 +4,7 @@ in {
   l.sops.secrets."hosts/enari/wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.hostName = "enari";
   networking.domain = "net.leona.is";
+  networking.firewall.allowedUDPPorts = [ 51441 ];
   systemd.network = {
     links."10-eth0" = {
       matchConfig.MACAddress = "02:01:af:69:b7:ea";

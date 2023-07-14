@@ -9,5 +9,7 @@
     ./nginx-sni-proxy
     ./imapsync
     ./ory-hydra
+    ./nginx
+    ./promtail
   ];
 }

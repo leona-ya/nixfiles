@@ -4,7 +4,7 @@
       ./network.nix
       ../../profiles/zfs-nopersist
       ../../profiles/encrypted-fs
-#      ../../services/monitoring
+      ../../services/monitoring
       ../../services/dns-knot/secondary
     ];
 

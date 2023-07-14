@@ -143,12 +143,13 @@ creation_rules:
           - *leona
         age:
           - *kupe
-  - path_regex: secrets/services/(monitoring).yaml
+  - path_regex: secrets/services/monitoring.yaml
     key_groups:
       - pgp:
           - *leona
         age:
           - *naiad
+          - *enari
   - path_regex: secrets/services/dns-knot-secondary.yaml
     key_groups:
       - pgp:

@@ -4,10 +4,7 @@ let
   commonHeaders = lib.concatStringsSep "\n" (lib.filter (line: lib.hasPrefix "add_header" line) (lib.splitString "\n" config.services.nginx.commonHttpConfig));
 in {
   services.nginx.virtualHosts = {
-    "www.leona.is" = let
-      client = { "m.homeserver" = { base_url = "https://matrix.labcode.de"; }; };
-      server = { "m.server" = "matrix.labcode.de:443"; };
-    in {
+    "www.leona.is" = {
       enableACME = true;
       forceSSL = true;
       kTLS = true;
@@ -17,24 +14,6 @@ in {
       locations = {
         "/" = {
           extraConfig = "return 301 https://leona.is$request_uri;";
-        };
-        "= /.well-known/matrix/client" = {
-          root = pkgs.writeTextDir ".well-known/matrix/client" "${builtins.toJSON client}";
-          extraConfig = ''
-            ${commonHeaders}
-            add_header Access-Control-Allow-Origin *;
-            add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
-            add_header Access-Control-Allow-Headers 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
-          '';
-        };
-        "= /.well-known/matrix/server" = {
-          root = pkgs.writeTextDir ".well-known/matrix/server" "${builtins.toJSON server}";
-          extraConfig = ''
-            ${commonHeaders}
-            add_header Access-Control-Allow-Origin *;
-            add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
-            add_header Access-Control-Allow-Headers 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
-          '';
         };
       };
     };
@@ -54,6 +33,7 @@ in {
             add_header Access-Control-Allow-Origin *;
             add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
             add_header Access-Control-Allow-Headers 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
+            access_log off;
           '';
         };
         "= /.well-known/matrix/server" = {
@@ -63,6 +43,7 @@ in {
             add_header Access-Control-Allow-Origin *;
             add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
             add_header Access-Control-Allow-Headers 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
+            access_log off;
           '';
         };
         "= /cute" = {
@@ -70,6 +51,14 @@ in {
           extraConfig = ''
             ${commonHeaders}
             add_header Content-Type text/html;
+          '';
+        };
+        "= /health" = {
+          return = "200 'ok'";
+          extraConfig = ''
+            ${commonHeaders}
+            add_header Content-Type text/html;
+            access_log off;
           '';
         };
       };
@@ -124,4 +113,6 @@ in {
     };
     phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
   };
+  l.nginx.virtualHosts."leona.is".lokiAccessLog.enable = true;
+  l.nginx.virtualHosts."cv.leona.is".lokiAccessLog.enable = true;
 }

@@ -1,12 +1,13 @@
-{ config, pkgs, ... }:
+{ config, lib, ... }:
 
-{
+let
+  hosthelper = import ../../hosts { inherit lib config; };
+in {
   imports =
     [
       ./hardware-configuration.nix
       ./initrd.nix
       ./wireguard.nix
-      ../../services/monitoring
       ../../services/dns-knot/secondary
     ];
 
@@ -56,6 +57,29 @@
     enable = true;
     host = "[fd8f:d15b:9f40:0c20::1]";
     diskioDisks = [ "sda" ];
+    extraInputs = {
+      http_response = {
+        interval = "90s";
+        urls = [
+          "https://matrix.leona.is/health"
+          "https://leona.is/.well-known/matrix/server"
+          "https://leona.is/health"
+          "https://cloud.leona.is/login"
+        ];
+      };
+      ping = [
+        {
+          urls = hosthelper.groups.g_public_v6_hostnames;
+          ipv6 = true;
+          method = "native";
+        }
+        {
+          urls = hosthelper.groups.g_public_v4_hostnames;
+          arguments = ["-4"];
+          method = "native";
+        }
+      ];
+    };
   };
 
   l.backups.enable = true;
