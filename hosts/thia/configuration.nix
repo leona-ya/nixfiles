@@ -8,6 +8,7 @@
     ../../services/paperless
     ../../services/bn-smarthome
     ../../services/youtrack
+    ../../services/nextcloud
     ./network.nix
   ];
 
@@ -45,6 +46,7 @@
       "/var/lib/paperless"
       "/var/lib/hass"
       "/var/lib/youtrack"
+      "/var/lib/nextcloud"
     ];
     excludes = [
       "/var/cache"

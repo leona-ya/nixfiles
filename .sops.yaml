@@ -125,7 +125,7 @@ creation_rules:
           - *leona
         age:
           - *laurel
-  - path_regex: secrets/services/(firefly-iii|grocy|nextcloud|ical-merger|snipe-it).yaml
+  - path_regex: secrets/services/(firefly-iii|grocy|ical-merger|snipe-it).yaml
     key_groups:
       - pgp:
           - *leona
@@ -163,7 +163,7 @@ creation_rules:
           - *leona
         age:
           - *sphere
-  - path_regex: secrets/services/(int-acme-ca|paperless|bn-smarthome).yaml
+  - path_regex: secrets/services/(int-acme-ca|nextcloud|paperless|bn-smarthome).yaml
     key_groups:
       - pgp:
           - *leona

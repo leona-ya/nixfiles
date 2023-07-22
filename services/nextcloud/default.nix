@@ -4,7 +4,7 @@
   l.sops.secrets."services/nextcloud/admin_password".owner = "nextcloud";
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud25;
+    package = pkgs.nextcloud27;
     hostName = "cloud.leona.is";
 
     https = true;
@@ -27,6 +27,12 @@
       adminpassFile = config.sops.secrets."services/nextcloud/admin_password".path;
 
       defaultPhoneRegion = "DE";
+    };
+    extraOptions = {
+      forwarded_for_headers = [
+        "HTTP_X_FORWARDED_FOR"
+        "HTTP_X_REAL_IP"
+      ];
     };
   };
   services.postgresql = {
