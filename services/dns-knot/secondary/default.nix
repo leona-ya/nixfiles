@@ -12,14 +12,14 @@
         - id: internal_ns1
           address: fd8f:d15b:9f40:c21:300::1
         - id: fdg_ns1
-          address: 2a01:4f8:242:155f:4000::b8b
+          address: 2a01:4f8:c012:5ab9::1
           key: fdg_leona_secondary
       acl:
         - id: internal_notify
           address: [fd8f:d15b:9f40:c21:300::1]
           action: notify
         - id: fdg_notify
-          address: [2a01:4f8:242:155f:4000::b8b]
+          address: [2a01:4f8:c012:5ab9::1]
           action: notify
           key: fdg_leona_secondary
         - id: internal_transfer
@@ -47,15 +47,13 @@
           template: secondary
         - domain: leona.is
           template: secondary
-        - domain: leomaroni.de
-          template: secondary
         - domain: maroni.me
           template: secondary
         - domain: opendatamap.net
           template: secondary
+        - domain: fahrplandatengarten.de
+          master: fdg_ns1
+          acl: fdg_notify
     '';
-#            - domain: fahrplandatengarten.de
-#              master: fdg_ns1
-#              acl: fdg_notify
   };
 }
