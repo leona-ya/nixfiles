@@ -21,7 +21,7 @@
     };
     turingmachine = {
       configuration = import ./hosts/turingmachine/configuration.nix;
-      nixpkgs = inputs.nixpkgs-turingmachine;
+#      nixpkgs = inputs.nixpkgs-turingmachine;
     };
     sphere.configuration = import ./hosts/sphere/configuration.nix;
     sphere.nixpkgs = inputs.nixpkgs-sphere;
