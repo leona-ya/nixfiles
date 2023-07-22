@@ -5,11 +5,13 @@
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     ./hardware-configuration.nix
     ../../profiles/desktop
+    ../../profiles/desktop/hyprland
     ./network.nix
     ./wireguard.nix
   ];
 
   deployment.allowLocalDeployment = true;
+  deployment.targetHost = "fd8f:d15b:9f40:901::1";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
@@ -42,6 +44,27 @@
       IdentityFile ${config.sops.secrets."profiles/desktop/alt_rsa_ssh_key".path}
     '';
   };
+
+  networking.nat = {
+    enable = true;
+    internalInterfaces = ["ve-+"];
+    externalInterface = "wifi0";
+  };
+
+#  containers.yt = {
+#    autoStart = true;
+#    hostAddress = "192.168.100.10";
+#    localAddress = "192.168.100.11";
+#    config = { config, pkgs, ... }: {
+#      nixpkgs.config.allowUnfree = true;
+#      nixpkgs.overlays = lib.attrValues inputs.self.overlays;
+#      services.youtrack = {
+#        enable = true;
+#        virtualHost = "192.168.100.11";
+#        package = pkgs.youtrack_2022_3;
+#      };
+#    };
+#  };
 #  l.backups = {
 #    enable = true;
 #    excludes = [

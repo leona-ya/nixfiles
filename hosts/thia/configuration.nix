@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../profiles/desktop
+    ../../profiles/desktop/hyprland
     ../../services/int-acme-ca
     ../../services/paperless
     ../../services/bn-smarthome

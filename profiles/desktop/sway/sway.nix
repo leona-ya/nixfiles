@@ -35,7 +35,7 @@
     };
     wayland.windowManager.sway = let
       cfg = config.home-manager.users.leona.wayland.windowManager.sway;
-      wallpaper = "~/.wallpapers/nasa-webb1.jpg";
+      wallpaper = "~/.wallpapers/trans-estro.png";
       modifier = "Mod4";
     in {
       enable = true;
@@ -161,9 +161,9 @@
         };
       };
       extraConfig = ''
-        client.focused #00000000 #000000B3 #FFFFFF
-        client.unfocused #00000000 #00000066 #FFFFFF
-        client.focused_inactive #00000000 #00000066 #FFFFFF
+        client.focused #00000000 #000000cc #FFFFFF
+        client.unfocused #00000000 #00000070 #FFFFFF
+        client.focused_inactive #00000000 #00000090 #FFFFFF
         titlebar_border_thickness 3
         titlebar_padding 8 6
       '';
