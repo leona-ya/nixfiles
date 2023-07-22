@@ -6,7 +6,6 @@
       ./network.nix
       ../../profiles/zfs-nopersist
       ../../profiles/encrypted-fs
-      ../../services/nextcloud
       ../../services/web
       ../../services/firefly-iii
       ../../services/ical-merger
@@ -50,7 +49,6 @@
       "laurel.net.leona.is" = [
         "matrix.leona.is"
         "md.leona.is"
-        "paperless.leona.is"
         "pass.leona.is"
         "todo.leona.is"
         "social.haj.gf"
@@ -61,6 +59,8 @@
         "sso.leona.is"
       ];
       "thia.wg.net.leona.is" = [
+        "cloud.maroni.me"
+        "cloud.leona.is"
         "yt.leona.is"
       ];
       "sphere.net.leona.is" = [
@@ -70,13 +70,11 @@
   };
 
   users.users = {
-    nextcloud.uid = 994;
     firefly-iii.uid = 995;
     acme.uid = 996;
     postgres.uid = 71;
   };
   users.groups = {
-    nextcloud.gid = 993;
     acme.gid = 995;
     firefly-iii.gid = 994;
     postgres.gid = 71;

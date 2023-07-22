@@ -48,7 +48,7 @@
       wireguardPeers = [{
         wireguardPeerConfig = {
           AllowedIPs = [ "0.0.0.0/0" "::/0" ];
-          PublicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
+          PublicKey = "f+fi4A3eZ2WWrIQc+OQugriDj1FPASBXdIW39TW5aF0=";
           Endpoint = "wg.net.leona.is:51440";
         };
       }];

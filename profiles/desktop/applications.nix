@@ -196,6 +196,10 @@
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
       };
     };
+    services.nextcloud-client = {
+      enable = true;
+      startInBackground = true;
+    };
   };
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   services.printing = {
@@ -207,4 +211,7 @@
     ];
   };
   programs.steam.enable = true;
+  networking.hosts = {
+    "fd8f:d15b:9f40:101::1312" = [ "cloud.leona.is" ];
+  };
 }

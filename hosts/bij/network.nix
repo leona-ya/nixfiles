@@ -56,6 +56,16 @@ in {
           {
             wireguardPeerConfig = {
               AllowedIPs = [
+                "195.39.247.148/32"
+                "2a0f:4ac0:1e0:100::1/60"
+              ];
+              PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
+              PersistentKeepalive = 21;
+            };
+          }
+          {
+            wireguardPeerConfig = {
+              AllowedIPs = [
                 "195.39.247.151/32"
                 "2a0f:4ac0:1e0:20::1/60"
               ];

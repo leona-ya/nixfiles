@@ -36,13 +36,13 @@
       routes = [
         {
           routeConfig = {
-            Destination = "195.39.247.188/32";
+            Destination = "168.119.100.247/32";
             Gateway = "_dhcp4";
           };
         }
         {
           routeConfig = {
-            Destination = "2a0f:4ac0:0:1::d25/128";
+            Destination = "2a01:4f8:c010:1098::1/128";
             Gateway = "_ipv6ra";
           };
         }
@@ -59,13 +59,13 @@
       routes = [
         {
           routeConfig = {
-            Destination = "195.39.247.188/32";
+            Destination = "168.119.100.247/32";
             Gateway = "_dhcp4";
           };
         }
         {
           routeConfig = {
-            Destination = "2a0f:4ac0:0:1::d25/128";
+            Destination = "2a01:4f8:c010:1098::1/128";
             Gateway = "_ipv6ra";
           };
         }
