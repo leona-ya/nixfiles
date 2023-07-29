@@ -48,6 +48,7 @@
     upstreamHosts = {
       "laurel.net.leona.is" = [
         "matrix.leona.is"
+        "sliding-sync.matrix.leona.is"
         "md.leona.is"
         "pass.leona.is"
         "todo.leona.is"

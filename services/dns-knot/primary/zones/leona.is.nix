@@ -16,7 +16,7 @@ in {
     SOA = ((ttl 3600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023070701;
+      serial = 2023072201;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -83,6 +83,7 @@ in {
       grocy.CNAME = [ "bij.net.leona.is." ];
       "api.grocy".CNAME = [ "bij.net.leona.is." ];
       matrix = host bij_v4 laurel_v6;
+      "sliding-sync.matrix" = host bij_v4 laurel_v6;
       md = host bij_v4 laurel_v6;
       nomsable = host bij_v4 laurel_v6;
       "loki.int".CNAME = [ "enari.wg.net.leona.is." ];
