@@ -19,9 +19,15 @@
       configuration = import ./hosts/thia/configuration.nix;
       nixpkgs = inputs.nixpkgs-unstable;
     };
-    turingmachine = {
+    turingmachine = let
+      nixpkgs = (import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+        name = "nixpkgs-patched-turingmchine";
+        src = inputs.nixpkgs;
+        patches = [ ./yt-test.patch ];
+      };
+    in {
       configuration = import ./hosts/turingmachine/configuration.nix;
-#      nixpkgs = inputs.nixpkgs-turingmachine;
+      nixpkgs = nixpkgs;
     };
     sphere.configuration = import ./hosts/sphere/configuration.nix;
     sphere.nixpkgs = inputs.nixpkgs-sphere;
