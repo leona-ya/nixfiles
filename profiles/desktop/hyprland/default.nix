@@ -5,7 +5,20 @@ in {
     ./rofi.nix
     ./waybar.nix
   ];
-  users.users.leona.packages = with pkgs; [ hyprland hyprpaper ];
+  users.users.leona.packages = with pkgs; [ 
+    qt5.qtwayland
+    wdisplays
+    waypipe
+    hyprland hyprpaper
+  ];
+
+  environment.variables.SDL_VIDEODRIVER = "wayland";
+  environment.variables.QT_QPA_PLATFORM = "wayland";
+  environment.variables.QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+  environment.variables._JAVA_AWT_WM_NONREPARENTING = "1";
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+
   home-manager.users.leona = {
     services.swayidle = let
       lockCommand = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 20x10";
@@ -121,8 +134,8 @@ in {
         bindel=, XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5
         bindel=, XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5
         bind=, XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t
-        bindel=, XF86MonBrightnessUp, exec, ${pkgs.light}/bin/light -A 5
-        bindel=, XF86MonBrightnessDown, exec, ${pkgs.light}/bin/light -U 5
+        bindel=, XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 10%+
+        bindel=, XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 10%-
       '';
 
 #      onChange = ''

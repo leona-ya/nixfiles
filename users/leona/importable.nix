@@ -84,6 +84,7 @@
         pull.ff = "only";
         transfer.fsckObjects = true;
         feature.manyFiles = true;
+        push.autoSetupRemote = true;
       };
     };
 

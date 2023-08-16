@@ -19,6 +19,7 @@
     font-awesome
     meslo-lgs-nf
     inter
+    questrial-regular
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -136,7 +137,7 @@
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      pinentryFlavor = "gnome3";
+      pinentryFlavor = "gtk2";
       enableExtraSocket = true;
       sshKeys = [
 	      "F18DB4002D5F6A2E62BF9F4E6361BB12143B6647" # leona

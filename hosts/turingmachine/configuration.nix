@@ -5,7 +5,7 @@
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     ./hardware-configuration.nix
     ../../profiles/desktop
-    ../../profiles/desktop/hyprland
+    ../../profiles/desktop/sway
     ./network.nix
     ./wireguard.nix
   ];
