@@ -4,7 +4,7 @@
   imports = [
     (fetchGit {
       url = "ssh://gitlab@cyberchaos.dev:62954/leona/nixfiles-mail-secrets.git";
-      rev = "c3b3c792df763e4049d6091c84e81ed038977e33";
+      rev = "58dbb12213a5433861fed04ee3725614fb1eed68";
       ref = "main";
     }).outPath
     ./autoconfig.nix
@@ -29,7 +29,7 @@
     dkimKeyBits = 2048;
 
     localDnsResolver = false;
-    certificateScheme = 3;
+    certificateScheme = "acme-nginx";
   };
 
   services.dovecot2 = {

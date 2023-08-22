@@ -8,7 +8,6 @@
       ../../profiles/encrypted-fs
       ../../services/web
       ../../services/firefly-iii
-      ../../services/ical-merger
       ../../services/dns-kresd
       ../../services/snipe-it
   ];

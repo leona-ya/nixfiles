@@ -60,9 +60,11 @@
   services.openssh = {
     enable = true;
     ports = [ 54973 ];
-    passwordAuthentication = false;
-    kbdInteractiveAuthentication = false;
-    permitRootLogin = lib.mkDefault "no";
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = lib.mkDefault "no";
+    };
   };
   programs.mosh.enable = true;
   services.iperf3.enable = true;
@@ -101,7 +103,6 @@
     mtr
     nmap
     openssl
-    python38Packages.virtualenvwrapper
     ripgrep
     rsync
     tcpdump

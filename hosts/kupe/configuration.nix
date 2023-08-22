@@ -13,7 +13,6 @@
 
   boot.loader.grub = {
     enable = true;
-    version = 2;
     zfsSupport = true;
     device = "/dev/sda";
   };

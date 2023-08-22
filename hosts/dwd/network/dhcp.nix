@@ -1,37 +1,34 @@
 { ... }:
 
 {
-  services.dhcpd4 = {
+  services.kea.dhcp4 = {
     enable = true;
-    interfaces = [
-      "br-lan"
-    ];
-    extraConfig = ''
-      min-lease-time 21600;
-      default-lease-time 345600;
-      max-lease-time 604800;
-      option domain-name "lan";
-      option domain-name-servers 10.151.4.1;
-      ddns-domainname "lan";
-
-      ddns-update-style interim;
-      ignore client-updates;
-
-      zone lan. {
-        primary 127.0.0.1;
-      }
-
-      subnet 10.151.4.0 netmask 255.255.252.0 {
-        range 10.151.5.1 10.151.5.254;
-        option routers 10.151.4.1;
-      }
-
-      host hue {
-        option host-name "hue.lan";
-        hardware ethernet ec:b5:fa:19:62:7a;
-        fixed-address 10.151.4.128;
-      }
-    '';
+    settings = {
+      interfaces-config = { interfaces = [ "br-lan" ]; };
+      subnet4 = [
+        {
+          subnet = "10.151.4.0/22";
+          pools = [{ pool = "10.151.5.0 - 10.151.5.254"; }];
+          option-data = [
+            {
+              name = "routers";
+              data = "10.151.4.1";
+            }
+            {
+              name = "domain-name-servers";
+              data = "10.151.4.1";
+            }
+          ];
+          reservations = [
+            {
+              hostname = "hue";
+              hw-address = "ec:b5:fa:19:62:7a";
+              ip-address = "10.151.4.128";
+            }
+          ];
+        }
+      ];
+    };
   };
   services.radvd = {
     enable = true;

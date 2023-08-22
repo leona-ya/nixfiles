@@ -9,7 +9,7 @@
     sansSerif = [ "DejaVu Sans" ];
     monospace = [ "JetBrains Mono 8" ];
   };
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts-emoji
     dejavu_fonts
     fira-mono

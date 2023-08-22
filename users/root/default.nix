@@ -62,7 +62,6 @@
           "gitfast"
           "git"
           "sudo"
-          "virtualenvwrapper"
         ];
         theme = lib.mkDefault "powerlevel10k/powerlevel10k";
         custom = builtins.toString (pkgs.stdenv.mkDerivation {

@@ -16,7 +16,7 @@ in {
     package = (pkgs.pleroma.override {
       cookieFile = "/var/lib/pleroma/.cookie";
     }).overrideAttrs (old: {
-      patches = [
+      patches = old.patches ++ [
 #        ./manifest.diff
         ./reply-visibility.diff
       ];

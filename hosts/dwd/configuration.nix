@@ -9,7 +9,6 @@
     ];
 
   boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "dwd"; # to the honor of Donald Watts Davies

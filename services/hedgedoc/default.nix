@@ -6,8 +6,8 @@
   };
   services.hedgedoc = {
     enable = true;
-    configuration = {
-      debug = true;
+    settings = {
+      debug = false;
       path = "/run/hedgedoc/hedgedoc.sock";
       domain = "md.leona.is";
       protocolUseSSL = true;

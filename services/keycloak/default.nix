@@ -44,7 +44,8 @@ in {
   services.keycloak = {
     enable = true;
     package = pkgs.keycloak.override {
-      features = [ "declarative-user-profile" ];
+      extraFeatures = [ "declarative-user-profile" ];
+      disabledFeatures = [ "kerberos" ];
     };
     database.passwordFile = config.sops.secrets."services/keycloak/database_password".path;
     initialAdminPassword = "foobar";
