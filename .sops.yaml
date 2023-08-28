@@ -8,7 +8,6 @@ keys:
   - &kupe age1udlqpz3mcwnnrng4wg7w79674e4plrydmeqna3axy8sczq5gushqdhac3p
   - &ladon age1ccn87qg8fe9jd2ct96j9qcmsfmp2y8hpmenmn3tdm8k9zvtvx9ysl0hklt
   - &laurel age1p2f0el5z3jn2gt70w249fvkzewcqytwx9vez4skd598v7d7dtpxq86enup
-  - &naiad age1apjvmw80k4nh7fvr07lfhqtku7amw6x8ulc7hyyplr78aaj0xehqm440d7
   - &thia age1st8tawt7qsf7q24nknscrwzw6d6fcveylggtf2az36j0nke7jv7sx7ce4q
   - &turingmachine age1rcxgtdwh3u7u6lzh9558sqfrs9ndwnzhsjqj57hvdtapcjynvs8szhdw4t
   - &sphere age17ldwzf52ked9wpqhrw55mhc6ax5r6eh0jpefx6lqql8w5zhlsp4q4g64zr
@@ -26,7 +25,6 @@ creation_rules:
           - *kupe
           - *ladon
           - *laurel
-          - *naiad
           - *thia
           - *turingmachine
           - *sphere
@@ -80,12 +78,6 @@ creation_rules:
           - *leona
         age:
           - *laurel
-  - path_regex: secrets/hosts/naiad.yaml
-    key_groups:
-      - pgp:
-          - *leona
-        age:
-          - *naiad
   - path_regex: secrets/hosts/thia.yaml
     key_groups:
       - pgp:
@@ -148,7 +140,6 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *naiad
           - *enari
   - path_regex: secrets/services/dns-knot-secondary.yaml
     key_groups:
@@ -156,7 +147,7 @@ creation_rules:
           - *leona
         age:
           - *enari
-          - *naiad
+          - *bij
   - path_regex: secrets/services/(keycloak|ldap).yaml
     key_groups:
       - pgp:

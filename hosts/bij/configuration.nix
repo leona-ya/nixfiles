@@ -10,7 +10,17 @@
       ../../services/firefly-iii
       ../../services/dns-kresd
       ../../services/snipe-it
+      ../../services/dns-knot/secondary
   ];
+
+  # Secondary DNS
+  services.knot.extraConfig = ''
+    server:
+      listen: 127.0.0.11@53
+      listen: 168.119.100.247@53
+      listen: 2a01:4f8:c010:1098::1@53
+      listen: fd8f:d15b:9f40:c21::1@53
+  '';
 
   deployment.buildOnTarget = true;
   
@@ -28,7 +38,6 @@
   services.kresd.listenPlain = [
     "127.0.0.1:53"
     "[::1]:53"
-    "[fd8f:d15b:9f40:c21::1]:53"
     "[fd8f:d15b:9f40:900::1]:53"
   ];
 

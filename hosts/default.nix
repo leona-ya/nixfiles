@@ -261,25 +261,6 @@ in rec {
         };
       };
     };
-    naiad = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:0c20::1";
-        hasPublicIpv4 = true;
-        hasPublicIpv6 = true;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.naiad.meta.intIpv6}/72" ];
-              publicKey = "duhZn+JOja6bILYxs6D2dKQk7GhmflSsqr+AMOVqJkg=";
-              routed = [ "fd8f:d15b:9f40:0c20::1/72" ];
-              hostname = "naiad.net.leona.is";
-            };
-          };
-        };
-      };
-    };
     fdg-web = {
       meta = {
         hasPublicIpv4 = false;

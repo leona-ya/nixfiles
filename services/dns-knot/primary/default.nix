@@ -19,7 +19,7 @@ in {
         - id: internal_ns2
           address: fd8f:d15b:9f40:0c10::1
         - id: internal_ns3
-          address: fd8f:d15b:9f40:0c20::1
+          address: fd8f:d15b:9f40:0c21::1
       acl:
         - id: internal
           address: [fd8f:d15b:9f40::/48, 127.0.0.0/8]
