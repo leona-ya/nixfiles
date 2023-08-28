@@ -346,22 +346,6 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-sphere": {
-      "locked": {
-        "lastModified": 1692720753,
-        "narHash": "sha256-lQ2IUPPjRvIfDW+z6mwr7kyLZ5gPJkF/RpdSzXlPIsY=",
-        "owner": "leona-ya",
-        "repo": "nixpkgs",
-        "rev": "77ff76f711b403590186498794a673f815c175d0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "leona-ya",
-        "ref": "keycloak-features",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1692492726,
@@ -380,11 +364,11 @@
     },
     "nixpkgs-thia": {
       "locked": {
-        "lastModified": 1692716464,
-        "narHash": "sha256-ZnZBCFKWCusUTUCH1LgXHMrTPEtbjSeEYcD2jXknPFw=",
+        "lastModified": 1692975270,
+        "narHash": "sha256-Xu26mTE/QOI0HnOdQOG1sQlaqIIxiIF7JRKZk8lNXDU=",
         "owner": "leona-ya",
         "repo": "nixpkgs",
-        "rev": "afd232d65ba8603409cd81b62634a1df229146a4",
+        "rev": "7e40e95c01b5849fa4e39dfdba521b8439f04ec1",
         "type": "github"
       },
       "original": {
@@ -448,7 +432,6 @@
         "mailserver": "mailserver",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-sphere": "nixpkgs-sphere",
         "nixpkgs-thia": "nixpkgs-thia",
         "nixpkgs-turingmachine": "nixpkgs-turingmachine",
         "nixpkgs-unstable": "nixpkgs-unstable",

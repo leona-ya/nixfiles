@@ -128,6 +128,7 @@
       };
       gtk3.extraConfig = {
         gtk-application-prefer-dark-theme = true;
+        gtk-font-name = "DejaVu Sans 11";
       };
       gtk4.extraConfig = {
         gtk-application-prefer-dark-theme = 1;

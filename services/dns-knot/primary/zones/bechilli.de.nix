@@ -6,7 +6,7 @@
     SOA = ((ttl 600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2022071601;
+      serial = 2023082601;
       refresh = 3600;
       expire = 604800;
       minimum = 600;

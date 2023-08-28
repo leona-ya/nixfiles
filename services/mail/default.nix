@@ -63,8 +63,9 @@
     extraConfig = ''
       actions {
         reject = 15;
-        add_header = 8;
-        greylist = 6;
+        rewrite_subject = 12;
+        add_header = 7;
+        greylist = 5;
       }
     '';
   };

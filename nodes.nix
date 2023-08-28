@@ -16,7 +16,7 @@
     laurel.configuration = import ./hosts/laurel/configuration.nix;
     thia = {
       configuration = import ./hosts/thia/configuration.nix;
-      nixpkgs = inputs.nixpkgs-unstable;
+      nixpkgs = inputs.nixpkgs-thia;
     };
     turingmachine = let
       nixpkgs = (import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
@@ -29,6 +29,5 @@
       nixpkgs = nixpkgs;
     };
     sphere.configuration = import ./hosts/sphere/configuration.nix;
-    sphere.nixpkgs = inputs.nixpkgs-sphere;
   };
 }

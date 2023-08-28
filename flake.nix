@@ -6,7 +6,6 @@
     nixpkgs-turingmachine.url = "path:/home/leona/dev/nix/nixpkgs";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-thia.url = "github:leona-ya/nixpkgs/nixos-unstable-thia";
-    nixpkgs-sphere.url = "github:leona-ya/nixpkgs/keycloak-features";
     ccc-nixlib = {
       url = "gitlab:cyberchaoscreatures/nixlib/main?host=cyberchaos.dev";
       inputs.nixpkgs.follows = "nixpkgs";
