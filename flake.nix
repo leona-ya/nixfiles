@@ -54,6 +54,13 @@
       inherit (inputs.ccc-nixlib.overlays) pleroma;
       default = import ./packages;
     };
+
+    nixosModules = {
+      sops = import ./modules/sops;
+      telegraf = import ./modules/telegraf;
+      leona-profile = import ./users/leona/importable.nix;
+    };
+
   } // inputs.flake-utils.lib.eachDefaultSystem(system:
     let pkgs = inputs.nixpkgs.legacyPackages.${system}; in {
       devShell = pkgs.mkShell {

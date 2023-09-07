@@ -11,6 +11,10 @@ in {
       default = {};
     };
     diskioDisks = mkOption { type = types.listOf types.str; };
+    allowedNet = mkOption {
+      type = types.str;
+      default = "fd8f:d15b:9f40::/48";
+    };
   };
   config = lib.mkIf cfg.enable {
     services.telegraf = {
@@ -67,7 +71,7 @@ in {
       locations."/metrics" = {
         proxyPass = "http://[::1]:9273/metrics";
         extraConfig = ''
-          allow fd8f:d15b:9f40::/48;
+          allow ${cfg.allowedNet};
           allow ::/8;
           deny all;
         '';
