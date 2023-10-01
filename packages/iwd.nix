@@ -58,8 +58,8 @@ stdenv.mkDerivation rec {
 
   postUnpack = ''
     mkdir -p iwd/ell
-    ln -s ${ell.src}/ell/useful.h iwd/ell/useful.h
-    ln -s ${ell.src}/ell/asn1-private.h iwd/ell/asn1-private.h
+    ln -s ${ell058.src}/ell/useful.h iwd/ell/useful.h
+    ln -s ${ell058.src}/ell/asn1-private.h iwd/ell/asn1-private.h
     patchShebangs .
   '';
 

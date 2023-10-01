@@ -52,7 +52,7 @@
   };
 
 #  containers.yt = {
-#    autoStart = true;
+#    autoStart = false;
 #    hostAddress = "192.168.100.10";
 #    localAddress = "192.168.100.11";
 #    config = { config, pkgs, ... }: {
@@ -61,7 +61,8 @@
 #      services.youtrack = {
 #        enable = true;
 #        virtualHost = "192.168.100.11";
-#        package = pkgs.youtrack_2022_3;
+#        package = pkgs.youtrack_2023_1;
+#        port = 8090;
 #      };
 #    };
 #  };
