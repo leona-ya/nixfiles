@@ -36,7 +36,7 @@ in {
         token_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/token";
         api_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/userinfo";
         role_attribute_path = "contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'";
-        scopes =  "openid profile email";
+        scopes =  "openid profile email roles";
         email_attribute_names = "email:primary";
       };
     };

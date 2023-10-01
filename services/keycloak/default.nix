@@ -13,11 +13,11 @@ let
 
   pluginRestrictClientAuth  = pkgs.stdenv.mkDerivation rec {
     pname = "keycloak-restrict-client-auth";
-    version = "21.0.0";
+    version = "22.0.0";
 
     src = pkgs.fetchurl {
       url = "https://github.com/sventorben/keycloak-restrict-client-auth/releases/download/v${version}/keycloak-restrict-client-auth.jar";
-      sha256 = "sha256-gIcG+UcBziTNiRw053PQqRxzBSYj5BUPkU6PPa58/Ww=";
+      sha256 = "sha256-G4XMZ2CJcu3AtKtARAnSICawQvsBPi6H138f7DH9eRQ=";
     };
 
     dontUnpack = true;

@@ -92,7 +92,7 @@
     bind.dnsutils # for dig
     fd
     file
-    exa
+    eza
     git
     gnupg
     gptfdisk

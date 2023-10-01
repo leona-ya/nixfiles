@@ -50,7 +50,7 @@
       jdk = jetbrains.jdk;
     })
 #    kicad
-    libreoffice-fresh
+    onlyoffice-bin
     nheko
     mpv
     (wrapOBS {
@@ -120,11 +120,11 @@
     xdg.enable = true;
     gtk = {
       enable = true;
-      iconTheme.name = "Qogir-dark";
-      iconTheme.package = pkgs.qogir-icon-theme;
+      iconTheme.name = "Adwaita";
+      iconTheme.package = pkgs.gnome.adwaita-icon-theme;
       theme = {
-        name = "Qogir-dark";
-        package = pkgs.qogir-theme;
+        name = "Adwaita";
+        package = pkgs.gnome.gnome-themes-extra;
       };
       gtk3.extraConfig = {
         gtk-application-prefer-dark-theme = true;
