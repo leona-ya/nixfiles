@@ -34,11 +34,11 @@
         "use" = "nix-shell -p ";
         "cat" = "bat --style=header ";
         "grep" = "rg";
-        "l" = "exa";
-        "ls" = "exa";
-        "ll" = "exa -l";
-        "la" = "exa -la --git";
-        "tree" = "exa -T";
+        "l" = "eza";
+        "ls" = "eza";
+        "ll" = "eza -l";
+        "la" = "eza -la --git";
+        "tree" = "eza -T";
         "sudo" = "sudo ";
         "wt" = "wget";
       };

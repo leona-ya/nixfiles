@@ -5,7 +5,7 @@
 
   users.users.root = {
     shell = pkgs.zsh;
-    passwordFile = config.sops.secrets."all/users/root_pw".path;
+    hashedPasswordFile = config.sops.secrets."all/users/root_pw".path;
   };
 
   home-manager.users.root = {

@@ -32,6 +32,4 @@ rec {
   nomsable = self.callPackage ./nomsable {};
   cups-brother-ptouch = self.callPackage ./cups-brother-ptouch {};
   questrial-regular = self.callPackage ./questrial {};
-  ell058 = self.callPackage ./ell-0.58.nix {};
-  iwd = self.callPackage ./iwd.nix {};
 }

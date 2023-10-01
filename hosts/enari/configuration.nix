@@ -9,13 +9,12 @@
     ];
 
   # Secondary DNS
-  services.knot.extraConfig = ''
-    server:
-      listen: 127.0.0.11@53
-      listen: 195.20.227.176@53
-      listen: 2001:470:1f0b:1112::1@53
-      listen: fd8f:d15b:9f40:c10::1@53
-  '';
+  services.knot.settings.server.listen = [
+    "127.0.0.11@53"
+    "195.20.227.176@53"
+    "2001:470:1f0b:1112::1@53"
+    "fd8f:d15b:9f40:c10::1@53"
+  ];
  
  boot.loader.grub = {
     enable = true;

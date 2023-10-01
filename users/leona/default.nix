@@ -5,6 +5,6 @@
       ./importable.nix
   ];
   l.sops.secrets."all/users/leona_pw".neededForUsers = true;
-  users.users.leona.passwordFile = lib.mkDefault config.sops.secrets."all/users/leona_pw".path;
+  users.users.leona.hashedPasswordFile = lib.mkDefault config.sops.secrets."all/users/leona_pw".path;
 }
 
