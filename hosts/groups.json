@@ -3,8 +3,7 @@
     "hosts": [
       "bij",
       "kupe",
-      "laurel",
-      "naiad"
+      "laurel"
     ]
   },
   "dns": {
@@ -20,7 +19,6 @@
       "gaika",
       "kupe",
       "laurel",
-      "naiad",
       "sphere",
       "thia"
     ]
@@ -33,7 +31,6 @@
       "gaika",
       "kupe",
       "laurel",
-      "naiad",
       "sphere"
     ]
   }

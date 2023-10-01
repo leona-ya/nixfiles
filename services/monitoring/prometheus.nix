@@ -38,7 +38,9 @@ in {
         metrics_path = "/metrics";
         static_configs = [
           {
-            targets = hosthelper.groups.monitoring.g_hostnames;
+            targets = hosthelper.groups.monitoring.g_hostnames ++ [
+              "martian.wg.infra.fahrplandatengarten.de"
+            ];
           }
         ];
       }
