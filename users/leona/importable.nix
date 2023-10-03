@@ -31,7 +31,6 @@
         "ip" = "ip -c";
         "watch" = "watch -c";
         "xtssh" = "TERM=xterm-256color ssh";
-        "use" = "nix-shell -p ";
         "cat" = "bat --style=header ";
         "grep" = "rg";
         "l" = "eza";
@@ -42,7 +41,19 @@
         "sudo" = "sudo ";
         "wt" = "wget";
       };
-      initExtra = builtins.readFile ../zsh-extra.zsh;
+      initExtra = builtins.readFile ../zsh-extra.zsh + ''
+        function use {
+          packages=()
+          packages_fmt=()
+          while [ "$#" -gt 0 ]; do
+            i="$1"; shift 1
+            packages_fmt+=$(echo $i | ${pkgs.gnused}/bin/sed 's/[a-zA-Z]*#//')
+            [[ $i =~ [a-zA-Z]*#[a-zA-Z]* ]] || i="nixpkgs#$i"
+            packages+=$i
+          done
+          env prompt_sub="%F{blue}($packages_fmt) %F{white}$PROMPT" nix shell $packages
+        }
+      '';
       oh-my-zsh = {
         enable = true;
         plugins = [
