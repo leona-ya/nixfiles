@@ -44,13 +44,13 @@ in rec {
                     PublicKey = "MdSVqYNSF2Lylb1kTdfW33ZwQcGff1ueQRrjiPeqDVg=";
                   };
                 }
-                { # leko
+                { # edlu
                   wireguardPeerConfig = {
                     AllowedIPs = [
                       "10.151.9.4/32"
                       "fd8f:d15b:9f40:0901:100::1/72"
                     ];
-                    PublicKey = "uDe4SqBm4ohNX9AZJOW4Uk7j1xIIgBAkll4NC1vdpDo=";
+                    PublicKey = "NzCAPjJp7TAR98KkJd1glJwZNdEWUnDzPt3KdNId0Xc=";
                   };
                 }
                 { # Luna [DM]
