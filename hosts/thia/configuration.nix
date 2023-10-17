@@ -11,6 +11,7 @@
     ../../services/youtrack
     ../../services/nextcloud
     ./network.nix
+    ./libvirt.nix
   ];
 
   deployment.allowLocalDeployment = true;
@@ -76,7 +77,7 @@
   home-manager.users.leona.programs.ssh.extraConfig = ''
     IdentityFile ${config.sops.secrets."profiles/desktop/alt_rsa_ssh_key".path}
   '';
-  users.users.leona.passwordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
+  users.users.leona.hashedPasswordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
   security.sudo.wheelNeedsPassword = true;
 
   system.stateVersion = "23.05";
