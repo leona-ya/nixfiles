@@ -30,6 +30,10 @@
     host = "[fd8f:d15b:9f40:c21:400::1]";
     diskioDisks = [ "sda" ];
   };
+  l.promtail = {
+    enable = true;
+    enableNginx = true;
+  };
 
   users.users = {
     acme.uid = 996;

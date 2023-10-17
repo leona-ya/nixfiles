@@ -33,6 +33,10 @@
     host = "[fd8f:d15b:9f40:0c21:100::1]";
     diskioDisks = [ "sda" ];
   };
+  l.promtail = {
+    enable = true;
+    enableNginx = true;
+  };
 
   users.users = {
     nginx.uid = 60;

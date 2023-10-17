@@ -18,6 +18,10 @@
 
 #  services.qemuGuest.enable = true;
 
+  l.promtail = {
+    enable = true;
+    enableNginx = true;
+  };
 #  l.backups.enable = true;
   l.telegraf = {
     enable = true;

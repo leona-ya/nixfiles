@@ -21,6 +21,10 @@
   boot.zfs.devNodes = "/dev/disk/by-path";
   networking.hostId = "a69a4457";
 
+  l.promtail = {
+    enable = true;
+    enableNginx = true;
+  };
   l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:c21:300::1]";

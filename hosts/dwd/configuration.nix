@@ -39,6 +39,11 @@
   services.telegraf.extraConfig.inputs.net.interfaces = [ "eth0" "br*" "ppp-wan" "wg-server" ];
   systemd.services.telegraf.path = [ pkgs.lm_sensors ];
 
+  l.promtail = {
+    enable = true;
+    enableNginx = true;
+  };
+
   l.nginx-sni-proxy = {
     enable = true;
     upstreamHosts = {
