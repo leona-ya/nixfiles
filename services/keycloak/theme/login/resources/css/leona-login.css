@@ -1,7 +1,37 @@
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/montserrat-v23-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/poppins-v20-latin-regular.woff2') format('woff2');
+}
+
 :root {
     --pf-global--primary-color--100: #c4326b;
     --default-background-color: #c4326b;
     --link-hover-color: #c4326b;
+}
+
+body {
+    font-family: "Poppins", "Open Sans", "sans-serif";
+}
+
+.pf-c-button {
+    --pf-c-button--m-primary--hover--BackgroundColor: #a22a58;
+}
+
+#kc-header-wrapper {
+    text-transform: inherit;
+}
+
+#kc-header-wrapper, #kc-page-title {
+    font-family: "Montserrat", "Open Sans", "sans-serif";
 }
 
 .login-pf body {
@@ -12,4 +42,8 @@
 
 .card-pf {
   border: none;
+}
+
+.subtitle {
+    margin-top: 0;
 }
