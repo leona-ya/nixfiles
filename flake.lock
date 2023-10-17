@@ -364,11 +364,11 @@
     },
     "nixpkgs-thia": {
       "locked": {
-        "lastModified": 1695103452,
-        "narHash": "sha256-rdmPflkPJ9r4e0aYBNdvTNLw+vWAUcseA49hb6OaHxM=",
+        "lastModified": 1697203007,
+        "narHash": "sha256-LF58uen9mYku9ZK86KS4/rClrEwhK5LdJQqv2CGRy5I=",
         "owner": "leona-ya",
         "repo": "nixpkgs",
-        "rev": "00eaa054a58fca68e6d77db290d903297486848c",
+        "rev": "31d5c797bcfe570c38c3535e5f94faaaf6341c0e",
         "type": "github"
       },
       "original": {

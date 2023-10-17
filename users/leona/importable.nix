@@ -88,6 +88,7 @@
         ".idea"
         ".tmp"
         "*.iml"
+        ".leona"
       ];
       extraConfig = {
         init.defaultBranch = "main";

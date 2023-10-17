@@ -5,6 +5,10 @@
       server.http_listen_port = 3030;
       auth_enabled = false;
 
+      common = {
+        instance_addr = "127.0.0.1";
+      };
+
       ingester = {
         lifecycler = {
           address = "127.0.0.1";

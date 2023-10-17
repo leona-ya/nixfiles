@@ -52,6 +52,7 @@
 #    kicad
     onlyoffice-bin
     nheko
+    nix-output-monitor
     mpv
     (wrapOBS {
       plugins = with obs-studio-plugins; [ wlrobs ];
@@ -61,7 +62,7 @@
     openttd
     pandoc
     pass-wayland
-    postman
+    podman-compose
     poetry
     python3
     qFlipper
@@ -74,7 +75,7 @@
     tectonic
     texlab
     texlive.combined.scheme-full
-    thunderbird-wayland
+    thunderbird
     virt-manager
     youtube-dl
     zoxide fzf
@@ -200,7 +201,7 @@
     };
     services.nextcloud-client = {
       enable = true;
-      startInBackground = true;
+#      startInBackground = true;
     };
   };
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";

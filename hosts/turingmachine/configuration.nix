@@ -36,7 +36,7 @@
   };
   systemd.services.upower.wantedBy = lib.mkForce [ "multi-user.target" ];
 
-  users.users.leona.passwordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
+  users.users.leona.hashedPasswordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
   security.sudo.wheelNeedsPassword = true;
 
   home-manager.users.leona = {

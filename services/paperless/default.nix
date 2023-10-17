@@ -24,10 +24,9 @@
   };
 
   systemd.services = {
-    paperless-scheduler.serviceConfig = {
-      EnvironmentFile = config.sops.secrets."services/paperless/env".path;
-      PrivateNetwork = lib.mkForce false;
+    paperless-scheduler = {
       after = [ "postgresql.service" ];
+      serviceConfig.EnvironmentFile = config.sops.secrets."services/paperless/env".path;
     };
     paperless-consumer.serviceConfig.EnvironmentFile = config.sops.secrets."services/paperless/env".path;
     paperless-web = {

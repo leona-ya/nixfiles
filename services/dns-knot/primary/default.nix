@@ -12,7 +12,7 @@ in {
     settings = {
       server.listen = [
         "127.0.0.11@53"
-        "159.67.17.61@53"
+        "159.69.17.61@53"
         "2a01:4f8:1c1c:f0b::1@53"
         "fd8f:d15b:9f40:c21:300::1@53"
       ];
@@ -26,6 +26,7 @@ in {
       };
       acl.internal = {
         address = [ "fd8f:d15b:9f40::/48" "127.0.0.0/8" ];
+        action = "transfer";
       };
       mod-rrl.default = {
         rate-limit = 200;
