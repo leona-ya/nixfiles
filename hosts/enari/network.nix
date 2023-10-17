@@ -19,18 +19,6 @@ in {
         };
         networkConfig.Tunnel="he6";
       };
-
-      # aaaa why? :(
-      "he6" = {
-        matchConfig.Name = "he6";
-        address = [
-          "2001:470:1f0a:1111::2/64"
-          "2001:470:1f0b:1112::1/64"
-        ];
-        gateway = [
-          "2001:470:1f0a:1111::1"
-        ];
-      };
       "30-wg-fdg" = {
         name = "wg-fdg";
         address = [
@@ -42,18 +30,6 @@ in {
       };
     } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
     netdevs = {
-      "he6" = {
-        netdevConfig = {
-          Name = "he6";
-          Kind = "sit";
-          MTUBytes = "1480";
-        };
-        tunnelConfig = {
-          Local = "195.20.227.176";
-          Remote = "216.66.80.30";
-          TTL = 255;
-        };
-      };
       "30-wg-fdg" = {
         netdevConfig = {
           Kind = "wireguard";
