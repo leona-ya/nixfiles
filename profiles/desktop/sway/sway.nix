@@ -66,7 +66,7 @@
 
         input = {
           "*" = {
-            xkb_options = "compose:prsc";
+            xkb_options = "compose:caps";
           };
           "type:touchpad" = {
             tap = "enabled";
