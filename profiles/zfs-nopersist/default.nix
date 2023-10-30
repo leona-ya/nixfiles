@@ -15,6 +15,7 @@ let
       "matrix-synapse"
       "knot"
       "loki"
+      "clickhouse"
     ])) // (if config.services.opendkim.enable then { "/var/dkim" = "/persist/var/dkim"; } else { })
        // (if config.services.dovecot2.enable then { "/var/lib/dovecot" = "/persist/var/lib/dovecot"; "/var/sieve" = "/persist/var/sieve"; "/var/vmail" = "/persist/var/vmail"; } else { })
        // (if config.services.vaultwarden.enable then { "/var/lib/bitwarden_rs" = "/persist/var/lib/bitwarden_rs"; } else { })

@@ -6,13 +6,14 @@
       ../../profiles/encrypted-fs
       ../../services/monitoring
       ../../services/dns-knot/secondary
+      ../../services/plausible
     ];
 
   # Secondary DNS
   services.knot.settings.server.listen = [
     "127.0.0.11@53"
     "195.20.227.176@53"
-    "2001:470:1f0b:1112::1@53"
+    "2a02:247a:22e:fd00:1::1@53"
     "fd8f:d15b:9f40:c10::1@53"
   ];
  
