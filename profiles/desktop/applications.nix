@@ -111,6 +111,7 @@
   programs.seahorse.enable = true;
   services.udisks2.enable = true;
   programs.gnome-disks.enable = true;
+  programs.kdeconnect.enable = true;
   services.avahi = {
     enable = true;
     nssmdns = true;

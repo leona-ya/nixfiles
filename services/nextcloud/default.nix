@@ -12,6 +12,11 @@
     autoUpdateApps.enable = true;
     autoUpdateApps.startAt = "05:00:00";
 
+    notify_push = {
+      enable = true;
+      bendDomainToLocalhost = true;
+    };
+
     config = {
       extraTrustedDomains = [
         "cloud.maroni.me"

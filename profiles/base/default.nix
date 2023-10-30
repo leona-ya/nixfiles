@@ -72,7 +72,7 @@
 
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
 
-  time.timeZone = lib.mkDefault "Etc/UTC";
+  time.timeZone = "Etc/UTC";
 
   environment.variables.EDITOR = "hx";
   programs.zsh.enable = true;
@@ -105,6 +105,7 @@
     openssl
     ripgrep
     rsync
+    sshfs
     tcpdump
     tmux
     wget

@@ -12,7 +12,7 @@ in with lib; {
         server = {
           http_listen_port = 3031;
           grpc_listen_port = 0;
-          log_level = "debug";
+          log_level = "warn";
         };
         positions = {
           filename = "/tmp/loki-positions.yaml";

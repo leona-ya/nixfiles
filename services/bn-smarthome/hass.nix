@@ -3,13 +3,14 @@
   services.home-assistant = {
     enable = true;
     configWritable = false;
-    config = lib.listToAttrs (map (x: lib.nameValuePair x {}) [
-      "automation" "config" "counter" "energy" "hardware" "history" "image"
-      "input_boolean" "input_button" "input_datetime" "input_number" "input_select" "input_text"
+    extraComponents = [
+      "automation" "default_config" "met" "esphome" "counter" "energy" "hardware" "history" "image"
+      "calendar" "input_boolean" "input_button" "input_datetime" "input_number" "input_select" "input_text"
       "logbook" "network" "schedule" "script" "ssdp" "sun" "system_health" "tag"
-      "timer" "usb" "zerconf" "zone"  "frontend"
+      "timer" "usb" "zeroconf" "zone"  "frontend"
       "hue" "sonos" "unifi" "tasmota"
-    ]) // {
+    ];
+    config = {
       homeassistant = {
         name = "leona's HASS";
         unit_system = "metric";
@@ -31,6 +32,7 @@
       logger = {
         default = "info";
       };
+      default_config = {};
     };
   };
   systemd.services.home-assistant.preStart = ''

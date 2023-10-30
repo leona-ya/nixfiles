@@ -35,7 +35,8 @@
     };
     wayland.windowManager.sway = let
       cfg = config.home-manager.users.leona.wayland.windowManager.sway;
-      wallpaper = "~/.wallpapers/trans-estro.png";
+#      wallpaper = "~/.wallpapers/trans-estro.png";
+      wallpaper = "~/.wallpapers/inspiration4.jpg";
       modifier = "Mod4";
     in {
       enable = true;

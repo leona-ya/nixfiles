@@ -245,11 +245,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1670798118,
-        "narHash": "sha256-tD/jUEF6e3loasFYon4wSewduTAg53WiGWsfItxUGwA=",
+        "lastModified": 1697929718,
+        "narHash": "sha256-9yHC+6UDoNFvxJ6b/2zMitmUfhTsDeIL9gUC0WvZKnY=",
         "ref": "main",
-        "rev": "db6f18fadf4c512071826f6ed87408ddab35680d",
-        "revCount": 6,
+        "rev": "b885b40702a3f22ba54b4cf82ce6fa18f2695e3f",
+        "revCount": 7,
         "type": "git",
         "url": "https://cyberchaos.dev/leona/leona.is"
       },
