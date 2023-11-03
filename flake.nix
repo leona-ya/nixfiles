@@ -37,6 +37,11 @@
       url = "github:zhaofengli/colmena/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    bcachefs-tools = {
+      url = "git+https://evilpiepirate.org/git/bcachefs-tools.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
+    };
   };
 
   outputs = inputs: {
@@ -53,6 +58,27 @@
       leona-is-website = inputs.leona-is-website.overlay;
       inherit (inputs.ccc-nixlib.overlays) pleroma;
       default = import ./packages;
+      iso = final: prev: {
+        iso = (inputs.nixpkgs.lib.nixosSystem {
+          system = final.stdenv.targetPlatform.system;
+          specialArgs = {
+            inputs = inputs;
+            nixpkgs = inputs.nixpkgs;
+          };
+          modules = [
+            (import ./lib/iso.nix)
+          ];
+        }).config.system.build.isoImage;
+      };
+      bcachefs-tools = prev: final: {
+        bcachefs-tools = inputs.bcachefs-tools.packages.${final.stdenv.targetPlatform.system}.default.overrideAttrs (old: {
+          makeFlags = [
+            "PREFIX="
+            "DESTDIR=${placeholder "out"}"
+            "VERSION=b9bd6942"
+          ];
+        });
+      };
     };
 
     nixosModules = {
@@ -62,12 +88,19 @@
     };
 
   } // inputs.flake-utils.lib.eachDefaultSystem(system:
-    let pkgs = inputs.nixpkgs.legacyPackages.${system}; in {
-      devShell = pkgs.mkShell {
-       buildInputs = [
-         pkgs.sops
-         pkgs.colmena
-       ];
-     };
-    });
+    let
+      nixpkgs = import inputs.nixpkgs {
+        inherit system;
+        overlays = inputs.nixpkgs.lib.attrValues inputs.self.overlays;
+      };
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+     in {
+       devShell = pkgs.mkShell {
+         buildInputs = [
+           pkgs.sops
+           pkgs.colmena
+         ];
+       };
+       legacyPackages = nixpkgs;
+     });
 }
