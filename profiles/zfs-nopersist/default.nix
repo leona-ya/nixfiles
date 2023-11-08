@@ -16,6 +16,7 @@ let
       "knot"
       "loki"
       "clickhouse"
+      "hedgedoc"
     ])) // (if config.services.opendkim.enable then { "/var/dkim" = "/persist/var/dkim"; } else { })
        // (if config.services.dovecot2.enable then { "/var/lib/dovecot" = "/persist/var/lib/dovecot"; "/var/sieve" = "/persist/var/sieve"; "/var/vmail" = "/persist/var/vmail"; } else { })
        // (if config.services.vaultwarden.enable then { "/var/lib/bitwarden_rs" = "/persist/var/lib/bitwarden_rs"; } else { })
@@ -44,7 +45,6 @@ in {
 
   services.mysql.dataDir = "/persist/var/lib/mysql";
   services.postgresql.dataDir = "/persist/postgresql/${config.services.postgresql.package.psqlSchema}";
-  services.hedgedoc.workDir = "/persist/var/lib/hedgedoc";
   services.grocy.dataDir = "/persist/var/lib/grocy";
   services.paperless.dataDir = "/persist/var/lib/paperless";
   services.netbox.dataDir = "/persist/var/lib/netbox";

@@ -1,26 +1,26 @@
-self: super:
+prev: final:
 rec {
-  prometheus-bind-exporter = self.callPackage ./prometheus-bind-exporter { };
-  prometheus-borg-exporter = self.callPackage ./prometheus-borg-exporter { };
-  opendatamap-net = self.callPackage ./opendatamap-net { };
-  pressux = self.callPackage ./pressux { };
-  sengi = self.callPackage ./sengi { };
-  vikunja-api = self.callPackage ./vikunja/api.nix { };
-  vikunja-frontend = self.callPackage ./vikunja/frontend.nix { };
-  legitima = self.callPackage ./legitima { };
-  ory-hydra = self.callPackage ./ory-hydra { };
-  firefly-iii = self.callPackage ./firefly-iii { };
-  firefly-iii-data-importer = self.callPackage ./firefly-iii-data-importer { };
-  #jetbrains = (self.recurseIntoAttrs (self.callPackages ./jetbrains {
+  prometheus-bind-exporter = prev.callPackage ./prometheus-bind-exporter { };
+  prometheus-borg-exporter = prev.callPackage ./prometheus-borg-exporter { };
+  opendatamap-net = prev.callPackage ./opendatamap-net { };
+  pressux = prev.callPackage ./pressux { };
+  sengi = prev.callPackage ./sengi { };
+  vikunja-api = prev.callPackage ./vikunja/api.nix { };
+  vikunja-frontend = prev.callPackage ./vikunja/frontend.nix { };
+  legitima = prev.callPackage ./legitima { };
+  ory-hydra = prev.callPackage ./ory-hydra { };
+  firefly-iii = prev.callPackage ./firefly-iii { };
+  firefly-iii-data-importer = prev.callPackage ./firefly-iii-data-importer { };
+  #jetbrains = (prev.recurseIntoAttrs (prev.callPackages ./jetbrains {
   #  vmopts = null;
   #  jdk = jetbrains.jdk;
   #}) // {
-  #  jdk = super.jetbrains.jdk;
+  #  jdk = final.jetbrains.jdk;
   #});
-  swaylock-effects = super.swaylock-effects.overrideAttrs ( old: rec {
+  swaylock-effects = final.swaylock-effects.overrideAttrs ( old: rec {
     name = "swaylock-effects-${version}";
     version = "unstable-2021-10-10";
-    src = super.fetchFromGitHub {
+    src = final.fetchFromGitHub {
       owner = "mortie";
       repo = "swaylock-effects";
       rev = "a8fc557b86e70f2f7a30ca9ff9b3124f89e7f204";
@@ -28,8 +28,9 @@ rec {
     };
     patches = [];
   });
-  ical-merger = self.callPackage ./ical-merger {};
-  nomsable = self.callPackage ./nomsable {};
-  cups-brother-ptouch = self.callPackage ./cups-brother-ptouch {};
-  questrial-regular = self.callPackage ./questrial {};
+  ical-merger = prev.callPackage ./ical-merger {};
+  nomsable = prev.callPackage ./nomsable {};
+  cups-brother-ptouch = prev.callPackage ./cups-brother-ptouch {};
+  questrial-regular = prev.callPackage ./questrial {};
+
 }

@@ -11,54 +11,60 @@
           wrap-indicator = "";  # set wrap-indicator to "" to hide it
         };
       };
-      languages.language = [
-        {
-          name = "nix";
-          language-server = {
-            command = "${pkgs.nil}/bin/nil";
-          };
-        }
-        {
-          name = "python";
-          language-server = {
-            command = "pylsp";
-          };
-        }
-        {
-          name = "rust";
-          language-server = {
+      languages = {
+        language-server = {
+          nil = { command = "${pkgs.nil}/bin/nil"; };
+          pylsp = { command = "pylsp"; };
+          rust-analyzer = {
             command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
-          };
-          config."rust-analyzer" = {
-            cargo = {
-              buildScripts = {
+            config."rust-analyzer" = {
+              cargo = {
+                buildScripts = {
+                  enable = true;
+                };
+              };
+              procMacro = {
                 enable = true;
               };
-            };
-            procMacro = {
-              enable = true;
-            };
-          };  
-        }
-        {
-          name = "latex";
-          config.texlab = {
-            build = {
-              onSave = true;
-              args = ["-xelatex" "-interaction=nonstopmode" "-synctex=1" "%f"];
-              #executable = "tectonic";
-              #args = [
-                #"-X"
-                #"compile"
-                #"%f"
-                #"--synctex"
-                #"--keep-logs"
-                #"--keep-intermediates"
-              #];
+            };  
+          };
+          texlab = {
+            config.texlab = {
+              build = {
+                onSave = true;
+                args = ["-xelatex" "-interaction=nonstopmode" "-synctex=1" "%f"];
+                #executable = "tectonic";
+                #args = [
+                  #"-X"
+                  #"compile"
+                  #"%f"
+                  #"--synctex"
+                  #"--keep-logs"
+                  #"--keep-intermediates"
+                #];
+              };
             };
           };
-        }
-      ];
+        };
+        language = [
+          {
+            name = "nix";
+            language-servers = [ "nil" ];
+          }
+          {
+            name = "python";
+            language-servers = [ "pylsp" ];
+          }
+          {
+            name = "rust";
+            language-servers = [ "rust-analyzer"];
+          }
+          {
+            name = "latex";
+            language-servers = [ "texlab" ];
+          }
+        ];
+      };
     };
   };
   environment.systemPackages = [    

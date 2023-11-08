@@ -31,13 +31,6 @@
     environmentFile = config.sops.secrets."services/hedgedoc/env".path;
   };
 
-  systemd.services.hedgedoc = {
-    serviceConfig = {
-      UMask = "0007";
-      RuntimeDirectory = "hedgedoc";
-    };
-  };
-
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "hedgedoc" ];

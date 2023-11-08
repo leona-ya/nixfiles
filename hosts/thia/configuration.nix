@@ -74,6 +74,8 @@
     "profiles/desktop/user_leona_pw".neededForUsers = true;
   };
 
+  security.acme.certs."thia.net.leona.is".server = "https://acme.int.leona.is/acme/acme/directory";
+
   home-manager.users.leona.programs.ssh.extraConfig = ''
     IdentityFile ${config.sops.secrets."profiles/desktop/alt_rsa_ssh_key".path}
   '';

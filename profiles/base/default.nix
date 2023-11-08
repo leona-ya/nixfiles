@@ -14,27 +14,11 @@
   ];
   nixpkgs.overlays = lib.attrValues inputs.self.overlays;
   nix.registry.nixpkgs.flake = args.nixpkgs;
-  
+
   deployment.tags = [ pkgs.stdenv.hostPlatform.system config.networking.domain ];
   deployment.targetUser = lib.mkDefault "leona";
   deployment.targetHost = lib.mkDefault config.networking.fqdn;
   deployment.targetPort = lib.mkDefault (lib.head config.services.openssh.ports);
-
-  _module.args.groups = let
-    tagNames = lib.unique (
-      lib.concatLists (
-        lib.mapAttrsToList (
-          name: host: host.config.deployment.tags
-        ) args.nodes
-      )
-    );
-  in lib.genAttrs tagNames (
-    tagName: lib.filter (
-      host: lib.elem tagName host.config.deployment.tags
-    ) (
-      lib.attrValues args.nodes
-    )
-  );
 
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   security.pki.certificateFiles = [ ../../lib/leona-is-ca.crt ];

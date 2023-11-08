@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   security.acme.defaults.email = "noc@leona.is";
@@ -6,7 +6,7 @@
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.nginx = {
-    enable = true;
+    enable = lib.mkDefault true;
     package = pkgs.nginxMainline;
     enableReload = true;
 
