@@ -2,27 +2,22 @@
 
 {
   imports = [
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
+#    inputs.nixos-hardware.nixosModules.framework-7040-amd
     ./hardware-configuration.nix
     ../../profiles/desktop
     ../../profiles/desktop/sway
+    ../../profiles/bcachefs
     ./network.nix
-    ./wireguard.nix
     ./kanshi.nix
+    ./wireguard.nix
   ];
 
   deployment.allowLocalDeployment = true;
-  deployment.targetHost = "fd8f:d15b:9f40:901::1";
+#  deployment.targetHost = "fd8f:d15b:9f40:901::1";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.kernelParams = [
-    "zfs.zfs_arc_max=6442450944"
-    "zfs.zfs_arc_min=1024000000"
-  ];
-  networking.hostId = "a4232228";
 
   l.sops.secrets = {
     "profiles/desktop/alt_rsa_ssh_key".owner = "leona";
@@ -46,27 +41,6 @@
     '';
   };
 
-  networking.nat = {
-    enable = true;
-    internalInterfaces = ["ve-+"];
-    externalInterface = "wifi0";
-  };
-
-#  containers.yt = {
-#    autoStart = false;
-#    hostAddress = "192.168.100.10";
-#    localAddress = "192.168.100.11";
-#    config = { config, pkgs, ... }: {
-#      nixpkgs.config.allowUnfree = true;
-#      nixpkgs.overlays = lib.attrValues inputs.self.overlays;
-#      services.youtrack = {
-#        enable = true;
-#        virtualHost = "192.168.100.11";
-#        package = pkgs.youtrack_2023_1;
-#        port = 8090;
-#      };
-#    };
-#  };
 #  l.backups = {
 #    enable = true;
 #    excludes = [
@@ -87,17 +61,36 @@
 #    enableSystemdTimer = false;
 #  };
 
-  services.nginx.virtualHosts = {
-    "hydra.turingmachine.net.leona.is" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://localhost:4444";
-    };
-    "legitima.turingmachine.net.leona.is" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://localhost:8000";
-    };
+  # nixos-hardware
+
+  # AMD has better battery life with PPD over TLP:
+  # https://community.frame.work/t/responded-amd-7040-sleep-states/38101/13
+  services.power-profiles-daemon.enable = lib.mkDefault true;
+
+  # Fix TRRS headphones missing a mic
+  # https://community.frame.work/t/headset-microphone-on-linux/12387/3
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=dell-headset-multi
+  '';
+
+  # For fingerprint support
+  services.fprintd.enable = lib.mkDefault true;
+
+  # Custom udev rules
+  services.udev.extraRules = ''
+    # Ethernet expansion card support
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"
+  '';
+
+  # Needed for desktop environments to detect/manage display brightness
+  hardware.sensor.iio.enable = lib.mkDefault true;
+
+  # imports
+  boot.kernelParams = [ "amd_pstate=active" ];
+  hardware.opengl = {
+    driSupport = lib.mkDefault true;
+    driSupport32Bit = lib.mkDefault true;
   };
-  system.stateVersion = "20.09";
+
+  system.stateVersion = "23.05";
 }

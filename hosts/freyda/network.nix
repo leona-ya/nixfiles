@@ -11,7 +11,7 @@
     '';
   };
   networking.useDHCP = false;
-  networking.hostName = "turingmachine";
+  networking.hostName = "freyda";
   networking.domain = "net.leona.is";
   services.resolved.domains = [
     "lan"
@@ -20,7 +20,7 @@
   networking.wireless.iwd.enable = true;
   systemd.network = {
     links."10-eth0" = {
-      matchConfig.MACAddress = "8c:16:45:89:d1:64";
+      matchConfig.MACAddress = "9c:bf:0d:00:35:53";
       linkConfig.Name = "eth0";
     };
     networks."10-eth0" = {
@@ -49,12 +49,12 @@
       ];
     };
     links."10-wifi0" = {
-      matchConfig.MACAddress = "38:de:ad:67:b3:7b";
+      matchConfig.MACAddress = "14:ac:60:46:9e:43";
       linkConfig.Name = "wifi0";
     };
     networks."10-wifi0" = {
       DHCP = "yes";
-      matchConfig.MACAddress = "38:de:ad:67:b3:7b";
+      matchConfig.MACAddress = "14:ac:60:46:9e:43";
       linkConfig = { RequiredForOnline = "yes"; };
       routes = [
         {

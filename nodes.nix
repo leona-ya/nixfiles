@@ -11,6 +11,10 @@
     bij.configuration = import ./hosts/bij/configuration.nix;
     dwd.configuration = import ./hosts/dwd/configuration.nix;
     enari.configuration = import ./hosts/enari/configuration.nix;
+    freyda = {
+#      nixpkgs = inputs.nixpkgs-unstable;
+      configuration = import ./hosts/freyda;
+    };
     gaika.configuration = import ./hosts/gaika/configuration.nix;
     kupe.configuration = import ./hosts/kupe/configuration.nix;
     laurel.configuration = import ./hosts/laurel/configuration.nix;

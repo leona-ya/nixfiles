@@ -160,7 +160,12 @@
 
           "${modifier}+Shift+s" = "exec ${pkgs.grim}/bin/grim -t png -l 1 -g \"$(${pkgs.slurp}/bin/slurp)\" ~/screenshot-$(date +%Y-%m-%d_%H-%m-%s).png";
         };
+        startup = [{
+          command = "systemctl --user restart nextcloud-client";
+          always = true;
+        }];
       };
+
       extraConfig = ''
         client.focused #00000000 #000000cc #FFFFFF
         client.unfocused #00000000 #00000070 #FFFFFF

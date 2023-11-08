@@ -20,6 +20,7 @@
   deployment.targetHost = lib.mkDefault config.networking.fqdn;
   deployment.targetPort = lib.mkDefault (lib.head config.services.openssh.ports);
 
+  hardware.enableRedistributableFirmware = true;
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   security.pki.certificateFiles = [ ../../lib/leona-is-ca.crt ];
   users.mutableUsers = false;
