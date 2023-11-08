@@ -161,13 +161,6 @@
         { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
      ];
     };
-    programs.firefox = {
-      enable = true;
-#      profile = {
-#        "leona".id = 0;
-#        "uni".id = 1;
-#      };
-    };
     programs.password-store.enable = true;
     programs.zsh = {
       initExtra = ''

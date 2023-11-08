@@ -4,6 +4,7 @@
   imports = [
     ./alacritty.nix
     ./applications.nix
+    ./firefox.nix
     ./sound.nix
     ./syncthing.nix
     ./gammastep.nix
