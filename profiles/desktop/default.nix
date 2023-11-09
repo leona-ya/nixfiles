@@ -9,6 +9,7 @@
     ./syncthing.nix
     ./gammastep.nix
   ];
+  security.pam.services.login.fprintAuth = lib.mkForce false;
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
     enableACME = lib.mkForce false;
     forceSSL = lib.mkForce false;

@@ -140,7 +140,7 @@
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      pinentryFlavor = "gtk2";
+      pinentryFlavor = "gnome3";
       enableExtraSocket = true;
       sshKeys = [
 	      "F18DB4002D5F6A2E62BF9F4E6361BB12143B6647" # leona

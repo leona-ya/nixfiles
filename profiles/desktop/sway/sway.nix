@@ -16,9 +16,15 @@
   environment.variables.QT_QPA_PLATFORM = "wayland";
   environment.variables.QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
   environment.variables._JAVA_AWT_WM_NONREPARENTING = "1";
+  environment.variables.NIXOS_OZONE_WL = "1";
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+
+  security.pam.services.swaylock.rules.auth.fprintd = {
+    enable = true;
+    order = config.security.pam.services.swaylock.rules.auth.unix.order + 10;
+  };
 
   home-manager.users.leona = {
     services.swayidle = let
@@ -49,7 +55,7 @@
           size = 8.0;
         }; # Jetbrains Mono
         terminal = "alacritty";
-        menu = "rofi -show drun";
+        menu = "wofi --show drun";
 
         bars = [ ];
 
@@ -150,7 +156,6 @@
 
           "${modifier}+l" = "exec loginctl lock-session";
           "${modifier}+d" = "exec ${cfg.config.menu}";
-          "${modifier}+p" = "exec ${pkgs.rofi-pass}/bin/rofi-pass";
 
           "${modifier}+Shift+c" = "reload";
           "${modifier}+Shift+e" = "exit";

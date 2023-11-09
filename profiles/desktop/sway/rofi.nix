@@ -2,10 +2,9 @@
 
 {
   home-manager.users.leona = {
-    programs.rofi = {
+    programs.wofi = {
       enable = true;
-      theme = "solarized";
-      pass.enable = true;
+#      theme = "solarized";
     };
   };
 }
