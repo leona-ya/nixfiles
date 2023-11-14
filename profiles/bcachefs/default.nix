@@ -10,7 +10,12 @@
       url = "https://evilpiepirate.org/git/bcachefs.git/rawdiff/?id=${currentCommit}&id2=v6.6";
       sha256 = "sha256-+Gp/1kTBgRx5a01l9xtaDbiLuOP58uZ7rx27WyYcMT4=";
     };
-    # extra config is inherited through boot.supportedFilesystems
+    extraStructuredConfig = with lib.kernel; {
+      BCACHEFS_FS = module;
+      BCACHEFS_QUOTA = option yes;
+      BCACHEFS_POSIX_ACL = option yes;
+      BCACHEFS_LOCK_TIME_STATS = option yes;
+    };
   }];
 
   services.fstrim.enable = false;

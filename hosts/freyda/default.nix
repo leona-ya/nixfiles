@@ -41,25 +41,29 @@
     '';
   };
 
-#  l.backups = {
-#    enable = true;
-#    excludes = [
-#      "/var/cache"
-#      "/var/lock"
-#      "/var/spool"
-#      "/var/log"
-#      "/home/leona/.local/share/containers"
-#      "/home/leona/sync/nas"
-#      "/var/lib/containers"
-#      "**/node_modules"
-#      "**/.venv"
-#      "**/target"
-#      "/home/*/.cache"
-#      "/home/*/.rustup"
-#      "**/Cache"
-#    ];
-#    enableSystemdTimer = false;
-#  };
+  l.backups = {
+    enable = true;
+    excludes = [
+      "/var/cache"
+      "/var/lock"
+      "/var/spool"
+      "/var/log"
+      "/home/leona/.local/share/containers"
+      "/home/leona/dev"
+      "/home/leona/nc"
+      "/var/lib/containers"
+      "**/node_modules"
+      "**/.venv"
+      "**/target"
+      "/home/*/.cache"
+      "/home/*/.rustup"
+      "/home/*/.local/share/Steam"
+      "/home/*/.cargo"
+      "**/Cache"
+      "**/tmp"
+    ];
+    enableSystemdTimer = false;
+  };
 
 
   # nixos-hardware

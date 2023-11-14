@@ -18,6 +18,8 @@
   services.openssh.settings = {
     StreamLocalBindUnlink = true;
   };
+  services.logind.powerKey = "suspend";
+  services.logind.powerKeyLongPress = "poweroff";
   services.zfs = lib.mkIf (lib.elem "zfs" config.boot.supportedFilesystems) {
     autoScrub.enable = true;
     autoSnapshot = {

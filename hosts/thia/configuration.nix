@@ -15,9 +15,6 @@
   ];
 
   deployment.allowLocalDeployment = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1u"
-  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -56,8 +53,8 @@
       "/var/spool"
       "/var/log"
       "/home/leona/.local/share/containers"
-      "/home/leona/dev"
       "/var/lib/containers"
+      "/home/leona/nextcloud"
       "**/node_modules"
       "**/.venv"
       "**/target"
