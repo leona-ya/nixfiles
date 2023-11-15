@@ -1,32 +1,9 @@
 { pkgs, ... }: {
+  imports = [
+    ../../../services/dns-kresd
+  ];
   services.resolved.enable = false;
   services.kresd = {
-    enable = true;
-    package = pkgs.knot-resolver.override { extraFeatures = true; };
-    extraConfig = ''
-      modules.load('http')
-      net.listen('127.0.0.1', 8453, { kind = 'webmgmt' })
-      http.prometheus.namespace = 'kresd_'
-
-      policy.add(policy.suffix(policy.FLAGS({'NO_CACHE', 'NO_EDNS'}), {todname('lan.')}))
-      policy.add(policy.suffix(policy.STUB({'127.0.0.11'}), {todname('lan.')}))
-
-      policy.add(policy.all(
-        policy.FORWARD({
-          '2620:fe::11',
-          '2620:fe::fe:11',
-          '9.9.9.11',
-          '149.112.112.11'
-        })
-      ))
-      cache.size = 100*MB
-      modules = {
-        predict = {
-          window = 15,
-          period = 24*(60/15)
-        }
-      }
-    '';
     listenPlain = [
       "127.0.0.1:53"
       "[::1]:53"
