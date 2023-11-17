@@ -22,7 +22,6 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
 
   security.pam.services.swaylock.rules.auth.fprintd = {
-    enable = true;
     order = config.security.pam.services.swaylock.rules.auth.unix.order + 10;
   };
 

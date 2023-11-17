@@ -1,12 +1,10 @@
 { config, ... }: {
-  l.sops.secrets."services/plausible/release_cookie" = {};
   l.sops.secrets."services/plausible/secret_keybase" = {};
   l.sops.secrets."services/plausible/admin_user_password" = {};
   l.sops.secrets."all/mail/no_reply_password" = {};
 
   services.plausible = {
     enable = true;
-    releaseCookiePath = config.sops.secrets."services/plausible/release_cookie".path;
     server = {
       baseUrl = "https://lytics.leona.is";
       secretKeybaseFile = config.sops.secrets."services/plausible/secret_keybase".path;
