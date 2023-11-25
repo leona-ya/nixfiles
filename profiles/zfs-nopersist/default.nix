@@ -13,6 +13,7 @@ let
       "openldap"
       "vikunja"
       "matrix-synapse"
+      "heisenbridge"
       "knot"
       "loki"
       "clickhouse"
@@ -23,7 +24,9 @@ let
        // (if config.services.prometheus.enable then { "/var/lib/prometheus2" = "/persist/var/lib/prometheus2"; } else { })
        // (if config.hardware.bluetooth.enable then { "/var/lib/bluetooth" = "/persist/var/lib/bluetooth"; } else { })
        // (if config.virtualisation.libvirtd.enable then { "/var/lib/libvirt" = "/persist/var/lib/libvirt"; } else { })
-       // (if config.security.acme.certs != { } then { "/var/lib/acme" = "/persist/var/lib/acme"; } else { });
+       // (if config.security.acme.certs != { } then { "/var/lib/acme" = "/persist/var/lib/acme"; } else { })
+       // (if config.services.mautrix-telegram.enable then { "/var/lib/private/mautrix-telegram" = "/persist/var/lib/mautrix-telegram"; } else { });
+
 in {
   boot.initrd.postDeviceCommands = (mkAfter ''
     zfs rollback -r ${config.fileSystems."/".device}@empty
