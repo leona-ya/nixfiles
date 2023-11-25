@@ -25,6 +25,12 @@
           MoreFromMozilla = false;
           Locked = true;
         };
+        Preferences = {
+          "layout.accessiblecaret.enabled" = {
+            "Value" = true;
+            "Status" = "default";
+          };
+        };
       };
     };
 }

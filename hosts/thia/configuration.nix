@@ -61,6 +61,7 @@
       "/home/*/.cache"
       "/home/*/.rustup"
       "/home/*/.local/share/Steam"
+      "/home/*/tmp"
       "**/Cache"
     ];
     enableSystemdTimer = false;

@@ -11,8 +11,8 @@
   ];
   security.pam.services.login.fprintAuth = lib.mkForce false;
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
-    enableACME = lib.mkOverride 100 false;
-    forceSSL = lib.mkOverride 100 false;
+    enableACME = lib.mkOverride 96 false;
+    forceSSL = lib.mkOverride 96 false;
   };
   time.timeZone = lib.mkForce "Europe/Berlin";
   services.openssh.settings = {
