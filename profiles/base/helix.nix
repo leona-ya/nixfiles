@@ -3,12 +3,18 @@
     programs.helix = {
       enable = true;
       settings = {
-        theme = "monokai";
+        theme = "monokai-bgless";
         editor.soft-wrap = {
           enable = true;
           max-wrap = 25; # increase value to reduce forced mid-word wrapping
           max-indent-retain = 0;
           wrap-indicator = "";  # set wrap-indicator to "" to hide it
+        };
+      };
+      themes = {
+        monokai-bgless = {
+          inherits = "monokai";
+          "ui.background" = {};
         };
       };
       languages = {
