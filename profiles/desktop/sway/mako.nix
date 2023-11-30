@@ -5,7 +5,7 @@ let
 in {
   users.users.leona.packages = with pkgs; [ mako ];
   home-manager.users.leona = {
-    programs.mako = {
+    services.mako = {
       enable = true;
       defaultTimeout = 10000;
       borderColor = "#ffffff";
