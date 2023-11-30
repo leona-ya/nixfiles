@@ -7,7 +7,7 @@
     emoji = [ "Noto Color Emoji" ];
     serif = [ "DejaVu Serif" ];
     sansSerif = [ "DejaVu Sans" ];
-    monospace = [ "JetBrains Mono 8" ];
+    monospace = [ "Monaspace Krypton 8" ];
   };
   fonts.packages = with pkgs; [
     noto-fonts-emoji
@@ -20,6 +20,7 @@
     meslo-lgs-nf
     inter
     questrial-regular
+    monaspace
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -71,6 +72,7 @@
     signal-desktop
     speedcrunch
     spotify
+    sublime-merge
     superTuxKart
     tectonic
     texlab
