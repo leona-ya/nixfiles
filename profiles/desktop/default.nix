@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./alacritty.nix
+    ./wezterm.nix
     ./applications.nix
     ./firefox.nix
     ./sound.nix
