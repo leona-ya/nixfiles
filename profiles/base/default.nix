@@ -55,6 +55,8 @@
   services.iperf3.enable = true;
   services.iperf3.openFirewall = true;
 
+  security.sudo.enable = false;
+  security.sudo-rs.enable = true;
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
 
   time.timeZone = "Etc/UTC";

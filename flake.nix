@@ -37,11 +37,6 @@
       url = "github:zhaofengli/colmena/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    bcachefs-tools = {
-      url = "git+https://evilpiepirate.org/git/bcachefs-tools.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
-    };
   };
 
   outputs = inputs: {
@@ -69,15 +64,6 @@
             (import ./lib/iso.nix)
           ];
         }).config.system.build.isoImage;
-      };
-      bcachefs-tools = prev: final: {
-        bcachefs-tools = inputs.bcachefs-tools.packages.${final.stdenv.targetPlatform.system}.default.overrideAttrs (old: {
-          makeFlags = [
-            "PREFIX="
-            "DESTDIR=${placeholder "out"}"
-            "VERSION=b9bd6942"
-          ];
-        });
       };
     };
 
