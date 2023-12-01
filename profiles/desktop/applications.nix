@@ -7,7 +7,7 @@
     emoji = [ "Noto Color Emoji" ];
     serif = [ "DejaVu Serif" ];
     sansSerif = [ "DejaVu Sans" ];
-    monospace = [ "Monaspace Krypton 8" ];
+    monospace = [ "Monaspace Argon 8" ];
   };
   fonts.packages = with pkgs; [
     noto-fonts-emoji
@@ -199,6 +199,44 @@
       enable = true;
 #      startInBackground = true;
     };
+    
+    ## Sublime
+    xdg.configFile."sublime-merge/Packages/Monokai Color Scheme" = {
+      recursive = true;
+      source = pkgs.fetchFromGitHub {
+        owner = "bitsper2nd";
+        repo = "sublime-monokai-scheme";
+        rev = "013007ee96490cdc4485167f9b3026e05430a890";
+        sha256 = "sha256-tdQvrUUp3ZtpFjb/stzA8IEP536eqaUGr4Lc1KLfF5k=";
+      };
+    };
+    xdg.configFile."sublime-merge/Packages/Monokai Theme" = {    
+      recursive = true;
+      source = pkgs.fetchFromGitHub {
+        owner = "bitsper2nd";
+        repo = "merge-monokai-theme";
+        rev = "05d45fd8527f2a569eef87c8d3e607907e546a7b";
+        sha256 = "sha256-NZzXQJlWOGZf1LXV+1g+mjccNSSAC0PzNgCcH61YB3A=";
+      };
+    };
+    xdg.configFile."sublime-merge/Packages/User/Preferences.sublime-settings".text = ''
+      {
+        "color_scheme": "Packages/Monokai Color Scheme/Monokai Plus.sublime-color-scheme",
+        "theme": "Monokai Plus.sublime-theme"
+      }
+    '';
+    xdg.configFile."sublime-merge/Packages/User/Default.sublime-commands".text = ''
+      [
+          {
+              "caption": "Change Theme: Monokai",
+              "command": "set_preference",
+              "args": {
+                  "setting": "theme",
+                  "value": "Monokai Plus.sublime-theme"
+              },
+          }
+      ]
+    '';
   };
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   services.printing = {
