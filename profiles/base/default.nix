@@ -57,7 +57,7 @@
 
   security.sudo.enable = false;
   security.sudo-rs.enable = true;
-  security.sudo.wheelNeedsPassword = lib.mkDefault false;
+  security.sudo-rs.wheelNeedsPassword = lib.mkDefault false;
 
   time.timeZone = "Etc/UTC";
 

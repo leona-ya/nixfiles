@@ -12,7 +12,7 @@
     dwd.configuration = import ./hosts/dwd/configuration.nix;
     enari.configuration = import ./hosts/enari/configuration.nix;
     freyda = {
-      nixpkgs = inputs.nixpkgs-unstable;
+     # nixpkgs = inputs.nixpkgs-unstable;
       configuration = import ./hosts/freyda;
     };
     gaika.configuration = import ./hosts/gaika/configuration.nix;

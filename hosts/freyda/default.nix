@@ -33,7 +33,7 @@
   systemd.services.upower.wantedBy = lib.mkForce [ "multi-user.target" ];
 
   users.users.leona.hashedPasswordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
-  security.sudo.wheelNeedsPassword = true;
+  security.sudo-rs.wheelNeedsPassword = true;
 
   home-manager.users.leona = {
     programs.ssh.extraConfig = ''

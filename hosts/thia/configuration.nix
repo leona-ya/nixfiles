@@ -82,7 +82,7 @@
     IdentityFile ${config.sops.secrets."profiles/desktop/alt_rsa_ssh_key".path}
   '';
   users.users.leona.hashedPasswordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
-  security.sudo.wheelNeedsPassword = true;
+  security.sudo-rs.wheelNeedsPassword = true;
 
   system.stateVersion = "23.05";
 }
