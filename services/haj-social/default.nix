@@ -43,7 +43,7 @@ in {
           src = builtins.fetchGit {
             url = "https://github.com/haj-social/custom-emojis.git";
             ref = "main";
-            rev = "3b94e04293a2e31b252b0cb284a254d4d76f731a";
+            rev = "4a1a0b615d0bbec655ee7b3d34bf28526a75f483";
           };
 
           installPhase = ''
