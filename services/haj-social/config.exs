@@ -5,7 +5,8 @@ config :pleroma, Pleroma.Web.Endpoint,
     http: [ip: {127, 0, 0, 1}, port: 4001]
 
 config :pleroma, :http_security,
-  enabled: false
+  enabled: true,
+  sts: false # already sent
 
 config :pleroma, :instance,
   name: "haj social",
@@ -51,15 +52,15 @@ config :pleroma, :mrf,
 
 config :pleroma, :mrf_simple,
   reject: [
-    "freespeechextremist.com",
-    "gleasonator.com",
-    "gab.com",
-    "gab.ai",
-    "spinster.xyz",
-    "shitposter.club",
-    "neckbeard.xyz",
-    "gitmo.life",
-    "solitary.social"
+    {"freespeechextremist.com", ""},
+    {"gleasonator.com", ""},
+    {"gab.com", ""},
+    {"gab.ai", ""},
+    {"spinster.xyz", ""},
+    {"shitposter.club", ""},
+    {"neckbeard.xyz", ""},
+    {"gitmo.life", ""},
+    {"solitary.social", ""}
   ]
 
 config :pleroma, :frontend_configurations,
@@ -90,3 +91,9 @@ config :pleroma, :emoji,
      Blobhajs: ["/emoji/blobhaj/*.png"], # special file
      Custom: ["/emoji/custom/*.png"]
    ]
+
+config :logger,
+  backends: [{ExSyslogger, :ex_syslogger}]
+
+config :logger, :ex_syslogger,
+  level: :warn
