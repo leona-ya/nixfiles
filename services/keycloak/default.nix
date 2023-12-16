@@ -13,11 +13,11 @@ let
 
   pluginRestrictClientAuth  = pkgs.stdenv.mkDerivation rec {
     pname = "keycloak-restrict-client-auth";
-    version = "22.0.0";
+    version = "23.0.0";
 
     src = pkgs.fetchurl {
       url = "https://github.com/sventorben/keycloak-restrict-client-auth/releases/download/v${version}/keycloak-restrict-client-auth.jar";
-      sha256 = "sha256-G4XMZ2CJcu3AtKtARAnSICawQvsBPi6H138f7DH9eRQ=";
+      sha256 = "sha256-JwY1fByu8HOhRZ1KCZCN+0Xv06XcfXycc6pBvm9OQqE=";
     };
 
     dontUnpack = true;
@@ -44,7 +44,7 @@ in {
   services.keycloak = {
     enable = true;
     package = pkgs.keycloak.override {
-      extraFeatures = [ "declarative-user-profile" ];
+      extraFeatures = [ "account3" "declarative-user-profile" ];
       disabledFeatures = [ "kerberos" ];
     };
     database.passwordFile = config.sops.secrets."services/keycloak/database_password".path;
