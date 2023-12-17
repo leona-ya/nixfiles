@@ -21,6 +21,7 @@
     inter
     questrial-regular
     monaspace
+    annieuseyourtelescope
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -30,6 +31,11 @@
     lm_sensors
     wl-clipboard
     xdg-utils
+  ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+    "openssl-1.1.1w"
   ];
 
   users.users.leona.packages = with pkgs; [

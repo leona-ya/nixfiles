@@ -43,4 +43,5 @@ rec {
   });
   #jetbrains-jdk-21 = prev.callPackage ./jetbrains-jdk-21;
   gimp = prev.callPackage ./gimp {};
+  annieuseyourtelescope = prev.callPackage ./annieuseyourtelescope {};
 }
