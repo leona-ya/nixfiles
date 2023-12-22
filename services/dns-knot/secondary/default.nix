@@ -16,6 +16,10 @@
           address = "2a01:4f8:c012:5ab9::1";
           key = "fdg_leona_secondary";
         };
+        kloenk_ns1 = {
+          address = "2a01:4f8:c013:1a4b::";
+          key = "kloenk_leona_secondary";
+        };
       };
       acl = {
         internal_notify = {
@@ -26,6 +30,11 @@
           address = [ "2a01:4f8:c012:5ab9::1" ];
           action = "notify";
           key = "fdg_leona_secondary";
+        };
+        kloenk_notify = {
+          address = [ "2a01:4f8:c013:1a4b::" ];
+          action = "notify";
+          key = "kloenk_leona_secondary";
         };
         internal_transfer = {
           address = [ "fd8f:d15b:9f40::/48" "127.0.0.0/8" ];
@@ -46,6 +55,10 @@
         secondary = {
           master = "internal_ns1";
           acl = "internal_notify";
+        };
+        kloenk_secondary = {
+          master = "kloenk_ns1";
+          acl = "kloenk_notify";
         };
       };
       zone = {
@@ -70,9 +83,25 @@
         "opendatamap.net" = {
           template = "secondary";
         };
+
+        # fdg
         "fahrplandatengarten.de" = {
           master = "fdg_ns1";
           acl = "fdg_notify";
+        };
+
+        # kloenk
+        "kloenk.de" = {
+          template = "kloenk_secondary";
+        };
+        "kloenk.eu" = {
+          template = "kloenk_secondary";
+        };
+        "p3tr1ch0rr.de" = {
+          template = "kloenk_secondary";
+        };
+        "sysbadge.dev" = {
+          template = "kloenk_secondary";
         };
       };
     };
