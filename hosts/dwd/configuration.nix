@@ -16,7 +16,7 @@
 
   services.unifi.enable = true;
   services.unifi.openFirewall = true;
-  services.unifi.unifiPackage = pkgs.unifi;
+  services.unifi.unifiPackage = pkgs.unifi8;
 
   networking.firewall.interfaces."br-lan".allowedTCPPorts = [ 8080 6789 8443 ];
   networking.firewall.interfaces."br-lan".allowedUDPPorts = [ 3478 10001 ];
