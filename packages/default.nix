@@ -32,16 +32,8 @@ rec {
   nomsable = prev.callPackage ./nomsable {};
   cups-brother-ptouch = prev.callPackage ./cups-brother-ptouch {};
   questrial-regular = prev.callPackage ./questrial {};
-  iwd = final.iwd.overrideAttrs(old: rec {
-    patches = [
-      (prev.fetchpatch {
-        name = "8d2e35b2d46fd9bfd23e7c3036d2bd116d2bb64a.patch";
-        url = "https://git.kernel.org/pub/scm/network/wireless/iwd.git/patch/?id=8d2e35b2d46fd9bfd23e7c3036d2bd116d2bb64a";
-        hash = "sha256-MqYkOKcK6xM+MnehPQUKbjRgqJUZznZtzmu2ChEINNk=";
-      })
-    ];
-  });
   #jetbrains-jdk-21 = prev.callPackage ./jetbrains-jdk-21;
   gimp = prev.callPackage ./gimp {};
   annieuseyourtelescope = prev.callPackage ./annieuseyourtelescope {};
+  wezterm = prev.callPackage ./wezterm {};
 }
