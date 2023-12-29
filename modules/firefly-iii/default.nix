@@ -288,7 +288,7 @@ in {
       ensureUsers = [
         {
           name = db.user;
-          ensurePermissions = { "${db.name}.*" = "ALL PRIVILEGES"; };
+          ensureDBOwnership = true;
         }
       ];
     };

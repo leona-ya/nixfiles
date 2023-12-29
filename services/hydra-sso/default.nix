@@ -31,10 +31,10 @@ in {
     ensureDatabases = [ "ory-hydra" "legitima" ];
     ensureUsers = [
       { name = "ory-hydra";
-        ensurePermissions = { "DATABASE \"ory-hydra\"" = "ALL PRIVILEGES"; };
+        ensureDBOwnership = true;
       }
       { name = "legitima";
-        ensurePermissions = { "DATABASE \"ory-hydra\"" = "ALL PRIVILEGES"; };
+        ensureDBOwnership = true;
       }
     ];
   };

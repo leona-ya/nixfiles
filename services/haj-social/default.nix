@@ -88,7 +88,7 @@ in {
     ensureUsers = [
       {
         name = "pleroma";
-        ensurePermissions."DATABASE pleroma" = "ALL PRIVILEGES";
+        ensureDBOwnership = true;
       }
     ];
   };

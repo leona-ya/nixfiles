@@ -88,7 +88,7 @@
     postgres.gid = 71;
   };
   
-  services.postgresql.package = pkgs.postgresql_14;
+  services.postgresql.package = pkgs.postgresql_15;
 
   system.stateVersion = "23.05";
 }

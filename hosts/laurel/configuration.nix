@@ -58,6 +58,7 @@
     hedgedoc.gid = 993;
     acme.gid = 995;
   };
-  services.postgresql.package = pkgs.postgresql_14;
+  services.postgresql.package = pkgs.postgresql_15;
+
   system.stateVersion = "22.11";
 }

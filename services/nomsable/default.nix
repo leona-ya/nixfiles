@@ -47,9 +47,7 @@
     ensureUsers = [
       {
         name = "nomsable";
-        ensurePermissions = {
-          "DATABASE nomsable" = "ALL PRIVILEGES";
-        };
+        ensureDBOwnership = true;
       }
     ];
   };

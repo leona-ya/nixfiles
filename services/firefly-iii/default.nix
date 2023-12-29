@@ -29,7 +29,7 @@ in {
     ensureDatabases = [ "firefly-iii" ];
     ensureUsers = [
       { name = "firefly-iii";
-        ensurePermissions."DATABASE \"firefly-iii\"" = "ALL PRIVILEGES";
+        ensureDBOwnership = true;
       }
     ];
   };
