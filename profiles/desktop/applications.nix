@@ -57,6 +57,7 @@
       jdk = jetbrains.jdk;
     })
 #    kicad
+    libimobiledevice
     onlyoffice-bin
     nheko
     nix-output-monitor
@@ -243,6 +244,11 @@
           }
       ]
     '';
+
+    # dev envs
+    home.file = {
+      ".envs/openjdk17".source = "${pkgs.jdk17}/lib/openjdk";
+    };
   };
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   services.printing = {
