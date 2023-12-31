@@ -71,6 +71,9 @@
         "em0lar.dev" = {
           template = "secondary";
         };
+        "infspace.xyz" = {
+          template = "secondary";
+        };
         "labcode.de" = {
           template = "secondary";
         };

@@ -75,6 +75,10 @@ in {
           file = dnsutil.writeZone "em0lar.dev" (import zones/em0lar.dev.nix { inherit hosthelper helper lib dns config; }).zone;
           template = "signedprimary";
         };
+        "infspace.xyz" = {
+          file = dnsutil.writeZone "infspace.xyz" (import zones/infspace.xyz.nix { inherit helper lib dns config; }).zone;
+          template = "signedprimary";
+        };
         "labcode.de" = {
           file = dnsutil.writeZone "labcode.de" (import zones/labcode.de.nix { inherit helper lib dns config; }).zone;
           template = "signedprimary";
