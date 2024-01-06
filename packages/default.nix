@@ -1,5 +1,4 @@
-prev: final:
-rec {
+final: prev: rec {
   prometheus-bind-exporter = prev.callPackage ./prometheus-bind-exporter { };
   prometheus-borg-exporter = prev.callPackage ./prometheus-borg-exporter { };
   opendatamap-net = prev.callPackage ./opendatamap-net { };
@@ -17,7 +16,7 @@ rec {
   #}) // {
   #  jdk = final.jetbrains.jdk;
   #});
-  swaylock-effects = final.swaylock-effects.overrideAttrs ( old: rec {
+  swaylock-effects = prev.swaylock-effects.overrideAttrs ( old: rec {
     name = "swaylock-effects-${version}";
     version = "unstable-2021-10-10";
     src = final.fetchFromGitHub {
@@ -36,4 +35,12 @@ rec {
   gimp = prev.callPackage ./gimp {};
   annieuseyourtelescope = prev.callPackage ./annieuseyourtelescope {};
   wezterm = prev.callPackage ./wezterm {};
+  power-profiles-daemon = prev.power-profiles-daemon.overrideAttrs (old: {
+    patches = [
+      (final.fetchpatch {
+        url = "https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/merge_requests/127.patch";
+        sha256 = "sha256-vfiAWlft9zEksk5kHjeAxkzomtL50o3fuhkQLqrz/CQ=";
+      })
+    ];
+  });
 }

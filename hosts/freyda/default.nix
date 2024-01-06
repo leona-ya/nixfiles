@@ -91,7 +91,7 @@
   hardware.sensor.iio.enable = lib.mkDefault true;
 
   # imports
-  boot.kernelParams = [ "amd_pstate=active" "amdgpu.sg_display=0" ];
+  boot.kernelParams = [ "amd_pstate=active" "amdgpu.sg_display=0" "amdgpu.abmlevel=1" ];
   hardware.opengl = {
     driSupport = lib.mkDefault true;
     driSupport32Bit = lib.mkDefault true;
