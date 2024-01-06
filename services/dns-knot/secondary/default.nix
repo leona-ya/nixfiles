@@ -97,6 +97,9 @@
         "kloenk.de" = {
           template = "kloenk_secondary";
         };
+        "kloenk.dev" = {
+          template = "kloenk_secondary";
+        };
         "kloenk.eu" = {
           template = "kloenk_secondary";
         };
