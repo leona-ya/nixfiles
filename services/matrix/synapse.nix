@@ -65,13 +65,13 @@
             filters: [context]
         loggers:
           synapse:
-            level: WARNING
+            level: INFO
           synapse.storage.SQL:
             # beware: increasing this to DEBUG will make synapse log sensitive
             # information such as access tokens.
             level: WARNING
         root:
-          level: WARNING
+          level: INFO
           handlers: [console]
       '';
     };

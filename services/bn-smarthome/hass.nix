@@ -37,7 +37,6 @@
   };
   systemd.services.home-assistant.preStart = ''
     ${pkgs.nix}/bin/nix eval --raw -f ${config.sops.secrets."services/bn-smarthome/hass-mqtt-yaml.nix".path} yaml > /var/lib/hass/mqtt.yaml
-#    ${pkgs.remarshal}/bin/json2yaml /var/lib/hass/mqtt.json /var/lib/hass/mqtt.yaml
   '';
   services.nginx.virtualHosts."hass.bn.leona.is" = {
     forceSSL = true;
