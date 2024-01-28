@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
-#    nixpkgs-turingmachine.url = "path:/home/leona/dev/nix/nixpkgs";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-thia.url = "github:leona-ya/nixpkgs/nixos-unstable-thia";
     ccc-nixlib = {

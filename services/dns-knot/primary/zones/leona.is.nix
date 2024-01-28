@@ -16,7 +16,7 @@ in {
     SOA = ((ttl 3600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2023111501;
+      serial = 2024011701;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -94,7 +94,7 @@ in {
       todo = host bij_v4 laurel_v6;
       pass = host bij_v4 laurel_v6;
       "hass.bn" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
-      "mqtt.bn.int".A = [ "10.151.5.36" ];
+      "mqtt.bn.int".A = [ "10.151.5.49" ];
       "mqtt.bn.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
       "prometheus.bn.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
       yt.CNAME = [ "bij.net.leona.is." ];

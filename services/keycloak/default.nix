@@ -10,24 +10,6 @@ let
       cp -r * $out
     '';
   };
-
-  pluginRestrictClientAuth  = pkgs.stdenv.mkDerivation rec {
-    pname = "keycloak-restrict-client-auth";
-    version = "23.0.0";
-
-    src = pkgs.fetchurl {
-      url = "https://github.com/sventorben/keycloak-restrict-client-auth/releases/download/v${version}/keycloak-restrict-client-auth.jar";
-      sha256 = "sha256-JwY1fByu8HOhRZ1KCZCN+0Xv06XcfXycc6pBvm9OQqE=";
-    };
-
-    dontUnpack = true;
-    dontBuild = true;
-
-    installPhase = ''
-      mkdir -p $out
-      install "$src" "$out"
-    '';
-  };
 in {
   l.sops.secrets."services/keycloak/database_password" = {
     owner = "keycloak";
@@ -53,7 +35,7 @@ in {
       leona = keycloakTheme;
     };
     plugins = [
-      pluginRestrictClientAuth
+      pkgs.keycloak.plugins.keycloak-restrict-client-auth
     ];
     settings = {
       http-host = "127.0.0.1";

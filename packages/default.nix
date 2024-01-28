@@ -36,11 +36,13 @@ final: prev: rec {
   annieuseyourtelescope = prev.callPackage ./annieuseyourtelescope {};
   wezterm = prev.callPackage ./wezterm {};
   power-profiles-daemon = prev.power-profiles-daemon.overrideAttrs (old: {
-    patches = [
-      (final.fetchpatch {
-        url = "https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/merge_requests/127.patch";
-        sha256 = "sha256-vfiAWlft9zEksk5kHjeAxkzomtL50o3fuhkQLqrz/CQ=";
-      })
-    ];
+    version = "unstable-2024-01-16";
+    src = final.fetchFromGitLab {
+      domain = "gitlab.freedesktop.org";
+      owner = "hadess";
+      repo = "power-profiles-daemon";
+      rev = "53fb59a2b90f837375bec633ee59c00140f4d18d";
+      sha256 = "sha256-Kjljrf/xhwbLtNkKDQWKMVlflQDurk7727ZwgU2p/Vc=";
+    };
   });
 }

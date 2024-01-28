@@ -20,6 +20,9 @@
   boot.supportedFilesystems = ["zfs"];
   boot.zfs.devNodes = "/dev/disk/by-path";
   networking.hostId = "a69a4457";
+  boot.kernelParams = [
+    "zfs.zfs_arc_max=512000000"
+  ];
 
   l.promtail = {
     enable = true;
