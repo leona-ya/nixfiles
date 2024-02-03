@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-thia.url = "github:leona-ya/nixpkgs/nixos-unstable-thia";
+    nixpkgs-yt.url = "github:leona-ya/nixpkgs/youtrack-warn-fix";
     ccc-nixlib = {
       url = "gitlab:cyberchaoscreatures/nixlib/main?host=cyberchaos.dev";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mailserver = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      url = "gitlab:dotlambda/nixos-mailserver/sieve-fix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
