@@ -22,15 +22,30 @@ in {
       extraConfig = {
         agent.interval = "20s";
         inputs = {
-          system = { };
           mem = { };
-          cpu = { };
+          conntrack = {
+            files = [ "nf_conntrack_count" "nf_conntrack_max" ];
+            dirs = [ "/proc/sys/net/netfilter" ];
+          };
+          cpu = {
+            percpu = false;
+            totalcpu = true;
+          };
           disk = {
             ignore_fs = ["tmpfs" "devtmpfs" "devfs" "iso9660" "overlay" "aufs" "squashfs"];
           };
           diskio = {
             devices = cfg.diskioDisks;
           };
+          exec = [{
+            commands = [ "${pkgs.fc-telegraf-collect-psi}/bin/collect_psi" ];
+            timeout = "10s";
+            data_format = "json";
+            json_name_key = "name";
+            tag_keys = ["period" "extent"];
+          }];
+          kernel = { };
+          netstat = { };
           net = {
             ignore_protocol_stats = true;
           };
@@ -49,6 +64,8 @@ in {
               }
             ];
           }];
+          processes = { };
+          system = { };
           systemd_units = { };
         } // cfg.extraInputs;
         outputs = {

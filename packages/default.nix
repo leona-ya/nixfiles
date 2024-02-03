@@ -45,4 +45,5 @@ final: prev: rec {
       sha256 = "sha256-Kjljrf/xhwbLtNkKDQWKMVlflQDurk7727ZwgU2p/Vc=";
     };
   });
+  fc-telegraf-collect-psi = prev.callPackage ./fc/telegraf-collect-psi {};
 }
