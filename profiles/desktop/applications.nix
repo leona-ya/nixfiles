@@ -123,7 +123,7 @@
   programs.kdeconnect.enable = true;
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
   };
   #services.pcscd.enable = true;
 

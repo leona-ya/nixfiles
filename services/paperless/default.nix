@@ -8,7 +8,7 @@
 
   services.paperless = {
     enable = true;
-    extraConfig = {
+    settings = {
       PAPERLESS_ENABLE_HTTP_REMOTE_USER = true;
       PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME = "HTTP_X_AUTH_REMOTE_USER";
       PAPERLESS_DBHOST = "/run/postgresql";

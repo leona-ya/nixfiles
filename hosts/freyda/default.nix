@@ -2,7 +2,7 @@
 
 {
   imports = [
-#    inputs.nixos-hardware.nixosModules.framework-7040-amd
+    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ./hardware-configuration.nix
     ../../profiles/desktop
     ../../profiles/desktop/sway
@@ -65,37 +65,7 @@
     enableSystemdTimer = false;
   };
 
-
-  # nixos-hardware
-
-  # AMD has better battery life with PPD over TLP:
-  # https://community.frame.work/t/responded-amd-7040-sleep-states/38101/13
-  services.power-profiles-daemon.enable = lib.mkDefault true;
-
-  # Fix TRRS headphones missing a mic
-  # https://community.frame.work/t/headset-microphone-on-linux/12387/3
-  boot.extraModprobeConfig = ''
-    options snd-hda-intel model=dell-headset-multi
-  '';
-
-  # For fingerprint support
-  services.fprintd.enable = lib.mkDefault true;
-
-  # Custom udev rules
-  services.udev.extraRules = ''
-    # Ethernet expansion card support
-    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"
-  '';
-
-  # Needed for desktop environments to detect/manage display brightness
-  hardware.sensor.iio.enable = lib.mkDefault true;
-
-  # imports
-  boot.kernelParams = [ "amd_pstate=active" "amdgpu.sg_display=0" "amdgpu.abmlevel=1" ];
-  hardware.opengl = {
-    driSupport = lib.mkDefault true;
-    driSupport32Bit = lib.mkDefault true;
-  };
+  hardware.framework.amd-7040.preventWakeOnAC = true;
 
   system.stateVersion = "23.05";
 }

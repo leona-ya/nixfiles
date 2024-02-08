@@ -18,22 +18,23 @@
     };
 
     config = {
-      extraTrustedDomains = [
+      adminuser = "admin";
+      adminpassFile = config.sops.secrets."services/nextcloud/admin_password".path;
+    };
+
+    settings = {
+      trusted_domains = [
         "cloud.maroni.me"
       ];
-      overwriteProtocol = "https";
+      overwriteprotocol = "https";
 
       dbtype = "pgsql";
       dbuser = "nextcloud";
       dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
       dbname = "nextcloud";
 
-      adminuser = "admin";
-      adminpassFile = config.sops.secrets."services/nextcloud/admin_password".path;
+      default_phone_region = "DE";
 
-      defaultPhoneRegion = "DE";
-    };
-    extraOptions = {
       forwarded_for_headers = [
         "HTTP_X_FORWARDED_FOR"
         "HTTP_X_REAL_IP"
@@ -58,6 +59,6 @@
     enableACME = true;
     forceSSL = true;
     kTLS = true;
-    serverAliases = config.services.nextcloud.config.extraTrustedDomains;
+    serverAliases = config.services.nextcloud.settings.trusted_domains;
   };
 }

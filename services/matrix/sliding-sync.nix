@@ -1,6 +1,6 @@
 { config, ... }: {
   l.sops.secrets."services/matrix/sliding-sync/env".owner = "root";
-  services.matrix-synapse.sliding-sync = {
+  services.matrix-sliding-sync = {
     enable = true;
     environmentFile = config.sops.secrets."services/matrix/sliding-sync/env".path;
     settings = {
