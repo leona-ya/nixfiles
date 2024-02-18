@@ -8,7 +8,6 @@ kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
 bij_v4 = "168.119.100.247";
 bij_host = host bij_v4 "2a01:4f8:c010:1098::1";
 laurel_v6 = "2a01:4f8:c012:b172::1";
-ladon_v6 = "2a01:4f8:1c17:e4ce::1";
 sphere_v6 = "2a01:4f8:c012:b842::1";
 in {
   zone = {
@@ -45,7 +44,6 @@ in {
       "bij.net" = bij_host;
       "dwd.net" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       "enari.net" = enari_host;
-      "ladon.net".AAAA = [ ladon_v6 ];
       "laurel.net".AAAA = [ laurel_v6 ];
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
@@ -89,8 +87,6 @@ in {
       "loki.int".CNAME = [ "enari.wg.net.leona.is." ];
       "paperless.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
       prometheus.CNAME = [ "enari.net.leona.is." ];
-      sso = host bij_v4 ladon_v6;
-      "hydra.sso" = host bij_v4 ladon_v6;
       todo = host bij_v4 laurel_v6;
       pass = host bij_v4 laurel_v6;
       "hass.bn" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
