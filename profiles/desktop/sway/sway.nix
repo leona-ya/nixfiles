@@ -26,12 +26,17 @@
   };
 
   home-manager.users.leona = {
+    systemd.user.services.swayidle.Service.Environment = lib.mkForce [ "PATH=/run/wrappers/bin:/home/leona/.nix-profile/bin:/etc/profiles/per-user/leona/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin" ];
     services.swayidle = let
-      lockCommand = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 20x10";
+      lockCommand = "${pkgs.writeShellScript "swaylock-command" ''
+        ${pkgs.grim}/bin/grim -t png -l 1 /tmp/lock-screenshot.png
+        ${pkgs.imagemagick}/bin/magick /tmp/lock-screenshot.png -blur 80x40 /tmp/lock-screenshot.png
+        ${pkgs.swaylock}/bin/swaylock -i /tmp/lock-screenshot.png
+      ''}";
     in {
       enable = true;
       events = [
-#        { event = "before-sleep"; command = lockCommand; }
+        { event = "before-sleep"; command = lockCommand; }
         { event = "lock"; command = lockCommand; }
       ];
       timeouts = [
