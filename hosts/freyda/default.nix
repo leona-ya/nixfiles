@@ -66,7 +66,6 @@
   };
 
   hardware.framework.amd-7040.preventWakeOnAC = true;
-  boot.kernelParams = [ "amdgpu.sg_display=0" ];
 
   system.stateVersion = "23.05";
 }

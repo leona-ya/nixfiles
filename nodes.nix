@@ -20,7 +20,7 @@
     laurel.configuration = import ./hosts/laurel/configuration.nix;
     thia = {
       configuration = import ./hosts/thia/configuration.nix;
-      #nixpkgs = inputs.nixpkgs-thia;
+      nixpkgs = inputs.nixpkgs-thia;
     };
     turingmachine = {
       nixpkgs = inputs.nixpkgs-unstable;

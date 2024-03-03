@@ -61,11 +61,6 @@
         "todo.leona.is"
         "social.haj.gf"
       ];
-      "ladon.net.leona.is" = [
-        "auth.em0lar.dev"
-        "hydra.sso.leona.is"
-        "sso.leona.is"
-      ];
       "thia.wg.net.leona.is" = [
         "cloud.maroni.me"
         "cloud.leona.is"

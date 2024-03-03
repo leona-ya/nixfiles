@@ -32,9 +32,8 @@ final: prev: rec {
   cups-brother-ptouch = prev.callPackage ./cups-brother-ptouch {};
   questrial-regular = prev.callPackage ./questrial {};
   #jetbrains-jdk-21 = prev.callPackage ./jetbrains-jdk-21;
-  gimp = prev.callPackage ./gimp {};
+  #gimp = prev.callPackage ./gimp {};
   annieuseyourtelescope = prev.callPackage ./annieuseyourtelescope {};
-  wezterm = prev.callPackage ./wezterm {};
   power-profiles-daemon = prev.power-profiles-daemon.overrideAttrs (old: {
     version = "unstable-2024-01-16";
     src = final.fetchFromGitLab {

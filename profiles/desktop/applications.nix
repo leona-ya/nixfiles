@@ -22,6 +22,7 @@
     questrial-regular
     monaspace
     annieuseyourtelescope
+    vistafonts
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -60,7 +61,6 @@
     libimobiledevice
     onlyoffice-bin
     nheko
-    nix-output-monitor
     mpv
     (wrapOBS {
       plugins = with obs-studio-plugins; [ wlrobs ];
@@ -93,6 +93,12 @@
 #        wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
 #      '';
 #    }))
+
+    # nixpkgs tools
+    nix-output-monitor
+    nix-init
+    nurl
+    nix-tree
   ];
 
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
@@ -260,6 +266,8 @@
     ];
   };
   programs.steam.enable = true;
+  hardware.keyboard.zsa.enable = true;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" "i686-linux" ];
   networking.hosts = {
     "fd8f:d15b:9f40:101::1312" = [ "cloud.leona.is" ];
   };
