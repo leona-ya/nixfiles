@@ -68,7 +68,7 @@ config :pleroma, :frontend_configurations,
     theme: "haj-social",
     background: "https://social.haj.gf/static/background.jpg",
     logo: "https://social.haj.gf/static/haj-logo.svg",
-    redirectRootNoLogin: "/main/public",
+    redirectRootNoLogin: "/about",
     collapseMessageWithSubject: true
   }
 
@@ -82,7 +82,7 @@ config :pleroma, :manifest,
   ]
 
 config :pleroma, :restrict_unauthenticated,
-  timelines: %{local: false, federated: true}
+  timelines: %{local: true, federated: true}
 
 config :pleroma, :emoji,
    shortcode_globs: ["/emoji/*/*.png", "/emoji/*.png"],
