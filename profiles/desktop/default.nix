@@ -20,7 +20,7 @@
   };
   services.logind.powerKey = "suspend";
   services.logind.powerKeyLongPress = "poweroff";
-  services.zfs = lib.mkIf (lib.elem "zfs" config.boot.supportedFilesystems) {
+  services.zfs = lib.mkIf (config.boot.supportedFilesystems.zfs or false) {
     autoScrub.enable = true;
     autoSnapshot = {
       enable = true;

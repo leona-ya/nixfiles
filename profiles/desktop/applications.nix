@@ -12,6 +12,7 @@
   fonts.packages = with pkgs; [
     noto-fonts-emoji
     dejavu_fonts
+    fira
     fira-mono
     unifont
     roboto
@@ -99,6 +100,7 @@
     nix-init
     nurl
     nix-tree
+    nixpkgs-review
   ];
 
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
