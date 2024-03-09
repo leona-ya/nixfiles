@@ -19,10 +19,10 @@
 
   networking.wireless.iwd.enable = true;
   systemd.network = {
-    networks."99-default" = {
-      DHCP = "yes";
-      matchConfig.Name = "*";
-    };
+    #networks."99-default" = {
+    #  DHCP = "yes";
+    #  matchConfig.Name = "*";
+    #};
     links."10-eth0" = {
       matchConfig.MACAddress = "9c:bf:0d:00:35:53";
       linkConfig.Name = "eth0";

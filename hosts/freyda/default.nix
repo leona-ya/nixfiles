@@ -2,6 +2,7 @@
 
 {
   imports = [
+    inputs.lanzaboote.nixosModules.lanzaboote
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ./hardware-configuration.nix
     ../../profiles/desktop
@@ -15,9 +16,21 @@
   deployment.allowLocalDeployment = true;
 #  deployment.targetHost = "fd8f:d15b:9f40:901::1";
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.editor = false;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+
+  boot.initrd.luks.devices = {
+    cryptroot = {
+      device = "/dev/disk/by-uuid/7b63816f-d409-4fc3-878a-2b759ef4caad";
+      preLVM = true;
+    };
+  };
+
+  environment.systemPackages = [ pkgs.sbctl ];
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+  };
+  
 
   l.sops.secrets = {
     "profiles/desktop/alt_rsa_ssh_key".owner = "leona";
