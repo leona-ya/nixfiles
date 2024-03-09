@@ -26,7 +26,7 @@ in {
   services.keycloak = {
     enable = true;
     package = pkgs.keycloak.override {
-      extraFeatures = [ "account3" "declarative-user-profile" ];
+      extraFeatures = [ "account3" ];
       disabledFeatures = [ "kerberos" ];
     };
     database.passwordFile = config.sops.secrets."services/keycloak/database_password".path;
