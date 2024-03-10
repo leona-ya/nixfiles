@@ -1,7 +1,7 @@
 { config, lib, ...}: 
 
 let
-  hosthelper = import ../../hosts { inherit lib config; };
+  hosthelper = import ../../hosts/helper.nix { inherit lib config; };
 in {
   l.sops.secrets."hosts/kupe/wireguard_wg-server_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/kupe/wireguard_wg-public_privatekey".owner = "systemd-network";

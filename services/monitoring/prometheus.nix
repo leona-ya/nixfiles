@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  hosthelper = import ../../hosts { inherit lib config; };
+  hosthelper = import ../../hosts/helper.nix { inherit lib config; };
 in {
   l.sops.secrets."services/monitoring/prometheus/vouch_proxy_env" = {};
 

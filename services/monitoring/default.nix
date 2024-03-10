@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  hosthelper = import ../../hosts { inherit lib config; };
+  hosthelper = import ../../hosts/helper.nix { inherit lib config; };
 in {
   imports = [
     ./prometheus.nix

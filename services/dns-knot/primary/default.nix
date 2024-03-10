@@ -3,7 +3,7 @@ let
   dns = inputs.dns;
   dnsutil = dns.util.${pkgs.stdenv.hostPlatform.system};
   helper = import ./zones/helper.nix { inherit dns; };
-  hosthelper = import ../../../hosts { inherit lib config; };
+  hosthelper = import ../../../hosts/helper.nix { inherit lib config; };
 in {
   networking.firewall.allowedTCPPorts = [ 53 ];
   networking.firewall.allowedUDPPorts = [ 53 ];

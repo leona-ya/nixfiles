@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 let
-  hosthelper = import ../../hosts { inherit lib config; };
+  hosthelper = import ../../hosts/helper.nix { inherit lib config; };
 in {
   l.sops.secrets."hosts/gaika/wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];

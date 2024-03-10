@@ -4,14 +4,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-thia.url = "github:leona-ya/nixpkgs/machine/thia";
-    nixpkgs-sphere.url = "github:leona-ya/nixpkgs/machine/sphere";
     ccc-nixlib = {
       url = "gitlab:cyberchaoscreatures/nixlib/main?host=cyberchaos.dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,54 +41,44 @@
     };
   };
 
-  outputs = inputs: {
-    suxin = inputs.ccc-nixlib.suxinSystem {
-      modules = [
-        ./nodes.nix
-      ];
-      specialArgs = { inherit inputs; };
-    };
-    inherit (inputs.self.suxin.config) nixosConfigurations colmenaHive;
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+    systems = [ "x86_64-linux" "aarch64-linux" ];
+    imports = [
+      ./hosts
+    ];
+    flake = {
+      overlays = {
+        colmena = inputs.colmena.overlay;
+        leona-is-website = inputs.leona-is-website.overlay;
+        inherit (inputs.ccc-nixlib.overlays) pleroma;
+        default = import ./packages;
+        iso = final: prev: {
+          iso = (inputs.nixpkgs.lib.nixosSystem {
+            system = final.stdenv.targetPlatform.system;
+            specialArgs = {
+              inputs = inputs;
+              nixpkgs = inputs.nixpkgs;
+            };
+            modules = [
+              (import ./lib/iso.nix)
+            ];
+          }).config.system.build.isoImage;
+        };
+      };
 
-    overlays = {
-      colmena = inputs.colmena.overlay;
-      leona-is-website = inputs.leona-is-website.overlay;
-      inherit (inputs.ccc-nixlib.overlays) pleroma;
-      default = import ./packages;
-      iso = final: prev: {
-        iso = (inputs.nixpkgs.lib.nixosSystem {
-          system = final.stdenv.targetPlatform.system;
-          specialArgs = {
-            inputs = inputs;
-            nixpkgs = inputs.nixpkgs;
-          };
-          modules = [
-            (import ./lib/iso.nix)
-          ];
-        }).config.system.build.isoImage;
+      nixosModules = {
+        sops = import ./modules/sops;
+        telegraf = import ./modules/telegraf;
+        leona-profile = import ./users/leona/importable.nix;
       };
     };
-
-    nixosModules = {
-      sops = import ./modules/sops;
-      telegraf = import ./modules/telegraf;
-      leona-profile = import ./users/leona/importable.nix;
+    perSystem = { config, pkgs, inputs', self', system, ... }: {
+     devShells.default = pkgs.mkShellNoCC {
+       buildInputs = [
+         pkgs.sops
+         pkgs.colmena
+       ];
+     };
     };
-
-  } // inputs.flake-utils.lib.eachDefaultSystem(system:
-    let
-      nixpkgs = import inputs.nixpkgs {
-        inherit system;
-        overlays = inputs.nixpkgs.lib.attrValues inputs.self.overlays;
-      };
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-     in {
-       devShell = pkgs.mkShell {
-         buildInputs = [
-           pkgs.sops
-           pkgs.colmena
-         ];
-       };
-       legacyPackages = nixpkgs;
-     });
+  };
 }

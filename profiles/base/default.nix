@@ -1,10 +1,9 @@
-{ inputs, pkgs, lib, config, ... }@args:
+{ inputs, pkgs, lib, config, ... }:
 
 {
   imports = [
     ../../modules
     inputs.home-manager.nixosModules.home-manager
-    inputs.colmena.nixosModules.deploymentOptions
     inputs.nur.nixosModules.nur
     inputs.sops-nix.nixosModules.sops
     ../../users/root
@@ -13,7 +12,7 @@
     ./helix.nix
   ];
   nixpkgs.overlays = lib.attrValues inputs.self.overlays;
-  nix.registry.nixpkgs.flake = args.nixpkgs;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
   deployment.tags = [ pkgs.stdenv.hostPlatform.system config.networking.domain ];
   deployment.targetUser = lib.mkDefault "leona";
@@ -21,6 +20,7 @@
   deployment.targetPort = lib.mkDefault (lib.head config.services.openssh.ports);
 
   hardware.enableRedistributableFirmware = true;
+  boot.initrd.systemd.enable = true;
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   security.pki.certificateFiles = [ ../../lib/leona-is-ca.crt ];
   users.mutableUsers = false;
