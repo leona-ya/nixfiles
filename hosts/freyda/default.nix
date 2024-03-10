@@ -7,7 +7,6 @@
     ./hardware-configuration.nix
     ../../profiles/desktop
     ../../profiles/desktop/sway
-    ../../profiles/bcachefs
     ./network.nix
     ./kanshi.nix
     ./wireguard.nix
@@ -16,6 +15,7 @@
   deployment.allowLocalDeployment = true;
 #  deployment.targetHost = "fd8f:d15b:9f40:901::1";
 
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_7;
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
   boot.initrd.luks.devices = {
@@ -25,12 +25,15 @@
     };
   };
 
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=1h
+  '';
+  boot.resumeDevice = "/dev/disk/by-uuid/07e9aa38-3b22-4ddd-b519-d530ee5af17a";
   environment.systemPackages = [ pkgs.sbctl ];
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
-  
 
   l.sops.secrets = {
     "profiles/desktop/alt_rsa_ssh_key".owner = "leona";

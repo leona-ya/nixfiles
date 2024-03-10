@@ -18,7 +18,8 @@
   services.openssh.settings = {
     StreamLocalBindUnlink = true;
   };
-  services.logind.powerKey = "suspend";
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind.powerKey = "hibernate";
   services.logind.powerKeyLongPress = "poweroff";
   services.zfs = lib.mkIf (config.boot.supportedFilesystems.zfs or false) {
     autoScrub.enable = true;
