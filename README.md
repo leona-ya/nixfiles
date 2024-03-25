@@ -5,13 +5,19 @@ In this repo is the configuration for all my [NixOS](https://nixos.org) based se
 ## Structure
 ```
 nixfiles
-├── common              # NixOS configuration applyed to all hosts
-├── desktop             # NixOS configuration for all desktop devices
-├── hosts               # NixOS configuration for specific hosts 
+├── hosts               # Configuration for specific hosts 
 ├── lib                 # helpers
-├── modules             # NixOS Modules (stuff used on multiple hosts)
+├── modules             # NixOS Modules (prefixed with `l.`)
 ├── packages            # Nix Packages (not in nixpkgs)
+├── profiles            # Profiles that can be applied to multiple hosts. These are an abstraction for different types of hosts
+│  ├── base             # Configuration for all hosts
+│  ├── desktop          # Configuration for all desktops
+│  └── zfs-nopersist    # Configuration for a volantile zfs based filesystem
 ├── secrets             # Secrets (managed by sops-nix) 
-├── services            # Nix files for services
-└── users               # NixOS configuration for specific users
+├── services            # Definition of services. Services are not specific to one host, but can be used more generally
+└── users               # Configuration for specific users
 ```
+
+## Flake outputs
+
+Some NixOS modules and the leona user profile are published as flake output.
