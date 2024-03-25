@@ -45,13 +45,13 @@
     systems = [ "x86_64-linux" "aarch64-linux" ];
     imports = [
       ./hosts
+      ./packages
     ];
     flake = {
       overlays = {
         colmena = inputs.colmena.overlay;
         leona-is-website = inputs.leona-is-website.overlay;
         inherit (inputs.ccc-nixlib.overlays) pleroma;
-        default = import ./packages;
         iso = final: prev: {
           iso = (inputs.nixpkgs.lib.nixosSystem {
             system = final.stdenv.targetPlatform.system;
