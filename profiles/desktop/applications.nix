@@ -43,6 +43,7 @@
   users.users.leona.packages = with pkgs; [
     bitwarden
     calibre
+    cachix
     element-desktop
     evince
     feh
@@ -56,6 +57,9 @@
     gh
     inkscape
     (jetbrains.idea-ultimate.override {
+      jdk = jetbrains.jdk;
+    })
+    (jetbrains.rust-rover.override {
       jdk = jetbrains.jdk;
     })
 #    kicad
@@ -157,7 +161,7 @@
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      pinentryFlavor = "gnome3";
+      pinentryPackage = pkgs.pinentry-gnome3;
       enableExtraSocket = true;
       sshKeys = [
 	      "F18DB4002D5F6A2E62BF9F4E6361BB12143B6647" # leona

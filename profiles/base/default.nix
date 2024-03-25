@@ -20,7 +20,6 @@
   deployment.targetPort = lib.mkDefault (lib.head config.services.openssh.ports);
 
   hardware.enableRedistributableFirmware = true;
-  boot.initrd.systemd.enable = true;
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   security.pki.certificateFiles = [ ../../lib/leona-is-ca.crt ];
   users.mutableUsers = false;
@@ -77,6 +76,7 @@
     bat
     bottom
     bind.dnsutils # for dig
+    difftastic
     fd
     file
     eza
