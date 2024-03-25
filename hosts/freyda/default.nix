@@ -15,9 +15,10 @@
   deployment.allowLocalDeployment = true;
 #  deployment.targetHost = "fd8f:d15b:9f40:901::1";
 
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_7;
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_8;
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
+  services.fstrim.enable = true;
   boot.initrd.luks.devices = {
     cryptroot = {
       device = "/dev/disk/by-uuid/7b63816f-d409-4fc3-878a-2b759ef4caad";
@@ -34,6 +35,7 @@
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
+  boot.initrd.systemd.enable = true;
 
   l.sops.secrets = {
     "profiles/desktop/alt_rsa_ssh_key".owner = "leona";

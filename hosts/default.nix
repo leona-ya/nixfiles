@@ -32,13 +32,24 @@
             (_: import inputs.nixpkgs-unstable {
               system = "x86_64-linux";
             }) // {
-              thia = (import ((import inputs.nixpkgs-unstable { system = "x86_64-linux"; }).applyPatches {
-                name = "nixpkgs-patched-293864";
+              laurel = (import ((import inputs.nixpkgs-unstable { system = "x86_64-linux"; }).applyPatches {
+                name = "nixpkgs-patched-laurel";
                 src = inputs.nixpkgs-unstable;
                 patches = [
                   (nixpkgs.fetchpatch {
-                    url = "https://github.com/NixOS/nixpkgs/pull/293864/commits/91ae595ff875ae0106e5d375acbc809daaf03115.patch";
-                    hash = "sha256-2iojVOPgtYzX7czwSGb5gR3GTsuXbDs1paNz8D3WU+0=";
+                    url = "https://github.com/NixOS/nixpkgs/pull/296657.patch";
+                    hash = "sha256-3LePoEPxYNFYqtMuicmjEmAeCGqFGWBQbnEOU5JsJlM=";
+                  })
+                ];
+              }) { system = "aarch64-linux"; });
+
+              thia = (import ((import inputs.nixpkgs-unstable { system = "x86_64-linux"; }).applyPatches {
+                name = "nixpkgs-patched-thia";
+                src = inputs.nixpkgs-unstable;
+                patches = [
+                  (nixpkgs.fetchpatch {
+                    url = "https://github.com/NixOS/nixpkgs/pull/297279.patch";
+                    hash = "sha256-gKhQBZMRjtFvl4Q7vor0l29/Y7F1MWdx4FLvfC4QyJg=";
                   })
                 ];
               }) { system = "x86_64-linux"; });
