@@ -18,6 +18,7 @@
   services.openssh.settings = {
     StreamLocalBindUnlink = true;
   };
+  documentation.dev.enable = true;
   services.logind.lidSwitch = "suspend-then-hibernate";
   services.logind.powerKey = "hibernate";
   services.logind.powerKeyLongPress = "poweroff";

@@ -18,6 +18,7 @@
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_8;
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
+  zramSwap.enable = true;
   services.fstrim.enable = true;
   boot.initrd.luks.devices = {
     cryptroot = {

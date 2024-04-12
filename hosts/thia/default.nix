@@ -23,6 +23,7 @@
     "zfs.zfs_arc_max=6442450944"
     "zfs.zfs_arc_min=1024000000"
   ];
+  zramSwap.enable = true;
   networking.hostId = "d5714cb9";
   nix.distributedBuilds = false;
   services.nginx.defaultListenAddresses = [
