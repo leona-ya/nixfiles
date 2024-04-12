@@ -17,7 +17,12 @@
     "lan"
   ];
 
-  networking.wireless.iwd.enable = true;
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      General = { AddressRandomization = "network"; };
+    };
+  };
   systemd.network = {
     #networks."99-default" = {
     #  DHCP = "yes";
@@ -58,7 +63,7 @@
     };
     networks."10-wifi0" = {
       DHCP = "yes";
-      matchConfig.MACAddress = "14:ac:60:46:9e:43";
+      matchConfig.PermanentMACAddress = "14:ac:60:46:9e:43";
       linkConfig = { RequiredForOnline = "yes"; };
       routes = [
         {
