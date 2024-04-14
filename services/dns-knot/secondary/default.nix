@@ -62,31 +62,14 @@
         };
       };
       zone = {
-        "bechilli.de" = {
-          template = "secondary";
-        };
-        "em0lar.de" = {
-          template = "secondary";
-        };
-        "em0lar.dev" = {
-          template = "secondary";
-        };
-        "infspace.xyz" = {
-          template = "secondary";
-        };
-        "labcode.de" = {
-          template = "secondary";
-        };
-        "leona.is" = {
-          template = "secondary";
-        };
-        "maroni.me" = {
-          template = "secondary";
-        };
-        "opendatamap.net" = {
-          template = "secondary";
+        "leona.catzone" = {
+          catalog-role = "interpret";
+          catalog-template = "secondary";
+          master = "internal_ns1";
+          acl = "internal_notify";         
         };
 
+      
         # fdg
         "fahrplandatengarten.de" = {
           master = "fdg_ns1";

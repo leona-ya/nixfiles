@@ -44,13 +44,6 @@ in {
           semantic-checks = true;
           global-module = "mod-rrl/default";
         };
-        primary = {
-          notify = ["internal_ns2" "internal_ns3"];
-          acl = ["internal"];
-          zonefile-sync = -1;
-          zonefile-load = "difference";
-          journal-content = "changes";
-        };
         signedprimary = {
           dnssec-signing = true;
           dnssec-policy = "ecdsa256";
@@ -60,9 +53,15 @@ in {
           zonefile-sync = -1;
           zonefile-load = "difference";
           journal-content = "changes";
+          catalog-role = "member";
+          catalog-zone = "leona.catzone.";
         };
       };
       zone = {
+        "leona.catzone" = {
+          catalog-role = "generate";
+          acl = "internal";
+        };
         "bechilli.de" = {
           file = dnsutil.writeZone "bechilli.de" (import zones/bechilli.de.nix { inherit helper lib dns config; }).zone;
           template = "signedprimary";
