@@ -24,16 +24,6 @@
       #jetbrains-jdk-21 = pkgs.callPackage ./jetbrains-jdk-21;
       #gimp = pkgs.callPackage ./gimp {};
       annieuseyourtelescope = pkgs.callPackage ./annieuseyourtelescope {};
-      power-profiles-daemon = pkgs.power-profiles-daemon.overrideAttrs (old: {
-        version = "unstable-2024-01-16";
-        src = pkgs.fetchFromGitLab {
-          domain = "gitlab.freedesktop.org";
-          owner = "hadess";
-          repo = "power-profiles-daemon";
-          rev = "53fb59a2b90f837375bec633ee59c00140f4d18d";
-          sha256 = "sha256-Kjljrf/xhwbLtNkKDQWKMVlflQDurk7727ZwgU2p/Vc=";
-        };
-      });
       fc-telegraf-collect-psi = pkgs.callPackage ./fc/telegraf-collect-psi {};
       fprintd = pkgs.fprintd.overrideAttrs (_: { 
         mesonCheckFlags = [ 
