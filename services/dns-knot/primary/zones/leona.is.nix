@@ -15,7 +15,7 @@ in {
     SOA = ((ttl 3600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2024011701;
+      serial = 2024032414;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -98,6 +98,7 @@ in {
       a.CNAME = [ "bij.net.leona.is." ];
       found.CNAME = [ "bij.net.leona.is." ];
       lytics.CNAME = [ "enari.net.leona.is." ];
+      openpgpkey.CNAME = [ "bij.net.leona.is." ];
     };
   };
 }

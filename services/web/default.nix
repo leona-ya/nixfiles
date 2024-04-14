@@ -101,6 +101,18 @@ in {
       root = "/persist/var/www/cv.leona.is";
       locations."/".index = "index.pdf";
     };
+    "openpgpkey.leona.is" = {
+      enableACME = true;
+      forceSSL = true;
+      kTLS = true;
+      locations."/.well-known/openpgpkey/leona.is/" = {
+        alias = "${./wkd}/";
+        extraConfig = ''
+          ${commonHeaders}
+          add_header Content-Type text/plain;
+        '';
+      };
+    };
   };
   services.phpfpm.pools."nginx-default" = {
     user = config.services.nginx.user;
