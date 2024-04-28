@@ -11,12 +11,7 @@
       opendatamap-net = pkgs.callPackage ./opendatamap-net { };
       pressux = pkgs.callPackage ./pressux { };
       sengi = pkgs.callPackage ./sengi { };
-      vikunja-api = pkgs.callPackage ./vikunja/api.nix { };
-      vikunja-frontend = pkgs.callPackage ./vikunja/frontend.nix { };
       legitima = pkgs.callPackage ./legitima { };
-      ory-hydra = pkgs.callPackage ./ory-hydra { };
-      firefly-iii = pkgs.callPackage ./firefly-iii { };
-      firefly-iii-data-importer = pkgs.callPackage ./firefly-iii-data-importer { };
       ical-merger = pkgs.callPackage ./ical-merger {};
       nomsable = pkgs.callPackage ./nomsable {};
       cups-brother-ptouch = pkgs.callPackage ./cups-brother-ptouch {};
@@ -25,11 +20,6 @@
       #gimp = pkgs.callPackage ./gimp {};
       annieuseyourtelescope = pkgs.callPackage ./annieuseyourtelescope {};
       fc-telegraf-collect-psi = pkgs.callPackage ./fc/telegraf-collect-psi {};
-      fprintd = pkgs.fprintd.overrideAttrs (_: { 
-        mesonCheckFlags = [ 
-          "--no-suite" "fprintd:TestPamFprintd"
-        ]; 
-      });
     };
   };
 }

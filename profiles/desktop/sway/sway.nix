@@ -53,6 +53,7 @@
       package = pkgs.sway;
       wrapperFeatures.gtk = true;
 
+      checkConfig = false;
       config = {
         fonts = {
           names = [ "JetBrains Mono" ];

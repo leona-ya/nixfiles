@@ -17,6 +17,7 @@
 
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_8;
   boot.loader.systemd-boot.enable = lib.mkForce false;
+  disabledModules = [ "${inputs.nixos-hardware}/common/cpu/amd/raphael/igpu.nix" ];
 
   zramSwap.enable = true;
   services.fstrim.enable = true;
@@ -28,7 +29,7 @@
   };
 
   systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1h
+    HibernateDelaySec=12h
   '';
   boot.resumeDevice = "/dev/disk/by-uuid/07e9aa38-3b22-4ddd-b519-d530ee5af17a";
   environment.systemPackages = [ pkgs.sbctl ];

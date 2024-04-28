@@ -5,9 +5,6 @@ let
   package = pkgs.firefly-iii.override {
     dataDir = cfg.dataDir;
   };
-  dataImporterPackage = pkgs.firefly-iii-data-importer.override {
-    dataDir = cfg.data-importer.dataDir;
-  };
 in {
   l.sops.secrets = {
     "all/mail/no_reply_password" = {
@@ -36,24 +33,14 @@ in {
 
   services.firefly-iii = {
     enable = true;
-    appKeyFile = config.sops.secrets."services/firefly-iii/app_key".path;
-    hostname = "fin.leona.is";
-    nginx.addSSL = true;
-    database = {
-      type = "pgsql";
-      host = "/run/postgresql";
-      port = 5432;
-      name = "firefly-iii";
-    };
-    mail = {
-      driver = "smtp";
-      host = "mail.leona.is";
-      port = 587;
-      user = "no-reply@leona.is";
-      passwordFile = config.sops.secrets."all/mail/no_reply_password".path;
-      encryption = "tls";
-    };
-    config = {
+    virtualHost = "fin.leona.is";
+    enableNginx = false;
+    settings = {
+      APP_KEY_FILE = config.sops.secrets."services/firefly-iii/app_key".path;
+      DB_CONNECTION = "pgsql";
+      DB_SOCKET = "/run/postgresql";
+      DB_PORT = 5432;
+      DB_DATABASE = "firefly-iii";
       TZ = "Europe/Berlin";
       AUTHENTICATION_GUARD = "remote_user_guard";
       AUTHENTICATION_GUARD_HEADER = "HTTP_X_VOUCH_USERNAME";
