@@ -9,8 +9,9 @@
       ../../services/hedgedoc
       ../../services/matrix
       ../../services/haj-social
+      ../../services/outline
       ../../services/vaultwarden
-#      ../../services/nomsable
+#      ../../services/shiori
 #      ../../services/vikunja
   ];
 
