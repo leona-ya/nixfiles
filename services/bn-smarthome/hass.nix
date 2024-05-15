@@ -4,11 +4,39 @@
     enable = true;
     configWritable = false;
     extraComponents = [
-      "automation" "default_config" "met" "esphome" "counter" "energy" "hardware" "history" "image"
-      "calendar" "input_boolean" "input_button" "input_datetime" "input_number" "input_select" "input_text"
-      "logbook" "network" "schedule" "script" "ssdp" "sun" "system_health" "tag"
-      "timer" "usb" "zeroconf" "zone"  "frontend"
-      "hue" "sonos" "unifi" "tasmota"
+      "automation"
+      "default_config"
+      "met"
+      "esphome"
+      "counter"
+      "energy"
+      "hardware"
+      "history"
+      "image"
+      "calendar"
+      "input_boolean"
+      "input_button"
+      "input_datetime"
+      "input_number"
+      "input_select"
+      "input_text"
+      "logbook"
+      "network"
+      "schedule"
+      "script"
+      "ssdp"
+      "sun"
+      "system_health"
+      "tag"
+      "timer"
+      "usb"
+      "zeroconf"
+      "zone"
+      "frontend"
+      "hue"
+      "sonos"
+      "unifi"
+      "tasmota"
     ];
     config = {
       homeassistant = {
@@ -18,8 +46,8 @@
         time_zone = "Europe/Berlin";
         external_url = "https://hass.bn.leona.is";
         internal_url = "https://hass.bn.leona.is";
-#        latitude = "!secret home_lat";
-#        longitude = "!secret home_lon";
+        #        latitude = "!secret home_lat";
+        #        longitude = "!secret home_lon";
         elevation = 70;
       };
       http = {
@@ -32,7 +60,7 @@
       logger = {
         default = "info";
       };
-      default_config = {};
+      default_config = { };
     };
   };
   systemd.services.home-assistant.preStart = ''

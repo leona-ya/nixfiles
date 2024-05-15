@@ -2,10 +2,11 @@
 
 let
   alert_message = "{{ .CommonAnnotations.summary }}";
-in {
+in
+{
   l.sops.secrets = {
-    "services/monitoring/prometheus/alertmanager_env" = {};
-    "services/monitoring/prometheus/vouch_proxy_env" = {};
+    "services/monitoring/prometheus/alertmanager_env" = { };
+    "services/monitoring/prometheus/vouch_proxy_env" = { };
   };
 
   systemd.services.alertmanager.serviceConfig.EnvironmentFile = [ config.sops.secrets."services/monitoring/prometheus/alertmanager_env".path ];
@@ -44,7 +45,7 @@ in {
         smtp_auth_password = "\${ALERTMANAGER_MAIL_PASSWORD}";
       };
       route = {
-        group_by = ["alertname" "cluster" "service"];
+        group_by = [ "alertname" "cluster" "service" ];
         group_wait = "15s";
         group_interval = "1m";
         repeat_interval = "12h";
@@ -64,29 +65,31 @@ in {
           target_match = {
             severity = "warning";
           };
-          equal = ["alertname" "cluster" "service"];
+          equal = [ "alertname" "cluster" "service" ];
         }
       ];
-      receivers = let
-        tg_config = {
-          bot_token = "\${ALERTMANAGER_TELEGRAM_TOKEN}";
-          chat_id = 127273642;
-          api_url = "https://api.telegram.org";
-        };
-      in [
-        {
-          name = "warning";
-          telegram_configs = [tg_config];
-        }
-        {
-          name = "critical";
-          telegram_configs = [tg_config];
-          email_configs = [{
-            to = "monitoring@leona.is";
-            headers.subject = "[ALERT] " + alert_message;
-          }];
-        }
-      ];
+      receivers =
+        let
+          tg_config = {
+            bot_token = "\${ALERTMANAGER_TELEGRAM_TOKEN}";
+            chat_id = 127273642;
+            api_url = "https://api.telegram.org";
+          };
+        in
+        [
+          {
+            name = "warning";
+            telegram_configs = [ tg_config ];
+          }
+          {
+            name = "critical";
+            telegram_configs = [ tg_config ];
+            email_configs = [{
+              to = "monitoring@leona.is";
+              headers.subject = "[ALERT] " + alert_message;
+            }];
+          }
+        ];
     };
   };
 }

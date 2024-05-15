@@ -1,16 +1,61 @@
-{ stdenv, lib, aalib, alsa-lib, appstream, appstream-glib, babl, bashInteractive
-, cairo, desktop-file-utils, fetchurl, findutils, gdk-pixbuf, gegl, gexiv2
-, ghostscript, gi-docgen, gjs, glib, glib-networking, gobject-introspection
-, gtk3, isocodes, lcms, libarchive, libgudev, libheif, libjxl, libmng
-, libmypaint, librsvg, libwebp, libwmf, libxslt, lua, luajit, meson
-, mypaint-brushes1, ninja, openexr, perl538, pkg-config, poppler, poppler_data
-, python, python3, shared-mime-info, vala, wrapGAppsHook, xorg, xvfb-run
+{ stdenv
+, lib
+, aalib
+, alsa-lib
+, appstream
+, appstream-glib
+, babl
+, bashInteractive
+, cairo
+, desktop-file-utils
+, fetchurl
+, findutils
+, gdk-pixbuf
+, gegl
+, gexiv2
+, ghostscript
+, gi-docgen
+, gjs
+, glib
+, glib-networking
+, gobject-introspection
+, gtk3
+, isocodes
+, lcms
+, libarchive
+, libgudev
+, libheif
+, libjxl
+, libmng
+, libmypaint
+, librsvg
+, libwebp
+, libwmf
+, libxslt
+, lua
+, luajit
+, meson
+, mypaint-brushes1
+, ninja
+, openexr
+, perl538
+, pkg-config
+, poppler
+, poppler_data
+, python
+, python3
+, shared-mime-info
+, vala
+, wrapGAppsHook
+, xorg
+, xvfb-run
 }:
 
 let
   python = python3.withPackages (pp: [ pp.pygobject3 ]);
   lua = luajit.withPackages (ps: [ ps.lgi ]);
-in stdenv.mkDerivation (finalAttrs: {
+in
+stdenv.mkDerivation (finalAttrs: {
   pname = "gimp";
   version = "2.99.16";
 
@@ -23,7 +68,7 @@ in stdenv.mkDerivation (finalAttrs: {
 
   patches = [ ./meson-gtls.patch ./hardcore-plugin-interpreters.patch ];
 
-  
+
   nativeBuildInputs = [
     pkg-config
     libxslt

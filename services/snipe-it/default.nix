@@ -43,7 +43,7 @@
       forceSSL = true;
       kTLS = true;
     };
-    "found.leona.is" = {      
+    "found.leona.is" = {
       enableACME = true;
       forceSSL = true;
       kTLS = true;

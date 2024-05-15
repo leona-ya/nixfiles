@@ -1,6 +1,8 @@
-{ config, lib, ... }: let
+{ config, lib, ... }:
+let
   cfg = config.l.promtail;
-in with lib; {
+in
+with lib; {
   options.l.promtail = {
     enable = mkEnableOption "leona promtail";
     enableNginx = mkEnableOption "nginx logs";
@@ -42,17 +44,17 @@ in with lib; {
         ] ++ (lib.optional cfg.enableNginx {
           job_name = "system";
           pipeline_stages = [
-              {
-                json.expressions = {
-                  timestamp = "ms";
-                };
-              }
-              {
-                timestamp = {
-                  source = "timestamp";
-                  format = "Unix";
-                };
-              }
+            {
+              json.expressions = {
+                timestamp = "ms";
+              };
+            }
+            {
+              timestamp = {
+                source = "timestamp";
+                format = "Unix";
+              };
+            }
           ];
           decompression = {
             enabled = true;
@@ -60,7 +62,7 @@ in with lib; {
             format = "gz";
           };
           static_configs = [{
-            targets = ["localhost"];
+            targets = [ "localhost" ];
             labels = {
               job = "nginx-access";
               host = config.networking.hostName;

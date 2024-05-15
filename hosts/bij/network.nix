@@ -2,7 +2,8 @@
 
 let
   hosthelper = import ../../hosts/helper.nix { inherit lib config; };
-in {
+in
+{
   l.sops.secrets."hosts/bij/wireguard_wg-clients_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/bij/wireguard_wg-server_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/bij/wireguard_wg-public-in_privatekey".owner = "systemd-network";
@@ -76,7 +77,7 @@ in {
         ];
       };
     } // hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
-    networks = {  
+    networks = {
       "10-eth0" = {
         DHCP = "yes";
         matchConfig = {

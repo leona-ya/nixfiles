@@ -5,7 +5,8 @@ let
   package = pkgs.firefly-iii.override {
     dataDir = cfg.dataDir;
   };
-in {
+in
+{
   l.sops.secrets = {
     "all/mail/no_reply_password" = {
       owner = "firefly-iii";
@@ -25,7 +26,8 @@ in {
     enable = true;
     ensureDatabases = [ "firefly-iii" ];
     ensureUsers = [
-      { name = "firefly-iii";
+      {
+        name = "firefly-iii";
         ensureDBOwnership = true;
       }
     ];

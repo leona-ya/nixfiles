@@ -21,14 +21,14 @@
         DHCPPrefixDelegation = true;
         IPv6AcceptRA = false;
       };
-#      dhcpV6Config = {
-#        PrefixDelegationHint = "::/64";
-#      };
-#      dhcpV6PrefixDelegationConfig = {
-##        UplinkInterface = "ppp-wan";
-#        SubnetId = 0;
-##        Announce = true;
-#      };
+      #      dhcpV6Config = {
+      #        PrefixDelegationHint = "::/64";
+      #      };
+      #      dhcpV6PrefixDelegationConfig = {
+      ##        UplinkInterface = "ppp-wan";
+      #        SubnetId = 0;
+      ##        Announce = true;
+      #      };
     };
 
 

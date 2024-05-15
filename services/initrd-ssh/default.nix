@@ -27,7 +27,8 @@ let
         fi
       fi
     '';
-in {
+in
+{
   boot.initrd.availableKernelModules = [ "virtio_pci" ];
   boot.initrd.network = {
     enable = true;

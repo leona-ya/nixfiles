@@ -4,7 +4,7 @@ with lib;
 
 let
   cfg = config.services.vouch-proxy;
-  format = pkgs.formats.yaml {};
+  format = pkgs.formats.yaml { };
   serverOptions =
     { ... }: {
 
@@ -41,20 +41,21 @@ let
         oauth.callback_url = "https://${domain}/_vouch/auth";
       };
       configFile = format.generate "vouch-proxy-config.yaml" settings;
-    in nameValuePair "vouch-proxy-${domain}" {
-    description = "vouch-proxy";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-    path = [ cfg.package ];
+    in
+    nameValuePair "vouch-proxy-${domain}" {
+      description = "vouch-proxy";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+      path = [ cfg.package ];
 
-    serviceConfig = {
-      Type = "simple";
-      DynamicUser = true;
-      ExecStart = "${cfg.package}/bin/vouch-proxy -config ${configFile}";
-      Restart = "always";
-      EnvironmentFile = serviceConfig.environmentFiles;
+      serviceConfig = {
+        Type = "simple";
+        DynamicUser = true;
+        ExecStart = "${cfg.package}/bin/vouch-proxy -config ${configFile}";
+        Restart = "always";
+        EnvironmentFile = serviceConfig.environmentFiles;
+      };
     };
-  };
   mkVirtualHosts = domain: serviceConfig: nameValuePair domain {
     extraConfig = ''
       error_page 401 = @error401;
@@ -76,7 +77,8 @@ let
 
     locations."@error401".return = "302 https://${domain}/_vouch/login?url=https://$host$request_uri&vouch-failcount=$auth_resp_failcount&X-Vouch-Token=$auth_resp_jwt&error=$auth_resp_err";
   };
-in {
+in
+{
   options.services.vouch-proxy = with lib; {
     enable = mkEnableOption "vouch-proxy service";
     package = mkOption {
@@ -118,7 +120,7 @@ in {
         Vouch-proxy configuration. Refer to
         <link xlink:href="https://github.com/vouch/vouch-proxy/blob/master/config/config.yml_example"/>
         for details on supported values.
-        '';
+      '';
     };
   };
   config = lib.mkIf cfg.enable {

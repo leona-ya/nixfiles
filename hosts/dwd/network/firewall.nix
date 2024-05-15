@@ -1,30 +1,32 @@
 { ... }: {
-  networking.nftables.ruleset = let
-    mtuFix = ''
-      meta nfproto ipv6 tcp flags syn tcp option maxseg size 1305-65535 tcp option maxseg size set 1304
-      meta nfproto ipv4 tcp flags syn tcp option maxseg size 1325-65535 tcp option maxseg size set 1324
+  networking.nftables.ruleset =
+    let
+      mtuFix = ''
+        meta nfproto ipv6 tcp flags syn tcp option maxseg size 1305-65535 tcp option maxseg size set 1304
+        meta nfproto ipv4 tcp flags syn tcp option maxseg size 1325-65535 tcp option maxseg size set 1324
+      '';
+    in
+    ''
+      table inet mtu-fix {
+        chain input {
+          type filter hook input priority filter; policy accept;
+          ${mtuFix}
+        }
+        chain output {
+          type filter hook output priority filter; policy accept;
+          ${mtuFix}
+        }
+        chain forward {
+          type filter hook forward priority filter; policy accept;
+          ${mtuFix}
+        }
+      }
     '';
-  in ''
-    table inet mtu-fix {
-      chain input {
-        type filter hook input priority filter; policy accept;
-        ${mtuFix}
-      }
-      chain output {
-        type filter hook output priority filter; policy accept;
-        ${mtuFix}
-      }
-      chain forward {
-        type filter hook forward priority filter; policy accept;
-        ${mtuFix}
-      }
-    }
-  '';
   networking.firewall = {
     interfaces = {
       "br-lan" = {
-        allowedUDPPorts = [53];
-        allowedTCPPorts = [53];
+        allowedUDPPorts = [ 53 ];
+        allowedTCPPorts = [ 53 ];
       };
     };
     extraForwardRules = ''

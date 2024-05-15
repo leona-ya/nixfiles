@@ -12,7 +12,8 @@
     enable = true;
     ensureDatabases = [ "vaultwarden" ];
     ensureUsers = [
-      { name = "vaultwarden";
+      {
+        name = "vaultwarden";
         ensureDBOwnership = true;
       }
     ];

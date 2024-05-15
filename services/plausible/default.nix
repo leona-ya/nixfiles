@@ -1,7 +1,7 @@
 { config, ... }: {
-  l.sops.secrets."services/plausible/secret_keybase" = {};
-  l.sops.secrets."services/plausible/admin_user_password" = {};
-  l.sops.secrets."all/mail/no_reply_password" = {};
+  l.sops.secrets."services/plausible/secret_keybase" = { };
+  l.sops.secrets."services/plausible/admin_user_password" = { };
+  l.sops.secrets."all/mail/no_reply_password" = { };
 
   services.plausible = {
     enable = true;
@@ -28,7 +28,7 @@
     };
   };
 
-  services.nginx.virtualHosts."lytics.leona.is" = {    
+  services.nginx.virtualHosts."lytics.leona.is" = {
     enableACME = true;
     forceSSL = true;
     kTLS = true;

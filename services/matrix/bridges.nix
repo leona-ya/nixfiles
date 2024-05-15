@@ -12,7 +12,7 @@
   };
 
   # Telegram
-  l.sops.secrets."services/matrix/mautrix_telegram_environment" = {};
+  l.sops.secrets."services/matrix/mautrix_telegram_environment" = { };
   services.mautrix-telegram = {
     enable = false;
     environmentFile = config.sops.secrets."services/matrix/mautrix_telegram_environment".path;

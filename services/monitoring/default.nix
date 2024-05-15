@@ -2,7 +2,8 @@
 
 let
   hosthelper = import ../../hosts/helper.nix { inherit lib config; };
-in {
+in
+{
   imports = [
     ./prometheus.nix
     ./grafana.nix

@@ -52,8 +52,8 @@
     ];
   };
   systemd.services."nextcloud-setup" = {
-    requires = ["postgresql.service"];
-    after = ["postgresql.service"];
+    requires = [ "postgresql.service" ];
+    after = [ "postgresql.service" ];
   };
   services.nginx.virtualHosts."${config.services.nextcloud.hostName}" = {
     enableACME = true;

@@ -4,12 +4,13 @@ with lib;
 
 let
   cfg = config.o.services.grocy;
-in {
+in
+{
   imports = [
-#    (mkRemovedOptionModule [ "o" "services" "grocy" "settings" "currency" ] "Use services.grocy.settings.CURRENCY instead.")
-#    (mkRemovedOptionModule [ "o" "services" "grocy" "settings" "culture" ] "Use services.grocy.settings.CULTURE instead.")
-#    (mkRemovedOptionModule [ "o" "services" "grocy" "settings" "calendar" "firstDayOfWeek" ] "Use services.grocy.settings.CALENDAR_FIRST_DAY_OF_WEEK instead.")
-#    (mkRemovedOptionModule [ "o" "services" "grocy" "settings" "calendar" "showWeekNumber" ] "Use services.grocy.settings.CALENDAR_SHOW_WEEK_OF_YEAR instead.")
+    #    (mkRemovedOptionModule [ "o" "services" "grocy" "settings" "currency" ] "Use services.grocy.settings.CURRENCY instead.")
+    #    (mkRemovedOptionModule [ "o" "services" "grocy" "settings" "culture" ] "Use services.grocy.settings.CULTURE instead.")
+    #    (mkRemovedOptionModule [ "o" "services" "grocy" "settings" "calendar" "firstDayOfWeek" ] "Use services.grocy.settings.CALENDAR_FIRST_DAY_OF_WEEK instead.")
+    #    (mkRemovedOptionModule [ "o" "services" "grocy" "settings" "calendar" "showWeekNumber" ] "Use services.grocy.settings.CALENDAR_SHOW_WEEK_OF_YEAR instead.")
   ];
 
   options.o.services.grocy = {
@@ -63,7 +64,7 @@ in {
 
     settings = mkOption {
       type = with types; attrsOf (oneOf [ str int bool ]);
-      default = {};
+      default = { };
       description = ''
       '';
       example = literalExpression ''
@@ -92,9 +93,10 @@ in {
       group = "nginx";
     };
 
-    systemd.tmpfiles.rules = map (
-      dirName: "d '${cfg.dataDir}/${dirName}' - grocy nginx - -"
-    ) [ "viewcache" "plugins" "settingoverrides" "storage" ];
+    systemd.tmpfiles.rules = map
+      (
+        dirName: "d '${cfg.dataDir}/${dirName}' - grocy nginx - -"
+      ) [ "viewcache" "plugins" "settingoverrides" "storage" ];
 
     services.phpfpm.pools.grocy = {
       user = "grocy";
@@ -153,6 +155,6 @@ in {
 
   meta = {
     maintainers = with maintainers; [ ma27 ];
-#    doc = ./grocy.xml;
+    #    doc = ./grocy.xml;
   };
 }

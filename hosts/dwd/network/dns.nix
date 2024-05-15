@@ -12,7 +12,7 @@
   };
 
   l.telegraf.extraInputs = {
-    prometheus =  {
+    prometheus = {
       urls = [ "http://127.0.0.1:8453/metrics" ];
       metric_version = 2;
     };

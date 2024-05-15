@@ -1,6 +1,8 @@
-{ lib, config, ... }: let
+{ lib, config, ... }:
+let
   hosthelper = import ../../hosts/helper.nix { inherit lib config; };
-in {
+in
+{
   l.sops.secrets."hosts/enari/wireguard_wg-fdg_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/enari/wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.hostName = "enari";
@@ -17,7 +19,7 @@ in {
         matchConfig = {
           Name = "eth0";
         };
-        networkConfig.Tunnel="he6";
+        networkConfig.Tunnel = "he6";
       };
       "30-wg-fdg" = {
         name = "wg-fdg";

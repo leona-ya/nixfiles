@@ -8,7 +8,8 @@ let
     gemset = ./gemset.nix;
     ruby = ruby;
   };
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   pname = "opendatamap-net";
   version = "main";
   buildInputs = [ build-env ];

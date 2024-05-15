@@ -4,7 +4,8 @@ let
   dnsutil = dns.util.${pkgs.stdenv.hostPlatform.system};
   helper = import ./zones/helper.nix { inherit dns; };
   hosthelper = import ../../../hosts/helper.nix { inherit lib config; };
-in {
+in
+{
   networking.firewall.allowedTCPPorts = [ 53 ];
   networking.firewall.allowedUDPPorts = [ 53 ];
   services.knot = {
@@ -48,8 +49,8 @@ in {
           dnssec-signing = true;
           dnssec-policy = "ecdsa256";
           semantic-checks = true;
-          notify = ["internal_ns2" "internal_ns3"];
-          acl = ["internal"];
+          notify = [ "internal_ns2" "internal_ns3" ];
+          acl = [ "internal" ];
           zonefile-sync = -1;
           zonefile-load = "difference";
           journal-content = "changes";

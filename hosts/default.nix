@@ -28,17 +28,19 @@
           nodeNixpkgs = lib.genAttrs [ "bij" "laurel" "sphere" ]
             (_: import inputs.nixpkgs {
               system = "aarch64-linux";
-          }) // lib.genAttrs [ "freyda" "thia" "turingmachine" ]
+            }) // lib.genAttrs [ "freyda" "thia" "turingmachine" ]
             (_: import inputs.nixpkgs-unstable {
               system = "x86_64-linux";
             }) // {
-              thia = (import ((import inputs.nixpkgs-unstable { system = "x86_64-linux"; }).applyPatches {
+            thia = (import
+              ((import inputs.nixpkgs-unstable { system = "x86_64-linux"; }).applyPatches {
                 name = "nixpkgs-patched-thia";
                 src = inputs.nixpkgs-unstable;
                 patches = [
                 ];
-              }) { system = "x86_64-linux"; });
-            };
+              })
+              { system = "x86_64-linux"; });
+          };
 
           specialArgs = {
             inherit inputs;

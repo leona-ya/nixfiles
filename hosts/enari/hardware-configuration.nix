@@ -12,32 +12,37 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "zroot/nixos/root";
+    {
+      device = "zroot/nixos/root";
       fsType = "zfs";
       options = [ "zfsutil" "X-mount.mkdir" ];
     };
 
   fileSystems."/nix" =
-    { device = "zroot/nixos/nix";
+    {
+      device = "zroot/nixos/nix";
       fsType = "zfs";
       options = [ "zfsutil" "X-mount.mkdir" ];
     };
 
   fileSystems."/home" =
-    { device = "zroot/vault/home";
+    {
+      device = "zroot/vault/home";
       fsType = "zfs";
       options = [ "zfsutil" "X-mount.mkdir" ];
     };
 
   fileSystems."/persist" =
-    { device = "zroot/vault/persist";
+    {
+      device = "zroot/vault/persist";
       fsType = "zfs";
       options = [ "zfsutil" "X-mount.mkdir" ];
       neededForBoot = true;
     };
 
   fileSystems."/boot" =
-    { device = "/dev/vda2";
+    {
+      device = "/dev/vda2";
       fsType = "vfat";
     };
 

@@ -1,14 +1,15 @@
-{ config, lib, ...}: 
+{ config, lib, ... }:
 
 let
   hosthelper = import ../../hosts/helper.nix { inherit lib config; };
-in {
+in
+{
   l.sops.secrets."hosts/kupe/wireguard_wg-server_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/kupe/wireguard_wg-public_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51440 51441 ];
   networking.hostName = "kupe";
   networking.domain = "net.leona.is";
-  
+
   systemd.network = {
     links = {
       "10-eth0" = {

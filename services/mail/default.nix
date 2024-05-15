@@ -44,14 +44,14 @@
     '';
   };
 
-#  services.rspamd.workers.controller = {
-#    bindSockets = [{
-#      socket = "127.0.0.1:11334";
-#    }];
-#    extraConfig = ''
-#      secure_ip = "127.0.0.1"
-#    '';
-#  };
+  #  services.rspamd.workers.controller = {
+  #    bindSockets = [{
+  #      socket = "127.0.0.1:11334";
+  #    }];
+  #    extraConfig = ''
+  #      secure_ip = "127.0.0.1"
+  #    '';
+  #  };
   services.rspamd = {
     locals = {
       "groups.conf".text = ''

@@ -3,8 +3,8 @@
 let
   py = python3Packages;
 in
-  py.buildPythonApplication rec {
-    name = "fc-telegraf-collect-psi-${version}";
-    version = "1.0";
-    src = ./.;
-  }
+py.buildPythonApplication rec {
+  name = "fc-telegraf-collect-psi-${version}";
+  version = "1.0";
+  src = ./.;
+}

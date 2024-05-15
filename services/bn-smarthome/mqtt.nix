@@ -7,7 +7,7 @@
         omitPasswordAuth = true;
         settings.allow_anonymous = true;
       }
-    ];    
+    ];
   };
 
   networking.firewall.allowedTCPPorts = [ 1883 ];

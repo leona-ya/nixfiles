@@ -2,15 +2,15 @@
 
 {
   imports = [
-      ./hardware-configuration.nix
-      ./network.nix
-      ../../profiles/zfs-nopersist
-      ../../profiles/encrypted-fs
-      ../../services/web
-      ../../services/firefly-iii
-      ../../services/dns-kresd
-      ../../services/snipe-it
-      ../../services/dns-knot/secondary
+    ./hardware-configuration.nix
+    ./network.nix
+    ../../profiles/zfs-nopersist
+    ../../profiles/encrypted-fs
+    ../../services/web
+    ../../services/firefly-iii
+    ../../services/dns-kresd
+    ../../services/snipe-it
+    ../../services/dns-knot/secondary
   ];
 
   # Secondary DNS
@@ -22,7 +22,7 @@
   ];
 
   deployment.buildOnTarget = true;
-  
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [
@@ -82,7 +82,7 @@
     firefly-iii.gid = 994;
     postgres.gid = 71;
   };
-  
+
   services.postgresql.package = pkgs.postgresql_15;
 
   system.stateVersion = "23.05";

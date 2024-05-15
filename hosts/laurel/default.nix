@@ -2,17 +2,17 @@
 
 {
   imports = [
-      ./hardware-configuration.nix
-      ./network.nix
-      ../../profiles/zfs-nopersist
-      ../../profiles/encrypted-fs
-      ../../services/hedgedoc
-      ../../services/matrix
-      ../../services/haj-social
-      ../../services/outline
-      ../../services/vaultwarden
-#      ../../services/shiori
-#      ../../services/vikunja
+    ./hardware-configuration.nix
+    ./network.nix
+    ../../profiles/zfs-nopersist
+    ../../profiles/encrypted-fs
+    ../../services/hedgedoc
+    ../../services/matrix
+    ../../services/haj-social
+    ../../services/outline
+    ../../services/vaultwarden
+    #      ../../services/shiori
+    #      ../../services/vikunja
   ];
 
   deployment.buildOnTarget = true;

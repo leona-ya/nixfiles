@@ -5,7 +5,7 @@ let
     inherit pkgs;
     inherit (stdenv.hostPlatform) system;
     noDev = true; # Disable development dependencies
-  }).overrideAttrs (attrs : {
+  }).overrideAttrs (attrs: {
     installPhase = attrs.installPhase + ''
       rm -R $out/storage
       ln -s ${dataDir}/.env $out/.env
@@ -13,7 +13,8 @@ let
     '';
   });
 
-in package.override rec {
+in
+package.override rec {
   pname = "firefly-iii-data-importer";
   version = "0.9.10";
 

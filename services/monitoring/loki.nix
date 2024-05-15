@@ -55,7 +55,7 @@
       limits_config = {
         retention_period = "744h";
       };
-      
+
       compactor = {
         working_directory = "/var/lib/loki";
         shared_store = "filesystem";
@@ -71,7 +71,7 @@
     };
   };
   security.acme.certs."loki.int.leona.is".server = "https://acme.int.leona.is/acme/acme/directory";
-  
+
   services.nginx.virtualHosts."loki.int.leona.is" = {
     enableACME = true;
     forceSSL = true;

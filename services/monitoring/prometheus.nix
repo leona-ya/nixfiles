@@ -2,8 +2,9 @@
 
 let
   hosthelper = import ../../hosts/helper.nix { inherit lib config; };
-in {
-  l.sops.secrets."services/monitoring/prometheus/vouch_proxy_env" = {};
+in
+{
+  l.sops.secrets."services/monitoring/prometheus/vouch_proxy_env" = { };
 
   services.nginx.virtualHosts."prometheus.leona.is" = {
     locations."/" = {
@@ -36,27 +37,29 @@ in {
       {
         job_name = "telegraf";
         metrics_path = "/metrics";
-        metric_relabel_configs = let
-          renameMerge = options: [
-            {
-              source_labels = [ "__name__" ];
-              # Only if there is no command set.
-              regex = options.regex;
-              replacement = "\${1}";
-              target_label = options.targetLabel;
-            }
-            {
-              source_labels = [ "__name__" ];
-              regex = options.regex;
-              replacement = options.targetName;
-              target_label = "__name__";
-            }
-          ];
-        in (renameMerge {
-         regex = "netstat_tcp_(.*)";
-         targetLabel = "state";
-         targetName = "netstat_tcp";
-        });
+        metric_relabel_configs =
+          let
+            renameMerge = options: [
+              {
+                source_labels = [ "__name__" ];
+                # Only if there is no command set.
+                regex = options.regex;
+                replacement = "\${1}";
+                target_label = options.targetLabel;
+              }
+              {
+                source_labels = [ "__name__" ];
+                regex = options.regex;
+                replacement = options.targetName;
+                target_label = "__name__";
+              }
+            ];
+          in
+          (renameMerge {
+            regex = "netstat_tcp_(.*)";
+            targetLabel = "state";
+            targetName = "netstat_tcp";
+          });
         static_configs = [
           {
             targets = hosthelper.groups.monitoring.g_hostnames ++ [
@@ -67,7 +70,7 @@ in {
       }
     ];
 
-    alertmanagers = [ {
+    alertmanagers = [{
       scheme = "http";
       static_configs = [{
         targets = [

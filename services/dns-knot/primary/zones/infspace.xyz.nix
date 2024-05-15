@@ -19,6 +19,6 @@
     A = helper.hosts.web.A;
     AAAA = helper.hosts.web.AAAA;
 
-    subdomains = {};
+    subdomains = { };
   };
 }

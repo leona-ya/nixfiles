@@ -1,6 +1,8 @@
-{ config, ... }: let
+{ config, ... }:
+let
   fqdn = "kb.leona.is";
-in {
+in
+{
   l.sops.secrets."services/outline/oidc_client_secret".owner = "outline";
 
   services.outline = {
@@ -9,8 +11,8 @@ in {
     publicUrl = "https://${fqdn}";
     port = 3001;
     storage = {
-    	storageType = "local";
-    	localRootDir = "/persist/var/lib/outline";
+      storageType = "local";
+      localRootDir = "/persist/var/lib/outline";
     };
     oidcAuthentication = {
       displayName = "leona's SSO";

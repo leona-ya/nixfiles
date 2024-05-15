@@ -21,10 +21,10 @@
             objectClass = "olcSchemaConfig";
           };
           includes = [
-          "${pkgs.openldap}/etc/schema/core.ldif"
-          "${pkgs.openldap}/etc/schema/cosine.ldif"
-          "${pkgs.openldap}/etc/schema/inetorgperson.ldif"
-          "${pkgs.openldap}/etc/schema/nis.ldif"
+            "${pkgs.openldap}/etc/schema/core.ldif"
+            "${pkgs.openldap}/etc/schema/cosine.ldif"
+            "${pkgs.openldap}/etc/schema/inetorgperson.ldif"
+            "${pkgs.openldap}/etc/schema/nis.ldif"
           ];
         };
         "olcDatabase={-1}frontend" = {

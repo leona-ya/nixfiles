@@ -40,14 +40,15 @@
     enable = true;
     ensureDatabases = [ "paperless" ];
     ensureUsers = [
-      { name = "paperless";
+      {
+        name = "paperless";
         ensureDBOwnership = true;
       }
     ];
   };
 
   security.acme.certs."paperless.int.leona.is".server = "https://acme.int.leona.is/acme/acme/directory";
-  
+
   services.nginx.virtualHosts."paperless.int.leona.is" = {
     enableACME = true;
     forceSSL = true;

@@ -4,11 +4,12 @@ with lib;
 
 let
   cfg = config.services.ory-hydra;
-  format = pkgs.formats.yaml {};
+  format = pkgs.formats.yaml { };
   configFile = format.generate "hydra.yaml" cfg.settings;
   useMysql = cfg.database.type == "mysql";
   usePostgresql = cfg.database.type == "postgres";
-in {
+in
+{
   options.services.ory-hydra = with lib; {
     enable = mkEnableOption "ORY hydra service";
     package = mkOption {
@@ -42,12 +43,12 @@ in {
     };
     settings = mkOption {
       type = format.type;
-      default = {};
+      default = { };
       description = ''
         ORY Hydra configuration. Refer to
         <link xlink:href="https://www.ory.sh/hydra/docs/reference/configuration"/>
         for details on supported values.
-        '';
+      '';
     };
   };
   config = lib.mkIf cfg.enable {

@@ -4,10 +4,11 @@ let
   pleroma-fe = (pkgs.pleroma-fe.overrideAttrs (old: {
     patches = old.patches ++ [
       ./fe-replies-in-timeline-following.diff
-#      ./fe-manifest.diff
+      #      ./fe-manifest.diff
     ];
   }));
-in {
+in
+{
   l.sops.secrets."services/pleroma/secret_config".owner = "pleroma";
   services.pleroma = {
     enable = true;
@@ -17,49 +18,51 @@ in {
       cookieFile = "/var/lib/pleroma/.cookie";
     }).overrideAttrs (old: {
       patches = old.patches ++ [
-#        ./manifest.diff
+        #        ./manifest.diff
         ./reply-visibility.diff
       ];
-      postInstall = let
-        custom-styles = {
-          haj-social = "/static/themes/haj-social.json";
-        };
-        custom-styles-json = pkgs.writeText "custom-styles.json" (builtins.toJSON custom-styles);
-        custom-static = pkgs.stdenv.mkDerivation {
-          name = "pleroma-custom-static";
-          src = builtins.fetchGit {
-            url = "https://github.com/haj-social/static.git";
-            ref = "main";
-            rev = "0779ff37eae91aa077b6bec4f5ec6d89543c88bd";
+      postInstall =
+        let
+          custom-styles = {
+            haj-social = "/static/themes/haj-social.json";
           };
+          custom-styles-json = pkgs.writeText "custom-styles.json" (builtins.toJSON custom-styles);
+          custom-static = pkgs.stdenv.mkDerivation {
+            name = "pleroma-custom-static";
+            src = builtins.fetchGit {
+              url = "https://github.com/haj-social/static.git";
+              ref = "main";
+              rev = "0779ff37eae91aa077b6bec4f5ec6d89543c88bd";
+            };
 
-          installPhase = ''
-            mkdir -p $out/
-            cp -r * $out/
-          '';
-        };
-        custom-emojis = pkgs.stdenv.mkDerivation {
-          name = "pleroma-custom-emojis";
-          src = builtins.fetchGit {
-            url = "https://github.com/haj-social/custom-emojis.git";
-            ref = "main";
-            rev = "f3eb80bc6ddb303babf93eddbce68ce5fd043b81";
+            installPhase = ''
+              mkdir -p $out/
+              cp -r * $out/
+            '';
           };
+          custom-emojis = pkgs.stdenv.mkDerivation {
+            name = "pleroma-custom-emojis";
+            src = builtins.fetchGit {
+              url = "https://github.com/haj-social/custom-emojis.git";
+              ref = "main";
+              rev = "f3eb80bc6ddb303babf93eddbce68ce5fd043b81";
+            };
 
-          installPhase = ''
-            mkdir -p $out/
-            cp -r * $out/
-          '';
-        };
-      in ''
-        rm -rf $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static
-        ${pkgs.rsync}/bin/rsync -a ${pleroma-fe}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/
-        ${pkgs.rsync}/bin/rsync -a ${custom-static}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static/
-        ${pkgs.rsync}/bin/rsync -a ${custom-emojis}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/emoji/
-        chmod u+w -R $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/
-        mv $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static/styles.json old-styles.json
-        ${pkgs.jq}/bin/jq -s add ${custom-styles-json} old-styles.json > $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static/styles.json
-      '';
+            installPhase = ''
+              mkdir -p $out/
+              cp -r * $out/
+            '';
+          };
+        in
+        ''
+          rm -rf $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static
+          ${pkgs.rsync}/bin/rsync -a ${pleroma-fe}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/
+          ${pkgs.rsync}/bin/rsync -a ${custom-static}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static/
+          ${pkgs.rsync}/bin/rsync -a ${custom-emojis}/ $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/emoji/
+          chmod u+w -R $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/
+          mv $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static/styles.json old-styles.json
+          ${pkgs.jq}/bin/jq -s add ${custom-styles-json} old-styles.json > $out/lib/pleroma-${config.services.pleroma.package.version}/priv/static/static/styles.json
+        '';
     });
   };
   systemd.services.pleroma = {

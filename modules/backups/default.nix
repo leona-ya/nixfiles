@@ -4,7 +4,8 @@ let
   cfg = config.l.backups;
 
   inherit (lib) mkEnableOption mkIf mkOption types;
-in {
+in
+{
   options.l.backups = {
     enable = mkEnableOption "leona backups";
     user = mkOption {
@@ -51,8 +52,8 @@ in {
   };
   config = mkIf cfg.enable {
     l.sops.secrets = {
-      "hosts/${config.networking.hostName}/restic_password" = {};
-      "hosts/${config.networking.hostName}/restic_env" = {};
+      "hosts/${config.networking.hostName}/restic_password" = { };
+      "hosts/${config.networking.hostName}/restic_env" = { };
     };
 
     services.restic.backups = {
@@ -72,7 +73,7 @@ in {
           rm -rf /root/restic-backup
         '';
         pruneOpts = cfg.pruneOpts;
-        extraBackupArgs = lib.mkIf (cfg.excludes != []) (builtins.map (x: "--exclude \"" + x + "\"") cfg.excludes);
+        extraBackupArgs = lib.mkIf (cfg.excludes != [ ]) (builtins.map (x: "--exclude \"" + x + "\"") cfg.excludes);
       };
     };
   };

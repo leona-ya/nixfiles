@@ -2,7 +2,8 @@
 
 let
   hosthelper = import ../../hosts/helper.nix { inherit lib config; };
-in {
+in
+{
   l.sops.secrets."hosts/gaika/wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];
 

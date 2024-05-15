@@ -62,7 +62,7 @@
     (jetbrains.rust-rover.override {
       jdk = jetbrains.jdk;
     })
-#    kicad
+    #    kicad
     libimobiledevice
     onlyoffice-bin
     nheko
@@ -92,12 +92,13 @@
     thunderbird
     virt-manager
     youtube-dl
-    zoxide fzf
-#    (zoom-us.overrideAttrs (old: {
-#      postFixup = old.postFixup + ''
-#        wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
-#      '';
-#    }))
+    zoxide
+    fzf
+    #    (zoom-us.overrideAttrs (old: {
+    #      postFixup = old.postFixup + ''
+    #        wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
+    #      '';
+    #    }))
 
     # nixpkgs tools
     nix-output-monitor
@@ -117,7 +118,7 @@
 
   services.fwupd.enable = true;
 
-  services.udev.packages = [ 
+  services.udev.packages = [
     pkgs.yubikey-personalization
     pkgs.qFlipper
   ];
@@ -164,7 +165,7 @@
       pinentryPackage = pkgs.pinentry-gnome3;
       enableExtraSocket = true;
       sshKeys = [
-	      "F18DB4002D5F6A2E62BF9F4E6361BB12143B6647" # leona
+        "F18DB4002D5F6A2E62BF9F4E6361BB12143B6647" # leona
       ];
     };
     programs.chromium = {
@@ -180,7 +181,7 @@
       extensions = [
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
         { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
-     ];
+      ];
     };
     programs.password-store.enable = true;
     programs.zsh = {
@@ -216,9 +217,9 @@
     };
     services.nextcloud-client = {
       enable = true;
-#      startInBackground = true;
+      #      startInBackground = true;
     };
-    
+
     ## Sublime
     xdg.configFile."sublime-merge/Packages/Monokai Color Scheme" = {
       recursive = true;
@@ -229,7 +230,7 @@
         sha256 = "sha256-tdQvrUUp3ZtpFjb/stzA8IEP536eqaUGr4Lc1KLfF5k=";
       };
     };
-    xdg.configFile."sublime-merge/Packages/Monokai Theme" = {    
+    xdg.configFile."sublime-merge/Packages/Monokai Theme" = {
       recursive = true;
       source = pkgs.fetchFromGitHub {
         owner = "bitsper2nd";

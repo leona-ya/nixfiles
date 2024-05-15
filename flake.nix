@@ -73,12 +73,13 @@
       };
     };
     perSystem = { config, pkgs, inputs', self', system, ... }: {
-     devShells.default = pkgs.mkShellNoCC {
-       buildInputs = [
-         pkgs.sops
-         pkgs.colmena
-       ];
-     };
+      formatter = pkgs.nixpkgs-fmt;
+      devShells.default = pkgs.mkShellNoCC {
+        buildInputs = [
+          pkgs.sops
+          pkgs.colmena
+        ];
+      };
     };
   };
 }

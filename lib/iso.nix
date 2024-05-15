@@ -7,7 +7,8 @@
   ];
 
   boot.kernelParams = [
-    "panic=30" "boot.panic_on_fail" # reboot the machine upon fatal boot issues
+    "panic=30"
+    "boot.panic_on_fail" # reboot the machine upon fatal boot issues
   ];
   networking.hostName = "iso";
   networking.domain = "leona.is";

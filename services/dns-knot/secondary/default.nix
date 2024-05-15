@@ -66,10 +66,10 @@
           catalog-role = "interpret";
           catalog-template = "secondary";
           master = "internal_ns1";
-          acl = "internal_notify";         
+          acl = "internal_notify";
         };
 
-      
+
         # fdg
         "fahrplandatengarten.de" = {
           master = "fdg_ns1";

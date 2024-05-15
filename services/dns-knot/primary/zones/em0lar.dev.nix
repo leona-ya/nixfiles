@@ -3,10 +3,11 @@
 with dns.lib.combinators;
 
 let
-haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
-naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
-kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
-in {
+  haku_host = host "195.39.247.188" "2a0f:4ac0:0:1::d25";
+  naiad_host = host "37.120.184.164" "2a03:4000:f:85f::1";
+  kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
+in
+{
   zone = {
     TTL = 3600;
     SOA = ((ttl 300) {

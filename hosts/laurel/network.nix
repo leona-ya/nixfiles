@@ -1,8 +1,9 @@
-{ config, lib, ...}:
+{ config, lib, ... }:
 
 let
   hosthelper = import ../../hosts/helper.nix { inherit lib config; };
-in {
+in
+{
   l.sops.secrets."hosts/laurel/wireguard_wg-server_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];
 
@@ -19,7 +20,7 @@ in {
         linkConfig.Name = "eth-nat";
       };
     };
-    netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;    
+    netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
     networks = {
       "10-eth0" = {
         DHCP = "yes";

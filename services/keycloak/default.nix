@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let 
+let
   keycloakTheme = pkgs.stdenv.mkDerivation {
     name = "leona-keycloak-theme";
     src = ./theme;
@@ -10,7 +10,8 @@ let
       cp -r * $out
     '';
   };
-in {
+in
+{
   l.sops.secrets."services/keycloak/database_password" = {
     owner = "keycloak";
     group = "postgres";
@@ -22,7 +23,7 @@ in {
     group = "keycloak";
     isSystemUser = true;
   };
-  users.groups.keycloak = {};
+  users.groups.keycloak = { };
   services.keycloak = {
     enable = true;
     package = pkgs.keycloak.override {

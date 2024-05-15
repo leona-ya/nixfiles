@@ -43,7 +43,8 @@ let
   mkService = name: jobcfg:
     let
       cliArgs = "--nolog --host1 ${jobcfg.host1} --ssl1 --user1 ${jobcfg.user1} --passfile1 ${jobcfg.passwordfile1} --host2 ${jobcfg.host2} --ssl2 --user2 ${jobcfg.user2} --passfile2 ${jobcfg.passwordfile2} --noemailreport1 --noemailreport2 ${jobcfg.extraArgs}";
-    in nameValuePair "imapsync-job-${name}" {
+    in
+    nameValuePair "imapsync-job-${name}" {
       description = "Imapsync job ${name}";
       serviceConfig = {
         Type = "simple";
@@ -51,10 +52,11 @@ let
         ExecStart = "${pkgs.imapsync}/bin/imapsync ${cliArgs}";
       };
     };
-in {
+in
+{
   options.services.imapsync = mkOption {
     type = types.attrsOf (types.submodule mailboxOpts);
-    default = {};
+    default = { };
     description = "Specification of imapsync options for one or multiple sync processes";
   };
   config = mkIf (cfg != { }) ({
@@ -64,12 +66,14 @@ in {
       group = "imapsync";
       isSystemUser = true;
     };
-    users.groups.imapsync = {};
+    users.groups.imapsync = { };
 
     systemd.services = mapAttrs' mkService cfg;
-    systemd.timers = mapAttrs' (name: jobcfg: nameValuePair "imapsync-job-${name}" {
-      timerConfig = jobcfg.systemdTimerConfig;
-      wantedBy = [ "timers.target" ];
-    }) cfg;
+    systemd.timers = mapAttrs'
+      (name: jobcfg: nameValuePair "imapsync-job-${name}" {
+        timerConfig = jobcfg.systemdTimerConfig;
+        wantedBy = [ "timers.target" ];
+      })
+      cfg;
   });
 }

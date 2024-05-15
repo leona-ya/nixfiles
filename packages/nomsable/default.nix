@@ -1,41 +1,44 @@
-{ 
-  poetry2nix,
-  fetchPypi,
-  fetchFromGitHub,
-  python3,
-  ...
-}: let
+{ poetry2nix
+, fetchPypi
+, fetchFromGitHub
+, python3
+, ...
+}:
+let
   python = python3.override {
     packageOverrides = self: super: {
       django = super.django_4;
-      django-libsass = let 
+      django-libsass =
+        let
           py = python3.override {
             packageOverrides = self: super: { django = super.django_4; };
           };
-        in python3.pkgs.buildPythonPackage rec {
-        pname = "django-libsass";
-        version = "0.9";
-        format = "setuptools";
-
-        src = fetchPypi {
+        in
+        python3.pkgs.buildPythonPackage rec {
           pname = "django-libsass";
-          inherit version;
-          hash = "sha256-v7u1WolQu0D6BN1BZgX5LaNK0fMDsQpBq8MjI4bsJ7U=";
-        };
+          version = "0.9";
+          format = "setuptools";
 
-        propagatedBuildInputs = with py.pkgs; [
-          django
-          libsass
-          django-compressor
-        ];
-      };
+          src = fetchPypi {
+            pname = "django-libsass";
+            inherit version;
+            hash = "sha256-v7u1WolQu0D6BN1BZgX5LaNK0fMDsQpBq8MjI4bsJ7U=";
+          };
+
+          propagatedBuildInputs = with py.pkgs; [
+            django
+            libsass
+            django-compressor
+          ];
+        };
     };
   };
-in python.pkgs.buildPythonApplication {
+in
+python.pkgs.buildPythonApplication {
   pname = "nomsable";
   version = "unstable-2022-01-31";
   format = "pyproject";
-  
+
   src = /home/leona/dev/nomsable;
 
   nativeBuildInputs = with python.pkgs; [

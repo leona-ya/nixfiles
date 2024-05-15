@@ -9,7 +9,7 @@
     port = 443;
     intermediatePasswordFile = config.sops.secrets."services/int-acme-ca/intermediate-ca-passphrase".path;
     settings = {
-      dnsNames = ["acme.int.leona.is"];
+      dnsNames = [ "acme.int.leona.is" ];
       root = ../../lib/leona-is-ca.crt;
       crt = ../../lib/leona-is-acme-ca.crt;
       key = config.sops.secrets."services/int-acme-ca/intermediate-ca-key".path;

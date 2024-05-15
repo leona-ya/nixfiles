@@ -1,4 +1,3 @@
-
 { config, pkgs, lib, ... }:
 
 {
@@ -17,7 +16,8 @@
   services.postgresql = {
     ensureDatabases = [ "shiori" ];
     ensureUsers = [
-      { name = "shiori";
+      {
+        name = "shiori";
         ensureDBOwnership = true;
       }
     ];
@@ -63,7 +63,7 @@
     };
     environment = {
       SHIORI_DIR = "/var/lib/shiori";
-      SHIORI_DATABASE_URL="postgres://shiori@/shiori?host=/run/postgresql";
+      SHIORI_DATABASE_URL = "postgres://shiori@/shiori?host=/run/postgresql";
     };
   };
 }

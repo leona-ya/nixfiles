@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  l.sops.secrets."services/matrix/mautrix_telegram_environment" = {};
+  l.sops.secrets."services/matrix/mautrix_telegram_environment" = { };
   services.mautrix-telegram = {
     enable = true;
     environmentFile = config.sops.secrets."services/matrix/mautrix_telegram_environment".path;
@@ -40,10 +40,10 @@
 
   users = {
     users.mautrix-telegram = {
-    	group = "mautrix-telegram";
-    	isSystemUser = true;
+      group = "mautrix-telegram";
+      isSystemUser = true;
     };
-    groups.mautrix-telegram = {};
+    groups.mautrix-telegram = { };
   };
 
   systemd.services.mautrix-telegram = {

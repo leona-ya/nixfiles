@@ -8,13 +8,13 @@
           enable = true;
           max-wrap = 25; # increase value to reduce forced mid-word wrapping
           max-indent-retain = 0;
-          wrap-indicator = "";  # set wrap-indicator to "" to hide it
+          wrap-indicator = ""; # set wrap-indicator to "" to hide it
         };
       };
       themes = {
         monokai-bgless = {
           inherits = "monokai";
-          "ui.background" = {};
+          "ui.background" = { };
         };
       };
       languages = {
@@ -32,21 +32,21 @@
               procMacro = {
                 enable = true;
               };
-            };  
+            };
           };
           texlab = {
             config.texlab = {
               build = {
                 onSave = true;
-                args = ["-xelatex" "-interaction=nonstopmode" "-synctex=1" "%f"];
+                args = [ "-xelatex" "-interaction=nonstopmode" "-synctex=1" "%f" ];
                 #executable = "tectonic";
                 #args = [
-                  #"-X"
-                  #"compile"
-                  #"%f"
-                  #"--synctex"
-                  #"--keep-logs"
-                  #"--keep-intermediates"
+                #"-X"
+                #"compile"
+                #"%f"
+                #"--synctex"
+                #"--keep-logs"
+                #"--keep-intermediates"
                 #];
               };
             };
@@ -63,7 +63,7 @@
           }
           {
             name = "rust";
-            language-servers = [ "rust-analyzer"];
+            language-servers = [ "rust-analyzer" ];
           }
           {
             name = "latex";
@@ -73,7 +73,7 @@
       };
     };
   };
-  environment.systemPackages = [    
-    (pkgs.python3.withPackages(ps: [ ps.python-lsp-server ] ++ ps.python-lsp-server.optional-dependencies.all ))
+  environment.systemPackages = [
+    (pkgs.python3.withPackages (ps: [ ps.python-lsp-server ] ++ ps.python-lsp-server.optional-dependencies.all))
   ];
 }

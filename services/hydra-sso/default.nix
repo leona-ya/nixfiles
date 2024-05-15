@@ -2,8 +2,9 @@
 
 let
   legitimaBaseURL = "https://sso.leona.is";
-in {
-  l.sops.secrets."services/hydra-sso/hydra-env" = {};
+in
+{
+  l.sops.secrets."services/hydra-sso/hydra-env" = { };
 
   environment.systemPackages = [ pkgs.ory-hydra ];
 
@@ -30,10 +31,12 @@ in {
   services.postgresql = {
     ensureDatabases = [ "ory-hydra" "legitima" ];
     ensureUsers = [
-      { name = "ory-hydra";
+      {
+        name = "ory-hydra";
         ensureDBOwnership = true;
       }
-      { name = "legitima";
+      {
+        name = "legitima";
         ensureDBOwnership = true;
       }
     ];
@@ -78,7 +81,7 @@ in {
     isSystemUser = true;
   };
 
-  users.groups.legitima = {};
+  users.groups.legitima = { };
 
   services.redis.servers.legitima.enable = true;
 

@@ -2,7 +2,8 @@
 
 let
   swayConfig = config.home-manager.users.leona.wayland.windowManager.sway.config;
-in {
+in
+{
   users.users.leona.packages = with pkgs; [ mako ];
   home-manager.users.leona = {
     services.mako = {

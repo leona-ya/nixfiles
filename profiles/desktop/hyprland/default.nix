@@ -1,15 +1,18 @@
-{ lib, pkgs, ... }: let
-  plugins = [];
-in {
+{ lib, pkgs, ... }:
+let
+  plugins = [ ];
+in
+{
   imports = [
     ./rofi.nix
     ./waybar.nix
   ];
-  users.users.leona.packages = with pkgs; [ 
+  users.users.leona.packages = with pkgs; [
     qt5.qtwayland
     wdisplays
     waypipe
-    hyprland hyprpaper
+    hyprland
+    hyprpaper
   ];
 
   environment.variables.SDL_VIDEODRIVER = "wayland";
@@ -20,18 +23,20 @@ in {
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
 
   home-manager.users.leona = {
-    services.swayidle = let
-      lockCommand = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 20x10";
-    in {
-      enable = true;
-      events = [
-        { event = "before-sleep"; command = lockCommand; }
-        { event = "lock"; command = lockCommand; }
-      ];
-      timeouts = [
-#        { timeout = 300; command = lockCommand; }
-      ];
-    };
+    services.swayidle =
+      let
+        lockCommand = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 20x10";
+      in
+      {
+        enable = true;
+        events = [
+          { event = "before-sleep"; command = lockCommand; }
+          { event = "lock"; command = lockCommand; }
+        ];
+        timeouts = [
+          #        { timeout = 300; command = lockCommand; }
+        ];
+      };
     xdg.configFile."hypr/hyprpaper.conf" = {
       text = ''
         preload = /home/leona/.wallpapers/trans-estro.png
@@ -42,9 +47,13 @@ in {
     xdg.configFile."hypr/hyprland.conf" = {
       text = ''
         exec-once=${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target
-      '' + lib.concatStrings (builtins.map (entry: let
-          plugin = if lib.types.package.check entry then "${entry}/lib/lib${entry.pname}.so" else entry;
-        in "plugin=${plugin}\n") plugins)
+      '' + lib.concatStrings (builtins.map
+        (entry:
+          let
+            plugin = if lib.types.package.check entry then "${entry}/lib/lib${entry.pname}.so" else entry;
+          in
+          "plugin=${plugin}\n")
+        plugins)
       + ''
         exec-once=${pkgs.waybar}/bin/waybar
         exec=hyprpaper
@@ -138,25 +147,25 @@ in {
         bindel=, XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 10%-
       '';
 
-#      onChange = ''
-#        (  # execute in subshell so that `shopt` won't affect other scripts
-#          shopt -s nullglob  # so that nothing is done if /tmp/hypr/ does not exist or is empty
-#          for instance in /tmp/hypr/*; do
-#            HYPRLAND_INSTANCE_SIGNATURE=''${instance##*/} ${pkgs.hyprland}/bin/hyprctl reload config-only \
-#              || true  # ignore dead instance(s)
-#          done
-#        )
-#      '';
+      #      onChange = ''
+      #        (  # execute in subshell so that `shopt` won't affect other scripts
+      #          shopt -s nullglob  # so that nothing is done if /tmp/hypr/ does not exist or is empty
+      #          for instance in /tmp/hypr/*; do
+      #            HYPRLAND_INSTANCE_SIGNATURE=''${instance##*/} ${pkgs.hyprland}/bin/hyprctl reload config-only \
+      #              || true  # ignore dead instance(s)
+      #          done
+      #        )
+      #      '';
     };
 
 
     systemd.user.targets.hyprland-session = {
       Unit = {
         Description = "Hyprland compositor session";
-        Documentation = ["man:systemd.special(7)"];
-        BindsTo = ["graphical-session.target"];
-        Wants = ["graphical-session-pre.target"];
-        After = ["graphical-session-pre.target"];
+        Documentation = [ "man:systemd.special(7)" ];
+        BindsTo = [ "graphical-session.target" ];
+        Wants = [ "graphical-session-pre.target" ];
+        After = [ "graphical-session-pre.target" ];
       };
     };
   };

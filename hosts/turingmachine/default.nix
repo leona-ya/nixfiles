@@ -48,44 +48,44 @@
 
   networking.nat = {
     enable = true;
-    internalInterfaces = ["ve-+"];
+    internalInterfaces = [ "ve-+" ];
     externalInterface = "wifi0";
   };
 
-#  containers.yt = {
-#    autoStart = false;
-#    hostAddress = "192.168.100.10";
-#    localAddress = "192.168.100.11";
-#    config = { config, pkgs, ... }: {
-#      nixpkgs.config.allowUnfree = true;
-#      nixpkgs.overlays = lib.attrValues inputs.self.overlays;
-#      services.youtrack = {
-#        enable = true;
-#        virtualHost = "192.168.100.11";
-#        package = pkgs.youtrack_2023_1;
-#        port = 8090;
-#      };
-#    };
-#  };
-#  l.backups = {
-#    enable = true;
-#    excludes = [
-#      "/var/cache"
-#      "/var/lock"
-#      "/var/spool"
-#      "/var/log"
-#      "/home/leona/.local/share/containers"
-#      "/home/leona/sync/nas"
-#      "/var/lib/containers"
-#      "**/node_modules"
-#      "**/.venv"
-#      "**/target"
-#      "/home/*/.cache"
-#      "/home/*/.rustup"
-#      "**/Cache"
-#    ];
-#    enableSystemdTimer = false;
-#  };
+  #  containers.yt = {
+  #    autoStart = false;
+  #    hostAddress = "192.168.100.10";
+  #    localAddress = "192.168.100.11";
+  #    config = { config, pkgs, ... }: {
+  #      nixpkgs.config.allowUnfree = true;
+  #      nixpkgs.overlays = lib.attrValues inputs.self.overlays;
+  #      services.youtrack = {
+  #        enable = true;
+  #        virtualHost = "192.168.100.11";
+  #        package = pkgs.youtrack_2023_1;
+  #        port = 8090;
+  #      };
+  #    };
+  #  };
+  #  l.backups = {
+  #    enable = true;
+  #    excludes = [
+  #      "/var/cache"
+  #      "/var/lock"
+  #      "/var/spool"
+  #      "/var/log"
+  #      "/home/leona/.local/share/containers"
+  #      "/home/leona/sync/nas"
+  #      "/var/lib/containers"
+  #      "**/node_modules"
+  #      "**/.venv"
+  #      "**/target"
+  #      "/home/*/.cache"
+  #      "/home/*/.rustup"
+  #      "**/Cache"
+  #    ];
+  #    enableSystemdTimer = false;
+  #  };
 
   services.nginx.virtualHosts = {
     "hydra.turingmachine.net.leona.is" = {

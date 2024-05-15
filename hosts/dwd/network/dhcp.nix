@@ -46,28 +46,28 @@
       };
     '';
   };
-#      interface br-tethys {
-#        AdvSendAdvert on;
-#        MinRtrAdvInterval 3;
-#        MaxRtrAdvInterval 10;
-#        prefix ::/64 {
-#          AdvOnLink on;
-#          AdvAutonomous on;
-#          AdvRouterAddr on;
-#        };
-#        RDNSS fd8f:d15b:9f40:20::1 { };
-#      };
-#      interface br-dmz {
-#        AdvSendAdvert on;
-#        MinRtrAdvInterval 3;
-#        MaxRtrAdvInterval 10;
-#        prefix ::/64 {
-#          AdvOnLink on;
-#          AdvAutonomous on;
-#          AdvRouterAddr on;
-#        };
-#        RDNSS fd8f:d15b:9f40::1 { };
-#      };
-#    '';
-#  };
+  #      interface br-tethys {
+  #        AdvSendAdvert on;
+  #        MinRtrAdvInterval 3;
+  #        MaxRtrAdvInterval 10;
+  #        prefix ::/64 {
+  #          AdvOnLink on;
+  #          AdvAutonomous on;
+  #          AdvRouterAddr on;
+  #        };
+  #        RDNSS fd8f:d15b:9f40:20::1 { };
+  #      };
+  #      interface br-dmz {
+  #        AdvSendAdvert on;
+  #        MinRtrAdvInterval 3;
+  #        MaxRtrAdvInterval 10;
+  #        prefix ::/64 {
+  #          AdvOnLink on;
+  #          AdvAutonomous on;
+  #          AdvRouterAddr on;
+  #        };
+  #        RDNSS fd8f:d15b:9f40::1 { };
+  #      };
+  #    '';
+  #  };
 }

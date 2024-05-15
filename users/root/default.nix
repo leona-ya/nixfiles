@@ -15,14 +15,16 @@
 
     programs.ssh = {
       enable = true;
-      matchBlocks = let
-        leona = {
-          port = 54973;
+      matchBlocks =
+        let
+          leona = {
+            port = 54973;
+          };
+        in
+        {
+          "*.net.leona.is" = leona;
+          "*.lan" = leona;
         };
-      in {
-        "*.net.leona.is" = leona;
-        "*.lan" = leona;
-      };
     };
 
     programs.zsh = {

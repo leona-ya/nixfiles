@@ -2,7 +2,8 @@
 
 let
   hosthelper = import ../../../hosts/helper.nix { inherit lib config; };
-in {
+in
+{
   l.sops.secrets."hosts/dwd/wireguard_wg-server_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/dwd/wireguard_wg-public_privatekey".owner = "systemd-network";
   networking.firewall.allowedUDPPorts = [ 51441 ];
@@ -41,7 +42,7 @@ in {
             Family = "ipv4";
             From = "195.39.247.151/32";
             SuppressPrefixLength = 0;
-            Priority = 100; 
+            Priority = 100;
           };
         }
         {
@@ -69,19 +70,19 @@ in {
         }
       ];
       routes = [
-          {
-            routeConfig = {
-              Destination = "::/0";
-              Table = 30;
-            };
-          }
-          {
-            routeConfig = {
-              Destination = "0.0.0.0/0";
-              Table = 30;
-            };
-          }
-        ];
+        {
+          routeConfig = {
+            Destination = "::/0";
+            Table = 30;
+          };
+        }
+        {
+          routeConfig = {
+            Destination = "0.0.0.0/0";
+            Table = 30;
+          };
+        }
+      ];
     };
   };
 }

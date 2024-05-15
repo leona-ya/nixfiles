@@ -1,13 +1,13 @@
 { pkgs, ... }: {
   imports = [
-      ./hardware-configuration.nix
-      ./network.nix
-      ../../profiles/zfs-nopersist
-      ../../profiles/encrypted-fs
-      ../../services/monitoring
-      ../../services/dns-knot/secondary
-      ../../services/plausible
-    ];
+    ./hardware-configuration.nix
+    ./network.nix
+    ../../profiles/zfs-nopersist
+    ../../profiles/encrypted-fs
+    ../../services/monitoring
+    ../../services/dns-knot/secondary
+    ../../services/plausible
+  ];
 
   # Secondary DNS
   services.knot.settings.server.listen = [
@@ -16,8 +16,8 @@
     "2a02:247a:22e:fd00:1::1@53"
     "fd8f:d15b:9f40:c10::1@53"
   ];
- 
- boot.loader.grub = {
+
+  boot.loader.grub = {
     enable = true;
     zfsSupport = true;
     device = "/dev/vda";
@@ -28,7 +28,7 @@
   ];
   networking.hostId = "fed5b931";
 
-#  l.backups.enable = true;
+  #  l.backups.enable = true;
   l.telegraf = {
     enable = true;
     host = "[fd8f:d15b:9f40:c10::1]";
@@ -41,13 +41,13 @@
 
   users.users = {
     acme.uid = 996;
-#    postgres.uid = 71;
+    #    postgres.uid = 71;
   };
   users.groups = {
     acme.gid = 995;
-#    postgres.gid = 71;
+    #    postgres.gid = 71;
   };
-  
+
   services.postgresql.package = pkgs.postgresql_15;
 
   system.stateVersion = "23.11";

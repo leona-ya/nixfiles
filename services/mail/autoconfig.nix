@@ -33,7 +33,7 @@
                </outgoingServer>
              </emailProvider>
             </clientConfig>
-            '';
+          '';
         };
       };
     };

@@ -20,7 +20,7 @@
     '';
   };
 
-#  users.users.matrix-synapse.extraGroups = [ "mautrix-telegram" ];
+  #  users.users.matrix-synapse.extraGroups = [ "mautrix-telegram" ];
 
   services.matrix-synapse = {
     enable = true;

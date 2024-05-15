@@ -2,12 +2,12 @@
 
 {
   imports = [
-      ./hardware-configuration.nix
-      ./network.nix
-      ../../profiles/zfs-nopersist
-      ../../profiles/encrypted-fs
-      ../../services/keycloak
-      ../../services/ldap
+    ./hardware-configuration.nix
+    ./network.nix
+    ../../profiles/zfs-nopersist
+    ../../profiles/encrypted-fs
+    ../../services/keycloak
+    ../../services/ldap
   ];
 
   deployment.buildOnTarget = true;
@@ -51,7 +51,7 @@
     openldap.gid = 992;
     keycloak.gid = 993;
   };
-  
+
   services.postgresql.package = pkgs.postgresql_15;
 
   system.stateVersion = "23.05";

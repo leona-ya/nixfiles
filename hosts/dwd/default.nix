@@ -32,7 +32,7 @@
     extraInputs = {
       sensors = { };
       prometheus = [{
-        urls = ["http://10.151.5.20/metrics"];
+        urls = [ "http://10.151.5.20/metrics" ];
       }];
     };
   };

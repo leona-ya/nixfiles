@@ -17,7 +17,7 @@
     zfsSupport = true;
     device = "/dev/sda";
   };
-  boot.supportedFilesystems = ["zfs"];
+  boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.devNodes = "/dev/disk/by-path";
   networking.hostId = "a69a4457";
   boot.kernelParams = [

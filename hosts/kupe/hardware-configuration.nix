@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [
+      (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
 
@@ -15,28 +16,37 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "zroot/nixos/root";
-      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    {
+      device = "zroot/nixos/root";
+      fsType = "zfs";
+      options = [ "zfsutil" "X-mount.mkdir" ];
     };
 
   fileSystems."/nix" =
-    { device = "zroot/nixos/nix";
-      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    {
+      device = "zroot/nixos/nix";
+      fsType = "zfs";
+      options = [ "zfsutil" "X-mount.mkdir" ];
     };
 
   fileSystems."/home" =
-    { device = "zroot/vault/home";
-      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    {
+      device = "zroot/vault/home";
+      fsType = "zfs";
+      options = [ "zfsutil" "X-mount.mkdir" ];
     };
 
   fileSystems."/persist" =
-    { device = "zroot/vault/persist";
-      fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];
+    {
+      device = "zroot/vault/persist";
+      fsType = "zfs";
+      options = [ "zfsutil" "X-mount.mkdir" ];
       neededForBoot = true;
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3EA2-8D35";
+    {
+      device = "/dev/disk/by-uuid/3EA2-8D35";
       fsType = "vfat";
     };
 

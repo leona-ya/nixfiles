@@ -3,13 +3,15 @@
 let
   grafanaDomain = "grafana.leona.is";
 
-in {
+in
+{
   l.sops.secrets."services/monitoring/grafana/env".owner = "grafana";
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "grafana" ];
     ensureUsers = [
-      { name = "grafana";
+      {
+        name = "grafana";
         ensureDBOwnership = true;
       }
     ];
@@ -36,7 +38,7 @@ in {
         token_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/token";
         api_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/userinfo";
         role_attribute_path = "contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'";
-        scopes =  "openid profile email roles";
+        scopes = "openid profile email roles";
         email_attribute_names = "email:primary";
       };
     };

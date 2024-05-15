@@ -2,13 +2,14 @@
 let
   cfg = config.l.telegraf;
 
-in {
+in
+{
   options.l.telegraf = with lib; {
     enable = mkEnableOption "leona telegraf";
     host = mkOption { type = types.str; };
     extraInputs = mkOption {
       type = types.attrs;
-      default = {};
+      default = { };
     };
     diskioDisks = mkOption { type = types.listOf types.str; };
     allowedNet = mkOption {
@@ -32,7 +33,7 @@ in {
             totalcpu = true;
           };
           disk = {
-            ignore_fs = ["tmpfs" "devtmpfs" "devfs" "iso9660" "overlay" "aufs" "squashfs"];
+            ignore_fs = [ "tmpfs" "devtmpfs" "devfs" "iso9660" "overlay" "aufs" "squashfs" ];
           };
           diskio = {
             devices = cfg.diskioDisks;
@@ -42,16 +43,16 @@ in {
             timeout = "10s";
             data_format = "json";
             json_name_key = "name";
-            tag_keys = ["period" "extent"];
+            tag_keys = [ "period" "extent" ];
           }];
           kernel = { };
           netstat = { };
           net = {
             ignore_protocol_stats = true;
           };
-#          nginx = {
-#            urls = ["http://localhost/nginx_status"];
-#          };
+          #          nginx = {
+          #            urls = ["http://localhost/nginx_status"];
+          #          };
           postgresql = lib.mkIf config.services.postgresql.enable {
             address = "host=/run/postgresql user=telegraf database=postgres";
           };
@@ -60,7 +61,7 @@ in {
             query = [
               {
                 sqlquery = "SELECT datname, state,count(datname) FROM pg_catalog.pg_stat_activity GROUP BY datname,state";
-                measurement="pg_stat_activity";
+                measurement = "pg_stat_activity";
               }
             ];
           }];
@@ -78,7 +79,7 @@ in {
         };
       };
     };
-#    services.nginx.statusPage = true;
+    #    services.nginx.statusPage = true;
 
     services.nginx.virtualHosts."${config.networking.hostName}.wg.net.leona.is" = {
       listen = [{

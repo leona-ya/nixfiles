@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  l.sops.secrets."services/vikunja/env" = {};
+  l.sops.secrets."services/vikunja/env" = { };
 
   services.vikunja = {
     enable = true;
@@ -50,7 +50,8 @@
   services.postgresql = {
     ensureDatabases = [ "vikunja" ];
     ensureUsers = [
-      { name = "vikunja";
+      {
+        name = "vikunja";
         ensureDBOwnership = true;
       }
     ];
@@ -71,5 +72,5 @@
     isSystemUser = true;
   };
 
-  users.groups.vikunja = {};
+  users.groups.vikunja = { };
 }

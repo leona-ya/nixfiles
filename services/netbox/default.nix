@@ -20,7 +20,8 @@
     enable = true;
     ensureDatabases = [ "netbox" ];
     ensureUsers = [
-      { name = "netbox";
+      {
+        name = "netbox";
         ensureDBOwnership = true;
       }
     ];

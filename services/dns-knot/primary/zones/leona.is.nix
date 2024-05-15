@@ -3,13 +3,14 @@
 with dns.lib.combinators;
 
 let
-enari_host = host "195.20.227.176" "2a02:247a:22e:fd00:1::1";
-kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
-bij_v4 = "168.119.100.247";
-bij_host = host bij_v4 "2a01:4f8:c010:1098::1";
-laurel_v6 = "2a01:4f8:c012:b172::1";
-sphere_v6 = "2a01:4f8:c012:b842::1";
-in {
+  enari_host = host "195.20.227.176" "2a02:247a:22e:fd00:1::1";
+  kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
+  bij_v4 = "168.119.100.247";
+  bij_host = host bij_v4 "2a01:4f8:c010:1098::1";
+  laurel_v6 = "2a01:4f8:c012:b172::1";
+  sphere_v6 = "2a01:4f8:c012:b842::1";
+in
+{
   zone = {
     TTL = 3600;
     SOA = ((ttl 3600) {

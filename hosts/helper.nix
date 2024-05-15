@@ -3,7 +3,8 @@ with lib;
 let
   getHosts = hostnames: hosts:
     builtins.map (hostname: getAttrFromPath [ hostname ] hosts) hostnames;
-in rec {
+in
+rec {
   hosts = {
     bij = {
       meta = {
@@ -15,7 +16,7 @@ in rec {
         wireguard = {
           interfaces = {
             "clients" = {
-              ips = [ "10.151.9.1/32" "fd8f:d15b:9f40:0900::1/64"];
+              ips = [ "10.151.9.1/32" "fd8f:d15b:9f40:0900::1/64" ];
               publicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
               routed = [
                 "fdf8:d15b:9f40::/48"
@@ -26,7 +27,8 @@ in rec {
                 { routeConfig.Destination = "fd8f:d15b:9f40:0900::/56"; }
               ];
               extraWireguardPeers = [
-                { # turingmachine
+                {
+                  # turingmachine
                   wireguardPeerConfig = {
                     AllowedIPs = [
                       "10.151.9.2/32"
@@ -35,7 +37,8 @@ in rec {
                     PublicKey = "gOBDoXc3zWVpnyx81fgVKmR2un14MW+c+SM/G6F3sFY=";
                   };
                 }
-                { # nyx
+                {
+                  # nyx
                   wireguardPeerConfig = {
                     AllowedIPs = [
                       "10.151.9.3/32"
@@ -44,7 +47,8 @@ in rec {
                     PublicKey = "MdSVqYNSF2Lylb1kTdfW33ZwQcGff1ueQRrjiPeqDVg=";
                   };
                 }
-                { # edlu
+                {
+                  # edlu
                   wireguardPeerConfig = {
                     AllowedIPs = [
                       "10.151.9.4/32"
@@ -53,7 +57,8 @@ in rec {
                     PublicKey = "NzCAPjJp7TAR98KkJd1glJwZNdEWUnDzPt3KdNId0Xc=";
                   };
                 }
-                { # freyda
+                {
+                  # freyda
                   wireguardPeerConfig = {
                     AllowedIPs = [
                       "10.151.9.7/32"
@@ -62,7 +67,8 @@ in rec {
                     PublicKey = "1ZhRSfPcAbEYVk3AYuHjDj+6VoxgU4VbSHQqoj5TB0o=";
                   };
                 }
-                { # Luna [DM]
+                {
+                  # Luna [DM]
                   wireguardPeerConfig = {
                     AllowedIPs = [
                       "10.151.9.5/32"
@@ -71,7 +77,8 @@ in rec {
                     PublicKey = "0tlj84AXn/vVl7fAkgKsDcAcW3CN4y92sr/MKL9TBRI=";
                   };
                 }
-                { # Luna Phone [DM]
+                {
+                  # Luna Phone [DM]
                   wireguardPeerConfig = {
                     AllowedIPs = [
                       "10.151.9.6/32"
@@ -220,7 +227,8 @@ in rec {
                 { routeConfig.Destination = "2a0f:4ac0:1e0::/48"; }
               ];
               extraWireguardPeers = [
-                { # turingmachine
+                {
+                  # turingmachine
                   wireguardPeerConfig = {
                     AllowedIPs =
                       [ "195.39.247.148/32" "2a0f:4ac0:1e0:100::/64" ];
@@ -228,7 +236,8 @@ in rec {
                     PersistentKeepalive = 21;
                   };
                 }
-                { # kupe
+                {
+                  # kupe
                   wireguardPeerConfig = {
                     Endpoint = "kupe.net.leona.is:51440";
                     AllowedIPs = [
@@ -238,7 +247,8 @@ in rec {
                     PersistentKeepalive = 21;
                   };
                 }
-                { # dwd
+                {
+                  # dwd
                   wireguardPeerConfig = {
                     AllowedIPs = [ "195.39.247.151/32" "2a0f:4ac0:1e0:20::/60" ];
                     PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
@@ -332,68 +342,80 @@ in rec {
           public = { port = 51440; };
         };
         g_currenthost_generate_peers = ifName:
-          (builtins.map (x:
-            let
-              ifaceConfig = x.services.wireguard.interfaces.${ifName};
-              groupConfig = groups.wireguard.interfaces.${ifName};
-            in {
-              wireguardPeerConfig = {
-                AllowedIPs = [ ifaceConfig.routed ];
-                Endpoint = mkIf (ifaceConfig ? hostname)
-                  "${ifaceConfig.hostname}:${toString groupConfig.port}";
-                PublicKey = ifaceConfig.publicKey;
-                PersistentKeepalive = 21;
-              };
-            }) (builtins.filter (x:
-              x.services.wireguard.interfaces.${ifName} ? hostname
-              || hosts.${currentHost}.services.wireguard.interfaces.${ifName}
-              ? hostname)
+          (builtins.map
+            (x:
+              let
+                ifaceConfig = x.services.wireguard.interfaces.${ifName};
+                groupConfig = groups.wireguard.interfaces.${ifName};
+              in
+              {
+                wireguardPeerConfig = {
+                  AllowedIPs = [ ifaceConfig.routed ];
+                  Endpoint = mkIf (ifaceConfig ? hostname)
+                    "${ifaceConfig.hostname}:${toString groupConfig.port}";
+                  PublicKey = ifaceConfig.publicKey;
+                  PersistentKeepalive = 21;
+                };
+              })
+            (builtins.filter
+              (x:
+                x.services.wireguard.interfaces.${ifName} ? hostname
+                || hosts.${currentHost}.services.wireguard.interfaces.${ifName}
+                ? hostname)
               (builtins.filter (x: x.services.wireguard.interfaces ? ${ifName})
                 (getHosts
                   (builtins.filter (x: x != currentHost) groups.wireguard.hosts)
                   hosts))));
 
-        g_systemd_network_netdevconfig = mapAttrs' (ifName: value:
-          let
-            ifaceConfig =
-              hosts.${currentHost}.services.wireguard.interfaces.${ifName};
-          in nameValuePair "30-wg-${ifName}" {
-            netdevConfig = {
-              Kind = "wireguard";
-              Name = "wg-${ifName}";
-            };
-            wireguardConfig = {
-              ListenPort = groups.wireguard.interfaces.${ifName}.port;
-              PrivateKeyFile =
-                config.sops.secrets."hosts/${currentHost}/wireguard_wg-${ifName}_privatekey".path;
-            };
-            wireguardPeers =
-              groups.wireguard.g_currenthost_generate_peers ifName
-              ++ (if ifaceConfig ? extraWireguardPeers then
-                ifaceConfig.extraWireguardPeers
-              else
-                [ ]);
-          }) hosts.${currentHost}.services.wireguard.interfaces;
-        g_systemd_network_networkconfig = mapAttrs' (ifName: value:
-          let
-            ifaceConfig =
-              hosts.${currentHost}.services.wireguard.interfaces.${ifName};
-            groupConfig = groups.wireguard.interfaces.${ifName};
-          in nameValuePair "30-wg-${ifName}" {
-            name = "wg-${ifName}";
-            linkConfig = { RequiredForOnline = "yes"; };
-            networkConfig = { IPForward = true; };
-            address = ifaceConfig.ips;
-            routes = if ifaceConfig ? interfaceRoutes then
-              ifaceConfig.interfaceRoutes
-            else
-              groupConfig.routes;
-          }) hosts.${currentHost}.services.wireguard.interfaces;
+        g_systemd_network_netdevconfig = mapAttrs'
+          (ifName: value:
+            let
+              ifaceConfig =
+                hosts.${currentHost}.services.wireguard.interfaces.${ifName};
+            in
+            nameValuePair "30-wg-${ifName}" {
+              netdevConfig = {
+                Kind = "wireguard";
+                Name = "wg-${ifName}";
+              };
+              wireguardConfig = {
+                ListenPort = groups.wireguard.interfaces.${ifName}.port;
+                PrivateKeyFile =
+                  config.sops.secrets."hosts/${currentHost}/wireguard_wg-${ifName}_privatekey".path;
+              };
+              wireguardPeers =
+                groups.wireguard.g_currenthost_generate_peers ifName
+                ++ (if ifaceConfig ? extraWireguardPeers then
+                  ifaceConfig.extraWireguardPeers
+                else
+                  [ ]);
+            })
+          hosts.${currentHost}.services.wireguard.interfaces;
+        g_systemd_network_networkconfig = mapAttrs'
+          (ifName: value:
+            let
+              ifaceConfig =
+                hosts.${currentHost}.services.wireguard.interfaces.${ifName};
+              groupConfig = groups.wireguard.interfaces.${ifName};
+            in
+            nameValuePair "30-wg-${ifName}" {
+              name = "wg-${ifName}";
+              linkConfig = { RequiredForOnline = "yes"; };
+              networkConfig = { IPForward = true; };
+              address = ifaceConfig.ips;
+              routes =
+                if ifaceConfig ? interfaceRoutes then
+                  ifaceConfig.interfaceRoutes
+                else
+                  groupConfig.routes;
+            })
+          hosts.${currentHost}.services.wireguard.interfaces;
       };
     });
   services = {
-    dns-int.g_dns_records = mapAttrs' (hostname: config:
-      nameValuePair "${hostname}.wg.net" { AAAA = [ config.meta.intIpv6 ]; })
+    dns-int.g_dns_records = mapAttrs'
+      (hostname: config:
+        nameValuePair "${hostname}.wg.net" { AAAA = [ config.meta.intIpv6 ]; })
       (filterAttrs (h: config: config.meta ? intIpv6) hosts);
-    };
+  };
 }

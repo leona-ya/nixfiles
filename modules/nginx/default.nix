@@ -4,11 +4,12 @@ with lib;
 
 let
   cfg = config.l.nginx;
-in {
+in
+{
   options.l.nginx = {
     virtualHosts = mkOption {
-      default = {};
-      type = types.attrsOf(types.submodule {
+      default = { };
+      type = types.attrsOf (types.submodule {
         options = {
           lokiAccessLog = mkOption {
             type = types.submodule {
@@ -22,7 +23,7 @@ in {
     };
   };
 
-  config = mkIf (cfg.virtualHosts != {}) {
+  config = mkIf (cfg.virtualHosts != { }) {
     services.logrotate.settings."nginx" = {
       frequency = "daily";
       rotate = 7;
@@ -43,11 +44,13 @@ in {
           '"protocol": "$server_protocol" ' # request protocol, like HTTP/1.1 or HTTP/2.0
         '}';
       '';
-      virtualHosts = (mapAttrs (name: value: {
-        extraConfig = lib.mkIf value.lokiAccessLog.enable ''
-          access_log /var/log/nginx/loki_access.log.gz loki_access_log_full gzip flush=5m;
-        '';
-      }) cfg.virtualHosts);
+      virtualHosts = (mapAttrs
+        (name: value: {
+          extraConfig = lib.mkIf value.lokiAccessLog.enable ''
+            access_log /var/log/nginx/loki_access.log.gz loki_access_log_full gzip flush=5m;
+          '';
+        })
+        cfg.virtualHosts);
     };
-  };  
+  };
 }
