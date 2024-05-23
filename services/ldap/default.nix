@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   l.sops.secrets."services/ldap/root_password".owner = "openldap";
@@ -27,6 +27,10 @@
             "${pkgs.openldap}/etc/schema/nis.ldif"
           ];
         };
+        "cn=module{0}".attrs = {
+          objectClass = "olcModuleList";
+          olcModuleLoad = [ "argon2" ];
+        };
         "olcDatabase={-1}frontend" = {
           attrs = {
             objectClass = [
@@ -39,6 +43,7 @@
               "{1}to dn.exact=\"\" by * read"
               "{2}to dn.base=\"cn=Subschema\" by * read"
             ];
+            olcPasswordHash = "{ARGON2}";
           };
         };
         "olcDatabase={0}config" = {
@@ -66,8 +71,18 @@
                 by * none"
               "{1}to *
                 by dn.children=\"ou=services,dc=leona,dc=is\" write
-                by self read by * none"
+                by self read
+                by * none"
             ];
+          };
+          children = {
+            "olcOverlay={2}ppolicy" = {
+              attrs = {
+                objectClass = [ "olcOverlayConfig" "olcPPolicyConfig" "top" ];
+                olcOverlay = "{2}ppolicy";
+                olcPPolicyHashCleartext = "TRUE";
+              };
+            };
           };
         };
       };
