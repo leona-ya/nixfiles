@@ -104,6 +104,7 @@
     nix-output-monitor
     nix-init
     nurl
+    nix-update
     nix-tree
     nixpkgs-review
   ];
@@ -137,6 +138,10 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+  };
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "leona" ];
   };
   #services.pcscd.enable = true;
 

@@ -97,6 +97,7 @@
         transfer.fsckObjects = true;
         feature.manyFiles = true;
         push.autoSetupRemote = true;
+        diff.external = "difft";
       };
     };
 
