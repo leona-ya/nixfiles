@@ -72,7 +72,6 @@
     })
     obsidian
     openssl_3_0
-    openttd
     pandoc
     pass-wayland
     podman-compose
@@ -85,7 +84,6 @@
     speedcrunch
     spotify
     sublime-merge
-    superTuxKart
     tectonic
     texlab
     texlive.combined.scheme-full
@@ -93,7 +91,6 @@
     virt-manager
     youtube-dl
     zoxide
-    fzf
     #    (zoom-us.overrideAttrs (old: {
     #      postFixup = old.postFixup + ''
     #        wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE --set QT_QPA_PLATFORM xcb
