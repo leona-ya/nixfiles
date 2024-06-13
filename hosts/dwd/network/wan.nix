@@ -44,7 +44,6 @@
     };
     networks."10-eth0" = {
       matchConfig.Name = "eth0";
-      #      address = [ "fd8f:d15b:9f40:1::1/64" ];
       DHCP = "yes";
       vlan = [
         "eth0.7"
@@ -75,22 +74,10 @@
       dhcpV6Config = {
         WithoutRA = "solicit";
       };
-      #      dhcpPrefixDelegationConfig = {
-      #  #        UplinkInterface = ":self";
-      #        SubnetId = 0;
-      #        Announce = false;
-      #      };
       routes = [
-        #        { routeConfig = {
-        #          Destination = "195.39.247.188/32";
-        #          Scope = "link";
-        #          GatewayOnLink = true;
-        #        }; }
         {
-          routeConfig = {
-            Destination = "2a0f:4ac0:0:1::d25/128";
-            Gateway = "_ipv6ra";
-          };
+          Destination = "2a0f:4ac0:0:1::d25/128";
+          Gateway = "_ipv6ra";
         }
       ];
     };

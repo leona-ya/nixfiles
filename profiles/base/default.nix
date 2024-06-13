@@ -28,11 +28,11 @@
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
   nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      builders-use-substitutes = true
-    '';
-    settings.trusted-users = [ "root" "@wheel" "leona" ];
+    settings = {
+      experimental-features = [ "nix-command flakes" ];
+      builders-use-substitutes = true;
+      trusted-users = [ "root" "@wheel" "leona" ];
+    };
     gc = {
       automatic = lib.mkDefault true;
       options = lib.mkDefault "--delete-older-than 7d";

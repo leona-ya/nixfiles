@@ -32,14 +32,14 @@ in
         ];
         dns = [ "2001:4860:4860::8888" ];
         routes = [
-          { routeConfig = { Destination = "::/0"; Gateway = "fe80::1"; GatewayOnLink = true; }; }
+          { Destination = "::/0"; Gateway = "fe80::1"; GatewayOnLink = true; }
         ];
       };
       "10-eth-nat" = {
         matchConfig.Name = "eth-nat";
         address = [ "10.62.41.3/32" ];
         routes = [
-          { routeConfig = { Destination = "0.0.0.0/0"; Gateway = "10.62.41.1"; GatewayOnLink = true; }; }
+          { Destination = "0.0.0.0/0"; Gateway = "10.62.41.1"; GatewayOnLink = true; }
         ];
       };
     } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;

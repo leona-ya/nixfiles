@@ -33,15 +33,13 @@ in
           PrivateKeyFile = config.sops.secrets."hosts/bij/wireguard_wg-public-in_privatekey".path;
         };
         wireguardPeers = [{
-          wireguardPeerConfig = {
-            AllowedIPs = [
-              "0.0.0.0/0"
-              "::/0"
-            ];
-            PublicKey = "kih/GnR4Bov/DM/7Rd21wK+PFQRUNH6sywVuNKkUAkk=";
-            Endpoint = "[2a0f:4ac0:ca6c::1]:51820";
-            PersistentKeepalive = 21;
-          };
+          AllowedIPs = [
+            "0.0.0.0/0"
+            "::/0"
+          ];
+          PublicKey = "kih/GnR4Bov/DM/7Rd21wK+PFQRUNH6sywVuNKkUAkk=";
+          Endpoint = "[2a0f:4ac0:ca6c::1]:51820";
+          PersistentKeepalive = 21;
         }];
       };
       "30-wg-public-out" = {
@@ -55,24 +53,20 @@ in
         };
         wireguardPeers = [
           {
-            wireguardPeerConfig = {
-              AllowedIPs = [
-                "195.39.247.148/32"
-                "2a0f:4ac0:1e0:100::1/60"
-              ];
-              PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
-              PersistentKeepalive = 21;
-            };
+            AllowedIPs = [
+              "195.39.247.148/32"
+              "2a0f:4ac0:1e0:100::1/60"
+            ];
+            PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
+            PersistentKeepalive = 21;
           }
           {
-            wireguardPeerConfig = {
-              AllowedIPs = [
-                "195.39.247.151/32"
-                "2a0f:4ac0:1e0:20::1/60"
-              ];
-              PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
-              PersistentKeepalive = 21;
-            };
+            AllowedIPs = [
+              "195.39.247.151/32"
+              "2a0f:4ac0:1e0:20::1/60"
+            ];
+            PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
+            PersistentKeepalive = 21;
           }
         ];
       };
@@ -87,14 +81,14 @@ in
           "2a01:4f8:c010:1098::1/64"
         ];
         routes = [
-          { routeConfig = { Destination = "::/0"; Gateway = "fe80::1"; GatewayOnLink = true; }; }
+          { Destination = "::/0"; Gateway = "fe80::1"; GatewayOnLink = true; }
         ];
       };
       "10-eth-nat" = {
         matchConfig.Name = "eth-nat";
         address = [ "10.62.41.2/32" ];
         routes = [
-          { routeConfig = { Destination = "10.62.41.0/24"; Gateway = "10.62.41.1"; GatewayOnLink = true; }; }
+          { Destination = "10.62.41.0/24"; Gateway = "10.62.41.1"; GatewayOnLink = true; }
         ];
       };
       "30-wg-public-in" = {
@@ -103,16 +97,12 @@ in
         address = [ ];
         routes = [
           {
-            routeConfig = {
-              Destination = "::/0";
-              Table = 30;
-            };
+            Destination = "::/0";
+            Table = 30;
           }
           {
-            routeConfig = {
-              Destination = "0.0.0.0/0";
-              Table = 30;
-            };
+            Destination = "0.0.0.0/0";
+            Table = 30;
           }
         ];
       };
@@ -121,23 +111,19 @@ in
         linkConfig = { RequiredForOnline = "no"; };
         address = [ ];
         routes = [
-          { routeConfig.Destination = "195.39.247.144/28"; }
-          { routeConfig.Destination = "2a0f:4ac0:1e0::/48"; }
+          { Destination = "195.39.247.144/28"; }
+          { Destination = "2a0f:4ac0:1e0::/48"; }
         ];
         routingPolicyRules = [
           {
-            routingPolicyRuleConfig = {
-              Family = "ipv4";
-              Table = 30;
-              From = "195.39.247.144/28";
-            };
+            Family = "ipv4";
+            Table = 30;
+            From = "195.39.247.144/28";
           }
           {
-            routingPolicyRuleConfig = {
-              Family = "ipv6";
-              Table = 30;
-              From = "2a0f:4ac0:1e0::/48";
-            };
+            Family = "ipv6";
+            Table = 30;
+            From = "2a0f:4ac0:1e0::/48";
           }
         ];
       };

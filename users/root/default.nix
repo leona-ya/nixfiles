@@ -56,7 +56,7 @@
         "wget" = "wget2";
         "wt" = "wget2";
       };
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       initExtra = builtins.readFile ../zsh-extra.zsh;
       oh-my-zsh = {
         enable = true;

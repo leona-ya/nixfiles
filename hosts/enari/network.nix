@@ -27,7 +27,7 @@ in
           "fd59:974e:6ee8:1001::1/64"
         ];
         routes = [
-          { routeConfig.Destination = "fd59:974e:6ee8::/48"; }
+          { Destination = "fd59:974e:6ee8::/48"; }
         ];
       };
     } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
@@ -41,11 +41,9 @@ in
           PrivateKeyFile = config.sops.secrets."hosts/enari/wireguard_wg-fdg_privatekey".path;
         };
         wireguardPeers = [{
-          wireguardPeerConfig = {
-            AllowedIPs = [ "fd59:974e:6ee8::/64" ];
-            PublicKey = "79NbBslDrdK5fllB4+6wA9mUV7sVQCtAaPsojW0JJ0U=";
-            Endpoint = "martian.infra.fahrplandatengarten.de:40000";
-          };
+          AllowedIPs = [ "fd59:974e:6ee8::/64" ];
+          PublicKey = "79NbBslDrdK5fllB4+6wA9mUV7sVQCtAaPsojW0JJ0U=";
+          Endpoint = "martian.infra.fahrplandatengarten.de:40000";
         }];
       };
     } // hosthelper.groups.wireguard.g_systemd_network_netdevconfig;

@@ -15,11 +15,9 @@
         PrivateKeyFile = config.sops.secrets."hosts/freyda/wireguard_wg-clients_privatekey".path;
       };
       wireguardPeers = [{
-        wireguardPeerConfig = {
-          AllowedIPs = [ "10.151.0.0/16" "fd8f:d15b:9f40::/48" ];
-          PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
-          Endpoint = "[2a01:4f8:c010:1098::1]:4500";
-        };
+        AllowedIPs = [ "10.151.0.0/16" "fd8f:d15b:9f40::/48" ];
+        PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
+        Endpoint = "[2a01:4f8:c010:1098::1]:4500";
       }];
     };
     "30-wg-clients" = {
@@ -31,11 +29,9 @@
         PrivateKeyFile = config.sops.secrets."hosts/freyda/wireguard_wg-clients_privatekey".path;
       };
       wireguardPeers = [{
-        wireguardPeerConfig = {
-          AllowedIPs = [ "10.151.0.0/16" "fd8f:d15b:9f40::/48" ];
-          PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
-          Endpoint = "wg.net.leona.is:4500";
-        };
+        AllowedIPs = [ "10.151.0.0/16" "fd8f:d15b:9f40::/48" ];
+        PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
+        Endpoint = "wg.net.leona.is:4500";
       }];
     };
     "30-wg-public" = {
@@ -47,11 +43,9 @@
         PrivateKeyFile = config.sops.secrets."hosts/freyda/wireguard_wg-public_privatekey".path;
       };
       wireguardPeers = [{
-        wireguardPeerConfig = {
-          AllowedIPs = [ "0.0.0.0/0" "::/0" ];
-          PublicKey = "f+fi4A3eZ2WWrIQc+OQugriDj1FPASBXdIW39TW5aF0=";
-          Endpoint = "wg.net.leona.is:51440";
-        };
+        AllowedIPs = [ "0.0.0.0/0" "::/0" ];
+        PublicKey = "f+fi4A3eZ2WWrIQc+OQugriDj1FPASBXdIW39TW5aF0=";
+        Endpoint = "wg.net.leona.is:51440";
       }];
     };
     "30-wg-fdg" = {
@@ -63,11 +57,9 @@
         PrivateKeyFile = config.sops.secrets."hosts/freyda/wireguard_wg-fdg_privatekey".path;
       };
       wireguardPeers = [{
-        wireguardPeerConfig = {
-          AllowedIPs = [ "fd59:974e:6ee8::/64" ];
-          PublicKey = "79NbBslDrdK5fllB4+6wA9mUV7sVQCtAaPsojW0JJ0U=";
-          Endpoint = "martian.infra.fahrplandatengarten.de:40000";
-        };
+        AllowedIPs = [ "fd59:974e:6ee8::/64" ];
+        PublicKey = "79NbBslDrdK5fllB4+6wA9mUV7sVQCtAaPsojW0JJ0U=";
+        Endpoint = "martian.infra.fahrplandatengarten.de:40000";
       }];
     };
     "30-wg-entropia-oob" = {
@@ -79,11 +71,9 @@
         PrivateKeyFile = config.sops.secrets."hosts/freyda/wireguard_wg-entropia-oob_privatekey".path;
       };
       wireguardPeers = [{
-        wireguardPeerConfig = {
-          AllowedIPs = [ "0.0.0.0/0" ];
-          PublicKey = "ppEIKUx02qt5YfytN3neB4zx4XFTZIomZHIqcOSaExA=";
-          Endpoint = "wg.oob.entropia.de:51820";
-        };
+        AllowedIPs = [ "0.0.0.0/0" ];
+        PublicKey = "ppEIKUx02qt5YfytN3neB4zx4XFTZIomZHIqcOSaExA=";
+        Endpoint = "wg.oob.entropia.de:51820";
       }];
     };
   };
@@ -99,8 +89,8 @@
         "fd8f:d15b:9f40:0901:300::1/72"
       ];
       routes = [
-        { routeConfig.Destination = "10.151.0.0/16"; }
-        { routeConfig.Destination = "fd8f:d15b:9f40::/48"; }
+        { Destination = "10.151.0.0/16"; }
+        { Destination = "fd8f:d15b:9f40::/48"; }
       ];
       dns = [
         "10.151.9.1"
@@ -118,8 +108,8 @@
         "fd8f:d15b:9f40:0901:300::1/72"
       ];
       routes = [
-        { routeConfig.Destination = "10.151.0.0/16"; }
-        { routeConfig.Destination = "fd8f:d15b:9f40::/48"; }
+        { Destination = "10.151.0.0/16"; }
+        { Destination = "fd8f:d15b:9f40::/48"; }
       ];
       dns = [
         "10.151.9.1"
@@ -137,8 +127,8 @@
         "2a0f:4ac0:1e0:100::1/64"
       ];
       routes = [
-        { routeConfig.Destination = "0.0.0.0/0"; }
-        { routeConfig.Destination = "::/0"; }
+        { Destination = "0.0.0.0/0"; }
+        { Destination = "::/0"; }
       ];
     };
     "30-wg-fdg" = {
@@ -151,7 +141,7 @@
         "fd59:974e:6ee8:1000::1/64"
       ];
       routes = [
-        { routeConfig.Destination = "fd59:974e:6ee8::/48"; }
+        { Destination = "fd59:974e:6ee8::/48"; }
       ];
     };
     "30-wg-entropia-oob" = {
@@ -163,7 +153,7 @@
       address = [
         "192.168.73.13/32"
       ];
-      routes = map (net: { routeConfig.Destination = net; }) [
+      routes = map (net: { Destination = net; }) [
         "192.168.73.0/24"
         "192.168.72.0/24"
         "10.214.224.0/24"

@@ -23,69 +23,57 @@ rec {
                 "10.151.0.0/16"
               ];
               interfaceRoutes = [
-                { routeConfig.Destination = "10.151.9.0/24"; }
-                { routeConfig.Destination = "fd8f:d15b:9f40:0900::/56"; }
+                { Destination = "10.151.9.0/24"; }
+                { Destination = "fd8f:d15b:9f40:0900::/56"; }
               ];
               extraWireguardPeers = [
                 {
                   # turingmachine
-                  wireguardPeerConfig = {
-                    AllowedIPs = [
-                      "10.151.9.2/32"
-                      "fd8f:d15b:9f40:0901::1/72"
-                    ];
-                    PublicKey = "gOBDoXc3zWVpnyx81fgVKmR2un14MW+c+SM/G6F3sFY=";
-                  };
+                  AllowedIPs = [
+                    "10.151.9.2/32"
+                    "fd8f:d15b:9f40:0901::1/72"
+                  ];
+                  PublicKey = "gOBDoXc3zWVpnyx81fgVKmR2un14MW+c+SM/G6F3sFY=";
                 }
                 {
                   # nyx
-                  wireguardPeerConfig = {
-                    AllowedIPs = [
-                      "10.151.9.3/32"
-                      "fd8f:d15b:9f40:0901:200::1/72"
-                    ];
-                    PublicKey = "MdSVqYNSF2Lylb1kTdfW33ZwQcGff1ueQRrjiPeqDVg=";
-                  };
+                  AllowedIPs = [
+                    "10.151.9.3/32"
+                    "fd8f:d15b:9f40:0901:200::1/72"
+                  ];
+                  PublicKey = "MdSVqYNSF2Lylb1kTdfW33ZwQcGff1ueQRrjiPeqDVg=";
                 }
                 {
                   # edlu
-                  wireguardPeerConfig = {
-                    AllowedIPs = [
-                      "10.151.9.4/32"
-                      "fd8f:d15b:9f40:0901:100::1/72"
-                    ];
-                    PublicKey = "NzCAPjJp7TAR98KkJd1glJwZNdEWUnDzPt3KdNId0Xc=";
-                  };
+                  AllowedIPs = [
+                    "10.151.9.4/32"
+                    "fd8f:d15b:9f40:0901:100::1/72"
+                  ];
+                  PublicKey = "NzCAPjJp7TAR98KkJd1glJwZNdEWUnDzPt3KdNId0Xc=";
                 }
                 {
                   # freyda
-                  wireguardPeerConfig = {
-                    AllowedIPs = [
-                      "10.151.9.7/32"
-                      "fd8f:d15b:9f40:0901:300::1/72"
-                    ];
-                    PublicKey = "1ZhRSfPcAbEYVk3AYuHjDj+6VoxgU4VbSHQqoj5TB0o=";
-                  };
+                  AllowedIPs = [
+                    "10.151.9.7/32"
+                    "fd8f:d15b:9f40:0901:300::1/72"
+                  ];
+                  PublicKey = "1ZhRSfPcAbEYVk3AYuHjDj+6VoxgU4VbSHQqoj5TB0o=";
                 }
                 {
                   # Luna [DM]
-                  wireguardPeerConfig = {
-                    AllowedIPs = [
-                      "10.151.9.5/32"
-                      "fd8f:d15b:9f40:0902::1/72"
-                    ];
-                    PublicKey = "0tlj84AXn/vVl7fAkgKsDcAcW3CN4y92sr/MKL9TBRI=";
-                  };
+                  AllowedIPs = [
+                    "10.151.9.5/32"
+                    "fd8f:d15b:9f40:0902::1/72"
+                  ];
+                  PublicKey = "0tlj84AXn/vVl7fAkgKsDcAcW3CN4y92sr/MKL9TBRI=";
                 }
                 {
                   # Luna Phone [DM]
-                  wireguardPeerConfig = {
-                    AllowedIPs = [
-                      "10.151.9.6/32"
-                      "fd8f:d15b:9f40:0902:100::1/72"
-                    ];
-                    PublicKey = "C8MU9Zqx740SjEYPjzIgCOlbe/D6HkDU+Vh6XwVMhFg=";
-                  };
+                  AllowedIPs = [
+                    "10.151.9.6/32"
+                    "fd8f:d15b:9f40:0902:100::1/72"
+                  ];
+                  PublicKey = "C8MU9Zqx740SjEYPjzIgCOlbe/D6HkDU+Vh6XwVMhFg=";
                 }
               ];
             };
@@ -98,10 +86,10 @@ rec {
               ];
               hostname = "bij.net.leona.is";
               interfaceRoutes = [
-                { routeConfig.Destination = "10.151.0.0/22"; }
-                { routeConfig.Destination = "10.151.4.0/22"; }
-                { routeConfig.Destination = "fd8f:d15b:9f40::/53"; }
-                { routeConfig.Destination = "fd8f:d15b:9f40:0c00::/54"; }
+                { Destination = "10.151.0.0/22"; }
+                { Destination = "10.151.4.0/22"; }
+                { Destination = "fd8f:d15b:9f40::/53"; }
+                { Destination = "fd8f:d15b:9f40:0c00::/54"; }
               ];
             };
           };
@@ -121,10 +109,6 @@ rec {
               ips = [ "${hosts.dwd.meta.intIpv6}/56" ];
               publicKey = "8Jzx9hklD8g6colimGybv9kpC2q0oTIgrISGhLd0QEM=";
               routed = [ "fd8f:d15b:9f40:100::/56" "10.151.4.0/22" ];
-              #              additonalInterfaceRoutes = [
-              #                { routeConfig.Destination = "10.151.8.0/22"; }
-              #                { routeConfig.Destination = "10.151.16.0/24"; }
-              #              ];
             };
           };
         };
@@ -179,10 +163,6 @@ rec {
           ips = [ "${hosts.gaika.meta.intIpv6}/56" ];
           publicKey = "rn6dN9VdCiYMaNcP7eiCUuOB103OpIAva08EPklNfgo=";
           routed = [ "fd8f:d15b:9f40::/56" "10.151.0.0/22" ];
-          #          additonalInterfaceRoutes = [
-          #            { routeConfig.Destination = "10.151.8.0/22"; }
-          #            { routeConfig.Destination = "10.151.16.0/24"; }
-          #          ];
         };
       };
     };
@@ -214,8 +194,8 @@ rec {
               routed = [ "fd8f:d15b:9f40:0c00::/72" ];
               hostname = "haku.net.leona.is";
               interfaceRoutes = [
-                { routeConfig.Destination = "fd8f:d15b:9f40::/53"; }
-                { routeConfig.Destination = "fd8f:d15b:9f40:0c00::/54"; }
+                { Destination = "fd8f:d15b:9f40::/53"; }
+                { Destination = "fd8f:d15b:9f40:0c00::/54"; }
               ];
             };
             "public" = {
@@ -223,37 +203,31 @@ rec {
               publicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
               routed = [ "195.39.247.144/28" "2a0f:4ac0:1e0::/48" ];
               interfaceRoutes = [
-                { routeConfig.Destination = "195.39.247.144/28"; }
-                { routeConfig.Destination = "2a0f:4ac0:1e0::/48"; }
+                { Destination = "195.39.247.144/28"; }
+                { Destination = "2a0f:4ac0:1e0::/48"; }
               ];
               extraWireguardPeers = [
                 {
                   # turingmachine
-                  wireguardPeerConfig = {
-                    AllowedIPs =
-                      [ "195.39.247.148/32" "2a0f:4ac0:1e0:100::/64" ];
-                    PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
-                    PersistentKeepalive = 21;
-                  };
+                  AllowedIPs =
+                    [ "195.39.247.148/32" "2a0f:4ac0:1e0:100::/64" ];
+                  PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
+                  PersistentKeepalive = 21;
                 }
                 {
                   # kupe
-                  wireguardPeerConfig = {
-                    Endpoint = "kupe.net.leona.is:51440";
-                    AllowedIPs = [
-                      "195.39.247.146/32"
-                    ];
-                    PublicKey = "6yX+Sfr6KlIn4ThOcRW9NH5iWhzmr6wrOgwMhxOSnTg=";
-                    PersistentKeepalive = 21;
-                  };
+                  Endpoint = "kupe.net.leona.is:51440";
+                  AllowedIPs = [
+                    "195.39.247.146/32"
+                  ];
+                  PublicKey = "6yX+Sfr6KlIn4ThOcRW9NH5iWhzmr6wrOgwMhxOSnTg=";
+                  PersistentKeepalive = 21;
                 }
                 {
                   # dwd
-                  wireguardPeerConfig = {
-                    AllowedIPs = [ "195.39.247.151/32" "2a0f:4ac0:1e0:20::/60" ];
-                    PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
-                    PersistentKeepalive = 21;
-                  };
+                  AllowedIPs = [ "195.39.247.151/32" "2a0f:4ac0:1e0:20::/60" ];
+                  PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
+                  PersistentKeepalive = 21;
                 }
               ];
             };
@@ -334,8 +308,8 @@ rec {
           server = {
             port = 51441;
             routes = [
-              { routeConfig.Destination = "fd8f:d15b:9f40::/48"; }
-              { routeConfig.Destination = "10.151.0.0/16"; }
+              { Destination = "fd8f:d15b:9f40::/48"; }
+              { Destination = "10.151.0.0/16"; }
             ];
           };
           clients = { port = 4500; };
@@ -349,13 +323,11 @@ rec {
                 groupConfig = groups.wireguard.interfaces.${ifName};
               in
               {
-                wireguardPeerConfig = {
-                  AllowedIPs = [ ifaceConfig.routed ];
-                  Endpoint = mkIf (ifaceConfig ? hostname)
-                    "${ifaceConfig.hostname}:${toString groupConfig.port}";
-                  PublicKey = ifaceConfig.publicKey;
-                  PersistentKeepalive = 21;
-                };
+                AllowedIPs = [ ifaceConfig.routed ];
+                Endpoint = mkIf (ifaceConfig ? hostname)
+                  "${ifaceConfig.hostname}:${toString groupConfig.port}";
+                PublicKey = ifaceConfig.publicKey;
+                PersistentKeepalive = 21;
               })
             (builtins.filter
               (x:

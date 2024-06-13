@@ -35,16 +35,12 @@
       };
       routes = [
         {
-          routeConfig = {
-            Destination = "168.119.100.247/32";
-            Gateway = "_dhcp4";
-          };
+          Destination = "168.119.100.247/32";
+          Gateway = "_dhcp4";
         }
         {
-          routeConfig = {
-            Destination = "2a01:4f8:c010:1098::1/128";
-            Gateway = "_ipv6ra";
-          };
+          Destination = "2a01:4f8:c010:1098::1/128";
+          Gateway = "_ipv6ra";
         }
       ];
     };
@@ -58,16 +54,12 @@
       linkConfig = { RequiredForOnline = "yes"; };
       routes = [
         {
-          routeConfig = {
-            Destination = "168.119.100.247/32";
-            Gateway = "_dhcp4";
-          };
+          Destination = "168.119.100.247/32";
+          Gateway = "_dhcp4";
         }
         {
-          routeConfig = {
-            Destination = "2a01:4f8:c010:1098::1/128";
-            Gateway = "_ipv6ra";
-          };
+          Destination = "2a01:4f8:c010:1098::1/128";
+          Gateway = "_ipv6ra";
         }
       ];
     };

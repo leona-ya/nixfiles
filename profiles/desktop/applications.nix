@@ -35,11 +35,6 @@
     xdg-utils
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-    "openssl-1.1.1w"
-  ];
-
   users.users.leona.packages = with pkgs; [
     bitwarden
     calibre
@@ -182,7 +177,6 @@
       };
       extensions = [
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-        { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
       ];
     };
     programs.password-store.enable = true;
