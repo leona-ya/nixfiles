@@ -14,6 +14,12 @@
     home.stateVersion = "22.05";
     manual.manpages.enable = false;
 
+    nix.gc = {
+      automatic = true;
+      options = "--delete-older-than 7d";
+      persistent = true;
+    };
+
     programs.zsh = {
       enable = true;
       plugins = [{
