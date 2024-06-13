@@ -30,9 +30,10 @@
     services.swayidle =
       let
         lockCommand = "${pkgs.writeShellScript "swaylock-command" ''
-        ${pkgs.grim}/bin/grim -t png -l 1 /tmp/lock-screenshot.png
-        ${pkgs.imagemagick}/bin/magick /tmp/lock-screenshot.png -blur 80x40 /tmp/lock-screenshot.png
-        ${pkgs.swaylock}/bin/swaylock -i /tmp/lock-screenshot.png
+          1password --lock
+          ${pkgs.grim}/bin/grim -t png -l 1 /tmp/lock-screenshot.png
+          ${pkgs.imagemagick}/bin/magick /tmp/lock-screenshot.png -blur 80x40 /tmp/lock-screenshot.png
+          ${pkgs.swaylock}/bin/swaylock -i /tmp/lock-screenshot.png
       ''}";
       in
       {
