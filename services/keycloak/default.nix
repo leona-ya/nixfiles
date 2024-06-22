@@ -27,7 +27,7 @@ in
   services.keycloak = {
     enable = true;
     package = pkgs.keycloak.override {
-      extraFeatures = [ ];
+      extraFeatures = [ "persistent-user-sessions" ];
       disabledFeatures = [ "kerberos" ];
     };
     database.passwordFile = config.sops.secrets."services/keycloak/database_password".path;
