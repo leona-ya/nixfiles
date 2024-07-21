@@ -39,6 +39,7 @@
     bitwarden
     calibre
     cachix
+    editorconfig-checker
     element-desktop
     evince
     feh
@@ -69,6 +70,7 @@
     openssl_3_0
     pandoc
     pass-wayland
+    pre-commit
     podman-compose
     poetry
     python3
@@ -84,7 +86,7 @@
     texlive.combined.scheme-full
     thunderbird
     virt-manager
-    youtube-dl
+    yt-dlp
     zoxide
     #    (zoom-us.overrideAttrs (old: {
     #      postFixup = old.postFixup + ''
@@ -257,6 +259,7 @@
     # dev envs
     home.file = {
       ".envs/openjdk17".source = "${pkgs.jdk17}/lib/openjdk";
+      ".envs/openjdk21".source = "${pkgs.jdk21}/lib/openjdk";
     };
   };
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
