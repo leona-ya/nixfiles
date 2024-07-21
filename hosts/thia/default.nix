@@ -12,6 +12,7 @@
     ../../services/nextcloud
     ./network.nix
     ./libvirt.nix
+    ./kanshi.nix
   ];
 
   deployment.allowLocalDeployment = true;
