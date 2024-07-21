@@ -36,13 +36,14 @@ in
     systemdTimerConfig = mkOption {
       type = types.attrs;
       default = {
-        OnCalendar = "01:00";
-        RandomizedDelaySec = "4h";
+        OnCalendar = "hourly";
+        RandomizedDelaySec = "30min";
       };
     };
     pruneOpts = mkOption {
       type = types.listOf types.str;
       default = [
+        "--keep-last 12"
         "--keep-daily 7"
         "--keep-weekly 4"
         "--keep-monthly 12"
