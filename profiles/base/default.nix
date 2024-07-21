@@ -28,6 +28,7 @@
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
   nix = {
+    package = pkgs.lix;
     settings = {
       experimental-features = [ "nix-command flakes" ];
       builders-use-substitutes = true;
