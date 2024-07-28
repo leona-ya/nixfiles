@@ -91,6 +91,9 @@
     locations = {
       "/" = {
         proxyPass = "http://[::1]:8008";
+        extraConfig = ''
+          client_max_body_size 55M;
+        '';
       };
     };
   };
