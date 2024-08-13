@@ -80,12 +80,6 @@ let
     #        '';
     #      };
     #    };
-    "opendatamap.net" = {
-      serverAliases = [
-        "www.opendatamap.net"
-      ];
-      root = pkgs.opendatamap-net;
-    };
     "cv.leona.is" = {
       root = "/persist/var/www/cv.leona.is";
       locations."/".index = "index.pdf";
