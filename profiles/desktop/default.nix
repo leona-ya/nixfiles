@@ -1,7 +1,8 @@
-{ config, lib, ... }:
+{ config, lib, inputs, ... }:
 
 {
   imports = [
+    inputs.lix-module.nixosModules.default
     ./wezterm.nix
     ./applications.nix
     ./firefox.nix
@@ -9,6 +10,8 @@
     ./syncthing.nix
     ./gammastep.nix
   ];
+  nix.settings.experimental-features = [ "pipe-operator" ];
+
   security.pam.services.login.fprintAuth = lib.mkForce false;
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
     enableACME = lib.mkOverride 96 false;
