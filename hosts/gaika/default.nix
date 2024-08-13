@@ -11,11 +11,8 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
-    enableACME = lib.mkForce false;
-    forceSSL = lib.mkForce false;
-  };
-
+  services.nginx.enable = false;
+  services.nginx.virtualHosts."gaika.net.leona.is".enableACME = false;
   #  services.qemuGuest.enable = true;
 
   l.promtail = {

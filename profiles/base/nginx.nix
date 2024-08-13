@@ -1,9 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  security.acme.defaults.email = "noc@leona.is";
-  security.acme.acceptTerms = true;
-
   networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.nginx = {
     enable = lib.mkDefault true;
@@ -30,12 +27,12 @@
       access_log off;
     '';
   };
+  security.acme.certs."${config.networking.hostName}.${config.networking.domain}" = lib.mkIf config.services.nginx.enable { group = "nginx"; };
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
-    enableACME = true;
+    useACMEHost = "${config.networking.hostName}.${config.networking.domain}";
     forceSSL = true;
     locations."/public/" = {
       alias = "/var/data/public/";
     };
   };
 }
-

@@ -10,6 +10,7 @@
     ../../users/leona
     ./nginx.nix
     ./helix.nix
+    ./acme.nix
   ];
   nixpkgs.overlays = lib.attrValues inputs.self.overlays;
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
@@ -30,7 +31,7 @@
   nix = {
     package = pkgs.lix;
     settings = {
-      experimental-features = [ "nix-command flakes" ];
+      experimental-features = [ "nix-command" "flakes" ];
       builders-use-substitutes = true;
       trusted-users = [ "root" "@wheel" "leona" ];
     };

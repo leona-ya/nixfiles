@@ -16,7 +16,7 @@ in
     SOA = ((ttl 3600) {
       nameServer = "ns1.leona.is.";
       adminEmail = "noc@leona.is";
-      serial = 2024051301;
+      serial = 0;
       refresh = 300;
       expire = 604800;
       minimum = 300;
@@ -56,6 +56,12 @@ in
       "ns2" = enari_host;
       "ns3" = bij_host;
 
+      "acme".NS = [ "ns1.leona.is." "ns2.leona.is." "ns3.leona.is." ];
+      "acme".DS = [
+        { keyTag = 33964; algorithm = 13; digestType = 2; digest = "7f656ab266f7bfd2ba7e7712e063037726290eaf5aad3188ef941fd5fe68bd77"; }
+        { keyTag = 33964; algorithm = 13; digestType = 4; digest = "bb61dfe2ef1b5c3223a0075bd51c10e288e2ba7db4cbd01a86de5e1e719e0ba7a2e396a3e358ae2961c444c35ddb2626"; }
+      ];
+
       mail = kupe_host;
       autoconfig.CNAME = [ "kupe.net.leona.is." ];
       "wg-sternpunkt".CNAME = [ "wg.net.leona.is." ]; # backwards compatability
@@ -71,6 +77,7 @@ in
       www.CNAME = [ "bij.net.leona.is." ];
       "acme.int".AAAA = [ "fd8f:d15b:9f40:101::100" ];
       auth = host bij_v4 sphere_v6;
+      "ldap.int".CNAME = [ "sphere.wg.net.leona.is." ];
       alertmanager.CNAME = [ "enari.net.leona.is." ];
       cloud.CNAME = [ "bij.net.leona.is." ];
       "cal.cloud".CNAME = [ "bij.net.leona.is." ];

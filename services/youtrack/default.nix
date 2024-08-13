@@ -6,8 +6,9 @@
     package = pkgs.youtrack;
   };
 
+  security.acme.certs."yt.leona.is".group = "nginx";
   services.nginx.virtualHosts."yt.leona.is" = {
-    enableACME = true;
+    useACMEHost = "yt.leona.is";
     kTLS = true;
     forceSSL = true;
   };

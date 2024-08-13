@@ -47,10 +47,10 @@
     ];
   };
 
-  security.acme.certs."paperless.int.leona.is".server = "https://acme.int.leona.is/acme/acme/directory";
+  security.acme.certs."paperless.int.leona.is".group = "nginx";
 
   services.nginx.virtualHosts."paperless.int.leona.is" = {
-    enableACME = true;
+    useACMEHost = "paperless.int.leona.is";
     forceSSL = true;
     kTLS = true;
     locations."/" = {

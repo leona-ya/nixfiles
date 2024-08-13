@@ -29,7 +29,7 @@
     dkimKeyBits = 2048;
 
     localDnsResolver = false;
-    certificateScheme = "acme-nginx";
+    certificateScheme = "acme";
   };
 
   services.dovecot2 = {
@@ -67,22 +67,5 @@
         greylist = 5;
       }
     '';
-  };
-  services.nginx.virtualHosts = {
-    "mail.em0lar.dev" = {
-      enableACME = true;
-      forceSSL = true;
-      serverAliases = [
-        "mail.leona.is"
-      ];
-      #locations."/rspamd/" = {
-      #  proxyPass = "http://unix:/var/run/rspamd/worker-controller.sock:/";
-      #  extraConfig = ''
-      #    proxy_set_header Host      $host;
-      #    proxy_set_header X-Real-IP $remote_addr;
-      #    proxy_set_header X-Forwarded-For "";
-      #  '';
-      #};
-    };
   };
 }

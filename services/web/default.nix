@@ -2,13 +2,8 @@
 
 let
   commonHeaders = lib.concatStringsSep "\n" (lib.filter (line: lib.hasPrefix "add_header" line) (lib.splitString "\n" config.services.nginx.commonHttpConfig));
-in
-{
-  services.nginx.virtualHosts = {
+  vHosts = {
     "www.leona.is" = {
-      enableACME = true;
-      forceSSL = true;
-      kTLS = true;
       serverAliases = [
         "labcode.de"
       ];
@@ -27,9 +22,6 @@ in
         server = { "m.server" = "matrix.leona.is:443"; };
       in
       {
-        enableACME = true;
-        forceSSL = true;
-        kTLS = true;
         root = pkgs.leona-is-website;
         locations = {
           "= /.well-known/matrix/client" = {
@@ -89,25 +81,16 @@ in
     #      };
     #    };
     "opendatamap.net" = {
-      enableACME = true;
-      forceSSL = true;
-      kTLS = true;
       serverAliases = [
         "www.opendatamap.net"
       ];
       root = pkgs.opendatamap-net;
     };
     "cv.leona.is" = {
-      enableACME = true;
-      forceSSL = true;
-      kTLS = true;
       root = "/persist/var/www/cv.leona.is";
       locations."/".index = "index.pdf";
     };
     "openpgpkey.leona.is" = {
-      enableACME = true;
-      forceSSL = true;
-      kTLS = true;
       locations."/.well-known/openpgpkey/leona.is/" = {
         alias = "${./wkd}/";
         extraConfig = ''
@@ -117,6 +100,21 @@ in
       };
     };
   };
+in
+{
+  security.acme.certs."${config.networking.hostName}.${config.networking.domain}" = {
+    group = "nginx";
+    extraDomainNames = lib.flatten (lib.attrNames vHosts ++ lib.mapAttrsToList (_: c: if c ? serverAliases then c.serverAliases else []) vHosts);
+  };
+  services.nginx.virtualHosts =
+    vHosts
+    |> builtins.mapAttrs (_: cfg:
+      {
+        forceSSL = true;
+        kTLS = true;
+        useACMEHost = "${config.networking.hostName}.${config.networking.domain}";
+      } // cfg);
+
   services.phpfpm.pools."nginx-default" = {
     user = config.services.nginx.user;
     settings = {

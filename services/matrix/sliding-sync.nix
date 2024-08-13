@@ -9,8 +9,8 @@
   };
 
   services.nginx.virtualHosts."sliding-sync.matrix.leona.is" = {
+    useACMEHost = "matrix.leona.is";
     forceSSL = true;
-    enableACME = true;
     kTLS = true;
     locations = {
       "/" = {

@@ -128,6 +128,12 @@ creation_rules:
           - *leona
         age:
           - *enari
+  - path_regex: secrets/services/dns-knot-primary.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *kupe
   - path_regex: secrets/services/dns-knot-secondary.yaml
     key_groups:
       - pgp:

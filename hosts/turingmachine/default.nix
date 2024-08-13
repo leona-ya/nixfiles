@@ -29,6 +29,7 @@
     "profiles/desktop/user_leona_pw".neededForUsers = true;
   };
 
+  services.nginx.enable = false;
   services.upower = {
     enable = true;
     percentageLow = 10;

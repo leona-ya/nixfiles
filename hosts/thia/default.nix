@@ -75,7 +75,6 @@
   };
 
   services.nginx.virtualHosts."thia.net.leona.is" = {
-    enableACME = lib.mkForce true;
     forceSSL = lib.mkForce true;
   };
   security.acme.certs."thia.net.leona.is".server = "https://acme.int.leona.is/acme/acme/directory";

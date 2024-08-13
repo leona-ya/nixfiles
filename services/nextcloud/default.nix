@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 
-{
+let
+  cfg = config.services.nextcloud;
+in {
   l.sops.secrets."services/nextcloud/admin_password".owner = "nextcloud";
   services.nextcloud = {
     enable = true;
@@ -55,10 +57,14 @@
     requires = [ "postgresql.service" ];
     after = [ "postgresql.service" ];
   };
-  services.nginx.virtualHosts."${config.services.nextcloud.hostName}" = {
-    enableACME = true;
+  security.acme.certs."${cfg.hostName}" = {
+    group = "nginx";
+    extraDomainNames = cfg.settings.trusted_domains;
+  };
+  services.nginx.virtualHosts."${cfg.hostName}" = {
+    useACMEHost = cfg.hostName;
     forceSSL = true;
     kTLS = true;
-    serverAliases = config.services.nextcloud.settings.trusted_domains;
+    serverAliases = cfg.settings.trusted_domains;
   };
 }

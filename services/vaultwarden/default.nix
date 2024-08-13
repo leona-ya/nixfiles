@@ -39,9 +39,10 @@
     };
   };
 
+  security.acme.certs."pass.leona.is".group = "nginx";
   services.nginx.virtualHosts = {
     "pass.leona.is" = {
-      enableACME = true;
+      useACMEHost = "pass.leona.is";
       forceSSL = true;
       kTLS = true;
       locations."/" = {
