@@ -15,7 +15,7 @@
   deployment.allowLocalDeployment = true;
   #  deployment.targetHost = "fd8f:d15b:9f40:901::1";
 
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_8;
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
   boot.loader.systemd-boot.enable = lib.mkForce false;
   disabledModules = [ "${inputs.nixos-hardware}/common/cpu/amd/raphael/igpu.nix" ];
 
