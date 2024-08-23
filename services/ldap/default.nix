@@ -2,17 +2,28 @@
 
 {
   l.sops.secrets."services/ldap/root_password".owner = "openldap";
-  networking.firewall.extraInputRules = ''
-    ip6 saddr fd8f:d15b:9f40::/48 tcp dport 389 accept
-  '';
+
+  networking.firewall.interfaces."br-lan".allowedTCPPorts = [ 636 ];
+  security.acme.certs."ldap.leona.is".group = "openldap";
+
+  systemd.services.openldap = {
+    wants = [ "acme-ldap.int.leona.is.service" ];
+    after = [ "acme-ldap.int.leona.is.service" ];
+  };
 
   services.openldap = {
     enable = true;
+    urlList = [ "ldaps:///" ];
     settings = {
       attrs = {
         objectClass = "olcGlobal";
         cn = "config";
         olcPidFile = "/run/openldap/openldap.pid";
+        olcTLSCACertificateFile = "/var/lib/acme/ldap.leona.is/full.pem";
+        olcTLSCertificateFile = "/var/lib/acme/ldap.leona.is/cert.pem";
+        olcTLSCertificateKeyFile = "/var/lib/acme/ldap.leona.is/key.pem";
+        olcTLSCipherSuite = "DEFAULT:!kRSA:!kDHE";
+        olcTLSProtocolMin = "3.3";
       };
       children = {
         "cn=schema" = {

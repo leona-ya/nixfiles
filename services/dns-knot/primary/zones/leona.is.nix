@@ -77,7 +77,7 @@ in
       www.CNAME = [ "bij.net.leona.is." ];
       "acme.int".AAAA = [ "fd8f:d15b:9f40:101::100" ];
       auth = host bij_v4 sphere_v6;
-      "ldap.int".CNAME = [ "sphere.wg.net.leona.is." ];
+      "ldap".CNAME = [ "sphere.net.leona.is." ];
       alertmanager.CNAME = [ "enari.net.leona.is." ];
       cloud.CNAME = [ "bij.net.leona.is." ];
       "cal.cloud".CNAME = [ "bij.net.leona.is." ];
