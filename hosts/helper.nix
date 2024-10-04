@@ -373,7 +373,7 @@ rec {
             nameValuePair "30-wg-${ifName}" {
               name = "wg-${ifName}";
               linkConfig = { RequiredForOnline = "yes"; };
-              networkConfig = { IPForward = true; };
+              networkConfig = { IPv4Forwarding = true; IPv6Forwarding = true; };
               address = ifaceConfig.ips;
               routes =
                 if ifaceConfig ? interfaceRoutes then

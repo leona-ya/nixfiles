@@ -12,8 +12,13 @@
     ./helix.nix
     ./acme.nix
   ];
+
   nixpkgs.overlays = lib.attrValues inputs.self.overlays;
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
 
   deployment.tags = [ pkgs.stdenv.hostPlatform.system config.networking.domain ];
   deployment.targetUser = lib.mkDefault "leona";

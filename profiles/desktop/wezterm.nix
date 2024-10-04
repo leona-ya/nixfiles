@@ -44,6 +44,9 @@
           config = wezterm.config_builder()
         end
 
+        -- workaround rendering bug
+        config.front_end = "WebGpu"
+
         config.font = wezterm.font("Monaspace Argon")
         config.font_size = 8.5
         config.line_height = 1.2

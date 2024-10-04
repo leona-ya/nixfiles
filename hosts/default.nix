@@ -33,10 +33,14 @@
               system = "x86_64-linux";
             }) // {
             thia = (import
-              ((import inputs.nixpkgs-unstable { system = "x86_64-linux"; }).applyPatches {
+              ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                 name = "nixpkgs-patched-thia";
-                src = inputs.nixpkgs-unstable;
+                src = inputs.nixpkgs;
                 patches = [
+                  (nixpkgs.fetchpatch {
+                    url = "https://github.com/nixos/nixpkgs/pull/343555.patch";
+                    hash = "sha256-lVjrg2c9NZM/TYcFfGtNBsL/y71FgOfRZWbFLUPeGKU=";
+                  })
                 ];
               })
               { system = "x86_64-linux"; });
