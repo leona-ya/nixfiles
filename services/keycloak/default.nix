@@ -27,11 +27,10 @@ in
   services.keycloak = {
     enable = true;
     package = pkgs.keycloak.override {
-      extraFeatures = [ "persistent-user-sessions" ];
+      extraFeatures = [];
       disabledFeatures = [ "kerberos" ];
     };
     database.passwordFile = config.sops.secrets."services/keycloak/database_password".path;
-    initialAdminPassword = "foobar";
     themes = {
       leona = keycloakTheme;
     };
@@ -42,7 +41,8 @@ in
       http-host = "127.0.0.1";
       http-port = 8080;
       hostname = "auth.leona.is";
-      proxy = "edge";
+      http-enabled = true;
+      proxy-headers = "xforwarded";
     };
   };
   systemd.services.keycloak = {

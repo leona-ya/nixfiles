@@ -32,18 +32,42 @@
             (_: import inputs.nixpkgs-unstable {
               system = "x86_64-linux";
             }) // {
-            thia = (import
-              ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                name = "nixpkgs-patched-thia";
-                src = inputs.nixpkgs;
-                patches = [
-                  (nixpkgs.fetchpatch {
-                    url = "https://github.com/nixos/nixpkgs/pull/343555.patch";
-                    hash = "sha256-lVjrg2c9NZM/TYcFfGtNBsL/y71FgOfRZWbFLUPeGKU=";
-                  })
-                ];
-              })
-              { system = "x86_64-linux"; });
+              thia = (import
+                ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+                  name = "nixpkgs-patched-thia";
+                  src = inputs.nixpkgs;
+                  patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/nixos/nixpkgs/pull/343555.patch";
+                      hash = "sha256-lVjrg2c9NZM/TYcFfGtNBsL/y71FgOfRZWbFLUPeGKU=";
+                    })
+                  ];
+                })
+                { system = "x86_64-linux"; });
+              naya = (import
+                ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+                  name = "nixpkgs-patched-naya";
+                  src = inputs.nixpkgs;
+                  patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/346439.patch";
+                      hash = "sha256-n56PVZwfHp/j08x7wvkB2NKPvqtVdx7weIpKJr6PzMk=";
+                    })
+                  ];
+                })
+                { system = "x86_64-linux"; });
+              sphere = (import
+                ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+                  name = "nixpkgs-patched-sphere";
+                  src = inputs.nixpkgs;
+                  patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/346439.patch";
+                      hash = "sha256-n56PVZwfHp/j08x7wvkB2NKPvqtVdx7weIpKJr6PzMk=";
+                    })
+                  ];
+                })
+                { system = "aarch64-linux"; });
           };
 
           specialArgs = {
