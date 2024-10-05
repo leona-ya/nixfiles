@@ -9,6 +9,7 @@ let
   bij_host = host bij_v4 "2a01:4f8:c010:1098::1";
   laurel_v6 = "2a01:4f8:c012:b172::1";
   sphere_v6 = "2a01:4f8:c012:b842::1";
+  naya_v6 = "2a01:4f8:1c17:51ec::1";
 in
 {
   zone = {
@@ -46,6 +47,7 @@ in
       "dwd.net" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       "enari.net" = enari_host;
       "laurel.net".AAAA = [ laurel_v6 ];
+      "naya.net".AAAA = [ naya_v6 ];
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
       "sphere.net".AAAA = [ sphere_v6 ];

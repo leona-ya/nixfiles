@@ -103,6 +103,26 @@
         "type": "sourcehut"
       }
     },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727977578,
+        "narHash": "sha256-DBORKcmQ7ZjA4qE1MsnF1MmZSokOGrw4W9vTCioOv2U=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "574400001b3ffe555c7a21e0ff846230759be2ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "dns": {
       "inputs": {
         "flake-utils": "flake-utils_3",
@@ -609,6 +629,7 @@
       "inputs": {
         "ccc-nixlib": "ccc-nixlib",
         "colmena": "colmena",
+        "disko": "disko",
         "dns": "dns",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
