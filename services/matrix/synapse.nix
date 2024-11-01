@@ -85,7 +85,7 @@
   ];
 
   services.nginx.virtualHosts."matrix.leona.is" = {
-    useACMEHost = "matrix.leona.is";
+    enableACME = true;
     forceSSL = true;
     kTLS = true;
     locations = {

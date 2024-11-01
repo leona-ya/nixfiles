@@ -50,9 +50,10 @@
   };
 
 
-#  services.nginx.virtualHosts."mautrix-telegram.matrix.leona.is" = {
-#    forceSSL = true;
-#    kTLS = true;
-#    locations."/public/".proxyPass = "http://[::1]:8010/public/";
-#  };
+  services.nginx.virtualHosts."mautrix-telegram.matrix.leona.is" = {
+    enableACME = true;
+    forceSSL = true;
+    kTLS = true;
+    locations."/public/".proxyPass = "http://[::1]:8010/public/";
+  };
 }
