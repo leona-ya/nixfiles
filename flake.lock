@@ -274,12 +274,15 @@
       }
     },
     "flake-utils_4": {
+      "inputs": {
+        "systems": "systems_2"
+      },
       "locked": {
-        "lastModified": 1648297722,
-        "narHash": "sha256-W+qlPsiZd8F3XkzXOzAoR+mpFqzm3ekQkJNa+PIh1BQ=",
+        "lastModified": 1726560853,
+        "narHash": "sha256-X6rJYSESBVr3hBoH0WbKE5KvhPU5bloyZ2L4K60/fPQ=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "0f8662f1319ad6abf89b3380dd2722369fc51ade",
+        "rev": "c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a",
         "type": "github"
       },
       "original": {
@@ -290,7 +293,7 @@
     },
     "flake-utils_5": {
       "inputs": {
-        "systems": "systems_2"
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1710146030,
@@ -398,11 +401,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1708709032,
-        "narHash": "sha256-/4fFK+uIKnihmTBJ3VeU6ajUCvtk/YlynwFY+0qFvjs=",
+        "lastModified": 1730499875,
+        "narHash": "sha256-yAxd8t6Mq8DgCHPOgPwxGULcWZZkRYErawRH8PW1d1Q=",
         "ref": "main",
-        "rev": "6b4f173ede36ff25cc2e496bfa7c5827e0189f6e",
-        "revCount": 7,
+        "rev": "aacb25071b2ff0d9404ce86b1e924d6f8f743af9",
+        "revCount": 8,
         "type": "git",
         "url": "https://cyberchaos.dev/leona/leona.is"
       },
@@ -712,6 +715,21 @@
       }
     },
     "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
