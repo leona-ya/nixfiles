@@ -65,8 +65,5 @@ in
         proxy_busy_buffers_size    256k;
       '';
     };
-    locations."= /" = {
-      return = "301 https://auth.stag.infspace.xyz/realms/leona/account/";
-    };
   };
 }
