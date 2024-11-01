@@ -18,7 +18,8 @@ config :pleroma, :instance,
   federating: true,
   federation_incoming_replies_max_depth: 100,
   federation_reachability_timeout_days: 7,
-  autofollowed_nicknames: ["flossenpflege"]
+  autofollowed_nicknames: ["flossenpflege"],
+  max_pinned_statuses: 15
 
 config :pleroma, Pleroma.Emails.Mailer,
   enabled: true,
@@ -97,3 +98,34 @@ config :logger,
 
 config :logger, :ex_syslogger,
   level: :warn
+
+config :pleroma, :connections_pool,
+  connect_timeout: 15_000
+
+config :pleroma, :pools,
+  federation: [
+    size: 75,
+    max_waiting: 20,
+    recv_timeout: 15_000
+  ],
+  media: [
+    size: 75,
+    max_waiting: 20,
+    recv_timeout: 15_000
+  ],
+  rich_media: [
+    size: 25,
+    max_waiting: 20,
+    recv_timeout: 15_000
+  ],
+  upload: [
+    size: 25,
+    max_waiting: 20,
+    recv_timeout: 15_000
+  ],
+  default: [
+    size: 50,
+    max_waiting: 2,
+    recv_timeout: 15_000
+  ]
+
