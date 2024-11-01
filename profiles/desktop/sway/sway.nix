@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   programs.sway.enable = true;
   programs.light.enable = true;
@@ -15,7 +15,7 @@
   environment.variables.SDL_VIDEODRIVER = "wayland";
   environment.variables.QT_QPA_PLATFORM = "wayland";
   environment.variables.QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-  environment.variables._JAVA_AWT_WM_NONREPARENTING = "1";
+  #environment.variables._JAVA_AWT_WM_NONREPARENTING = "1";
   environment.variables.NIXOS_OZONE_WL = "1";
 
   xdg.portal.enable = true;
@@ -49,8 +49,7 @@
     wayland.windowManager.sway =
       let
         cfg = config.home-manager.users.leona.wayland.windowManager.sway;
-        #      wallpaper = "~/.wallpapers/trans-estro.png";
-        wallpaper = "~/.wallpapers/inspiration4.jpg";
+        wallpaper = "~/.wallpapers/cyberpunk_1.jpg";
         modifier = "Mod4";
       in
       {

@@ -45,23 +45,20 @@
     feh
     gcc11
     gimp
-    gnome.eog
-    gnome.nautilus
-    gnome.vinagre
+    eog
+    nautilus
+    clang
     cmake
     gnumake
     gh
     inkscape
-    (jetbrains.idea-ultimate.override {
-      jdk = jetbrains.jdk;
-    })
-    (jetbrains.rust-rover.override {
-      jdk = jetbrains.jdk;
-    })
+    jetbrains.clion
+    jetbrains.idea-ultimate
+    jetbrains.rust-rover
     #    kicad
     libimobiledevice
     onlyoffice-bin
-    nheko
+    #nheko
     mpv
     (wrapOBS {
       plugins = with obs-studio-plugins; [ wlrobs ];
@@ -129,6 +126,7 @@
   services.udisks2.enable = true;
   programs.gnome-disks.enable = true;
   programs.kdeconnect.enable = true;
+  programs.nix-ld.enable = true;
   services.avahi = {
     enable = true;
     nssmdns4 = true;
