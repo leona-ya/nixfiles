@@ -19,12 +19,12 @@
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
   ];
-
   deployment.tags = [ pkgs.stdenv.hostPlatform.system config.networking.domain ];
   deployment.targetUser = lib.mkDefault "leona";
   deployment.targetHost = lib.mkDefault config.networking.fqdn;
   deployment.targetPort = lib.mkDefault (lib.head config.services.openssh.ports);
 
+  system.switch.enableNg = true;
   hardware.enableRedistributableFirmware = true;
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   security.pki.certificateFiles = [ ../../lib/leona-is-ca.crt ];
@@ -102,7 +102,7 @@
     sshfs
     tcpdump
     tmux
-    wget
+    #wget
     whois
     wireguard-tools
   ];
