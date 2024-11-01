@@ -9,6 +9,7 @@
     ./sound.nix
     ./syncthing.nix
     ./gammastep.nix
+    ./uni-vpn.nix
   ];
   nix.settings.experimental-features = [ "pipe-operator" ];
 
