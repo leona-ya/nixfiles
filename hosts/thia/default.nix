@@ -63,6 +63,7 @@
       "/home/*/.cache"
       "/home/*/.rustup"
       "/home/*/.local/share/Steam"
+      "/home/*/.m2"
       "/home/*/tmp"
       "**/Cache"
     ];

@@ -64,7 +64,7 @@ in
         passwordFile = config.sops.secrets."hosts/${config.networking.hostName}/restic_password".path;
         paths = cfg.paths;
         repository = cfg.repo;
-        timerConfig = cfg.systemdTimerConfig;
+        timerConfig = if cfg.enableSystemdTimer then cfg.systemdTimerConfig else null;
         initialize = true;
         backupPrepareCommand = mkIf config.services.postgresql.enable ''
           mkdir -p /root/restic-backup
