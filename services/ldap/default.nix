@@ -51,8 +51,6 @@
             olcDatabase = "{-1}frontend";
             olcAccess = [
               "{0}to * by dn.exact=gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth manage by * break"
-              "{1}to dn.exact=\"\" by * read"
-              "{2}to dn.base=\"cn=Subschema\" by * read"
             ];
             olcPasswordHash = "{ARGON2}";
           };
