@@ -16,6 +16,7 @@ in
       type = with types; listOf str;
       default = [
         "/home"
+        "/var/lib"
         "/persist"
         "/root"
       ];

@@ -133,6 +133,25 @@ rec {
         };
       };
     };
+    rutile = {
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:c11::1";
+        hasPublicIpv4 = true;
+        hasPublicIpv6 = true;
+      };
+      services = {
+        wireguard = {
+          interfaces = {
+            "server" = {
+              ips = [ "${hosts.rutile.meta.intIpv6}/72" ];
+              publicKey = "umq4IjePohYh2E+DScbKQw9Cy5b8QBPwjWdtoyXt4hk=";
+              routed = [ "${hosts.rutile.meta.intIpv6}/72" ];
+              hostname = "rutile.net.leona.is";
+            };
+          };
+        };
+      };
+    };
     kupe = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c21:300::1";

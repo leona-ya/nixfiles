@@ -48,6 +48,7 @@ in
       "enari.net" = enari_host;
       "laurel.net".AAAA = [ laurel_v6 ];
       "naya.net".AAAA = [ naya_v6 ];
+      "rutile.net" = host "87.106.216.104" "2a01:239:33f:4a00::1";
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
       "sphere.net".AAAA = [ sphere_v6 ];
@@ -80,13 +81,13 @@ in
       "acme.int".AAAA = [ "fd8f:d15b:9f40:101::100" ];
       auth = host bij_v4 sphere_v6;
       "ldap".CNAME = [ "sphere.net.leona.is." ];
-      alertmanager.CNAME = [ "enari.net.leona.is." ];
+      alertmanager.CNAME = [ "rutile.net.leona.is." ];
       cloud.CNAME = [ "bij.net.leona.is." ];
       "cal.cloud".CNAME = [ "bij.net.leona.is." ];
       cv.CNAME = [ "bij.net.leona.is." ];
       fin.CNAME = [ "bij.net.leona.is." ];
       "dataimporter.fin".CNAME = [ "bij.net.leona.is." ];
-      grafana.CNAME = [ "enari.net.leona.is." ];
+      grafana.CNAME = [ "rutile.net.leona.is." ];
       grocy.CNAME = [ "bij.net.leona.is." ];
       "api.grocy".CNAME = [ "bij.net.leona.is." ];
       matrix = host bij_v4 laurel_v6;
@@ -94,9 +95,9 @@ in
       "sliding-sync.matrix" = host bij_v4 laurel_v6;
       md = host bij_v4 laurel_v6;
       nomsable = host bij_v4 laurel_v6;
-      "loki.int".CNAME = [ "enari.wg.net.leona.is." ];
+      "loki.int".CNAME = [ "rutile.wg.net.leona.is." ];
       "paperless.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
-      prometheus.CNAME = [ "enari.net.leona.is." ];
+      prometheus.CNAME = [ "rutile.net.leona.is." ];
       todo = host bij_v4 laurel_v6;
       pass = host bij_v4 laurel_v6;
       "hass.bn" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
@@ -107,7 +108,6 @@ in
       assets.CNAME = [ "bij.net.leona.is." ];
       a.CNAME = [ "bij.net.leona.is." ];
       found.CNAME = [ "bij.net.leona.is." ];
-      lytics.CNAME = [ "enari.net.leona.is." ];
       openpgpkey.CNAME = [ "bij.net.leona.is." ];
       kb.CNAME = [ "laurel.net.leona.is." ];
     };
