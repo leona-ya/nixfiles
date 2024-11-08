@@ -137,6 +137,10 @@ in
           file = dnsutil.writeZone "em0lar.dev" (lib.recursiveUpdate (import zones/em0lar.dev.nix { inherit hosthelper helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "em0lar.dev"); });
           template = "signedprimary";
         };
+        "forkspace.net" = {
+          file = dnsutil.writeZone "forkspace.net" (lib.recursiveUpdate (import zones/forkspace.net.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "forkspace.net"); });
+          template = "signedprimary";
+        };
         "infspace.xyz" = {
           file = dnsutil.writeZone "infspace.xyz" (lib.recursiveUpdate (import zones/infspace.xyz.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "infspace.xyz"); });
           template = "signedprimary";

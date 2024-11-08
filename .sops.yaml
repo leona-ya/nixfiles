@@ -138,6 +138,12 @@ creation_rules:
           - *leona
         age:
           - *kupe
+  - path_regex: secrets/services/gitlab.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *enari
   - path_regex: secrets/services/(monitoring|plausible).yaml
     key_groups:
       - pgp:

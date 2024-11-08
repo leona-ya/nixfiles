@@ -5,6 +5,7 @@
     inputs.disko.nixosModules.disko
     ./disko.nix
     ../../services/dns-knot/secondary
+    ../../services/gitlab
   ];
 
   # Secondary DNS
