@@ -57,10 +57,6 @@
                   name = "nixpkgs-patched-naya";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/346439.patch";
-                      hash = "sha256-n56PVZwfHp/j08x7wvkB2NKPvqtVdx7weIpKJr6PzMk=";
-                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
