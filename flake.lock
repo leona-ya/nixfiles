@@ -401,18 +401,19 @@
         ]
       },
       "locked": {
-        "lastModified": 1730499875,
-        "narHash": "sha256-yAxd8t6Mq8DgCHPOgPwxGULcWZZkRYErawRH8PW1d1Q=",
-        "ref": "main",
-        "rev": "aacb25071b2ff0d9404ce86b1e924d6f8f743af9",
-        "revCount": 8,
-        "type": "git",
-        "url": "https://cyberchaos.dev/leona/leona.is"
+        "host": "forkspace.net",
+        "lastModified": 1731259543,
+        "narHash": "sha256-2pXAs3AACRqdSfDOPb6BiyIeYRazjM9DIasID51vdN4=",
+        "owner": "leona",
+        "repo": "leona.is",
+        "rev": "2795cc67c8502c38a976b35af8e7173e51c6409b",
+        "type": "gitlab"
       },
       "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://cyberchaos.dev/leona/leona.is"
+        "host": "forkspace.net",
+        "owner": "leona",
+        "repo": "leona.is",
+        "type": "gitlab"
       }
     },
     "lix": {

@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     leona-is-website = {
-      url = "git+https://cyberchaos.dev/leona/leona.is?ref=main";
+      url = "gitlab:leona/leona.is?host=forkspace.net";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dns = {

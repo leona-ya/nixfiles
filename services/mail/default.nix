@@ -3,7 +3,7 @@
 {
   imports = [
     (fetchGit {
-      url = "ssh://gitlab@cyberchaos.dev:62954/leona/nixfiles-mail-secrets.git";
+      url = "gitlab@forkspace.net:leona/nixfiles-mail-secrets.git";
       rev = "3e684e9364a045fca5ebbef18f44d8f33d7d6690";
       ref = "main";
     }).outPath
@@ -30,6 +30,7 @@
 
     localDnsResolver = false;
     certificateScheme = "acme";
+    lmtpSaveToDetailMailbox = "no";
   };
 
   services.dovecot2 = {
