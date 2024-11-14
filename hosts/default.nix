@@ -32,15 +32,15 @@
             (_: import inputs.nixpkgs-unstable {
               system = "x86_64-linux";
             }) // {
-              freyda = (import
+              enari = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-freyda";
-                  src = inputs.nixpkgs-unstable;
+                  name = "nixpkgs-patched-enari";
+                  src = inputs.nixpkgs;
                   patches = [
-                    #(nixpkgs.fetchpatch {
-                    #  url = "https://github.com/nixos/nixpkgs/pull/333467.patch";
-                    #  hash = "sha256-DXwE7BYxSkD/Vlk+8GOwaFKNU1sz9BF2rJJhpaKUZYg=";
-                    #})
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/leona-ya/nixpkgs/commit/058adef892aa562a500823954ef179ffb9b73d71.patch";
+                      hash = "sha256-zO3yPoxMUnMUrBFjpQZUX9hLJo/1bvQbLaoo+I2v4Ow=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
