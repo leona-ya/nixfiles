@@ -10,6 +10,7 @@
     ./syncthing.nix
     ./gammastep.nix
     ./uni-vpn.nix
+    ./darkman.nix
   ];
   nix.settings.experimental-features = [ "pipe-operator" ];
 

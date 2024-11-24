@@ -11,6 +11,7 @@
     ./nginx.nix
     ./helix.nix
     ./acme.nix
+    ./bat.nix
   ];
 
   nixpkgs.overlays = lib.attrValues inputs.self.overlays;

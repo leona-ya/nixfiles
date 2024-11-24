@@ -18,14 +18,24 @@
   #environment.variables._JAVA_AWT_WM_NONREPARENTING = "1";
   environment.variables.NIXOS_OZONE_WL = "1";
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
-
   security.pam.services.swaylock.rules.auth.fprintd = {
     order = config.security.pam.services.swaylock.rules.auth.unix.order + 10;
   };
 
   home-manager.users.leona = {
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+      config = {
+        sway = {
+          "default" = "gtk";
+          "org.freedesktop.impl.ScreenCast" = "wlr";
+          "org.freedesktop.impl.Screenshot" = "wlr";
+          "org.freedesktop.impl.portal.Settings" = "darkman";
+          "org.freedesktop.impl.portal.Inhibit" = "none";
+        };
+      };
+    };
     systemd.user.services.swayidle.Service.Environment = lib.mkForce [ "PATH=/run/wrappers/bin:/home/leona/.nix-profile/bin:/etc/profiles/per-user/leona/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin" ];
     services.swayidle =
       let
@@ -56,6 +66,17 @@
         enable = true;
         package = pkgs.sway;
         wrapperFeatures.gtk = true;
+        systemd.variables = [ 
+          "DISPLAY"
+          "WAYLAND_DISPLAY"
+          "SWAYSOCK"
+          "XDG_CURRENT_DESKTOP"
+          "XDG_SESSION_TYPE"
+          "NIXOS_OZONE_WL"
+          "XCURSOR_THEME"
+          "XCURSOR_SIZE"
+          "XDG_DATA_DIRS"
+        ];
 
         checkConfig = false;
         config = {
@@ -73,12 +94,6 @@
             hideEdgeBorders = "both";
           };
           gaps.inner = 10;
-
-          output = {
-            "*" = {
-              bg = "${wallpaper} fill";
-            };
-          };
 
           input = {
             "*" = {
@@ -186,7 +201,32 @@
           client.focused_inactive #00000000 #00000090 #FFFFFF
           titlebar_border_thickness 3
           titlebar_padding 8 6
+          include ~/.config/sway/config-current-theme
         '';
       };
+    xdg.configFile."sway/config-light-theme" = {
+      text = ''
+        output "*" {
+          bg ~/.wallpapers/nixos-catppucin-latte.png fill
+        }
+      '';
+    };
+    xdg.configFile."sway/config-dark-theme" = {
+      text = ''
+        output "*" {
+          bg ~/.wallpapers/nixos-catppucin-mocha.png fill
+        }
+      '';
+    };
+    services.darkman = {
+      darkModeScripts.sway = ''
+        ${pkgs.coreutils}/bin/ln -fs config-dark-theme ~/.config/sway/config-current-theme
+        ${pkgs.sway}/bin/swaymsg reload
+      '';
+      lightModeScripts.sway = ''
+        ${pkgs.coreutils}/bin/ln -fs config-light-theme ~/.config/sway/config-current-theme
+        ${pkgs.sway}/bin/swaymsg reload
+      '';
+    };
   };
 }
