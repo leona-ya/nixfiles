@@ -22,16 +22,6 @@
 
     programs.zsh = {
       enable = true;
-      plugins = [{
-        name = "zsh-nix-shell";
-        file = "nix-shell.plugin.zsh";
-        src = pkgs.fetchFromGitHub {
-          owner = "chisui";
-          repo = "zsh-nix-shell";
-          rev = "v0.2.0";
-          sha256 = "sha256-qWcr49m8R3yUQcJUXDhQE/ziIBLunSF32Pz+IezL3r0=";
-        };
-      }];
       shellAliases = {
         "tb" = "nc termbin.com 9999";
         "ip" = "ip -c";
@@ -47,7 +37,7 @@
         "sudo" = "sudo ";
         "wt" = "wget";
       };
-      initExtra = builtins.readFile ../zsh-extra.zsh + ''
+      initExtra = ''
         function use {
           packages=()
           packages_fmt=()
@@ -63,23 +53,32 @@
       oh-my-zsh = {
         enable = true;
         plugins = [
-          "gitfast"
           "git"
           "sudo"
         ];
-        theme = lib.mkDefault "powerlevel10k/powerlevel10k";
-        custom = builtins.toString (pkgs.stdenv.mkDerivation {
-          name = "oh-my-zsh-custom-dir";
-          buildInputs = with pkgs; [
-            zsh-powerlevel10k
-          ];
-          unpackPhase = "true";
-          installPhase =
-            ''
-              mkdir -p $out/themes
-              ln -s ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k $out/themes/powerlevel10k
-            '';
-        });
+      };
+      autosuggestion.enable = true;
+    };
+
+    programs.starship = {
+      enable = true;
+      settings = {
+        character = {
+          success_symbol = "[λ](bold green)";
+          error_symbol = "[λ](bold red)";
+        };
+        directory.read_only = " 󰌾";
+        docker_context.symbol = " ";
+        elixir.symbol = " ";
+        git_branch.symbol = " ";
+        git_commit.tag_symbol = "  ";
+        golang.symbol = " ";
+        haskell.symbol = " ";
+        hostname.format = "@[$hostname]($style) ";
+        nix_shell.symbol = " ";
+        python.symbol = " ";
+        rust.symbol = "󱘗 ";
+        username.format = "[$user]($style) ";
       };
     };
 
