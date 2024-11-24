@@ -54,6 +54,14 @@
         }
       ];
     };
+    networks."99-ethernet-default-dhcp" = {
+      matchConfig = {
+        Type = "ether";
+        Kind = "!*";
+      };
+      DHCP = "yes";
+      networkConfig.IPv6PrivacyExtensions = "kernel";
+    };
     links."10-wifi0" = {
       matchConfig.MACAddress = "14:ac:60:46:9e:43";
       linkConfig.Name = "wifi0";
