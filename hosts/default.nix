@@ -31,15 +31,15 @@
             }) // lib.genAttrs [ "freyda" "thia" "turingmachine" ]
             (_: import inputs.nixpkgs-unstable {
               system = "x86_64-linux";
-            }) // {
+            }) // rec {
               enari = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-enari";
                   src = inputs.nixpkgs;
                   patches = [
                     (nixpkgs.fetchpatch {
-                      url = "https://github.com/leona-ya/nixpkgs/commit/058adef892aa562a500823954ef179ffb9b73d71.patch";
-                      hash = "sha256-zO3yPoxMUnMUrBFjpQZUX9hLJo/1bvQbLaoo+I2v4Ow=";
+                      url = "https://github.com/NixOS/nixpkgs/pull/359329.patch";
+                      hash = "sha256-UaM1PMKw7MGQR01IejibqqqXPGfyRZrRjNWQH9EcR3A=";
                     })
                   ];
                 })
@@ -47,11 +47,16 @@
               thia = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-thia";
-                  src = inputs.nixpkgs;
+                  src = inputs.nixpkgs-unstable;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/357916.patch";
+                      hash = "sha256-cRlmuekU6uogQRKAu/AJMz7fVsbTe4p9AW5hr76DjC0=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
+              freyda = thia;
               naya = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-naya";
