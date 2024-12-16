@@ -265,6 +265,8 @@
       pkgs.gutenprint
       pkgs.cups-brother-hll2350dw
       pkgs.cups-brother-ptouch
+      pkgs.hplip
+      pkgs.splix
     ];
   };
   programs.steam.enable = true;
