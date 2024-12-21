@@ -8,8 +8,6 @@
 
   perSystem = { pkgs, ... }: {
     packages = {
-      prometheus-bind-exporter = pkgs.callPackage ./prometheus-bind-exporter { };
-      prometheus-borg-exporter = pkgs.callPackage ./prometheus-borg-exporter { };
       opendatamap-net = pkgs.callPackage ./opendatamap-net { };
       pressux = pkgs.callPackage ./pressux { };
       sengi = pkgs.callPackage ./sengi { };
