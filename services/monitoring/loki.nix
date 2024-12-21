@@ -1,6 +1,6 @@
 { ... }: {
   services.loki = {
-    enable = true;
+    #    enable = true;
     configuration = {
       server.http_listen_port = 3030;
       auth_enabled = false;

@@ -6,6 +6,7 @@
     ./disko.nix
     ../../services/dns-knot/secondary
     ../../services/gitlab
+    ../../services/gitlab-runner
   ];
 
   # Secondary DNS

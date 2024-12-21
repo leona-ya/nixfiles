@@ -138,7 +138,7 @@ creation_rules:
           - *leona
         age:
           - *kupe
-  - path_regex: secrets/services/gitlab.yaml
+  - path_regex: secrets/services/(gitlab|gitlab-runner).yaml
     key_groups:
       - pgp:
           - *leona
