@@ -83,6 +83,7 @@
     bat
     bottom
     bind.dnsutils # for dig
+    config.boot.kernelPackages.cpupower
     difftastic
     fd
     file
