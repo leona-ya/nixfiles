@@ -36,6 +36,7 @@
   ];
 
   users.users.leona.packages = with pkgs; [
+    anki
     bitwarden
     calibre
     cachix
