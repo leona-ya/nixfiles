@@ -106,6 +106,22 @@
       };
     };
 
+    programs.jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = "Leona Maroni";
+          email = "dev@leona.is";
+        };
+        ui.diff.tool = [
+          "difft"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
+      };
+    };
+
     programs.ssh = {
       enable = true;
       matchBlocks =
