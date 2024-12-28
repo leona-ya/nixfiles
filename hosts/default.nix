@@ -45,6 +45,10 @@
                   name = "nixpkgs-patched-thia";
                   src = inputs.nixpkgs-unstable;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/368507.patch";
+                      hash = "sha256-cYRuMsL5PO0YexNeqdgF3eddJaULj4qLBwZy4UqO9GY=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
