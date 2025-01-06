@@ -12,12 +12,12 @@
             (builtins.readDir ./.)
           );
 
-        hosts = lib.genAttrs hostDirs (name: {
+        # improve when l.meta is available
+        linuxHosts = lib.genAttrs (builtins.filter (h: h != "mydon") hostDirs) (name: {
           imports = [
             (./. + "/${name}")
           ];
         });
-
       in
       {
         meta = rec {
@@ -49,6 +49,10 @@
                       url = "https://github.com/NixOS/nixpkgs/pull/368507.patch";
                       hash = "sha256-cYRuMsL5PO0YexNeqdgF3eddJaULj4qLBwZy4UqO9GY=";
                     })
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/368091.patch";
+                      hash = "sha256-UvOGDFxjOuu7du0eWKr28A5nLyoLr5HE06RfJGzOoUY=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
@@ -79,10 +83,24 @@
         defaults = {
           imports = [
             ../profiles/base
+            ../profiles/base-nixos
           ];
         };
-      } // hosts;
+      } // linuxHosts;
 
     nixosConfigurations = (inputs.colmena.lib.makeHive self.outputs.colmena).nodes;
+    darwinConfigurations = {
+      mydon = inputs.darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ../profiles/base
+          ../profiles/darwin
+          ./mydon
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
+      };
+    };
   };
 }

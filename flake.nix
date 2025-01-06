@@ -47,10 +47,14 @@
       url = "github:nix-community/disko";
       inputs."nixpkgs".follows = "nixpkgs";
     };
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-    systems = [ "x86_64-linux" "aarch64-linux" ];
+    systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
     imports = [
       ./hosts
       ./packages
