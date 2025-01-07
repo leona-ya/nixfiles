@@ -37,6 +37,10 @@
                   name = "nixpkgs-patched-enari";
                   src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/371838.patch";
+                      hash = "sha256-pQXRm9U0CxiafATibf4OmiBw+wIZw6pd20iGBOYN+Cg=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
