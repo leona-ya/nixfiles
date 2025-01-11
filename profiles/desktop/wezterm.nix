@@ -76,7 +76,7 @@
         end
 
         -- workaround rendering bug
-        config.front_end = "WebGpu"
+        --config.front_end = "WebGpu"
 
         config.font = wezterm.font("Monaspace Argon", { weight = 500 })
         config.font_size = ${if isLinux then "8.5" else "10"}
