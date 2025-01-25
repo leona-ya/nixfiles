@@ -86,6 +86,8 @@
   };
 
   hardware.framework.amd-7040.preventWakeOnAC = true;
+  # broken with linux 6.13
+  hardware.framework.enableKmod = false;
 
   system.stateVersion = "23.05";
 }
