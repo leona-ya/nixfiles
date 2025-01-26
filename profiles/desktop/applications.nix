@@ -257,6 +257,7 @@
     home.file = {
       ".envs/openjdk17".source = "${pkgs.jdk17}/lib/openjdk";
       ".envs/openjdk21".source = "${pkgs.jdk21}/lib/openjdk";
+      ".envs/go".source = "${pkgs.go}";
     };
   };
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
