@@ -28,7 +28,16 @@
     annieuseyourtelescope
   ];
   home-manager.users.leona = {
-  fonts.fontconfig.enable = true;
+    programs.gpg = {
+      enable = true;
+      scdaemonSettings = {
+        disable-ccid = true;
+      };
+    };
+    home.file.".gnupg/gpg-agent.conf".text = ''
+      enable-ssh-support
+    '';
+    fonts.fontconfig.enable = true;
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;

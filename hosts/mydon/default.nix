@@ -28,8 +28,12 @@
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEnfB0kjcnCDFWSqSNoJcmIVWijOfGO5zGwXcxopdGU5";
       };
     };
-    programs.ssh.extraConfig = ''
-      IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-    '';
+    programs.ssh = {
+      extraConfig = ''
+        IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+      '';
+      matchBlocks."*.net.leona.is".extraOptions.IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
+      matchBlocks."forkspace.net".extraOptions.IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
+    };
   };
 }

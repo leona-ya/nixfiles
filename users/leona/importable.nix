@@ -138,10 +138,7 @@
       enable = true;
       matchBlocks =
         let
-          leona = {
-            port = 54973;
-            forwardAgent = true;
-          };
+          leona.port = 54973;
           leona-desktop = {
             port = 54973;
             forwardAgent = true;
