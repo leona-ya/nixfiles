@@ -17,7 +17,7 @@
   services.unifi.enable = true;
   services.unifi.openFirewall = true;
   services.unifi.unifiPackage = pkgs.unifi8;
-  services.unifi.mongodbPackage = pkgs.mongodb-7_0;
+  services.unifi.mongodbPackage = pkgs.mongodb-6_0;
 
   networking.firewall.interfaces."br-lan".allowedTCPPorts = [ 8080 6789 8443 ];
   networking.firewall.interfaces."br-lan".allowedUDPPorts = [ 3478 10001 ];
