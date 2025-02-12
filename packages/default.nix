@@ -23,14 +23,6 @@
       #gimp = pkgs.callPackage ./gimp {};
       annieuseyourtelescope = pkgs.callPackage ./annieuseyourtelescope { };
       fc-telegraf-collect-psi = pkgs.callPackage ./fc/telegraf-collect-psi { };
-      wezterm = pkgs.wezterm.overrideAttrs({
-        patches = [
-          (pkgs.fetchpatch {
-            url = "https://github.com/wez/wezterm/pull/6508.patch";
-            hash = "sha256-eMpg206tUw8m0Sz+3Ox7HQnejPsWp0VHVw169/Rt4do=";
-          })
-        ];
-      });
     };
   };
 }
