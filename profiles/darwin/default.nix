@@ -37,6 +37,13 @@
     home.file.".gnupg/gpg-agent.conf".text = ''
       enable-ssh-support
     '';
+    # dev envs
+    home.file = {
+      ".envs/openjdk17".source = "${pkgs.jdk17}";
+      ".envs/openjdk21".source = "${pkgs.jdk21}";
+      ".envs/python311".source = "${pkgs.python311}";
+      ".envs/python312".source = "${pkgs.python312}";
+    };
     fonts.fontconfig.enable = true;
     programs.direnv = {
       enable = true;

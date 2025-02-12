@@ -4,6 +4,7 @@ in {
   # from https://github.com/Atemu/home-manager/blob/darwin-copy-apps-fully-wip/modules/targets/darwin.nix
   # for some reason this requires to re-log the user every single time
   home-manager.users.leona = { config, ... }@hm: {
+    disabledModules = ["targets/darwin/linkapps.nix"];
     home.activation = let
       appEnv = pkgs.buildEnv {
         name = "home-manager-applications";
