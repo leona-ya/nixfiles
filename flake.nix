@@ -8,10 +8,6 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ccc-nixlib = {
-      url = "gitlab:cyberchaoscreatures/nixlib/main?host=cyberchaos.dev";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nur.url = "github:nix-community/NUR";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
@@ -63,7 +59,6 @@
       overlays = {
         colmena = inputs.colmena.overlay;
         leona-is-website = inputs.leona-is-website.overlay;
-        inherit (inputs.ccc-nixlib.overlays) pleroma;
         iso = final: prev: {
           iso = (inputs.nixpkgs.lib.nixosSystem {
             system = final.stdenv.targetPlatform.system;

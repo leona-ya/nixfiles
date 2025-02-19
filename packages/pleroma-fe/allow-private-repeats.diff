@@ -1,0 +1,29 @@
+diff --git a/src/components/retweet_button/retweet_button.js b/src/components/retweet_button/retweet_button.js
+index 2103fd0b..67d64769 100644
+--- a/src/components/retweet_button/retweet_button.js
++++ b/src/components/retweet_button/retweet_button.js
+@@ -24,6 +24,9 @@ const RetweetButton = {
+     }
+   },
+   computed: {
++    isOwn () {
++      return this.status.user.id === this.$store.state.users.currentUser.id
++    },
+     mergedConfig () {
+       return this.$store.getters.mergedConfig
+     }
+diff --git a/src/components/retweet_button/retweet_button.vue b/src/components/retweet_button/retweet_button.vue
+index 859ce499..e8a77e10 100644
+--- a/src/components/retweet_button/retweet_button.vue
++++ b/src/components/retweet_button/retweet_button.vue
+@@ -1,7 +1,7 @@
+ <template>
+   <div class="RetweetButton">
+     <button
+-      v-if="visibility !== 'private' && visibility !== 'direct' && loggedIn"
++      v-if="(visibility !== 'private' || isOwn) && visibility !== 'direct' && loggedIn"
+       class="button-unstyled interactive"
+       :class="status.repeated && '-repeated'"
+       :title="$t('tool_tip.repeat')"
+
+

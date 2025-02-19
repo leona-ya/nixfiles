@@ -63,13 +63,9 @@
                 { system = "x86_64-linux"; });
               laurel = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-sphere";
+                  name = "nixpkgs-patched-laurel";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/commit/9f2a05224c5b927304aa571ff0d905bb5d565a89.patch";
-                      hash = "sha256-zG+ne+QO89XM0ZR6m0d1wS+3V7CvJQvkJU4N8dbdyvE=";
-                    })
                   ];
                 })
                 { system = "aarch64-linux"; });

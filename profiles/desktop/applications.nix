@@ -78,7 +78,6 @@
     speedcrunch
     spotify
     sublime-merge
-    tectonic
     texlab
     texlive.combined.scheme-full
     thunderbird
