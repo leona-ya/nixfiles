@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   imports = [
+    inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
     ../../profiles/desktop
     ../../profiles/desktop/sway
@@ -10,6 +11,7 @@
     ../../services/bn-smarthome
     ../../services/youtrack
     ../../services/nextcloud
+    ./disko.nix
     ./network.nix
     ./libvirt.nix
     ./kanshi.nix
@@ -19,12 +21,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.kernelParams = [
-    "zfs.zfs_arc_max=6442450944"
-    "zfs.zfs_arc_min=1024000000"
-  ];
-  zramSwap.enable = true;
+  zramSwap.enable = false;
   networking.hostId = "d5714cb9";
   nix.distributedBuilds = false;
   services.nginx.defaultListenAddresses = [

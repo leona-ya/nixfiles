@@ -62,10 +62,6 @@
                   name = "nixpkgs-patched-sphere";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/381179.patch";
-                      hash = "sha256-oN5X82j/HxY4lwpYTWX9HVadrSKzdIPANV+fiGsGtlQ=";
-                    })
                   ];
                 })
                 { system = "aarch64-linux"; });
