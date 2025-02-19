@@ -117,7 +117,10 @@
     programs.jujutsu = {
       enable = true;
       settings = {
-        git.sign-on-push = true;
+        git = {
+          sign-on-push = true;
+          subprocess = true;
+        };
         signing = {
           backend = lib.mkDefault "gpg";
           key = lib.mkDefault "EB5CEED62922C6050F9FC85BD5B08ADFC75E3605";
