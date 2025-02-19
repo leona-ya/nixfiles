@@ -28,6 +28,7 @@
     subdomains = {
       autoconfig.CNAME = [ "kupe.net.leona.is." ];
       cloud.CNAME = [ "bij.net.leona.is." ];
+      mail.CNAME = [ "kupe.net.leona.is." ];
       wg.CNAME = [ "bij.net.leona.is." ];
     };
   };
