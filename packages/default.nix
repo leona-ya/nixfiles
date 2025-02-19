@@ -8,9 +8,6 @@
 
   perSystem = { pkgs, ... }: {
     packages = {
-      lldb = pkgs.lldb.overrideAttrs(oldAttrs: {
-        dontCheckForBrokenSymlinks = true;
-      });
       opendatamap-net = pkgs.callPackage ./opendatamap-net { };
       pressux = pkgs.callPackage ./pressux { };
       sengi = pkgs.callPackage ./sengi { };
