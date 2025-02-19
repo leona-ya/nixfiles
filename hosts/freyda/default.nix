@@ -2,9 +2,11 @@
 
 {
   imports = [
+    inputs.disko.nixosModules.disko
     inputs.lanzaboote.nixosModules.lanzaboote
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ./hardware-configuration.nix
+    ./disko.nix
     ../../profiles/desktop
     ../../profiles/desktop/sway
     ./network.nix
@@ -17,21 +19,14 @@
 
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
   boot.loader.systemd-boot.enable = lib.mkForce false;
-  disabledModules = [ "${inputs.nixos-hardware}/common/cpu/amd/raphael/igpu.nix" ];
 
   zramSwap.enable = false;
   services.fstrim.enable = true;
-  boot.initrd.luks.devices = {
-    cryptroot = {
-      device = "/dev/disk/by-uuid/7b63816f-d409-4fc3-878a-2b759ef4caad";
-      preLVM = true;
-    };
-  };
 
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=12h
   '';
-  boot.resumeDevice = "/dev/disk/by-uuid/07e9aa38-3b22-4ddd-b519-d530ee5af17a";
+  #boot.resumeDevice = "/dev/disk/by-uuid/07e9aa38-3b22-4ddd-b519-d530ee5af17a";
   environment.systemPackages = [ pkgs.sbctl ];
   boot.lanzaboote = {
     enable = true;
