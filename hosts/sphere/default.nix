@@ -13,7 +13,6 @@
   deployment.buildOnTarget = true;
   deployment.targetHost = "2a01:4f8:c012:b842::1";
 
-  boot.kernelPackages = lib.mkForce pkgs.linuxKernel.packages.linux_6_1;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [

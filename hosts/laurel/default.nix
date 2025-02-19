@@ -20,7 +20,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "zfs" ];
-  boot.kernelPackages = lib.mkForce pkgs.linuxKernel.packages.linux_6_1;
   networking.hostId = "ec9b76dc";
   boot.initrd.kernelModules = [ "virtio_gpu" ];
   boot.kernelParams = [

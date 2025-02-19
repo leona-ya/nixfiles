@@ -31,6 +31,7 @@ let
 
 in
 {
+  boot.kernelPackages = lib.mkForce pkgs.linuxKernel.packages.linux_6_1;
   boot.initrd.postDeviceCommands = (mkAfter ''
     zfs rollback -r ${config.fileSystems."/".device}@empty
   '');

@@ -29,7 +29,6 @@
     "zfs.zfs_arc_max=1024000000"
     "console=tty"
   ];
-  boot.kernelPackages = lib.mkForce pkgs.linuxKernel.packages.linux_6_1;
   boot.initrd.kernelModules = [ "virtio_gpu" ];
   networking.hostId = "aeb28f21";
   services.qemuGuest.enable = true;
