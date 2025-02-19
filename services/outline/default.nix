@@ -3,10 +3,10 @@ let
   fqdn = "kb.leona.is";
 in
 {
-  l.sops.secrets."services/outline/oidc_client_secret".owner = "outline";
+  #l.sops.secrets."services/outline/oidc_client_secret".owner = "outline";
 
   services.outline = {
-    enable = true;
+    enable = false;
     cdnUrl = "https://${fqdn}";
     publicUrl = "https://${fqdn}";
     port = 3001;
