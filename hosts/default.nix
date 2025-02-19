@@ -13,7 +13,7 @@
           );
 
         # improve when l.meta is available
-        linuxHosts = lib.genAttrs (builtins.filter (h: h != "mydon") hostDirs) (name: {
+        linuxHosts = lib.genAttrs (builtins.filter (h: h != "mydon" && h!= "amphion") hostDirs) (name: {
           imports = [
             (./. + "/${name}")
           ];
@@ -86,6 +86,17 @@
 
     nixosConfigurations = (inputs.colmena.lib.makeHive self.outputs.colmena).nodes;
     darwinConfigurations = {
+      amphion = inputs.darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [ 
+          ../profiles/base
+          ../profiles/darwin
+          ./amphion 
+        ];        
+        specialArgs = {
+          inherit inputs;
+        };
+      };
       mydon = inputs.darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [

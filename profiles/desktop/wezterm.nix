@@ -79,10 +79,10 @@
         --config.front_end = "WebGpu"
 
         config.font = wezterm.font("Monaspace Argon", { weight = 500 })
-        config.font_size = ${if isLinux then "8.5" else "10"}
+        config.font_size = ${if isLinux then "8.5" else "11"}
         config.line_height = 1.2
         config.window_frame = {
-          font_size = ${if isLinux then "9" else "10.5"}
+          font_size = ${if isLinux then "9" else "11"}
         }
         function color_scheme()
           local appearance = wezterm.gui.get_appearance()

@@ -59,6 +59,7 @@
     home.packages = with pkgs; [
       element-desktop
       pre-commit
+      ruff
       zoxide
       # nixpkgs tools
       nix-output-monitor
