@@ -19,7 +19,7 @@
   boot.loader.systemd-boot.enable = lib.mkForce false;
   disabledModules = [ "${inputs.nixos-hardware}/common/cpu/amd/raphael/igpu.nix" ];
 
-  zramSwap.enable = true;
+  zramSwap.enable = false;
   services.fstrim.enable = true;
   boot.initrd.luks.devices = {
     cryptroot = {
@@ -35,7 +35,7 @@
   environment.systemPackages = [ pkgs.sbctl ];
   boot.lanzaboote = {
     enable = true;
-    pkiBundle = "/etc/secureboot";
+    pkiBundle = "/var/lib/sbctl";
   };
   boot.initrd.systemd.enable = true;
 
