@@ -80,6 +80,10 @@
     ];
   };
 
+  services.synapse-auto-compressor = {
+    enable = true;
+  };
+
   systemd.services.matrix-synapse.serviceConfig.ExecStartPre = [
     "${pkgs.coreutils}/bin/ln -sf ${config.sops.secrets."services/matrix/synapse/homeserver_signing_key".path} ${config.services.matrix-synapse.dataDir}/homeserver.signing.key"
   ];
