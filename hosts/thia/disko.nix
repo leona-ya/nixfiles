@@ -27,31 +27,6 @@
           };
         };
       };
-      nvme1 = {
-        type = "disk";
-        device = "/dev/disk/by-id/nvme-WD_BLACK_SN850X_2000GB_24171U802988";
-        content = {
-          type = "gpt";
-          partitions = {
-            ESP = {
-              size = "512M";
-              type = "EF00";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                #mountpoint = "/boot";
-              };
-            };
-            mdadm = {
-              size = "100%";
-              content = {
-                type = "mdraid";
-                name = "main_raid1";
-              };
-            };
-          };
-        };
-      };
     };
 
     mdadm.main_raid1 = {
