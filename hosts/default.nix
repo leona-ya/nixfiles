@@ -28,7 +28,7 @@
           nodeNixpkgs = lib.genAttrs [ "bij" "laurel" "sphere" ]
             (_: import inputs.nixpkgs {
               system = "aarch64-linux";
-            }) // lib.genAttrs [ "freyda" "thia" "turingmachine" ]
+            }) // lib.genAttrs [ "ceto" "freyda" "thia" "turingmachine" ]
             (_: import inputs.nixpkgs-unstable {
               system = "x86_64-linux";
             }) // rec {
@@ -37,18 +37,27 @@
                   name = "nixpkgs-patched-enari";
                   src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/nixos/nixpkgs/pull/383375.patch";
+                      hash = "sha256-n76veuA19N5Ne/KX1Oq2F8AuOecTK6DtN/yzkAw/jI4=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
-              thia = (import
+              kupe = enari;
+              ceto = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-thia";
+                  name = "nixpkgs-patched-ceto";
                   src = inputs.nixpkgs-unstable;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/389740.patch";
+                      hash = "sha256-Z+fvLIHLXL3vqlWtU0ew+XZmdjRdUvxR+MHJ9JpiVQ4=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
-              freyda = thia;
+              freyda = ceto;
               naya = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-naya";
@@ -62,10 +71,6 @@
                   name = "nixpkgs-patched-laurel";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/383168.patch";
-                      hash = "sha256-zUExSIL/O97hPBIDbHYn2kEu8qoJtaRWOg8xnMfoiHc=";
-                    })
                   ];
                 })
                 { system = "aarch64-linux"; });

@@ -119,7 +119,6 @@
       settings = {
         git = {
           sign-on-push = true;
-          subprocess = true;
         };
         signing = {
           backend = lib.mkDefault "gpg";
