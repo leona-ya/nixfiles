@@ -27,6 +27,7 @@
   services.logind.lidSwitch = "suspend-then-hibernate";
   services.logind.powerKey = "hibernate";
   services.logind.powerKeyLongPress = "poweroff";
+  services.power-profiles-daemon.enable = true;
   services.zfs = lib.mkIf (config.boot.supportedFilesystems.zfs or false) {
     autoScrub.enable = true;
     autoSnapshot = {
