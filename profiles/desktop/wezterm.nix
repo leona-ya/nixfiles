@@ -94,6 +94,7 @@
         end
         config.color_scheme = color_scheme()
 
+        config.scrollback_lines = 10000
         local act = wezterm.action
         config.disable_default_key_bindings = true
         config.keys = {
