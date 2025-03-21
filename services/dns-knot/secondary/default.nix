@@ -17,7 +17,7 @@
           key = "fdg_leona_secondary";
         };
         kloenk_ns1 = {
-          address = "2a01:4f8:c013:1a4b::";
+          address = "2a01:4f8:c013:1a4b::1";
           key = "kloenk_leona_secondary";
         };
       };
@@ -32,7 +32,7 @@
           key = "fdg_leona_secondary";
         };
         kloenk_notify = {
-          address = [ "2a01:4f8:c013:1a4b::" ];
+          address = [ "2a01:4f8:c013:1a4b::1" ];
           action = "notify";
           key = "kloenk_leona_secondary";
         };
