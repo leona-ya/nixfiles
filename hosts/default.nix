@@ -37,10 +37,6 @@
                   name = "nixpkgs-patched-enari";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/nixos/nixpkgs/pull/383375.patch";
-                      hash = "sha256-n76veuA19N5Ne/KX1Oq2F8AuOecTK6DtN/yzkAw/jI4=";
-                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
@@ -50,10 +46,6 @@
                   name = "nixpkgs-patched-ceto";
                   src = inputs.nixpkgs-unstable;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/389740.patch";
-                      hash = "sha256-Z+fvLIHLXL3vqlWtU0ew+XZmdjRdUvxR+MHJ9JpiVQ4=";
-                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
