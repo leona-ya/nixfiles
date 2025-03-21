@@ -52,5 +52,10 @@
   users.users.leona.hashedPasswordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
   security.sudo-rs.wheelNeedsPassword = true;
 
+  services.hardware.openrgb = {
+    enable = true;
+    motherboard = "amd";
+  };
+
   system.stateVersion = "25.05";
 }
