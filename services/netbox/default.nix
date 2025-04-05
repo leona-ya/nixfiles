@@ -1,20 +1,43 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   l.sops.secrets = {
     "services/netbox/secret_key".owner = "netbox";
-    "services/netbox/vouch_proxy_env".owner = "root";
+    "services/netbox/openid_client_id".owner = "netbox";
+    "services/netbox/openid_client_secret".owner = "netbox";
   };
 
   services.netbox = {
     enable = true;
+    package = pkgs.netbox_4_2.overrideAttrs (old: {
+      
+    });
+    unixSocket = "/run/netbox/netbox.sock";
     secretKeyFile = config.sops.secrets."services/netbox/secret_key".path;
     extraConfig = ''
-      REMOTE_AUTH_ENABLED = True;
-      REMOTE_AUTH_HEADER = 'HTTP_X_AUTH_REMOTE_USER';
-      REMOTE_AUTH_AUTO_CREATE_USER = True;
+      with open("${config.sops.secrets."services/netbox/openid_client_id".path}", "r") as file:
+        SOCIAL_AUTH_OIDC_KEY = file.readline()
+      with open("${config.sops.secrets."services/netbox/openid_client_secret".path}", "r") as file:
+        SOCIAL_AUTH_OIDC_SECRET = file.readline()
     '';
+    settings = {
+      ALLOWED_HOSTS = [ "netbox.leona.is" ];
+      REMOTE_AUTH_ENABLED = true;
+      REMOTE_AUTH_BACKEND = "social_core.backends.open_id_connect.OpenIdConnectAuth";
+      SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = "https://auth.leona.is/realms/leona";
+      REMOTE_AUTH_AUTO_CREATE_USER = true;
+      # THis fucking software makes it almost impossible to set this correctly.
+      # SOCIAL_AUTH_USER_FIELD_MAPPING = {
+      #   "groups" = "groups";
+      # };
+      # REMOTE_AUTH_AUTO_CREATE_GROUPS = true;
+      # REMOTE_AUTH_GROUP_SYNC_ENABLED = true;
+      # REMOTE_AUTH_SUPERUSER_GROUPS = [ "superuser" ];
+      # REMOTE_AUTH_STAFF_GROUPS = [ "staff" ];
+    };
   };
+
+  systemd.services."netbox".serviceConfig.RuntimeDirectory = "netbox"; 
 
   services.postgresql = {
     enable = true;
@@ -32,24 +55,10 @@
     forceSSL = true;
     kTLS = true;
     locations."/" = {
-      proxyPass = "http://[::1]:8001";
+      proxyPass = "http://unix:${config.services.netbox.unixSocket}";
       proxyWebsockets = true;
-      extraConfig = ''
-        auth_request_set $auth_resp_x_vouch_email $upstream_http_x_vouch_user;
-        auth_request_set $auth_resp_x_vouch_username $upstream_http_x_vouch_idp_claims_preferred_username;
-        proxy_set_header X-Auth-Remote-User $auth_resp_x_vouch_username;
-      '';
     };
-    locations."/static/".root = "/var/lib/netbox";
+    locations."/static/".alias = "/persist/var/lib/netbox/static/";
   };
   users.users.nginx.extraGroups = [ "netbox" ];
-
-  services.vouch-proxy = {
-    enable = true;
-    servers."netbox.leona.is" = {
-      clientId = "netbox";
-      port = 12302;
-      environmentFiles = [ config.sops.secrets."services/netbox/vouch_proxy_env".path ];
-    };
-  };
 }

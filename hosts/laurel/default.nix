@@ -11,6 +11,7 @@
     ../../services/haj-social
     ../../services/outline
     ../../services/vaultwarden
+    ../../services/netbox
     #      ../../services/shiori
     #      ../../services/vikunja
   ];

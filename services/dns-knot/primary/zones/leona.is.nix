@@ -94,6 +94,7 @@ in
       "mautrix-telegram.matrix" = host bij_v4 laurel_v6;
       "sliding-sync.matrix" = host bij_v4 laurel_v6;
       md = host bij_v4 laurel_v6;
+      netbox = host bij_v4 laurel_v6;
       nomsable = host bij_v4 laurel_v6;
       "loki.int".CNAME = [ "rutile.wg.net.leona.is." ];
       "paperless.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
