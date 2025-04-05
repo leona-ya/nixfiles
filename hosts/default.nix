@@ -44,7 +44,7 @@
               ceto = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-ceto";
-                  src = inputs.nixpkgs-unstable;
+                  src = inputs.nixpkgs;
                   patches = [
                   ];
                 })

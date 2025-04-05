@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.lix-module.nixosModules.default
+    #inputs.lix-module.nixosModules.default
     ./wezterm.nix
     ./applications.nix
     ./firefox.nix
@@ -12,7 +12,7 @@
     ./uni-vpn.nix
     ./darkman.nix
   ];
-  nix.settings.experimental-features = [ "pipe-operator" ];
+  nix.settings.experimental-features = [ "pipe-operators" ];
 
   security.pam.services.login.fprintAuth = lib.mkForce false;
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
