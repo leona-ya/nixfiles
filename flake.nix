@@ -84,7 +84,7 @@
       devShells.default = pkgs.mkShellNoCC {
         buildInputs = [
           pkgs.sops
-          (pkgs.colmena.override { nix = pkgs.lix; })
+          (inputs'.colmena.packages.colmena)
         ];
       };
     };

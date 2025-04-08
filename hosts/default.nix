@@ -1,6 +1,7 @@
 { inputs, self, ... }:
 {
   flake = {
+    colmenaHive = inputs.colmena.lib.makeHive self.outputs.colmena;
     colmena =
       let
         inherit (inputs.nixpkgs) lib;
@@ -37,6 +38,10 @@
                   name = "nixpkgs-patched-enari";
                   src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/396939.patch";
+                      hash = "sha256-Pm1Xjq5hhKC35hQ0OL0lcx+F3OB20Y2u+P5ihenV/OE=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
