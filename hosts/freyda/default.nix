@@ -18,6 +18,7 @@
     ./network.nix
     ./kanshi.nix
     ./wireguard.nix
+    ./uni.nix
   ];
 
   deployment.allowLocalDeployment = true;
