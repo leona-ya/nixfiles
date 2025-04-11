@@ -53,6 +53,7 @@
             content = {
               type = "filesystem";
               format = "xfs";
+              mountOptions = [ "x-systemd.device-timeout=0" ];
               mountpoint = "/";
             };
           };
@@ -61,6 +62,7 @@
             content = {
               type = "filesystem";
               format = "xfs";
+              mountOptions = [ "x-systemd.device-timeout=0" ];
               mountpoint = "/nix";
             };
           };
@@ -69,6 +71,7 @@
             content = {
               type = "filesystem";
               format = "xfs";
+              mountOptions = [ "x-systemd.device-timeout=0" ];
               mountpoint = "/home";
             };
           };

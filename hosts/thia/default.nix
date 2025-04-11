@@ -5,7 +5,10 @@
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
     ./hw.nix
+#    ../../profiles/desktop
+#    ../../profiles/desktop/sway
     ../../profiles/desktop/syncthing.nix
+    ../../profiles/encrypted-fs
     ../../services/int-acme-ca
     ../../services/paperless
     ../../services/bn-smarthome

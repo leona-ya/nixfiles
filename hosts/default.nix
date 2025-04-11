@@ -30,7 +30,7 @@
             (_: import inputs.nixpkgs {
               system = "aarch64-linux";
             }) // lib.genAttrs [ "ceto" "freyda" "thia" "turingmachine" ]
-            (_: import inputs.nixpkgs-unstable {
+            (_: import inputs.nixpkgs {
               system = "x86_64-linux";
             }) // rec {
               enari = (import
