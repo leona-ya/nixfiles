@@ -1,4 +1,4 @@
-{ config, lib, inputs, ... }:
+{ config, lib, inputs, pkgs, ... }:
 
 {
   imports = [
@@ -14,6 +14,7 @@
   ];
   nix.settings.experimental-features = [ "pipe-operators" ];
 
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_6;
   security.pam.services.login.fprintAuth = lib.mkForce false;
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
     enableACME = lib.mkOverride 96 false;
