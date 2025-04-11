@@ -4,9 +4,8 @@
   imports = [
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
-    ../../profiles/desktop
-    ../../profiles/desktop/sway
     ./hw.nix
+    ../../profiles/desktop/syncthing.nix
     ../../services/int-acme-ca
     ../../services/paperless
     ../../services/bn-smarthome
@@ -19,6 +18,7 @@
   ];
 
   deployment.allowLocalDeployment = true;
+  deployment.targetHost = "thia.wg.net.leona.is";
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
