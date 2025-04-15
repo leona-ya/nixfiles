@@ -30,7 +30,7 @@
             (_: import inputs.nixpkgs {
               system = "aarch64-linux";
             }) // lib.genAttrs [ "ceto" "freyda" "thia" "turingmachine" ]
-            (_: import inputs.nixpkgs {
+            (_: import inputs.nixpkgs-unstable {
               system = "x86_64-linux";
             }) // rec {
               enari = (import
@@ -39,8 +39,8 @@
                   src = inputs.nixpkgs;
                   patches = [
                     (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/396939.patch";
-                      hash = "sha256-Pm1Xjq5hhKC35hQ0OL0lcx+F3OB20Y2u+P5ihenV/OE=";
+                      url = "https://github.com/NixOS/nixpkgs/pull/398548.patch";
+                      hash = "sha256-H/4/oNdGSbsXdxRP6LAjD2On8P2Aj7l/+jtofq3aruY=";
                     })
                   ];
                 })

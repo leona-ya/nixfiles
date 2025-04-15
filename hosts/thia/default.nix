@@ -71,21 +71,10 @@
     enableSystemdTimer = false;
   };
 
-  l.sops.secrets = {
-    "profiles/desktop/alt_rsa_ssh_key".owner = "leona";
-    "profiles/desktop/user_leona_pw".neededForUsers = true;
-  };
-
   services.nginx.virtualHosts."thia.net.leona.is" = {
     forceSSL = lib.mkForce true;
   };
   security.acme.certs."thia.net.leona.is".server = "https://acme.int.leona.is/acme/acme/directory";
-
-  home-manager.users.leona.programs.ssh.extraConfig = ''
-    IdentityFile ${config.sops.secrets."profiles/desktop/alt_rsa_ssh_key".path}
-  '';
-  users.users.leona.hashedPasswordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
-  security.sudo-rs.wheelNeedsPassword = true;
 
   system.stateVersion = "23.05";
 }

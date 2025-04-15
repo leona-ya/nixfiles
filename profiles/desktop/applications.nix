@@ -38,7 +38,7 @@
   users.users.leona.packages = with pkgs; [
     anki
     bitwarden
-    calibre
+    #calibre
     cachix
     editorconfig-checker
     element-desktop
