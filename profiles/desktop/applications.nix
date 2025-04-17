@@ -186,6 +186,19 @@
         "pdev" = "pandoc --template eisvogel --listings";
       };
     };
+    home.file.".pandoc/templates".source = (pkgs.stdenv.mkDerivation (finalAttrs: {
+      pname = "pandoc-templates";
+      version = "3.1.0";
+      src = pkgs.fetchzip {
+        url = "https://github.com/Wandmalfarbe/pandoc-latex-template/releases/download/v${finalAttrs.version}/Eisvogel-${finalAttrs.version}.tar.gz";
+        hash = "sha256-THszG9id3Ditrf4f0csu4Sl75P90ZkXENbGytGjp7O8=";
+      };
+      installPhase = ''
+        mkdir -p $out
+        cp eisvogel.latex $out
+        cp eisvogel.beamer $out
+      '';
+    }));
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
