@@ -101,7 +101,10 @@
     enableACME = true;
     forceSSL = true;
     kTLS = true;
-    locations."/".proxyPass = "http://unix://run/gitlab/gitlab-workhorse.socket";
+    locations."/" = {
+      proxyPass = "http://unix://run/gitlab/gitlab-workhorse.socket";
+      proxyWebsockets = true;
+    };
   };
 
 #  services.gitlab.backup = {
