@@ -260,11 +260,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1726560853,
-        "narHash": "sha256-X6rJYSESBVr3hBoH0WbKE5KvhPU5bloyZ2L4K60/fPQ=",
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
         "type": "github"
       },
       "original": {
@@ -384,11 +384,11 @@
       },
       "locked": {
         "host": "forkspace.net",
-        "lastModified": 1731260709,
-        "narHash": "sha256-I/6hpqK7MWUYqVVn3x1YR01gwsR0oCCU3XReEYfnb54=",
+        "lastModified": 1744890967,
+        "narHash": "sha256-8iC61CeCjGkjx1dsWNskq7X2l9mI3dtePU41UZjJR8Y=",
         "owner": "leona",
         "repo": "leona.is",
-        "rev": "aba63f5b5ea8bcb8d2f788eb882ac6e35ce8b813",
+        "rev": "67fa5cc39b57cb09d1df215162452959fb912c43",
         "type": "gitlab"
       },
       "original": {
