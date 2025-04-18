@@ -17,6 +17,7 @@
 
   deployment.allowLocalDeployment = true;
   #  deployment.targetHost = "fd8f:d15b:9f40:901::1";
+  boot.kernelParams = [ "amdgpu.sg_display=0" ];
 
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
@@ -84,6 +85,21 @@
   hardware.framework.laptop13.audioEnhancement.enable = true;
   # broken with linux 6.13
   hardware.framework.enableKmod = false;
+
+  hardware.graphics.package = (pkgs.mesa.overrideAttrs (
+    {
+      patches ? [ ],
+      ...
+    }:
+    {
+      patches = patches ++ [
+        (pkgs.fetchpatch2 {
+          url = "https://gitlab.freedesktop.org/pepp/mesa/-/commit/555821ff93118d4a6ea441127cd0427a95743d47.patch";
+          hash = "sha256-Gk/arvL5frsNOTHfHXvqWet3cD1U99GKDZ+7LPCedCA=";
+        })
+      ];
+    }
+  ));
 
   system.stateVersion = "23.05";
 }
