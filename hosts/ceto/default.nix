@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ../../profiles/desktop
     ../../profiles/desktop/sway
+    ../../profiles/encrypted-fs
     ./disko.nix
     ./network.nix
     ./kanshi.nix

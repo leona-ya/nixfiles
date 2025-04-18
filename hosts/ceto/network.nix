@@ -24,10 +24,13 @@
     };
     networks = {
       "10-eth0" = {
-        DHCP = "yes";
+        DHCP = "no";
         matchConfig.Name = "eth0";
         linkConfig = {
           RequiredForOnline = "no";
+        };
+        networkConfig = {
+          IPv6AcceptRA = "no";
         };
       };
       "10-sfp0" = {
