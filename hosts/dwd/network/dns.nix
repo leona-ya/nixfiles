@@ -11,11 +11,4 @@
       "[fd8f:d15b:9f40:101::1]:53"
     ];
   };
-
-  l.telegraf.extraInputs = {
-    prometheus = {
-      urls = [ "http://127.0.0.1:8453/metrics" ];
-      metric_version = 2;
-    };
-  };
 }

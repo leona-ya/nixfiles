@@ -19,7 +19,6 @@
       #jetbrains-jdk-21 = pkgs.callPackage ./jetbrains-jdk-21;
       #gimp = pkgs.callPackage ./gimp {};
       annieuseyourtelescope = pkgs.callPackage ./annieuseyourtelescope { };
-      fc-telegraf-collect-psi = pkgs.callPackage ./fc/telegraf-collect-psi { };
       pleroma-fe = pkgs.callPackage ./pleroma-fe { };
     };
   };

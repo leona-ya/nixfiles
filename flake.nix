@@ -75,7 +75,6 @@
 
       nixosModules = {
         sops = import ./modules/sops;
-        telegraf = import ./modules/telegraf;
         leona-profile = import ./users/leona/importable.nix;
       };
     };

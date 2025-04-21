@@ -87,7 +87,6 @@ in
       cv.CNAME = [ "bij.net.leona.is." ];
       fin.CNAME = [ "bij.net.leona.is." ];
       "dataimporter.fin".CNAME = [ "bij.net.leona.is." ];
-      grafana.CNAME = [ "rutile.net.leona.is." ];
       grocy.CNAME = [ "bij.net.leona.is." ];
       "api.grocy".CNAME = [ "bij.net.leona.is." ];
       matrix = host bij_v4 laurel_v6;
@@ -96,9 +95,7 @@ in
       md = host bij_v4 laurel_v6;
       netbox = host bij_v4 laurel_v6;
       nomsable = host bij_v4 laurel_v6;
-      "loki.int".CNAME = [ "rutile.wg.net.leona.is." ];
       "paperless.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
-      prometheus.CNAME = [ "rutile.net.leona.is." ];
       todo = host bij_v4 laurel_v6;
       pass = host bij_v4 laurel_v6;
       "hass.bn" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
@@ -111,6 +108,9 @@ in
       found.CNAME = [ "bij.net.leona.is." ];
       openpgpkey.CNAME = [ "bij.net.leona.is." ];
       kb.CNAME = [ "laurel.net.leona.is." ];
+      "grafana.mon".CNAME = [ "rutile.net.leona.is." ];
+      "metrics.mon".CNAME = [ "rutile.net.leona.is." ];
+      "logs.mon".CNAME = [ "rutile.net.leona.is." ];
     };
   };
 }

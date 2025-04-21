@@ -34,12 +34,6 @@
     "[fd8f:d15b:9f40:101::1312]"
   ];
 
-  l.telegraf = {
-    enable = true;
-    host = "[fd8f:d15b:9f40:101::1312]";
-    diskioDisks = [ "nvme0n1" ];
-  };
-
   l.backups = {
     enable = true;
     paths = [

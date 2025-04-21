@@ -40,15 +40,6 @@
   ];
 
   l.backups.enable = true;
-  l.telegraf = {
-    enable = true;
-    host = "[fd8f:d15b:9f40:c21::1]";
-    diskioDisks = [ "sda" ];
-  };
-  l.promtail = {
-    enable = true;
-    enableNginx = true;
-  };
   l.nginx-sni-proxy = {
     enable = true;
     upstreamHosts = {

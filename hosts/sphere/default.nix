@@ -24,21 +24,11 @@
   services.qemuGuest.enable = true;
 
   l.backups.enable = true;
-  l.telegraf = {
-    enable = true;
-    host = "[fd8f:d15b:9f40:c21:400::1]";
-    diskioDisks = [ "sda" ];
-  };
-  l.promtail = {
-    enable = true;
-    enableNginx = true;
-  };
 
   users.users = {
     acme.uid = 996;
     postgres.uid = 71;
     nginx.uid = 60;
-    telegraf.uid = 256;
     openldap.uid = 994;
     keycloak.uid = 995;
   };
@@ -46,7 +36,6 @@
     acme.gid = 995;
     postgres.gid = 71;
     nginx.gid = 60;
-    telegraf.gid = 994;
     openldap.gid = 992;
     keycloak.gid = 993;
   };

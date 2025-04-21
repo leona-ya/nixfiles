@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 let
-  grafanaDomain = "grafana.leona.is";
+  grafanaDomain = "grafana.mon.leona.is";
 
 in
 {
@@ -45,6 +45,7 @@ in
 
     declarativePlugins = with pkgs.grafanaPlugins; [
       grafana-piechart-panel
+      victoriametrics-logs-datasource
     ];
 
     provision = {
@@ -53,15 +54,33 @@ in
         apiVersion = 1;
         datasources = [
           {
-            name = "Prometheus";
+            name = "VictoriaMetrics";
             type = "prometheus";
-            url = "http://[::1]:${toString config.services.prometheus.port}/";
+            url = "https://metrics.mon.leona.is";
             isDefault = true;
+            jsonData = {
+              tlsAuth = true;
+              serverName = "metrics.mon.leona.is";
+            };
+            secureJsonData = {
+              tlsClientCert = "$__file{/var/lib/acme/${grafanaDomain}/fullchain.pem}";
+              tlsClientKey = "$__file{/var/lib/acme/${grafanaDomain}/key.pem}";
+            };
           }
           {
-            name = "Loki";
-            type = "loki";
-            url = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}";
+            name = "VictoriaLogs";
+            type = "victoriametrics-logs-datasource";
+            url = "https://logs.mon.leona.is";
+            access = "proxy";
+            isDefault = false;
+            jsonData = {
+              tlsAuth = true;
+              serverName = "logs.mon.leona.is";
+            };
+            secureJsonData = {
+              tlsClientCert = "$__file{/var/lib/acme/${grafanaDomain}/fullchain.pem}";
+              tlsClientKey = "$__file{/var/lib/acme/${grafanaDomain}/key.pem}";
+            };
           }
         ];
       };
@@ -74,9 +93,12 @@ in
       };
     };
   };
+
   systemd.services.grafana.serviceConfig = {
     EnvironmentFile = config.sops.secrets."services/monitoring/grafana/env".path;
   };
+
+  security.acme.certs."${grafanaDomain}".group = "grafana";
 
   users.users.nginx.extraGroups = [ "grafana" ];
   services.nginx.virtualHosts.${grafanaDomain} = {

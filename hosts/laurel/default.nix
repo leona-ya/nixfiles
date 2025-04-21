@@ -29,21 +29,11 @@
   ];
 
   l.backups.enable = true;
-  l.telegraf = {
-    enable = true;
-    host = "[fd8f:d15b:9f40:0c21:100::1]";
-    diskioDisks = [ "sda" ];
-  };
-  l.promtail = {
-    enable = true;
-    enableNginx = true;
-  };
 
   users.users = {
     nginx.uid = 60;
     postgres.uid = 71;
     matrix-synapse.uid = 224;
-    telegraf.uid = 256;
     vaultwarden.uid = 992;
     pleroma.uid = 993;
     hedgedoc.uid = 994;
@@ -53,7 +43,6 @@
     nginx.gid = 60;
     postgres.gid = 71;
     matrix-synapse.gid = 224;
-    telegraf.gid = 991;
     vaultwarden.gid = 990;
     pleroma.gid = 992;
     hedgedoc.gid = 993;

@@ -5,9 +5,7 @@ let
 in
 {
   imports = [
-    ./prometheus.nix
     ./grafana.nix
-    ./alertmanager.nix
-    ./loki.nix
+    ./vm.nix
   ];
 }

@@ -9,15 +9,6 @@
   ];
   
   #l.backups.enable = true;
-  l.telegraf = {
-    enable = true;
-    host = "[fd8f:d15b:9f40:c11::1]";
-    diskioDisks = [ "vda" ];
-  };
-  l.promtail = {
-    enable = true;
-    enableNginx = true;
-  };
 
   services.postgresql.package = pkgs.postgresql_15;
 
