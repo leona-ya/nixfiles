@@ -9,11 +9,7 @@
   perSystem = { pkgs, ... }: {
     packages = {
       opendatamap-net = pkgs.callPackage ./opendatamap-net { };
-      pressux = pkgs.callPackage ./pressux { };
-      sengi = pkgs.callPackage ./sengi { };
       legitima = pkgs.callPackage ./legitima { };
-      ical-merger = pkgs.callPackage ./ical-merger { };
-      nomsable = pkgs.callPackage ./nomsable { };
       cups-brother-ptouch = pkgs.callPackage ./cups-brother-ptouch { };
       questrial-regular = pkgs.callPackage ./questrial { };
       #jetbrains-jdk-21 = pkgs.callPackage ./jetbrains-jdk-21;
