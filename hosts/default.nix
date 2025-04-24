@@ -39,8 +39,8 @@
                   src = inputs.nixpkgs;
                   patches = [
                     (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/398548.patch";
-                      hash = "sha256-H/4/oNdGSbsXdxRP6LAjD2On8P2Aj7l/+jtofq3aruY=";
+                      url = "https://github.com/NixOS/nixpkgs/pull/399105.patch";
+                      hash = "sha256-RquEbxkQ5C7iODog38vUGBTp4KRrR7DjrGzXU52jo1g=";
                     })
                   ];
                 })

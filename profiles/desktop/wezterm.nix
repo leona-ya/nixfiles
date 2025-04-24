@@ -75,8 +75,7 @@
           config = wezterm.config_builder()
         end
 
-        -- workaround rendering bug
-        --config.front_end = "WebGpu"
+        config.window_decorations = "TITLE | RESIZE"
 
         config.font = wezterm.font("Monaspace Argon", { weight = 500 })
         config.font_size = ${if isLinux then "8.5" else "11"}
