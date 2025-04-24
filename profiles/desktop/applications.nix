@@ -163,7 +163,7 @@
       ];
     };
     programs.chromium = {
-      enable = true;
+      enable = false;
       package = pkgs.symlinkJoin {
         name = "chromium";
         paths = [ pkgs.chromium ];
