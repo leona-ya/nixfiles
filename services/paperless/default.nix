@@ -12,7 +12,7 @@
       PAPERLESS_ENABLE_HTTP_REMOTE_USER = true;
       PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME = "HTTP_X_AUTH_REMOTE_USER";
       PAPERLESS_DBHOST = "/run/postgresql";
-      PAPERLESS_CORS_ALLOWED_HOSTS = "https://paperless.leona.is";
+      PAPERLESS_URL = "https://paperless.int.leona.is";
       PAPERLESS_OCR_LANGUAGE = "deu+eng";
       PAPERLESS_TASK_WORKERS = 2;
       PAPERLESS_THREADS_PER_WORKER = 1;

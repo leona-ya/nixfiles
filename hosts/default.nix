@@ -60,6 +60,14 @@
                   name = "nixpkgs-patched-naya";
                   src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/leona-ya/nixpkgs/commit/83030f0848aacf411f81a7a95cd0b812664d3bbb.patch";
+                      hash = "sha256-T7v0XLWGTBU6h/jzaaz0fxIDJ+Wzm4uIgOBjwU4IRd4=";
+                    })
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/leona-ya/nixpkgs/commit/762941c4e0450ba8418c6803601dd2acf046c6e7.patch";
+                      hash = "sha256-JNnxLN4CZHBUAK6epnz8b3Pv0M5uOJa9SV8l0IQkqTE=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });

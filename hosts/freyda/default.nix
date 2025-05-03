@@ -86,20 +86,5 @@
   # broken with linux 6.13
   hardware.framework.enableKmod = false;
 
-  hardware.graphics.package = (pkgs.mesa.overrideAttrs (
-    {
-      patches ? [ ],
-      ...
-    }:
-    {
-      patches = patches ++ [
-        (pkgs.fetchpatch2 {
-          url = "https://gitlab.freedesktop.org/pepp/mesa/-/commit/555821ff93118d4a6ea441127cd0427a95743d47.patch";
-          hash = "sha256-Gk/arvL5frsNOTHfHXvqWet3cD1U99GKDZ+7LPCedCA=";
-        })
-      ];
-    }
-  ));
-
   system.stateVersion = "23.05";
 }
