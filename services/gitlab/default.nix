@@ -7,6 +7,9 @@
     "services/gitlab/otp-secret".owner = "gitlab";
     "services/gitlab/db-secret".owner = "gitlab";
     "services/gitlab/jws-secret".owner = "gitlab";
+    "services/gitlab/activerecord-primary-secret".owner = "gitlab";
+    "services/gitlab/activerecord-deterministic-secret".owner = "gitlab";
+    "services/gitlab/activerecord-salt".owner = "gitlab";
   };
 
   services.gitlab = {
@@ -33,6 +36,9 @@
       otpFile = config.sops.secrets."services/gitlab/otp-secret".path;
       dbFile = config.sops.secrets."services/gitlab/db-secret".path;
       jwsFile = config.sops.secrets."services/gitlab/jws-secret".path;
+      activeRecordPrimaryKeyFile = config.sops.secrets."services/gitlab/activerecord-primary-secret".path;
+      activeRecordDeterministicKeyFile = config.sops.secrets."services/gitlab/activerecord-deterministic-secret".path;
+      activeRecordSaltFile = config.sops.secrets."services/gitlab/activerecord-salt".path;
     };
 
     sidekiq.concurrency = 1;
