@@ -51,7 +51,7 @@
       config.global.load_dotenv = false;
     };
     programs.zsh = {
-      initExtra = ''
+      initContent = ''
         eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
         eval "$(direnv hook zsh)"
       '';

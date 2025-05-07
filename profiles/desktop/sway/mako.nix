@@ -8,10 +8,12 @@ in
   home-manager.users.leona = {
     services.mako = {
       enable = true;
-      defaultTimeout = 10000;
-      borderColor = "#ffffff";
-      backgroundColor = "#00000070";
-      textColor = "#ffffff";
+      settings = {
+        defaultTimeout = 10000;
+        borderColor = "#ffffff";
+        backgroundColor = "#00000070";
+        textColor = "#ffffff";
+      };
     };
     wayland.windowManager.sway.config.startup = [{
       command = "${pkgs.mako}/bin/mako";

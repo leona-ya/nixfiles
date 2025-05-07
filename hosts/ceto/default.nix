@@ -19,6 +19,12 @@
   nix.distributedBuilds = false;
   nix.settings.max-jobs = 16;
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_testing;
+  boot.kernelPatches = [
+    {
+      name = "amd-drm-mst";
+      patch = ./kernel-drm-120178.patch;
+    }
+  ];
 
   l.backups = {
     enable = false;
