@@ -18,6 +18,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   nix.distributedBuilds = false;
   nix.settings.max-jobs = 16;
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_testing;
 
   l.backups = {
     enable = false;
