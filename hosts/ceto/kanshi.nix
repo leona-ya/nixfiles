@@ -21,7 +21,7 @@
               transform = "270";
             }
           ];
-          exec = "${pkgs.sway}/bin/swaymsg workspace 2, move workspace to output DP-2";
+          exec = "${pkgs.sway}/bin/swaymsg workspace 2, move workspace to output 'Dell Inc. DELL P2423D JY45VZ3'";
         };
       };
     };
