@@ -48,7 +48,6 @@
     gptfdisk
     htop
     iperf
-    jq
     mtr
     nmap
     openssl
@@ -57,6 +56,7 @@
     sshfs
     tcpdump
     tmux
+    yq-go
     whois
   ];
 }
