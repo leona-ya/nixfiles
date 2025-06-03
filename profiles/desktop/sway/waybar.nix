@@ -1,17 +1,17 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.services.waybar;
-  styles = ./waybar-style.css;
-  configFile = pkgs.writeText "waybar-config.json" (builtins.toJSON cfg.config);
+  waybar = pkgs.waybar.override {
+    hyprlandSupport = false;
+  };
 in
 {
-  users.users.leona.packages = with pkgs; [ waybar ];
+  users.users.leona.packages = [ waybar ];
   home-manager.users.leona = {
     xdg.configFile."waybar/config".source = ./waybar-config.json;
     xdg.configFile."waybar/style.css".source = ./waybar-style.css;
     wayland.windowManager.sway.config.startup = [{
-      command = "${pkgs.waybar}/bin/waybar";
+      command = "${waybar}/bin/waybar";
       always = false;
     }];
   };
