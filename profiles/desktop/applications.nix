@@ -156,10 +156,15 @@
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
+      defaultCacheTtlSsh = 15;
+      maxCacheTtlSsh = 300;
+      defaultCacheTtl = 5;
+      maxCacheTtl = 30;
       pinentry.package = pkgs.pinentry-gnome3;
       enableExtraSocket = true;
       sshKeys = [
-        "F18DB4002D5F6A2E62BF9F4E6361BB12143B6647" # leona
+        "F18DB4002D5F6A2E62BF9F4E6361BB12143B6647" # D5B08ADFC75E3605
+        "D4D2099A8A2FEE7D8B83989134B46C984C6FAF2D" # F0E55407FC6FF7BA
       ];
     };
     programs.chromium = {
