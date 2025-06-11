@@ -94,7 +94,7 @@
       userName = "Leona Maroni";
       userEmail = lib.mkDefault "dev@leona.is";
       signing.signByDefault = true;
-      signing.key = lib.mkDefault "EB5CEED62922C6050F9FC85BD5B08ADFC75E3605";
+      signing.key = lib.mkDefault "B50CB5BA6A620411098CD9C8F0E55407FC6FF7BA";
       ignores = [
         ".venv"
         ".idea"
