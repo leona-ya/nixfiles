@@ -1,14 +1,15 @@
 { inputs, pkgs, ... }: {
   imports = [
-    inputs.home-manager.darwinModule
+    inputs.home-manager.darwinModules.home-manager
     ./home-manager-fixes.nix
   ];
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
   
   system.activationScripts.setting.text = ''
     # Allow opening apps from any source
     sudo spctl --master-disable
   '';
+  nix.settings.sandbox = "relaxed";
 
   # TODO: deduplicate
   nixpkgs.config.allowUnfree = true;
@@ -58,10 +59,15 @@
     };
     home.packages = with pkgs; [
       element-desktop
+      maven
+      nodejs
       pre-commit
       ruff
+      uv
+      yarn
       zoxide
       # nixpkgs tools
+      nixfmt-rfc-style
       nix-output-monitor
       nix-init
       nurl
