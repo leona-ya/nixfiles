@@ -47,6 +47,10 @@
                   name = "nixpkgs-patched-ceto";
                   src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/nixos/nixpkgs/pull/411792.patch";
+                      hash = "sha256-j0+k2WxxcBlkeQtr9uPZzUyI2ArZh6E8Nd0fnz/jiac=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });
