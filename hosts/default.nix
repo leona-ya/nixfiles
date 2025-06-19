@@ -51,6 +51,10 @@
                       url = "https://github.com/nixos/nixpkgs/pull/411792.patch";
                       hash = "sha256-j0+k2WxxcBlkeQtr9uPZzUyI2ArZh6E8Nd0fnz/jiac=";
                     })
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/nixos/nixpkgs/pull/413666.patch";
+                      hash = "sha256-w703E8v03111m8f29WBhiUyEmMSCHDtAPLM39QJZDdA=";
+                    })
                   ];
                 })
                 { system = "x86_64-linux"; });

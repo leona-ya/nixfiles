@@ -79,6 +79,10 @@
         };
         language = [
           {
+            name = "c";
+            indent = { tab-width = 8; unit = "\t"; };
+          }
+          {
             name = "nix";
             language-servers = [ "nil" ];
           }

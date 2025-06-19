@@ -19,6 +19,7 @@
   ];
   mailserver = {
     enable = true;
+    stateVersion = 2;
     fqdn = "${config.networking.hostName}.net.leona.is";
     messageSizeLimit = 52428800;
 
