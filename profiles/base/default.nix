@@ -19,8 +19,7 @@
   home-manager.useGlobalPkgs = true;
   nixpkgs.config.allowUnfree = true;
   nix = {
-    #package = pkgs.lix;
-    package = pkgs.nixVersions.nix_2_28;
+    package = pkgs.lix;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       builders-use-substitutes = true;

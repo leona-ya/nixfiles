@@ -45,7 +45,7 @@
               ceto = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-ceto";
-                  src = inputs.nixpkgs;
+                  src = inputs.nixpkgs-unstable;
                   patches = [
                     (nixpkgs.fetchpatch {
                       url = "https://github.com/nixos/nixpkgs/pull/411792.patch";

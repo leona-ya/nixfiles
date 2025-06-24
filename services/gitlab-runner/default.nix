@@ -32,7 +32,7 @@
           mkdir -p -m 0700 "$HOME/.nix-defexpr"
 
           cat >/etc/nix/nix.conf <<EOL
-experimental-features = nix-command flakes pipe-operators
+experimental-features = nix-command flakes pipe-operator
 EOL
 
           . ${pkgs.lix}/etc/profile.d/nix.sh
