@@ -156,6 +156,7 @@
           "git.yuka.dev" = yuka-gitea;
           "thia.wg.net.leona.is" = leona-desktop;
           "*.net.leona.is" = leona;
+          "10.151.5.1" = leona;
         };
     };
   };

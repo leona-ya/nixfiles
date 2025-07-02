@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
-  boot.initrd.availableKernelModules = [ "r8169" "virtio_pci" ];
   boot = {
     initrd = {
+      availableKernelModules = [ "r8169" "virtio_pci" ];
       network = {
         enable = true;
         ssh = {

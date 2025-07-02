@@ -9,9 +9,7 @@
 
   services.netbox = {
     enable = true;
-    package = pkgs.netbox_4_2.overrideAttrs (old: {
-      
-    });
+    package = pkgs.netbox_4_3;
     unixSocket = "/run/netbox/netbox.sock";
     secretKeyFile = config.sops.secrets."services/netbox/secret_key".path;
     extraConfig = ''

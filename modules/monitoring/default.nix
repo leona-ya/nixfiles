@@ -79,7 +79,7 @@
       { name = "postgres-exporter"; }
     ];
     systemd.services.postgresql.postStart = lib.mkIf config.services.postgresql.enable ''
-      $PSQL -tAc 'GRANT pg_read_all_stats TO "postgres-exporter"' -d postgres
+      psql -tAc 'GRANT pg_read_all_stats TO "postgres-exporter"' -d postgres
     '';
   }) (lib.mkIf config.l.monitoring.logs.enable {
     services.alloy = {

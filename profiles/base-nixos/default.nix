@@ -18,7 +18,6 @@
   users.mutableUsers = false;
   hardware.enableAllFirmware = true;
 
-  system.switch.enableNg = true;
   security.sudo.enable = false;
   security.sudo-rs.enable = true;
   security.sudo-rs.wheelNeedsPassword = lib.mkDefault false;

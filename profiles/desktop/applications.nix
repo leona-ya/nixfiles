@@ -39,7 +39,6 @@
     anki
     bitwarden
     #calibre
-    cachix
     editorconfig-checker
     element-desktop
     evince
@@ -50,6 +49,8 @@
     nautilus
     clang
     cmake
+    gtest
+    gtest.dev
     gnumake
     gh
     inkscape
@@ -168,7 +169,7 @@
       ];
     };
     programs.chromium = {
-      enable = true;
+      enable = false;
       package = pkgs.symlinkJoin {
         name = "chromium";
         paths = [ pkgs.chromium ];
@@ -291,7 +292,4 @@
   programs.steam.enable = true;
   hardware.keyboard.zsa.enable = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "i686-linux" ];
-  networking.hosts = {
-    "fd8f:d15b:9f40:101::1312" = [ "cloud.leona.is" ];
-  };
 }
