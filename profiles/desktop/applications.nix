@@ -24,6 +24,7 @@
     monaspace
     annieuseyourtelescope
     vistafonts
+    source-sans-pro
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -44,7 +45,7 @@
     evince
     feh
     gcc11
-    gimp
+    gimp3
     eog
     nautilus
     clang
