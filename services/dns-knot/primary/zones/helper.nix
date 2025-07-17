@@ -12,14 +12,17 @@ with dns.lib.combinators;
     mxSimple = [
       (mx.mx 10 "kupe.net.leona.is.")
     ];
-    spf = (with dns.lib.combinators.spf; soft [
+    spf = (with dns.lib.combinators.spf; strict [
       "a"
+      "aaaa"
       "mx"
     ]);
     dmarc = [{
       p = "quarantine";
       sp = "quarantine";
       rua = "mailto:noc@leona.is";
+      adkim = "relaxed";
+      aspf = "relaxed";
     }];
   };
   caa = letsEncrypt "noc@leona.is"; # Common template combinators included
