@@ -44,6 +44,7 @@
     enable = true;
     upstreamHosts = {
       "laurel.net.leona.is" = [
+        "nomsable.eu"
         "matrix.leona.is"
         "sliding-sync.matrix.leona.is"
         "md.leona.is"

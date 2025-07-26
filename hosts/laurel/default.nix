@@ -12,8 +12,7 @@
     ../../services/outline
     ../../services/vaultwarden
     ../../services/netbox
-    #      ../../services/shiori
-    #      ../../services/vikunja
+    ../../services/tandoor
   ];
 
   deployment.buildOnTarget = true;

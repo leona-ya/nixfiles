@@ -94,7 +94,6 @@ in
       "sliding-sync.matrix" = host bij_v4 laurel_v6;
       md = host bij_v4 laurel_v6;
       netbox = host bij_v4 laurel_v6;
-      nomsable = host bij_v4 laurel_v6;
       "paperless.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
       todo = host bij_v4 laurel_v6;
       pass = host bij_v4 laurel_v6;

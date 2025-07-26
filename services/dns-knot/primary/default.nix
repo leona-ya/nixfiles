@@ -171,6 +171,10 @@ in
           file = dnsutil.writeZone "opendatamap.net" (lib.recursiveUpdate (import zones/opendatamap.net.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "opendatamap.net"); });
           template = "signedprimary";
         };
+        "nomsable.eu" = {
+          file = dnsutil.writeZone "nomsable.eu" (lib.recursiveUpdate (import zones/nomsable.eu.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "nomsable.eu"); });
+          template = "signedprimary";
+        };
       };
     };
   };
