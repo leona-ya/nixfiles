@@ -1,5 +1,5 @@
 keys:
-  - &leona EB5CEED62922C6050F9FC85BD5B08ADFC75E3605
+  - &leona B50CB5BA6A620411098CD9C8F0E55407FC6FF7BA
   - &arche age1qly0tm983m4cssmvt4fcgekrezez86lclpmwu3aezk6jyyhxte0q3l3vad
   - &bij age14s6jax4hc2uz6rusud4lna0uc9m28u9yurv2ewwjchnr2cjqa43qqw2xqp
   - &ceto age1j87zqrvqvku98rex3w2uw7gr57wgvyzfghq7g6v076ee5pa02qtqju0yq0
@@ -137,7 +137,7 @@ creation_rules:
     key_groups:
       - pgp:
           - *leona
-  - path_regex: secrets/services/(hedgedoc|matrix|netbox|outline|pleroma|vikunja|vaultwarden).yaml
+  - path_regex: secrets/services/(hedgedoc|matrix|netbox|outline|tandoor|pleroma|vikunja|vaultwarden).yaml
     key_groups:
       - pgp:
           - *leona
