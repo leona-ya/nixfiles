@@ -20,5 +20,9 @@
     DMARC = helper.mail.dmarc;
 
     CAA = helper.caa;
+
+    subdomains = {
+      social = host "168.119.100.247" "2a01:4f8:c012:b172::1";
+    };
   };
 }

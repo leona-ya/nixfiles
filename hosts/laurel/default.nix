@@ -13,6 +13,7 @@
     ../../services/vaultwarden
     ../../services/netbox
     ../../services/tandoor
+    ../../services/gotosocial-is
   ];
 
   deployment.buildOnTarget = true;
