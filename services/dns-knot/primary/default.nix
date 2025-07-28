@@ -145,6 +145,10 @@ in
           file = dnsutil.writeZone "infspace.xyz" (lib.recursiveUpdate (import zones/infspace.xyz.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "infspace.xyz"); });
           template = "signedprimary";
         };
+        "infinitespace.dev" = {
+          file = dnsutil.writeZone "infinitespace.dev" (lib.recursiveUpdate (import zones/infinitespace.dev.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "infinitespace.dev"); });
+          template = "signedprimary";
+        };
         "labcode.de" = {
           file = dnsutil.writeZone "labcode.de" (lib.recursiveUpdate (import zones/labcode.de.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "labcode.de"); });
           template = "signedprimary";
