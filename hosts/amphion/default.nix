@@ -26,6 +26,7 @@
       user.email = "lm@flyingcircus.io";
       signing = {
         backend = "ssh";
+        backends.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEnfB0kjcnCDFWSqSNoJcmIVWijOfGO5zGwXcxopdGU5";
       };
     };
