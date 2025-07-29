@@ -51,6 +51,7 @@
         "pass.leona.is"
         "todo.leona.is"
         "social.haj.gf"
+        "social.infinitespace.dev"
       ];
       "thia.wg.net.leona.is" = [
         "cloud.maroni.me"
