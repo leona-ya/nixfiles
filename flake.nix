@@ -88,7 +88,7 @@
       devShells.default = pkgs.mkShellNoCC {
         buildInputs = [
           pkgs.sops
-          (inputs'.colmena.packages.colmena)
+          (inputs'.colmena.packages.colmena.override { nix-eval-jobs = pkgs.lixPackageSets.latest.nix-eval-jobs; })
         ];
       };
     };
