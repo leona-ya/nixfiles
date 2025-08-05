@@ -10,7 +10,7 @@
   deployment.tags = [ pkgs.stdenv.hostPlatform.system config.networking.domain ];
   deployment.targetUser = lib.mkDefault "leona";
   deployment.targetHost = lib.mkDefault config.networking.fqdn;
-  deployment.targetPort = lib.mkDefault (lib.head config.services.openssh.ports);
+  deployment.targetPort = lib.mkDefault 22;
   hardware.enableRedistributableFirmware = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -34,7 +34,7 @@
 
   services.openssh = {
     enable = true;
-    ports = [ 54973 ];
+    ports = [ 22 ];
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;

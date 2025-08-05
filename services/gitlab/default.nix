@@ -97,7 +97,6 @@
 
   systemd.services.gitlab.serviceConfig.Restart = lib.mkForce "always";
   services.openssh = {
-    ports = [ 22 ];
     extraConfig = ''
       Match User gitlab
         AuthorizedKeysFile ${config.users.users.gitlab.home}/.ssh/authorized_keys

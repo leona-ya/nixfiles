@@ -140,9 +140,7 @@
       enable = true;
       matchBlocks =
         let
-          leona.port = 54973;
           leona-desktop = {
-            port = 54973;
             forwardAgent = true;
             extraOptions = {
               RemoteForward = "/run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra";
@@ -155,8 +153,6 @@
         {
           "git.yuka.dev" = yuka-gitea;
           "thia.wg.net.leona.is" = leona-desktop;
-          "*.net.leona.is" = leona;
-          "10.151.5.1" = leona;
         };
     };
   };
