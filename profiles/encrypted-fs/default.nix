@@ -6,7 +6,7 @@
         enable = true;
         ssh = {
           enable = true;
-          port = 22;
+          port = 222;
           authorizedKeys = config.users.users.leona.openssh.authorizedKeys.keys;
           hostKeys = [
             "/boot/ssh_initrd_ed25519"

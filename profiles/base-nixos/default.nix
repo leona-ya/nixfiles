@@ -10,7 +10,6 @@
   deployment.tags = [ pkgs.stdenv.hostPlatform.system config.networking.domain ];
   deployment.targetUser = lib.mkDefault "leona";
   deployment.targetHost = lib.mkDefault config.networking.fqdn;
-  deployment.targetPort = lib.mkDefault 22;
   hardware.enableRedistributableFirmware = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
