@@ -55,7 +55,6 @@
     gnumake
     gh
     inkscape
-    jetbrains.clion
     jetbrains.idea-ultimate
     jetbrains.rust-rover
     #    kicad

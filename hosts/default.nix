@@ -51,14 +51,18 @@
                 })
                 { system = "x86_64-linux"; });
               freyda = ceto;
-              naya = (import
+              bij = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-naya";
+                  name = "nixpkgs-patched-bij";
                   src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/422076.patch";
+                      hash = "sha256-69Srtyb7gaUczgbYPBGrpTE27I2OOdXXTwcSFCnrABM=";
+                    })
                   ];
                 })
-                { system = "x86_64-linux"; });
+                { system = "aarch64-linux"; });
               sphere = (import
                 ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-laurel";
