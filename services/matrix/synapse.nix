@@ -21,10 +21,28 @@
   };
 
   #  users.users.matrix-synapse.extraGroups = [ "mautrix-telegram" ];
+  #
+  nixpkgs.overlays = [
+    (final: prev: {
+      matrix-synapse-unwrapped = prev.matrix-synapse-unwrapped.overrideAttrs (oA: rec {
+        version = "1.135.2";
+        src = final.fetchFromGitHub {
+          owner = "element-hq";
+          repo = "synapse";
+          rev = "v1.135.2";
+          hash = "sha256-4HAA9Xq4C3DHxz0BgqBitfM4wZwPSEu+IO/OPfHzLVw=";
+        };
+#        cargoDeps = final.rustPlatform.fetchCargoVendor {
+#          pname = oA.pname;
+#          inherit version src;
+#          hash = "sha256-4J92s6cSgsEIYQpbU6OOLI/USIJX2Gc7UdEHgWQgmXc=";
+#        };
+      });
+    })
+  ];
 
   services.matrix-synapse = {
-    enable = true;
-
+    enable = true;      
     settings = {
       enable_registration = false;
       server_name = "leona.is";
