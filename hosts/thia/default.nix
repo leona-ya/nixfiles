@@ -5,8 +5,6 @@
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
     ./hw.nix
-#    ../../profiles/desktop
-#    ../../profiles/desktop/sway
     ../../profiles/desktop/syncthing.nix
     ../../profiles/encrypted-fs
     ../../services/int-acme-ca
@@ -14,6 +12,7 @@
     ../../services/bn-smarthome
     ../../services/youtrack
     ../../services/nextcloud
+    ../../services/actual-budget
     ./disko.nix
     ./network.nix
     ./libvirt.nix

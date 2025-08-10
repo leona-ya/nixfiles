@@ -7,7 +7,6 @@
     ../../profiles/zfs-nopersist
     ../../profiles/encrypted-fs
     ../../services/web
-    ../../services/firefly-iii
     ../../services/dns-kresd
     ../../services/snipe-it
     ../../services/dns-knot/secondary
@@ -56,6 +55,7 @@
       "thia.wg.net.leona.is" = [
         "cloud.maroni.me"
         "cloud.leona.is"
+        "fin.leona.is"
         "yt.leona.is"
       ];
       "sphere.net.leona.is" = [
@@ -68,17 +68,11 @@
   };
 
   users.users = {
-    firefly-iii.uid = 995;
     acme.uid = 996;
-    postgres.uid = 71;
   };
   users.groups = {
     acme.gid = 995;
-    firefly-iii.gid = 994;
-    postgres.gid = 71;
   };
-
-  services.postgresql.package = pkgs.postgresql_15;
 
   system.stateVersion = "23.05";
 }
