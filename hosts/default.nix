@@ -56,10 +56,6 @@
                   name = "nixpkgs-patched-bij";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/422076.patch";
-                      hash = "sha256-69Srtyb7gaUczgbYPBGrpTE27I2OOdXXTwcSFCnrABM=";
-                    })
                   ];
                 })
                 { system = "aarch64-linux"; });
