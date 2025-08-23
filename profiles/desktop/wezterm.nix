@@ -95,7 +95,7 @@
 
         config.scrollback_lines = 100000
         local act = wezterm.action
-        config.disable_default_key_bindings = true
+        config.disable_default_key_bindings = false
         config.keys = {
           { mods = "${modKey}", key = "1", action = act.ActivateTab(0) },
           { mods = "${modKey}", key = "2", action = act.ActivateTab(1) },

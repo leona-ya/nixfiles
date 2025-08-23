@@ -44,7 +44,6 @@
     element-desktop
     evince
     feh
-    gcc11
     gimp3
     eog
     nautilus
@@ -59,6 +58,8 @@
     jetbrains.rust-rover
     #    kicad
     libimobiledevice
+    llvm
+    lldb
     onlyoffice-bin
     #nheko
     mpv
@@ -66,6 +67,7 @@
       plugins = with obs-studio-plugins; [ wlrobs ];
     })
     obsidian
+    opentofu
     openssl_3_0
     pandoc
     pass-wayland
