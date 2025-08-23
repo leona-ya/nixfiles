@@ -9,7 +9,7 @@ in
   networking.firewall.allowedUDPPorts = [ 51441 ];
   systemd.network = {
     links."10-eth0" = {
-      matchConfig.MACAddress = "02:01:af:69:b7:ea";
+      matchConfig.MACAddress = "02:01:6b:d9:43:26";
       linkConfig.Name = "eth0";
     };
     networks = {
