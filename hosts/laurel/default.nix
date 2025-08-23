@@ -35,7 +35,6 @@
     postgres.uid = 71;
     matrix-synapse.uid = 224;
     vaultwarden.uid = 992;
-    pleroma.uid = 993;
     hedgedoc.uid = 994;
     acme.uid = 996;
   };
@@ -44,7 +43,6 @@
     postgres.gid = 71;
     matrix-synapse.gid = 224;
     vaultwarden.gid = 990;
-    pleroma.gid = 992;
     hedgedoc.gid = 993;
     acme.gid = 995;
   };

@@ -9,9 +9,9 @@ let
   }));
 in
 {
-  l.sops.secrets."services/pleroma/secret_config".owner = "pleroma";
+  #l.sops.secrets."services/pleroma/secret_config".owner = "pleroma";
   services.pleroma = {
-    enable = true;
+    enable = false;
     configs = [ (lib.fileContents ./config.exs) ];
     secretConfigFile = config.sops.secrets."services/pleroma/secret_config".path;
     package = (pkgs.pleroma.override {
@@ -78,8 +78,10 @@ in
     kTLS = true;
     locations = {
       "/" = {
-        proxyPass = "http://localhost:4001";
-        proxyWebsockets = true;
+        extraConfig = ''
+           default_type text/plain;
+        '';
+        return = "410 'HTTP 410 – Gone. Thanks for staying with us.'";
       };
       "= /favicon.png".tryFiles = "$uri /static/favicon.png";
     };
