@@ -15,7 +15,7 @@
   # TODO: deduplicate
   nixpkgs.config.allowUnfree = true;
   fonts.packages = with pkgs; [
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     dejavu_fonts
     fira
     fira-mono
@@ -59,6 +59,7 @@
       '';
     };
     home.packages = with pkgs; [
+      devenv
       element-desktop
       maven
       nodejs
