@@ -144,7 +144,7 @@
           name = "Leona Maroni";
           email = lib.mkDefault "dev@leona.is";
         };
-        ui.diff.tool = [
+        ui.diff-formatter = [
           "difft"
           "--color=always"
           "$left"
