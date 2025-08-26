@@ -18,7 +18,6 @@
     ./uni-vpn.nix
     ./darkman.nix
   ];
-  nix.settings.experimental-features = [ "pipe-operator" ];
 
   security.pam.services.login.fprintAuth = lib.mkForce false;
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {

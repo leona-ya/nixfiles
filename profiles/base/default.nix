@@ -11,6 +11,8 @@
     ../../users/leona
     ./helix.nix
     ./bat.nix
+    ../../modules/meta
+    ../../modules/sops
   ];
 
   nixpkgs.overlays = lib.attrValues inputs.self.overlays;
@@ -30,6 +32,7 @@
       experimental-features = [
         "nix-command"
         "flakes"
+        "pipe-operator"
       ];
       builders-use-substitutes = true;
       trusted-users = [

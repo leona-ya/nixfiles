@@ -2,7 +2,7 @@
 {
   imports = [
     inputs.home-manager.darwinModules.home-manager
-    ./home-manager-fixes.nix
+    inputs.sops-nix.darwinModules.sops
   ];
   security.pam.services.sudo_local.touchIdAuth = true;
 
@@ -30,6 +30,10 @@
     annieuseyourtelescope
   ];
   home-manager.users.leona = {
+    targets.darwin = {
+      linkApps.enable = false;  # spotlight ignores symlinks
+      copyApps.enable = true;
+    }; 
     programs.gpg = {
       enable = true;
       scdaemonSettings = {

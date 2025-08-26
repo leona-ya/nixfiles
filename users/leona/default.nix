@@ -5,15 +5,18 @@
   ...
 }:
 
-{
+let
+  setPassword = !config.l.meta.bootstrap && config.nixpkgs.hostPlatform.isLinux;
+in {
   imports = [
     ./importable.nix
   ];
-  l.sops.secrets."all/users/leona_pw" = {
-    enable = !config.l.meta.bootstrap;
-    neededForUsers = true;
+  config = lib.mkIf setPassword {
+    l.sops.secrets."all/users/leona_pw" = {
+      neededForUsers = true;
+    };
+    users.users.leona.hashedPasswordFile = (
+      lib.mkDefault config.sops.secrets."all/users/leona_pw".path
+    );
   };
-  users.users.leona.hashedPasswordFile = lib.mkIf (!config.l.meta.bootstrap) (
-    lib.mkDefault config.sops.secrets."all/users/leona_pw".path
-  );
 }
