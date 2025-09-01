@@ -8,7 +8,6 @@
     ../../profiles/encrypted-fs
     ../../services/hedgedoc
     ../../services/matrix
-    ../../services/haj-social
     ../../services/outline
     ../../services/vaultwarden
     ../../services/netbox

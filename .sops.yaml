@@ -137,7 +137,7 @@ creation_rules:
     key_groups:
       - pgp:
           - *leona
-  - path_regex: secrets/services/(hedgedoc|matrix|netbox|outline|tandoor|pleroma|vikunja|vaultwarden).yaml
+  - path_regex: secrets/services/(hedgedoc|matrix|netbox|outline|tandoor|vikunja|vaultwarden).yaml
     key_groups:
       - pgp:
           - *leona
