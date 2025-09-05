@@ -4,7 +4,6 @@
   l.sops.secrets."hosts/freyda/wireguard_wg-clients_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/freyda/wireguard_wg-public_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/freyda/wireguard_wg-fdg_privatekey".owner = "systemd-network";
-  l.sops.secrets."hosts/freyda/wireguard_wg-entropia-oob_privatekey".owner = "systemd-network";
   systemd.network.netdevs = {
     "30-wg-clients-6" = {
       netdevConfig = {
@@ -60,20 +59,6 @@
         AllowedIPs = [ "fd59:974e:6ee8::/64" ];
         PublicKey = "79NbBslDrdK5fllB4+6wA9mUV7sVQCtAaPsojW0JJ0U=";
         Endpoint = "martian.infra.fahrplandatengarten.de:40000";
-      }];
-    };
-    "30-wg-entropia-oob" = {
-      netdevConfig = {
-        Kind = "wireguard";
-        Name = "wg-entropia-oob";
-      };
-      wireguardConfig = {
-        PrivateKeyFile = config.sops.secrets."hosts/freyda/wireguard_wg-entropia-oob_privatekey".path;
-      };
-      wireguardPeers = [{
-        AllowedIPs = [ "0.0.0.0/0" ];
-        PublicKey = "ppEIKUx02qt5YfytN3neB4zx4XFTZIomZHIqcOSaExA=";
-        Endpoint = "wg.oob.entropia.de:51820";
       }];
     };
   };
@@ -142,26 +127,6 @@
       ];
       routes = [
         { Destination = "fd59:974e:6ee8::/48"; }
-      ];
-    };
-    "30-wg-entropia-oob" = {
-      name = "wg-entropia-oob";
-      linkConfig = {
-        RequiredForOnline = "no";
-        ActivationPolicy = "manual";
-      };
-      address = [
-        "192.168.73.13/32"
-      ];
-      routes = map (net: { Destination = net; }) [
-        "192.168.73.0/24"
-        "192.168.72.0/24"
-        "10.214.224.0/24"
-        "10.214.225.0/24"
-        "10.214.226.0/24"
-        "10.214.227.0/24"
-        "192.168.202.0/24"
-        "192.168.73.1/32"
       ];
     };
   };
