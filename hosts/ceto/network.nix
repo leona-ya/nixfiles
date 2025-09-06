@@ -6,11 +6,11 @@
   networking.domain = "net.leona.is";
 
   systemd.network = {
-    links = { 
+    links = {
       "10-eth0" = {
         matchConfig.MACAddress = "9c:6b:00:97:b5:8a";
         linkConfig = {
-          Name = "eth0";        
+          Name = "eth0";
           WakeOnLan = "magic";
         };
       };

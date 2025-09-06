@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   grafanaDomain = "grafana.mon.leona.is";
@@ -86,10 +91,12 @@ in
       };
       dashboards.settings = {
         apiVersion = 1;
-        providers = [{
-          name = "nix provisioned";
-          options.path = ./dashboards;
-        }];
+        providers = [
+          {
+            name = "nix provisioned";
+            options.path = ./dashboards;
+          }
+        ];
       };
     };
   };

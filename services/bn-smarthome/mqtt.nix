@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.mosquitto = {
     enable = true;
     listeners = [

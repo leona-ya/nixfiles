@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   l.sops.secrets."hosts/${config.networking.hostName}/acme_tsig_key" = { };
   security.acme = {
     acceptTerms = true;
@@ -12,7 +13,8 @@
         RFC2136_TSIG_ALGORITHM=hmac-sha256.
       ''}";
       credentialFiles = {
-        "RFC2136_TSIG_SECRET_FILE" = config.sops.secrets."hosts/${config.networking.hostName}/acme_tsig_key".path;
+        "RFC2136_TSIG_SECRET_FILE" =
+          config.sops.secrets."hosts/${config.networking.hostName}/acme_tsig_key".path;
       };
     };
   };

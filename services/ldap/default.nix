@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   l.sops.secrets."services/ldap/root_password".owner = "openldap";
@@ -64,7 +69,10 @@
         };
         "olcDatabase={1}mdb" = {
           attrs = {
-            objectClass = [ "olcDatabaseConfig" "olcMdbConfig" ];
+            objectClass = [
+              "olcDatabaseConfig"
+              "olcMdbConfig"
+            ];
             olcDatabase = "{1}mdb";
             olcDbDirectory = "/var/lib/openldap/db";
             olcSuffix = "dc=leona,dc=is";
@@ -87,7 +95,11 @@
           children = {
             "olcOverlay={2}ppolicy" = {
               attrs = {
-                objectClass = [ "olcOverlayConfig" "olcPPolicyConfig" "top" ];
+                objectClass = [
+                  "olcOverlayConfig"
+                  "olcPPolicyConfig"
+                  "top"
+                ];
                 olcOverlay = "{2}ppolicy";
                 olcPPolicyHashCleartext = "TRUE";
               };

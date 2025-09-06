@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   networking.nftables.ruleset =
     let
       mtuFix = ''

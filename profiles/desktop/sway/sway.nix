@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   hardware.graphics.enable = true;
@@ -25,7 +30,10 @@
   home-manager.users.leona = {
     xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-wlr
+      ];
       config = {
         sway = {
           "default" = "gtk";
@@ -36,7 +44,9 @@
         };
       };
     };
-    systemd.user.services.swayidle.Service.Environment = lib.mkForce [ "PATH=/run/wrappers/bin:/home/leona/.nix-profile/bin:/etc/profiles/per-user/leona/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin" ];
+    systemd.user.services.swayidle.Service.Environment = lib.mkForce [
+      "PATH=/run/wrappers/bin:/home/leona/.nix-profile/bin:/etc/profiles/per-user/leona/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+    ];
     services.swayidle =
       let
         lockCommand = "${pkgs.writeShellScript "swaylock-command" ''
@@ -44,16 +54,25 @@
           ${pkgs.grim}/bin/grim -t png -l 1 /tmp/lock-screenshot.png
           ${pkgs.imagemagick}/bin/magick /tmp/lock-screenshot.png -blur 80x40 /tmp/lock-screenshot.png
           ${pkgs.swaylock}/bin/swaylock -i /tmp/lock-screenshot.png
-      ''}";
+        ''}";
       in
       {
         enable = true;
         events = [
-          { event = "before-sleep"; command = lockCommand; }
-          { event = "lock"; command = lockCommand; }
+          {
+            event = "before-sleep";
+            command = lockCommand;
+          }
+          {
+            event = "lock";
+            command = lockCommand;
+          }
         ];
         timeouts = [
-          { timeout = 300; command = lockCommand; }
+          {
+            timeout = 300;
+            command = lockCommand;
+          }
         ];
       };
     wayland.windowManager.sway =
@@ -66,7 +85,7 @@
         enable = true;
         package = pkgs.sway;
         wrapperFeatures.gtk = true;
-        systemd.variables = [ 
+        systemd.variables = [
           "DISPLAY"
           "WAYLAND_DISPLAY"
           "SWAYSOCK"
@@ -187,12 +206,15 @@
 
             "${modifier}+r" = "mode resize";
 
-            "${modifier}+Shift+s" = "exec ${pkgs.grim}/bin/grim -t png -l 1 -g \"$(${pkgs.slurp}/bin/slurp)\" ~/screenshot-$(date +%Y-%m-%d_%H-%m-%s).png";
+            "${modifier}+Shift+s" =
+              "exec ${pkgs.grim}/bin/grim -t png -l 1 -g \"$(${pkgs.slurp}/bin/slurp)\" ~/screenshot-$(date +%Y-%m-%d_%H-%m-%s).png";
           };
-          startup = [{
-            command = "systemctl --user restart nextcloud-client";
-            always = true;
-          }];
+          startup = [
+            {
+              command = "systemctl --user restart nextcloud-client";
+              always = true;
+            }
+          ];
         };
 
         extraConfig = ''

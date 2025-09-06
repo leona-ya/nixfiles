@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   legitimaBaseURL = "https://sso.leona.is";
@@ -29,7 +34,10 @@ in
   };
 
   services.postgresql = {
-    ensureDatabases = [ "ory-hydra" "legitima" ];
+    ensureDatabases = [
+      "ory-hydra"
+      "legitima"
+    ];
     ensureUsers = [
       {
         name = "ory-hydra";
@@ -50,7 +58,10 @@ in
 
   systemd.services.legitima = {
     description = "legitima";
-    after = [ "network.target" "ory-hydra.service" ];
+    after = [
+      "network.target"
+      "ory-hydra.service"
+    ];
     wantedBy = [ "multi-user.target" ];
     restartTriggers = [ config.sops.secrets."services/hydra-sso/legitima_config".path ];
 

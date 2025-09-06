@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.youtrack = {
     enable = true;
     environmentalParameters.listen-port = 7012;

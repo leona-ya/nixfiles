@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   l.sops.secrets."services/vikunja/env" = { };
@@ -31,11 +36,13 @@
         };
         openid = {
           enabled = true;
-          providers = [{
-            name = "sso";
-            authurl = "https://hydra.sso.leona.is/";
-            clientid = "vikunja";
-          }];
+          providers = [
+            {
+              name = "sso";
+              authurl = "https://hydra.sso.leona.is/";
+              clientid = "vikunja";
+            }
+          ];
         };
       };
     };

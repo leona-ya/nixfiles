@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   keycloakTheme = pkgs.stdenv.mkDerivation {
@@ -27,7 +32,7 @@ in
   services.keycloak = {
     enable = true;
     package = pkgs.keycloak.override {
-      extraFeatures = [];
+      extraFeatures = [ ];
       disabledFeatures = [ "kerberos" ];
     };
     database.passwordFile = config.sops.secrets."services/keycloak/database_password".path;

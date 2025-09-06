@@ -54,43 +54,61 @@
     };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-    systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
-    imports = [
-      ./hosts
-      ./packages
-    ];
-    flake = {
-      overlays = {
-        colmena = inputs.colmena.overlay;
-        leona-is-website = inputs.leona-is-website.overlay;
-        iso = final: prev: {
-          iso = (inputs.nixpkgs.lib.nixosSystem {
-            system = final.stdenv.targetPlatform.system;
-            specialArgs = {
-              inputs = inputs;
-              nixpkgs = inputs.nixpkgs;
-            };
-            modules = [
-              (import ./lib/iso.nix)
-            ];
-          }).config.system.build.isoImage;
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+      imports = [
+        ./hosts
+        ./packages
+      ];
+      flake = {
+        overlays = {
+          colmena = inputs.colmena.overlay;
+          leona-is-website = inputs.leona-is-website.overlay;
+          iso = final: prev: {
+            iso =
+              (inputs.nixpkgs.lib.nixosSystem {
+                system = final.stdenv.targetPlatform.system;
+                specialArgs = {
+                  inputs = inputs;
+                  nixpkgs = inputs.nixpkgs;
+                };
+                modules = [
+                  (import ./lib/iso.nix)
+                ];
+              }).config.system.build.isoImage;
+          };
+        };
+
+        nixosModules = {
+          sops = import ./modules/sops;
+          leona-profile = import ./users/leona/importable.nix;
         };
       };
-
-      nixosModules = {
-        sops = import ./modules/sops;
-        leona-profile = import ./users/leona/importable.nix;
-      };
+      perSystem =
+        {
+          config,
+          pkgs,
+          inputs',
+          self',
+          system,
+          ...
+        }:
+        {
+          formatter = pkgs.nixpkgs-fmt;
+          devShells.default = pkgs.mkShellNoCC {
+            buildInputs = [
+              pkgs.sops
+              (inputs'.colmena.packages.colmena.override {
+                nix-eval-jobs = pkgs.lixPackageSets.latest.nix-eval-jobs;
+              })
+            ];
+          };
+        };
     };
-    perSystem = { config, pkgs, inputs', self', system, ... }: {
-      formatter = pkgs.nixpkgs-fmt;
-      devShells.default = pkgs.mkShellNoCC {
-        buildInputs = [
-          pkgs.sops
-          (inputs'.colmena.packages.colmena.override { nix-eval-jobs = pkgs.lixPackageSets.latest.nix-eval-jobs; })
-        ];
-      };
-    };
-  };
 }

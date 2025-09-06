@@ -1,35 +1,47 @@
-{ inputs, pkgs, config, lib, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   dns = inputs.dns;
   dnsutil = dns.util.${pkgs.stdenv.hostPlatform.system};
   helper = import ./zones/helper.nix { inherit dns; };
   hosthelper = import ../../../hosts/helper.nix { inherit lib config; };
   acmeZone = "acme.leona.is";
-  hostsWithACMERecords = 
+  hostsWithACMERecords =
     inputs.self.nixosConfigurations
-    |> lib.filterAttrs (hostName: cfg: cfg.config.security.acme.certs != {});
+    |> lib.filterAttrs (hostName: cfg: cfg.config.security.acme.certs != { });
   generateACMERecord = recordName: (builtins.hashString "sha1" recordName) + ".${acmeZone}.";
-  getAllDomainsPerHost = hostName: (
-    inputs.self.nixosConfigurations.${hostName}.config.security.acme.certs
-    |> lib.mapAttrsToList (domain: cfg: [ domain ] ++ cfg.extraDomainNames)
-    |> lib.flatten
-  );
-  ACMERecordsPerHost = hostName: (
-    hostName
-    |> getAllDomainsPerHost
-    |> builtins.map (recordName: (generateACMERecord recordName))
-  );
-  generateACMERecordsPerZone = zoneName: (
-    hostsWithACMERecords
-    |> lib.mapAttrsToList (hostName: _: (getAllDomainsPerHost hostName))
-    |> lib.flatten
-    |> builtins.filter (lib.hasSuffix zoneName)
-    |> builtins.map (recordName: {
-        name = "_acme-challenge${if zoneName != recordName then "." else ""}${lib.removeSuffix "${if zoneName != recordName then "." else ""}${zoneName}" recordName}";
-        value = { CNAME = [ (generateACMERecord recordName) ]; };
+  getAllDomainsPerHost =
+    hostName:
+    (
+      inputs.self.nixosConfigurations.${hostName}.config.security.acme.certs
+      |> lib.mapAttrsToList (domain: cfg: [ domain ] ++ cfg.extraDomainNames)
+      |> lib.flatten
+    );
+  ACMERecordsPerHost =
+    hostName:
+    (hostName |> getAllDomainsPerHost |> builtins.map (recordName: (generateACMERecord recordName)));
+  generateACMERecordsPerZone =
+    zoneName:
+    (
+      hostsWithACMERecords
+      |> lib.mapAttrsToList (hostName: _: (getAllDomainsPerHost hostName))
+      |> lib.flatten
+      |> builtins.filter (lib.hasSuffix zoneName)
+      |> builtins.map (recordName: {
+        name = "_acme-challenge${
+          if zoneName != recordName then "." else ""
+        }${lib.removeSuffix "${if zoneName != recordName then "." else ""}${zoneName}" recordName}";
+        value = {
+          CNAME = [ (generateACMERecord recordName) ];
+        };
       })
-    |> builtins.listToAttrs
-  );
+      |> builtins.listToAttrs
+    );
 in
 {
   l.sops.secrets."services/dns-knot-primary/keys".owner = "knot";
@@ -63,20 +75,23 @@ in
       };
       acl = {
         internal = {
-          address = [ "fd8f:d15b:9f40::/48" "127.0.0.0/8" ];
+          address = [
+            "fd8f:d15b:9f40::/48"
+            "127.0.0.0/8"
+          ];
           action = "transfer";
         };
-      } // lib.mapAttrs'
-        (hostName: _: {
-          name = "acme-nix-${hostName}";
-          value = {
-            action = "update";
-            update-owner = "name";
-            update-owner-match = "equal";
-            update-owner-name = ACMERecordsPerHost hostName;
-            key = [ "acme-nix-${hostName}" ];
-          };
-        }) hostsWithACMERecords;
+      }
+      // lib.mapAttrs' (hostName: _: {
+        name = "acme-nix-${hostName}";
+        value = {
+          action = "update";
+          update-owner = "name";
+          update-owner-match = "equal";
+          update-owner-name = ACMERecordsPerHost hostName;
+          key = [ "acme-nix-${hostName}" ];
+        };
+      }) hostsWithACMERecords;
       mod-rrl.default = {
         rate-limit = 200;
         slip = 2;
@@ -92,7 +107,10 @@ in
       template =
         let
           notify = {
-            notify = [ "internal_ns2" "internal_ns3" ];
+            notify = [
+              "internal_ns2"
+              "internal_ns3"
+            ];
             acl = [ "internal" ];
             catalog-role = "member";
             catalog-zone = "leona.catzone.";
@@ -109,16 +127,22 @@ in
             semantic-checks = true;
             global-module = "mod-rrl/default";
           };
-          signedprimary = dnssec // notify // {
-            zonefile-sync = -1;
-            zonefile-load = "difference-no-serial";
-            journal-content = "all";
-          };
-          signedprimarydynamic = dnssec // notify // {
-            zonefile-sync = 0;
-            zonefile-load = "difference";
-            journal-content = "changes";
-          };
+          signedprimary =
+            dnssec
+            // notify
+            // {
+              zonefile-sync = -1;
+              zonefile-load = "difference-no-serial";
+              journal-content = "all";
+            };
+          signedprimarydynamic =
+            dnssec
+            // notify
+            // {
+              zonefile-sync = 0;
+              zonefile-load = "difference";
+              journal-content = "changes";
+            };
         };
       zone = {
         "leona.catzone" = {
@@ -126,57 +150,178 @@ in
           acl = "internal";
         };
         "bechilli.de" = {
-          file = dnsutil.writeZone "bechilli.de" (import zones/bechilli.de.nix { inherit helper lib dns config; }).zone;
+          file =
+            dnsutil.writeZone "bechilli.de"
+              (import zones/bechilli.de.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone;
           template = "signedprimary";
         };
         "em0lar.de" = {
-          file = dnsutil.writeZone "em0lar.de" (lib.recursiveUpdate (import zones/em0lar.de.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "em0lar.de"); });
+          file = dnsutil.writeZone "em0lar.de" (
+            lib.recursiveUpdate
+              (import zones/em0lar.de.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "em0lar.de"); }
+          );
           template = "signedprimary";
         };
         "em0lar.dev" = {
-          file = dnsutil.writeZone "em0lar.dev" (lib.recursiveUpdate (import zones/em0lar.dev.nix { inherit hosthelper helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "em0lar.dev"); });
+          file = dnsutil.writeZone "em0lar.dev" (
+            lib.recursiveUpdate
+              (import zones/em0lar.dev.nix {
+                inherit
+                  hosthelper
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "em0lar.dev"); }
+          );
           template = "signedprimary";
         };
         "forkspace.net" = {
-          file = dnsutil.writeZone "forkspace.net" (lib.recursiveUpdate (import zones/forkspace.net.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "forkspace.net"); });
+          file = dnsutil.writeZone "forkspace.net" (
+            lib.recursiveUpdate
+              (import zones/forkspace.net.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "forkspace.net"); }
+          );
           template = "signedprimary";
         };
         "infspace.xyz" = {
-          file = dnsutil.writeZone "infspace.xyz" (lib.recursiveUpdate (import zones/infspace.xyz.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "infspace.xyz"); });
+          file = dnsutil.writeZone "infspace.xyz" (
+            lib.recursiveUpdate
+              (import zones/infspace.xyz.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "infspace.xyz"); }
+          );
           template = "signedprimary";
         };
         "infinitespace.dev" = {
-          file = dnsutil.writeZone "infinitespace.dev" (lib.recursiveUpdate (import zones/infinitespace.dev.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "infinitespace.dev"); });
+          file = dnsutil.writeZone "infinitespace.dev" (
+            lib.recursiveUpdate
+              (import zones/infinitespace.dev.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "infinitespace.dev"); }
+          );
           template = "signedprimary";
         };
         "labcode.de" = {
-          file = dnsutil.writeZone "labcode.de" (lib.recursiveUpdate (import zones/labcode.de.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "labcode.de"); });
+          file = dnsutil.writeZone "labcode.de" (
+            lib.recursiveUpdate
+              (import zones/labcode.de.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "labcode.de"); }
+          );
           template = "signedprimary";
         };
         "leona.is" = {
-          file = dnsutil.writeZone "leona.is" (lib.recursiveUpdate (import zones/leona.is.nix { inherit hosthelper helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "leona.is"); });
+          file = dnsutil.writeZone "leona.is" (
+            lib.recursiveUpdate
+              (import zones/leona.is.nix {
+                inherit
+                  hosthelper
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "leona.is"); }
+          );
           template = "signedprimary";
         };
-        "acme.leona.is" = let
-          ACMEacl =
-            hostsWithACMERecords
-            |> lib.mapAttrsToList (hostName: _: "acme-nix-${hostName}");
-        in {
-          acl = ACMEacl ++ config.services.knot.settings.template.signedprimarydynamic.acl;
-          storage = "/var/lib/knot";
-          file = "acme.leona.is.zone";
-          template = "signedprimarydynamic";
-        };
+        "acme.leona.is" =
+          let
+            ACMEacl = hostsWithACMERecords |> lib.mapAttrsToList (hostName: _: "acme-nix-${hostName}");
+          in
+          {
+            acl = ACMEacl ++ config.services.knot.settings.template.signedprimarydynamic.acl;
+            storage = "/var/lib/knot";
+            file = "acme.leona.is.zone";
+            template = "signedprimarydynamic";
+          };
         "maroni.me" = {
-          file = dnsutil.writeZone "maroni.me" (lib.recursiveUpdate (import zones/maroni.me.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "maroni.me"); });
+          file = dnsutil.writeZone "maroni.me" (
+            lib.recursiveUpdate
+              (import zones/maroni.me.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "maroni.me"); }
+          );
           template = "signedprimary";
         };
         "opendatamap.net" = {
-          file = dnsutil.writeZone "opendatamap.net" (lib.recursiveUpdate (import zones/opendatamap.net.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "opendatamap.net"); });
+          file = dnsutil.writeZone "opendatamap.net" (
+            lib.recursiveUpdate
+              (import zones/opendatamap.net.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "opendatamap.net"); }
+          );
           template = "signedprimary";
         };
         "nomsable.eu" = {
-          file = dnsutil.writeZone "nomsable.eu" (lib.recursiveUpdate (import zones/nomsable.eu.nix { inherit helper lib dns config; }).zone { subdomains = (generateACMERecordsPerZone "nomsable.eu"); });
+          file = dnsutil.writeZone "nomsable.eu" (
+            lib.recursiveUpdate
+              (import zones/nomsable.eu.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "nomsable.eu"); }
+          );
           template = "signedprimary";
         };
       };

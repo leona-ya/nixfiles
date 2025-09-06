@@ -1,20 +1,36 @@
-{ config, lib, pkgs, ... }: {
-  users.users.leona = (lib.mkMerge [
-    {
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkvy9P1Qweq1kykgn3IWIBWe/v/dTNAx+hd9i2aKe1O openpgp:0xCACA6CB6"
-        "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBOMNkfG3xFDgwLs+aj9n/UXw5Feww1dZG7K/wUbsNHpybzgWcb4t/387aKbu9vu3TwOYdDWj6zaE2pytjQi9/ltz11ybNm3djwbp142fn9Cr8rmbqL5aK6vNbMmR+pM5QA== openpgp:0x2611E806"
-      ];
-      shell = pkgs.zsh;
-    }
-    (lib.mkIf config.nixpkgs.hostPlatform.isLinux {
-      extraGroups = [ "wheel" "bluetooth" "video" "audio" "docker" "libvirtd" "dialout" ];
-      isNormalUser = true;
-    })
-    (lib.mkIf config.nixpkgs.hostPlatform.isDarwin {
-      home = "/Users/leona";
-    })
-  ]);
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  users.users.leona = (
+    lib.mkMerge [
+      {
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkvy9P1Qweq1kykgn3IWIBWe/v/dTNAx+hd9i2aKe1O openpgp:0xCACA6CB6"
+          "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBOMNkfG3xFDgwLs+aj9n/UXw5Feww1dZG7K/wUbsNHpybzgWcb4t/387aKbu9vu3TwOYdDWj6zaE2pytjQi9/ltz11ybNm3djwbp142fn9Cr8rmbqL5aK6vNbMmR+pM5QA== openpgp:0x2611E806"
+        ];
+        shell = pkgs.zsh;
+      }
+      (lib.mkIf config.nixpkgs.hostPlatform.isLinux {
+        extraGroups = [
+          "wheel"
+          "bluetooth"
+          "video"
+          "audio"
+          "docker"
+          "libvirtd"
+          "dialout"
+        ];
+        isNormalUser = true;
+      })
+      (lib.mkIf config.nixpkgs.hostPlatform.isDarwin {
+        home = "/Users/leona";
+      })
+    ]
+  );
 
   home-manager.users.leona = {
     home.stateVersion = "22.05";
@@ -42,7 +58,8 @@
         "tree" = "eza -T";
         "sudo" = "sudo ";
         "wt" = "wget";
-        "nb-fc" = "nom-build --option extra-substituters https://s3.whq.fcio.net/hydra --option trusted-public-keys flyingcircus.io-1:Rr9CwiPv8cdVf3EQu633IOTb6iJKnWbVfCC8x8gVz2o=";
+        "nb-fc" =
+          "nom-build --option extra-substituters https://s3.whq.fcio.net/hydra --option trusted-public-keys flyingcircus.io-1:Rr9CwiPv8cdVf3EQu633IOTb6iJKnWbVfCC8x8gVz2o=";
       };
       initContent = ''
         function use {

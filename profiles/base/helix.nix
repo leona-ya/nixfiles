@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   home-manager.users.leona = {
     programs.helix = {
       enable = true;
@@ -44,8 +50,12 @@
       };
       languages = {
         language-server = {
-          nil = { command = "${pkgs.nil}/bin/nil"; };
-          pylsp = { command = "pylsp"; };
+          nil = {
+            command = "${pkgs.nil}/bin/nil";
+          };
+          pylsp = {
+            command = "pylsp";
+          };
           rust-analyzer = {
             command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
             config."rust-analyzer" = {
@@ -63,7 +73,12 @@
             config.texlab = {
               build = {
                 onSave = true;
-                args = [ "-xelatex" "-interaction=nonstopmode" "-synctex=1" "%f" ];
+                args = [
+                  "-xelatex"
+                  "-interaction=nonstopmode"
+                  "-synctex=1"
+                  "%f"
+                ];
                 #executable = "tectonic";
                 #args = [
                 #"-X"
@@ -80,7 +95,10 @@
         language = [
           {
             name = "c";
-            indent = { tab-width = 8; unit = "\t"; };
+            indent = {
+              tab-width = 8;
+              unit = "\t";
+            };
           }
           {
             name = "nix";
@@ -101,14 +119,20 @@
         ];
       };
     };
-    xdg.configFile = let
-      cfg = config.home-manager.users.leona.programs.helix;
-      tomlFormat = pkgs.formats.toml { };
-    in {
-      "helix/config.toml".enable = false;
-      "helix/config-light-theme.toml".source = tomlFormat.generate "helix-config-light" (cfg.settings // { theme = "monokai_pro_light_transparent"; });
-      "helix/config-dark-theme.toml".source = tomlFormat.generate "helix-config-dark" (cfg.settings // { theme = "monokai_pro_transparent"; });
-    };
+    xdg.configFile =
+      let
+        cfg = config.home-manager.users.leona.programs.helix;
+        tomlFormat = pkgs.formats.toml { };
+      in
+      {
+        "helix/config.toml".enable = false;
+        "helix/config-light-theme.toml".source = tomlFormat.generate "helix-config-light" (
+          cfg.settings // { theme = "monokai_pro_light_transparent"; }
+        );
+        "helix/config-dark-theme.toml".source = tomlFormat.generate "helix-config-dark" (
+          cfg.settings // { theme = "monokai_pro_transparent"; }
+        );
+      };
     services.darkman = {
       darkModeScripts.helix = ''
         ${pkgs.coreutils}/bin/ln -fs config-dark-theme.toml ~/.config/helix/config.toml
@@ -121,6 +145,8 @@
     };
   };
   environment.systemPackages = [
-    (pkgs.python3.withPackages (ps: [ ps.python-lsp-server ] ++ ps.python-lsp-server.optional-dependencies.all))
+    (pkgs.python3.withPackages (
+      ps: [ ps.python-lsp-server ] ++ ps.python-lsp-server.optional-dependencies.all
+    ))
   ];
 }

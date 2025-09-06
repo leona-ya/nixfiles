@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   l.sops.secrets."services/bn-smarthome/hass-mqtt-yaml.nix".owner = "hass";
   services.home-assistant = {
     enable = true;
@@ -52,7 +58,10 @@
       };
       http = {
         use_x_forwarded_for = true;
-        trusted_proxies = [ "::1" "127.0.0.1" ];
+        trusted_proxies = [
+          "::1"
+          "127.0.0.1"
+        ];
       };
       automation = "!include automations.yaml";
       scene = "!include scenes.yaml";
@@ -64,7 +73,9 @@
     };
   };
   systemd.services.home-assistant.preStart = ''
-    ${pkgs.nix}/bin/nix eval --raw -f ${config.sops.secrets."services/bn-smarthome/hass-mqtt-yaml.nix".path} yaml > /var/lib/hass/mqtt.yaml
+    ${pkgs.nix}/bin/nix eval --raw -f ${
+      config.sops.secrets."services/bn-smarthome/hass-mqtt-yaml.nix".path
+    } yaml > /var/lib/hass/mqtt.yaml
   '';
   services.nginx.virtualHosts."hass.bn.leona.is" = {
     forceSSL = true;

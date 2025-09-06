@@ -31,7 +31,10 @@
     version = "1.1.8";
   };
   em-websocket = {
-    dependencies = [ "eventmachine" "http_parser.rb" ];
+    dependencies = [
+      "eventmachine"
+      "http_parser.rb"
+    ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -93,7 +96,20 @@
     version = "0.9.5";
   };
   jekyll = {
-    dependencies = [ "addressable" "colorator" "em-websocket" "i18n" "jekyll-sass-converter" "jekyll-watch" "kramdown" "liquid" "mercenary" "pathutil" "rouge" "safe_yaml" ];
+    dependencies = [
+      "addressable"
+      "colorator"
+      "em-websocket"
+      "i18n"
+      "jekyll-sass-converter"
+      "jekyll-watch"
+      "kramdown"
+      "liquid"
+      "mercenary"
+      "pathutil"
+      "rouge"
+      "safe_yaml"
+    ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -158,7 +174,10 @@
     version = "4.0.3";
   };
   listen = {
-    dependencies = [ "rb-fsevent" "rb-inotify" ];
+    dependencies = [
+      "rb-fsevent"
+      "rb-inotify"
+    ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -262,7 +281,10 @@
     version = "3.7.4";
   };
   sass-listen = {
-    dependencies = [ "rb-fsevent" "rb-inotify" ];
+    dependencies = [
+      "rb-fsevent"
+      "rb-inotify"
+    ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

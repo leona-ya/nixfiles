@@ -1,5 +1,11 @@
-{ config, pkgs, lib, ... }: {
-  l.sops.secrets."services/gitlab-runner/env" = {};
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  l.sops.secrets."services/gitlab-runner/env" = { };
   services.gitlab-runner = {
     enable = true;
     settings.concurrent = 5;
@@ -20,24 +26,34 @@
         ];
         dockerDisableCache = true;
         preBuildScript = pkgs.writeScript "setup-container" ''
-          mkdir -p -m 0754 /etc/nix
-          mkdir -p -m 0755 /nix/var/log/nix/drvs
-          mkdir -p -m 0755 /nix/var/nix/gcroots
-          mkdir -p -m 0755 /nix/var/nix/profiles
-          mkdir -p -m 0755 /nix/var/nix/temproots
-          mkdir -p -m 0755 /nix/var/nix/userpool
-          mkdir -p -m 1777 /nix/var/nix/gcroots/per-user
-          mkdir -p -m 1777 /nix/var/nix/profiles/per-user
-          mkdir -p -m 0755 /nix/var/nix/profiles/per-user/root
-          mkdir -p -m 0700 "$HOME/.nix-defexpr"
+                    mkdir -p -m 0754 /etc/nix
+                    mkdir -p -m 0755 /nix/var/log/nix/drvs
+                    mkdir -p -m 0755 /nix/var/nix/gcroots
+                    mkdir -p -m 0755 /nix/var/nix/profiles
+                    mkdir -p -m 0755 /nix/var/nix/temproots
+                    mkdir -p -m 0755 /nix/var/nix/userpool
+                    mkdir -p -m 1777 /nix/var/nix/gcroots/per-user
+                    mkdir -p -m 1777 /nix/var/nix/profiles/per-user
+                    mkdir -p -m 0755 /nix/var/nix/profiles/per-user/root
+                    mkdir -p -m 0700 "$HOME/.nix-defexpr"
 
-          cat >/etc/nix/nix.conf <<EOL
-experimental-features = nix-command flakes pipe-operator
-EOL
+                    cat >/etc/nix/nix.conf <<EOL
+          experimental-features = nix-command flakes pipe-operator
+          EOL
 
-          . ${pkgs.lix}/etc/profile.d/nix.sh
+                    . ${pkgs.lix}/etc/profile.d/nix.sh
 
-          ${pkgs.lix}/bin/nix-env -i ${lib.concatStringsSep " " (with pkgs; [ lix cacert git openssh ])}
+                    ${pkgs.lix}/bin/nix-env -i ${
+                      lib.concatStringsSep " " (
+                        with pkgs;
+                        [
+                          lix
+                          cacert
+                          git
+                          openssh
+                        ]
+                      )
+                    }
         '';
         environmentVariables = {
           ENV = "/etc/profile";
@@ -53,5 +69,3 @@ EOL
 
   systemd.services.gitlab-runner.serviceConfig.Restart = "on-failure";
 }
-
-

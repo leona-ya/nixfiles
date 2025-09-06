@@ -1,4 +1,11 @@
-{ config, lib, pkgs, inputs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
     ./acme.nix
     ./nginx.nix
@@ -7,7 +14,10 @@
     ../../users/root
     ../../modules
   ];
-  deployment.tags = [ pkgs.stdenv.hostPlatform.system config.networking.domain ];
+  deployment.tags = [
+    pkgs.stdenv.hostPlatform.system
+    config.networking.domain
+  ];
   deployment.targetUser = lib.mkDefault "leona";
   deployment.targetHost = lib.mkDefault config.networking.fqdn;
   hardware.enableRedistributableFirmware = true;

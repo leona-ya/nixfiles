@@ -21,17 +21,21 @@
           exec = "${pkgs.sway}/bin/swaymsg workspace 2, move workspace to output DP-2";
         };
         default = {
-          outputs = [{
-            criteria = "eDP-1";
-            mode = "1920x1080";
-            position = "0,0";
-          }];
+          outputs = [
+            {
+              criteria = "eDP-1";
+              mode = "1920x1080";
+              position = "0,0";
+            }
+          ];
         };
       };
     };
-    wayland.windowManager.sway.config.startup = [{
-      command = "systemctl --user restart kanshi";
-      always = true;
-    }];
+    wayland.windowManager.sway.config.startup = [
+      {
+        command = "systemctl --user restart kanshi";
+        always = true;
+      }
+    ];
   };
 }

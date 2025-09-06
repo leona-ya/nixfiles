@@ -1,4 +1,11 @@
-{ hosthelper, helper, dns, config, lib, ... }:
+{
+  hosthelper,
+  helper,
+  dns,
+  config,
+  lib,
+  ...
+}:
 
 with dns.lib.combinators;
 
@@ -14,14 +21,16 @@ in
 {
   zone = {
     TTL = 3600;
-    SOA = ((ttl 3600) {
-      nameServer = "ns1.leona.is.";
-      adminEmail = "noc@leona.is";
-      serial = 0;
-      refresh = 300;
-      expire = 604800;
-      minimum = 300;
-    });
+    SOA = (
+      (ttl 3600) {
+        nameServer = "ns1.leona.is.";
+        adminEmail = "noc@leona.is";
+        serial = 0;
+        refresh = 300;
+        expire = 604800;
+        minimum = 300;
+      }
+    );
 
     NS = helper.ns;
 
@@ -29,10 +38,12 @@ in
     TXT = [
       helper.mail.spf
     ];
-    DKIM = [{
-      selector = "mail";
-      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxAdCbH2V1TQgnscRit9ogxbPD3tibtgFzdW4EshD737hi7yV3g0njk/8P9UcNx0mqVwjDcBxENL1bd5MywHrRfBrkbaez2wEmZbcGzE5ljaEHk0QzwAvG+Yws4q32EHmLBmwRaT4+wSvXrp6F/FqJ4GDyWigaoEvrc+6tKgc7oAgi4k5VItv/AUJXXHsrWCd81CpcPMzEAbL460ISUmD0xRsIScvEsDCzRPAXi0smkaOxFt5oNQbTZOu22WgkyGuz7y0g/0dX7s/8ZD4J1LiAHJswnF3hq7jIWWAoRmAtKjyEFufghRfAeiZoi+gr1e1MzPKxJ4jJ+l2nA4rNkE+XQIDAQAB";
-    }];
+    DKIM = [
+      {
+        selector = "mail";
+        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxAdCbH2V1TQgnscRit9ogxbPD3tibtgFzdW4EshD737hi7yV3g0njk/8P9UcNx0mqVwjDcBxENL1bd5MywHrRfBrkbaez2wEmZbcGzE5ljaEHk0QzwAvG+Yws4q32EHmLBmwRaT4+wSvXrp6F/FqJ4GDyWigaoEvrc+6tKgc7oAgi4k5VItv/AUJXXHsrWCd81CpcPMzEAbL460ISUmD0xRsIScvEsDCzRPAXi0smkaOxFt5oNQbTZOu22WgkyGuz7y0g/0dX7s/8ZD4J1LiAHJswnF3hq7jIWWAoRmAtKjyEFufghRfAeiZoi+gr1e1MzPKxJ4jJ+l2nA4rNkE+XQIDAQAB";
+      }
+    ];
 
     DMARC = helper.mail.dmarc;
 
@@ -59,10 +70,24 @@ in
       "ns2" = enari_host;
       "ns3" = bij_host;
 
-      "acme".NS = [ "ns1.leona.is." "ns2.leona.is." "ns3.leona.is." ];
+      "acme".NS = [
+        "ns1.leona.is."
+        "ns2.leona.is."
+        "ns3.leona.is."
+      ];
       "acme".DS = [
-        { keyTag = 33964; algorithm = 13; digestType = 2; digest = "7f656ab266f7bfd2ba7e7712e063037726290eaf5aad3188ef941fd5fe68bd77"; }
-        { keyTag = 33964; algorithm = 13; digestType = 4; digest = "bb61dfe2ef1b5c3223a0075bd51c10e288e2ba7db4cbd01a86de5e1e719e0ba7a2e396a3e358ae2961c444c35ddb2626"; }
+        {
+          keyTag = 33964;
+          algorithm = 13;
+          digestType = 2;
+          digest = "7f656ab266f7bfd2ba7e7712e063037726290eaf5aad3188ef941fd5fe68bd77";
+        }
+        {
+          keyTag = 33964;
+          algorithm = 13;
+          digestType = 4;
+          digest = "bb61dfe2ef1b5c3223a0075bd51c10e288e2ba7db4cbd01a86de5e1e719e0ba7a2e396a3e358ae2961c444c35ddb2626";
+        }
       ];
 
       mail = kupe_host;
@@ -72,10 +97,12 @@ in
 
       "ca".MX = [ (mx.mx 10 "kupe.net.leona.is.") ];
       "ca".TXT = [ helper.mail.spf ];
-      "ca".DKIM = [{
-        selector = "mail";
-        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2WJ46bl9UqBY9ZxqkVCBdSiysIJMUbWS3BK10Lupe4T5+jWAcdzJraznWeaVF/mR/9TyiB7lE79ZB6WxHxTwwJ5UZjURwImKAKqSGPXPACIj+LHyx5j2nHN4CawC6bkCmpGT99B7I/5bCelekoAHV9U/4pE2YEjgA0VxvlSKHB2Y7cPWL303DInYGaTrvMczuwLYoEwIiBirffYNqHyrOJE9A+ZQRdLjM8DFOxegAOV9mcHb3MwneJuu86Czz45UIrQ7AxkMUNKgHitqTSnXzLWd4BF6Kf3XUh/lED7WPdviBLJo/1H0Cgch8RRlinTeDVliHDQ6/zLWpk6+k3iKkQIDAQAB";
-      }];
+      "ca".DKIM = [
+        {
+          selector = "mail";
+          p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2WJ46bl9UqBY9ZxqkVCBdSiysIJMUbWS3BK10Lupe4T5+jWAcdzJraznWeaVF/mR/9TyiB7lE79ZB6WxHxTwwJ5UZjURwImKAKqSGPXPACIj+LHyx5j2nHN4CawC6bkCmpGT99B7I/5bCelekoAHV9U/4pE2YEjgA0VxvlSKHB2Y7cPWL303DInYGaTrvMczuwLYoEwIiBirffYNqHyrOJE9A+ZQRdLjM8DFOxegAOV9mcHb3MwneJuu86Czz45UIrQ7AxkMUNKgHitqTSnXzLWd4BF6Kf3XUh/lED7WPdviBLJo/1H0Cgch8RRlinTeDVliHDQ6/zLWpk6+k3iKkQIDAQAB";
+        }
+      ];
 
       www.CNAME = [ "bij.net.leona.is." ];
       "acme.int".AAAA = [ "fd8f:d15b:9f40:101::100" ];

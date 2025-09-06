@@ -1,4 +1,12 @@
-{ lib, fetchgit, rustPlatform, makeWrapper, pkg-config, openssl, postgresql }:
+{
+  lib,
+  fetchgit,
+  rustPlatform,
+  makeWrapper,
+  pkg-config,
+  openssl,
+  postgresql,
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "legitima";
@@ -18,9 +26,14 @@ rustPlatform.buildRustPackage rec {
     "rocket_sync_db_pools-0.1.0-rc.1" = "sha256-p+Lm2hF8JTdt5BaNECestNjfMV0GpizFvqxRuvl/M4k=";
   };
 
-
-  nativeBuildInputs = [ pkg-config makeWrapper ];
-  buildInputs = [ openssl postgresql.lib ];
+  nativeBuildInputs = [
+    pkg-config
+    makeWrapper
+  ];
+  buildInputs = [
+    openssl
+    postgresql.lib
+  ];
 
   preBuild = ''
     export LEGITIMA_STATIC_ROOT_PATH=$data
@@ -33,8 +46,10 @@ rustPlatform.buildRustPackage rec {
       --set-default ROCKET_TEMPLATE_DIR "$data/templates"
   '';
 
-  outputs = [ "out" "data" ];
-
+  outputs = [
+    "out"
+    "data"
+  ];
 
   meta = with lib; {
     description = "";

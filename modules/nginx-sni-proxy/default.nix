@@ -16,17 +16,14 @@ in
   config = mkIf cfg.enable {
     services.nginx =
       let
-        upstreams = (concatStringsSep "\n" (mapAttrsToList
-          (host: dest:
-            "${host} ${dest}:443;"
-          )
-          (concatMapAttrs
-            (dest: hosts:
-              (genAttrs hosts (host: dest))
-            )
-            cfg.upstreamHosts
+        upstreams = (
+          concatStringsSep "\n" (
+            mapAttrsToList (host: dest: "${host} ${dest}:443;") (
+              concatMapAttrs (dest: hosts: (genAttrs hosts (host: dest))) cfg.upstreamHosts
 
-          )));
+            )
+          )
+        );
       in
       {
         defaultSSLListenPort = 7443;

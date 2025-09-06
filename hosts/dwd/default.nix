@@ -1,12 +1,17 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      inputs.nixos-hardware.nixosModules.pcengines-apu
-      ./hardware-configuration.nix
-      ./network
-    ];
+  imports = [
+    inputs.nixos-hardware.nixosModules.pcengines-apu
+    ./hardware-configuration.nix
+    ./network
+  ];
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -19,8 +24,15 @@
   #services.unifi.unifiPackage = pkgs.unifi8;
   #services.unifi.mongodbPackage = pkgs.mongodb-6_0;
 
-  networking.firewall.interfaces."br-lan".allowedTCPPorts = [ 8080 6789 8443 ];
-  networking.firewall.interfaces."br-lan".allowedUDPPorts = [ 3478 10001 ];
+  networking.firewall.interfaces."br-lan".allowedTCPPorts = [
+    8080
+    6789
+    8443
+  ];
+  networking.firewall.interfaces."br-lan".allowedUDPPorts = [
+    3478
+    10001
+  ];
 
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
     enableACME = lib.mkForce false;

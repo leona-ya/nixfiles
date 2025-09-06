@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   cfg = config.services.firefly-iii;
@@ -100,4 +105,3 @@ in
     };
   };
 }
-

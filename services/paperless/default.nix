@@ -28,7 +28,8 @@
       after = [ "postgresql.service" ];
       serviceConfig.EnvironmentFile = config.sops.secrets."services/paperless/env".path;
     };
-    paperless-consumer.serviceConfig.EnvironmentFile = config.sops.secrets."services/paperless/env".path;
+    paperless-consumer.serviceConfig.EnvironmentFile =
+      config.sops.secrets."services/paperless/env".path;
     paperless-web = {
       serviceConfig = {
         EnvironmentFile = config.sops.secrets."services/paperless/env".path;

@@ -1,5 +1,9 @@
-
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   keycloakTheme = pkgs.stdenv.mkDerivation {
@@ -27,8 +31,8 @@ in
   users.groups.keycloak = { };
   services.keycloak = {
     enable = true;
-#      #extraFeatures = [ "persistent-user-sessions" ];
-      #disabledFeatures = [ "kerberos" ];
+    #      #extraFeatures = [ "persistent-user-sessions" ];
+    #disabledFeatures = [ "kerberos" ];
     #};
     database.passwordFile = config.sops.secrets."services/stag-keycloak/database_password".path;
     themes = {

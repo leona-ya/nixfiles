@@ -9,17 +9,19 @@ in
   options.l.nginx = {
     virtualHosts = mkOption {
       default = { };
-      type = types.attrsOf (types.submodule {
-        options = {
-          lokiAccessLog = mkOption {
-            type = types.submodule {
-              options = {
-                enable = mkEnableOption "Loki access log in nginx vhost";
+      type = types.attrsOf (
+        types.submodule {
+          options = {
+            lokiAccessLog = mkOption {
+              type = types.submodule {
+                options = {
+                  enable = mkEnableOption "Loki access log in nginx vhost";
+                };
               };
             };
           };
-        };
-      });
+        }
+      );
     };
   };
 
@@ -44,13 +46,13 @@ in
           '"protocol": "$server_protocol" ' # request protocol, like HTTP/1.1 or HTTP/2.0
         '}';
       '';
-      virtualHosts = (mapAttrs
-        (name: value: {
+      virtualHosts = (
+        mapAttrs (name: value: {
           extraConfig = lib.mkIf value.lokiAccessLog.enable ''
             access_log /var/log/nginx/loki_access.log.gz loki_access_log_full gzip flush=5m;
           '';
-        })
-        cfg.virtualHosts);
+        }) cfg.virtualHosts
+      );
     };
   };
 }

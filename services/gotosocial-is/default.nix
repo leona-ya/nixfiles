@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.gotosocial = {
     enable = true;
     setupPostgresqlDB = true;

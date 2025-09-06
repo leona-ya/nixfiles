@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   home-manager.users.leona = {
     services.darkman = {
       enable = true;

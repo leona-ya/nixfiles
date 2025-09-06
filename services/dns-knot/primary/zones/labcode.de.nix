@@ -1,24 +1,34 @@
-{ helper, dns, config, lib, ... }:
+{
+  helper,
+  dns,
+  config,
+  lib,
+  ...
+}:
 
 {
   zone = with dns.lib.combinators; {
     TTL = 600;
-    SOA = ((ttl 600) {
-      nameServer = "ns1.leona.is.";
-      adminEmail = "noc@leona.is";
-      serial = 2023082601;
-      refresh = 3600;
-      expire = 604800;
-      minimum = 300;
-    });
+    SOA = (
+      (ttl 600) {
+        nameServer = "ns1.leona.is.";
+        adminEmail = "noc@leona.is";
+        serial = 2023082601;
+        refresh = 3600;
+        expire = 604800;
+        minimum = 300;
+      }
+    );
 
     NS = helper.ns;
 
     MX = helper.mail.mxSimple;
-    DKIM = [{
-      selector = "mail";
-      p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqjeXk5Y1xz/5g+Px0YfrtyRDtPTCRKKCpQNDe702xyYlSMhqdVHWAiVQD6fmOzTACKRwoTtdiTjFyk05HJUrtqQegyPa8eFJK9IxIksNfR3yROcdMUZGATCmfwnGAJmawMKBb9UUudynLq1+PYl0LcxvpN0r8nO8tPiPdcPsQVxPuduYSpBzzIxdCLjg0zVmwn88tjC9GF/yxwiZxnMyn4mBSmz/EG9I8iEVBt8v7XJh/UVnu20mRg+osO44605oQPdDf+dXXZ5jgn9hZsACk21ekSex0op6bnVz1mt4c9sPqR1o9atfvNQfol4VUito1y0P3CofLeYGg/avWFvl9QIDAQAB";
-    }];
+    DKIM = [
+      {
+        selector = "mail";
+        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqjeXk5Y1xz/5g+Px0YfrtyRDtPTCRKKCpQNDe702xyYlSMhqdVHWAiVQD6fmOzTACKRwoTtdiTjFyk05HJUrtqQegyPa8eFJK9IxIksNfR3yROcdMUZGATCmfwnGAJmawMKBb9UUudynLq1+PYl0LcxvpN0r8nO8tPiPdcPsQVxPuduYSpBzzIxdCLjg0zVmwn88tjC9GF/yxwiZxnMyn4mBSmz/EG9I8iEVBt8v7XJh/UVnu20mRg+osO44605oQPdDf+dXXZ5jgn9hZsACk21ekSex0op6bnVz1mt4c9sPqR1o9atfvNQfol4VUito1y0P3CofLeYGg/avWFvl9QIDAQAB";
+      }
+    ];
     DMARC = helper.mail.dmarc;
     TXT = [
       helper.mail.spf

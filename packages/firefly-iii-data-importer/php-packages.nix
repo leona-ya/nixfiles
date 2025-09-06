@@ -1,4 +1,11 @@
-{ composerEnv, fetchurl, fetchgit ? null, fetchhg ? null, fetchsvn ? null, noDev ? false }:
+{
+  composerEnv,
+  fetchurl,
+  fetchgit ? null,
+  fetchhg ? null,
+  fetchsvn ? null,
+  noDev ? false,
+}:
 
 let
   packages = {
@@ -816,4 +823,3 @@ composerEnv.buildPackage {
     license = "AGPL-3.0-or-later";
   };
 }
-

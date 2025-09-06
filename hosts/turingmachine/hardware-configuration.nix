@@ -1,42 +1,58 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "nvme"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    {
-      device = "zroot/vault/root";
-      fsType = "zfs";
-      options = [ "zfsutil" "X-mount.mkdir" ];
-    };
+  fileSystems."/" = {
+    device = "zroot/vault/root";
+    fsType = "zfs";
+    options = [
+      "zfsutil"
+      "X-mount.mkdir"
+    ];
+  };
 
-  fileSystems."/nix" =
-    {
-      device = "zroot/nixos/nix";
-      fsType = "zfs";
-      options = [ "zfsutil" "X-mount.mkdir" ];
-    };
+  fileSystems."/nix" = {
+    device = "zroot/nixos/nix";
+    fsType = "zfs";
+    options = [
+      "zfsutil"
+      "X-mount.mkdir"
+    ];
+  };
 
-  fileSystems."/home" =
-    {
-      device = "zroot/vault/home";
-      fsType = "zfs";
-      options = [ "zfsutil" "X-mount.mkdir" ];
-    };
+  fileSystems."/home" = {
+    device = "zroot/vault/home";
+    fsType = "zfs";
+    options = [
+      "zfsutil"
+      "X-mount.mkdir"
+    ];
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/1D16-EE89";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/1D16-EE89";
+    fsType = "vfat";
+  };
 
   swapDevices = [ ];
 

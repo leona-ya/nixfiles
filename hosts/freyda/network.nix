@@ -20,7 +20,9 @@
   networking.wireless.iwd = {
     enable = true;
     settings = {
-      General = { AddressRandomization = "network"; };
+      General = {
+        AddressRandomization = "network";
+      };
     };
   };
   systemd.network = {
@@ -35,7 +37,9 @@
     networks."10-eth0" = {
       DHCP = "yes";
       matchConfig.Name = "eth0";
-      linkConfig = { RequiredForOnline = "yes"; };
+      linkConfig = {
+        RequiredForOnline = "yes";
+      };
       dhcpV4Config = {
         RouteMetric = 512;
       };
@@ -69,7 +73,9 @@
     networks."10-wifi0" = {
       DHCP = "yes";
       matchConfig.PermanentMACAddress = "14:ac:60:46:9e:43";
-      linkConfig = { RequiredForOnline = "yes"; };
+      linkConfig = {
+        RequiredForOnline = "yes";
+      };
       routes = [
         {
           Destination = "168.119.100.247/32";

@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   l.sops.secrets = {
@@ -23,7 +28,7 @@
   #  users.users.matrix-synapse.extraGroups = [ "mautrix-telegram" ];
   #
   services.matrix-synapse = {
-    enable = true;      
+    enable = true;
     settings = {
       enable_registration = false;
       server_name = "leona.is";
@@ -39,8 +44,14 @@
           bind_addresses = [ "::1" ];
           port = 8008;
           resources = [
-            { names = [ "client" ]; compress = true; }
-            { names = [ "federation" ]; compress = false; }
+            {
+              names = [ "client" ];
+              compress = true;
+            }
+            {
+              names = [ "federation" ];
+              compress = false;
+            }
           ];
           type = "http";
           tls = false;
@@ -84,7 +95,9 @@
   };
 
   systemd.services.matrix-synapse.serviceConfig.ExecStartPre = [
-    "${pkgs.coreutils}/bin/ln -sf ${config.sops.secrets."services/matrix/synapse/homeserver_signing_key".path} ${config.services.matrix-synapse.dataDir}/homeserver.signing.key"
+    "${pkgs.coreutils}/bin/ln -sf ${
+      config.sops.secrets."services/matrix/synapse/homeserver_signing_key".path
+    } ${config.services.matrix-synapse.dataDir}/homeserver.signing.key"
   ];
 
   services.nginx.virtualHosts."matrix.leona.is" = {

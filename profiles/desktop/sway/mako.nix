@@ -15,9 +15,11 @@ in
         textColor = "#ffffff";
       };
     };
-    wayland.windowManager.sway.config.startup = [{
-      command = "${pkgs.mako}/bin/mako";
-      always = false;
-    }];
+    wayland.windowManager.sway.config.startup = [
+      {
+        command = "${pkgs.mako}/bin/mako";
+        always = false;
+      }
+    ];
   };
 }

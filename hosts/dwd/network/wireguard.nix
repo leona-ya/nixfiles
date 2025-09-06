@@ -18,22 +18,29 @@ in
         ListenPort = 51440;
         PrivateKeyFile = config.sops.secrets."hosts/dwd/wireguard_wg-public_privatekey".path;
       };
-      wireguardPeers = [{
-        AllowedIPs = [
-          "0.0.0.0/0"
-          "::/0"
-        ];
-        PublicKey = "f+fi4A3eZ2WWrIQc+OQugriDj1FPASBXdIW39TW5aF0=";
-        Endpoint = "bij.net.leona.is:51440";
-        PersistentKeepalive = 21;
-      }];
+      wireguardPeers = [
+        {
+          AllowedIPs = [
+            "0.0.0.0/0"
+            "::/0"
+          ];
+          PublicKey = "f+fi4A3eZ2WWrIQc+OQugriDj1FPASBXdIW39TW5aF0=";
+          Endpoint = "bij.net.leona.is:51440";
+          PersistentKeepalive = 21;
+        }
+      ];
     };
   };
   systemd.network.networks = hosthelper.groups.wireguard.g_systemd_network_networkconfig // {
     "30-wg-public" = {
       name = "wg-public";
-      linkConfig = { RequiredForOnline = "yes"; };
-      address = [ "195.39.247.151/32" "2a0f:4ac0:1e0:20::1/60" ];
+      linkConfig = {
+        RequiredForOnline = "yes";
+      };
+      address = [
+        "195.39.247.151/32"
+        "2a0f:4ac0:1e0:20::1/60"
+      ];
       routingPolicyRules = [
         {
           Family = "ipv4";

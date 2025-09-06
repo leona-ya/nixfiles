@@ -1,4 +1,10 @@
-{ inputs, pkgs, lib, config, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   imports = [
@@ -21,9 +27,16 @@
   nix = {
     package = pkgs.lix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       builders-use-substitutes = true;
-      trusted-users = [ "root" "@wheel" "leona" ];
+      trusted-users = [
+        "root"
+        "@wheel"
+        "leona"
+      ];
     };
     gc = {
       automatic = lib.mkDefault true;

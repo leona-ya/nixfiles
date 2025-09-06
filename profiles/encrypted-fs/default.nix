@@ -1,7 +1,16 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   boot = {
     initrd = {
-      availableKernelModules = [ "r8169" "virtio_pci" ];
+      availableKernelModules = [
+        "r8169"
+        "virtio_pci"
+      ];
       network = {
         enable = true;
         ssh = {

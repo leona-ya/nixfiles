@@ -13,11 +13,16 @@
       wireguardConfig = {
         PrivateKeyFile = config.sops.secrets."hosts/turingmachine/wireguard_wg-clients_privatekey".path;
       };
-      wireguardPeers = [{
-        AllowedIPs = [ "10.151.0.0/16" "fd8f:d15b:9f40::/48" ];
-        PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
-        Endpoint = "[2a01:4f8:c010:1098::1]:4500";
-      }];
+      wireguardPeers = [
+        {
+          AllowedIPs = [
+            "10.151.0.0/16"
+            "fd8f:d15b:9f40::/48"
+          ];
+          PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
+          Endpoint = "[2a01:4f8:c010:1098::1]:4500";
+        }
+      ];
     };
     "30-wg-clients" = {
       netdevConfig = {
@@ -27,11 +32,16 @@
       wireguardConfig = {
         PrivateKeyFile = config.sops.secrets."hosts/turingmachine/wireguard_wg-clients_privatekey".path;
       };
-      wireguardPeers = [{
-        AllowedIPs = [ "10.151.0.0/16" "fd8f:d15b:9f40::/48" ];
-        PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
-        Endpoint = "wg.net.leona.is:4500";
-      }];
+      wireguardPeers = [
+        {
+          AllowedIPs = [
+            "10.151.0.0/16"
+            "fd8f:d15b:9f40::/48"
+          ];
+          PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
+          Endpoint = "wg.net.leona.is:4500";
+        }
+      ];
     };
     "30-wg-public" = {
       netdevConfig = {
@@ -41,11 +51,16 @@
       wireguardConfig = {
         PrivateKeyFile = config.sops.secrets."hosts/turingmachine/wireguard_wg-public_privatekey".path;
       };
-      wireguardPeers = [{
-        AllowedIPs = [ "0.0.0.0/0" "::/0" ];
-        PublicKey = "f+fi4A3eZ2WWrIQc+OQugriDj1FPASBXdIW39TW5aF0=";
-        Endpoint = "wg.net.leona.is:51440";
-      }];
+      wireguardPeers = [
+        {
+          AllowedIPs = [
+            "0.0.0.0/0"
+            "::/0"
+          ];
+          PublicKey = "f+fi4A3eZ2WWrIQc+OQugriDj1FPASBXdIW39TW5aF0=";
+          Endpoint = "wg.net.leona.is:51440";
+        }
+      ];
     };
     "30-wg-fdg" = {
       netdevConfig = {
@@ -55,11 +70,13 @@
       wireguardConfig = {
         PrivateKeyFile = config.sops.secrets."hosts/turingmachine/wireguard_wg-fdg_privatekey".path;
       };
-      wireguardPeers = [{
-        AllowedIPs = [ "fd59:974e:6ee8::/64" ];
-        PublicKey = "79NbBslDrdK5fllB4+6wA9mUV7sVQCtAaPsojW0JJ0U=";
-        Endpoint = "martian.infra.fahrplandatengarten.de:40000";
-      }];
+      wireguardPeers = [
+        {
+          AllowedIPs = [ "fd59:974e:6ee8::/64" ];
+          PublicKey = "79NbBslDrdK5fllB4+6wA9mUV7sVQCtAaPsojW0JJ0U=";
+          Endpoint = "martian.infra.fahrplandatengarten.de:40000";
+        }
+      ];
     };
   };
   systemd.network.networks = {

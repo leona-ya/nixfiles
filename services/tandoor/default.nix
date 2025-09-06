@@ -77,7 +77,12 @@
     services.tandoor-recipes = {
       enable = true;
       package = pkgs.tandoor-recipes.overridePythonAttrs (old: {
-        propagatedBuildInputs = old.propagatedBuildInputs ++ (with pkgs.python3Packages; [ jwt django-debug-toolbar ]);
+        propagatedBuildInputs =
+          old.propagatedBuildInputs
+          ++ (with pkgs.python3Packages; [
+            jwt
+            django-debug-toolbar
+          ]);
       });
       user = "tandoor";
       group = "tandoor";
@@ -107,10 +112,12 @@
 
     systemd.services.tandoor-recipes = {
       serviceConfig = {
-        ExecStart = lib.mkForce (pkgs.writeShellScript "start" ''
-          export SOCIALACCOUNT_PROVIDERS=$(< ''${CREDENTIALS_DIRECTORY}/socialaccount-providers)
-          ${config.services.tandoor-recipes.package.python.pkgs.gunicorn}/bin/gunicorn recipes.wsgi
-        '');
+        ExecStart = lib.mkForce (
+          pkgs.writeShellScript "start" ''
+            export SOCIALACCOUNT_PROVIDERS=$(< ''${CREDENTIALS_DIRECTORY}/socialaccount-providers)
+            ${config.services.tandoor-recipes.package.python.pkgs.gunicorn}/bin/gunicorn recipes.wsgi
+          ''
+        );
         LoadCredential = [
           "socialaccount-providers:${config.sops.templates.tandoor-socialaccount-providers.path}"
           "secret_key:${config.sops.secrets."services/tandoor/secret_key".path}"
@@ -119,8 +126,8 @@
           config.sops.templates.tandoor-socialaccount-providers.path
           config.sops.secrets."services/tandoor/secret_key".path
         ];
-#        DynamicUser = true;
-#        UMask = lib.mkForce "0077";
+        #        DynamicUser = true;
+        #        UMask = lib.mkForce "0077";
       };
     };
   };

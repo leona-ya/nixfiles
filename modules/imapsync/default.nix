@@ -1,10 +1,16 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 with lib;
 
 let
   cfg = config.services.imapsync;
-  mailboxOpts = { name, ... }:
+  mailboxOpts =
+    { name, ... }:
     {
       options = {
         host1 = mkOption {
@@ -40,7 +46,8 @@ let
       };
     };
 
-  mkService = name: jobcfg:
+  mkService =
+    name: jobcfg:
     let
       cliArgs = "--nolog --host1 ${jobcfg.host1} --ssl1 --user1 ${jobcfg.user1} --passfile1 ${jobcfg.passwordfile1} --host2 ${jobcfg.host2} --ssl2 --user2 ${jobcfg.user2} --passfile2 ${jobcfg.passwordfile2} --noemailreport1 --noemailreport2 ${jobcfg.extraArgs}";
     in
@@ -69,11 +76,12 @@ in
     users.groups.imapsync = { };
 
     systemd.services = mapAttrs' mkService cfg;
-    systemd.timers = mapAttrs'
-      (name: jobcfg: nameValuePair "imapsync-job-${name}" {
+    systemd.timers = mapAttrs' (
+      name: jobcfg:
+      nameValuePair "imapsync-job-${name}" {
         timerConfig = jobcfg.systemdTimerConfig;
         wantedBy = [ "timers.target" ];
-      })
-      cfg;
+      }
+    ) cfg;
   });
 }

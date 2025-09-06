@@ -1,4 +1,3 @@
-
 { config, pkgs, ... }:
 
 {
@@ -9,7 +8,7 @@
     links."10-eth-rcy" = {
       matchConfig.MACAddress = "00:2b:67:19:c4:f0";
       linkConfig = {
-        Name = "eth-rcy"; 
+        Name = "eth-rcy";
       };
     };
     networks."10-eth-rcy" = {

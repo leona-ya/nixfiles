@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   l.sops.secrets."all/users/root_pw".neededForUsers = true;
@@ -27,12 +32,18 @@
         };
     };
 
-    programs.zsh = let
-      uCfg = config.home-manager.users.leona.programs.zsh;
-    in {
-      inherit (uCfg) enable shellAliases oh-my-zsh autosuggestion;
-    };
+    programs.zsh =
+      let
+        uCfg = config.home-manager.users.leona.programs.zsh;
+      in
+      {
+        inherit (uCfg)
+          enable
+          shellAliases
+          oh-my-zsh
+          autosuggestion
+          ;
+      };
     programs.starship = config.home-manager.users.leona.programs.starship;
   };
 }
-

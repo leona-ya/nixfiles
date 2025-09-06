@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   l.sops.secrets."services/plausible/secret_keybase" = { };
   l.sops.secrets."services/plausible/admin_user_password" = { };
   l.sops.secrets."all/mail/no_reply_password" = { };

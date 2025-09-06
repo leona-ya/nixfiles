@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  users.users.leona.packages = with pkgs; [ pwvucontrol qjackctl ];
+  users.users.leona.packages = with pkgs; [
+    pwvucontrol
+    qjackctl
+  ];
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -14,8 +17,14 @@
       pipewire-pulse = {
         network-discover = {
           "context.exec" = [
-            { path = "pactl"; args = "load-module module-native-protocol-tcp"; }
-            { path = "pactl"; args = "load-module module-zeroconf-discover"; }
+            {
+              path = "pactl";
+              args = "load-module module-native-protocol-tcp";
+            }
+            {
+              path = "pactl";
+              args = "load-module module-zeroconf-discover";
+            }
           ];
         };
       };

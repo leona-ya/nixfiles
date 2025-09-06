@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   boot.supportedFilesystems = [ "cifs" ];
@@ -94,6 +99,8 @@
     #    }))
 
     # nixpkgs tools
+    nixfmt
+    nixfmt-tree
     nix-output-monitor
     nix-init
     nurl
@@ -194,19 +201,21 @@
         "pdev" = "pandoc --template eisvogel --listings";
       };
     };
-    home.file.".pandoc/templates".source = (pkgs.stdenv.mkDerivation (finalAttrs: {
-      pname = "pandoc-templates";
-      version = "3.1.0";
-      src = pkgs.fetchzip {
-        url = "https://github.com/Wandmalfarbe/pandoc-latex-template/releases/download/v${finalAttrs.version}/Eisvogel-${finalAttrs.version}.tar.gz";
-        hash = "sha256-THszG9id3Ditrf4f0csu4Sl75P90ZkXENbGytGjp7O8=";
-      };
-      installPhase = ''
-        mkdir -p $out
-        cp eisvogel.latex $out
-        cp eisvogel.beamer $out
-      '';
-    }));
+    home.file.".pandoc/templates".source = (
+      pkgs.stdenv.mkDerivation (finalAttrs: {
+        pname = "pandoc-templates";
+        version = "3.1.0";
+        src = pkgs.fetchzip {
+          url = "https://github.com/Wandmalfarbe/pandoc-latex-template/releases/download/v${finalAttrs.version}/Eisvogel-${finalAttrs.version}.tar.gz";
+          hash = "sha256-THszG9id3Ditrf4f0csu4Sl75P90ZkXENbGytGjp7O8=";
+        };
+        installPhase = ''
+          mkdir -p $out
+          cp eisvogel.latex $out
+          cp eisvogel.beamer $out
+        '';
+      })
+    );
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -293,5 +302,8 @@
   };
   programs.steam.enable = true;
   hardware.keyboard.zsa.enable = true;
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" "i686-linux" ];
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "i686-linux"
+  ];
 }

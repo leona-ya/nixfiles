@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   services.resolved.enable = false;
   networking.firewall.extraInputRules = ''
     ip saddr 10.151.0.0/16 tcp dport 53 accept

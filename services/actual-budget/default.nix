@@ -1,5 +1,6 @@
-{ config, ... }: {
-  l.sops.secrets."services/actual-budget/env" = {};
+{ config, ... }:
+{
+  l.sops.secrets."services/actual-budget/env" = { };
   services.actual = {
     enable = true;
     settings = {
@@ -8,13 +9,15 @@
       openId = {
         discoveryURL = "https://auth.leona.is/realms/leona/.well-known/openid-configuration";
         client_id = "fin.leona.is";
-        server_hostname ="https://fin.leona.is";
+        server_hostname = "https://fin.leona.is";
         authMethod = "openid";
       };
     };
   };
 
-  systemd.services.actual.serviceConfig.EnvironmentFile = [ config.sops.secrets."services/actual-budget/env".path ];
+  systemd.services.actual.serviceConfig.EnvironmentFile = [
+    config.sops.secrets."services/actual-budget/env".path
+  ];
 
   services.nginx.virtualHosts."fin.leona.is" = {
     enableACME = true;

@@ -4,12 +4,14 @@
   services.kea.dhcp4 = {
     enable = true;
     settings = {
-      interfaces-config = { interfaces = [ "br-lan" ]; };
+      interfaces-config = {
+        interfaces = [ "br-lan" ];
+      };
       subnet4 = [
         {
           id = 1;
           subnet = "10.151.4.0/22";
-          pools = [{ pool = "10.151.5.0 - 10.151.5.254"; }];
+          pools = [ { pool = "10.151.5.0 - 10.151.5.254"; } ];
           option-data = [
             {
               name = "routers";

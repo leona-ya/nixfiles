@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   l.sops.secrets."services/snipe-it/app-key".owner = "snipeit";
   l.sops.secrets."services/snipe-it/mail-password".owner = "snipeit";
   services.snipe-it = {

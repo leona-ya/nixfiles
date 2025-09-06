@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -33,7 +38,13 @@ in
     };
 
     phpfpm.settings = mkOption {
-      type = with types; attrsOf (oneOf [ int str bool ]);
+      type =
+        with types;
+        attrsOf (oneOf [
+          int
+          str
+          bool
+        ]);
       default = {
         "pm" = "dynamic";
         "php_admin_value[error_log]" = "stderr";
@@ -61,14 +72,17 @@ in
       '';
     };
 
-
     settings = mkOption {
-      type = with types; attrsOf (oneOf [ str int bool ]);
+      type =
+        with types;
+        attrsOf (oneOf [
+          str
+          int
+          bool
+        ]);
       default = { };
-      description = ''
-      '';
-      example = literalExpression ''
-      '';
+      description = '''';
+      example = literalExpression '''';
     };
   };
 
@@ -83,7 +97,9 @@ in
 
     environment.etc."grocy/config.php".text = ''
       <?php
-      ${concatStringsSep "\n" (mapAttrsToList (n: v: "Setting('${n}', ${builtins.toJSON v});") cfg.settings)}
+      ${concatStringsSep "\n" (
+        mapAttrsToList (n: v: "Setting('${n}', ${builtins.toJSON v});") cfg.settings
+      )}
     '';
 
     users.users.grocy = {
@@ -93,10 +109,12 @@ in
       group = "nginx";
     };
 
-    systemd.tmpfiles.rules = map
-      (
-        dirName: "d '${cfg.dataDir}/${dirName}' - grocy nginx - -"
-      ) [ "viewcache" "plugins" "settingoverrides" "storage" ];
+    systemd.tmpfiles.rules = map (dirName: "d '${cfg.dataDir}/${dirName}' - grocy nginx - -") [
+      "viewcache"
+      "plugins"
+      "settingoverrides"
+      "storage"
+    ];
 
     services.phpfpm.pools.grocy = {
       user = "grocy";

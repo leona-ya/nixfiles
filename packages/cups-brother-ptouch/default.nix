@@ -1,13 +1,14 @@
-{ lib
-, stdenv
-, fetchgit
-, autoreconfHook
-, cups
-, libpng
-, perl
-, perlPackages
-, foomatic-db-engine
-, patchPpdFilesHook
+{
+  lib,
+  stdenv,
+  fetchgit,
+  autoreconfHook,
+  cups,
+  libpng,
+  perl,
+  perlPackages,
+  foomatic-db-engine,
+  patchPpdFilesHook,
 }:
 
 stdenv.mkDerivation rec {

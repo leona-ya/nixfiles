@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   l.sops.secrets = {
     "services/gitlab/oidc-secret".owner = "gitlab";
     "services/gitlab/initial-root-password".owner = "gitlab";
@@ -37,7 +43,8 @@
       dbFile = config.sops.secrets."services/gitlab/db-secret".path;
       jwsFile = config.sops.secrets."services/gitlab/jws-secret".path;
       activeRecordPrimaryKeyFile = config.sops.secrets."services/gitlab/activerecord-primary-secret".path;
-      activeRecordDeterministicKeyFile = config.sops.secrets."services/gitlab/activerecord-deterministic-secret".path;
+      activeRecordDeterministicKeyFile =
+        config.sops.secrets."services/gitlab/activerecord-deterministic-secret".path;
       activeRecordSaltFile = config.sops.secrets."services/gitlab/activerecord-salt".path;
     };
 
@@ -70,12 +77,17 @@
         block_auto_created_users = false;
         auto_link_user = [ "lkc" ];
         providers = [
-          { name = "lkc";
+          {
+            name = "lkc";
             label = "auth.leona.is";
             args = {
               name = "lkc";
               strategy_class = "OmniAuth::Strategies::OpenIDConnect";
-              scope = [ "openid" "profile" "email" ];
+              scope = [
+                "openid"
+                "profile"
+                "email"
+              ];
               response_type = "code";
               issuer = "https://auth.leona.is/realms/leona";
               discovery = true;
@@ -112,9 +124,8 @@
     };
   };
 
-#  services.gitlab.backup = {
-#    startAt = [ "0/2:50" ];
-#    keepTime = 4;
-#  };
+  #  services.gitlab.backup = {
+  #    startAt = [ "0/2:50" ];
+  #    keepTime = 4;
+  #  };
 }
-

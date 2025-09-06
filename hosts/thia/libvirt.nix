@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   virtualisation.libvirtd.enable = true;
   systemd.network = {
     netdevs."05-br-vms" = {

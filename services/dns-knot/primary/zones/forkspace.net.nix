@@ -1,16 +1,24 @@
-{ helper, dns, config, lib, ... }:
+{
+  helper,
+  dns,
+  config,
+  lib,
+  ...
+}:
 
 {
   zone = with dns.lib.combinators; {
     TTL = 600;
-    SOA = ((ttl 600) {
-      nameServer = "ns1.leona.is.";
-      adminEmail = "noc@leona.is";
-      serial = 0;
-      refresh = 3600;
-      expire = 604800;
-      minimum = 300;
-    });
+    SOA = (
+      (ttl 600) {
+        nameServer = "ns1.leona.is.";
+        adminEmail = "noc@leona.is";
+        serial = 0;
+        refresh = 3600;
+        expire = 604800;
+        minimum = 300;
+      }
+    );
 
     NS = helper.ns;
 

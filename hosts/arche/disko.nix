@@ -1,5 +1,5 @@
-
-{ lib, ... }: {
+{ lib, ... }:
+{
   disko.devices = {
     disk = {
       main = {

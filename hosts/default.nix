@@ -8,13 +8,10 @@
 
         isDir = _name: type: type == "directory";
 
-        hostDirs = builtins.attrNames
-          (lib.filterAttrs isDir
-            (builtins.readDir ./.)
-          );
+        hostDirs = builtins.attrNames (lib.filterAttrs isDir (builtins.readDir ./.));
 
         # improve when l.meta is available
-        linuxHosts = lib.genAttrs (builtins.filter (h: h != "mydon" && h!= "amphion") hostDirs) (name: {
+        linuxHosts = lib.genAttrs (builtins.filter (h: h != "mydon" && h != "amphion") hostDirs) (name: {
           imports = [
             (./. + "/${name}")
           ];
@@ -26,48 +23,55 @@
             system = "x86_64-linux";
           };
 
-          nodeNixpkgs = lib.genAttrs [ "bij" "laurel" "sphere" "thia" ]
-            (_: import inputs.nixpkgs {
-              system = "aarch64-linux";
-            }) // lib.genAttrs [ "ceto" "freyda" "turingmachine" ]
-            (_: import inputs.nixpkgs-unstable {
-              system = "x86_64-linux";
-            }) // rec {
-              enari = (import
-                ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+          nodeNixpkgs =
+            lib.genAttrs [ "bij" "laurel" "sphere" "thia" ] (
+              _:
+              import inputs.nixpkgs {
+                system = "aarch64-linux";
+              }
+            )
+            // lib.genAttrs [ "ceto" "freyda" "turingmachine" ] (
+              _:
+              import inputs.nixpkgs-unstable {
+                system = "x86_64-linux";
+              }
+            )
+            // rec {
+              enari = (
+                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-enari";
                   src = inputs.nixpkgs;
                   patches = [
                   ];
-                })
-                { system = "x86_64-linux"; });
+                }) { system = "x86_64-linux"; }
+              );
               kupe = enari;
-              ceto = (import
-                ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+              ceto = (
+                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-ceto";
                   src = inputs.nixpkgs-unstable;
                   patches = [
                   ];
-                })
-                { system = "x86_64-linux"; });
+                }) { system = "x86_64-linux"; }
+              );
               freyda = ceto;
-              bij = (import
-                ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+              bij = (
+                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-bij";
                   src = inputs.nixpkgs;
                   patches = [
                   ];
-                })
-                { system = "aarch64-linux"; });
-              sphere = (import
-                ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+                }) { system = "aarch64-linux"; }
+              );
+              sphere = (
+                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-laurel";
                   src = inputs.nixpkgs;
                   patches = [
                   ];
-                })
-                { system = "aarch64-linux"; });
-          };
+                }) { system = "aarch64-linux"; }
+              );
+            };
 
           specialArgs = {
             inherit inputs;
@@ -80,17 +84,18 @@
             ../profiles/base-nixos
           ];
         };
-      } // linuxHosts;
+      }
+      // linuxHosts;
 
     nixosConfigurations = (inputs.colmena.lib.makeHive self.outputs.colmena).nodes;
     darwinConfigurations = {
       amphion = inputs.darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        modules = [ 
+        modules = [
           ../profiles/base
           ../profiles/darwin
-          ./amphion 
-        ];        
+          ./amphion
+        ];
         specialArgs = {
           inherit inputs;
         };

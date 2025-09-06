@@ -19,7 +19,8 @@ in
           Name = "eth0";
         };
       };
-    } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
+    }
+    // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
     netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
   };
 }

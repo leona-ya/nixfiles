@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   hardware.fancontrol = {
     enable = true;
     config = ''

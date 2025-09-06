@@ -1,4 +1,12 @@
-{ fetchFromGitLab, fetchYarnDeps, stdenv, fixup_yarn_lock, yarn, nodejs, substituteAll }:
+{
+  fetchFromGitLab,
+  fetchYarnDeps,
+  stdenv,
+  fixup_yarn_lock,
+  yarn,
+  nodejs,
+  substituteAll,
+}:
 
 stdenv.mkDerivation rec {
   pname = "pleroma-fe";
@@ -16,7 +24,11 @@ stdenv.mkDerivation rec {
     ./allow-private-repeats.diff
   ];
 
-  nativeBuildInputs = [ fixup_yarn_lock yarn nodejs ];
+  nativeBuildInputs = [
+    fixup_yarn_lock
+    yarn
+    nodejs
+  ];
 
   yarnOfflineCache = fetchYarnDeps {
     yarnLock = src + "/yarn.lock";
@@ -46,4 +58,3 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 }
-

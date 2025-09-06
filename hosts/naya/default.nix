@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [
     ../../profiles/hetzner/x86_64
     ./network.nix

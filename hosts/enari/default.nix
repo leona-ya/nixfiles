@@ -1,4 +1,11 @@
-{ config, lib, inputs, pkgs, ... }: {
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
+{
   imports = [
     ../../profiles/strato/x86_64
     ./network.nix
@@ -17,7 +24,7 @@
     "fd8f:d15b:9f40:c10::1@53"
   ];
 
-#  l.backups.enable = true;
+  #  l.backups.enable = true;
 
   services.postgresql.package = pkgs.postgresql_17;
   system.stateVersion = "25.05";

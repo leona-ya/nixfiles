@@ -1,4 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -17,7 +23,10 @@
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
   nix.distributedBuilds = false;
-  nix.settings.max-jobs = 16;
+  nix.settings.max-jobs = 10;
+  zramSwap = {
+    enable = true;
+  };
 
   l.backups = {
     enable = false;

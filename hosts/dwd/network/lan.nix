@@ -31,7 +31,6 @@
       #      };
     };
 
-
     # PHYSICAL
     links."10-eth1" = {
       matchConfig.MACAddress = "00:0d:b9:5a:b3:f1";

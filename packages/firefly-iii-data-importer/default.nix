@@ -1,17 +1,25 @@
-{ pkgs, stdenv, lib, fetchFromGitHub, dataDir ? "/var/lib/firefly-iii/data-importer" }:
+{
+  pkgs,
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  dataDir ? "/var/lib/firefly-iii/data-importer",
+}:
 
 let
-  package = (import ./composition.nix {
-    inherit pkgs;
-    inherit (stdenv.hostPlatform) system;
-    noDev = true; # Disable development dependencies
-  }).overrideAttrs (attrs: {
-    installPhase = attrs.installPhase + ''
-      rm -R $out/storage
-      ln -s ${dataDir}/.env $out/.env
-      ln -s ${dataDir}/storage $out/storage
-    '';
-  });
+  package =
+    (import ./composition.nix {
+      inherit pkgs;
+      inherit (stdenv.hostPlatform) system;
+      noDev = true; # Disable development dependencies
+    }).overrideAttrs
+      (attrs: {
+        installPhase = attrs.installPhase + ''
+          rm -R $out/storage
+          ln -s ${dataDir}/.env $out/.env
+          ln -s ${dataDir}/storage $out/storage
+        '';
+      });
 
 in
 package.override rec {

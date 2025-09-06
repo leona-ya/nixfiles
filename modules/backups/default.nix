@@ -1,9 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.l.backups;
 
-  inherit (lib) mkEnableOption mkIf mkOption types;
+  inherit (lib)
+    mkEnableOption
+    mkIf
+    mkOption
+    types
+    ;
 in
 {
   options.l.backups = {
@@ -75,7 +85,9 @@ in
           rm -rf /root/restic-backup
         '';
         pruneOpts = cfg.pruneOpts;
-        extraBackupArgs = lib.mkIf (cfg.excludes != [ ]) (builtins.map (x: "--exclude \"" + x + "\"") cfg.excludes);
+        extraBackupArgs = lib.mkIf (cfg.excludes != [ ]) (
+          builtins.map (x: "--exclude \"" + x + "\"") cfg.excludes
+        );
       };
     };
   };

@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   #services.shiori = {
@@ -57,7 +62,11 @@
       ProtectProc = "invisible";
 
       RestrictNamespaces = true;
-      RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
+      RestrictAddressFamilies = [
+        "AF_UNIX"
+        "AF_INET"
+        "AF_INET6"
+      ];
       RestrictRealtime = true;
       RestrictSUIDSGID = true;
     };

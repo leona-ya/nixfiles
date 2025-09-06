@@ -1,7 +1,17 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 let
-  commonHeaders = lib.concatStringsSep "\n" (lib.filter (line: lib.hasPrefix "add_header" line) (lib.splitString "\n" config.services.nginx.commonHttpConfig));
+  commonHeaders = lib.concatStringsSep "\n" (
+    lib.filter (line: lib.hasPrefix "add_header" line) (
+      lib.splitString "\n" config.services.nginx.commonHttpConfig
+    )
+  );
   vHosts = {
     "www.leona.is" = {
       serverAliases = [
@@ -16,10 +26,16 @@ let
     "leona.is" =
       let
         client = {
-          "m.homeserver" = { base_url = "https://matrix.leona.is"; };
-          "org.matrix.msc3575.proxy" = { "url" = "https://sliding-sync.matrix.leona.is"; };
+          "m.homeserver" = {
+            base_url = "https://matrix.leona.is";
+          };
+          "org.matrix.msc3575.proxy" = {
+            "url" = "https://sliding-sync.matrix.leona.is";
+          };
         };
-        server = { "m.server" = "matrix.leona.is:443"; };
+        server = {
+          "m.server" = "matrix.leona.is:443";
+        };
       in
       {
         root = pkgs.leona-is-website;
@@ -98,16 +114,22 @@ in
 {
   security.acme.certs."${config.networking.hostName}.${config.networking.domain}" = {
     group = "nginx";
-    extraDomainNames = lib.flatten (lib.attrNames vHosts ++ lib.mapAttrsToList (_: c: if c ? serverAliases then c.serverAliases else []) vHosts);
+    extraDomainNames = lib.flatten (
+      lib.attrNames vHosts
+      ++ lib.mapAttrsToList (_: c: if c ? serverAliases then c.serverAliases else [ ]) vHosts
+    );
   };
   services.nginx.virtualHosts =
     vHosts
-    |> builtins.mapAttrs (_: cfg:
+    |> builtins.mapAttrs (
+      _: cfg:
       {
         forceSSL = true;
         kTLS = true;
         useACMEHost = "${config.networking.hostName}.${config.networking.domain}";
-      } // cfg);
+      }
+      // cfg
+    );
 
   services.phpfpm.pools."nginx-default" = {
     user = config.services.nginx.user;

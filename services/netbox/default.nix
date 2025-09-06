@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   l.sops.secrets = {
@@ -35,7 +40,7 @@
     };
   };
 
-  systemd.services."netbox".serviceConfig.RuntimeDirectory = "netbox"; 
+  systemd.services."netbox".serviceConfig.RuntimeDirectory = "netbox";
 
   services.postgresql = {
     enable = true;

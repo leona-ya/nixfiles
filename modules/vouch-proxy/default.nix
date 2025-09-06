@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 with lib;
 
@@ -6,7 +11,8 @@ let
   cfg = config.services.vouch-proxy;
   format = pkgs.formats.yaml { };
   serverOptions =
-    { ... }: {
+    { ... }:
+    {
 
       options = {
         clientId = mkOption {
@@ -32,7 +38,8 @@ let
         };
       };
     };
-  mkService = domain: serviceConfig:
+  mkService =
+    domain: serviceConfig:
     let
       settings = recursiveUpdate cfg.globalSettings {
         vouch.port = serviceConfig.port;
@@ -56,27 +63,30 @@ let
         EnvironmentFile = serviceConfig.environmentFiles;
       };
     };
-  mkVirtualHosts = domain: serviceConfig: nameValuePair domain {
-    extraConfig = ''
-      error_page 401 = @error401;
-    '';
-    locations."/".extraConfig = ''
-      auth_request /_vouch/validate;
-    '';
-    locations."/_vouch" = {
-      proxyPass = "http://127.0.0.1:${toString serviceConfig.port}";
+  mkVirtualHosts =
+    domain: serviceConfig:
+    nameValuePair domain {
       extraConfig = ''
-        proxy_pass_request_body off;
-        proxy_set_header Content-Length "";
-        # these return values are used by the @error401 call
-        auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
-        auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
-        auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
+        error_page 401 = @error401;
       '';
-    };
+      locations."/".extraConfig = ''
+        auth_request /_vouch/validate;
+      '';
+      locations."/_vouch" = {
+        proxyPass = "http://127.0.0.1:${toString serviceConfig.port}";
+        extraConfig = ''
+          proxy_pass_request_body off;
+          proxy_set_header Content-Length "";
+          # these return values are used by the @error401 call
+          auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
+          auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
+          auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
+        '';
+      };
 
-    locations."@error401".return = "302 https://${domain}/_vouch/login?url=https://$host$request_uri&vouch-failcount=$auth_resp_failcount&X-Vouch-Token=$auth_resp_jwt&error=$auth_resp_err";
-  };
+      locations."@error401".return =
+        "302 https://${domain}/_vouch/login?url=https://$host$request_uri&vouch-failcount=$auth_resp_failcount&X-Vouch-Token=$auth_resp_jwt&error=$auth_resp_err";
+    };
 in
 {
   options.services.vouch-proxy = with lib; {

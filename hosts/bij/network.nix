@@ -8,7 +8,11 @@ in
   l.sops.secrets."hosts/bij/wireguard_wg-server_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/bij/wireguard_wg-public-in_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/bij/wireguard_wg-public-out_privatekey".owner = "systemd-network";
-  networking.firewall.allowedUDPPorts = [ 4500 51440 51441 ];
+  networking.firewall.allowedUDPPorts = [
+    4500
+    51440
+    51441
+  ];
 
   networking.hostName = "bij";
   networking.domain = "net.leona.is";
@@ -32,15 +36,17 @@ in
         wireguardConfig = {
           PrivateKeyFile = config.sops.secrets."hosts/bij/wireguard_wg-public-in_privatekey".path;
         };
-        wireguardPeers = [{
-          AllowedIPs = [
-            "0.0.0.0/0"
-            "::/0"
-          ];
-          PublicKey = "kih/GnR4Bov/DM/7Rd21wK+PFQRUNH6sywVuNKkUAkk=";
-          Endpoint = "[2a0f:4ac0:ca6c::1]:51820";
-          PersistentKeepalive = 21;
-        }];
+        wireguardPeers = [
+          {
+            AllowedIPs = [
+              "0.0.0.0/0"
+              "::/0"
+            ];
+            PublicKey = "kih/GnR4Bov/DM/7Rd21wK+PFQRUNH6sywVuNKkUAkk=";
+            Endpoint = "[2a0f:4ac0:ca6c::1]:51820";
+            PersistentKeepalive = 21;
+          }
+        ];
       };
       "30-wg-public-out" = {
         netdevConfig = {
@@ -70,7 +76,8 @@ in
           }
         ];
       };
-    } // hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
+    }
+    // hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
     networks = {
       "10-eth0" = {
         DHCP = "yes";
@@ -81,19 +88,29 @@ in
           "2a01:4f8:c010:1098::1/64"
         ];
         routes = [
-          { Destination = "::/0"; Gateway = "fe80::1"; GatewayOnLink = true; }
+          {
+            Destination = "::/0";
+            Gateway = "fe80::1";
+            GatewayOnLink = true;
+          }
         ];
       };
       "10-eth-nat" = {
         matchConfig.Name = "eth-nat";
         address = [ "10.62.41.2/32" ];
         routes = [
-          { Destination = "10.62.41.0/24"; Gateway = "10.62.41.1"; GatewayOnLink = true; }
+          {
+            Destination = "10.62.41.0/24";
+            Gateway = "10.62.41.1";
+            GatewayOnLink = true;
+          }
         ];
       };
       "30-wg-public-in" = {
         name = "wg-public-in";
-        linkConfig = { RequiredForOnline = "yes"; };
+        linkConfig = {
+          RequiredForOnline = "yes";
+        };
         address = [ ];
         routes = [
           {
@@ -108,7 +125,9 @@ in
       };
       "30-wg-public-out" = {
         name = "wg-public-out";
-        linkConfig = { RequiredForOnline = "no"; };
+        linkConfig = {
+          RequiredForOnline = "no";
+        };
         address = [ ];
         routes = [
           { Destination = "195.39.247.144/28"; }
@@ -127,7 +146,8 @@ in
           }
         ];
       };
-    } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
+    }
+    // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
   };
   networking.firewall.extraForwardRules = ''
     ct state invalid drop

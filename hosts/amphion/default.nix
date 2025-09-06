@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ../../profiles/desktop/wezterm.nix
     ../../profiles/darwin
@@ -9,7 +10,7 @@
   home-manager.users.leona = {
     home.sessionVariables = {
       BATOU_AGE_IDENTITIES = "~/.ssh/fcio_age";
-      BATOU_AGE_IDENTITY_PASSPHRASE="op://Private/SSH Key Age/password";
+      BATOU_AGE_IDENTITY_PASSPHRASE = "op://Private/SSH Key Age/password";
     };
     home.sessionVariablesExtra = ''
       export SSH_AUTH_SOCK="$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)"

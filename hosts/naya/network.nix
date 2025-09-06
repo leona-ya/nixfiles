@@ -4,7 +4,11 @@ let
   hosthelper = import ../../hosts/helper.nix { inherit lib config; };
 in
 {
-  networking.firewall.allowedUDPPorts = [ 4500 51440 51441 ];
+  networking.firewall.allowedUDPPorts = [
+    4500
+    51440
+    51441
+  ];
 
   networking.hostName = "naya";
   networking.domain = "net.leona.is";
@@ -19,7 +23,7 @@ in
         linkConfig.Name = "eth-nat";
       };
     };
-   # netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
+    # netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
     networks = {
       "10-eth0" = {
         DHCP = "yes";
@@ -31,20 +35,27 @@ in
         ];
         dns = [ "2001:4860:4860::8888" ];
         routes = [
-          { Destination = "::/0"; Gateway = "fe80::1"; GatewayOnLink = true; }
+          {
+            Destination = "::/0";
+            Gateway = "fe80::1";
+            GatewayOnLink = true;
+          }
         ];
       };
       "10-eth-nat" = {
         matchConfig.Name = "eth-nat";
         address = [ "10.62.41.4/32" ];
         routes = [
-          { Destination = "0.0.0.0/0"; Gateway = "10.62.41.1"; GatewayOnLink = true; }
+          {
+            Destination = "0.0.0.0/0";
+            Gateway = "10.62.41.1";
+            GatewayOnLink = true;
+          }
         ];
       };
     };
-#    } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
+    #    } // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
   };
 
   networking.useHostResolvConf = false;
 }
-

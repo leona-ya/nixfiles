@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   services.nginx.virtualHosts = {
     "autoconfig.em0lar.dev" = {
       enableACME = true;

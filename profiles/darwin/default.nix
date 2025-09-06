@@ -1,10 +1,11 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   imports = [
     inputs.home-manager.darwinModules.home-manager
     ./home-manager-fixes.nix
   ];
   security.pam.services.sudo_local.touchIdAuth = true;
-  
+
   system.activationScripts.setting.text = ''
     # Allow opening apps from any source
     sudo spctl --master-disable

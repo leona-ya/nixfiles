@@ -1,7 +1,7 @@
-
-{ lib, ... }: {
+{ lib, ... }:
+{
   disko.devices = {
-#    disk = lib.genAttrs [ "nvme-WD_BLACK_SN770_2TB_23178Y402957"] "nvme-WD_BLACK_SN850X_2000GB_24171U802988" ] (name: {
+    #    disk = lib.genAttrs [ "nvme-WD_BLACK_SN770_2TB_23178Y402957"] "nvme-WD_BLACK_SN850X_2000GB_24171U802988" ] (name: {
     disk = {
       nvme0 = {
         type = "disk";
@@ -37,7 +37,7 @@
         };
       };
     };
-    
+
     lvm_vg = {
       main = {
         type = "lvm_vg";

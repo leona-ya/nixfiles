@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   networking.firewall.allowedTCPPorts = [ 53 ];
   networking.firewall.allowedUDPPorts = [ 53 ];
   l.sops.secrets."services/dns-knot-secondary/keys".owner = "knot";
@@ -37,7 +38,10 @@
           key = "kloenk_leona_secondary";
         };
         internal_transfer = {
-          address = [ "fd8f:d15b:9f40::/48" "127.0.0.0/8" ];
+          address = [
+            "fd8f:d15b:9f40::/48"
+            "127.0.0.0/8"
+          ];
           action = "transfer";
         };
       };
@@ -68,7 +72,6 @@
           master = "internal_ns1";
           acl = "internal_notify";
         };
-
 
         # fdg
         "fahrplandatengarten.de" = {
