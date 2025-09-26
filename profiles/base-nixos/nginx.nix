@@ -30,7 +30,6 @@
       add_header Strict-Transport-Security $hsts_header always;
       add_header X-Content-Type-Options "nosniff";
       add_header X-Frame-Options "SAMEORIGIN";
-      add_header X-Xss-Protection "1; mode=block";
 
       access_log off;
     '';

@@ -87,7 +87,7 @@
   };
 
   hardware.framework.amd-7040.preventWakeOnAC = true;
-  hardware.framework.laptop13.audioEnhancement.enable = true;
+  hardware.framework.laptop13.audioEnhancement.enable = false;
   # broken with linux 6.13
   hardware.framework.enableKmod = false;
 
