@@ -66,6 +66,7 @@
     llvm
     lldb
     onlyoffice-bin
+    nodejs
     #nheko
     mpv
     (wrapOBS {
@@ -90,6 +91,7 @@
     texlive.combined.scheme-full
     thunderbird
     virt-manager
+    yarn
     yt-dlp
     zoxide
     #    (zoom-us.overrideAttrs (old: {
@@ -287,6 +289,7 @@
       ".envs/openjdk21".source = "${pkgs.jdk21}/lib/openjdk";
       ".envs/go".source = "${pkgs.go}";
       ".envs/python312".source = "${pkgs.python312}";
+      ".envs/nodejs".source = "${pkgs.nodejs}";
     };
   };
   environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
