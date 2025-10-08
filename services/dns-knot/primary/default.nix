@@ -81,6 +81,10 @@ in
           ];
           action = "transfer";
         };
+        dyn_infinitespace_dev_update = {
+          key = "dyn.infinitespace.dev_update";
+          action = "update";
+        };
       }
       // lib.mapAttrs' (hostName: _: {
         name = "acme-nix-${hostName}";
@@ -142,12 +146,14 @@ in
               zonefile-sync = 0;
               zonefile-load = "difference";
               journal-content = "changes";
+              storage = "/var/lib/knot/dynamic-zones";
             };
         };
       zone = {
         "leona.catzone" = {
           catalog-role = "generate";
           acl = "internal";
+          storage = "/var/lib/knot/dynamic-zones";
         };
         "bechilli.de" = {
           file =
@@ -238,6 +244,13 @@ in
           );
           template = "signedprimary";
         };
+        "dyn.infinitespace.dev" = {
+          template = "signedprimarydynamic";
+          acl = [
+            "internal"
+            "dyn_infinitespace_dev_update"
+          ];
+        };
         "labcode.de" = {
           file = dnsutil.writeZone "labcode.de" (
             lib.recursiveUpdate
@@ -275,7 +288,6 @@ in
           in
           {
             acl = ACMEacl ++ config.services.knot.settings.template.signedprimarydynamic.acl;
-            storage = "/var/lib/knot";
             file = "acme.leona.is.zone";
             template = "signedprimarydynamic";
           };
