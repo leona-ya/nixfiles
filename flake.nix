@@ -70,19 +70,6 @@
         overlays = {
           colmena = inputs.colmena.overlay;
           leona-is-website = inputs.leona-is-website.overlay;
-          iso = final: prev: {
-            iso =
-              (inputs.nixpkgs.lib.nixosSystem {
-                system = final.stdenv.targetPlatform.system;
-                specialArgs = {
-                  inputs = inputs;
-                  nixpkgs = inputs.nixpkgs;
-                };
-                modules = [
-                  (import ./lib/iso.nix)
-                ];
-              }).config.system.build.isoImage;
-          };
         };
 
         nixosModules = {

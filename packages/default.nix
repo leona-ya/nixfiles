@@ -1,4 +1,4 @@
-{ self, lib, ... }:
+{ self, lib, inputs, ... }:
 rec {
 
   flake.overlays.default =
@@ -20,6 +20,16 @@ rec {
         #gimp = pkgs.callPackage ./gimp {};
         annieuseyourtelescope = pkgs.callPackage ./annieuseyourtelescope { };
         pleroma-fe = pkgs.callPackage ./pleroma-fe { };
+        iso = (self.inputs.nixpkgs.lib.nixosSystem {
+          system = pkgs.stdenv.targetPlatform.system;
+          specialArgs = {
+            inputs = inputs;
+            nixpkgs = inputs.nixpkgs;
+          };
+          modules = [
+            (import ../lib/iso.nix)
+          ];
+        }).config.system.build.isoImage;
       };
     };
 }

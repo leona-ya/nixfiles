@@ -3,7 +3,6 @@
   imports = [
     (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
     ../profiles/base
-    ../profiles/bcachefs
   ];
 
   boot.kernelParams = [
