@@ -49,8 +49,12 @@
               ceto = (
                 import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-ceto";
-                  src = inputs.nixpkgs-unstable;
+                  src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/449637.patch";
+                      hash = "sha256-Az1JjT4fItvutcjcSemXrpBTPsyKL0updrUT//RqP5Y=";
+                    })
                   ];
                 }) { system = "x86_64-linux"; }
               );
