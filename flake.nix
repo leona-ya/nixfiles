@@ -42,7 +42,7 @@
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
       url = "github:nix-community/disko";
