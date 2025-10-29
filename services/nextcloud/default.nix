@@ -7,7 +7,7 @@ in
   l.sops.secrets."services/nextcloud/admin_password".owner = "nextcloud";
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud31;
+    package = pkgs.nextcloud32;
     hostName = "cloud.leona.is";
 
     https = true;
@@ -65,6 +65,8 @@ in
     useACMEHost = cfg.hostName;
     forceSSL = true;
     kTLS = true;
-    serverAliases = cfg.settings.trusted_domains;
+    serverAliases = [
+      "cloud.maroni.me"
+    ];
   };
 }
