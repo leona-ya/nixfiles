@@ -15,7 +15,7 @@
     monospace = [ "Monaspace Argon 8" ];
   };
   fonts.packages = with pkgs; [
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     dejavu_fonts
     fira
     fira-mono
@@ -28,7 +28,7 @@
     questrial-regular
     monaspace
     annieuseyourtelescope
-    vistafonts
+    vista-fonts
     source-sans-pro
   ];
 
@@ -43,7 +43,6 @@
 
   users.users.leona.packages = with pkgs; [
     anki
-    bitwarden
     #calibre
     editorconfig-checker
     element-desktop
@@ -65,7 +64,7 @@
     libimobiledevice
     llvm
     lldb
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     nodejs
     #nheko
     mpv
@@ -74,7 +73,7 @@
     })
     obsidian
     opentofu
-    openssl_3_0
+    openssl_3
     pandoc
     pass-wayland
     pre-commit
