@@ -68,10 +68,6 @@
                   name = "nixpkgs-patched-laurel";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/456706.patch";
-                      hash = "sha256-LgHk5/Lq0ERPtHpqCv328MFj1nZBPUwH6kwpHkaZVDw=";
-                    })
                   ];
                 }) { system = "aarch64-linux"; }
               );
