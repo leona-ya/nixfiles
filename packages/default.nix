@@ -6,7 +6,7 @@ rec {
     let
       pseudoPkgs = (perSystem { pkgs = { }; }).packages;
     in
-    builtins.mapAttrs (name: _: self.packages.${final.system}.${name}) pseudoPkgs;
+    builtins.mapAttrs (name: _: self.packages.${final.stdenv.hostPlatform.system}.${name}) pseudoPkgs;
 
   perSystem =
     { pkgs, ... }:
