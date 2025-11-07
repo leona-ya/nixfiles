@@ -603,11 +603,11 @@
     },
     "nixpkgs-staging-next": {
       "locked": {
-        "lastModified": 1762511918,
-        "narHash": "sha256-y4kMzg5ofvmDEZxp5Snok4jW6Ez6x4p4NU4JCXJFcP0=",
+        "lastModified": 1763661994,
+        "narHash": "sha256-XTda5UOktdjd74B7Kgv/a6UN7NOub7RCW5YONy5Xh14=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "892647f37d603abf9e32c3d6b97628526f85846f",
+        "rev": "f7ff54e830e38e8c24e4bb0a8e60f1b87544e0d4",
         "type": "github"
       },
       "original": {
@@ -619,11 +619,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1762686035,
-        "narHash": "sha256-rzt3aYsEMKvwNXW0H/6J2z733gqS4g1IXd1pDUWzVpk=",
-        "rev": "b6a8526db03f735b89dd5ff348f53f752e7ddc8e",
+        "lastModified": 1763421233,
+        "narHash": "sha256-re7SYzc1gs7069DojQiW90fPjNfCUJ9+RUEplQPqxDs=",
+        "rev": "89c2b2330e733d6cdb5eae7b899326930c2c0648",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre891611.b6a8526db03f/nixexprs.tar.xz?rev=b6a8526db03f735b89dd5ff348f53f752e7ddc8e"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre897910.89c2b2330e73/nixexprs.tar.xz?lastModified=1763421233&rev=89c2b2330e733d6cdb5eae7b899326930c2c0648"
       },
       "original": {
         "type": "tarball",
@@ -632,11 +632,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1762261699,
-        "narHash": "sha256-GceY7gYXgiFK/XrknQmMTUtva1o+87/Sb8eVT/9batc=",
-        "rev": "f646317c4052d86e5e5ffb00c88202ebd00d9920",
+        "lastModified": 1763835633,
+        "narHash": "sha256-xREfutxCOCrU/lc7/3ZTXUE30bjy+H9bCLk1yoPFCNI=",
+        "rev": "050e09e091117c3d7328c7b2b7b577492c43c134",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-25.11pre889284.f646317c4052/nixexprs.tar.xz?rev=f646317c4052d86e5e5ffb00c88202ebd00d9920"
+        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-25.11pre900642.050e09e09111/nixexprs.tar.xz?lastModified=1763835633&rev=050e09e091117c3d7328c7b2b7b577492c43c134"
       },
       "original": {
         "type": "tarball",

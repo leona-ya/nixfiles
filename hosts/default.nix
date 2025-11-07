@@ -30,7 +30,7 @@
                 system = "aarch64-linux";
               }
             )
-            // lib.genAttrs [ "ceto" "freyda" "turingmachine" ] (
+            // lib.genAttrs ["ceto" "freyda" "turingmachine" ] (
               _:
               import inputs.nixpkgs-unstable {
                 system = "x86_64-linux";
@@ -46,15 +46,6 @@
                 }) { system = "x86_64-linux"; }
               );
               kupe = enari;
-              ceto = (
-                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-ceto";
-                  src = inputs.nixpkgs-unstable;
-                  patches = [
-                  ];
-                }) { system = "x86_64-linux"; }
-              );
-              freyda = ceto;
               bij = (
                 import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-bij";
