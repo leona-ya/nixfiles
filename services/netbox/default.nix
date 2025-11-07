@@ -14,7 +14,7 @@
 
   services.netbox = {
     enable = true;
-    package = pkgs.netbox_4_3;
+    package = pkgs.netbox_4_4;
     unixSocket = "/run/netbox/netbox.sock";
     secretKeyFile = config.sops.secrets."services/netbox/secret_key".path;
     extraConfig = ''
