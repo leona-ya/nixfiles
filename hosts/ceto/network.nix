@@ -8,7 +8,7 @@
   systemd.network = {
     links = {
       "10-eth0" = {
-        matchConfig.MACAddress = "9c:6b:00:97:b5:8a";
+        matchConfig.MACAddress = "10:ff:e0:e3:d6:e5";
         linkConfig = {
           Name = "eth0";
           WakeOnLan = "magic";
