@@ -4,10 +4,11 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.xz";
     nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-2.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.lix.follows = "lix";
+      #inputs.lix.follows = "lix";
     };
     lix = {
       url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
