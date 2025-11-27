@@ -36,6 +36,12 @@
                 system = "x86_64-linux";
               }
             )
+            // lib.genAttrs [ "moka" ] (
+              _:
+              import inputs.nixpkgs-2511 {
+                system = "x86_64-linux";
+              }
+            )
             // rec {
               enari = (
                 import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {

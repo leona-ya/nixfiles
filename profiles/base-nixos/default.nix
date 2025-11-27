@@ -33,6 +33,7 @@
 
   networking.useNetworkd = true;
   networking.nftables.enable = true;
+  networking.firewall.filterForward = true;
   networking.useDHCP = false;
   services.resolved.dnssec = "false"; # broken :(
   services.resolved.extraConfig = ''

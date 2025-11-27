@@ -30,6 +30,8 @@
     CAA = helper.caa;
 
     subdomains = {
+      "moka.net" = host "135.181.140.95" "2a01:4f9:3a:1448::";
+      "install-iso.moka.net".AAAA = [ "2a01:4f9:3a:1448:7fff:1487:a11::" ];
       social = host "168.119.100.247" "2a01:4f8:c012:b172::1";
       "dyn".NS = [
         "ns1.leona.is."
