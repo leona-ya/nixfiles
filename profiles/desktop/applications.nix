@@ -135,7 +135,7 @@
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   services.udisks2.enable = true;
-  programs.nix-ld.enable = true;
+  programs.nix-ld.enable = false;
   services.avahi = {
     enable = true;
     nssmdns4 = true;
