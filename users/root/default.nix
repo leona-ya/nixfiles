@@ -6,11 +6,15 @@
 }:
 
 {
-  l.sops.secrets."all/users/root_pw".neededForUsers = true;
+  l.sops.secrets."all/users/root_pw" = {
+    enable = !config.l.meta.bootstrap;
+    neededForUsers = true;
+  };
 
   users.users.root = {
     shell = pkgs.zsh;
-    hashedPasswordFile = config.sops.secrets."all/users/root_pw".path;
+  } // lib.optionalAttrs (!config.l.meta.bootstrap) {
+    hashedPasswordFile = lib.mkOverride 500 config.sops.secrets."all/users/root_pw".path;
   };
 
   home-manager.users.root = {

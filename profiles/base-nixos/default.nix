@@ -52,9 +52,6 @@
   };
   programs.mosh.enable = true;
 
-  l.sops.secrets."all/users/leona_pw".neededForUsers = true;
-  users.users.leona.hashedPasswordFile = lib.mkDefault config.sops.secrets."all/users/leona_pw".path;
-
   environment.systemPackages = with pkgs; [
     config.boot.kernelPackages.cpupower
     lm_sensors

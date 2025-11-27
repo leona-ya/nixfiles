@@ -1,5 +1,6 @@
 {
   imports = [
+    ./meta
     ./backups
     ./sops
     ./vouch-proxy

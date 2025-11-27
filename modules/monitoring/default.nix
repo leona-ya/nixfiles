@@ -2,7 +2,7 @@
 {
   options.l.monitoring = {
     enable = lib.mkEnableOption "leona monitoring" // {
-      default = true;
+      default = !config.l.meta.bootstrap;
     };
     logs = {
       enable = lib.mkEnableOption "log collection" // {
