@@ -14,9 +14,6 @@ let
   );
   vHosts = {
     "www.leona.is" = {
-      serverAliases = [
-        "labcode.de"
-      ];
       locations = {
         "/" = {
           extraConfig = "return 301 https://leona.is$request_uri;";
@@ -77,27 +74,8 @@ let
           };
         };
       };
-    #    "static.labcode.de" = {
-    #      enableACME = true;
-    #      forceSSL = true;
-    #      kTLS = true;
-    #      serverAliases = [
-    #        "cdn.labcode.de"
-    #      ];
-    #      root = fetchGit {
-    #        url = "https://git.em0lar.de/em0lar/static.labcode.de";
-    #        rev = "f53ae4405b5e160838c4a3097df789dd612740c9";
-    #      };
-    #      locations."/" = {
-    #        extraConfig = ''
-    #          ${commonHeaders}
-    #          autoindex on;
-    #          add_header Access-Control-Allow-Origin '*';
-    #        '';
-    #      };
-    #    };
     "cv.leona.is" = {
-      root = "/persist/var/www/cv.leona.is";
+      root = "/var/www/cv.leona.is";
       locations."/".index = "index.pdf";
     };
     "openpgpkey.leona.is" = {
