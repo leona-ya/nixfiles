@@ -49,11 +49,11 @@
       routes = [
         {
 
-          Destination = "168.119.100.247/32";
+          Destination = "95.217.67.8/32";
           Gateway = "_dhcp4";
         }
         {
-          Destination = "2a01:4f8:c010:1098::1/128";
+          Destination = "2a01:4f9:3a:1448:4000:b11::/128";
           Gateway = "_ipv6ra";
         }
       ];
@@ -78,11 +78,11 @@
       };
       routes = [
         {
-          Destination = "168.119.100.247/32";
+          Destination = "95.217.67.8/32";
           Gateway = "_dhcp4";
         }
         {
-          Destination = "2a01:4f8:c010:1098::1/128";
+          Destination = "2a01:4f9:3a:1448:4000:b11::/128";
           Gateway = "_ipv6ra";
         }
       ];

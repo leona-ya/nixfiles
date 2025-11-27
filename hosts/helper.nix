@@ -10,7 +10,7 @@ let
 in
 rec {
   hosts = {
-    bij = {
+    biro = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:0c21::1";
         hasPublicIpv4 = true;
@@ -34,14 +34,6 @@ rec {
                 { Destination = "fd8f:d15b:9f40:0900::/56"; }
               ];
               extraWireguardPeers = [
-                {
-                  # turingmachine
-                  AllowedIPs = [
-                    "10.151.9.2/32"
-                    "fd8f:d15b:9f40:0901::1/72"
-                  ];
-                  PublicKey = "gOBDoXc3zWVpnyx81fgVKmR2un14MW+c+SM/G6F3sFY=";
-                }
                 {
                   # nyx
                   AllowedIPs = [
@@ -86,15 +78,15 @@ rec {
             };
             "server" = {
               ips = [
-                "${hosts.bij.meta.intIpv6}/72"
+                "${hosts.biro.meta.intIpv6}/72"
                 "10.151.9.1/32"
               ];
-              publicKey = "axdGRJYscsCWGmSqytzU/ifQdnua4I7Lh83sYIR0AH0=";
+              publicKey = "2u8sWyQsqtg13Ze1+m1X3r2Jg84OkkdDAgvSc1Q10Tc=";
               routed = [
                 "fd8f:d15b:9f40::/48"
                 "10.151.0.0/16"
               ];
-              hostname = "bij.net.leona.is";
+              hostname = "biro.net.leona.is";
               interfaceRoutes = [
                 { Destination = "10.151.0.0/22"; }
                 { Destination = "10.151.4.0/22"; }
@@ -245,15 +237,6 @@ rec {
                 { Destination = "2a0f:4ac0:1e0::/48"; }
               ];
               extraWireguardPeers = [
-                {
-                  # turingmachine
-                  AllowedIPs = [
-                    "195.39.247.148/32"
-                    "2a0f:4ac0:1e0:100::/64"
-                  ];
-                  PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
-                  PersistentKeepalive = 21;
-                }
                 {
                   # kupe
                   Endpoint = "kupe.net.leona.is:51440";

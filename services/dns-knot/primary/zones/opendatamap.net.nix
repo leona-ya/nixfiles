@@ -33,7 +33,7 @@
 
     CAA = helper.caa;
     subdomains = {
-      www.CNAME = [ "bij.net.leona.is." ];
+      www.CNAME = [ "biro.net.leona.is." ];
       "*".A = [ "162.55.82.116" ];
     };
   };

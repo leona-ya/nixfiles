@@ -5,25 +5,6 @@
   l.sops.secrets."hosts/freyda/wireguard_wg-public_privatekey".owner = "systemd-network";
   l.sops.secrets."hosts/freyda/wireguard_wg-fdg_privatekey".owner = "systemd-network";
   systemd.network.netdevs = {
-    "30-wg-clients-6" = {
-      netdevConfig = {
-        Kind = "wireguard";
-        Name = "wg-clients-6";
-      };
-      wireguardConfig = {
-        PrivateKeyFile = config.sops.secrets."hosts/freyda/wireguard_wg-clients_privatekey".path;
-      };
-      wireguardPeers = [
-        {
-          AllowedIPs = [
-            "10.151.0.0/16"
-            "fd8f:d15b:9f40::/48"
-          ];
-          PublicKey = "ULV9Pt0i4WHZ1b1BNS8vBa2e9Lx1MR3DWF8sW8HM1Wo=";
-          Endpoint = "[2a01:4f8:c010:1098::1]:4500";
-        }
-      ];
-    };
     "30-wg-clients" = {
       netdevConfig = {
         Kind = "wireguard";
@@ -80,25 +61,6 @@
     };
   };
   systemd.network.networks = {
-    "30-wg-clients-6" = {
-      name = "wg-clients-6";
-      linkConfig = {
-        RequiredForOnline = "no";
-        ActivationPolicy = "manual";
-      };
-      address = [
-        "10.151.9.7/32"
-        "fd8f:d15b:9f40:0901:300::1/72"
-      ];
-      routes = [
-        { Destination = "10.151.0.0/16"; }
-        { Destination = "fd8f:d15b:9f40::/48"; }
-      ];
-      dns = [
-        "10.151.9.1"
-        "fd8f:d15b:9f40:900::1"
-      ];
-    };
     "30-wg-clients" = {
       name = "wg-clients";
       linkConfig = {

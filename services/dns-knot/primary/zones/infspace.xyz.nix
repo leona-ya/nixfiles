@@ -28,7 +28,7 @@
     AAAA = helper.hosts.web.AAAA;
 
     subdomains = {
-      "auth.stag".A = [ "168.119.100.247" ];
+      "auth.stag".A = helper.hosts.web.A;
       "auth.stag".AAAA = [ "2a01:4f8:1c17:51ec::1" ];
     };
   };

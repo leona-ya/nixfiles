@@ -12,8 +12,7 @@ with dns.lib.combinators;
 let
   enari_host = host "195.20.227.176" "2a02:2479:56:500::1";
   kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
-  bij_v4 = "168.119.100.247";
-  bij_host = host bij_v4 "2a01:4f8:c010:1098::1";
+  web_v4 = "95.217.67.8";
   laurel_v6 = "2a01:4f8:c012:b172::1";
   sphere_v6 = "2a01:4f8:c012:b842::1";
   naya_v6 = "2a01:4f8:1c17:51ec::1";
@@ -54,7 +53,6 @@ in
 
     subdomains = hosthelper.services.dns-int.g_dns_records // {
       "kupe.net" = kupe_host;
-      "bij.net" = bij_host;
       "dwd.net" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       "enari.net" = enari_host;
       "laurel.net".AAAA = [ laurel_v6 ];
@@ -63,12 +61,12 @@ in
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
       "sphere.net".AAAA = [ sphere_v6 ];
-      "wg.net".CNAME = [ "bij.net.leona.is." ];
+      "wg.net".CNAME = [ "biro.net.infinitespace.dev." ];
       "haj-social".CNAME = [ "laurel.net.leona.is." ];
 
       "ns1" = kupe_host;
       "ns2" = enari_host;
-      "ns3" = bij_host;
+      "ns3" = host "95.217.67.8" "2a01:4f9:3a:1448:4000:b11::";
 
       "acme".NS = [
         "ns1.leona.is."
@@ -104,35 +102,35 @@ in
         }
       ];
 
-      www.CNAME = [ "bij.net.leona.is." ];
+      www.CNAME = [ "biro.net.infinitespace.dev." ];
       "acme.int".AAAA = [ "fd8f:d15b:9f40:101::100" ];
-      auth = host bij_v4 sphere_v6;
+      auth = host web_v4 sphere_v6;
       "ldap".CNAME = [ "sphere.net.leona.is." ];
       alertmanager.CNAME = [ "rutile.net.leona.is." ];
-      cloud.CNAME = [ "bij.net.leona.is." ];
-      "cal.cloud".CNAME = [ "bij.net.leona.is." ];
-      cv.CNAME = [ "bij.net.leona.is." ];
-      fin.CNAME = [ "bij.net.leona.is." ];
-      "dataimporter.fin".CNAME = [ "bij.net.leona.is." ];
-      grocy.CNAME = [ "bij.net.leona.is." ];
-      "api.grocy".CNAME = [ "bij.net.leona.is." ];
-      matrix = host bij_v4 laurel_v6;
-      "mautrix-telegram.matrix" = host bij_v4 laurel_v6;
-      "sliding-sync.matrix" = host bij_v4 laurel_v6;
-      md = host bij_v4 laurel_v6;
-      netbox = host bij_v4 laurel_v6;
+      cloud.CNAME = [ "biro.net.infinitespace.dev." ];
+      "cal.cloud".CNAME = [ "biro.net.infinitespace.dev." ];
+      cv.CNAME = [ "biro.net.infinitespace.dev." ];
+      fin.CNAME = [ "biro.net.infinitespace.dev." ];
+      "dataimporter.fin".CNAME = [ "biro.net.infinitespace.dev." ];
+      grocy.CNAME = [ "biro.net.infinitespace.dev." ];
+      "api.grocy".CNAME = [ "biro.net.infinitespace.dev." ];
+      matrix = host web_v4 laurel_v6;
+      "mautrix-telegram.matrix" = host web_v4 laurel_v6;
+      "sliding-sync.matrix" = host web_v4 laurel_v6;
+      md = host web_v4 laurel_v6;
+      netbox = host web_v4 laurel_v6;
       "paperless.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
-      todo = host bij_v4 laurel_v6;
-      pass = host bij_v4 laurel_v6;
+      todo = host web_v4 laurel_v6;
+      pass = host web_v4 laurel_v6;
       "hass.bn" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       "mqtt.bn.int".A = [ "10.151.5.49" ];
       "mqtt.bn.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
       "prometheus.bn.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
-      yt.CNAME = [ "bij.net.leona.is." ];
-      assets.CNAME = [ "bij.net.leona.is." ];
-      a.CNAME = [ "bij.net.leona.is." ];
-      found.CNAME = [ "bij.net.leona.is." ];
-      openpgpkey.CNAME = [ "bij.net.leona.is." ];
+      yt.CNAME = [ "biro.net.infinitespace.dev." ];
+      assets.CNAME = [ "biro.net.infinitespace.dev." ];
+      a.CNAME = [ "biro.net.infinitespace.dev." ];
+      found.CNAME = [ "biro.net.infinitespace.dev." ];
+      openpgpkey.CNAME = [ "biro.net.infinitespace.dev." ];
       kb.CNAME = [ "laurel.net.leona.is." ];
       "grafana.mon".CNAME = [ "rutile.net.leona.is." ];
       "metrics.mon".CNAME = [ "rutile.net.leona.is." ];

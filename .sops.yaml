@@ -1,7 +1,7 @@
 keys:
   - &leona B50CB5BA6A620411098CD9C8F0E55407FC6FF7BA
   - &arche age1qly0tm983m4cssmvt4fcgekrezez86lclpmwu3aezk6jyyhxte0q3l3vad
-  - &bij age14s6jax4hc2uz6rusud4lna0uc9m28u9yurv2ewwjchnr2cjqa43qqw2xqp
+  - &biro age1f79kpv0ef9p7skmwtc3sd3wa4c93efr5yq8e6nlq4nfxvzvc943swuzxa0
   - &ceto age1j87zqrvqvku98rex3w2uw7gr57wgvyzfghq7g6v076ee5pa02qtqju0yq0
   - &dwd age1xph9c9rtyjrz3cnd6t940dnzuruqw27l7yp98ac33rdz53q429gsu702k4
   - &enari age108r86j5zcd9uz22k9f73dh5pfgst8xqv7ffj7xwgspad6zk4xu0qtcngte
@@ -22,7 +22,7 @@ creation_rules:
           - *leona
         age:
           - *arche
-          - *bij
+          - *biro
           - *ceto
           - *dwd
           - *enari
@@ -42,13 +42,13 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *bij
-  - path_regex: secrets/hosts/bij.yaml
+          - *arche
+  - path_regex: secrets/hosts/biro.yaml
     key_groups:
       - pgp:
           - *leona
         age:
-          - *bij
+          - *biro
   - path_regex: secrets/hosts/ceto.yaml
     key_groups:
       - pgp:
@@ -150,12 +150,12 @@ creation_rules:
           - *leona
         age:
           - *laurel
-  - path_regex: secrets/services/(firefly-iii|grocy|ical-merger|snipe-it).yaml
+  - path_regex: secrets/services/(firefly-iii|snipe-it).yaml
     key_groups:
       - pgp:
           - *leona
         age:
-          - *bij
+          - *biro
   - path_regex: secrets/services/mail.yaml
     key_groups:
       - pgp:
@@ -186,7 +186,7 @@ creation_rules:
           - *leona
         age:
           - *enari
-          - *bij
+          - *biro
   - path_regex: secrets/services/(keycloak|ldap).yaml
     key_groups:
       - pgp:

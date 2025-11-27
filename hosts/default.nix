@@ -24,7 +24,7 @@
           };
 
           nodeNixpkgs =
-            lib.genAttrs [ "bij" "laurel" "sphere" "thia" ] (
+            lib.genAttrs [ "laurel" "sphere" ] (
               _:
               import inputs.nixpkgs {
                 system = "aarch64-linux";
@@ -52,14 +52,6 @@
                 }) { system = "x86_64-linux"; }
               );
               kupe = enari;
-              bij = (
-                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-bij";
-                  src = inputs.nixpkgs;
-                  patches = [
-                  ];
-                }) { system = "aarch64-linux"; }
-              );
               laurel = (
                 import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-laurel";

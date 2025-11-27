@@ -1,12 +1,12 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, inputs, ... }: 
 
 {
   imports = [
-    ./hardware-configuration.nix
+    inputs.disko.nixosModules.disko
     ./network.nix
-    ../../profiles/zfs-nopersist
+    ./disko.nix
+    ../../profiles/moka-libvirt
     ../../services/web
-    ../../services/dns-kresd
     ../../services/snipe-it
     ../../services/dns-knot/secondary
   ];
@@ -14,31 +14,15 @@
   # Secondary DNS
   services.knot.settings.server.listen = [
     "127.0.0.11@53"
-    "168.119.100.247@53"
-    "2a01:4f8:c010:1098::1@53"
-    "fd8f:d15b:9f40:c21::1@53"
+    "95.217.67.8@53"
+    "2a01:4f9:3a:1448:4000:b11::@53"
   ];
-
-  deployment.buildOnTarget = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [
-    "zfs.zfs_arc_max=1024000000"
-    "console=tty"
-  ];
-  boot.initrd.kernelModules = [ "virtio_gpu" ];
-  networking.hostId = "aeb28f21";
   services.qemuGuest.enable = true;
 
-  services.kresd.listenPlain = [
-    "127.0.0.1:53"
-    "[::1]:53"
-    "[fd8f:d15b:9f40:900::1]:53"
-  ];
-
-  l.backups.enable = true;
-  l.remote-unlock.enable = true;
+  #l.backups.enable = true;
   l.nginx-sni-proxy = {
     enable = true;
     upstreamHosts = {
@@ -47,9 +31,8 @@
         "matrix.leona.is"
         "sliding-sync.matrix.leona.is"
         "md.leona.is"
+        "netbox.leona.is"
         "pass.leona.is"
-        "todo.leona.is"
-        "social.haj.gf"
         "social.infinitespace.dev"
       ];
       "thia.wg.net.leona.is" = [
@@ -67,12 +50,5 @@
     };
   };
 
-  users.users = {
-    acme.uid = 996;
-  };
-  users.groups = {
-    acme.gid = 995;
-  };
-
-  system.stateVersion = "23.05";
+  system.stateVersion = "25.11";
 }

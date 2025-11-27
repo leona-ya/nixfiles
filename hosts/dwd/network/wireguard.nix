@@ -25,7 +25,7 @@ in
             "::/0"
           ];
           PublicKey = "f+fi4A3eZ2WWrIQc+OQugriDj1FPASBXdIW39TW5aF0=";
-          Endpoint = "bij.net.leona.is:51440";
+          Endpoint = "wg.net.leona.is:51440";
           PersistentKeepalive = 21;
         }
       ];
