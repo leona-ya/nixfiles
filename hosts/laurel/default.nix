@@ -11,7 +11,6 @@
     ./hardware-configuration.nix
     ./network.nix
     ../../profiles/zfs-nopersist
-    ../../profiles/encrypted-fs
     ../../services/hedgedoc
     ../../services/matrix
     ../../services/outline
@@ -34,6 +33,7 @@
   ];
 
   l.backups.enable = true;
+  l.remote-unlock.enable = true;
 
   users.users = {
     nginx.uid = 60;

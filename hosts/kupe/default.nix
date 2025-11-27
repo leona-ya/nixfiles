@@ -6,7 +6,6 @@
     ./hardware-configuration.nix
     ./network.nix
     ../../profiles/zfs-nopersist
-    ../../profiles/encrypted-fs
     ../../services/dns-knot/primary
     ../../services/dns-kresd
     ../../services/mail
@@ -25,6 +24,7 @@
   ];
 
   l.backups.enable = true;
+  l.remote-unlock.enable = true;
 
   system.stateVersion = "23.05";
 }

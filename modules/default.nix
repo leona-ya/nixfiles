@@ -9,5 +9,6 @@
     ./ory-hydra
     ./nginx
     ./monitoring
+    ./remote-unlock
   ];
 }

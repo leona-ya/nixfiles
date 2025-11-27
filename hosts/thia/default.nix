@@ -12,7 +12,6 @@
     ./hardware-configuration.nix
     ./hw.nix
     ../../profiles/desktop/syncthing.nix
-    ../../profiles/encrypted-fs
     ../../services/int-acme-ca
     ../../services/paperless
     ../../services/bn-smarthome
@@ -30,6 +29,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
+  l.remote-unlock.enable = true;
+  
   zramSwap.enable = false;
   networking.hostId = "d5714cb9";
   nix.distributedBuilds = false;

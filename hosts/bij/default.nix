@@ -5,7 +5,6 @@
     ./hardware-configuration.nix
     ./network.nix
     ../../profiles/zfs-nopersist
-    ../../profiles/encrypted-fs
     ../../services/web
     ../../services/dns-kresd
     ../../services/snipe-it
@@ -39,6 +38,7 @@
   ];
 
   l.backups.enable = true;
+  l.remote-unlock.enable = true;
   l.nginx-sni-proxy = {
     enable = true;
     upstreamHosts = {

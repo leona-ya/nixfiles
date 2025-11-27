@@ -5,7 +5,6 @@
     ./hardware-configuration.nix
     ./network.nix
     ../../profiles/zfs-nopersist
-    ../../profiles/encrypted-fs
     ../../services/keycloak
     ../../services/ldap
   ];
@@ -24,6 +23,7 @@
   services.qemuGuest.enable = true;
 
   l.backups.enable = true;
+  l.remote-unlock.enable = true;
 
   users.users = {
     acme.uid = 996;
