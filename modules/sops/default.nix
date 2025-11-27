@@ -6,6 +6,9 @@
 }:
 let
   cfg = config.l.sops;
+  effectiveSecrets =
+    lib.filterAttrs (_: value: (value.enable or true)) cfg.secrets
+    |> builtins.mapAttrs (_: value: builtins.removeAttrs value [ "enable" ]);
 in
 {
   options.l.sops = with lib; {
@@ -24,6 +27,6 @@ in
         sopsFile = ../../secrets/${builtins.elemAt name_split 0}/${builtins.elemAt name_split 1}.yaml;
       }
       // value
-    ) cfg.secrets;
+    ) effectiveSecrets;
   };
 }
