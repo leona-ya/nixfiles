@@ -28,8 +28,6 @@
     AAAA = helper.hosts.web.AAAA;
 
     subdomains = {
-      "auth.stag".A = helper.hosts.web.A;
-      "auth.stag".AAAA = [ "2a01:4f8:1c17:51ec::1" ];
     };
   };
 }

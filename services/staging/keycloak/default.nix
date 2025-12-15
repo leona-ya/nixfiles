@@ -31,9 +31,6 @@ in
   users.groups.keycloak = { };
   services.keycloak = {
     enable = true;
-    #      #extraFeatures = [ "persistent-user-sessions" ];
-    #disabledFeatures = [ "kerberos" ];
-    #};
     database.passwordFile = config.sops.secrets."services/stag-keycloak/database_password".path;
     themes = {
       leona = keycloakTheme;
@@ -44,7 +41,7 @@ in
     settings = {
       http-host = "127.0.0.1";
       http-port = 8080;
-      hostname = "auth.stag.infspace.xyz";
+      hostname = "auth.stag.infinitespace.dev";
       http-enabled = true;
       proxy-headers = "xforwarded";
     };
@@ -57,7 +54,7 @@ in
     };
   };
   services.postgresql.enable = true;
-  services.nginx.virtualHosts."auth.stag.infspace.xyz" = {
+  services.nginx.virtualHosts."auth.stag.infinitespace.dev" = {
     enableACME = true;
     forceSSL = true;
     kTLS = true;

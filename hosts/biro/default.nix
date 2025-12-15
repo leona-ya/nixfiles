@@ -41,8 +41,8 @@
       "sphere.net.leona.is" = [
         "auth.leona.is"
       ];
-      "naya.net.leona.is" = [
-        "auth.stag.infspace.xyz"
+      "neris.net.infinitespace.dev" = [
+        "auth.stag.infinitespace.dev"
       ];
     };
   };

@@ -10,7 +10,7 @@ keys:
   - &kupe age1udlqpz3mcwnnrng4wg7w79674e4plrydmeqna3axy8sczq5gushqdhac3p
   - &laurel age1p2f0el5z3jn2gt70w249fvkzewcqytwx9vez4skd598v7d7dtpxq86enup
   - &moka age1r8dpxty0r2ty86r6gj7df2ejfd8x7pj75tnyulplud3dcevj5acqa88z4y
-  - &naya age1x7425df963ql0a5d5lpv242e3cm9cna5zxp0vs4gwugdmmsmm57sawvnr6
+  - &neris age19d5w6qtgvwvy0djaye085ae4qk9vmmj95fwqsn8a89mxz3zfkcsqg5zlnc
   - &rutile age1tfsxwt56ww42tzuxv65fmpx0eefa8qrek2wrn2wtxdaqpddugsnqg06p8m
   - &thia age1st8tawt7qsf7q24nknscrwzw6d6fcveylggtf2az36j0nke7jv7sx7ce4q
   - &turingmachine age1rcxgtdwh3u7u6lzh9558sqfrs9ndwnzhsjqj57hvdtapcjynvs8szhdw4t
@@ -30,7 +30,8 @@ creation_rules:
           - *gaika
           - *kupe
           - *laurel
-          - *naya
+          - *moka
+          - *neris
           - *rutile
           - *thia
           - *turingmachine
@@ -97,12 +98,12 @@ creation_rules:
           - *leona
         age:
           - *moka
-  - path_regex: secrets/hosts/naya.yaml
+  - path_regex: secrets/hosts/neris.yaml
     key_groups:
       - pgp:
           - *leona
         age:
-          - *naya
+          - *neris
   - path_regex: secrets/hosts/rutile.yaml
     key_groups:
       - pgp:
@@ -204,4 +205,4 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *naya
+          - *neris

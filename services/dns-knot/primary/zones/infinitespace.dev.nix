@@ -29,10 +29,13 @@
 
     CAA = helper.caa;
 
-    subdomains = {
+    subdomains = rec {
       "biro.net" = host "95.217.67.8" "2a01:4f9:3a:1448:4000:b11::";
       "moka.net" = host "135.181.140.95" "2a01:4f9:3a:1448::";
-      "install-iso.moka.net".AAAA = [ "2a01:4f9:3a:1448:7fff:1487:a11::" ];
+      "neris.net".AAAA = [ "2a01:4f9:3a:1448:4000:4a1a::" ];
+      "install-iso.moka.net".AAAA = [ "2a01:4f9:3a:1448:7fff:1487:a11::" ];      
+      "auth.stag".A = helper.hosts.web.A;
+      "auth.stag".AAAA = [ "2a01:4f9:3a:1448:4000:4a1a::" ];
       social.A = helper.hosts.web.A;
       social.AAAA = [ "2a01:4f8:c012:b172::1" ];
       "dyn".NS = [
