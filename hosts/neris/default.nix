@@ -8,7 +8,7 @@
     ../../services/staging/keycloak
   ];
 
-  services.postgresql.package = pkgs.postgresql_16;
+  services.postgresql.package = pkgs.postgresql_18;
 
   system.stateVersion = "26.05";
 }
