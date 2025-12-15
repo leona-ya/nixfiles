@@ -19,10 +19,6 @@
     "fd8f:d15b:9f40:c21::1@53"
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  services.qemuGuest.enable = true;
-
   #l.backups.enable = true;
   l.nginx-sni-proxy = {
     enable = true;
