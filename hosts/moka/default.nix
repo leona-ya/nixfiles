@@ -8,7 +8,6 @@
     ./libvirt.nix
   ];
 
-  l.meta.bootstrap = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
   boot.kernelParams = [
