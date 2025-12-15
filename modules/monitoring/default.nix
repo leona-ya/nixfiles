@@ -66,9 +66,11 @@
             };
           };
         };
+        
+        security.acme.certs."${config.networking.fqdn}".reloadServices = [ "vmagent.service" ];
         systemd.services.vmagent.serviceConfig.LoadCredential = [
-          "mtls_cert.pem:/var/lib/acme/${config.networking.fqdn}/fullchain.pem"
-          "mtls_key.pem:/var/lib/acme/${config.networking.fqdn}/key.pem"
+          "mtls_cert.pem:${config.security.acme.certs."${config.networking.fqdn}".directory}/fullchain.pem"
+          "mtls_key.pem:${config.security.acme.certs."${config.networking.fqdn}".directory}/key.pem"
         ];
         services.prometheus.exporters = {
           node = {
