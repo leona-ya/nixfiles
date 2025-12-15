@@ -18,7 +18,7 @@
         locations."/" = {
           proxyPass = "http://127.0.0.1:8428";
           extraConfig = ''
-            if ($ssl_client_s_dn !~ ".*\.leona\.is$") {
+            if ($ssl_client_s_dn !~ ".*\.(leona\.is|infinitespace.dev)$") {
               return 403;
             }
             client_max_body_size 50M;
