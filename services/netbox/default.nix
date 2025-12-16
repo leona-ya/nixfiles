@@ -61,7 +61,7 @@
       proxyPass = "http://unix:${config.services.netbox.unixSocket}";
       proxyWebsockets = true;
     };
-    locations."/static/".alias = "/persist/var/lib/netbox/static/";
+    locations."/static/".alias = "/var/lib/netbox/static/";
   };
   users.users.nginx.extraGroups = [ "netbox" ];
 }

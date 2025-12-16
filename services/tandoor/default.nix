@@ -75,7 +75,7 @@
     ];
 
     services.tandoor-recipes = {
-      enable = true;
+      enable = false;
       package = pkgs.tandoor-recipes.overridePythonAttrs (old: {
         propagatedBuildInputs =
           old.propagatedBuildInputs

@@ -20,6 +20,7 @@
   deployment.allowLocalDeployment = true;
   deployment.targetHost = "fd8f:d15b:9f40:901::1";
 
+  l.meta.bootstrap = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;

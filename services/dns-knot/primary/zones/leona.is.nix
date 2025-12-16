@@ -13,7 +13,7 @@ let
   enari_host = host "195.20.227.176" "2a02:2479:56:500::1";
   kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
   web_v4 = "95.217.67.8";
-  laurel_v6 = "2a01:4f8:c012:b172::1";
+  laurake_v6 = "2a01:4f9:3a:1448:4000:10::";
   sphere_v6 = "2a01:4f8:c012:b842::1";
 in
 {
@@ -54,13 +54,11 @@ in
       "kupe.net" = kupe_host;
       "dwd.net" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       "enari.net" = enari_host;
-      "laurel.net".AAAA = [ laurel_v6 ];
       "rutile.net" = host "87.106.216.104" "2a01:239:33f:4a00::1";
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
       "sphere.net".AAAA = [ sphere_v6 ];
       "wg.net".CNAME = [ "biro.net.infinitespace.dev." ];
-      "haj-social".CNAME = [ "laurel.net.leona.is." ];
 
       "ns1" = kupe_host;
       "ns2" = enari_host;
@@ -112,14 +110,14 @@ in
       "dataimporter.fin".CNAME = [ "biro.net.infinitespace.dev." ];
       grocy.CNAME = [ "biro.net.infinitespace.dev." ];
       "api.grocy".CNAME = [ "biro.net.infinitespace.dev." ];
-      matrix = host web_v4 laurel_v6;
-      "mautrix-telegram.matrix" = host web_v4 laurel_v6;
-      "sliding-sync.matrix" = host web_v4 laurel_v6;
-      md = host web_v4 laurel_v6;
-      netbox = host web_v4 laurel_v6;
+      matrix = host web_v4 laurake_v6;
+      "mautrix-telegram.matrix" = host web_v4 laurake_v6;
+      "sliding-sync.matrix" = host web_v4 laurake_v6;
+      md = host web_v4 laurake_v6;
+      netbox = host web_v4 laurake_v6;
       "paperless.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
-      todo = host web_v4 laurel_v6;
-      pass = host web_v4 laurel_v6;
+      todo = host web_v4 laurake_v6;
+      pass = host web_v4 laurake_v6;
       "hass.bn" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
       "mqtt.bn.int".A = [ "10.151.5.49" ];
       "mqtt.bn.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
@@ -129,7 +127,7 @@ in
       a.CNAME = [ "biro.net.infinitespace.dev." ];
       found.CNAME = [ "biro.net.infinitespace.dev." ];
       openpgpkey.CNAME = [ "biro.net.infinitespace.dev." ];
-      kb.CNAME = [ "laurel.net.leona.is." ];
+      kb = host web_v4 laurake_v6;
       "grafana.mon".CNAME = [ "rutile.net.leona.is." ];
       "metrics.mon".CNAME = [ "rutile.net.leona.is." ];
       "logs.mon".CNAME = [ "rutile.net.leona.is." ];

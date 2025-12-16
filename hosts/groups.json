@@ -2,8 +2,7 @@
   "best-effort": {
     "hosts": [
       "bij",
-      "kupe",
-      "laurel"
+      "kupe"
     ]
   },
   "dns": {
@@ -19,7 +18,8 @@
       "enari",
       "gaika",
       "kupe",
-      "laurel",
+      "laurake",
+      "moka",
       "rutile",
       "sphere",
       "thia"
@@ -32,7 +32,6 @@
       "enari",
       "gaika",
       "kupe",
-      "laurel",
       "rutile",
       "sphere"
     ]

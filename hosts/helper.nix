@@ -261,25 +261,6 @@ rec {
         };
       };
     };
-    laurel = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:c21:100::1";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = true;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.laurel.meta.intIpv6}/72" ];
-              publicKey = "cirPy+T2bcZV0t53qx5XwEdrhouRCvwboyJE38F3gFY=";
-              routed = [ "${hosts.laurel.meta.intIpv6}/72" ];
-              hostname = "laurel.net.leona.is";
-            };
-          };
-        };
-      };
-    };
     fdg-web = {
       meta = {
         hasPublicIpv4 = false;

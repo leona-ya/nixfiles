@@ -8,7 +8,7 @@ keys:
   - &freyda age1extnp5hlhrzraj96n3ntqhlr7p6jxcypwxf4a20vtjf6gc0ch4tq5qdljp
   - &gaika age19yum7ka8gn7pm5qgrjhcx4ac2sclk3d7wl2088750v508ghzrpnsjwvynj
   - &kupe age1udlqpz3mcwnnrng4wg7w79674e4plrydmeqna3axy8sczq5gushqdhac3p
-  - &laurel age1p2f0el5z3jn2gt70w249fvkzewcqytwx9vez4skd598v7d7dtpxq86enup
+  - &laurake age17h9eyjh575jte8tz45rwkrc5ksd4gyfn6lt75lzrx4emx3vmvqysqq9h2j
   - &moka age1r8dpxty0r2ty86r6gj7df2ejfd8x7pj75tnyulplud3dcevj5acqa88z4y
   - &neris age19d5w6qtgvwvy0djaye085ae4qk9vmmj95fwqsn8a89mxz3zfkcsqg5zlnc
   - &rutile age1tfsxwt56ww42tzuxv65fmpx0eefa8qrek2wrn2wtxdaqpddugsnqg06p8m
@@ -29,7 +29,7 @@ creation_rules:
           - *freyda
           - *gaika
           - *kupe
-          - *laurel
+          - *laurake
           - *moka
           - *neris
           - *rutile
@@ -86,12 +86,12 @@ creation_rules:
           - *leona
         age:
           - *kupe
-  - path_regex: secrets/hosts/laurel.yaml
+  - path_regex: secrets/hosts/laurake.yaml
     key_groups:
       - pgp:
           - *leona
         age:
-          - *laurel
+          - *laurake
   - path_regex: secrets/hosts/moka.yaml
     key_groups:
       - pgp:
@@ -150,7 +150,7 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *laurel
+          - *laurake
   - path_regex: secrets/services/(firefly-iii|snipe-it).yaml
     key_groups:
       - pgp:

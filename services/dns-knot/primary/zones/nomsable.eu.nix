@@ -30,6 +30,6 @@
     CAA = helper.caa;
 
     A = helper.hosts.web.A;
-    AAAA = [ "2a01:4f8:c012:b172::1" ];
+    AAAA = [ "2a01:4f9:3a:1448:4000:10::" ];
   };
 }

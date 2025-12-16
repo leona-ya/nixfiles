@@ -23,7 +23,8 @@
   l.nginx-sni-proxy = {
     enable = true;
     upstreamHosts = {
-      "laurel.net.leona.is" = [
+      "laurake.net.infinitespace.dev" = [
+        "kb.leona.is"
         "nomsable.eu"
         "matrix.leona.is"
         "sliding-sync.matrix.leona.is"
