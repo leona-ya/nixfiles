@@ -26,7 +26,7 @@
 
     MX = helper.mail.mxSimple;
 
-    A = [ "195.20.227.176" ];
-    AAAA = [ "2a02:2479:56:500::1" ];
+    A = helper.hosts.web.A;
+    AAAA = [ "2a01:4f9:3a:1448:4000:12::" ];
   };
 }

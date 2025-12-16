@@ -5,6 +5,7 @@ keys:
   - &ceto age1j87zqrvqvku98rex3w2uw7gr57wgvyzfghq7g6v076ee5pa02qtqju0yq0
   - &dwd age1xph9c9rtyjrz3cnd6t940dnzuruqw27l7yp98ac33rdz53q429gsu702k4
   - &enari age108r86j5zcd9uz22k9f73dh5pfgst8xqv7ffj7xwgspad6zk4xu0qtcngte
+  - &emuno age1kkzhz4r2dx6m9eg05ehxkc6h4ku6c6ag2r6gdsrqk3e6wzdzpqascj5yeg
   - &freyda age1extnp5hlhrzraj96n3ntqhlr7p6jxcypwxf4a20vtjf6gc0ch4tq5qdljp
   - &gaika age19yum7ka8gn7pm5qgrjhcx4ac2sclk3d7wl2088750v508ghzrpnsjwvynj
   - &kupe age1udlqpz3mcwnnrng4wg7w79674e4plrydmeqna3axy8sczq5gushqdhac3p
@@ -26,6 +27,7 @@ creation_rules:
           - *ceto
           - *dwd
           - *enari
+          - *emuno
           - *freyda
           - *gaika
           - *kupe
@@ -62,6 +64,12 @@ creation_rules:
           - *leona
         age:
           - *dwd
+  - path_regex: secrets/hosts/emuno.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *emuno
   - path_regex: secrets/hosts/enari.yaml
     key_groups:
       - pgp:
@@ -169,6 +177,7 @@ creation_rules:
           - *leona
         age:
           - *enari
+          - *emuno
   - path_regex: secrets/services/(monitoring|plausible).yaml
     key_groups:
       - pgp:
