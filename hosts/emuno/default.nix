@@ -8,7 +8,7 @@
     ../../services/gitlab
   ];
 
-  services.postgresql.package = pkgs.postgresql_17;
+  services.postgresql.package = pkgs.postgresql_18;
 
   system.stateVersion = "26.05";
 }
