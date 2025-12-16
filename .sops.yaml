@@ -14,7 +14,7 @@ keys:
   - &rutile age1tfsxwt56ww42tzuxv65fmpx0eefa8qrek2wrn2wtxdaqpddugsnqg06p8m
   - &thia age1st8tawt7qsf7q24nknscrwzw6d6fcveylggtf2az36j0nke7jv7sx7ce4q
   - &turingmachine age1rcxgtdwh3u7u6lzh9558sqfrs9ndwnzhsjqj57hvdtapcjynvs8szhdw4t
-  - &sphere age17ldwzf52ked9wpqhrw55mhc6ax5r6eh0jpefx6lqql8w5zhlsp4q4g64zr
+  - &shioto age1cdcgwcgls6aj0lju7w6fm97ewzg7jy86ndk2ygmygad8takns56qu8cvwc
 creation_rules:
   - path_regex: secrets/all/[^/]+\.yaml$
     key_groups:
@@ -35,7 +35,7 @@ creation_rules:
           - *rutile
           - *thia
           - *turingmachine
-          - *sphere
+          - *shioto
 
   # hosts
   - path_regex: secrets/hosts/arche.yaml
@@ -122,12 +122,12 @@ creation_rules:
           - *leona
         age:
           - *turingmachine
-  - path_regex: secrets/hosts/sphere.yaml
+  - path_regex: secrets/hosts/shioto.yaml
     key_groups:
       - pgp:
           - *leona
         age:
-          - *sphere
+          - *shioto
 
   # profiles
   - path_regex: secrets/profiles/desktop.yaml
@@ -193,7 +193,7 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *sphere
+          - *shioto
   - path_regex: secrets/services/(actual-budget|int-acme-ca|nextcloud|paperless|bn-smarthome).yaml
     key_groups:
       - pgp:

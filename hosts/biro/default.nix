@@ -39,7 +39,7 @@
         "fin.leona.is"
         "yt.leona.is"
       ];
-      "sphere.net.leona.is" = [
+      "shioto.net.infinitespace.dev" = [
         "auth.leona.is"
       ];
       "neris.net.infinitespace.dev" = [

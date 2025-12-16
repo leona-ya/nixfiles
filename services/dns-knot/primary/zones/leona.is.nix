@@ -14,7 +14,6 @@ let
   kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
   web_v4 = "95.217.67.8";
   laurake_v6 = "2a01:4f9:3a:1448:4000:10::";
-  sphere_v6 = "2a01:4f8:c012:b842::1";
 in
 {
   zone = {
@@ -57,7 +56,6 @@ in
       "rutile.net" = host "87.106.216.104" "2a01:239:33f:4a00::1";
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
-      "sphere.net".AAAA = [ sphere_v6 ];
       "wg.net".CNAME = [ "biro.net.infinitespace.dev." ];
 
       "ns1" = kupe_host;
@@ -100,8 +98,8 @@ in
 
       www.CNAME = [ "biro.net.infinitespace.dev." ];
       "acme.int".AAAA = [ "fd8f:d15b:9f40:101::100" ];
-      auth = host web_v4 sphere_v6;
-      "ldap".CNAME = [ "sphere.net.leona.is." ];
+      auth = host web_v4 "2a01:4f9:3a:1448:4000:11::";
+      "ldap".CNAME = [ "shioto.net.infinitespace.dev." ];
       alertmanager.CNAME = [ "rutile.net.leona.is." ];
       cloud.CNAME = [ "biro.net.infinitespace.dev." ];
       "cal.cloud".CNAME = [ "biro.net.infinitespace.dev." ];

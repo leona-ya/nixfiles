@@ -280,25 +280,6 @@ rec {
         hasPublicIpv6 = false;
       };
     };
-    sphere = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:c21:400::1";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = true;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.sphere.meta.intIpv6}/72" ];
-              publicKey = "hAWNBGoszCELRB1rN/6k/C+0mLH8b8u9xHHOrU4DuQo=";
-              routed = [ "${hosts.sphere.meta.intIpv6}/72" ];
-              hostname = "sphere.net.leona.is";
-            };
-          };
-        };
-      };
-    };
   };
   groups = (
     recursiveUpdate (builtins.fromJSON (builtins.readFile ./groups.json)) {

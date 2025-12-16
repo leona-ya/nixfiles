@@ -35,6 +35,7 @@
       "neris.net".AAAA = [ "2a01:4f9:3a:1448:4000:4a1a::" ];
       "install-iso.moka.net".AAAA = [ "2a01:4f9:3a:1448:7fff:1487:a11::" ];
       "laurake.net".AAAA = [ "2a01:4f9:3a:1448:4000:10::" ];
+      "shioto.net".AAAA = [ "2a01:4f9:3a:1448:4000:11::" ];
       "auth.stag".A = helper.hosts.web.A;
       "auth.stag".AAAA = [ "2a01:4f9:3a:1448:4000:4a1a::" ];
       social.A = helper.hosts.web.A;
