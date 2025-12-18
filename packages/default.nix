@@ -30,6 +30,7 @@ rec {
             (import ../lib/iso.nix)
           ];
         }).config.system.build.isoImage;
+        waterfox = pkgs.callPackage ./waterfox { };
       };
     };
 }
