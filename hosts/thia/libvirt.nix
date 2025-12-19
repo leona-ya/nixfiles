@@ -34,4 +34,7 @@
   };
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
   boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;
+  services.prometheus.exporters.node.extraFlags = [
+    "--collector.netdev.device-include=^(eth0|br-vms)$"
+  ];
 }
