@@ -36,8 +36,8 @@
     dkimKeyBits = 2048;
 
     localDnsResolver = false;
-    certificateScheme = "acme";
     lmtpSaveToDetailMailbox = "no";
+    x509.useACMEHost = "${config.networking.hostName}.net.leona.is";
   };
 
   services.dovecot2 = {
