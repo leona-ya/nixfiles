@@ -20,6 +20,8 @@
   ];
   deployment.targetUser = lib.mkDefault "leona";
   deployment.targetHost = lib.mkDefault config.networking.fqdn;
+
+  documentation.nixos.enable = false;
   hardware.enableRedistributableFirmware = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
