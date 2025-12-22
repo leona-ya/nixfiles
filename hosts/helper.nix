@@ -119,25 +119,6 @@ rec {
         };
       };
     };
-    enari = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:c10::1";
-        hasPublicIpv4 = true;
-        hasPublicIpv6 = true;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.enari.meta.intIpv6}/72" ];
-              publicKey = "JbZutdoQLIZaHn89QskIw1TW59x+DcJrUG8nLjndaQk=";
-              routed = [ "${hosts.enari.meta.intIpv6}/72" ];
-              hostname = "enari.net.leona.is";
-            };
-          };
-        };
-      };
-    };
     rutile = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c11::1";

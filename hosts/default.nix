@@ -37,15 +37,6 @@
               }
             )
             // rec {
-              enari = (
-                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-enari";
-                  src = inputs.nixpkgs;
-                  patches = [
-                  ];
-                }) { system = "x86_64-linux"; }
-              );
-              kupe = enari;
               laurel = (
                 import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-laurel";

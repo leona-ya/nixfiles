@@ -10,7 +10,6 @@
 with dns.lib.combinators;
 
 let
-  enari_host = host "195.20.227.176" "2a02:2479:56:500::1";
   kupe_host = host "159.69.17.61" "2a01:4f8:1c1c:f0b::1";
   web_v4 = "95.217.67.8";
   laurake_v6 = "2a01:4f9:3a:1448:4000:10::";
@@ -52,7 +51,6 @@ in
     subdomains = hosthelper.services.dns-int.g_dns_records // {
       "kupe.net" = kupe_host;
       "dwd.net" = host "195.39.247.151" "2a0f:4ac0:1e0:20::1";
-      "enari.net" = enari_host;
       "rutile.net" = host "87.106.216.104" "2a01:239:33f:4a00::1";
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
