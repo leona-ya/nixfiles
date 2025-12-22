@@ -35,6 +35,14 @@ rec {
               ];
               extraWireguardPeers = [
                 {
+                  # amphion
+                  AllowedIPs = [
+                    "10.151.9.2/32"
+                    "fd8f:d15b:9f40:0901::1/72"
+                  ];
+                  PublicKey = "gOBDoXc3zWVpnyx81fgVKmR2un14MW+c+SM/G6F3sFY=";
+                }
+                {
                   # nyx
                   AllowedIPs = [
                     "10.151.9.3/32"
