@@ -195,8 +195,8 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *enari
           - *biro
+          - *rutile
   - path_regex: secrets/services/(keycloak|ldap).yaml
     key_groups:
       - pgp:

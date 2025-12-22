@@ -68,7 +68,7 @@ in
       ];
       remote = {
         internal_ns2 = {
-          address = "fd8f:d15b:9f40:0c10::1";
+          address = "fd8f:d15b:9f40:0c11::1";
         };
         internal_ns3 = {
           address = "fd8f:d15b:9f40:0c21::1";
