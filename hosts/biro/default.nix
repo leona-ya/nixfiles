@@ -45,6 +45,9 @@
       "neris.net.infinitespace.dev" = [
         "auth.stag.infinitespace.dev"
       ];
+      "emuno.net.infinitespace.dev" = [
+        "forkspace.net"
+      ];
     };
   };
 
