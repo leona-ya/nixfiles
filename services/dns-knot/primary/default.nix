@@ -13,7 +13,7 @@ let
   acmeZone = "acme.leona.is";
   hostsWithACMERecords =
     inputs.self.nixosConfigurations
-    |> lib.filterAttrs(_: cfg: !cfg.config.l.meta.bootstrap)
+    |> lib.filterAttrs (_: cfg: !cfg.config.l.meta.bootstrap)
     |> lib.filterAttrs (_: cfg: cfg.config.security.acme.certs != { });
   generateACMERecord = recordName: (builtins.hashString "sha1" recordName) + ".${acmeZone}.";
   getAllDomainsPerHost =

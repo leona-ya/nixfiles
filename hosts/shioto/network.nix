@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   networking.hostName = "shioto";
   networking.domain = "net.infinitespace.dev";
   systemd.network = {

@@ -13,7 +13,8 @@
 
   users.users.root = {
     shell = pkgs.zsh;
-  } // lib.optionalAttrs (!config.l.meta.bootstrap) {
+  }
+  // lib.optionalAttrs (!config.l.meta.bootstrap) {
     hashedPasswordFile = lib.mkOverride 500 config.sops.secrets."all/users/root_pw".path;
   };
 

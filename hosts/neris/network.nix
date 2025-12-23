@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   networking.hostName = "neris";
   networking.domain = "net.infinitespace.dev";
   systemd.network = {

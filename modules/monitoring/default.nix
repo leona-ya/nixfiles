@@ -66,7 +66,7 @@
             };
           };
         };
-        
+
         security.acme.certs."${config.networking.fqdn}".reloadServices = [ "vmagent.service" ];
         systemd.services.vmagent.serviceConfig.LoadCredential = [
           "mtls_cert.pem:${config.security.acme.certs."${config.networking.fqdn}".directory}/fullchain.pem"

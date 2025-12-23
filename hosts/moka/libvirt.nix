@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   virtualisation.libvirtd = {
     enable = true;
     allowedBridges = [

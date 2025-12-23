@@ -7,7 +7,8 @@
 
 let
   setPassword = !config.l.meta.bootstrap && config.nixpkgs.hostPlatform.isLinux;
-in {
+in
+{
   imports = [
     ./importable.nix
   ];

@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   networking.hostName = "moka";
   networking.domain = "net.infinitespace.dev";
   systemd.network = {
@@ -48,14 +49,18 @@
           "172.16.10.1/24"
           "2a01:4f9:3a:1448:4000::/66"
         ];
-        routes = builtins.map (addr:
-          { routeConfig = {
-              Destination = addr;
-              Scope = "link"; }; }
-        ) [
-          "95.217.67.8"
-          "95.217.67.9"
-        ];
+        routes =
+          builtins.map
+            (addr: {
+              routeConfig = {
+                Destination = addr;
+                Scope = "link";
+              };
+            })
+            [
+              "95.217.67.8"
+              "95.217.67.9"
+            ];
         linkConfig = {
           RequiredForOnline = false;
         };

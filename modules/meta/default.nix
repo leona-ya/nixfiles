@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   options.l.meta = {
     bootstrap = lib.mkOption {
       type = lib.types.bool;

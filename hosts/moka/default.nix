@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -17,11 +22,18 @@
   boot.loader.grub = {
     enable = true;
     efiSupport = true;
-    mirroredBoots = lib.map (id: {
-      devices = [ "nodev" ];
-      path = "/boot/disk${id}";
-      efiSysMountPoint = "/boot/disk${id}";
-    }) [ "0" "1" "2" ];
+    mirroredBoots =
+      lib.map
+        (id: {
+          devices = [ "nodev" ];
+          path = "/boot/disk${id}";
+          efiSysMountPoint = "/boot/disk${id}";
+        })
+        [
+          "0"
+          "1"
+          "2"
+        ];
   };
   l.remote-unlock = {
     enable = true;

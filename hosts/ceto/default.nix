@@ -22,7 +22,7 @@
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
   l.remote-unlock.enable = true;
-  
+
   nix.distributedBuilds = false;
   nix.settings.max-jobs = 10;
   zramSwap = {

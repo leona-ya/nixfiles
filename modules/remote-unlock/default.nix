@@ -3,14 +3,19 @@
   pkgs,
   lib,
   ...
-}: let
-cfg = config.l.remote-unlock;
-in {
+}:
+let
+  cfg = config.l.remote-unlock;
+in
+{
   options.l.remote-unlock = {
     enable = lib.mkEnableOption "remote unlock capabilites";
     kernelModules = lib.mkOption {
       type = with lib.types; listOf str;
-      default = [ "r8169" "virtio_pci" ];
+      default = [
+        "r8169"
+        "virtio_pci"
+      ];
       description = "kernel modules required for remote unlock (mostly network)";
     };
     hostKeyPath = lib.mkOption {

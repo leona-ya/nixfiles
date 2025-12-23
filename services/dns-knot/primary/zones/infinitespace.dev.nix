@@ -31,7 +31,7 @@
 
     subdomains = rec {
       "biro.net" = host "95.217.67.8" "2a01:4f9:3a:1448:4000:b11::";
-      "emuno.net" =  host "95.217.67.9" "2a01:4f9:3a:1448:4000:12::";
+      "emuno.net" = host "95.217.67.9" "2a01:4f9:3a:1448:4000:12::";
       "moka.net" = host "135.181.140.95" "2a01:4f9:3a:1448::";
       "neris.net".AAAA = [ "2a01:4f9:3a:1448:4000:4a1a::" ];
       "install-iso.moka.net".AAAA = [ "2a01:4f9:3a:1448:7fff:1487:a11::" ];

@@ -24,54 +24,54 @@ in
       };
     };
     netdevs = {
-    #  "30-wg-public-in" = {
-    #    netdevConfig = {
-    #      Kind = "wireguard";
-    #      Name = "wg-public-in";
-    #    };
-    #    wireguardConfig = {
-    #      PrivateKeyFile = config.sops.secrets."hosts/bij/wireguard_wg-public-in_privatekey".path;
-    #    };
-    #    wireguardPeers = [
-    #      {
-    #        AllowedIPs = [
-    #          "0.0.0.0/0"
-    #          "::/0"
-    #        ];
-    #        PublicKey = "kih/GnR4Bov/DM/7Rd21wK+PFQRUNH6sywVuNKkUAkk=";
-    #        Endpoint = "[2a0f:4ac0:ca6c::1]:51820";
-    #        PersistentKeepalive = 21;
-    #      }
-    #    ];
-    #  };
-    #  "30-wg-public-out" = {
-    #    netdevConfig = {
-    #      Kind = "wireguard";
-    #      Name = "wg-public-out";
-    #    };
-    #    wireguardConfig = {
-    #      PrivateKeyFile = config.sops.secrets."hosts/bij/wireguard_wg-public-out_privatekey".path;
-    #      ListenPort = 51440;
-    #    };
-    #    wireguardPeers = [
-    #      {
-    #        AllowedIPs = [
-    #          "195.39.247.148/32"
-    #          "2a0f:4ac0:1e0:100::1/60"
-    #        ];
-    #        PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
-    #        PersistentKeepalive = 21;
-    #      }
-    #      {
-    #        AllowedIPs = [
-    #          "195.39.247.151/32"
-    #          "2a0f:4ac0:1e0:20::1/60"
-    #        ];
-    #        PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
-    #        PersistentKeepalive = 21;
-    #      }
-    #    ];
-    #  };
+      #  "30-wg-public-in" = {
+      #    netdevConfig = {
+      #      Kind = "wireguard";
+      #      Name = "wg-public-in";
+      #    };
+      #    wireguardConfig = {
+      #      PrivateKeyFile = config.sops.secrets."hosts/bij/wireguard_wg-public-in_privatekey".path;
+      #    };
+      #    wireguardPeers = [
+      #      {
+      #        AllowedIPs = [
+      #          "0.0.0.0/0"
+      #          "::/0"
+      #        ];
+      #        PublicKey = "kih/GnR4Bov/DM/7Rd21wK+PFQRUNH6sywVuNKkUAkk=";
+      #        Endpoint = "[2a0f:4ac0:ca6c::1]:51820";
+      #        PersistentKeepalive = 21;
+      #      }
+      #    ];
+      #  };
+      #  "30-wg-public-out" = {
+      #    netdevConfig = {
+      #      Kind = "wireguard";
+      #      Name = "wg-public-out";
+      #    };
+      #    wireguardConfig = {
+      #      PrivateKeyFile = config.sops.secrets."hosts/bij/wireguard_wg-public-out_privatekey".path;
+      #      ListenPort = 51440;
+      #    };
+      #    wireguardPeers = [
+      #      {
+      #        AllowedIPs = [
+      #          "195.39.247.148/32"
+      #          "2a0f:4ac0:1e0:100::1/60"
+      #        ];
+      #        PublicKey = "jG5oAuO9PHsMHwzyEbX2y3aBYcs6A24DbxvoNcRtZhc=";
+      #        PersistentKeepalive = 21;
+      #      }
+      #      {
+      #        AllowedIPs = [
+      #          "195.39.247.151/32"
+      #          "2a0f:4ac0:1e0:20::1/60"
+      #        ];
+      #        PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
+      #        PersistentKeepalive = 21;
+      #      }
+      #    ];
+      #  };
     }
     // hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
     networks = {

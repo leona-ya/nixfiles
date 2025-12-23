@@ -24,7 +24,7 @@
           };
 
           nodeNixpkgs =
-            lib.genAttrs ["ceto" "freyda" "turingmachine" ] (
+            lib.genAttrs [ "ceto" "freyda" "turingmachine" ] (
               _:
               import inputs.nixpkgs-unstable {
                 system = "x86_64-linux";

@@ -30,7 +30,7 @@
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
   l.remote-unlock.enable = true;
-  
+
   zramSwap.enable = false;
   networking.hostId = "d5714cb9";
   nix.distributedBuilds = false;

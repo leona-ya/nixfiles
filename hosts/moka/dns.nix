@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.resolved.enable = false;
   services.kresd = {
     enable = true;

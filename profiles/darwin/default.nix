@@ -31,9 +31,9 @@
   ];
   home-manager.users.leona = {
     targets.darwin = {
-      linkApps.enable = false;  # spotlight ignores symlinks
+      linkApps.enable = false; # spotlight ignores symlinks
       copyApps.enable = true;
-    }; 
+    };
     programs.gpg = {
       enable = true;
       scdaemonSettings = {
