@@ -92,6 +92,7 @@
           formatter = pkgs.nixpkgs-fmt;
           devShells.default = pkgs.mkShellNoCC {
             buildInputs = [
+              self'.packages.nix-eval-and-diff
               pkgs.sops
               (inputs'.colmena.packages.colmena.override {
                 nix-eval-jobs = pkgs.lixPackageSets.latest.nix-eval-jobs;
