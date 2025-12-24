@@ -75,15 +75,7 @@
     ];
 
     services.tandoor-recipes = {
-      enable = false;
-      package = pkgs.tandoor-recipes.overridePythonAttrs (old: {
-        propagatedBuildInputs =
-          old.propagatedBuildInputs
-          ++ (with pkgs.python3Packages; [
-            jwt
-            django-debug-toolbar
-          ]);
-      });
+      enable = true;
       user = "tandoor";
       group = "tandoor";
       extraConfig = {
