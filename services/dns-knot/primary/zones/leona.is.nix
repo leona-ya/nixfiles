@@ -56,7 +56,7 @@ in
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
       "wg.net".CNAME = [ "biro.net.infinitespace.dev." ];
 
-      "ns1" = kupe_host;
+      "ns1" = host "95.217.67.10" "2a01:4f9:3a:1448:4000:13::";
       "ns2" = host "87.106.216.104" "2a01:239:33f:4a00::1";
       "ns3" = host "95.217.67.8" "2a01:4f9:3a:1448:4000:b11::";
 

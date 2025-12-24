@@ -60,6 +60,7 @@
             [
               "95.217.67.8"
               "95.217.67.9"
+              "95.217.67.10"
             ];
         linkConfig = {
           RequiredForOnline = false;
