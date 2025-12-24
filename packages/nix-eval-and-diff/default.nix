@@ -10,6 +10,28 @@
   parser.add_argument("hostname")
   args = parser.parse_args()
 
+  def eval_(hostname: str, cwd: Path):
+      drvs = json.loads(
+          subprocess.check_output(
+              [
+                  "nix",
+                  "path-info",
+                  "--derivation",
+                  f".#nixosConfigurations.{hostname}.config.system.build.toplevel",
+                  "--json",
+              ],
+              cwd=cwd,
+              text=True,
+              stderr=subprocess.DEVNULL,
+          )
+      )
+      # Nix and Lix behave differently here:
+      # Nix returns a dict of drvs, Lix a list of dicts
+      if isinstance(drvs, list):
+        return drvs[0]["path"]
+      elif isinstance(drvs, dict):
+        return list(drvs.keys())[0]
+
   base_path = Path(
       subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()
   )
@@ -22,42 +44,14 @@
       stdout=subprocess.DEVNULL,
       stderr=subprocess.DEVNULL,
   )
-  main_eval = json.loads(
-      subprocess.check_output(
-          [
-              "nix",
-              "path-info",
-              "--derivation",
-              f".#nixosConfigurations.{args.hostname}.config.system.build.toplevel",
-              "--json",
-          ],
-          cwd=worktree_path,
-          text=True,
-          stderr=subprocess.DEVNULL,
-      )
-  )
-  main_drv = main_eval[0]["path"]
+  main_drv = eval_(args.hostname, worktree_path)
   subprocess.run(
       ["git", "worktree", "remove", worktree_path],
       cwd=base_path,
       check=True,
       stdout=subprocess.DEVNULL,
   )
-  new_eval = json.loads(
-      subprocess.check_output(
-          [
-              "nix",
-              "path-info",
-              "--derivation",
-              f".#nixosConfigurations.{args.hostname}.config.system.build.toplevel",
-              "--json",
-          ],
-          cwd=base_path,
-          text=True,
-          stderr=subprocess.DEVNULL,
-      )
-  )
-  new_drv = new_eval[0]["path"]
+  new_drv = eval_(args.hostname, base_path)
 
   print(
       subprocess.check_output(
