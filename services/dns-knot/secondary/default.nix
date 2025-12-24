@@ -11,7 +11,8 @@
     settings = {
       remote = {
         internal_ns1 = {
-          address = "fd8f:d15b:9f40:c21:300::1";
+          address = "2a01:4f8:1c1c:f0b::1";
+          key = "infinitespace_secondary";
         };
         fdg_ns1 = {
           address = "2a01:4f8:c012:5ab9::1";
@@ -24,8 +25,9 @@
       };
       acl = {
         internal_notify = {
-          address = [ "fd8f:d15b:9f40:c21:300::1" ];
+          address = [ "2a01:4f8:1c1c:f0b::1" ];
           action = "notify";
+          key = "infinitespace_secondary";
         };
         fdg_notify = {
           address = [ "2a01:4f8:c012:5ab9::1" ];

@@ -64,22 +64,25 @@ in
         "127.0.0.11@53"
         "159.69.17.61@53"
         "2a01:4f8:1c1c:f0b::1@53"
-        "fd8f:d15b:9f40:c21:300::1@53"
       ];
       remote = {
         internal_ns2 = {
-          address = "fd8f:d15b:9f40:0c11::1";
+          address = "2a01:239:33f:4a00::1";
+          key = "infinitespace_secondary";
         };
         internal_ns3 = {
-          address = "fd8f:d15b:9f40:0c21::1";
+          address = "2a01:4f9:3a:1448:4000:b11::";
+          key = "infinitespace_secondary";
         };
       };
       acl = {
         internal = {
           address = [
-            "fd8f:d15b:9f40::/48"
+            "2a01:239:33f:4a00::1/128"
+            "2a01:4f9:3a:1448:4000:b11::/128"
             "127.0.0.0/8"
           ];
+          key = "infinitespace_secondary";
           action = "transfer";
         };
         dyn_infinitespace_dev_update = {
