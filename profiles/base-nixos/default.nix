@@ -19,7 +19,7 @@
     pkgs.stdenv.hostPlatform.system
     config.networking.domain
   ];
-  deployment.targetUser = lib.mkDefault "leona";
+  deployment.targetUser = lib.mkDefault null;
   deployment.targetHost = lib.mkDefault config.networking.fqdn;
 
   documentation.nixos.enable = false;
