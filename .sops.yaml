@@ -219,3 +219,10 @@ creation_rules:
           - *leona
         age:
           - *neris
+  - path_regex: secrets/services/wireguard-endpoint.yaml
+    key_groups:
+      - pgp:
+          - *leona
+          - *transcaffeine
+        age:
+          - *moka

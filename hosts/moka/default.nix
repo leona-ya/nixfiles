@@ -11,6 +11,7 @@
     ./dns.nix
     ./network.nix
     ./libvirt.nix
+    ../../services/wireguard-endpoint
   ];
 
   boot.loader.efi.canTouchEfiVariables = true;
