@@ -15,8 +15,6 @@ with dns.lib.combinators;
     spf = (
       with dns.lib.combinators.spf;
       strict [
-        "a"
-        "aaaa"
         "mx"
       ]
     );
