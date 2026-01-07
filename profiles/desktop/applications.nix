@@ -61,6 +61,7 @@
     jetbrains.clion
     jetbrains.idea-ultimate
     jetbrains.rust-rover
+    keymapp
     #    kicad
     libimobiledevice
     llvm
