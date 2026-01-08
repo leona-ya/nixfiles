@@ -94,7 +94,7 @@ rec {
                 "fd8f:d15b:9f40::/48"
                 "10.151.0.0/16"
               ];
-              hostname = "biro.net.leona.is";
+              hostname = "biro.net.infinitespace.dev";
               interfaceRoutes = [
                 { Destination = "10.151.0.0/22"; }
                 { Destination = "10.151.4.0/22"; }
