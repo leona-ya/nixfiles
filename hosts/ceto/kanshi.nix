@@ -20,6 +20,10 @@
               scale = 1.1;
               transform = "270";
             }
+            {
+              criteria = "HDMI-A-1";
+              status = "disable";
+            }
           ];
           exec = "${pkgs.sway}/bin/swaymsg workspace 2, move workspace to output 'Dell Inc. DELL P2423D JY45VZ3'";
         };
