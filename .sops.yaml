@@ -213,7 +213,7 @@ creation_rules:
           - *leona
         age:
           - *thia
-  - path_regex: secrets/services/stag-keycloak.yaml
+  - path_regex: secrets/services/(stag-keycloak|stag-discourse).yaml
     key_groups:
       - pgp:
           - *leona
