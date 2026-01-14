@@ -1,4 +1,10 @@
-{ writers, nix-diff, lib, ... }: writers.writePython3Bin "nix-eval-and-diff" { doCheck = false; } ''
+{
+  writers,
+  nix-diff,
+  lib,
+  ...
+}:
+writers.writePython3Bin "nix-eval-and-diff" { doCheck = false; } ''
   import subprocess
   import random
   import string

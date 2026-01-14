@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   l.sops.secrets."all/mail/no_reply_password".owner = "discourse";
   l.sops.secrets."services/stag-discourse/admin_user_pw".owner = "discourse";
   services.nginx.validateConfigFile = false;

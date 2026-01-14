@@ -48,12 +48,15 @@
         Cache = "no-negative";
       };
     })
-    (lib.optionalAttrs (options.services.resolved ? extraConfig && (options.services.resolved.extraConfig.visible or true)) {
-      extraConfig = ''
-        FallbackDNS=
-        Cache=no-negative
-      '';
-    })
+    (lib.optionalAttrs
+      (options.services.resolved ? extraConfig && (options.services.resolved.extraConfig.visible or true))
+      {
+        extraConfig = ''
+          FallbackDNS=
+          Cache=no-negative
+        '';
+      }
+    )
   ];
   services.journald.extraConfig = "SystemMaxUse=256M";
 

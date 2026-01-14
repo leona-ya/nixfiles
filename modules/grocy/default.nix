@@ -81,8 +81,8 @@ in
           bool
         ]);
       default = { };
-      description = '''';
-      example = literalExpression '''';
+      description = "";
+      example = literalExpression "";
     };
   };
 
