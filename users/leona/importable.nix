@@ -110,7 +110,7 @@
     programs.git = {
       enable = true;
       signing = {
-        format = "openpgp";
+        format = lib.mkDefault "openpgp";
         key = lib.mkDefault "B50CB5BA6A620411098CD9C8F0E55407FC6FF7BA";
         signByDefault = true;
       };

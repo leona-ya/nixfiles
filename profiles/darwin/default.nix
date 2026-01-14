@@ -11,6 +11,7 @@
     sudo spctl --master-disable
   '';
   nix.settings.sandbox = "relaxed";
+  nix.settings.trusted-users = [ "@admin" ];
 
   # TODO: deduplicate
   nixpkgs.config.allowUnfree = true;
@@ -69,12 +70,14 @@
       nodejs
       pre-commit
       timewarrior
+      python312
       ruff
+      ty
       uv
       yarn
       zoxide
       # nixpkgs tools
-      nixfmt-rfc-style
+      nixfmt
       nix-output-monitor
       nix-init
       nurl

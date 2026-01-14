@@ -16,7 +16,7 @@
   ];
 
   nixpkgs.overlays = lib.attrValues inputs.self.overlays;
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nixpkgs.flake = lib.mkIf (config.nixpkgs.hostPlatform.isLinux) inputs.nixpkgs;
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   nixpkgs.config.permittedInsecurePackages = [
