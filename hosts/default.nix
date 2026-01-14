@@ -42,14 +42,6 @@
                   name = "nixpkgs-patched-neris";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/nixos/nixpkgs/commit/437436773894b69babca8d6864a7a9a1965925de.patch";
-                      hash = "sha256-kLHQpprB+9HQOt1tUoHvdCtLB5K++asvFLEjOwr3fzE=";
-                    })
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/leona-ya/nixpkgs/commit/0cf640ccac2e111d7981b716557977dd23a4562b.patch";
-                      hash = "sha256-XlnRTMUpe9kJXKZkFFaJ7bA/AuFUgbq6MRiWKg9xGyc=";
-                    })
                   ];
                 }) { system = "x86_64-linux"; }
               );

@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  options,
   ...
 }:
 {
@@ -37,11 +38,23 @@
   networking.nftables.enable = true;
   networking.firewall.filterForward = true;
   networking.useDHCP = false;
-  services.resolved.dnssec = "false"; # broken :(
-  services.resolved.extraConfig = ''
-    FallbackDNS=
-    Cache=no-negative
-  '';
+  services.resolved = lib.mkMerge [
+    {
+      dnssec = "false"; # broken :(
+    }
+    (lib.optionalAttrs (options.services.resolved ? settings) {
+      settings.Resolve = {
+        FallbackDNS = "";
+        Cache = "no-negative";
+      };
+    })
+    (lib.optionalAttrs (options.services.resolved ? extraConfig && (options.services.resolved.extraConfig.visible or true)) {
+      extraConfig = ''
+        FallbackDNS=
+        Cache=no-negative
+      '';
+    })
+  ];
   services.journald.extraConfig = "SystemMaxUse=256M";
 
   services.openssh = {
