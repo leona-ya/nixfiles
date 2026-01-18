@@ -5,7 +5,7 @@
     ./network.nix
     inputs.disko.nixosModules.disko
     ./disko.nix
-    ../../services/staging/discourse
+    #../../services/staging/discourse
     ../../services/staging/keycloak
   ];
 
