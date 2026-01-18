@@ -37,11 +37,19 @@
               }
             )
             // rec {
-              neris = (
+              laurake = (
                 import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-neris";
+                  name = "nixpkgs-patched-laurake";
                   src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/479773.patch";
+                      hash = "sha256-aM3tjcbKa8zjfms3s4G5DcV0hUhxwWKE0lKdjPq3nzA=";
+                    })
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/474113.patch";
+                      hash = "sha256-BpyHBkfHwySq5wVbTenISKP9PXF4PdVQRhbY158sU8o=";
+                    })
                   ];
                 }) { system = "x86_64-linux"; }
               );

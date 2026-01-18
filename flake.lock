@@ -407,11 +407,11 @@
       },
       "locked": {
         "host": "forkspace.net",
-        "lastModified": 1748866504,
-        "narHash": "sha256-ecPxgCfJz0DWlVhrVAuNvgboB6fO93Ee7uExO5SWIF8=",
+        "lastModified": 1768655940,
+        "narHash": "sha256-i8nYijx8mz8qDcGSEH3dOHhunZy6nY4kRwE0aGgxOZU=",
         "owner": "leona",
         "repo": "leona.is",
-        "rev": "dabcbf3d97833e366a00e67301da8ea40aa777af",
+        "rev": "a07353d5d96f458b5b4c3d3398d9b43d084bce2c",
         "type": "gitlab"
       },
       "original": {
