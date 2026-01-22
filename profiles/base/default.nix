@@ -17,6 +17,7 @@
 
   nixpkgs.overlays = lib.attrValues inputs.self.overlays;
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"

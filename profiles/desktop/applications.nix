@@ -84,12 +84,16 @@
     python3
     qFlipper
     rofi-pass
+    ruff
     rustup
     speedcrunch
     spotify
     sublime-merge
     texlab
     texlive.combined.scheme-full
+    tinymist
+    typst
+    ty
     thunderbird
     virt-manager
     yarn

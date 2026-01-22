@@ -15,6 +15,10 @@
           max-indent-retain = 0;
           wrap-indicator = ""; # set wrap-indicator to "" to hide it
         };
+        editor.lsp = {
+          display-inlay-hints = true;
+        };
+        editor.auto-save.focus-lost = true;
       };
       themes = {
         monokai_pro_transparent = {
@@ -50,11 +54,8 @@
       };
       languages = {
         language-server = {
-          nil = {
-            command = "${pkgs.nil}/bin/nil";
-          };
-          pylsp = {
-            command = "pylsp";
+          nixd = {
+            command = lib.getExe pkgs.nixd;
           };
           rust-analyzer = {
             command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
@@ -102,19 +103,15 @@
           }
           {
             name = "nix";
-            language-servers = [ "nil" ];
+            language-servers = [ "nixd" ];
           }
           {
             name = "python";
-            language-servers = [ "pylsp" ];
+            language-servers = [ "ty" "ruff" ];
           }
           {
             name = "rust";
             language-servers = [ "rust-analyzer" ];
-          }
-          {
-            name = "latex";
-            language-servers = [ "texlab" ];
           }
         ];
       };
@@ -144,9 +141,4 @@
       '';
     };
   };
-  environment.systemPackages = [
-    (pkgs.python3.withPackages (
-      ps: [ ps.python-lsp-server ] ++ ps.python-lsp-server.optional-dependencies.all
-    ))
-  ];
 }
