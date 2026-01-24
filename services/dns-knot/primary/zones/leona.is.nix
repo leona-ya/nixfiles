@@ -54,6 +54,7 @@ in
       "rutile.net" = host "87.106.216.104" "2a01:239:33f:4a00::1";
       "turingmachine.net" = host "195.39.247.148" "2a0f:4ac0:1e0:100::1";
       "*.turingmachine.net".CNAME = [ "turingmachine.net.leona.is." ];
+      "biro.net".CNAME = [ "biro.net.infinitespace.dev." ];
       "wg.net".CNAME = [ "biro.net.infinitespace.dev." ];
 
       "ns1" = host "95.217.67.10" "2a01:4f9:3a:1448:4000:13::";
