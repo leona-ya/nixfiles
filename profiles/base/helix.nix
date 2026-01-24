@@ -9,6 +9,7 @@
     programs.helix = {
       enable = true;
       settings = {
+        editor.auto-format = true;
         editor.soft-wrap = {
           enable = true;
           max-wrap = 25; # increase value to reduce forced mid-word wrapping
@@ -95,23 +96,19 @@
         };
         language = [
           {
-            name = "c";
-            indent = {
-              tab-width = 8;
-              unit = "\t";
-            };
-          }
-          {
             name = "nix";
             language-servers = [ "nixd" ];
+            formatter = {
+              command = lib.getExe pkgs.nixfmt;
+            };
+            auto-format = true;
           }
           {
             name = "python";
-            language-servers = [ "ty" "ruff" ];
-          }
-          {
-            name = "rust";
-            language-servers = [ "rust-analyzer" ];
+            language-servers = [
+              "ty"
+              "ruff"
+            ];
           }
         ];
       };
