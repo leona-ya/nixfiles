@@ -29,7 +29,7 @@
             Gateway = "2a01:4f9:3a:1448:4000::";
           }
           {
-            Destination = "2a01:4f9:3a:1448:4000::/64";
+            Destination = "2a01:4f9:3a:1448:4000::/66";
           }
           {
             Destination = "0.0.0.0/0";
