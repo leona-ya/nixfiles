@@ -76,8 +76,8 @@
     extraForwardRules = ''
       ip saddr 95.217.67.8/29 oifname eth0 accept
       iifname eth0 ip daddr 95.217.67.8/29 accept
-      ip6 saddr 2a01:4f9:3a:1448:4000::/66  oifname eth0 accept
-      iifname eth0 ip6 daddr 2a01:4f9:3a:1448:4000::/66 accept
+      ip6 saddr 2a01:4f9:3a:1448:4000::/66 accept
+      ip6 daddr 2a01:4f9:3a:1448:4000::/66 accept
       ip6 saddr 2a01:4f9:3a:1448:c0ff:ee:f00d:0/112 accept
       ip6 daddr 2a01:4f9:3a:1448:c0ff:ee:f00d:0/112 accept
     '';
