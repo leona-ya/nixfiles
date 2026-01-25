@@ -9,17 +9,24 @@
     programs.helix = {
       enable = true;
       settings = {
-        editor.auto-format = true;
-        editor.soft-wrap = {
-          enable = true;
-          max-wrap = 25; # increase value to reduce forced mid-word wrapping
-          max-indent-retain = 0;
-          wrap-indicator = ""; # set wrap-indicator to "" to hide it
+        editor = {
+          auto-save.focus-lost = true;
+          auto-format = true;
+          end-of-line-diagnostics = "hint";
+          inline-diagnostics = {
+            cursor-line = "error";
+          };
+          lsp = {
+            display-inlay-hints = true;
+          };
+          rulers = [ 120 ];
+          soft-wrap = {
+            enable = true;
+            max-wrap = 25; # increase value to reduce forced mid-word wrapping
+            max-indent-retain = 0;
+            wrap-indicator = "";
+          };
         };
-        editor.lsp = {
-          display-inlay-hints = true;
-        };
-        editor.auto-save.focus-lost = true;
       };
       themes = {
         monokai_pro_transparent = {
