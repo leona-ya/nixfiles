@@ -31,6 +31,9 @@
     vista-fonts
     source-sans-pro
   ];
+  i18n.extraLocaleSettings = {
+    LC_TIME = "de_DE.UTF-8";
+  };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -55,6 +58,7 @@
     cmake
     gtest
     gtest.dev
+    gnome-calendar
     gnumake
     gh
     inkscape
@@ -137,6 +141,10 @@
     enable = true;
     dockerCompat = true;
   };
+  # Options for gnome-calendar
+  programs.dconf.enable = true;
+  services.gnome.evolution-data-server.enable = true;
+  services.gnome.gnome-online-accounts.enable = true;
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   services.udisks2.enable = true;
