@@ -25,8 +25,9 @@
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "zfs" ];
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
   boot.kernelParams = [
-    "zfs.zfs_arc_max=6442450944"
+    "zfs.zfs_arc_max=2048000000"
     "zfs.zfs_arc_min=1024000000"
   ];
   networking.hostId = "a4232228";
@@ -95,17 +96,5 @@
   #    enableSystemdTimer = false;
   #  };
 
-  services.nginx.virtualHosts = {
-    "hydra.turingmachine.net.leona.is" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://localhost:4444";
-    };
-    "legitima.turingmachine.net.leona.is" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://localhost:8000";
-    };
-  };
   system.stateVersion = "20.09";
 }
