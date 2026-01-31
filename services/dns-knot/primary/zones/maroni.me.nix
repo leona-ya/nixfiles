@@ -37,9 +37,9 @@
 
     subdomains = {
       autoconfig.CNAME = [ "kupe.net.leona.is." ];
-      cloud.CNAME = [ "bij.net.leona.is." ];
+      cloud.CNAME = [ "biro.net.infinitespace.dev." ];
       mail.CNAME = [ "kupe.net.leona.is." ];
-      wg.CNAME = [ "biro.net.leona.is." ];
+      wg.CNAME = [ "biro.net.infinitespace.dev." ];
     };
   };
 }
