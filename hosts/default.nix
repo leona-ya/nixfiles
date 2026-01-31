@@ -36,12 +36,16 @@
                 system = "x86_64-linux";
               }
             )
-            // rec {
-              laurake = (
+            // {
+              emuno = (
                 import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-laurake";
+                  name = "nixpkgs-patched-emuno";
                   src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/485732.patch";
+                      hash = "sha256-XeqVmGURio/+E1Fvn5O7R0qp7+9oSOE4qW7L13iD3pY=";
+                    })
                   ];
                 }) { system = "x86_64-linux"; }
               );
