@@ -37,6 +37,19 @@
               }
             )
             // {
+              biro = (
+                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+                  name = "nixpkgs-patched-biro";
+                  src = inputs.nixpkgs;
+                  patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/470385.patch";
+                      hash = "sha256-dGRPviDy9DKpZ2FcCu3uOuHfs0V60r2VJDt3tinVYew=";
+                      revert = true;
+                    })
+                  ];
+                }) { system = "x86_64-linux"; }
+              );
               emuno = (
                 import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
                   name = "nixpkgs-patched-emuno";

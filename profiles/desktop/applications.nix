@@ -63,7 +63,7 @@
     gh
     inkscape
     jetbrains.clion
-    jetbrains.idea-ultimate
+    jetbrains.idea
     jetbrains.rust-rover
     keymapp
     #    kicad
