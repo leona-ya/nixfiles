@@ -43,32 +43,17 @@
   l.backups = {
     enable = true;
     paths = [
-      "/home"
       "/root"
-      "/var/lib/paperless"
-      "/var/lib/hass"
-      "/var/lib/youtrack"
-      "/var/lib/nextcloud"
+      "/var/lib"
     ];
     excludes = [
       "/var/cache"
       "/var/lock"
       "/var/spool"
       "/var/log"
-      "/home/leona/.local/share/containers"
       "/var/lib/containers"
-      "/home/leona/nextcloud"
-      "**/node_modules"
-      "**/.venv"
-      "**/target"
-      "/home/*/.cache"
-      "/home/*/.rustup"
-      "/home/*/.local/share/Steam"
-      "/home/*/.m2"
-      "/home/*/tmp"
-      "**/Cache"
+      "/var/lib/libvirt"
     ];
-    enableSystemdTimer = false;
   };
 
   services.nginx.virtualHosts."thia.net.leona.is" = {

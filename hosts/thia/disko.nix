@@ -28,6 +28,29 @@
           };
         };
       };
+      nvme1 = {
+        type = "disk";
+        device = "nvme-Samsung_SSD_990_EVO_Plus_2TB_S7U7NJ0Y118045H";
+        content = {
+          type = "gpt";
+          partitions = {
+            boot-reserved = {
+              size = "512M";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+              };
+            };
+            mdadm = {
+              size = "100%";
+              content = {
+                type = "mdraid";
+                name = "main_raid1";
+              };
+            };
+          };
+        };
+      };
     };
 
     mdadm.main_raid1 = {
