@@ -18,6 +18,7 @@
     ../../services/youtrack
     ../../services/nextcloud
     ../../services/actual-budget
+    ../../services/abs
     ./disko.nix
     ./network.nix
     ./libvirt.nix

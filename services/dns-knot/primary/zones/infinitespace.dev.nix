@@ -29,7 +29,7 @@
 
     CAA = helper.caa;
 
-    subdomains = rec {
+    subdomains = {
       "biro.net" = host "95.217.67.8" "2a01:4f9:3a:1448:4000:b11::";
       "emuno.net" = host "95.217.67.9" "2a01:4f9:3a:1448:4000:12::";
       "koyo.net" = host "95.217.67.10" "2a01:4f9:3a:1448:4000:13::";
@@ -38,10 +38,13 @@
       "install-iso.moka.net".AAAA = [ "2a01:4f9:3a:1448:7fff:1487:a11::" ];
       "laurake.net".AAAA = [ "2a01:4f9:3a:1448:4000:10::" ];
       "shioto.net".AAAA = [ "2a01:4f9:3a:1448:4000:11::" ];
+
       "auth.stag".A = helper.hosts.web.A;
       "auth.stag".AAAA = [ "2a01:4f9:3a:1448:4000:4a1a::" ];
       "discourse.stag".A = helper.hosts.web.A;
       "discourse.stag".AAAA = [ "2a01:4f9:3a:1448:4000:4a1a::" ];
+
+      abs.CNAME = [ "biro.net.infinitespace.dev." ];
       social.A = helper.hosts.web.A;
       social.AAAA = [ "2a01:4f9:3a:1448:4000:10::" ];
       "dyn".NS = [

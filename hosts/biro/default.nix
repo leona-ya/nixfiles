@@ -43,6 +43,7 @@
         "cloud.leona.is"
         "fin.leona.is"
         "yt.leona.is"
+        "abs.infinitespace.dev"
       ];
       "shioto.net.infinitespace.dev" = [
         "auth.leona.is"
