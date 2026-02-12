@@ -67,6 +67,14 @@ rec {
                   PublicKey = "1ZhRSfPcAbEYVk3AYuHjDj+6VoxgU4VbSHQqoj5TB0o=";
                 }
                 {
+                  # turingmachine
+                  AllowedIPs = [
+                    "10.151.9.8/32"
+                    "fd8f:d15b:9f40:0901:400::1/72"
+                  ];
+                  PublicKey = "gOBDoXc3zWVpnyx81fgVKmR2un14MW+c+SM/G6F3sFY=";
+                }
+                {
                   # Luna [DM]
                   AllowedIPs = [
                     "10.151.9.5/32"
