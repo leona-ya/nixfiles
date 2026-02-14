@@ -63,31 +63,6 @@
     '';
   };
 
-  l.backups = {
-    enable = true;
-    excludes = [
-      "/var/cache"
-      "/var/lock"
-      "/var/spool"
-      "/var/log"
-      "/home/leona/.local/share/containers"
-      "/home/leona/dev"
-      "/home/leona/nc"
-      "/var/lib/containers"
-      "**/node_modules"
-      "**/.venv"
-      "**/target"
-      "/home/*/.cache"
-      "/home/*/.rustup"
-      "/home/*/.local/share/Steam"
-      "/home/*/.cargo"
-      "**/Cache"
-      "**/tmp"
-    ];
-    enableSystemdTimer = false;
-    provider = "b2";
-  };
-
   hardware.framework.amd-7040.preventWakeOnAC = true;
   hardware.framework.laptop13.audioEnhancement.enable = false;
   # broken with linux 6.13

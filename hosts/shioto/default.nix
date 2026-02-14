@@ -15,6 +15,8 @@
     ../../services/ldap
   ];
 
+  l.backups.enable = true;
+
   services.postgresql.package = pkgs.postgresql_18;
 
   system.stateVersion = "26.05";

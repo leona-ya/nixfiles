@@ -44,7 +44,6 @@
       "/home/leona/dev"
       "/home/leona/.cache"
     ];
-    provider = "ovh";
   };
 
   services.nginx.enable = false;

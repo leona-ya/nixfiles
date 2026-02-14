@@ -36,11 +36,6 @@ in
       type = with types; listOf str;
       default = [ ];
     };
-    repo = mkOption {
-      type = types.nullOr types.str;
-      default =
-        if cfg.provider == "b2" then "b2:leona-nix-backup:${config.networking.hostName}" else null;
-    };
     enableSystemdTimer = mkOption {
       type = types.bool;
       default = true;
@@ -50,22 +45,16 @@ in
       default = {
         OnCalendar = "hourly";
         RandomizedDelaySec = "30min";
+        FixedRandomDelay = true;
       };
     };
     pruneOpts = mkOption {
       type = types.listOf types.str;
       default = [
-        "--keep-last 12"
+        "--keep-last 24"
         "--keep-daily 7"
         "--keep-weekly 4"
         "--keep-monthly 12"
-        "--keep-yearly 2"
-      ];
-    };
-    provider = mkOption {
-      type = types.enum [
-        "ovh"
-        "b2"
       ];
     };
   };
@@ -73,31 +62,24 @@ in
     l.sops.secrets = {
       "hosts/${config.networking.hostName}/restic_password" = { };
       "hosts/${config.networking.hostName}/restic_env" = { };
-    }
-    // (lib.optionalAttrs (cfg.repo == null) {
       "hosts/${config.networking.hostName}/restic_repository" = { };
-    });
+    };
 
     services.restic.backups = {
-      "${cfg.provider}-remote" = {
-        user = cfg.user;
+      "ovh-remote" = {
+        inherit (cfg) user paths pruneOpts;
         environmentFile = config.sops.secrets."hosts/${config.networking.hostName}/restic_env".path;
         passwordFile = config.sops.secrets."hosts/${config.networking.hostName}/restic_password".path;
-        paths = cfg.paths;
-        repository = lib.mkIf (cfg.repo != null) cfg.repo;
-        repositoryFile = lib.mkIf (
-          cfg.repo == null
-        ) config.sops.secrets."hosts/${config.networking.hostName}/restic_repository".path;
+        repositoryFile = config.sops.secrets."hosts/${config.networking.hostName}/restic_repository".path;
         timerConfig = if cfg.enableSystemdTimer then cfg.systemdTimerConfig else null;
         initialize = true;
         backupPrepareCommand = mkIf config.services.postgresql.enable ''
           mkdir -p /root/restic-backup
-          ${pkgs.sudo}/bin/sudo -u postgres ${pkgs.postgresql}/bin/pg_dumpall | ${pkgs.zstd}/bin/zstd --rsyncable > /root/restic-backup/restic-postgres.sql.zst
+          ${pkgs.sudo}/bin/sudo -u postgres ${config.services.postgresql.finalPackage}/bin/pg_dumpall | ${pkgs.zstd}/bin/zstd --rsyncable > /root/restic-backup/restic-postgres.sql.zst
         '';
         backupCleanupCommand = mkIf config.services.postgresql.enable ''
           rm -rf /root/restic-backup
         '';
-        pruneOpts = cfg.pruneOpts;
         extraBackupArgs = lib.mkIf (cfg.excludes != [ ]) (
           builtins.map (x: "--exclude \"" + x + "\"") cfg.excludes
         );

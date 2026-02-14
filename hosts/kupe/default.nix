@@ -24,7 +24,14 @@
   ];
 
   l.backups.enable = true;
-  l.backups.provider = "b2";
+  l.backups.paths = [
+    "/home"
+    "/root"
+    "/persist"
+    "/var/lib"
+    "/var/sieve"
+    "/var/vmail"
+  ];
   l.remote-unlock.enable = true;
 
   system.stateVersion = "23.05";

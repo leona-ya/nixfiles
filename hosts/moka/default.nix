@@ -40,6 +40,12 @@
     enable = true;
     hostKeyPath = "/boot/disk0/ssh_initrd_ed25519";
   };
+  l.backups = {
+    enable = true;
+    excludes = [
+      "/var/lib/libvirt/images"
+    ];
+  };
 
   l.sops.secrets."all/users/root_pw".enable = false;
   l.sops.secrets."hosts/moka/user_root_pw".neededForUsers = true;
