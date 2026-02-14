@@ -40,7 +40,10 @@
     (lib.mkIf (!config.l.meta.bootstrap) {
       security.acme.certs."${config.networking.hostName}.${config.networking.domain}" =
         lib.mkIf config.services.nginx.enable
-          { group = "nginx"; };
+          {
+            group = "nginx";
+            profile = "tlsclient";
+          };
       services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
         useACMEHost = "${config.networking.hostName}.${config.networking.domain}";
         forceSSL = true;

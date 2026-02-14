@@ -12,6 +12,7 @@
         defaults = {
           email = "noc@leona.is";
           keyType = "ec384";
+          profile = "tlsserver";
         };
       };
     }
