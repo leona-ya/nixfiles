@@ -27,14 +27,24 @@
   boot.supportedFilesystems = [ "zfs" ];
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
   boot.kernelParams = [
-    "zfs.zfs_arc_max=2048000000"
-    "zfs.zfs_arc_min=1024000000"
+    "zfs.zfs_arc_max=${toString (4096 * 1024 * 1024)}"
+    "zfs.zfs_arc_min=${toString (2048 * 1024 * 1024)}"
   ];
   networking.hostId = "a4232228";
 
   l.sops.secrets = {
     "profiles/desktop/alt_rsa_ssh_key".owner = "leona";
     "profiles/desktop/user_leona_pw".neededForUsers = true;
+  };
+
+  l.backups = {
+    enable = true;
+    excludes = [
+      "/home/leona/nc"
+      "/home/leona/dev"
+      "/home/leona/.cache"
+    ];
+    provider = "ovh";
   };
 
   services.nginx.enable = false;

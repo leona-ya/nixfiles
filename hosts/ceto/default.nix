@@ -49,6 +49,7 @@
       "**/Cache"
     ];
     enableSystemdTimer = false;
+    proivder = "b2";
   };
 
   l.sops.secrets = {

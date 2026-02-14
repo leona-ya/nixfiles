@@ -43,6 +43,7 @@
 
   l.backups = {
     enable = true;
+    provider = "b2";
     paths = [
       "/root"
       "/var/lib"

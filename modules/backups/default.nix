@@ -37,8 +37,9 @@ in
       default = [ ];
     };
     repo = mkOption {
-      type = types.str;
-      default = "b2:leona-nix-backup:${config.networking.hostName}";
+      type = types.nullOr types.str;
+      default =
+        if cfg.provider == "b2" then "b2:leona-nix-backup:${config.networking.hostName}" else null;
     };
     enableSystemdTimer = mkOption {
       type = types.bool;
@@ -61,20 +62,32 @@ in
         "--keep-yearly 2"
       ];
     };
+    provider = mkOption {
+      type = types.enum [
+        "ovh"
+        "b2"
+      ];
+    };
   };
   config = mkIf cfg.enable {
     l.sops.secrets = {
       "hosts/${config.networking.hostName}/restic_password" = { };
       "hosts/${config.networking.hostName}/restic_env" = { };
-    };
+    }
+    // (lib.optionalAttrs (cfg.repo == null) {
+      "hosts/${config.networking.hostName}/restic_repository" = { };
+    });
 
     services.restic.backups = {
-      b2-remote = {
+      "${cfg.provider}-remote" = {
         user = cfg.user;
         environmentFile = config.sops.secrets."hosts/${config.networking.hostName}/restic_env".path;
         passwordFile = config.sops.secrets."hosts/${config.networking.hostName}/restic_password".path;
         paths = cfg.paths;
-        repository = cfg.repo;
+        repository = lib.mkIf (cfg.repo != null) cfg.repo;
+        repositoryFile = lib.mkIf (
+          cfg.repo == null
+        ) config.sops.secrets."hosts/${config.networking.hostName}/restic_repository".path;
         timerConfig = if cfg.enableSystemdTimer then cfg.systemdTimerConfig else null;
         initialize = true;
         backupPrepareCommand = mkIf config.services.postgresql.enable ''

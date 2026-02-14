@@ -24,6 +24,7 @@
   ];
 
   l.backups.enable = true;
+  l.backups.provider = "b2";
   l.remote-unlock.enable = true;
 
   system.stateVersion = "23.05";

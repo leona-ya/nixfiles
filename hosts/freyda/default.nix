@@ -85,6 +85,7 @@
       "**/tmp"
     ];
     enableSystemdTimer = false;
+    provider = "b2";
   };
 
   hardware.framework.amd-7040.preventWakeOnAC = true;
