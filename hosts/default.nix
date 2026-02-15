@@ -55,6 +55,7 @@
                   name = "nixpkgs-patched-emuno";
                   src = inputs.nixpkgs;
                   patches = [
+                    ./gitlab-18_9.patch
                   ];
                 }) { system = "x86_64-linux"; }
               );
