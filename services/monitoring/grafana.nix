@@ -10,7 +10,8 @@ let
 
 in
 {
-  l.sops.secrets."services/monitoring/grafana/env".owner = "grafana";
+  l.sops.secrets."services/monitoring/grafana/oauth_client_secret".owner = "grafana";
+  l.sops.secrets."services/monitoring/grafana/secret_key".owner = "grafana";
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "grafana" ];
@@ -24,6 +25,9 @@ in
   services.grafana = {
     enable = true;
     settings = {
+      security.secret_key = "$__file{${
+        config.sops.secrets."services/monitoring/grafana/secret_key".path
+      }}";
       server = {
         protocol = "socket";
         root_url = "https://${grafanaDomain}/";
@@ -36,15 +40,18 @@ in
       };
       "auth.generic_oauth" = {
         enabled = true;
-        name = "Keycloak";
-        client_id = "grafana";
         allow_sign_up = true;
-        auth_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/auth";
-        token_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/token";
         api_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/userinfo";
+        auth_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/auth";
+        client_id = "grafana";
+        client_secret = "$__file{${
+          config.sops.secrets."services/monitoring/grafana/oauth_client_secret".path
+        }}";
+        email_attribute_names = "email:primary";
+        name = "Keycloak";
         role_attribute_path = "contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'";
         scopes = "openid profile email roles";
-        email_attribute_names = "email:primary";
+        token_url = "https://auth.leona.is/realms/leona/protocol/openid-connect/token";
       };
     };
 
@@ -99,10 +106,6 @@ in
         ];
       };
     };
-  };
-
-  systemd.services.grafana.serviceConfig = {
-    EnvironmentFile = config.sops.secrets."services/monitoring/grafana/env".path;
   };
 
   security.acme.certs."${grafanaDomain}".group = "grafana";
