@@ -9,7 +9,6 @@
   hardware.graphics.enable = true;
 
   programs.sway.enable = true;
-  programs.light.enable = true;
 
   users.users.leona.packages = with pkgs; [
     qt5.qtwayland
@@ -194,8 +193,8 @@
             "XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -d 5";
             "XF86AudioMute" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -t";
             "XF86AudioMicMute" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer --default-source -t";
-            "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
-            "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
+            "XF86MonBrightnessDown" = "exec ${lib.getExe pkgs.brightnessctl} +5%";
+            "XF86MonBrightnessUp" = "exec ${lib.getExe pkgs.brightnessctl} -5%";
 
             "${modifier}+l" = "exec loginctl lock-session";
             "${modifier}+d" = "exec ${cfg.config.menu}";
