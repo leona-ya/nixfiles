@@ -19,6 +19,7 @@
     ../../services/nextcloud
     ../../services/actual-budget
     ../../services/abs
+    ../../services/immich
     ./disko.nix
     ./network.nix
     ./libvirt.nix

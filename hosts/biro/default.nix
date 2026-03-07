@@ -42,6 +42,7 @@
         "cloud.maroni.me"
         "cloud.leona.is"
         "fin.leona.is"
+        "photos.leona.is"
         "yt.leona.is"
         "abs.infinitespace.dev"
       ];

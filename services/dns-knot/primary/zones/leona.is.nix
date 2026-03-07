@@ -125,6 +125,7 @@ in
       found.CNAME = [ "biro.net.infinitespace.dev." ];
       openpgpkey.CNAME = [ "biro.net.infinitespace.dev." ];
       kb = host web_v4 laurake_v6;
+      photos.CNAME = [ "biro.net.infinitespace.dev." ];
       "grafana.mon".CNAME = [ "rutile.net.leona.is." ];
       "metrics.mon".CNAME = [ "rutile.net.leona.is." ];
       "logs.mon".CNAME = [ "rutile.net.leona.is." ];
