@@ -108,7 +108,10 @@ in
     };
   };
 
-  security.acme.certs."${grafanaDomain}".group = "grafana";
+  security.acme.certs."${grafanaDomain}" = {
+    group = "grafana";
+    profile = "tlsclient";
+  };
 
   users.users.nginx.extraGroups = [ "grafana" ];
   services.nginx.virtualHosts.${grafanaDomain} = {
