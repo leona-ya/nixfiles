@@ -42,6 +42,10 @@
                   name = "nixpkgs-patched-emuno";
                   src = inputs.nixpkgs;
                   patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/498848.patch";
+                      hash = "sha256-y29AuVXigxcz9UTHQgF9rWAr+JGIus7NAvB8qCsumiI=";
+                    })
                   ];
                 }) { system = "x86_64-linux"; }
               );
