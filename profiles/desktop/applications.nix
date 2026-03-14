@@ -47,6 +47,7 @@
   users.users.leona.packages = with pkgs; [
     anki
     #calibre
+    codebook
     editorconfig-checker
     element-desktop
     evince

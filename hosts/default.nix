@@ -49,6 +49,24 @@
                   ];
                 }) { system = "x86_64-linux"; }
               );
+            }
+            // {
+              neris = (
+                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+                  name = "nixpkgs-patched-neris";
+                  src = inputs.nixpkgs;
+                  patches = [
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/498529.patch";
+                      hash = "sha256-+gCWdd3wEqfoklO/BXyniGgEp46YnkIkhpMvxHSAvKo=";
+                    })
+                    (nixpkgs.fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/499532.patch";
+                      hash = "sha256-xHLOPXZwA6hT7ZWlZVxgcW/gHyGiTr04QklXcH6oyb8=";
+                    })
+                  ];
+                }) { system = "x86_64-linux"; }
+              );
             };
 
           specialArgs = {

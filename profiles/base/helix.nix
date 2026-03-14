@@ -62,6 +62,10 @@
       };
       languages = {
         language-server = {
+          codebook = {
+            command = "codebook-lsp";
+            args = [ "serve" ];
+          };
           nixd = {
             command = lib.getExe pkgs.nixd;
           };
@@ -103,6 +107,13 @@
         };
         language = [
           {
+            name = "markdown";
+            language-servers = [
+              "marksman"
+              "codebook"
+            ];
+          }
+          {
             name = "nix";
             language-servers = [ "nixd" ];
             formatter = {
@@ -115,6 +126,14 @@
             language-servers = [
               "ty"
               "ruff"
+              "codebook"
+            ];
+          }
+          {
+            name = "typst";
+            language-servers = [
+              "tinymist"
+              "codebook"
             ];
           }
         ];
@@ -126,6 +145,13 @@
         tomlFormat = pkgs.formats.toml { };
       in
       {
+        "codebook/codebook.toml".source = tomlFormat.generate "codebook.toml" {
+          dictionaries = [
+            "en_us"
+            "en_gb"
+            "de"
+          ];
+        };
         "helix/config.toml".enable = false;
         "helix/config-light-theme.toml".source = tomlFormat.generate "helix-config-light" (
           cfg.settings // { theme = "monokai_pro_light_transparent"; }
