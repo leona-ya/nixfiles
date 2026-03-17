@@ -301,6 +301,7 @@
       ".envs/openjdk21".source = "${pkgs.jdk21}/lib/openjdk";
       ".envs/go".source = "${pkgs.go}";
       ".envs/python312".source = "${pkgs.python312}";
+      ".envs/python314".source = "${pkgs.python314}";
       ".envs/nodejs".source = "${pkgs.nodejs}";
     };
   };

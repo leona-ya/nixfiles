@@ -42,10 +42,6 @@
                   name = "nixpkgs-patched-emuno";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/498848.patch";
-                      hash = "sha256-y29AuVXigxcz9UTHQgF9rWAr+JGIus7NAvB8qCsumiI=";
-                    })
                   ];
                 }) { system = "x86_64-linux"; }
               );
@@ -56,10 +52,6 @@
                   name = "nixpkgs-patched-neris";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/498529.patch";
-                      hash = "sha256-+gCWdd3wEqfoklO/BXyniGgEp46YnkIkhpMvxHSAvKo=";
-                    })
                     (nixpkgs.fetchpatch {
                       url = "https://github.com/NixOS/nixpkgs/pull/499532.patch";
                       hash = "sha256-xHLOPXZwA6hT7ZWlZVxgcW/gHyGiTr04QklXcH6oyb8=";
