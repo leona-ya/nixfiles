@@ -107,6 +107,13 @@
         };
         language = [
           {
+            name = "latex";
+            language-servers = [
+              "texlab"
+              "codebook"
+            ];
+          }
+          {
             name = "markdown";
             language-servers = [
               "marksman"
