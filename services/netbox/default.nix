@@ -7,6 +7,7 @@
 
 {
   l.sops.secrets = {
+    "services/netbox/api_token_pepper".owner = "netbox";
     "services/netbox/secret_key".owner = "netbox";
     "services/netbox/openid_client_id".owner = "netbox";
     "services/netbox/openid_client_secret".owner = "netbox";
@@ -14,9 +15,10 @@
 
   services.netbox = {
     enable = true;
-    package = pkgs.netbox_4_4;
+    package = pkgs.netbox_4_5;
     unixSocket = "/run/netbox/netbox.sock";
     secretKeyFile = config.sops.secrets."services/netbox/secret_key".path;
+    apiTokenPeppersFile = config.sops.secrets."services/netbox/api_token_pepper".path;
     extraConfig = ''
       with open("${config.sops.secrets."services/netbox/openid_client_id".path}", "r") as file:
         SOCIAL_AUTH_OIDC_KEY = file.readline()

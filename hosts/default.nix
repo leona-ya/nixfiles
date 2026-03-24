@@ -52,10 +52,6 @@
                   name = "nixpkgs-patched-neris";
                   src = inputs.nixpkgs;
                   patches = [
-                    (nixpkgs.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/499532.patch";
-                      hash = "sha256-xHLOPXZwA6hT7ZWlZVxgcW/gHyGiTr04QklXcH6oyb8=";
-                    })
                   ];
                 }) { system = "x86_64-linux"; }
               );
