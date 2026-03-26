@@ -21,6 +21,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager-2511 = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-2511";
+    };
     leona-is-website = {
       url = "gitlab:leona/leona.is?host=forkspace.net";
       inputs.nixpkgs.follows = "nixpkgs";

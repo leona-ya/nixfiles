@@ -57,16 +57,10 @@
       in
       {
         enable = true;
-        events = [
-          {
-            event = "before-sleep";
-            command = lockCommand;
-          }
-          {
-            event = "lock";
-            command = lockCommand;
-          }
-        ];
+        events = {
+          "before-sleep" = lockCommand;
+          "lock" = lockCommand;
+        };
         timeouts = [
           {
             timeout = 300;

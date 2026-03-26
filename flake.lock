@@ -376,6 +376,27 @@
         "type": "github"
       }
     },
+    "home-manager-2511": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-2511"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774274588,
+        "narHash": "sha256-dnHvv5EMUgTzGZmA+3diYjQU2O6BEpGLEOgJ1Qe9LaY=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "cf9686ba26f5ef788226843bc31fda4cf72e373b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-25.11",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -682,6 +703,7 @@
         "dns": "dns",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
+        "home-manager-2511": "home-manager-2511",
         "lanzaboote": "lanzaboote",
         "leona-is-website": "leona-is-website",
         "lix": "lix",

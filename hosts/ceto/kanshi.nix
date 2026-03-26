@@ -4,9 +4,10 @@
   home-manager.users.leona = {
     services.kanshi = {
       enable = true;
-      profiles = {
-        home = {
-          outputs = [
+      settings = [
+        {
+          profile.name = "home";
+          profile.outputs = [
             {
               criteria = "Dell Inc. DELL U3223QE FDPTDP3";
               mode = "3840x2160";
@@ -25,10 +26,11 @@
               status = "disable";
             }
           ];
-          exec = "${pkgs.sway}/bin/swaymsg workspace 2, move workspace to output 'Dell Inc. DELL P2423D JY45VZ3'";
-        };
-        home2 = {
-          outputs = [
+          profile.exec = "${pkgs.sway}/bin/swaymsg workspace 2, move workspace to output 'Dell Inc. DELL P2423D JY45VZ3'";
+        }
+        {
+          profile.name = "home2";
+          profile.outputs = [
             {
               criteria = "Dell Inc. DELL U3223QE FDPTDP3";
               mode = "3840x2160";
@@ -43,9 +45,9 @@
               transform = "270";
             }
           ];
-          exec = "${pkgs.sway}/bin/swaymsg workspace 2, move workspace to output 'Dell Inc. DELL P2423D JY45VZ3'";
-        };
-      };
+          profile.exec = "${pkgs.sway}/bin/swaymsg workspace 2, move workspace to output 'Dell Inc. DELL P2423D JY45VZ3'";
+        }
+      ];
     };
     wayland.windowManager.sway.config.startup = [
       {

@@ -14,6 +14,12 @@
         linuxHosts = lib.genAttrs (builtins.filter (h: h != "amphion") hostDirs) (name: {
           imports = [
             (./. + "/${name}")
+          ]
+          ++ lib.optionals (name != "moka") [
+            inputs.home-manager.nixosModules.home-manager
+          ]
+          ++ lib.optionals (name == "moka") [
+            inputs.home-manager-2511.nixosModules.home-manager
           ];
         });
       in
@@ -35,27 +41,7 @@
               import inputs.nixpkgs-2511 {
                 system = "x86_64-linux";
               }
-            )
-            // {
-              emuno = (
-                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-emuno";
-                  src = inputs.nixpkgs;
-                  patches = [
-                  ];
-                }) { system = "x86_64-linux"; }
-              );
-            }
-            // {
-              neris = (
-                import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
-                  name = "nixpkgs-patched-neris";
-                  src = inputs.nixpkgs;
-                  patches = [
-                  ];
-                }) { system = "x86_64-linux"; }
-              );
-            };
+            );
 
           specialArgs = {
             inherit inputs;

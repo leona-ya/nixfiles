@@ -44,6 +44,7 @@
 
     programs.zsh = {
       enable = true;
+      dotDir = "${config.home-manager.users.leona.xdg.configHome}/zsh";
       shellAliases = {
         "tb" = "nc termbin.com 9999";
         "ip" = "ip -c";
@@ -108,10 +109,11 @@
 
     programs.git = {
       enable = true;
-      userName = "Leona Maroni";
-      userEmail = lib.mkDefault "dev@leona.is";
-      signing.signByDefault = true;
-      signing.key = lib.mkDefault "B50CB5BA6A620411098CD9C8F0E55407FC6FF7BA";
+      signing = {
+        format = "openpgp";
+        key = lib.mkDefault "B50CB5BA6A620411098CD9C8F0E55407FC6FF7BA";
+        signByDefault = true;
+      };
       ignores = [
         ".venv"
         ".idea"
@@ -119,7 +121,9 @@
         "*.iml"
         ".leona"
       ];
-      extraConfig = {
+      settings = {
+        user.name = "Leona Maroni";
+        user.email = lib.mkDefault "dev@leona.is";
         init.defaultBranch = "main";
         tag.gpgSign = true;
         pull.ff = "only";
@@ -155,6 +159,7 @@
 
     programs.ssh = {
       enable = true;
+      enableDefaultConfig = false;
       matchBlocks =
         let
           leona-desktop = {
@@ -168,6 +173,18 @@
           };
         in
         {
+          "*" = {
+            forwardAgent = false;
+            addKeysToAgent = "no";
+            compression = false;
+            serverAliveInterval = 0;
+            serverAliveCountMax = 3;
+            hashKnownHosts = false;
+            userKnownHostsFile = "~/.ssh/known_hosts";
+            controlMaster = "no";
+            controlPath = "~/.ssh/master-%r@%n:%p";
+            controlPersist = "no";
+          };
           "git.yuka.dev" = yuka-gitea;
           "thia.wg.net.leona.is" = leona-desktop;
         };

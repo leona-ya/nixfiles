@@ -10,7 +10,6 @@
   imports = [
     ./acme.nix
     ./nginx.nix
-    inputs.home-manager.nixosModules.home-manager
     inputs.sops-nix.nixosModules.sops
     ../../users/root
     ../../modules

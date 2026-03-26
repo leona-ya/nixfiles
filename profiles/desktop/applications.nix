@@ -173,7 +173,8 @@
       gtk3.extraConfig = {
         gtk-font-name = "DejaVu Sans 11";
       };
-      gtk4.extraConfig = {
+      gtk4 = {
+        inherit (config.home-manager.users.leona.gtk) theme;
       };
     };
     programs.gpg.enable = true;
@@ -205,7 +206,12 @@
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       ];
     };
-    programs.password-store.enable = true;
+    programs.password-store = {
+      enable = true;
+      settings = {
+        PASSWORD_STORE_DIR = "$XDG_DATA_HOME/password-store";
+      };
+    };
     programs.zsh = {
       initContent = ''
         eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"

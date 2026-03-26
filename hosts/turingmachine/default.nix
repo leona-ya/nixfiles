@@ -15,6 +15,7 @@
     ./network.nix
     ./wireguard.nix
     ./kanshi.nix
+    ./libvirt.nix
   ];
 
   deployment.allowLocalDeployment = true;
