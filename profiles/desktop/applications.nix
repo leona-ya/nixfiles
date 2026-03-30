@@ -45,7 +45,6 @@
   ];
 
   users.users.leona.packages = with pkgs; [
-    anki
     #calibre
     codebook
     editorconfig-checker
@@ -92,7 +91,6 @@
     ruff
     rustup
     speedcrunch
-    spotify
     sublime-merge
     texlab
     texlive.combined.scheme-full
@@ -103,6 +101,7 @@
     virt-manager
     yarn
     yt-dlp
+    zotero
     zoxide
     #    (zoom-us.overrideAttrs (old: {
     #      postFixup = old.postFixup + ''
