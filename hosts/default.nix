@@ -41,7 +41,19 @@
               import inputs.nixpkgs-2511 {
                 system = "x86_64-linux";
               }
-            );
+            )
+            // {
+              "emuno" = import ((import inputs.nixpkgs { system = "x86_64-linux"; }).applyPatches {
+                name = "nixpkgs-patched-emuno";
+                src = inputs.nixpkgs;
+                patches = [
+                  (nixpkgs.fetchpatch {
+                    url = "https://github.com/NixOS/nixpkgs/pull/505451.patch";
+                    hash = "sha256-X9e5Dzo0Ppp6E0T5DcLVTlEarkELYHVdXP9Wc4SEbuM=";
+                  })
+                ];
+              }) { system = "x86_64-linux"; };
+            };
 
           specialArgs = {
             inherit inputs;
