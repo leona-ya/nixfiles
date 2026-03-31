@@ -79,12 +79,12 @@
       user = "tandoor";
       group = "tandoor";
       extraConfig = {
-        DEBUG = 1;
+        DEBUG = 0;
         SECRET_KEY_FILE = "/run/credentials/tandoor-recipes.service/secret_key";
         LOG_LEVEL = "DEBUG";
         GUNICORN_LOG_LEVEL = "debug";
         SOCIAL_PROVIDERS = "allauth.socialaccount.providers.openid_connect";
-        SOCIALACCOUNT_ONLY = true;
+        HIDE_LOGIN_FORM = true;
 
         DB_ENGINE = "django.db.backends.postgresql";
         POSTGRES_DB = "tandoor";
