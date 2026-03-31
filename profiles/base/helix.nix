@@ -66,6 +66,13 @@
             command = "codebook-lsp";
             args = [ "serve" ];
           };
+          harper = {
+            command = "harper-ls";
+            args = [ "--stdio" ];
+            config.harper-ls = {
+              dialect = "American";
+            };
+          };
           nixd = {
             command = lib.getExe pkgs.nixd;
           };
@@ -110,14 +117,14 @@
             name = "latex";
             language-servers = [
               "texlab"
-              "codebook"
+              "harper"
             ];
           }
           {
             name = "markdown";
             language-servers = [
               "marksman"
-              "codebook"
+              "harper"
             ];
           }
           {
@@ -140,7 +147,7 @@
             name = "typst";
             language-servers = [
               "tinymist"
-              "codebook"
+              "harper"
             ];
           }
         ];

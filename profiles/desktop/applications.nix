@@ -61,6 +61,7 @@
     gnome-calendar
     gnumake
     gh
+    harper
     inkscape
     jetbrains.clion
     jetbrains.idea
