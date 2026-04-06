@@ -79,15 +79,18 @@ in
   fileSystems =
     (mapAttrs (_: device: {
       inherit device;
+      fsType = "auto";
       options = [ "bind" ];
     }) bindmount-paths)
     // {
       "/var/lib/redis-rspamd" = {
         device = "/persist/var/lib/redis-rspamd";
+        fsType = "auto";
         options = [ "bind" ];
       };
       "/var/log/nginx" = {
         device = "/persist/var/log/nginx";
+        fsType = "auto";
         options = [ "bind" ];
       };
     };
