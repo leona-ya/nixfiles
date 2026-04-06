@@ -68,6 +68,7 @@
       maven
       nodejs
       pre-commit
+      timewarrior
       ruff
       uv
       yarn

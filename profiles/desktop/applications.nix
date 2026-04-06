@@ -95,6 +95,7 @@
     sublime-merge
     texlab
     texlive.combined.scheme-full
+    timewarrior
     tinymist
     typst
     ty
