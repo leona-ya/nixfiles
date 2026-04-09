@@ -2,7 +2,8 @@
   description = "leona's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.xz";
+    nixpkgs-darwin.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
     nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
     nixpkgs-2511.url = "https://channels.nixos.org/nixos-25.11-small/nixexprs.tar.xz";
@@ -56,7 +57,7 @@
     };
     darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
   };
 

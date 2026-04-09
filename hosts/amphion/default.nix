@@ -7,6 +7,30 @@
   system.stateVersion = 4;
   nixpkgs.hostPlatform = "aarch64-darwin";
   ids.gids.nixbld = 350;
+  nix = {
+    settings = {
+      always-allow-substitutes = true;
+      substituters = [
+        "https://cache.nixos.org"
+        "https://s3.whq.fcio.net/hydra?priority=100"
+      ];
+
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "flyingcircus.io-1:Rr9CwiPv8cdVf3EQu633IOTb6iJKnWbVfCC8x8gVz2o="
+      ];
+
+      trusted-users = [
+        "leona"
+        "@admin"
+      ];
+    };
+  };
+  nix.linux-builder = {
+    enable = true;
+    ephemeral = true;
+    maxJobs = 3;
+  };
   home-manager.users.leona = {
     home.sessionVariables = {
       BATOU_AGE_IDENTITIES = "~/.ssh/fcio_age";
@@ -19,11 +43,10 @@
       signing = {
         format = "ssh";
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEnfB0kjcnCDFWSqSNoJcmIVWijOfGO5zGwXcxopdGU5";
+        signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };
       settings = {
         user.mail = "lm@flyingcircus.io";
-        "gpg".format = "ssh";
-        "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };
     };
     programs.jujutsu.settings = {
