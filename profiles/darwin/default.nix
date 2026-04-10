@@ -64,11 +64,15 @@
       '';
     };
     home.packages = with pkgs; [
+      age
       devenv
       element-desktop
+      harper
+      gh
       maven
       nodejs
       pre-commit
+      prettier
       timewarrior
       python312
       ruff
