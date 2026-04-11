@@ -29,12 +29,6 @@
       linkConfig = {
         RequiredForOnline = "yes";
       };
-      dhcpV4Config = {
-        RouteMetric = 512;
-      };
-      dhcpV6Config = {
-        RouteMetric = 512;
-      };
       routes = [
         {
           Destination = "168.119.100.247/32";
