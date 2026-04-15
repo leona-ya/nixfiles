@@ -36,20 +36,8 @@
     dkimKeyBits = 2048;
 
     localDnsResolver = false;
-    lmtpSaveToDetailMailbox = "no";
+    lmtpSaveToDetailMailbox = false;
     x509.useACMEHost = "${config.networking.hostName}.net.leona.is";
-  };
-
-  services.dovecot2 = {
-    extraConfig = ''
-      auth_master_user_separator = *
-      passdb {
-        driver = passwd-file
-        args = ${config.sops.secrets."services/mail/users/superusers".path}
-        master = yes
-        result_success = continue
-      }
-    '';
   };
 
   #  services.rspamd.workers.controller = {
