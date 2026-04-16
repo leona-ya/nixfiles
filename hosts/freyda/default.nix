@@ -39,7 +39,6 @@
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-  boot.initrd.systemd.enable = true;
 
   l.sops.secrets = {
     "profiles/desktop/alt_rsa_ssh_key".owner = "leona";

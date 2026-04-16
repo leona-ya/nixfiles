@@ -49,7 +49,7 @@
             };
           };
           nix = {
-            size = "200G";
+            size = "400G";
             content = {
               type = "filesystem";
               format = "xfs";
@@ -63,6 +63,15 @@
               type = "filesystem";
               format = "xfs";
               mountpoint = "/home";
+              mountOptions = [ "x-systemd.device-timeout=0" ];
+            };
+          };
+          libvirt = {
+            size = "300G";
+            content = {
+              type = "filesystem";
+              format = "xfs";
+              mountpoint = "/var/lib/libvirt";
               mountOptions = [ "x-systemd.device-timeout=0" ];
             };
           };
