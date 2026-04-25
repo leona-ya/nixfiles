@@ -18,6 +18,7 @@ rec {
     {
       packages = {
         nix-eval-and-diff = pkgs.callPackage ./nix-eval-and-diff { };
+        nix-output-monitor = pkgs.callPackage ./nix-output-monitor/package.nix { };
         opendatamap-net = pkgs.callPackage ./opendatamap-net { };
         legitima = pkgs.callPackage ./legitima { };
         cups-brother-ptouch = pkgs.callPackage ./cups-brother-ptouch { };

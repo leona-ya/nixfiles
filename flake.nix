@@ -7,7 +7,7 @@
     nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
     nixpkgs-2511.url = "https://channels.nixos.org/nixos-25.11/nixexprs.tar.xz";
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-2.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
       #inputs.lix.follows = "lix";
     };
