@@ -8,7 +8,7 @@
 
 {
   imports = [
-    inputs.lix-module.nixosModules.default
+    inputs.lix-module.nixosModules.lixFromNixpkgs
     ./wezterm.nix
     ./applications.nix
     ./firefox.nix

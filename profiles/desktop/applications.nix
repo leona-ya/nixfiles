@@ -63,7 +63,6 @@
     gh
     harper
     inkscape
-    jetbrains.clion
     jetbrains.idea
     jetbrains.rust-rover
     keymapp
@@ -75,9 +74,9 @@
     nodejs
     #nheko
     mpv
-    (wrapOBS {
-      plugins = with obs-studio-plugins; [ wlrobs ];
-    })
+    #(wrapOBS {
+    #  plugins = with obs-studio-plugins; [ wlrobs ];
+    #})
     obsidian
     opentofu
     openssl_3
