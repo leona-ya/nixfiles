@@ -29,23 +29,9 @@
       in
       {
         meta = rec {
-          nixpkgs = import (
-            (import inputs.nixpkgs {
-              system = "x86_64-linux";
-            }).applyPatches
-            {
-              name = "nixpkgs-patched";
-              src = inputs.nixpkgs;
-              patches = [
-                (fetchpatch {
-                  url = "https://github.com/nixos/nixpkgs/commit/4ed16aacb358b22ec9e21cec2b48ef5a90fe800a.patch";
-                  revert = true;
-                  hash = "sha256-2uiSHXTH1Qp+Ztuux2mWlovo1VJmJ3U1OQ135vryfsM=";
-                })
-              ];
-            }
-          ) { system = "x86_64-linux"; };
-
+          nixpkgs = import inputs.nixpkgs {
+            system = "x86_64-linux";
+          };
           nodeNixpkgs =
             lib.genAttrs [ "ceto" "freyda" "turingmachine" ] (
               _:
