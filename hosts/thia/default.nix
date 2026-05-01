@@ -23,6 +23,7 @@
     ./disko.nix
     ./network.nix
     ./libvirt.nix
+    ./rebuilderd.nix
   ];
 
   deployment.allowLocalDeployment = true;
