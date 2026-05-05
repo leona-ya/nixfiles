@@ -81,7 +81,7 @@ in
         }
       ];
 
-      mail.CNAME = [ (ttl (60 * 5) (cname "koyo.net.infinitespace.dev.")) ];
+      mail.CNAME = [ "koyo.net.infinitespace.dev." ];
       autoconfig.CNAME = [ "koyo.net.infinitespace.dev." ];
       "wg-sternpunkt".CNAME = [ "wg.net.leona.is." ]; # backwards compatability
       "encladus.lan.int.sig.de".CNAME = [ "encladus.lan." ]; # backwards compatability

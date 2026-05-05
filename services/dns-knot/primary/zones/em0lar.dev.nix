@@ -45,7 +45,7 @@ with dns.lib.combinators;
     subdomains = hosthelper.services.dns-int.g_dns_records // {
       "wg.net".CNAME = [ "haku.net.leona.is." ];
 
-      mail.CNAME = [ (ttl (60 * 5) (cname "koyo.net.infinitespace.dev.")) ];
+      mail.CNAME = [ "koyo.net.infinitespace.dev." ];
       autoconfig.CNAME = [ "koyo.net.infinitespace.dev." ];
       "wg-sternpunkt".CNAME = [ "wg.net.leona.is." ]; # backwards compatability
 

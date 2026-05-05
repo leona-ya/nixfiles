@@ -38,7 +38,7 @@
     subdomains = {
       autoconfig.CNAME = [ "koyo.net.infinitespace.dev." ];
       cloud.CNAME = [ "biro.net.infinitespace.dev." ];
-      mail.CNAME = [ (ttl (60 * 5) (cname "koyo.net.infinitespace.dev.")) ];
+      mail.CNAME = [ "koyo.net.infinitespace.dev." ];
       wg.CNAME = [ "biro.net.infinitespace.dev." ];
     };
   };
