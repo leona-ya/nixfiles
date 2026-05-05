@@ -1,7 +1,5 @@
 {
   config,
-  inputs,
-  pkgs,
   ...
 }:
 
@@ -15,17 +13,17 @@
     ./autoconfig.nix
   ];
 
-  l.sops.secrets."services/mail/users/superusers".owner = "dovecot2";
-
-  security.acme.certs."${config.networking.hostName}.net.leona.is".extraDomainNames = [
+  security.acme.certs."${config.networking.hostName}.net.infinitespace.dev".extraDomainNames = [
+    # Clean up as soon as turingmachine is deprecated
     "mail.em0lar.dev"
     "mail.leona.is"
     "mail.maroni.me"
+    "mail.infinitespace.dev"
   ];
   mailserver = {
     enable = true;
     stateVersion = 3;
-    fqdn = "${config.networking.hostName}.net.leona.is";
+    fqdn = "${config.networking.hostName}.net.infinitespace.dev";
     messageSizeLimit = 52428800;
 
     enableImap = false;
@@ -37,17 +35,9 @@
 
     localDnsResolver = false;
     lmtpSaveToDetailMailbox = false;
-    x509.useACMEHost = "${config.networking.hostName}.net.leona.is";
+    x509.useACMEHost = "${config.networking.hostName}.net.infinitespace.dev";
   };
 
-  #  services.rspamd.workers.controller = {
-  #    bindSockets = [{
-  #      socket = "127.0.0.1:11334";
-  #    }];
-  #    extraConfig = ''
-  #      secure_ip = "127.0.0.1"
-  #    '';
-  #  };
   services.rspamd = {
     locals = {
       "groups.conf".text = ''

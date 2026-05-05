@@ -154,25 +154,6 @@ rec {
         };
       };
     };
-    kupe = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:c21:300::1";
-        hasPublicIpv4 = true;
-        hasPublicIpv6 = true;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.kupe.meta.intIpv6}/72" ];
-              publicKey = "g2gq/9nAYSHx4NidfN/w8uQXX8SXoi2S0qQfN+ascAY=";
-              routed = [ "${hosts.kupe.meta.intIpv6}/72" ];
-              hostname = "kupe.net.leona.is";
-            };
-          };
-        };
-      };
-    };
     gaika = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:10:11:32ff:fe2a:888e";
@@ -234,15 +215,6 @@ rec {
                 { Destination = "2a0f:4ac0:1e0::/48"; }
               ];
               extraWireguardPeers = [
-                {
-                  # kupe
-                  Endpoint = "kupe.net.leona.is:51440";
-                  AllowedIPs = [
-                    "195.39.247.146/32"
-                  ];
-                  PublicKey = "6yX+Sfr6KlIn4ThOcRW9NH5iWhzmr6wrOgwMhxOSnTg=";
-                  PersistentKeepalive = 21;
-                }
                 {
                   # dwd
                   AllowedIPs = [

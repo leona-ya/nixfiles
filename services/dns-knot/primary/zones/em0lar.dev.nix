@@ -49,18 +49,17 @@ in
     AAAA = helper.hosts.web.AAAA;
 
     subdomains = hosthelper.services.dns-int.g_dns_records // {
-      "kupe.net" = kupe_host;
       "wg.net".CNAME = [ "haku.net.leona.is." ];
 
       "ns1" = kupe_host;
       "ns2" = haku_host;
       "ns3" = naiad_host;
 
-      mail = kupe_host;
-      autoconfig.CNAME = [ "kupe.net.leona.is." ];
+      mail.CNAME = [ (ttl (60 * 5) (cname "koyo.net.infinitespace.dev.")) ];
+      autoconfig.CNAME = [ "koyo.net.infinitespace.dev." ];
       "wg-sternpunkt".CNAME = [ "wg.net.leona.is." ]; # backwards compatability
 
-      "ca".MX = [ (mx.mx 10 "kupe.net.leona.is.") ];
+      "ca".MX = [ (mx.mx 10 "koyo.net.infinitespace.dev.") ];
       "ca".TXT = [ helper.mail.spf ];
       "ca".DKIM = [
         {

@@ -36,7 +36,7 @@
     CAA = helper.caa;
 
     subdomains = {
-      autoconfig.CNAME = [ "kupe.net.leona.is." ];
+      autoconfig.CNAME = [ "koyo.net.infinitespace.dev" ];
     };
   };
 }

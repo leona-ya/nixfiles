@@ -10,7 +10,7 @@ with dns.lib.combinators;
   ];
   mail = rec {
     mxSimple = [
-      (mx.mx 10 "kupe.net.leona.is.")
+      (ttl (60 * 5) (mx.mx 10 "koyo.net.infinitespace.dev."))
     ];
     spf = (
       with dns.lib.combinators.spf;

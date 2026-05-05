@@ -81,12 +81,12 @@ in
         }
       ];
 
-      mail = kupe_host;
-      autoconfig.CNAME = [ "kupe.net.leona.is." ];
+      mail.CNAME = [ (ttl (60 * 5) (cname "koyo.net.infinitespace.dev.")) ];
+      autoconfig.CNAME = [ "koyo.net.infinitespace.dev." ];
       "wg-sternpunkt".CNAME = [ "wg.net.leona.is." ]; # backwards compatability
       "encladus.lan.int.sig.de".CNAME = [ "encladus.lan." ]; # backwards compatability
 
-      "ca".MX = [ (mx.mx 10 "kupe.net.leona.is.") ];
+      "ca".MX = [ (mx.mx 10 "koyo.net.infinitespace.dev.") ];
       "ca".TXT = [ helper.mail.spf ];
       "ca".DKIM = [
         {

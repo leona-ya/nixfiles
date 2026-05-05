@@ -36,9 +36,9 @@
     CAA = helper.caa;
 
     subdomains = {
-      autoconfig.CNAME = [ "kupe.net.leona.is." ];
+      autoconfig.CNAME = [ "koyo.net.infinitespace.dev." ];
       cloud.CNAME = [ "biro.net.infinitespace.dev." ];
-      mail.CNAME = [ "kupe.net.leona.is." ];
+      mail.CNAME = [ (ttl (60 * 5) (cname "koyo.net.infinitespace.dev.")) ];
       wg.CNAME = [ "biro.net.infinitespace.dev." ];
     };
   };
