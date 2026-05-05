@@ -8,7 +8,6 @@ keys:
   - &emuno age1kkzhz4r2dx6m9eg05ehxkc6h4ku6c6ag2r6gdsrqk3e6wzdzpqascj5yeg
   - &freyda age1extnp5hlhrzraj96n3ntqhlr7p6jxcypwxf4a20vtjf6gc0ch4tq5qdljp
   - &gaika age19yum7ka8gn7pm5qgrjhcx4ac2sclk3d7wl2088750v508ghzrpnsjwvynj
-  - &kupe age1udlqpz3mcwnnrng4wg7w79674e4plrydmeqna3axy8sczq5gushqdhac3p
   - &koyo age1v6qevjavkadk3a2fxqp4fpav9f2ytv37jakm4vxpfvt7kcj445lsp3ksgq
   - &laurake age17h9eyjh575jte8tz45rwkrc5ksd4gyfn6lt75lzrx4emx3vmvqysqq9h2j
   - &moka age1r8dpxty0r2ty86r6gj7df2ejfd8x7pj75tnyulplud3dcevj5acqa88z4y
@@ -31,7 +30,6 @@ creation_rules:
           - *emuno
           - *freyda
           - *gaika
-          - *kupe
           - *koyo
           - *laurake
           - *moka
@@ -84,12 +82,6 @@ creation_rules:
           - *leona
         age:
           - *gaika
-  - path_regex: secrets/hosts/kupe.yaml
-    key_groups:
-      - pgp:
-          - *leona
-        age:
-          - *kupe
   - path_regex: secrets/hosts/koyo.yaml
     key_groups:
       - pgp:
@@ -173,7 +165,6 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *kupe
           - *koyo
   - path_regex: secrets/services/(gitlab|gitlab-runner).yaml
     key_groups:
@@ -192,7 +183,6 @@ creation_rules:
       - pgp:
           - *leona
         age:
-          - *kupe
           - *koyo
   - path_regex: secrets/services/dns-knot-secondary.yaml
     key_groups:
