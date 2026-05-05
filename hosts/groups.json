@@ -2,12 +2,10 @@
   "best-effort": {
     "hosts": [
       "bij",
-      "kupe"
     ]
   },
   "dns": {
     "hosts": [
-      "kupe",
       "naiad"
     ]
   },
@@ -16,7 +14,6 @@
       "biro",
       "dwd",
       "gaika",
-      "kupe",
       "laurake",
       "moka",
       "rutile",
@@ -28,7 +25,6 @@
       "biro",
       "dwd",
       "gaika",
-      "kupe",
       "rutile"
     ]
   }
