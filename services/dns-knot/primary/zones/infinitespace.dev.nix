@@ -22,8 +22,15 @@
 
     NS = helper.ns;
 
+    MX = helper.mail.mxSimple;
     TXT = [
       helper.mail.spf
+    ];
+    DKIM = [
+      {
+        selector = "mail";
+        p = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3NCoEOr844X8fUqNkVJCZj7rAXMmk//L0KlLv75FlVmjl1aXT7t/c+wvg56y9y/RAUDBM8uHOK+IWgR2S8zKknZEaHKLM4fnVBNUYsIMVJ2LHfvCPc/0oh/ZAf1Z7h3VXfeX8vXe8nax+7MTdw2v7ZHnfgfZ8Y3qYvtKQX+l4XeslIMYVkQ5bSmHsX73uShKCxC6RgYTOA6xQDFffkFDhImm95lMgyFxB4sdmchKmjsVf3tYUE5vKP645xBI6CLr7BDw8VTpe1Ab62HpFyhSiU7Y8J6Wgi/1eQ4f8EnYya48+bkT8gSBP8IINL2pRu6D0Ybgt+MBNLa2B5J4MtM/uQIDAQAB";
+      }
     ];
     DMARC = helper.mail.dmarc;
 
@@ -46,6 +53,7 @@
       "discourse.stag".AAAA = [ "2a01:4f9:3a:1448:4000:4a1a::" ];
 
       abs.CNAME = [ "biro.net.infinitespace.dev." ];
+      mail.CNAME = [ "koyo.net.infinitespace.dev." ];
       social.A = helper.hosts.web.A;
       social.AAAA = [ "2a01:4f9:3a:1448:4000:10::" ];
       "dyn".NS = [

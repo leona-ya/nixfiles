@@ -7,13 +7,13 @@
   imports = [
     (fetchGit {
       url = "gitlab@forkspace.net:leona/nixfiles-mail-secrets.git";
-      rev = "3e684e9364a045fca5ebbef18f44d8f33d7d6690";
+      rev = "666364492dffa4c87a1a29cc5e42d9344fd0fbdf";
       ref = "main";
     }).outPath
     ./autoconfig.nix
   ];
 
-  security.acme.certs."${config.networking.hostName}.net.infinitespace.dev".extraDomainNames = [
+  security.acme.certs."${config.networking.fqdn}".extraDomainNames = [
     # Clean up as soon as turingmachine is deprecated
     "mail.em0lar.dev"
     "mail.leona.is"
@@ -23,7 +23,7 @@
   mailserver = {
     enable = true;
     stateVersion = 3;
-    fqdn = "${config.networking.hostName}.net.infinitespace.dev";
+    fqdn = config.networking.fqdn;
     messageSizeLimit = 52428800;
 
     enableImap = false;
@@ -35,7 +35,15 @@
 
     localDnsResolver = false;
     lmtpSaveToDetailMailbox = false;
-    x509.useACMEHost = "${config.networking.hostName}.net.infinitespace.dev";
+    x509.useACMEHost = config.networking.fqdn;
+  };
+
+  services.nginx.virtualHosts = {
+    "${config.networking.fqdn}" = {
+      forceSSL = true;
+      useACMEHost = config.networking.fqdn;
+      locations."/".root = ./web-contact;
+    };
   };
 
   services.rspamd = {
