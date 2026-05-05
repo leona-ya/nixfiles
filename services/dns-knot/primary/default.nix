@@ -203,6 +203,21 @@ in
           );
           template = "signedprimary";
         };
+        "fahrplandatengarten.de" = {
+          file = dnsutil.writeZone "fahrplandatengarten.de" (
+            lib.recursiveUpdate
+              (import zones/fahrplandatengarten.de.nix {
+                inherit
+                  helper
+                  lib
+                  dns
+                  config
+                  ;
+              }).zone
+              { subdomains = (generateACMERecordsPerZone "fahrplandatengarten.de"); }
+          );
+          template = "signedprimary";
+        };
         "forkspace.net" = {
           file = dnsutil.writeZone "forkspace.net" (
             lib.recursiveUpdate

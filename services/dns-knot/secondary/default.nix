@@ -75,12 +75,6 @@
           acl = "internal_notify";
         };
 
-        # fdg
-        "fahrplandatengarten.de" = {
-          master = "fdg_ns1";
-          acl = "fdg_notify";
-        };
-
         # kloenk
         "kloenk.de" = {
           template = "kloenk_secondary";
