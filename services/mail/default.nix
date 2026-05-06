@@ -53,7 +53,7 @@
           "FORGED_RECIPIENTS" { weight = 0; }
           "FORGED_SENDER" { weight = 0; }
           "BAYES_HAM" { weight = -4; }
-          "BAYES_SPAM" { weight = 6.5; }
+          "BAYES_SPAM" { weight = 7.3; }
         }'';
       "multimap.conf".text = ''
         BAD_SUBJECT_BL {
