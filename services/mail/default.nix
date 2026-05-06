@@ -7,7 +7,7 @@
   imports = [
     (fetchGit {
       url = "gitlab@forkspace.net:leona/nixfiles-mail-secrets.git";
-      rev = "666364492dffa4c87a1a29cc5e42d9344fd0fbdf";
+      rev = "7a60d01f60978ef0d938d33dfcc3f727b361b7da";
       ref = "main";
     }).outPath
     ./autoconfig.nix
@@ -36,14 +36,6 @@
     localDnsResolver = false;
     lmtpSaveToDetailMailbox = false;
     x509.useACMEHost = config.networking.fqdn;
-  };
-
-  services.nginx.virtualHosts = {
-    "${config.networking.fqdn}" = {
-      forceSSL = true;
-      useACMEHost = config.networking.fqdn;
-      locations."/".root = ./web-contact;
-    };
   };
 
   services.rspamd = {

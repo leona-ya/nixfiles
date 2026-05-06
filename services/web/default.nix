@@ -20,6 +20,13 @@ let
         };
       };
     };
+    "infinitespace.dev" = {
+      locations = {
+        "/" = {
+          extraConfig = "return 307 https://leona.is$request_uri;";
+        };
+      };
+    };
     "leona.is" =
       let
         client = {

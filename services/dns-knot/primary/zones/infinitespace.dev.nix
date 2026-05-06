@@ -36,6 +36,9 @@
 
     CAA = helper.caa;
 
+    A = helper.hosts.web.A;
+    AAAA = helper.hosts.web.AAAA;
+
     subdomains = {
       "biro.net" = host "95.217.67.8" "2a01:4f9:3a:1448:4000:b11::";
       "emuno.net" = host "95.217.67.9" "2a01:4f9:3a:1448:4000:12::";
