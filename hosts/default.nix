@@ -35,7 +35,7 @@
           nodeNixpkgs =
             lib.genAttrs [ "ceto" "freyda" "turingmachine" ] (
               _:
-              import inputs.nixpkgs-unstable {
+              import inputs.nixpkgs {
                 system = "x86_64-linux";
               }
             )
@@ -46,21 +46,6 @@
               }
             )
             // {
-              laurake = import (
-                (import inputs.nixpkgs {
-                  system = "x86_64-linux";
-                }).applyPatches
-                {
-                  name = "nixpkgs-patched";
-                  src = inputs.nixpkgs;
-                  patches = [
-                    (fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/514527.patch";
-                      hash = "sha256-0xn/2QGrNUy75R5u2D+dEE7/zPEVkzINn+92E6AzNl0=";
-                    })
-                  ];
-                }
-              ) { system = "x86_64-linux"; };
               thia = import (
                 (import inputs.nixpkgs {
                   system = "x86_64-linux";
