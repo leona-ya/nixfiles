@@ -55,12 +55,6 @@
   users.users.leona.hashedPasswordFile = config.sops.secrets."profiles/desktop/user_leona_pw".path;
   security.sudo-rs.wheelNeedsPassword = true;
 
-  home-manager.users.leona = {
-    programs.ssh.extraConfig = ''
-      IdentityFile ${config.sops.secrets."profiles/desktop/alt_rsa_ssh_key".path}
-    '';
-  };
-
   hardware.framework.amd-7040.preventWakeOnAC = true;
   hardware.framework.laptop13.audioEnhancement.enable = false;
   # broken with linux 6.13
