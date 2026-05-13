@@ -49,6 +49,7 @@
               type = "filesystem";
               format = "xfs";
               mountpoint = "/";
+              mountOptions = [ "x-systemd.device-timeout=0" ];
             };
           };
         };
