@@ -14,6 +14,7 @@ keys:
   - &neris age19d5w6qtgvwvy0djaye085ae4qk9vmmj95fwqsn8a89mxz3zfkcsqg5zlnc
   - &rutile age1tfsxwt56ww42tzuxv65fmpx0eefa8qrek2wrn2wtxdaqpddugsnqg06p8m
   - &thia age1st8tawt7qsf7q24nknscrwzw6d6fcveylggtf2az36j0nke7jv7sx7ce4q
+  - &thizy age1janqf69cyp8ttp0hy03pwfzdsh7wmfl9wqj7rccfuv9mf4mstptq6c2gh9
   - &turingmachine age1rcxgtdwh3u7u6lzh9558sqfrs9ndwnzhsjqj57hvdtapcjynvs8szhdw4t
   - &shioto age1cdcgwcgls6aj0lju7w6fm97ewzg7jy86ndk2ygmygad8takns56qu8cvwc
 creation_rules:
@@ -36,6 +37,7 @@ creation_rules:
           - *neris
           - *rutile
           - *thia
+          - *thizy
           - *turingmachine
           - *shioto
 
@@ -119,6 +121,12 @@ creation_rules:
           - *leona
         age:
           - *thia
+  - path_regex: secrets/hosts/thizy.yaml
+    key_groups:
+      - pgp:
+          - *leona
+        age:
+          - *thizy
   - path_regex: secrets/hosts/turingmachine.yaml
     key_groups:
       - pgp:
@@ -141,6 +149,7 @@ creation_rules:
           - *ceto
           - *freyda
           - *thia
+          - *thizy
           - *turingmachine
 
   # services
