@@ -83,7 +83,7 @@
       nurl
       nix-update
       nix-tree
-      nixpkgs-review
+      lixPackageSets.git.nixpkgs-review
     ];
   };
 }
