@@ -46,7 +46,7 @@
         signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };
       settings = {
-        user.mail = "lm@flyingcircus.io";
+        user.email = "lm@flyingcircus.io";
       };
     };
     programs.jujutsu.settings = {
