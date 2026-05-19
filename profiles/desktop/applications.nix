@@ -118,7 +118,8 @@
     nurl
     nix-update
     nix-tree
-    nixpkgs-review
+    lixPackageSets.latest.nixpkgs-review
+    lixPackageSets.latest.nix-eval-jobs
   ];
 
   #boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];

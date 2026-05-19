@@ -8,7 +8,6 @@
 
 {
   imports = [
-    inputs.lix-module.nixosModules.default
     ./wezterm.nix
     ./applications.nix
     ./firefox.nix

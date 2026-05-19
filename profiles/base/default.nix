@@ -28,7 +28,7 @@
   home-manager.useGlobalPkgs = true;
   nixpkgs.config.allowUnfree = true;
   nix = {
-    package = pkgs.lix;
+    package = pkgs.lixPackageSets.latest.lix;
     settings = {
       auto-optimise-store = true;
       experimental-features = [
