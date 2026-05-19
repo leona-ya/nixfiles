@@ -54,6 +54,9 @@
     useACMEHost = "paperless.int.leona.is";
     forceSSL = true;
     kTLS = true;
+    extraConfig = ''
+      client_max_body_size 50M;
+    '';
     locations."/" = {
       proxyPass = "http://127.0.0.1:28981";
       proxyWebsockets = true;
@@ -61,7 +64,6 @@
         auth_request_set $auth_resp_x_vouch_email $upstream_http_x_vouch_user;
         auth_request_set $auth_resp_x_vouch_username $upstream_http_x_vouch_idp_claims_preferred_username;
         proxy_set_header X-Auth-Remote-User $auth_resp_x_vouch_username;
-        client_max_body_size 30M;
       '';
     };
   };
