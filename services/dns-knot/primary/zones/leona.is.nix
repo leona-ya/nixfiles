@@ -117,7 +117,6 @@ in
       "mqtt.bn.int".A = [ "10.151.5.49" ];
       "mqtt.bn.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
       "prometheus.bn.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];
-      yt.CNAME = [ "biro.net.infinitespace.dev." ];
       assets.CNAME = [ "biro.net.infinitespace.dev." ];
       a.CNAME = [ "biro.net.infinitespace.dev." ];
       found.CNAME = [ "biro.net.infinitespace.dev." ];

@@ -51,6 +51,7 @@
         "cloud.leona.is"
         "fin.leona.is"
         "photos.leona.is"
+        "yt.infinitespace.dev"
         "yt.leona.is"
         "abs.infinitespace.dev"
       ];
