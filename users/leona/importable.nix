@@ -9,8 +9,8 @@
     lib.mkMerge [
       {
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkvy9P1Qweq1kykgn3IWIBWe/v/dTNAx+hd9i2aKe1O openpgp:0xCACA6CB6"
           "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBOMNkfG3xFDgwLs+aj9n/UXw5Feww1dZG7K/wUbsNHpybzgWcb4t/387aKbu9vu3TwOYdDWj6zaE2pytjQi9/ltz11ybNm3djwbp142fn9Cr8rmbqL5aK6vNbMmR+pM5QA== openpgp:0x2611E806"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIND0WQXBfaN/udDfaAEVVbuiT6e2kEQVLj7obNYNsZNm openpgp:0x601E9ACE"
         ];
         shell = pkgs.zsh;
       }
@@ -111,7 +111,7 @@
       enable = true;
       signing = {
         format = lib.mkDefault "openpgp";
-        key = lib.mkDefault "B50CB5BA6A620411098CD9C8F0E55407FC6FF7BA";
+        key = lib.mkDefault "E305160C115EAA70BA331F4C71EED1CAA4841A1F";
         signByDefault = true;
       };
       ignores = [
@@ -142,7 +142,7 @@
         };
         signing = {
           backend = lib.mkDefault "gpg";
-          key = lib.mkDefault "B50CB5BA6A620411098CD9C8F0E55407FC6FF7BA";
+          key = lib.mkDefault "E305160C115EAA70BA331F4C71EED1CAA4841A1F";
         };
         user = {
           name = "Leona Maroni";
