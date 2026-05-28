@@ -21,6 +21,8 @@
   users.groups.test = { };
 
   services.postgresql.package = pkgs.postgresql_18;
+  services.mysql.enable = true;
+  services.mysql.package = pkgs.mysql84;
 
   system.stateVersion = "26.05";
 }
