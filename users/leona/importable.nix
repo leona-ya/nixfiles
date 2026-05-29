@@ -9,7 +9,6 @@
     lib.mkMerge [
       {
         openssh.authorizedKeys.keys = [
-          "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBOMNkfG3xFDgwLs+aj9n/UXw5Feww1dZG7K/wUbsNHpybzgWcb4t/387aKbu9vu3TwOYdDWj6zaE2pytjQi9/ltz11ybNm3djwbp142fn9Cr8rmbqL5aK6vNbMmR+pM5QA== openpgp:0x2611E806"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIND0WQXBfaN/udDfaAEVVbuiT6e2kEQVLj7obNYNsZNm openpgp:0x601E9ACE"
         ];
         shell = pkgs.zsh;
