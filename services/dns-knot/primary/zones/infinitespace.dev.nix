@@ -59,6 +59,8 @@
       mail.CNAME = [ "koyo.net.infinitespace.dev." ];
       social.A = helper.hosts.web.A;
       social.AAAA = [ "2a01:4f9:3a:1448:4000:10::" ];
+      webirc.A = helper.hosts.web.A;
+      webirc.AAAA = [ "2a01:4f9:3a:1448:4000:10::" ];
       yt.CNAME = [ "biro.net.infinitespace.dev." ];
       "dyn".NS = [
         "ns1.leona.is."

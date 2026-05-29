@@ -18,6 +18,7 @@
     ../../services/netbox
     ../../services/tandoor
     ../../services/gotosocial-is
+    ../../services/thelounge
   ];
 
   l.backups.enable = true;
