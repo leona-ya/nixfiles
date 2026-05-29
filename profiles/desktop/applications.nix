@@ -99,6 +99,7 @@
     typst
     ty
     thunderbird
+    uv
     virt-manager
     yarn
     yt-dlp
