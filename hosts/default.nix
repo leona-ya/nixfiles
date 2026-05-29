@@ -33,7 +33,7 @@
             system = "x86_64-linux";
           };
           nodeNixpkgs =
-            lib.genAttrs [ "ceto" "freyda" "turingmachine" ] (
+            lib.genAttrs [ "ceto" "freyda" "thizy" ] (
               _:
               import inputs.nixpkgs-unstable {
                 system = "x86_64-linux";
