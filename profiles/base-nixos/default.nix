@@ -38,18 +38,17 @@
   networking.firewall.filterForward = true;
   networking.useDHCP = false;
   services.resolved = lib.mkMerge [
-    {
-      dnssec = "false"; # broken :(
-    }
     (lib.optionalAttrs (options.services.resolved ? settings) {
       settings.Resolve = {
         FallbackDNS = "";
         Cache = "no-negative";
+        DNSSEC = "false"; # broken :(
       };
     })
     (lib.optionalAttrs
       (options.services.resolved ? extraConfig && (options.services.resolved.extraConfig.visible or true))
       {
+        dnssec = "false"; # broken :(
         extraConfig = ''
           FallbackDNS=
           Cache=no-negative

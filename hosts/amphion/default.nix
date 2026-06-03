@@ -61,9 +61,9 @@
       extraConfig = ''
         IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
       '';
-      matchBlocks."*.net.leona.is".extraOptions.IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
-      matchBlocks."*.wg.net.leona.is".extraOptions.IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
-      matchBlocks."forkspace.net".extraOptions.IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
+      settings."*.net.leona.is".extraOptions.IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
+      settings."*.wg.net.leona.is".extraOptions.IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
+      settings."forkspace.net".extraOptions.IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
     };
   };
 }

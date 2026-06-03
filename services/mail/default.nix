@@ -7,7 +7,7 @@
   imports = [
     (fetchGit {
       url = "gitlab@forkspace.net:leona/nixfiles-mail-secrets.git";
-      rev = "7a60d01f60978ef0d938d33dfcc3f727b361b7da";
+      rev = "ad25e11c2a8d892a657d8a6e372534e2958f0265";
       ref = "main";
     }).outPath
     ./autoconfig.nix
@@ -31,7 +31,7 @@
     enablePop3 = false;
     enablePop3Ssl = false;
 
-    dkimKeyBits = 2048;
+    dkim.defaults.keyLength = 2048;
 
     localDnsResolver = false;
     lmtpSaveToDetailMailbox = false;
