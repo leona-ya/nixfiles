@@ -45,6 +45,7 @@
         "netbox.leona.is"
         "pass.leona.is"
         "social.infinitespace.dev"
+        "webirc.infinitespace.dev"
       ];
       "thia.wg.net.leona.is" = [
         "cloud.maroni.me"
@@ -52,7 +53,6 @@
         "fin.leona.is"
         "photos.leona.is"
         "yt.infinitespace.dev"
-        "yt.leona.is"
         "abs.infinitespace.dev"
       ];
       "shioto.net.infinitespace.dev" = [
