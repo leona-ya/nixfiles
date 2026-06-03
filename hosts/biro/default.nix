@@ -14,14 +14,6 @@
     ../../services/web
     ../../services/snipe-it
     ../../services/dns-knot/secondary
-    ../../services/dns-kresd
-  ];
-
-  services.kresd.listenPlain = [
-    "127.0.0.1:53"
-    "[::1]:53"
-    "10.151.9.1:53"
-    "[fd8f:d15b:9f40:900::1]:53"
   ];
 
   # Secondary DNS
