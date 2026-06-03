@@ -19,7 +19,7 @@
             inputs.home-manager.nixosModules.home-manager
           ]
           ++ lib.optionals (name == "moka") [
-            inputs.home-manager-2511.nixosModules.home-manager
+            inputs.home-manager-2605.nixosModules.home-manager
           ];
         });
         fetchpatch =
@@ -41,7 +41,7 @@
             )
             // lib.genAttrs [ "moka" ] (
               _:
-              import inputs.nixpkgs-2511 {
+              import inputs.nixpkgs-2605 {
                 system = "x86_64-linux";
               }
             )

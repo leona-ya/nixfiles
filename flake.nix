@@ -6,7 +6,7 @@
     nixpkgs-darwin.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
     nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
-    nixpkgs-2511.url = "https://channels.nixos.org/nixos-25.11-small/nixexprs.tar.xz";
+    nixpkgs-2605.url = "https://channels.nixos.org/nixos-26.05-small/nixexprs.tar.xz";
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,9 +22,9 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager-2511 = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-2511";
+    home-manager-2605 = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     leona-is-website = {
       url = "gitlab:leona/leona.is?host=forkspace.net";

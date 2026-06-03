@@ -376,23 +376,23 @@
         "type": "github"
       }
     },
-    "home-manager-2511": {
+    "home-manager-2605": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-2511"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
-        "lastModified": 1779506708,
-        "narHash": "sha256-QOD/CNm196nCJRheux/URi4/HE66fthdOMqCJoPP1Y0=",
+        "lastModified": 1780361225,
+        "narHash": "sha256-wnV9ttf4fPWNonBIQmvlrSlNpQYgx5HgWWd007mwIFA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3ee51fbdac8c8bdfe1e7e1fcaba6520a563f394f",
+        "rev": "e28654b71096e08c019d4861ca26acb646f583d8",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-25.11",
+        "ref": "release-26.05",
         "repo": "home-manager",
         "type": "github"
       }
@@ -558,17 +558,17 @@
         "type": "github"
       }
     },
-    "nixpkgs-2511": {
+    "nixpkgs-2605": {
       "locked": {
-        "lastModified": 1780490578,
-        "narHash": "sha256-ArpCOXHNkZPrzmpchsFtAWkpZZxRhAcn4je8HAJeoN8=",
-        "rev": "b1fcd8f90a2f7290a8a4c4f5aed5a2a978e9d2ba",
+        "lastModified": 1780558054,
+        "narHash": "sha256-j2ZVTOQ3Cq0mKJivTaVuEbNjIUIY5UQvQpMfzE7Om84=",
+        "rev": "8097a7e15894234611af65bd7ba9de8b9c281322",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/25.11-small/nixos-25.11.11904.b1fcd8f90a2f/nixexprs.tar.xz?lastModified=1780490578&rev=b1fcd8f90a2f7290a8a4c4f5aed5a2a978e9d2ba"
+        "url": "https://releases.nixos.org/nixos/26.05-small/nixos-26.05.1259.8097a7e15894/nixexprs.tar.xz?lastModified=1780558054&rev=8097a7e15894234611af65bd7ba9de8b9c281322"
       },
       "original": {
         "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-25.11-small/nixexprs.tar.xz"
+        "url": "https://channels.nixos.org/nixos-26.05-small/nixexprs.tar.xz"
       }
     },
     "nixpkgs-darwin": {
@@ -720,7 +720,7 @@
         "dns": "dns",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
-        "home-manager-2511": "home-manager-2511",
+        "home-manager-2605": "home-manager-2605",
         "lanzaboote": "lanzaboote",
         "leona-is-website": "leona-is-website",
         "lix": "lix",
@@ -728,7 +728,7 @@
         "mailserver": "mailserver",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-2511": "nixpkgs-2511",
+        "nixpkgs-2605": "nixpkgs-2605",
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-staging-next": "nixpkgs-staging-next",
         "nixpkgs-unstable": "nixpkgs-unstable",
