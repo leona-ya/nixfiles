@@ -46,6 +46,21 @@
               }
             )
             // {
+              laurake = import (
+                (import inputs.nixpkgs {
+                  system = "x86_64-linux";
+                }).applyPatches
+                {
+                  name = "nixpkgs-patched";
+                  src = inputs.nixpkgs;
+                  patches = [
+                    (fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/531004.patch";
+                      hash = "sha256-vC6u4whytqBlYuwDb4CzltbiAOKel4RIYUD8xYsztwk=";
+                    })
+                  ];
+                }
+              ) { system = "x86_64-linux"; };
               thia = import (
                 (import inputs.nixpkgs {
                   system = "x86_64-linux";
@@ -56,7 +71,7 @@
                   patches = [
                     (fetchpatch {
                       url = "https://github.com/NixOS/nixpkgs/pull/515100.patch";
-                      hash = "sha256-NfbyX7fwd+O2u1v7Fl35pvq0MDPqj/YwRG8OvJS3oXI=";
+                      hash = "sha256-Vl5zodjDCsaPa6O15+2m9oOqhxzL1lY31MfGuzjsyHg=";
                     })
                   ];
                 }
