@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    inputs.mailserver.nixosModule
+    inputs.mailserver.nixosModules.default
     ../../profiles/moka-libvirt
     ./network.nix
     inputs.disko.nixosModules.disko

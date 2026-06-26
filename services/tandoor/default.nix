@@ -93,6 +93,7 @@
 
         SOCIAL_DEFAULT_ACCESS = 1;
         SOCIAL_DEFAULT_GROUP = "user";
+        ALLOWED_HOSTS = "nomsable.eu";
       };
     };
 

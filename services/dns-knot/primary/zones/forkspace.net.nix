@@ -28,5 +28,9 @@
 
     A = [ "95.217.67.9" ];
     AAAA = [ "2a01:4f9:3a:1448:4000:12::" ];
+
+    subdomains = {
+      registry.CNAME = [ "emuno.net.infinitespace.dev." ];
+    };
   };
 }

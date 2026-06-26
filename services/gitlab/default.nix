@@ -104,6 +104,13 @@
           }
         ];
       };
+      registry = {
+        enable = true;
+        package = pkgs.gitlab-container-registry;
+        externalAddress = "registry.forkspace.net";
+        certFile = "/var/lib/gitlab/cert.crt";
+        keyFile = "/var/lib/gitlab/key.key";
+      };
     };
   };
 

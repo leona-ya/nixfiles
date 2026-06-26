@@ -35,7 +35,7 @@
           nodeNixpkgs =
             lib.genAttrs [ "ceto" "freyda" "thizy" ] (
               _:
-              import inputs.nixpkgs-unstable {
+              import inputs.nixpkgs {
                 system = "x86_64-linux";
               }
             )
@@ -46,36 +46,21 @@
               }
             )
             // {
-              laurake = import (
-                (import inputs.nixpkgs {
-                  system = "x86_64-linux";
-                }).applyPatches
-                {
-                  name = "nixpkgs-patched";
-                  src = inputs.nixpkgs;
-                  patches = [
-                    (fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/531004.patch";
-                      hash = "sha256-vC6u4whytqBlYuwDb4CzltbiAOKel4RIYUD8xYsztwk=";
-                    })
-                  ];
-                }
-              ) { system = "x86_64-linux"; };
-              thia = import (
-                (import inputs.nixpkgs {
-                  system = "x86_64-linux";
-                }).applyPatches
-                {
-                  name = "nixpkgs-patched";
-                  src = inputs.nixpkgs;
-                  patches = [
-                    (fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/515100.patch";
-                      hash = "sha256-Vl5zodjDCsaPa6O15+2m9oOqhxzL1lY31MfGuzjsyHg=";
-                    })
-                  ];
-                }
-              ) { system = "x86_64-linux"; };
+              #thia = import (
+              #  (import inputs.nixpkgs {
+              #    system = "x86_64-linux";
+              #  }).applyPatches
+              #  {
+              #    name = "nixpkgs-patched";
+              #    src = inputs.nixpkgs;
+              #    patches = [
+              #      (fetchpatch {
+              #        url = "https://github.com/NixOS/nixpkgs/pull/515100.patch";
+              #        hash = "sha256-Vl5zodjDCsaPa6O15+2m9oOqhxzL1lY31MfGuzjsyHg=";
+              #      })
+              #    ];
+              #  }
+              #) { system = "x86_64-linux"; };
             };
 
           specialArgs = {
