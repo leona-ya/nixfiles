@@ -35,7 +35,7 @@
           nodeNixpkgs =
             lib.genAttrs [ "ceto" "freyda" "thizy" ] (
               _:
-              import inputs.nixpkgs {
+              import inputs.nixpkgs-unstable {
                 system = "x86_64-linux";
               }
             )
