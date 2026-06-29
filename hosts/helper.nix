@@ -64,7 +64,7 @@ rec {
                     "10.151.9.7/32"
                     "fd8f:d15b:9f40:0901:300::1/72"
                   ];
-                  PublicKey = "1ZhRSfPcAbEYVk3AYuHjDj+6VoxgU4VbSHQqoj5TB0o=";
+                  PublicKey = "XGx7Ja0EU7qRpvn+fEfR62l7zWYyzjzcoZzvEghHrSM=";
                 }
                 {
                   # turingmachine
