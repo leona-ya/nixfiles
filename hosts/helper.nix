@@ -59,7 +59,7 @@ rec {
                   PublicKey = "NzCAPjJp7TAR98KkJd1glJwZNdEWUnDzPt3KdNId0Xc=";
                 }
                 {
-                  # freyda
+                  # thizy
                   AllowedIPs = [
                     "10.151.9.7/32"
                     "fd8f:d15b:9f40:0901:300::1/72"
