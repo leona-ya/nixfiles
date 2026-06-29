@@ -19,6 +19,8 @@
   networking.hostName = "dwd"; # to the honor of Donald Watts Davies
   networking.domain = "net.leona.is";
 
+  deployment.targetHost = "dwd.wg.net.leona.is";
+
   #services.unifi.enable = true;
   #services.unifi.openFirewall = true;
   #services.unifi.unifiPackage = pkgs.unifi8;
