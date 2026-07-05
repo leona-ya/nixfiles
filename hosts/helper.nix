@@ -10,6 +10,24 @@ let
 in
 rec {
   hosts = {
+    arche = {
+      meta = {
+        intIpv6 = "fd8f:d15b:9f40:200::1";
+        hasPublicIpv4 = false;
+        hasPublicIpv6 = false;
+      };
+      services = {
+        wireguard = {
+          interfaces = {
+            "server" = {
+              ips = [ "${hosts.arche.meta.intIpv6}/56" ];
+              publicKey = "iqlabfRStuanM+tI2JPcKnqylEMIj8wLDPokjgj0R1E=";
+              routed = [ "${hosts.arche.meta.intIpv6}/56" ];
+            };
+          };
+        };
+      };
+    };
     biro = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:0c21::1";

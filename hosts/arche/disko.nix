@@ -17,17 +17,11 @@
                 mountpoint = "/boot";
               };
             };
-            luks = {
+            lvm = {
               size = "100%";
               content = {
-                type = "luks";
-                name = "cryptroot";
-                extraOpenArgs = [ ];
-                settings.allowDiscards = true;
-                content = {
-                  type = "lvm_pv";
-                  vg = "main";
-                };
+                type = "lvm_pv";
+                vg = "main";
               };
             };
           };
