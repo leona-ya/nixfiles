@@ -189,65 +189,6 @@ rec {
         };
       };
     };
-    hack = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:c41:5054:ff:feef:6dc3";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = false;
-      };
-      nyan = {
-        mac = "52:54:00:65:7a:8e";
-        duid = "00:02:00:00:ab:11:83:85:8b:4d:78:f2:6f:1d";
-        legacyAddress = "10.151.20.13";
-        address = "2a01:4f8:242:155f:1000::fc5";
-      };
-    };
-    haku = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:0c00::1";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = false;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.haku.meta.intIpv6}/72" ];
-              publicKey = "376YjLMEUFHWFE5Xkn3qRyIQ/kAHzM4DhvIcC5boCQ8=";
-              routed = [ "fd8f:d15b:9f40:0c00::/72" ];
-              hostname = "haku.net.leona.is";
-              interfaceRoutes = [
-                { Destination = "fd8f:d15b:9f40::/53"; }
-                { Destination = "fd8f:d15b:9f40:0c00::/54"; }
-              ];
-            };
-            "public" = {
-              ips = [ "2a0f:4ac0:1e0::1/128" ];
-              publicKey = "aY/jNzJUjtohM2yoYSsDRnZyRppcxFHyw9AiDIV7cxQ=";
-              routed = [
-                "195.39.247.144/28"
-                "2a0f:4ac0:1e0::/48"
-              ];
-              interfaceRoutes = [
-                { Destination = "195.39.247.144/28"; }
-                { Destination = "2a0f:4ac0:1e0::/48"; }
-              ];
-              extraWireguardPeers = [
-                {
-                  # dwd
-                  AllowedIPs = [
-                    "195.39.247.151/32"
-                    "2a0f:4ac0:1e0:20::/60"
-                  ];
-                  PublicKey = "3SB96yLcWFrEpGPzeLGhPaDyDOmQj5uLLAPL2Mo9jQs=";
-                  PersistentKeepalive = 21;
-                }
-              ];
-            };
-          };
-        };
-      };
-    };
     fdg-web = {
       meta = {
         hasPublicIpv4 = false;

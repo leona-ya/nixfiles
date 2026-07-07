@@ -44,24 +44,24 @@
               import inputs.nixpkgs-2605 {
                 system = "x86_64-linux";
               }
-            )
-            // {
-              thia = import (
-                (import inputs.nixpkgs {
-                  system = "x86_64-linux";
-                }).applyPatches
-                {
-                  name = "nixpkgs-patched";
-                  src = inputs.nixpkgs;
-                  patches = [
-                    (fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/538437.patch";
-                      hash = "sha256-xU0dY9FrWsmLUEwz9XSKmXdyn/m108pIZ+liekrj3Es=";
-                    })
-                  ];
-                }
-              ) { system = "x86_64-linux"; };
-            };
+            );
+          #// {
+          #  thia = import (
+          #    (import inputs.nixpkgs {
+          #      system = "x86_64-linux";
+          #    }).applyPatches
+          #    {
+          #      name = "nixpkgs-patched";
+          #      src = inputs.nixpkgs;
+          #      patches = [
+          #        (fetchpatch {
+          #          url = "https://github.com/NixOS/nixpkgs/pull/538437.patch";
+          #          hash = "sha256-xU0dY9FrWsmLUEwz9XSKmXdyn/m108pIZ+liekrj3Es=";
+          #        })
+          #      ];
+          #    }
+          #  ) { system = "x86_64-linux"; };
+          #};
 
           specialArgs = {
             inherit inputs;
