@@ -16,7 +16,7 @@
           # interface name
           eth0.7
 
-          name 0023112242025510117100420001@t-online.de
+          name 0025083151635510117100420001@t-online.de
 
           persist
           maxfail 0
