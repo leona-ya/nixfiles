@@ -26,6 +26,11 @@
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [ intel-media-driver ];
+  };
+
   #systemd.sleep.extraConfig = ''
   #  HibernateDelaySec=48h
   #'';
