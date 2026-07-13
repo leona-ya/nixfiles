@@ -132,27 +132,6 @@ rec {
         };
       };
     };
-    dwd = {
-      meta = {
-        intIpv6 = "fd8f:d15b:9f40:100::1";
-        hasPublicIpv4 = false;
-        hasPublicIpv6 = false;
-      };
-      services = {
-        wireguard = {
-          interfaces = {
-            "server" = {
-              ips = [ "${hosts.dwd.meta.intIpv6}/56" ];
-              publicKey = "8Jzx9hklD8g6colimGybv9kpC2q0oTIgrISGhLd0QEM=";
-              routed = [
-                "fd8f:d15b:9f40:100::/56"
-                "10.151.4.0/22"
-              ];
-            };
-          };
-        };
-      };
-    };
     rutile = {
       meta = {
         intIpv6 = "fd8f:d15b:9f40:c11::1";
@@ -206,6 +185,19 @@ rec {
         intIpv6 = "fd8f:d15b:9f40:101::1312";
         hasPublicIpv4 = false;
         hasPublicIpv6 = false;
+      };
+      services.wireguard.interfaces = {
+        "server" = {
+          ips = [
+            "${hosts.thia.meta.intIpv6}/128"
+            "fd8f:d15b:9f40:101::100/128"
+          ];
+          publicKey = "uImt9J25wV04emIIuHcVi8NlCRlnjzzBKc8Eq4UbzTM=";
+          routed = [
+            "${hosts.thia.meta.intIpv6}/128"
+            "fd8f:d15b:9f40:101::100/128"
+          ];
+        };
       };
     };
   };
