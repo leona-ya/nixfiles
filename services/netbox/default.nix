@@ -16,7 +16,7 @@
   services.netbox = {
     enable = true;
     package = pkgs.netbox_4_5;
-    unixSocket = "/run/netbox/netbox.sock";
+    bind = "unix:/run/netbox/netbox.sock";
     secretKeyFile = config.sops.secrets."services/netbox/secret_key".path;
     apiTokenPeppersFile = config.sops.secrets."services/netbox/api_token_pepper".path;
     extraConfig = ''
@@ -60,7 +60,7 @@
     forceSSL = true;
     kTLS = true;
     locations."/" = {
-      proxyPass = "http://unix:${config.services.netbox.unixSocket}";
+      proxyPass = "http://${config.services.netbox.bind}";
       proxyWebsockets = true;
     };
     locations."/static/".alias = "/var/lib/netbox/static/";
