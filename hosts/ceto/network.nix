@@ -40,6 +40,13 @@
           RequiredForOnline = "yes";
         };
       };
+      "10-enp121s0u1" = {
+        DHCP = "yes";
+        matchConfig.Name = "enp121s0u1";
+        linkConfig = {
+          RequiredForOnline = "no";
+        };
+      };
     };
   };
 }
