@@ -15,4 +15,14 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 62217 ];
+
+  services.nginx.virtualHosts = {
+    "rebuilderd.ba.leona.is" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://localhost:62217";
+      };
+    };
+  };
 }

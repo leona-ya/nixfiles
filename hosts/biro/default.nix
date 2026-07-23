@@ -45,6 +45,7 @@
         "photos.leona.is"
         "yt.infinitespace.dev"
         "abs.infinitespace.dev"
+        "rebuilderd.ba.leona.is"
       ];
       "shioto.net.infinitespace.dev" = [
         "auth.leona.is"

@@ -123,6 +123,7 @@ in
       "grafana.mon".CNAME = [ "rutile.net.leona.is." ];
       "metrics.mon".CNAME = [ "rutile.net.leona.is." ];
       "logs.mon".CNAME = [ "rutile.net.leona.is." ];
+      "rebuilderd.ba".CNAME = [ "biro.net.infinitespace.dev." ];
     };
   };
 }
