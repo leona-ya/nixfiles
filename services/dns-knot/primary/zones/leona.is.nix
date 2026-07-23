@@ -103,11 +103,8 @@ in
       cv.CNAME = [ "biro.net.infinitespace.dev." ];
       fin.CNAME = [ "biro.net.infinitespace.dev." ];
       "dataimporter.fin".CNAME = [ "biro.net.infinitespace.dev." ];
-      grocy.CNAME = [ "biro.net.infinitespace.dev." ];
-      "api.grocy".CNAME = [ "biro.net.infinitespace.dev." ];
       matrix = host web_v4 laurake_v6;
       "mautrix-telegram.matrix" = host web_v4 laurake_v6;
-      "sliding-sync.matrix" = host web_v4 laurake_v6;
       md = host web_v4 laurake_v6;
       netbox = host web_v4 laurake_v6;
       "paperless.int".AAAA = [ "fd8f:d15b:9f40:101::1312" ];

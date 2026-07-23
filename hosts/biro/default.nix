@@ -32,7 +32,6 @@
         "kb.leona.is"
         "nomsable.eu"
         "matrix.leona.is"
-        "sliding-sync.matrix.leona.is"
         "md.leona.is"
         "netbox.leona.is"
         "pass.leona.is"

@@ -33,9 +33,6 @@ let
           "m.homeserver" = {
             base_url = "https://matrix.leona.is";
           };
-          "org.matrix.msc3575.proxy" = {
-            "url" = "https://sliding-sync.matrix.leona.is";
-          };
         };
         server = {
           "m.server" = "matrix.leona.is:443";
