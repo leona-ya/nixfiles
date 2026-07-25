@@ -2,11 +2,11 @@
   description = "leona's NixOS config";
 
   inputs = {
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.xz";
-    nixpkgs-darwin.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
-    nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.zst";
+    nixpkgs-darwin.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
+    nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
-    nixpkgs-2605.url = "https://channels.nixos.org/nixos-26.05-small/nixexprs.tar.xz";
+    nixpkgs-2605.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";

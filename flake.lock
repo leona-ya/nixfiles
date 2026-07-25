@@ -518,28 +518,28 @@
     },
     "nixpkgs-2605": {
       "locked": {
-        "lastModified": 1784392618,
-        "narHash": "sha256-d4qZqTVZk5J/zeJvZkCK9Em25FlTv6OvPzaZT/5pmss=",
-        "rev": "1ab52c082b41f3cadfd9d1e1180901c06d9e7876",
+        "lastModified": 1784856561,
+        "narHash": "sha256-/HjbyQqfFs3cG7o/zJ25RPaLZqS9a88z6vOGhMoZwRs=",
+        "rev": "597283ad8aa0b331c788e97c4c262d58877074ef",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/26.05-small/nixos-26.05.5569.1ab52c082b41/nixexprs.tar.xz?lastModified=1784392618&rev=1ab52c082b41f3cadfd9d1e1180901c06d9e7876"
+        "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.5984.597283ad8aa0/nixexprs.tar.zst?lastModified=1784856561&rev=597283ad8aa0b331c788e97c4c262d58877074ef"
       },
       "original": {
         "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-26.05-small/nixexprs.tar.xz"
+        "url": "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst"
       }
     },
     "nixpkgs-darwin": {
       "locked": {
-        "lastModified": 1784364478,
-        "narHash": "sha256-eiNlOqzMSGC+sKwgrhkBK/Mn4n717NV1DEfJqHBVhgg=",
-        "rev": "20535e48e12c86043b577b8518234ff5dbb26957",
+        "lastModified": 1784812282,
+        "narHash": "sha256-kj0RWcISiimYMfvVVXk4O9z73XHY/tPSVYZ24imKdP8=",
+        "rev": "6d12004108e0e4a5cfa4bd83b14477f040b15773",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1036836.20535e48e12c/nixexprs.tar.xz?lastModified=1784364478&rev=20535e48e12c86043b577b8518234ff5dbb26957"
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1040448.6d12004108e0/nixexprs.tar.zst?lastModified=1784812282&rev=6d12004108e0e4a5cfa4bd83b14477f040b15773"
       },
       "original": {
         "type": "tarball",
-        "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz"
+        "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
       }
     },
     "nixpkgs-lib": {
@@ -575,15 +575,15 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1784356753,
-        "narHash": "sha256-zupdTm41be2fY8cexroEOGjopl3F2Gqs3gk7ieqaM3s=",
-        "rev": "61b7c44c4073f0b827768aff0049561b5110ea5a",
+        "lastModified": 1784796856,
+        "narHash": "sha256-vwxWgF+Gj276WznzGb1LxGsK/39HaQwgQXiU3EkC844=",
+        "rev": "e2587caef70cea85dd97d7daab492899902dbf5d",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1036777.61b7c44c4073/nixexprs.tar.xz?lastModified=1784356753&rev=61b7c44c4073f0b827768aff0049561b5110ea5a"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1040357.e2587caef70c/nixexprs.tar.zst?lastModified=1784796856&rev=e2587caef70cea85dd97d7daab492899902dbf5d"
       },
       "original": {
         "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
+        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst"
       }
     },
     "nixpkgs_2": {
@@ -601,15 +601,15 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1784376972,
-        "narHash": "sha256-k8Ielqu0hY+Jfj+Za4+w2agQT6QeUpmTJxj7Bm1vY6g=",
-        "rev": "8d704def0fc91d80d2ffcf23ae4b08cb055308f0",
+        "lastModified": 1784966893,
+        "narHash": "sha256-QHsu7IftyKsRVFVES/5evKfBsoJTarz6nMNdC8bgkxw=",
+        "rev": "328e42b4f861ae88cf3643962ed5c4ff918f2ba8",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1036942.8d704def0fc9/nixexprs.tar.xz?lastModified=1784376972&rev=8d704def0fc91d80d2ffcf23ae4b08cb055308f0"
+        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1041421.328e42b4f861/nixexprs.tar.zst?lastModified=1784966893&rev=328e42b4f861ae88cf3643962ed5c4ff918f2ba8"
       },
       "original": {
         "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.xz"
+        "url": "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.zst"
       }
     },
     "nixpkgs_4": {

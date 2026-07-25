@@ -15,10 +15,10 @@
           imports = [
             (./. + "/${name}")
           ]
-          ++ lib.optionals (name != "moka") [
+          ++ lib.optionals (name != "moka" && name != "arche") [
             inputs.home-manager.nixosModules.home-manager
           ]
-          ++ lib.optionals (name == "moka") [
+          ++ lib.optionals (name == "moka" || name == "arche") [
             inputs.home-manager-2605.nixosModules.home-manager
           ];
         });

@@ -13,9 +13,10 @@
     ./hardware-configuration.nix
     ./network
     ../../users/transcaffeine
+    ./unifi.nix
   ];
 
-  deployment.targetHost = "10.151.5.26";
+  deployment.targetHost = "192.168.178.2";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
