@@ -104,13 +104,14 @@
           }
         ];
       };
-      registry = {
-        enable = true;
-        package = pkgs.gitlab-container-registry;
-        externalAddress = "registry.forkspace.net";
-        certFile = "/var/lib/gitlab/cert.crt";
-        keyFile = "/var/lib/gitlab/key.key";
-      };
+    };
+    registry = {
+      enable = true;
+      package = pkgs.gitlab-container-registry;
+      externalAddress = "registry.forkspace.net";
+      externalPort = 443;
+      certFile = "/var/lib/gitlab/cert.crt";
+      keyFile = "/var/lib/gitlab/key.key";
     };
   };
 
@@ -128,6 +129,14 @@
     locations."/" = {
       proxyPass = "http://unix://run/gitlab/gitlab-workhorse.socket";
       proxyWebsockets = true;
+    };
+  };
+  services.nginx.virtualHosts."registry.forkspace.net" = {
+    enableACME = true;
+    forceSSL = true;
+    kTLS = true;
+    locations."/" = {
+      proxyPass = "http://localhost:4567";
     };
   };
 

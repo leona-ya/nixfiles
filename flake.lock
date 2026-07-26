@@ -542,6 +542,22 @@
         "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
       }
     },
+    "nixpkgs-gitlab": {
+      "locked": {
+        "lastModified": 1785088010,
+        "narHash": "sha256-KdRPqnYMm6PxS/WG4Emydv5uhvbH1dJunrnaVADLY9U=",
+        "owner": "flyingcircusio",
+        "repo": "nixpkgs",
+        "rev": "4135f0574c6d42ea61137b44a808ac3778d1af1b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "flyingcircusio",
+        "ref": "leona/gitlab-19",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1782614948,
@@ -687,6 +703,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-2605": "nixpkgs-2605",
         "nixpkgs-darwin": "nixpkgs-darwin",
+        "nixpkgs-gitlab": "nixpkgs-gitlab",
         "nixpkgs-staging-next": "nixpkgs-staging-next",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",

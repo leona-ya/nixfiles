@@ -5,6 +5,7 @@
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.zst";
     nixpkgs-darwin.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
     nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
+    nixpkgs-gitlab.url = "github:flyingcircusio/nixpkgs/leona/gitlab-19";
     nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
     nixpkgs-2605.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
     lix-module = {
