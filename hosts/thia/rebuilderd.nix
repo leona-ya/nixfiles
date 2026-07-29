@@ -7,8 +7,8 @@
         domain = "forkspace.net";
         owner = "leona-bachelor-thesis/rebuilderd-tooling";
         repo = "rebuilderd";
-        rev = "653aad80d17d7d32e6ebb4635c8fca5e3508dfc0";
-        hash = "sha256-dISuzNDgsi2kj5umHOiPdR9vKhhMN3h2Pdpjq8Aeho0=";
+        rev = "3e1389a21b09842b820f4d0f2d2895a65f5c1d9c";
+        hash = "sha256-tUlGefed2MNpOR61c9+EmyC85zZmbHlL+BM1zvdRtxQ=";
       };
     });
     settings.http.bind_addr = "0.0.0.0:62217";
