@@ -44,14 +44,7 @@
               import inputs.nixpkgs-2605 {
                 system = "x86_64-linux";
               }
-            )
-            // {
-              emuno = (
-                import inputs.nixpkgs-gitlab {
-                  system = "x86_64-linux";
-                }
-              );
-            };
+            );
 
           specialArgs = {
             inherit inputs;
