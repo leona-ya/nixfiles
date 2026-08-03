@@ -54,5 +54,8 @@
     ];
     allowedIPsAsRoutes = true;
   };
-  networking.firewall.allowedUDPPorts = [ 51856 ];
+  networking.firewall.allowedUDPPorts = [
+    51855
+    51856
+  ];
 }
