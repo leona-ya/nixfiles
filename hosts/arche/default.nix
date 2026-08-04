@@ -16,7 +16,7 @@
     ./unifi.nix
   ];
 
-  deployment.targetHost = "192.168.178.2";
+  deployment.targetHost = "10.20.0.1";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;

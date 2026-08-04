@@ -21,6 +21,9 @@
       forceSSL = true;
       enableACME = true;
       locations."/" = {
+        extraConfig = ''
+          client_max_body_size 100M;
+        '';
         proxyPass = "http://localhost:62217";
       };
     };

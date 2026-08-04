@@ -11,25 +11,35 @@ in
 {
   networking.hostName = "arche";
   networking.domain = "net.infinitespace.dev";
-  l.sops.secrets."hosts/arche/wireguard_wg-server_privatekey".owner = "systemd-network";
 
-  systemd.network = {
-    links."10-eth-rcy" = {
-      matchConfig.MACAddress = "00:2b:67:19:c4:f0";
-      linkConfig = {
-        Name = "eth-rcy";
-      };
-    };
-    networks = {
-      "10-eth-rcy" = {
-        DHCP = "yes";
-        matchConfig.Name = "eth-rcy";
-        linkConfig = {
-          RequiredForOnline = "yes";
-        };
-      };
-    }
-    // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
-    netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
-  };
+  imports = [
+    ./dhcp.nix
+    ./dns.nix
+    ./firewall.nix
+    ./lan.nix
+    ./wan.nix
+  ];
+  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
+  boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;
+  #l.sops.secrets."hosts/arche/wireguard_wg-server_privatekey".owner = "systemd-network";
+
+  #systemd.network = {
+  #  links."10-eth-rcy" = {
+  #    matchConfig.MACAddress = "00:2b:67:19:c4:f0";
+  #    linkConfig = {
+  #      Name = "eth-rcy";
+  #    };
+  #  };
+  #  networks = {
+  #    "10-eth-rcy" = {
+  #      DHCP = "yes";
+  #      matchConfig.Name = "eth-rcy";
+  #      linkConfig = {
+  #        RequiredForOnline = "yes";
+  #      };
+  #    };
+  #  }
+  #  // hosthelper.groups.wireguard.g_systemd_network_networkconfig;
+  #  netdevs = hosthelper.groups.wireguard.g_systemd_network_netdevconfig;
+  #};
 }
