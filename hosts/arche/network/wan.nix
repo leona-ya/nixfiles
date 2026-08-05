@@ -5,7 +5,7 @@
   services.pppd = {
     enable = true;
     peers = {
-      dtag = {
+      congstar = {
         # Autostart the PPPoE session on boot
         autostart = true;
         enable = true;
@@ -15,7 +15,7 @@
           # interface name
           eth-rcy.7
 
-          name 0028978754695511427093520001@t-online.de
+          name congstar
 
           persist
           maxfail 0
