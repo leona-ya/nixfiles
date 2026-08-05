@@ -11,7 +11,10 @@
         hash = "sha256-tUlGefed2MNpOR61c9+EmyC85zZmbHlL+BM1zvdRtxQ=";
       };
     });
-    settings.http.bind_addr = "0.0.0.0:62217";
+    settings = {
+      http.bind_addr = "0.0.0.0:62217";
+      schedule.max_retries = 1;
+    };
   };
 
   networking.firewall.allowedTCPPorts = [ 62217 ];
