@@ -7,7 +7,7 @@
 
 {
   boot.supportedFilesystems = [ "cifs" ];
-  fonts.fontconfig.localConf = lib.fileContents ./fontconfig.xml;
+  #fonts.fontconfig.localConf = lib.fileContents ./fontconfig.xml;
   fonts.fontconfig.defaultFonts = {
     emoji = [ "Noto Color Emoji" ];
     serif = [ "DejaVu Serif" ];
@@ -30,6 +30,7 @@
     annieuseyourtelescope
     vista-fonts
     source-sans-pro
+    libertinus
   ];
   i18n.extraLocaleSettings = {
     LC_TIME = "de_DE.UTF-8";
