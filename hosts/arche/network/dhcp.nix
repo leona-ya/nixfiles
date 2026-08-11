@@ -20,6 +20,13 @@
               data = "10.20.0.1";
             }
           ];
+          reservations = [
+            {
+              hostname = "hass";
+              hw-address = "b8:27:eb:4c:17:f8";
+              ip-address = "10.20.0.5";
+            }
+          ];
         }
       ];
     };
