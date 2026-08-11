@@ -111,6 +111,12 @@
               };
             };
           };
+          tinymist = {
+            config.tinymist = {
+              lint.enabled = true;
+              lint.when = "onType";
+            };
+          };
         };
         language = [
           {
