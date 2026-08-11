@@ -4,5 +4,5 @@
     openFirewall = true;
   };
 
-  networking.firewall.interfaces."eth-rcy".allowedTCPPorts = [ 8443 ];
+  networking.firewall.interfaces."br-clients".allowedTCPPorts = [ 8443 ];
 }
