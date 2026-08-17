@@ -20,6 +20,7 @@
     ../../services/actual-budget
     ../../services/abs
     ../../services/immich
+    ../../services/gitlab-runner
     ./disko.nix
     ./network.nix
     ./libvirt.nix
