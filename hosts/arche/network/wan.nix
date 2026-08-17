@@ -5,7 +5,7 @@
   services.pppd = {
     enable = true;
     peers = {
-      congstar = {
+      easybell = {
         # Autostart the PPPoE session on boot
         autostart = true;
         enable = true;
@@ -15,7 +15,7 @@
           # interface name
           eth-rcy.7
 
-          name congstar
+          name easyftth/21583382-1%premium
 
           persist
           maxfail 0
