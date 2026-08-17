@@ -71,7 +71,6 @@
     wayland.windowManager.sway =
       let
         cfg = config.home-manager.users.leona.wayland.windowManager.sway;
-        wallpaper = "~/.wallpapers/cyberpunk_1.jpg";
         modifier = "Mod4";
       in
       {
@@ -222,14 +221,14 @@
     xdg.configFile."sway/config-light-theme" = {
       text = ''
         output "*" {
-          bg ~/.wallpapers/nixos-catppucin-latte.png fill
+          bg ~/.wallpapers/Artemis1-LC39B_2160.png fill
         }
       '';
     };
     xdg.configFile."sway/config-dark-theme" = {
       text = ''
         output "*" {
-          bg ~/.wallpapers/nixos-catppucin-mocha.png fill
+          bg ~/.wallpapers/Artemis1-LC39B_dark_2160.png fill
         }
       '';
     };
