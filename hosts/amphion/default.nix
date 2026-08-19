@@ -32,6 +32,9 @@
     maxJobs = 3;
   };
   home-manager.users.leona = {
+    home.packages = with pkgs; [
+      git-workspace
+    ];
     home.sessionVariables = {
       BATOU_AGE_IDENTITIES = "~/.ssh/fcio_age";
       BATOU_AGE_IDENTITY_PASSPHRASE = "op://Private/SSH Key Age/password";
