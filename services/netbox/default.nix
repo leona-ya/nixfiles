@@ -15,7 +15,7 @@
 
   services.netbox = {
     enable = true;
-    package = pkgs.netbox_4_5;
+    package = pkgs.netbox_4_6;
     bind = "unix:/run/netbox/netbox.sock";
     secretKeyFile = config.sops.secrets."services/netbox/secret_key".path;
     apiTokenPeppersFile = config.sops.secrets."services/netbox/api_token_pepper".path;
