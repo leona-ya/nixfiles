@@ -11,6 +11,7 @@
       General = {
         AddressRandomization = "network";
       };
+      DriverQuirks.PowerSaveDisable = "*";
     };
   };
 
