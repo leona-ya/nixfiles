@@ -24,13 +24,13 @@
       ct state invalid drop
       ct state established,related accept
 
-      iifname br-vms oifname sfp0 ct state new accept
+      iifname br-vms oifname wlan0 ct state new accept
     '';
   };
   networking.nat = {
     enable = true;
     internalInterfaces = [ "br-vms" ];
-    externalInterface = "sfp0";
+    externalInterface = "wlan0";
   };
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
   boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;

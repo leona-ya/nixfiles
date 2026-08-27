@@ -5,6 +5,15 @@
   networking.hostName = "ceto";
   networking.domain = "net.leona.is";
 
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      General = {
+        AddressRandomization = "network";
+      };
+    };
+  };
+
   systemd.network = {
     links = {
       "10-eth0" = {
@@ -46,6 +55,11 @@
         linkConfig = {
           RequiredForOnline = "no";
         };
+      };
+      "10-wlan0" = {
+        DHCP = "yes";
+        matchConfig.Name = "wlan0";
+        networkConfig.IPv6PrivacyExtensions = "kernel";
       };
     };
   };
