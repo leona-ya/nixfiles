@@ -36,6 +36,9 @@
       ct state established,related accept
 
       iifname br-clients oifname ppp-wan ct state new accept
+
+      ip6 daddr 2001:4090:e013:2d00:2efd:a1ff:fee1:beac tcp dport { 53, 80, 443 } ct state new accept
+      ip6 daddr 2001:4090:e013:2d00:2efd:a1ff:fee1:beac udp dport { 53, 80, 443 } ct state new accept
     '';
   };
   networking.nat = {
