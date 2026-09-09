@@ -88,7 +88,6 @@
     poetry
     python3
     qFlipper
-    rofi-pass
     ruff
     rustup
     speedcrunch
