@@ -56,7 +56,21 @@
       }
     )
   ];
-  services.journald.extraConfig = "SystemMaxUse=256M";
+  services.journald = lib.mkMerge [
+    (lib.optionalAttrs (options.services.journald ? settings) {
+      settings.Journal = {
+        SystemMaxUse = "256M";
+      };
+    })
+    (lib.optionalAttrs
+      (options.services.journald ? extraConfig && (options.services.journald.extraConfig.visible or true))
+      {
+        extraConfig = ''
+          SystemMaxUse=256M
+        '';
+      }
+    )
+  ];
 
   services.openssh = {
     enable = true;
