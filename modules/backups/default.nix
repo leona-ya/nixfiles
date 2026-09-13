@@ -51,7 +51,7 @@ in
     pruneOpts = mkOption {
       type = types.listOf types.str;
       default = [
-        "--keep-last 24"
+        "--keep-last 2400"
         "--keep-daily 7"
         "--keep-weekly 4"
         "--keep-monthly 6"

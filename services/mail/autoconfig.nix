@@ -11,7 +11,6 @@
       forceSSL = true;
       serverAliases = [
         "autoconfig.maroni.me"
-        "autoconfig.bechilli.de"
       ];
       locations = {
         "= /mail/config-v1.1.xml" = {

@@ -77,11 +77,11 @@
             enable = true;
             listenAddress = "127.0.0.1";
           };
-          postgres = lib.mkIf config.services.postgresql.enable {
-            enable = true;
-            dataSourceName = "user=postgres-exporter database=postgres host=/run/postgresql";
-            listenAddress = "127.0.0.1";
-          };
+          #postgres = lib.mkIf config.services.postgresql.enable {
+          #  enable = true;
+          #  dataSourceName = "user=postgres-exporter database=postgres host=/run/postgresql";
+          #  listenAddress = "127.0.0.1";
+          #};
           systemd = {
             enable = true;
             listenAddress = "127.0.0.1";

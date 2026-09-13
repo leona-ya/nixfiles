@@ -59,7 +59,7 @@
   services.journald = lib.mkMerge [
     (lib.optionalAttrs (options.services.journald ? settings) {
       settings.Journal = {
-        SystemMaxUse = "256M";
+        SystemMaxUse = "2048M";
       };
     })
     (lib.optionalAttrs

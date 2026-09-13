@@ -9,6 +9,8 @@
       protocol = "https";
       bind-address = "127.0.0.1";
       port = 41122;
+      log-level = "debug";
+      advanced-rate-limit-requests = 0;
     };
   };
   services.nginx = {
@@ -23,6 +25,9 @@
             recommendedProxySettings = true;
             proxyWebsockets = true;
             proxyPass = "http://127.0.0.1:41122";
+            extraConfig = ''
+              access_log /var/log/nginx/access-gts.log;
+            '';
           };
         };
       };

@@ -22,7 +22,7 @@
             inputs.home-manager-2605.nixosModules.home-manager
           ];
         });
-        fetchpatch2 =
+        fetchpatch =
           (import inputs.nixpkgs {
             system = "x86_64-linux";
           }).fetchpatch;
@@ -44,7 +44,25 @@
               import inputs.nixpkgs-2605 {
                 system = "x86_64-linux";
               }
-            );
+
+            )
+            // {
+              emuno = import (
+                (import inputs.nixpkgs {
+                  system = "x86_64-linux";
+                }).applyPatches
+                {
+                  name = "nixpkgs-patched";
+                  src = inputs.nixpkgs;
+                  patches = [
+                    (fetchpatch {
+                      url = "https://github.com/NixOS/nixpkgs/pull/562168.patch";
+                      hash = "sha256-TGjg7cjijr84qzfnNTC6lj3HcUD97Ux+Lz4UJS61UMs=";
+                    })
+                  ];
+                }
+              ) { system = "x86_64-linux"; };
+            };
 
           specialArgs = {
             inherit inputs;
