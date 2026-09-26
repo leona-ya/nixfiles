@@ -23,6 +23,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   l.monitoring.logs.enable = false;
+  virtualisation.libvirtd.enable = true;
 
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
     enableACME = lib.mkForce false;

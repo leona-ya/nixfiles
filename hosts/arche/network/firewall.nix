@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   # For now check every package. This can be optimized in the future to only affect packages outgoing via PPPoE
   networking.nftables.ruleset =
@@ -30,20 +30,54 @@
         allowedUDPPorts = [ 53 ];
         allowedTCPPorts = [ 53 ];
       };
+      "br-iot" = {
+        allowedUDPPorts = [ 53 ];
+        allowedTCPPorts = [ 53 ];
+      };
     };
     extraForwardRules = ''
       ct state invalid drop
       ct state established,related accept
 
-      iifname br-clients oifname ppp-wan ct state new accept
-
       ip6 daddr 2001:4090:e013:2d00:2efd:a1ff:fee1:beac tcp dport { 22, 53, 80, 443 } ct state new accept
       ip6 daddr 2001:4090:e013:2d00:2efd:a1ff:fee1:beac udp dport { 53, 80, 443 } ct state new accept
-    '';
+    ''
+    + (lib.concatStringsSep "\n" (
+      lib.map (ifaces: "iifname ${ifaces."in"} oifname ${ifaces."out"} ct state new accept") (
+        (lib.crossLists
+          (x: y: {
+            "in" = x;
+            "out" = y;
+          })
+          [
+            [
+              "br-clients"
+              "br-infra"
+              "br-iot"
+            ]
+            [ "ppp-wan" ]
+          ]
+        )
+        ++ [
+          {
+            "in" = "br-clients";
+            "out" = "br-infra";
+          }
+          {
+            "in" = "br-clients";
+            "out" = "br-iot";
+          }
+        ]
+      )
+    ));
   };
   networking.nat = {
     enable = true;
-    internalInterfaces = [ "br-clients" ];
+    internalInterfaces = [
+      "br-clients"
+      "br-infra"
+      "br-iot"
+    ];
     externalInterface = "ppp-wan";
   };
 }

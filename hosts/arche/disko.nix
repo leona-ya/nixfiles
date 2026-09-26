@@ -57,6 +57,14 @@
               mountpoint = "/home";
             };
           };
+          libvirt = {
+            size = "50G";
+            content = {
+              type = "filesystem";
+              format = "xfs";
+              mountpoint = "/var/lib/libvirt";
+            };
+          };
         };
       };
     };

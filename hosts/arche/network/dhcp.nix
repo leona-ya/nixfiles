@@ -43,7 +43,7 @@
           AdvAutonomous on;
           AdvRouterAddr on;
         };
-        RDNSS fd14:65c0:ffee:0::1 { };
+        RDNSS fd14:65c0:ffee::1 { };
       };
     '';
   };
