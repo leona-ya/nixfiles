@@ -3,7 +3,10 @@
     enable = true;
     settings = {
       interfaces-config = {
-        interfaces = [ "br-clients" ];
+        interfaces = [
+          "br-clients"
+          "br-iot"
+        ];
       };
       subnet4 = [
         {
@@ -28,6 +31,21 @@
             }
           ];
         }
+        {
+          id = 2;
+          subnet = "10.20.20.0/23";
+          pools = [ { pool = "10.20.20.10 - 10.20.20.254"; } ];
+          option-data = [
+            {
+              name = "routers";
+              data = "10.20.20.1";
+            }
+            {
+              name = "domain-name-servers";
+              data = "10.20.20.1";
+            }
+          ];
+        }
       ];
     };
   };
@@ -44,6 +62,17 @@
           AdvRouterAddr on;
         };
         RDNSS fd14:65c0:ffee::1 { };
+      };
+      interface br-iot {
+        AdvSendAdvert on;
+        MinRtrAdvInterval 3;
+        MaxRtrAdvInterval 10;
+        prefix ::/64 {
+          AdvOnLink on;
+          AdvAutonomous on;
+          AdvRouterAddr on;
+        };
+        RDNSS fd14:65c0:ffee:20::1 { };
       };
     '';
   };

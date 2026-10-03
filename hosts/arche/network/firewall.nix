@@ -27,11 +27,17 @@
   networking.firewall = {
     interfaces = {
       "br-clients" = {
-        allowedUDPPorts = [ 53 ];
+        allowedUDPPorts = [
+          53
+          5353 # mDNS
+        ];
         allowedTCPPorts = [ 53 ];
       };
       "br-iot" = {
-        allowedUDPPorts = [ 53 ];
+        allowedUDPPorts = [
+          53
+          5353 # mDNS
+        ];
         allowedTCPPorts = [ 53 ];
       };
     };
@@ -66,6 +72,10 @@
           {
             "in" = "br-clients";
             "out" = "br-iot";
+          }
+          {
+            "in" = "br-iot";
+            "out" = "br-clients";
           }
         ]
       )

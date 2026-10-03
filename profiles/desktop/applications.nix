@@ -155,6 +155,7 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+    nssmdns6 = true; 
   };
   programs._1password-gui = {
     enable = true;

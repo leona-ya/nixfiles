@@ -55,7 +55,7 @@
       vlanConfig.Id = 7;
     };
     networks."10-eth-rcy.7" = {
-      matchConfig.name = "eth-rcy.7";
+      matchConfig.Name = "eth-rcy.7";
       linkConfig.ActivationPolicy = "up";
     };
     #PPP

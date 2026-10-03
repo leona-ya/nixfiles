@@ -66,6 +66,39 @@
       networkConfig = {
         Bridge = "br-clients";
       };
+      vlan = [
+        "eth-rcy.120"
+      ];
     };
+    netdevs."10-eth-rcy.120" = {
+      netdevConfig = {
+        Name = "eth-rcy.120";
+        Kind = "vlan";
+      };
+      vlanConfig.Id = 120;
+    };
+    networks."10-eth-rcy.120" = {
+      matchConfig.Name = "eth-rcy.120";
+      linkConfig.ActivationPolicy = "up";
+      networkConfig = {
+        Bridge = "br-iot";
+      };
+    };
+  };
+
+  services.avahi = {
+    enable = true;
+    reflector = true;
+    allowInterfaces = [
+      "br-clients"
+      "br-iot"
+    ];
+    # Explicitly deny (even though this _should_ be covered by the allow list) sending out mDNS messages in the large internet.
+    denyInterfaces = [
+      "eth-rcy.7"
+      "ppp-wan"
+    ];
+    # Explicitly not open the firewall for the whole internet. Firewall is opened in arche/network/firewall.nix
+    openFirewall = false;
   };
 }
