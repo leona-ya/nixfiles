@@ -75,7 +75,7 @@
       ];
       flake = {
         overlays = {
-          colmena = inputs.colmena.overlay;
+          colmena = inputs.colmena.overlays.default;
           leona-is-website = inputs.leona-is-website.overlay;
         };
 
