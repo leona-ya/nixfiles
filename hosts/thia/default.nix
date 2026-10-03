@@ -20,7 +20,7 @@
     ../../services/actual-budget
     ../../services/abs
     ../../services/immich
-    ../../services/gitlab-runner
+    #../../services/gitlab-runner
     ./disko.nix
     ./network.nix
     ./libvirt.nix
@@ -28,7 +28,7 @@
   ];
 
   deployment.allowLocalDeployment = true;
-  deployment.targetHost = "thia.wg.net.leona.is";
+  deployment.targetHost = "10.20.0.26";
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;

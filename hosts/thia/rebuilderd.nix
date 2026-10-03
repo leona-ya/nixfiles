@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   services.rebuilderd = {
-    enable = true;
+    enable = false;
     package = pkgs.rebuilderd.overrideAttrs (fA: {
       src = pkgs.fetchFromGitLab {
         domain = "forkspace.net";
