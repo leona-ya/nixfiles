@@ -18,6 +18,8 @@
     noto-fonts-color-emoji
     dejavu_fonts
     fira
+    fira-code
+    fira-math
     fira-mono
     unifont
     roboto
@@ -80,7 +82,7 @@
     #})
     obsidian
     opentofu
-    openssl_3
+    openssl
     pandoc
     pass-wayland
     pre-commit
@@ -93,7 +95,7 @@
     speedcrunch
     sublime-merge
     texlab
-    texlive.combined.scheme-full
+    #texlive.combined.scheme-full
     timewarrior
     tinymist
     typst
@@ -155,7 +157,7 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
-    nssmdns6 = true; 
+    nssmdns6 = true;
   };
   programs._1password-gui = {
     enable = true;

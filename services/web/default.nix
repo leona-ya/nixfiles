@@ -39,7 +39,7 @@ let
         };
       in
       {
-        root = pkgs.leona-is-website;
+        #root = pkgs.leona-is-website;
         locations = {
           "= /.well-known/matrix/client" = {
             root = pkgs.writeTextDir ".well-known/matrix/client" "${builtins.toJSON client}";
