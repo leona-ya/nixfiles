@@ -56,10 +56,15 @@
         AdvSendAdvert on;
         MinRtrAdvInterval 3;
         MaxRtrAdvInterval 10;
-        prefix ::/64 {
+        prefix 2001:4090:e013:2d00::/64 {
           AdvOnLink on;
           AdvAutonomous on;
           AdvRouterAddr on;
+        };
+        prefix fd14:65c0:ffee::/64 {
+          AdvOnLink on;
+          AdvAutonomous on;
+          AdvRouterAddr off;
         };
         RDNSS fd14:65c0:ffee::1 { };
       };
@@ -67,10 +72,15 @@
         AdvSendAdvert on;
         MinRtrAdvInterval 3;
         MaxRtrAdvInterval 10;
-        prefix ::/64 {
+        prefix 2001:4090:e013:2d20::/64 {
           AdvOnLink on;
           AdvAutonomous on;
           AdvRouterAddr on;
+        };
+        prefix fd14:65c0:ffee:20::/64 {
+          AdvOnLink on;
+          AdvAutonomous on;
+          AdvRouterAddr off;
         };
         RDNSS fd14:65c0:ffee:20::1 { };
       };
