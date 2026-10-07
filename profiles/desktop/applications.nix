@@ -105,7 +105,6 @@
     virt-manager
     yarn
     yt-dlp
-    zotero
     zoxide
     #    (zoom-us.overrideAttrs (old: {
     #      postFixup = old.postFixup + ''

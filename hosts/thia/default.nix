@@ -28,7 +28,7 @@
   ];
 
   deployment.allowLocalDeployment = true;
-  deployment.targetHost = "10.20.0.26";
+  deployment.targetHost = "thia.wg.net.leona.is";
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
