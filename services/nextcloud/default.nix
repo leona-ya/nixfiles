@@ -7,11 +7,12 @@ in
   l.sops.secrets."services/nextcloud/admin_password".owner = "nextcloud";
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud33;
+    package = pkgs.nextcloud34;
     hostName = "cloud.leona.is";
 
     https = true;
 
+    appstoreEnable = true;
     autoUpdateApps.enable = true;
     autoUpdateApps.startAt = "05:00:00";
 
