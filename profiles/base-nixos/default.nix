@@ -89,6 +89,16 @@
   };
   programs.mosh.enable = true;
 
+  nix.settings = {
+    use-cgroups = true;
+    auto-allocate-uids = true;
+    extra-system-features = [ "uid-range" ];
+    experimental-features = [
+      "auto-allocate-uids"
+      "cgroups"
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     config.boot.kernelPackages.cpupower
     lm_sensors
