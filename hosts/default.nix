@@ -44,22 +44,7 @@
               import inputs.nixpkgs-2605 {
                 system = "x86_64-linux";
               }
-
-            )
-            // {
-              emuno = import (
-                (import inputs.nixpkgs {
-                  system = "x86_64-linux";
-                }).applyPatches
-                {
-                  name = "nixpkgs-patched";
-                  src = inputs.nixpkgs;
-                  patches = [
-                  ];
-                }
-              ) { system = "x86_64-linux"; };
-            };
-
+            );
           specialArgs = {
             inherit inputs;
           };
