@@ -22,8 +22,6 @@ in
     };
 
     config = {
-      adminuser = "admin";
-      adminpassFile = config.sops.secrets."services/nextcloud/admin_password".path;
       dbtype = "pgsql";
       dbuser = "nextcloud";
       dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself

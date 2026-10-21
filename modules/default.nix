@@ -1,4 +1,7 @@
 {
+  disabledModules = [
+    "services/security/vouch-proxy.nix"
+  ];
   imports = [
     ./meta
     ./backups

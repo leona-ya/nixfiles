@@ -40,7 +40,6 @@ in
           };
         };
         systemd = {
-          enable = true;
           network = {
             enable = true;
             links = {
