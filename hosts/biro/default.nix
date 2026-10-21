@@ -41,7 +41,7 @@
       "thia.wg.net.leona.is" = [
         "cloud.maroni.me"
         "cloud.leona.is"
-        "fin.leona.is"
+        "fin.infinitespace.dev"
         "photos.leona.is"
         "yt.infinitespace.dev"
         "abs.infinitespace.dev"

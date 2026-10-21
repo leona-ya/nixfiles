@@ -101,7 +101,6 @@ in
       cloud.CNAME = [ "biro.net.infinitespace.dev." ];
       "cal.cloud".CNAME = [ "biro.net.infinitespace.dev." ];
       cv.CNAME = [ "biro.net.infinitespace.dev." ];
-      fin.CNAME = [ "biro.net.infinitespace.dev." ];
       "dataimporter.fin".CNAME = [ "biro.net.infinitespace.dev." ];
       matrix = host web_v4 laurake_v6;
       "mautrix-telegram.matrix" = host web_v4 laurake_v6;

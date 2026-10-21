@@ -8,8 +8,8 @@
       port = 62441;
       openId = {
         discoveryURL = "https://auth.leona.is/realms/leona/.well-known/openid-configuration";
-        client_id = "fin.leona.is";
-        server_hostname = "https://fin.leona.is";
+        client_id = "fin.infinitespace.dev";
+        server_hostname = "https://fin.infinitespace.dev";
         authMethod = "openid";
       };
     };
@@ -19,7 +19,7 @@
     config.sops.secrets."services/actual-budget/env".path
   ];
 
-  services.nginx.virtualHosts."fin.leona.is" = {
+  services.nginx.virtualHosts."fin.infinitespace.dev" = {
     enableACME = true;
     forceSSL = true;
     kTLS = true;
