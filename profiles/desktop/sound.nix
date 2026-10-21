@@ -13,6 +13,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+    raopOpenFirewall = true;
     extraConfig = {
       pipewire-pulse = {
         network-discover = {
@@ -20,10 +21,6 @@
             {
               path = "pactl";
               args = "load-module module-native-protocol-tcp";
-            }
-            {
-              path = "pactl";
-              args = "load-module module-zeroconf-discover";
             }
           ];
         };
