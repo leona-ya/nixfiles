@@ -1,7 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 {
   virtualisation.libvirtd = {
     enable = true;
+    package = pkgs.libvirt.override {
+      enableXen = false;
+    };
     allowedBridges = [
       "br-vms"
     ];
