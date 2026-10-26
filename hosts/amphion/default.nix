@@ -63,6 +63,8 @@
     programs.ssh = {
       settings."*".IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
       settings."*.net.leona.is".IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
+      settings."*.net.infinitespace.dev".IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
+      settings."10.20.0.*".IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
       settings."*.wg.net.leona.is".IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
       settings."forkspace.net".IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
     };
