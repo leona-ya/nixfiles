@@ -7,7 +7,7 @@
   imports = [
     (fetchGit {
       url = "gitlab@forkspace.net:leona/nixfiles-mail-secrets.git";
-      rev = "ad25e11c2a8d892a657d8a6e372534e2958f0265";
+      rev = "98728f8f053a4225082dc45a896779c571e8f906";
       ref = "main";
     }).outPath
     ./autoconfig.nix
