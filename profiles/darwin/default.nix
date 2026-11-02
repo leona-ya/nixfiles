@@ -10,7 +10,7 @@
     # Allow opening apps from any source
     sudo spctl --master-disable
   '';
-  nix.settings.sandbox = "relaxed";
+  nix.settings.sandbox = false;
   nix.settings.trusted-users = [ "@admin" ];
 
   # TODO: deduplicate
