@@ -88,6 +88,7 @@
       nix-update
       nix-tree
       lixPackageSets.git.nixpkgs-review
+      rustup
     ];
   };
 }
