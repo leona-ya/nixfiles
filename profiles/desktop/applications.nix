@@ -66,7 +66,6 @@
     gh
     harper
     inkscape
-    jetbrains.idea
     jetbrains.rust-rover
     keymapp
     #    kicad
