@@ -16,7 +16,6 @@
     ../../profiles/desktop
     ../../profiles/desktop/sway
     ./network.nix
-    ./kanshi.nix
     ./wireguard.nix
   ];
 

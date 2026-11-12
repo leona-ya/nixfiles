@@ -5,6 +5,9 @@
   ];
   services.resolved.enable = false;
   services.knot-resolver.settings = {
+    logging = {
+      level = "debug";
+    };
     network.listen = [
       {
         interface = [
@@ -24,6 +27,23 @@
           "fd14:65c0:ffee::/48"
         ];
         answer = "allow";
+      }
+    ];
+    forward = [
+      {
+        subtree = "global.fastly.net";
+        servers = [
+          {
+            address = [
+              "2001:4860:4860::8888"
+              "2001:4860:4860::8844"
+            ];
+            transport = "tls";
+            hostname = "dns.google";
+          }
+        ];
+        # Fastly has no DNSSEC :<
+        options.dnssec = false;
       }
     ];
   };
