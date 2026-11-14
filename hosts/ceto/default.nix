@@ -16,6 +16,7 @@
     ./network.nix
     ./kanshi.nix
     ./libvirt.nix
+    ../../users/transcaffeine
   ];
 
   deployment.allowLocalDeployment = true;
