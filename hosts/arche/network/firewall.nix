@@ -47,6 +47,8 @@
 
       ip6 daddr 2001:4090:e013:2d00:2efd:a1ff:fee1:beac tcp dport { 22, 53, 80, 443 } ct state new accept
       ip6 daddr 2001:4090:e013:2d00:2efd:a1ff:fee1:beac udp dport { 53, 80, 443 } ct state new accept
+      ip6 daddr 2001:4090:e013:2d00:2086:1bff:fee7:13c8 tcp dport { 22, 80, 443 } ct state new accept
+      ip6 daddr 2001:4090:e013:2d00:2086:1bff:fee7:13c8 udp dport { 80, 443 } ct state new accept
     ''
     + (lib.concatStringsSep "\n" (
       lib.map (ifaces: "iifname ${ifaces."in"} oifname ${ifaces."out"} ct state new accept") (

@@ -48,7 +48,7 @@
       "install-iso.moka.net".AAAA = [ "2a01:4f9:3a:1448:7fff:1487:a11::" ];
       "laurake.net".AAAA = [ "2a01:4f9:3a:1448:4000:10::" ];
       "shioto.net".AAAA = [ "2a01:4f9:3a:1448:4000:11::" ];
-      "ceto.net".AAAA = [ "fd8f:d15b:9f40:101:ee0d:9aff:fe2c:2230" ];
+      "ceto.net".AAAA = [ "2001:4090:e013:2d00:2086:1bff:fee7:13c8" ];
 
       "auth.stag".A = helper.hosts.web.A;
       "auth.stag".AAAA = [ "2a01:4f9:3a:1448:4000:4a1a::" ];
