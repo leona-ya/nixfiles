@@ -5,6 +5,7 @@
     package = pkgs.libvirt.override {
       enableXen = false;
     };
+    onShutdown = "shutdown";
     allowedBridges = [
       "br-vms"
     ];
