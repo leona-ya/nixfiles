@@ -29,6 +29,11 @@
               hw-address = "b8:27:eb:4c:17:f8";
               ip-address = "10.20.0.5";
             }
+            {
+              hostname = "tuya-infrared-wc";
+              hw-address = "30:48:7d:66:e1:90";
+              ip-address = "10.20.20.17";
+            }
           ];
         }
         {
