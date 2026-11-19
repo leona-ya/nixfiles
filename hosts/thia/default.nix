@@ -59,6 +59,8 @@
     ];
   };
 
+  services.postgresql.package = pkgs.postgresql_18;
+
   services.nginx.virtualHosts."thia.net.leona.is" = {
     forceSSL = lib.mkForce true;
   };
