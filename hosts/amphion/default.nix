@@ -67,6 +67,7 @@
       settings."10.20.0.*".IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
       settings."*.wg.net.leona.is".IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
       settings."forkspace.net".IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
+      settings."gitlab.com".IdentityAgent = "/Users/leona/.gnupg/S.gpg-agent.ssh";
     };
   };
 }
